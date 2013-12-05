@@ -1,0 +1,8 @@
+# Use PHP5.4 as default
+AddHandler application/x-httpd-php54 .php
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^culturemesh\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.culturemesh\.com$
+RewriteRule ^/?$ "http\:\/\/culturemesh\.launchrock\.com\/" [R=302,L]
+

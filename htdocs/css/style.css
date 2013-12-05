@@ -1,0 +1,124 @@
+.team_thumb{
+    width: 205px;
+    height: 205px;
+}
+#header{
+    border-bottom: 2px solid #ccc;
+}
+#header #top-logo{
+    text-align: left;
+}
+ul#top-links a:hover, ul#top-links a.active{
+    text-decoration: none;
+    background: #f2cc4b;
+    border-radius:5px;
+}
+
+ul#top-links a{
+    padding:5px;
+    font-size: 14px;
+    font-weight: 300;
+}
+#right-top-btns{
+    text-align:right;
+}
+
+h2.pheader{
+    font-weight: normal;
+}
+h3.pheader{
+    color: #fff;
+    font-weight: normal;
+}
+ul.three-section-pics h3{
+    display: inline;
+}
+ul.three-section-pics li{
+    background: url('images/CM_Logo.png');
+    width:340px;
+    height:222px;
+    padding: 20px 40px;
+    display: inline;
+}
+/*setColor("#8C1515");
+			$schoolObject->setSecondaryColor("#FFFFFF");
+			$schoolObject->setSelectedColor("#610F0F");
+			$schoolObject->setSelectedSecondaryColor("#B2B2B2");
+			$schoolObject->setLightGradientColor("#DF4F4F");*/
+.navbar-inverse .navbar-inner{
+	background-color: #8C1515 !important;
+	background-image: linear-gradient(to bottom, #8C1515, #610F0F) !important;
+	/*color: #fff;*/
+}
+.top-user-info{
+	float:right;
+	color: #fff;
+	padding-top: 0.3%;
+}
+.brand{
+	font-family: 'Source Sans Pro',Arial,Helvetica,sans-serif;
+	font-weight: 300;
+	font-size: 27px;
+}
+ul.quiz-area{
+    list-style-type: none;
+}
+.q_answer_list{
+    margin-left: 20px;
+}
+ul#bottom-links{
+    margin:0;
+}
+ul#bottom-links li, ul#top-links li{
+    display:inline;
+    text-transform:uppercase;
+    font-family: 'Lato', sans-serif;
+}
+.footer{
+	background: #97cb38;
+	color: #fff;
+	font-size: 14px;
+        font-weight: 300;
+        padding: 10px;
+}
+.footer a{
+	color: #fff;
+	text-decoration: none;
+        padding:5px 9%;
+}
+.footer-logo{
+	float:left;
+}
+.cm-button{
+    background: #e34036;
+    color: #fff;
+    font-size:24px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    padding: 10px 20px;
+    border-radius: 0;
+    border: none;
+    text-shadow: none;
+}
+.cm-button:hover{
+    background: #b5332b;
+    color: #ccc;
+}
+.copy{
+	text-align: center;
+}
+.k2c{
+	float:left;
+}
+.client{
+	float:right;
+	
+}
+.center-elem{
+    margin-left:auto;
+    margin-right: auto;
+    display: block;
+}
+.btn-big{
+    width:250px;
+}
