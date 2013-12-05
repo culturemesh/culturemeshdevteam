@@ -1,6 +1,6 @@
 <div id="header">
     <div id="top-logo">
-        <a href="index.php"><img src="images/logo_header.png"></a>
+        <a href=""><img src="images/logo_header.png"></a>
     </div>
     <?php
         $header = 'Join the CultureMesh Community!';
