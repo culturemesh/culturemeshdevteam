@@ -1,3 +1,85 @@
+/******
+INDEX PAGE
+*/
+
+body {
+    background:white;
+}
+
+.wrapper{
+    width: 960px;
+    margin: 0px auto;
+}
+
+#stage-area{
+    background:url("../images/background-placeholder.png");
+    height:525px;
+    overflow:hidden;
+}
+
+#stage-content {
+    clear:both;
+    position:relative;
+    width: 700px;
+    margin-top: 110px;
+    margin-left: 70px;
+}
+
+#stage-title {
+    color:#FFFFFF;
+    font-size:30px;
+    font:Lato-bold;
+}
+
+#search-bar {
+    height:60px;
+    border-radius:4px;
+    background:rgba(00,00,00,0.5);
+    /*
+    background: transparent;
+    zoom: 1;    
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);/*IE 6 & 7*/
+    /*-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000)";/* IE8 */
+    
+}
+
+/*
+#search-floater {
+    float:left;
+    height:50%;
+    margin-bottom:-120px;
+}
+
+#search-content {
+    clear:both;
+    height:240px;
+    position:relative;
+}
+*/
+
+input[type="text"].stage-input {
+    height:36px;
+    font-size:22px;
+}
+
+input[type="submit"].stage-button {
+    border:none;
+    border-radius:3px;
+    background-color:#3EB3CA;
+    font-size:24px;
+    color:#FFFFFF
+}
+
+.bottom-div{
+    width:32%;
+    float:left;
+}
+.clear {
+    clear:both;	
+}
+
+/*********************************/
+
 .team_thumb{
     width: 205px;
     height: 205px;
