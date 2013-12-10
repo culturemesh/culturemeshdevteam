@@ -1,9 +1,10 @@
 <div id="header">
     <div id="top-logo">
-        <a href=""><img src="images/logo_header.png"></a>
+        <a href=""><img class="menu-logo" src="images/logo_header.png"></a>
     </div>
     <?php
-        $header = 'Join the CultureMesh Community!';
+        $header = '<h4 class="text-center">Join the</h4>
+                    <h3 class="text-center">CultureMesh Community!</h3>';
         $body = '<form id="reg_form" method="post" action="r.php">
                 <input type="email" name="email" placeholder="Email" required />
                 <span id="email_dup_txt" class="label label-important">That email address is already registered. If you\'ve forgotten your password, <a href="#">click here.</a></span>
@@ -32,7 +33,7 @@
                     <hr>or
                     <a>Join with Facebook</a>
                     <br>It\'s fast and easy - and we\'ll never share your info or post without your permission, we promise!';
-        $footer = 'Already a member? <a href="#" id="sign_in_mod">Sign in!</a>';
+        $footer = '<span class="text-center">Already a member? <a href="#" id="sign_in_mod">Sign in!</a></span>';
         echo buildModal($header, $body, $footer, "register_modal");
     ?>
     <div id="right-top-btns">

@@ -8,8 +8,7 @@ define("SUPPORT_EMAIL", "");
 define("WEBSITE_BY_URL", "http://www.kostocoastdev.com");
 
 define("JS_HOLDER_64x64", "http://www.kostocoastdev.com/clients/hosted/js/holder.js/64x64");
-//define("DB_SERVER", "localhost"); * for use on server
-define("DB_SERVER", "11.32.7.3");	// for local development
+define("DB_SERVER", "localhost");
 define("DB_USER", "culturp7_ktc");
 define("DB_PASS", "d4T48@$3");
 define("DB_NAME", "culturp7_ktc");
@@ -1694,12 +1693,13 @@ function getBaseName($filenameparam){
 	$bname = $finfo['basename'];
 	return $bname;
 }
-
+*/
 function getFileName($filenameparam){
-	$finfo = pathinfo($filenameparam);
-	$fname = $finfo['filename'];
-	return $fname;
+    $finfo = pathinfo($filenameparam);
+    $fname = $finfo['filename'];
+    return $fname;
 }
+/*
 function buildModal($header, $body, $footer, $modal_id = "modal"){
     $modal = '<div id="'.$modal_id.'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
         <div class="modal-header">

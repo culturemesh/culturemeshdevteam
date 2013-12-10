@@ -4,16 +4,23 @@
 }
 #header{
     border-bottom: 2px solid #ccc;
+    margin-bottom:30px;
 }
 #header #top-logo{
     text-align: left;
+}
+img.menu-logo{
+    position:relative;
+    top:15px;
+}
+ul#top-links{
+    padding-bottom: 20px;
 }
 ul#top-links a:hover, ul#top-links a.active{
     text-decoration: none;
     background: #f2cc4b;
     border-radius:5px;
 }
-
 ul#top-links a{
     padding:5px;
     font-size: 14px;
@@ -25,6 +32,19 @@ ul#top-links a{
 
 h2.pheader{
     font-weight: normal;
+    font-size: 36px;
+}
+h3{
+    font-size: 30px;
+    color: #e34036;
+    font-weight: 300;
+    font-family: 'Lato';
+}
+h4{
+    font-size: 26px;
+    color: #e34036;
+    font-weight: 300;
+    font-family: 'Lato';
 }
 h3.pheader{
     color: #fff;
@@ -80,6 +100,7 @@ ul#bottom-links li, ul#top-links li{
 	font-size: 14px;
         font-weight: 300;
         padding: 10px;
+        margin-top:60px;
 }
 .footer a{
 	color: #fff;
@@ -121,4 +142,36 @@ ul#bottom-links li, ul#top-links li{
 }
 .btn-big{
     width:250px;
+}
+input[type="text"],input[type="email"],textarea{
+    border: solid 1px #ccc !important;
+    border-radius: 0 !important;
+    font-size:24px !important;
+    padding: 20px !important;
+    color: #b2b2b2;
+    font-weight: 300;
+}
+.section-break{
+    height: 60px;
+}
+.img-strip-ul{
+    list-style-type: none;
+}
+.img-strip-ul li{
+    display: inline;
+}
+.input-big{
+    width:75%;
+}
+.input-half{
+    width:20%;
+}
+.fullwidth{
+    width:75%;
+}
+.full{
+    width: 100%;
+}
+.half{
+    width:50%;
 }
