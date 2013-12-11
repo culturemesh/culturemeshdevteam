@@ -8,9 +8,8 @@ define("SUPPORT_EMAIL", "");
 define("WEBSITE_BY_URL", "http://www.kostocoastdev.com");
 
 define("JS_HOLDER_64x64", "http://www.kostocoastdev.com/clients/hosted/js/holder.js/64x64");
-//define("DB_SERVER", "localhost"); * for use on server
-define("DB_SERVER", "11.32.7.3");	// for local development
-define("DB_USER", "culturp7_ktc");
+define("DB_SERVER", "localhost");
+define("DB_USER", "culturp7");
 define("DB_PASS", "d4T48@$3");
 define("DB_NAME", "culturp7_ktc");
 
@@ -18,12 +17,14 @@ function getDBConnection(){
     $conn = new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
     return $conn;
 }
+
 function sendEmailNotification($email, $mailsubject, $message){
 	$headers = 'From: '.DOMAIN_NAME.' <noreply@'.SHORT_DOMAIN_URL.'>' . "\r\n" .
 	'Reply-To: noreply@'.SHORT_DOMAIN_URL. "\r\n" .
 	'X-Mailer: PHP/' . phpversion();
 	mail($email, $mailsubject, $message, $headers);
 }
+
 function buildModal($header, $body, $footer, $modal_id = "modal"){
     $modal = '<div id="'.$modal_id.'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
         <div class="modal-header">
@@ -38,6 +39,58 @@ function buildModal($header, $body, $footer, $modal_id = "modal"){
         </div>
       </div>';
     return $modal;
+}
+
+function escape_string($string)
+{
+    $newstring = "";
+    
+    for ($i = 0; $i < strlen($string); $i = $i + 1)
+    {
+    	$char = $string[$i];
+    	
+    	if ($char == "'")
+    	{
+    	    $newstring = $newstring."\\".$char;
+    	}
+    	else if ($char == "\"")
+    	{
+    	    $newstring = $newstring."\\".$char;
+    	}
+    	else if ($char == "\\")
+    	{
+    		if (substr($i, $i+1) == "\n")
+    		{
+    		    $newstring = $newstring."'".substr($i, $i+1)."'";
+    		    $i = $i + 1;
+    		}
+    		else if (substr($i, $i+1) == "\r")
+    		{
+    		    $newstring = $newstring."'".substr($i, $i+1)."'";
+    		    $i = $i + 1;
+    		}
+    		else if (substr($i, $i+3) == "\x00")
+    		{
+    		    $newstring = $newstring."'".substr($i, $i+3)."'";
+    		    $i = $i + 3;
+    		}
+    		else if (substr($i, $i+3) == "\x1a")
+    		{
+    		    $newstring = $newstring."'".substr($i, $i+1)."'";
+    		    $i = $i + 3;
+    		}
+    		else
+    		{
+    		    $newstring = $newstring."'".$char."'";
+    		}
+    	}
+    	else
+    	{
+    	    $newstring = $newstring.$char;
+    	}
+    }
+    
+    return $newstring;
 }
 /*
 function getMonths(){

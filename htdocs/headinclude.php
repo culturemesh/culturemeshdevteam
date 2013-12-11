@@ -19,7 +19,13 @@
 
 
 <script src="js/bootstrap.js"></script>
+<script src="js/validation.js"></script>
 
+<script type="text/javascript">
+// register validation
+
+// login validation
+</script>
 <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 <!--GoogleAn-->
 
