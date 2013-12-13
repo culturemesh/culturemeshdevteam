@@ -13,17 +13,30 @@ if($_POST['email'] && $_POST['password']){
 		    exit();
 		}//db conect failure
 		
-		$uQuery = $conn->query("SELECT * FROM users WHERE email_address='$email' AND password='".md5($pass)."'");
-		$data = $uQuery->fetch_assoc();
-	
-		$_SESSION['username'] = $data["email_address"]; // for now
+		if strlen($email) > 18
+		{
+			echo "3";
+		}
+		else if strlen($password) > 18
+		{
+			echo "4";
+		}
+		else
+		{
+			$uQuery = $conn->query("SELECT * FROM users WHERE email_address='$email' AND password='".md5($pass)."'");
+			$data = $uQuery->fetch_assoc();
 		
-		if($data["email_address"] != NULL){
-			echo "1";
-		}//valid new user
-		else{
-		    header("Location: login_error.php?error=user_doesn't_exist");
-		}//username already exists
+			$_SESSION['username'] = $data["email_address"]; // for now
+			
+			if($data["email_address"] != NULL){
+				echo "1";
+			}//valid new user
+			
+			else
+			{
+			    header("Location: login_error.php?error=user_doesn't_exist");
+			}//username already exists
+		}
 }
 else{
     header("Location: index.php");

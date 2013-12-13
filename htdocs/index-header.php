@@ -11,7 +11,7 @@
                 <span id="email_dup_txt" class="label label-important">That email address is already registered. If you\'ve forgotten your password, <a href="#">click here.</a></span>
                 <div id="login-passwords">
                 <input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
-                <input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" placeholder="Confirm Password" required />
+                <input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
                 <div class="clear"></div>
                 <span id="password_validation"></span>
                 </div>
@@ -55,7 +55,9 @@
         $log_body = '<form id="log_form" method="post">
                 <div id="login-div">
                 <input type="email" name="email" id="log_email" class="modal-text-input" placeholder="Email" required />
-                <input type="password" name="password" id="log_password" class="modal-text-input" placeholder="Password" required />
+                <input type="password" name="password" id="log_password" class="modal-text-input" onchange="validateInput(this, document.getElementById(\'log_validation\'))" placeholder="Password" required />
+                </br>
+                <span id="log_validation"></span>
                 </br>
                 </br>
                 <input type="submit" id="log_submit_btn" class="submit" data-loading-text="Checking..." value="Sign In" />

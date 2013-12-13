@@ -1,22 +1,28 @@
-var badChars = ["\'", "\"", "?", "\\"];
-function validateInput(element, errorElement, charLimit)
+var badChars = ["'", "\"", "?", "\\"];
+
+function validateInput(element, errorElement, charLimit = -1)
 {
     // search for asshole characters ', ", 
     var badCharFound = -1;
     
-    for(c in badChars)
+    for(var i = 0; i < badChars.length; i++)
     {
-    	badCharFound = element.value.indexOf(c);
+    	    badCharFound = element.value.indexOf(badChars[i]);
     	
+    	//alert(badCharFound);
     	// stop as soon as bad character is found
     	if (badCharFound > -1)
-    		alert("bad char found");
+    	{
     		break;
+    	}
     }
-    if (element.value.length > charLimit)
+    if (charLimit > -1)
     {
-    	    /// Input was too long
-    	errorElement.innerHTML = "Too many characters. Use " + charLimit + " or less.";    
+	    if (element.value.length > charLimit)
+	    {
+		    /// Input was too long
+		errorElement.innerHTML = "Too many characters. Use " + charLimit + " or less.";    
+	    }
     }
     else if (badCharFound > -1)
     {
