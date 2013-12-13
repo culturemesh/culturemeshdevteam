@@ -1,6 +1,10 @@
 <?php
 require '../log.php';
 
+if($_POST['reg_email']){
+    echo getIsEmailAvailable($_POST['reg_email']);
+}//checking registration email
+    
 if($_SESSION['username']){
     if($_POST['update_settings']){
         mapFormDataToDB($_POST['update_settings']);
@@ -203,107 +207,6 @@ if($_SESSION['username']){
         sendMessage($_POST['reply_sub'], $_POST['reply_msg'], $_SESSION['username'], $_POST['reply_to']);
         echo '1';
     }
-    if($_POST['update_privacy']){
-        $post_priv = array("0","0","0");
-        $comment_priv = array("0","0","0");
-        $profile_priv = array("0","0","0");
-        $follower_priv = array("0","0","0");
-        foreach($_POST['update_privacy'] as $spec){
-            //echo $spec['name'];
-            $s = explode("-", $spec['name']);
-            $prop_name = $s[0];
-            $prop_audience = $s[2];
-            echo $prop_audience;
-            switch($prop_audience){
-                case "foll":
-                    break;
-                case "pub":
-                    break;
-                case "ufoll":
-                    break;
-                
-            }
-            if($spec['value'] == "on"){
-                echo "on";
-            }
-        }
-        /*$configArray = array();
-        foreach($_POST['update_privacy'] as $spec){
-           foreach($spec as $val){
-            echo $val;
-            switch($val){
-               //posts
-               case "post-priv-pub":
-                   if($val == "on"){
-                       $configArray['post_privacy'] = "public";
-                   }
-                   break;
-               case "post-priv-foll":
-                   if($val == "on"){
-                       $configArray['post_privacy'] = "followers";
-                   }
-                   break;
-               case "post-priv-self":
-                   if($val == "on"){
-                       $configArray['post_privacy'] = "self";
-                   }
-                   break;
-
-               //comments
-               case "comment-priv-pub":
-                   if($val == "on"){
-                       $configArray['comment_privacy'] = "public";
-                   }
-                   break;
-               case "comment-priv-foll":
-                   if($val == "on"){
-                       $configArray['comment_privacy'] = "followers";
-                   }
-                   break;
-               case "comment-priv-self":
-                   if($val == "on"){
-                       $configArray['comment_privacy'] = "self";
-                   }
-                   break;
-
-               //profile
-               case "profile-priv-pub":
-                   if($val == "on"){
-                       $configArray['profile_privacy'] = "public";
-                   }
-                   break;
-               case "profile-priv-foll":
-                   if($val == "on"){
-                       $configArray['profile_privacy'] = "followers";
-                   }
-                   break;
-               case "profile-priv-self":
-                   if($val == "on"){
-                       $configArray['profile_privacy'] = "self";
-                   }
-                   break;
-
-               //follow
-               case "follower-priv-pub":
-                   if($val == "on"){
-                       $configArray['follower_privacy'] = "public";
-                   }
-                   break;
-               case "follower-priv-foll":
-                   if($val == "on"){
-                       $configArray['follower_privacy'] = "followers";
-                   }
-                   break;
-               case "follower-priv-self":
-                   if($val == "on"){
-                       $configArray['follower_privacy'] = "self";
-                   }
-                   break;
-               }//end foreach
-            }//end switch
-        }//end foreach
-        print_r($configArray);
-        echo updateMemberPrivacySettings($_SESSION['username'], $configArray);*/
-    }
+     
 }//if logged in
 ?>

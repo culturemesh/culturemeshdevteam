@@ -175,3 +175,9 @@ input[type="text"],input[type="email"],textarea{
 .half{
     width:50%;
 }
+.success-txt{
+    color: #97cb38;
+}
+.failure-txt{
+    color: #b5332b;
+}
