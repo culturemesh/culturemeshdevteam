@@ -1,6 +1,14 @@
 <?php
 ini_set('display_errors', true);
 
+/**
+  * Success - 1
+  * Login info incorrect - 2
+  * Email is too long - 3
+  * Password is too long - 4
+  * Database connection failed - 5
+**/
+
 if($_POST['email'] && $_POST['password']){
 		include 'zz341/fxn.php';
 		
@@ -10,14 +18,15 @@ if($_POST['email'] && $_POST['password']){
 		
 		if($conn->connect_errno){
 		    printf("Connect failed! %s\n", $conn->connect_error);
+		    echo "5";
 		    exit();
 		}//db conect failure
 		
-		if strlen($email) > 18
+		if (strlen($email) > 18)
 		{
 			echo "3";
 		}
-		else if strlen($password) > 18
+		else if (strlen($password) > 18)
 		{
 			echo "4";
 		}
@@ -30,12 +39,11 @@ if($_POST['email'] && $_POST['password']){
 			
 			if($data["email_address"] != NULL){
 				echo "1";
-			}//valid new user
-			
+			}
 			else
 			{
-			    header("Location: login_error.php?error=user_doesn't_exist");
-			}//username already exists
+			    echo "2";
+			}
 		}
 }
 else{

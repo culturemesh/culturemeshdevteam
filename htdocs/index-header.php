@@ -20,6 +20,7 @@
                 <span id="pass_mism_txt" class="label label-important">Passwords don\'t match. Please try again.</span>
                 <div class="clear"></div>
                 <input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
+                <span id="server_error"></span>
                 </div>
                 </form>
                     <script>
@@ -38,7 +39,16 @@
                                     window.location("profile_settings.php");
                                     break;
                                 case "2":
-                                    $("#email_dup_txt").hide();
+                                    $("#server_error").text("Your login information is incorrect.");
+                                    break;
+                                case "3":
+                                    $("#server_error").text("Your email address is too long.");
+                                    break;
+                                case "4":
+                                    $("#server_error").text("Your password is too long.");
+                                    break;
+                                case "5":
+                                    $("#server_error").text("We\'re having database troubles on our end");
                                     break;
                             }
                         });
