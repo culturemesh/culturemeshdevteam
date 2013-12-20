@@ -1,33 +1,109 @@
 <?php
 if($_POST){
-    print_r($_POST);?>
-    <script>
-        $("#suggest_success").show();
-    </script>
+    $built_string = 'People ';
+    foreach($_POST as $key=>$val):
+        $val = ucwords(strtolower($val));
+        if($key == 'suggest_language' && $val==true){
+            if(!getRowQuery("SELECT * FROM suggested_networks WHERE language='$val'")){
+                insertQuery("INSERT INTO suggested_networks (language, date) values('".$val."', ".time().")");
+            }
+            $built_string .= "\r\n" . ':who speak '.$val;
+        }
+        if($key == 'suggest_from_location' && $val==true){
+            if(!getRowQuery("SELECT * FROM suggested_networks WHERE location='$val'")){
+                insertQuery("INSERT INTO suggested_networks (location,date) values('".$val."', ".time().")");
+            }
+            $built_string .= "\r\n" . ':who are from '.$val;
+        }
+        if($key == 'suggest_culture' && $val==true){
+            $built_string .= "\r\n" . ':who belong to '.$val;
+        }
+        if($key == 'suggest_in_location' && $val==true){
+            if(!getRowQuery("SELECT * FROM suggested_networks WHERE location='$val'")){
+                insertQuery("INSERT INTO suggested_networks (location,date) values('".$val."', ".time().")");
+            }
+            $built_string .= "\r\n" . ':who live in '.$val;
+        }
+    endforeach;
+    $se = new SiteEmail();
+    $se->setSubject("Someone suggested a network!");
+    $se->setTo("jenki221@gmail.com");
+    /*$se->setFrom("CultureMesh Site Form <noreply@culturemesh.com>");
+    $se->setReplyTo("<noreply@culturemesh.com>");*/
+    $msg = 'Someone suggested the following networks:'. "\r\n" .$built_string;
+    $se->setMessage($msg);
+    $se->Send();
+    echo '<span class="label label-success center-elem text-center">We\'ve received your suggestion. We\'ll look into adding it shortly!</span>'; 
+    ?>
 <?php } ?>
 <script>
     $("#menu-suggest").addClass("active");
 </script>
+<style>
+    h5{
+        font:18px 'Lato';
+        color: #333;
+    }
+    .suggest_box_form{
+        margin-left: auto;
+        margin-right: auto;
+        width: 620px;
+        background: #f5f5f5;
+        padding: 30px;
+    }
+    .cm-red{
+        color: #e34036;
+    }
+    .input_sub{
+        font: 14px 'Lato';
+        font-weight: 300;
+        color: #666;
+    }
+    .small_head{
+        font: 14px 'Lato';
+        font-weight: 300;
+        color: #666;
+    }
+    .suggest_box_form input[type=text]{
+        width: 410px !important;
+    }
+    .suggest_box_form h5{
+        display: inline-block;
+        padding-right: 30px;
+    }
+    .input_with_sub{
+        position:relative;
+        left: 150px;
+        bottom: 50px;
+    }
+</style>
 <h3 class="text-center">Suggest Networks</h3>
-<span id="suggest_success" class="label label-success text-center hide">We've received your suggestion. We'll look into adding it shortly!</span>
-<form method="post" action="" class="center-elem">
-    <label><h5>People <span class="cm-red">who speak</span></h5>
+<form method="post" action="" class="center-elem suggest_box_form">
+    <label><h5>People <br><span class="cm-red">who speak</span></h5>
+        <div class="input_with_sub">
         <input type="text" name="suggest_language" placeholder="Language"/>
-        Any spoken, written, or signed form of communication
+        <br><span class="input_sub">Any spoken, written, or signed form of communication</span>
+        </div>
     </label>
-    -OR-
-    <label><h5>People <span class="cm-red">who are from</span></h5>
+    <span class="small_head">-OR-</span>
+    <label><h5>People <br><span class="cm-red">who are from</span></h5>
+        <div class="input_with_sub">
         <input type="text" name="suggest_from_location" placeholder="Location"/>
-        Countries, states, provinces, cities, or regions
+        <br><span class="input_sub">Countries, states, provinces, cities, or regions</span>
+        </div>
     </label>
-    -OR-
-    <label><h5>People <span class="cm-red">who belong to</span></h5>
-    <input type="text" name="suggest_culture" placeholder="Ethnicities or Religions"/>
+    <span class="small_head">-OR-</span>
+    <label><h5>People <br><span class="cm-red">who belong to</span></h5>
+        <div class="input_with_sub">
+        <input type="text" name="suggest_culture" placeholder="Ethnicities or Religions"/>
+        </div>
     </label>
     
-    <label><h5>People <span class="cm-red">who live in</span></h5>
+    <label><h5>People <br><span class="cm-red">who live in</span></h5>
+        <div class="input_with_sub">
         <input type="text" name="suggest_in_location" placeholder="Location"/>
-        Countries, states, provinces, cities, or regions
+        <br><span class="input_sub">Countries, states, provinces, cities, or regions</span>
+        </div>
     </label>
     
     <input type="submit" class="cm-button center-elem" value="Submit" />
