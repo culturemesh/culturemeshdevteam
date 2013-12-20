@@ -1,8 +1,10 @@
+<?php require_once('log.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<?php
 	include 'headinclude.php';
+        include $ppre.'_head.php';
 	?>
 </head>
 <body>
