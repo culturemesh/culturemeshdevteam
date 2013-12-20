@@ -93,6 +93,12 @@ function insertQuery($query){
     $stmt->execute();
     return $conn->affected_rows;
 }
+function deleteQuery($query){
+    $conn = getDBConnection();
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    return $conn->affected_rows;
+}
 function getRowQuery($query){
     $conn = getDBConnection();
     $result = $conn->query($query);
@@ -118,6 +124,12 @@ function adminUpdateRegion($spec, $name){
 }
 function getNetworkCities(){
     return getRowsQuery("SELECT city FROM networks");
+}
+function getNetworkCountries(){
+    return getRowsQuery("SELECT country FROM networks");
+}
+function getSuggestedNetworks(){
+    return getRowsQuery("SELECT * FROM suggested_networks");
 }
 function sendEmailNotification($email, $mailsubject, $message){
 	$headers = 'From: '.DOMAIN_NAME.' <noreply@'.SHORT_DOMAIN_URL.'>' . "\r\n" .
@@ -146,6 +158,59 @@ function buildModal($header, $body, $footer, $modal_id = "modal"){
         <div class="modal-footer">'.
             $footer.'
         </div>
+      </div>';
+    return $modal;
+}
+function buildAdminEditNetworkModal(){
+    $modal = '<div id="admin_edit_network_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h2 class="text-center">Edit Network</h2>
+        </div>
+        <div class="modal-body text-center">
+            Type: <span style="text-transform:uppercase;" id="emodal_network_type"></span>
+            <span id="emodal_network_name" class="hide"></span>
+            <br><input type="text" id="admin_add_network_input" />
+        </div>
+        <div class="modal-footer">
+            <input type="submit" id="admin_add_network_btn" class="center-elem cm-button" value="Save Changes & Add" />
+        </div>
+        <script>
+        $("#admin_add_network_btn").click(function(){
+            $.post("ajx/ps.php", {admin_add_network:$("#admin_add_network_input").val(),admin_add_network_type:$("#modal_network_type").html()})
+            .done(function(data){
+                if(data == "1"){
+                    window.location.reload();
+                }
+            });
+        });
+        </script>
+      </div>';
+    return $modal;
+}
+function buildAdminRemoveNetworkModal(){
+    $modal = '<div id="admin_remove_network_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h2 class="text-center">Remove Network</h2>
+        </div>
+        <div class="modal-body text-center">
+            <span id="rmmodal_network_type" class="hide"></span>
+          Are you sure you want to remove \'<span id="rmmodal_network_name"></span>\' from \'Suggested Networks\'?
+        </div>
+        <div class="modal-footer">
+            <input type="submit" class="center-elem cm-button" id="admin_remove_network_confirm_btn" value="Confirm Removal" />
+        </div>
+        <script>
+        $("#admin_remove_network_confirm_btn").click(function(){
+            $.post("ajx/ps.php", {admin_remove_network:$("#modal_network_name").html(),admin_remove_network_type:$("#modal_network_type").html()})
+            .done(function(data){
+                if(data == "1"){
+                    window.location.reload();
+                }
+            });
+        });
+        </script>
       </div>';
     return $modal;
 }

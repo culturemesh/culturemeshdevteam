@@ -45,27 +45,50 @@
   <li><a href="#admin_languages" data-toggle="tab">Languages</a></li>
   <li><a href="#admin_suggested" data-toggle="tab">Suggested</a></li>
 </ul>
-
+<style>
+    table.admin_panel{
+        border: 1px solid #ccc;
+        font: 18px 'Lato';
+        font-weight:300;
+    }
+    table.admin_panel th{
+        background: #e5e5e5;
+        text-align: center;
+    }
+    table.admin_panel tr{
+        border: 1px solid #ccc;
+    }
+    ul.network_sections{
+        list-style-type: none;
+    }
+    ul.network_sections li{
+        display: inline-block;
+    }
+</style>
 <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade active in" id="admin_regions">
-        <ul>
-            <li class="thirdbox">Country</li>
-            <li class="thirdbox">State</li>
+        <ul class="network_sections">
             <li class="thirdbox">
-                <table>
-                    <th>City</th>
-                    <?php foreach(getNetworkCities() as $city): ?>
-                        <tr><td><?=$city['city'];?></td></tr>
-                    <?php endforeach; ?>
-                </table>
+                <?php include 'admin_panel_countries_table.php'?>
+            </li>
+            <li class="thirdbox">
+                <?php include 'admin_panel_cities_table.php'?>
             </li>
             
         </ul>
     </div>
     <div class="tab-pane fade in" id="admin_languages">
-      <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        <?php //include 'admin_languages_include.php'; ?>
     </div>
     <div class="tab-pane fade in" id="admin_suggested">
-      <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        <?php include 'admin_suggested_networks_include.php'; ?>
     </div>
+    
+    <script>
+        $(".network_row").closest().hover(function(){
+            $(".network_ul_actions").closest().show();
+        }, function(){
+            $(".network_ul_actions").closest().hide();
+        });
+    </script>
 </div>
