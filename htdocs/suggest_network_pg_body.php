@@ -15,15 +15,6 @@ if($_POST){
             }
             $built_string .= "\r\n" . ':who are from '.$val;
         }
-        if($key == 'suggest_culture' && $val==true){
-            $built_string .= "\r\n" . ':who belong to '.$val;
-        }
-        if($key == 'suggest_in_location' && $val==true){
-            if(!getRowQuery("SELECT * FROM suggested_networks WHERE location='$val'")){
-                insertQuery("INSERT INTO suggested_networks (location,date) values('".$val."', ".time().")");
-            }
-            $built_string .= "\r\n" . ':who live in '.$val;
-        }
     endforeach;
     $se = new SiteEmail();
     $se->setSubject("Someone suggested a network!");
@@ -89,19 +80,6 @@ if($_POST){
     <label><h5>People <br><span class="cm-red">who are from</span></h5>
         <div class="input_with_sub">
         <input type="text" name="suggest_from_location" placeholder="Location"/>
-        <br><span class="input_sub">Countries, states, provinces, cities, or regions</span>
-        </div>
-    </label>
-    <span class="small_head">-OR-</span>
-    <label><h5>People <br><span class="cm-red">who belong to</span></h5>
-        <div class="input_with_sub">
-        <input type="text" name="suggest_culture" placeholder="Ethnicities or Religions"/>
-        </div>
-    </label>
-    
-    <label><h5>People <br><span class="cm-red">who live in</span></h5>
-        <div class="input_with_sub">
-        <input type="text" name="suggest_in_location" placeholder="Location"/>
         <br><span class="input_sub">Countries, states, provinces, cities, or regions</span>
         </div>
     </label>
