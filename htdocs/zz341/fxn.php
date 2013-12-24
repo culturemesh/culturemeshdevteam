@@ -9,10 +9,14 @@ define("WEBSITE_BY_URL", "http://www.kostocoastdev.com");
 
 define("JS_HOLDER_64x64", "http://www.kostocoastdev.com/clients/hosted/js/holder.js/64x64");
 //define("DB_SERVER", "localhost"); * for use on server
-define("DB_SERVER", "11.32.7.3");	// for local development
-define("DB_USER", "culturp7_ktc");
-define("DB_PASS", "d4T48@$3");
+define("DB_SERVER", "69.195.79.120");	// for local development
+define("DB_USER", "culturp7");
+define("DB_PASS", "GoRoop2013!");
 define("DB_NAME", "culturp7_ktc");
+//define("DB_SERVER", "11.32.7.3");	// for local development
+//define("DB_USER", "culturp7_ktc");
+//define("DB_PASS", "d4T48@$3");
+//define("DB_NAME", "culturp7_ktc");
 
 function getDBConnection(){
     $conn = new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
