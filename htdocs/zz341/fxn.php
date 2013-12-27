@@ -84,8 +84,7 @@ function getCountries(){
     return $countries_array;
 }
 function getDBConnection(){
-    $conn = new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
-    return $conn;
+    return new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
 }
 function insertQuery($query){
     $conn = getDBConnection();

@@ -1,32 +1,40 @@
 <?php
 if($_POST){
+    include 'static/classes/Network.php';
+    include 'static/classes/SuggestedNetwork.php';
     $built_string = 'People ';
+    $s_network = new SuggestedNetwork();
     foreach($_POST as $key=>$val):
         $val = ucwords(strtolower($val));
         if($key == 'suggest_language' && $val==true){
-            if(!getRowQuery("SELECT * FROM suggested_networks WHERE language='$val'")){
-                insertQuery("INSERT INTO suggested_networks (language, date) values('".$val."', ".time().")");
-            }
+            $s_network->setLanguage($val);
             $built_string .= "\r\n" . ':who speak '.$val;
         }
         if($key == 'suggest_from_location' && $val==true){
-            if(!getRowQuery("SELECT * FROM suggested_networks WHERE location='$val'")){
-                insertQuery("INSERT INTO suggested_networks (location,date) values('".$val."', ".time().")");
-            }
+            $location = explode(',', $val);
+            $city = $location[0];
+            $region = ($location[1]) ? $location[1]: NIL;
+            $s_network->setCity($city);
+            $s_network->setRegion($region);
             $built_string .= "\r\n" . ':who are from '.$val;
         }
     endforeach;
+    //save suggested network object
+    $s_network->Save();
+    
+    //send notification email
     $se = new SiteEmail();
     $se->setSubject("Someone suggested a network!");
+    //$se->setTo("suggestions@culturemesh.com");
     $se->setTo("jenki221@gmail.com");
     /*$se->setFrom("CultureMesh Site Form <noreply@culturemesh.com>");
     $se->setReplyTo("<noreply@culturemesh.com>");*/
     $msg = 'Someone suggested the following networks:'. "\r\n" .$built_string;
     $se->setMessage($msg);
     $se->Send();
-    echo '<span class="label label-success center-elem text-center">We\'ve received your suggestion. We\'ll look into adding it shortly!</span>'; 
-    ?>
-<?php } ?>
+    echo '<span class="label label-success center-elem text-center">We\'ve received your suggestion. We\'ll look into adding it shortly!</span>';     
+} 
+?>
 <script>
     $("#menu-suggest").addClass("active");
 </script>
