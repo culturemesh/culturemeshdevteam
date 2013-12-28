@@ -6,21 +6,16 @@ include 'zz341/fxn.php';
 //include 'static/classes.php';
 
 if($_GET['action'] == "login") {
-    $email = $_POST['email'];
     $conn = getDBConnection();
-    if($conn->connect_errno){
-        printf("connect failed %s\n", $conn->connect_error);
-        exit();
-    }
-    $eq = $conn->query("SELECT * FROM users WHERE email_address='$email'");
-    $data = $eq->fetch_assoc();
-    if($data != NULL) {
+    $email = $conn->real_escape_string($_POST['email']);
+    $data = getRowQuery("SELECT * FROM users WHERE email='{$email}'");
+    if($data) {
         if($data['role'] == NULL){
-            $conn->query("UPDATE users SET role='user' WHERE email_address='$email'");
+            $conn->query("UPDATE users SET role=0 WHERE email='$email'");
         }
         if(md5($_POST['password']) == $data['password']) {
             $_SESSION['uid'] = $data['id'];
-            $conn->query("UPDATE users SET last_login = '".time()."' WHERE email_address='$email'");
+            $conn->query("UPDATE users SET last_login = NOW() WHERE email='$email'");
             switch(strtolower(getMemberGender($_SESSION['uid']))){
                 case "male":
                     $GLOBALS["possesivepronoun"] = "his";

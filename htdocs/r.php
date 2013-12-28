@@ -9,14 +9,18 @@ if(strlen($_POST['email'])>1 && strlen($_POST['password']) >=6 && strlen($_POST[
         if($conn->connect_errno){
             printf("Connect failed! %s\n", $conn->connect_error);
             exit();
-        }//db conect failure
+        }//db connect failure
         $email = $conn->real_escape_string($_POST['email']);
-        $uQuery = $conn->query("SELECT * FROM users WHERE email_address='$email'");
-        $data = $uQuery->fetch_assoc();
+        $data = getRowQuery("SELECT * FROM users WHERE email='{$email}'");
         if(!$data){
-            $conn->query("INSERT INTO users (email_address,role,password,date_joined,last_login) values(
-                '$email','user',".md5($_POST['password'])."','".time()."','".time()."')");
-            header("Location: profile_edit.php");
+            echo 'inw';
+            if(actionQuery("INSERT INTO users (email,role,password,register_date,last_login) values(
+                '{$email}',0,'".md5($_POST['password'])."', NOW(), NOW())")){
+                session_name("myDiaspora");
+                session_start();
+                $_SESSION['uid'] = getMemberUID($email);
+                header("Location: profile_edit.php");
+            }
         }//valid new user
         else{
             header("Location: registration_error.php?error=user_exists");

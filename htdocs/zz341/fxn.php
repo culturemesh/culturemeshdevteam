@@ -66,7 +66,10 @@ class SiteEmail extends Email{
 	'X-Mailer: PHP/' . phpversion();
     }*/
 }
-
+function getMonths(){
+    $months = array('january','february','march','april','may','june','july','august','september','october','november','december');
+    return $months;
+}
 function getStates(){
     $states_array = array("al"=>"alabama","ak"=>"alaska", "az"=>"arizona", "ar"=>"arkansas","ca"=>"california",
        "co"=>"colorado","ct"=>"connecticut","de"=>"delaware","fl"=>"florida","ga"=>"georgia","hi"=>"hawaii",
@@ -84,10 +87,9 @@ function getCountries(){
     return $countries_array;
 }
 function getDBConnection(){
-    $conn = new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
-    return $conn;
+    return new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
 }
-function insertQuery($query){
+function actionQuery($query){
     $conn = getDBConnection();
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -107,17 +109,49 @@ function getRowsQuery($query){
     }
     return $data;
 }
-function getAffectedRows(){
-    $conn = getDBConnection();
+function getAffectedRows($conn){
     return $conn->affected_rows;
 }
+/****member functions******/
+function getMemberUID($email){
+    $d = getRowQuery("SELECT id FROM users WHERE email='{$email}'");
+    return $d['id'];
+}
+function getMemberEmail($id){
+    $d = getRowQuery("SELECT email FROM users WHERE id={$id}");
+    return $d['email'];
+}
+
+function getMemberFirstName($id){
+    $d = getRowQuery("SELECT first_name FROM user_info WHERE uid={$id}");
+    return $d['first_name'];
+}
+function getMemberLastName($id){
+    $d = getRowQuery("SELECT last_name FROM user_info WHERE uid={$id}");
+    return $d['last_name'];
+}
+function getMemberAboutMe($id){
+    $d = getRowQuery("SELECT about_me FROM user_info WHERE uid={$id}");
+    return $d['about_me'];
+}
+/*****end member functions****/
+
 function adminUpdateRegion($spec, $name){
-    if(insertQuery("INSERT INTO networks (".$spec.",date_added) values('".$name."',".time().")") == 1){
+    if(actionQuery("INSERT INTO networks (".$spec.",date_added) values('".$name."',".time().")") == 1){
         return '1';
     }
 }
 function getNetworkCities(){
-    return getRowsQuery("SELECT city FROM networks");
+    return getRowsQuery("SELECT city,region,country FROM networks WHERE city IS NOT NULL");
+}
+function getNetworkLanguages(){
+    return getRowsQuery("SELECT language FROM networks WHERE language IS NOT NULL");
+}
+function getNetworkCountries(){
+    return getRowsQuery("SELECT country FROM networks");
+}
+function getSuggestedNetworks(){
+    return getRowsQuery("SELECT * FROM suggested_networks");
 }
 function sendEmailNotification($email, $mailsubject, $message){
 	$headers = 'From: '.DOMAIN_NAME.' <noreply@'.SHORT_DOMAIN_URL.'>' . "\r\n" .
@@ -126,11 +160,10 @@ function sendEmailNotification($email, $mailsubject, $message){
 	mail($email, $mailsubject, $message, $headers);
 }
 function getIsEmailAvailable($email){
-    $code = "";
-    $conn = getDBConnection();
-    $result = $conn->query("SELECT email_address FROM users WHERE email_address='{$email}'");
-    if(!$result){
-        $code = "1";
+    $code = 0;
+    $data = getRowQuery("SELECT email_address FROM users WHERE email_address='{$email}'");
+    if($data){
+        $code = 1;
     }
     return $code;
 }
@@ -146,6 +179,59 @@ function buildModal($header, $body, $footer, $modal_id = "modal"){
         <div class="modal-footer">'.
             $footer.'
         </div>
+      </div>';
+    return $modal;
+}
+function buildAdminEditNetworkModal(){
+    $modal = '<div id="admin_edit_network_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h2 class="text-center">Edit Network</h2>
+        </div>
+        <div class="modal-body text-center">
+            Type: <span style="text-transform:uppercase;" id="emodal_network_type"></span>
+            <span id="emodal_network_name" class="hide"></span>
+            <br><input type="text" id="admin_add_network_input" />
+        </div>
+        <div class="modal-footer">
+            <input type="submit" id="admin_add_network_btn" class="center-elem cm-button" value="Save Changes & Add" />
+        </div>
+        <script>
+        $("#admin_add_network_btn").click(function(){
+            $.post("ajx/ps.php", {admin_add_network:$("#admin_add_network_input").val(),admin_add_network_type:$("#modal_network_type").html()})
+            .done(function(data){
+                if(data == "1"){
+                    refresh();
+                }
+            });
+        });
+        </script>
+      </div>';
+    return $modal;
+}
+function buildAdminRemoveNetworkModal(){
+    $modal = '<div id="admin_remove_network_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h2 class="text-center">Remove Network</h2>
+        </div>
+        <div class="modal-body text-center">
+            <span id="rmmodal_network_type" class="hide"></span>
+          Are you sure you want to remove \'<span id="rmmodal_network_name"></span>\' from \'Suggested Networks\'?
+        </div>
+        <div class="modal-footer">
+            <input type="submit" class="center-elem cm-button" id="admin_remove_network_confirm_btn" value="Confirm Removal" />
+        </div>
+        <script>
+        $("#admin_remove_network_confirm_btn").click(function(){
+            $.post("ajx/ps.php", {admin_remove_network:$("#rmmodal_network_name").html(),admin_remove_network_type:$("#rmmodal_network_type").html()})
+            .done(function(data){
+                if(data == "1"){
+                    refresh();
+                }
+            });
+        });
+        </script>
       </div>';
     return $modal;
 }
@@ -285,22 +371,6 @@ function getFileName($filenameparam){
     return $fname;
 }
 /*
-function buildModal($header, $body, $footer, $modal_id = "modal"){
-    $modal = '<div id="'.$modal_id.'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>'.
-            $header.'
-        </div>
-        <div class="modal-body">'.
-          $body.'
-        </div>
-        <div class="modal-footer">'.
-            $footer.'
-        </div>
-      </div>';
-    return $modal;
-}
-
 function rrmdir($dir) { 
    if (is_dir($dir)) { 
      $objects = scandir($dir); 
