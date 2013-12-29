@@ -130,6 +130,10 @@ function getMemberLastName($id){
     $d = getRowQuery("SELECT last_name FROM user_info WHERE uid={$id}");
     return $d['last_name'];
 }
+function getMemberGender($id){
+    $d = getRowQuery("SELECT gender FROM user_info WHERE uid={$id}");
+    return $d['gender'];
+}
 function getMemberAboutMe($id){
     $d = getRowQuery("SELECT about_me FROM user_info WHERE uid={$id}");
     return $d['about_me'];
