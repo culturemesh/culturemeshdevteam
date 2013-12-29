@@ -13,6 +13,7 @@ define("DB_USER", "culturp7_ktc");
 define("DB_PASS", "d4T48@$3");
 define("DB_NAME", "culturp7_ktc");
 
+define("PASSWORD_CONFIRM_MODAL_ID", "password_confirm_modal");
 class Email{
     /*public function __construct(){
         $this->Headers = 'From: '.DOMAIN_NAME.' Team <noreply@'.SHORT_DOMAIN_URL.'>' . "\r\n" .
@@ -212,6 +213,13 @@ function buildAdminEditNetworkModal(){
         </script>
       </div>';
     return $modal;
+}
+function buildPasswordConfirmModal(){
+    $header = 'Password Confirmation';
+    $body = 'Please enter your password to make changes:'
+            . '<input type="password" name="current_password" class="input" />';
+    $footer = '<button class="btn cm-button">Confirm</button>';
+    return buildModal($header, $body, $footer, PASSWORD_CONFIRM_MODAL_ID);
 }
 function buildAdminRemoveNetworkModal(){
     $modal = '<div id="admin_remove_network_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
