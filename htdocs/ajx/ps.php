@@ -7,7 +7,38 @@ if($_POST['reg_email']){
     
 if($_SESSION['uid']){
     $uid = $_SESSION['uid'];
-    //if updating user basic info
+    //if updating account info(user dashboard)
+    if($_POST['ai_update']){
+        //make sure password entered matches current password to save changes
+        if(md5($_POST['c_pw']) == getMemberPassword($uid)){
+            //if changing email address
+            if(verifyValidEmailAddress($_POST['email']) && $_POST['email'] != getMemberEmail($uid)){
+                $code = actionQuery("UPDATE users SET email='{$_POST['email']}' WHERE id={$uid}");
+            }
+            else{
+                //invalid email address
+                $code = "3";
+                exit($code);
+            }
+            //if changing password
+            if(verifyPasswordMatch($_POST['password'],$_POST['password_conf'])){
+                $code = actionQuery("UPDATE users SET password='".md5($_POST['password'])."' WHERE id={$uid}");
+            }
+            require '../static/classes/UserSettings.php';
+            $u_settings = new UserSettings($uid);
+            $u_settings->setEventsInterested(getCheckboxBool($_POST['notify_interesting_events']));
+            $u_settings->setCompanyNews(getCheckboxBool($_POST['notify_company_news']));
+            $u_settings->setEventsUpcoming(getCheckboxBool($_POST['notify_events_upcoming']));
+            $u_settings->setNetworkActivity(getCheckboxBool($_POST['notify_network_activity']));
+            $code = (intval($code) >= 1) ? $code : $u_settings->Save();
+            echo $code;
+        }
+        else{
+            $code = "2";
+            echo $code;
+        }
+    }
+    //if updating basic info(user dashboard)
     if($_POST['bi_update']){
         //if data for user already exists
         if(getRowQuery("SELECT * FROM user_info WHERE uid={$uid}")){

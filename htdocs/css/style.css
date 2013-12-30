@@ -46,6 +46,15 @@ h4{
     font-weight: 300;
     font-family: 'Lato';
 }
+h5{
+    font: 16px 'Lato';
+    font-weight: 300;
+    text-transform: uppercase;
+}
+label.checkbox{
+    font: 14px 'Lato';
+    font-weight: 300;
+}
 h3.pheader{
     color: #fff;
     font-weight: normal;
@@ -60,11 +69,6 @@ ul.three-section-pics li{
     padding: 20px 40px;
     display: inline;
 }
-/*setColor("#8C1515");
-			$schoolObject->setSecondaryColor("#FFFFFF");
-			$schoolObject->setSelectedColor("#610F0F");
-			$schoolObject->setSelectedSecondaryColor("#B2B2B2");
-			$schoolObject->setLightGradientColor("#DF4F4F");*/
 .navbar-inverse .navbar-inner{
 	background-color: #8C1515 !important;
 	background-image: linear-gradient(to bottom, #8C1515, #610F0F) !important;
@@ -125,6 +129,12 @@ ul#bottom-links li, ul#top-links li{
     background: #b5332b;
     color: #ccc;
 }
+.btn-green{
+    background: #97cb38;
+}
+.btn-green:hover{
+    background: #78a22c;
+}
 .copy{
 	text-align: center;
 }
@@ -143,7 +153,7 @@ ul#bottom-links li, ul#top-links li{
 .btn-big{
     width:250px;
 }
-input[type="text"],input[type="email"],textarea{
+input[type="text"],input[type="email"],input[type="password"],textarea,select{
     border: solid 1px #ccc !important;
     border-radius: 0 !important;
     font-size:24px !important;

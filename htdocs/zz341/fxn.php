@@ -122,7 +122,10 @@ function getMemberEmail($id){
     $d = getRowQuery("SELECT email FROM users WHERE id={$id}");
     return $d['email'];
 }
-
+function getMemberPassword($id){
+    $d = getRowQuery("SELECT password FROM users WHERE id={$id}");
+    return $d['password'];
+}
 function getMemberFirstName($id){
     $d = getRowQuery("SELECT first_name FROM user_info WHERE uid={$id}");
     return $d['first_name'];
@@ -139,6 +142,25 @@ function getMemberAboutMe($id){
     $d = getRowQuery("SELECT about_me FROM user_info WHERE uid={$id}");
     return $d['about_me'];
 }
+
+/**member notifications**/
+function getMemberNotificationSettingsInterestingEvents($id){
+    $d = getRowQuery("SELECT events_interested_in FROM user_notifications WHERE uid={$id}");
+    return $d['events_interested_in'];
+}
+function getMemberNotificationSettingsCompanyNews($id){
+    $d = getRowQuery("SELECT company_news FROM user_notifications WHERE uid={$id}");
+    return $d['company_news'];
+}
+function getMemberNotificationSettingsUpcomingEvents($id){
+    $d = getRowQuery("SELECT events_upcoming FROM user_notifications WHERE uid={$id}");
+    return $d['events_upcoming'];
+}
+function getMemberNotificationSettingsNetworkActivity($id){
+    $d = getRowQuery("SELECT network_activity FROM user_notifications WHERE uid={$id}");
+    return $d['network_activity'];
+}
+/**end member notifications**/
 /*****end member functions****/
 
 function adminUpdateRegion($spec, $name){
@@ -217,8 +239,10 @@ function buildAdminEditNetworkModal(){
 function buildPasswordConfirmModal(){
     $header = 'Password Confirmation';
     $body = 'Please enter your password to make changes:'
-            . '<input type="password" name="current_password" class="input" />';
-    $footer = '<button class="btn cm-button">Confirm</button>';
+            . '<input type="password" name="current_password" id="current_password" class="input" />'
+            . '<label class="label label-important hide" id="current_password_failure_txt">Incorrect password. Please try again.</label>'
+            . '<label class="label label-important hide" id="invalid_email_txt">Invalid email address. Please try again.</label>';
+    $footer = '<button class="btn cm-button" id="password_confirm_btn">Confirm</button>';
     return buildModal($header, $body, $footer, PASSWORD_CONFIRM_MODAL_ID);
 }
 function buildAdminRemoveNetworkModal(){
@@ -377,6 +401,30 @@ function getBaseName($filenameparam){
 	return $bname;
 }
 */
+function verifyValidEmailAddress($email){
+    $at = strpos($email, '@');
+    $dot = strpos(substr($email, $at), '.');
+    if($dot > 1){
+        return 1;
+    }
+}    
+function verifyPasswordMatch($pw,$pw_conf){
+    if(strlen($pw)>=6 && strlen($pw_conf)>=6 && $pw==$pw_conf){
+        return 1;
+    }
+}
+function getCheckboxBool($val){
+    if($val == "on"):
+        return 1;
+    else:
+        return 0;
+    endif;
+}
+function getCheckboxVal($bool){
+    if($bool == 1):
+        return "checked";
+    endif;
+}
 function getFileName($filenameparam){
     $finfo = pathinfo($filenameparam);
     $fname = $finfo['filename'];
