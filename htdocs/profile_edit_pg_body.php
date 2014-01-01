@@ -34,12 +34,10 @@
             <?php //include 'profile_events_tab_include.php'; ?>
         </div>
         <div class="tab-pane" id="profile_inbox_tab">
-            inbx
-            <?php //include 'profile_inbox_tab_include.php'; ?>
+            <?php include 'profile_inbox_tab_include.php'; ?>
         </div>
         <div class="tab-pane" id="profile_accounts_tab">
-            acct
-            <?php //include 'profile_accounts_tab_include.php'; ?>
+            <?php include 'profile_accounts_tab_include.php'; ?>
         </div>
     </div>
 </div>

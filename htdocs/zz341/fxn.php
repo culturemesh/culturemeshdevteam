@@ -14,6 +14,9 @@ define("DB_PASS", "d4T48@$3");
 define("DB_NAME", "culturp7_ktc");
 
 define("PASSWORD_CONFIRM_MODAL_ID", "password_confirm_modal");
+define("MSG_MODAL_PICTURE_ATTACH_ID", "msg_modal_picture_attach");
+define("MSG_MODAL_VIDEO_ATTACH_ID", "msg_modal_video_attach");
+
 class Email{
     /*public function __construct(){
         $this->Headers = 'From: '.DOMAIN_NAME.' Team <noreply@'.SHORT_DOMAIN_URL.'>' . "\r\n" .
@@ -114,6 +117,12 @@ function getAffectedRows($conn){
     return $conn->affected_rows;
 }
 /****member functions******/
+function getMembers(){
+    return getRowsQuery("SELECT * FROM users");
+}
+function getMemberNames(){
+    return getRowsQuery("SELECT first_name,last_name FROM user_info");
+}
 function getMemberUID($email){
     $d = getRowQuery("SELECT id FROM users WHERE email='{$email}'");
     return $d['id'];
@@ -163,6 +172,25 @@ function getMemberNotificationSettingsNetworkActivity($id){
 /**end member notifications**/
 /*****end member functions****/
 
+//converts php array to JS compatible array, ["item1","item2",...] format
+function getJSCompatibleArrayFromDBData($data){
+    $js_array .= '[';
+    foreach($data as $index=>$item){
+        $js_array .= htmlentities('"');
+        foreach($item as $key=>$val){
+            $js_array .= ' '.$val;
+        }
+        $js_array .= htmlentities('"');
+        if($item != end($data)){
+            $js_array .= htmlentities(',');
+        }
+    }
+    $js_array .= ']';
+    return $js_array;
+}
+function getJSONEncodedDBData($data){
+    return json_encode($data);
+}
 function adminUpdateRegion($spec, $name){
     if(actionQuery("INSERT INTO networks (".$spec.",date_added) values('".$name."',".time().")") == 1){
         return '1';

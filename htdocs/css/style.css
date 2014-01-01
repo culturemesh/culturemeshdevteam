@@ -125,6 +125,11 @@ ul#bottom-links li, ul#top-links li{
     border: none;
     text-shadow: none;
 }
+.cm-button-small{
+    font-size:15px;
+    font-family: 'Lato', sans-serif;
+    padding: 5px 15px;
+}
 .cm-button:hover{
     background: #b5332b;
     color: #ccc;
