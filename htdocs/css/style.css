@@ -276,16 +276,23 @@ hr {
 }
 #header{
     border-bottom: 2px solid #ccc;
+    margin-bottom:30px;
 }
 #header #top-logo{
     text-align: left;
+}
+img.menu-logo{
+    position:relative;
+    top:15px;
+}
+ul#top-links{
+    padding-bottom: 20px;
 }
 ul#top-links a:hover, ul#top-links a.active{
     text-decoration: none;
     background: #f2cc4b;
     border-radius:5px;
 }
-
 ul#top-links a{
     padding:5px;
     font-size: 14px;
@@ -297,6 +304,28 @@ ul#top-links a{
 
 h2.pheader{
     font-weight: normal;
+    font-size: 36px;
+}
+h3{
+    font-size: 30px;
+    color: #e34036;
+    font-weight: 300;
+    font-family: 'Lato';
+}
+h4{
+    font-size: 26px;
+    color: #e34036;
+    font-weight: 300;
+    font-family: 'Lato';
+}
+h5{
+    font: 16px 'Lato';
+    font-weight: 300;
+    text-transform: uppercase;
+}
+label.checkbox{
+    font: 14px 'Lato';
+    font-weight: 300;
 }
 h3.pheader{
     color: #fff;
@@ -312,11 +341,6 @@ ul.three-section-pics li{
     padding: 20px 40px;
     display: inline;
 }
-/*setColor("#8C1515");
-			$schoolObject->setSecondaryColor("#FFFFFF");
-			$schoolObject->setSelectedColor("#610F0F");
-			$schoolObject->setSelectedSecondaryColor("#B2B2B2");
-			$schoolObject->setLightGradientColor("#DF4F4F");*/
 .navbar-inverse .navbar-inner{
 	background-color: #8C1515 !important;
 	background-image: linear-gradient(to bottom, #8C1515, #610F0F) !important;
@@ -352,6 +376,7 @@ ul#bottom-links li, ul#top-links li{
 	font-size: 14px;
         font-weight: 300;
         padding: 10px;
+        margin-top:60px;
 }
 .footer a{
 	color: #fff;
@@ -376,6 +401,12 @@ ul#bottom-links li, ul#top-links li{
     background: #b5332b;
     color: #ccc;
 }
+.btn-green{
+    background: #97cb38;
+}
+.btn-green:hover{
+    background: #78a22c;
+}
 .copy{
 	text-align: center;
 }
@@ -393,4 +424,42 @@ ul#bottom-links li, ul#top-links li{
 }
 .btn-big{
     width:250px;
+}
+input[type="text"],input[type="email"],input[type="password"],textarea,select{
+    border: solid 1px #ccc !important;
+    border-radius: 0 !important;
+    font-size:24px !important;
+    padding: 20px !important;
+    color: #b2b2b2;
+    font-weight: 300;
+}
+.section-break{
+    height: 60px;
+}
+.img-strip-ul{
+    list-style-type: none;
+}
+.img-strip-ul li{
+    display: inline;
+}
+.input-big{
+    width:75%;
+}
+.input-half{
+    width:20%;
+}
+.fullwidth{
+    width:75%;
+}
+.full{
+    width: 100%;
+}
+.half{
+    width:50%;
+}
+.success-txt{
+    color: #97cb38;
+}
+.failure-txt{
+    color: #b5332b;
 }
