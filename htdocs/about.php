@@ -19,26 +19,27 @@ require_once 'log.php';
         <script>
             $("#menu-about").addClass("active");
             </script>
-        <h2>About CultureMesh</h2>
-        <p>CultureMesh is building networks to match he real-world dynamics of people living, working, and traveling outside of their home countries to knit the diverse fabrics of our world together.</p>
-        <a href="" class="btn">See Current Openings</a>
+        <h2 class="pheader text-center">About CultureMesh</h2>
+        <p class="text-center">CultureMesh is building networks to match the real-world dynamics of people living, working, and traveling outside of their home countries to knit the diverse fabrics of our world together.</p>
         
         <div class="mid-grid">
             
         </div>
         <div class="mid-grid">
-            <h2>The Team</h2>
-            <ul>
-                <li><img src="sd.png" class="team_thumb"></li>
-                <li><img src="df.ong" class="team_thumb"></li>
-                <li><img src="fd" class="team_thumb"></li>
-                <li><img src="fdfd" class="team_thumb"></li>
-                <li><img src="df" class="team_thumb"></li>
+            <h2 class="pheader text-center">The Team</h2>
+            <ul class="img-strip-ul center-elem">
+                <?php
+                foreach(glob("images/*.jpeg") as $img):
+                    $name = explode("_", getFileName($img));
+                    $full_name = ucfirst($name[0]).' '.ucwords($name[1]);
+                ?>
+                <li><img src="<?php echo $img;?>" title="<?php echo $full_name;?>" alt="<?php echo $full_name;?>" class="team_thumb"></li>
+                <?php endforeach;?>
             </ul>
         </div>
         
         <div class="bottom-info">
-            <h2>Contact Us</h2>
+            <h2 class="pheader text-center">Contact Us</h2>
             <?php
                 if($_POST['contact_name'] && $_POST['contact_body']){
                     //$msg = $_POST['contact_name']."(".$_POST['contact_email'].") said: \r\n".$_POST['contact_body'];
@@ -46,11 +47,11 @@ require_once 'log.php';
                     echo '<span class="label label-success">Thanks! Our team is looking forward to reading what you had to say!</span>';
                 }
             ?>
-            <form method="post" action="">
-                <input placeholder="Name" type="text" required name="name" id="contact_name">
-                <input placeholder="Your Email" type="email" id="contact_email">
-                <textarea name="contact_body" id="contact_body" required></textarea>
-                <input type="submit" value="Send Message" class="btn">
+            <form method="post" action="" class="center-elem fullwidth">
+                <input placeholder="Name" type="text" required name="name" class="input-half left" id="contact_name">
+                <input placeholder="Your Email" type="email" class="input-half right" id="contact_email">
+                <textarea class="center-elem full" placeholder="What do you have to say?" name="contact_body" id="contact_body" required></textarea>
+                <input type="submit" value="Send Message" class="btn cm-button center-elem">
             </form>
         </div>
     </div>

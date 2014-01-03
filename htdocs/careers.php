@@ -24,7 +24,6 @@ require_once 'log.php';
 </head>
 <body id="careers" class="info-pg">
      <?php
-	// Just a template for drawing the boxes, feel free to mofidy to fit your needs
 	$boxes = array(
 		// sizes are styled through css and top, left css attributes are hard-coded on the div
 		array('size' => 3, 'top' => 0, 'left' => 0),

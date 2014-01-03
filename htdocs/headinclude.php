@@ -19,6 +19,7 @@
 
 
 <script src="js/bootstrap.js"></script>
+<script src="js/fxn.js"></script>
 
 <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 <!--GoogleAn-->
