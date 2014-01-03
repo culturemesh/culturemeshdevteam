@@ -2,10 +2,10 @@
 
 class EventRegistrationDT
 {
-	public $guest_id;
-	public $event_id;
-	public $job;
-	public $date_registered;
+	public $id_guest;	// bigint(20)
+	public $id_event;	// bigint(20)
+	public $date_registered;	// timestamp
+	public $job;	// varchar(50)
 }
 
 ?>
