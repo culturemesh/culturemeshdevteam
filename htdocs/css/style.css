@@ -281,7 +281,7 @@ hr {
 }
 #header{
     border-bottom: 2px solid #ccc;
-    margin-bottom:30px;
+    /*margin-bottom:30px;*/
 }
 #header #top-logo{
     text-align: left;

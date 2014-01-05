@@ -12,22 +12,6 @@
 		$user_email = User::getMemberEmail($_SESSION['uid']);
 	else
 		$user_email = "";
-	/*
-	$id = session_id();
-	
-	if ($id)
-	{
-		echo $id;
-		echo $_SESSION['uid'];
-	}
-	
-	if(isset($_SESSION['views']))
-		$_SESSION['views']=$_SESSION['views']+1;
-	else
-		$_SESSION['views']=1;
-	
-	echo "Views=". $_SESSION['views'];
-	*/
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -41,6 +25,7 @@
 		<meta name="description" content="Welcome to CultureMesh - Connecting the world's diasporas!" />
 		
 		<?php
+		/////////////////////////////////////////////////////////////////////
 		// MAKING SURE PICTURES VARY N SUCH
 		
 		$bg_links = array("images/cmfrontpage_image1.png", 
@@ -48,8 +33,6 @@
 			"images/cmfrontpage_image3.png");
 		
 		$i = rand(0,2);
-		echo "</br> Last BG:" . $_SESSION['cur_bg'];
-		echo "</br> Generated #:" . $i;
 		
 		if (isset($_SESSION['cur_bg']))
 		{
@@ -69,9 +52,6 @@
 		}
 		else
 			$_SESSION['cur_bg'] = $i;
-			
-		
-		echo "</br>Final Background=". $_SESSION['cur_bg'];
 		?>
 		
 		<?php // NOTE THE PHP IN THE BACKGROUND STMT BELOW!!! 
