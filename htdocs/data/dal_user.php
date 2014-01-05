@@ -7,6 +7,7 @@
   *	READ
   *	    getAllUsers
   	    getUserById(id)
+  	    getMemberEmail(id)
   *	UPDATE
   *	    updateUser
   *	DELETE
@@ -80,8 +81,26 @@ class User
 		//mysqli_close($con);
 	}
 	
+	public static function getMemberEmail($id){
+		if (func_num_args() == 1)
+		{ $con = func_get_arg(0); }
+		else
+		{ $con = getDBConnection();}
+		
+		$d = getRowQuery("SELECT email FROM users WHERE id={$id}");
+		return $d['email'];
+		
+		if (func_num_args() < 1)
+			mysqli_close($con);
+    	}
+	
 	public static function getUserById($id)
 	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+		
 		$con = getDBConnection();
 		
 		// Check connection
@@ -92,15 +111,41 @@ class User
 		
 		$result = mysqli_query($con, "SELECT * FROM users WHERE id = " . $id );
 		
+		
+		if (func_num_args() < 2)
+		{ mysqli_close($con); }
+	
+		return $result;
+		/*
 		while($row = mysqli_fetch_array($result))
 		{
 		  	  echo $row['id'] . " " . $row['username'] . " " . $row['email'];
 		}
-		
-		mysqli_close($con);
+		*/
 	}
 	
+	public static function userLoginQuery($email, $password)
+	{
+		if (func_num_args() == 3)
+		{ $con = func_get_arg(2); }
+		else
+		{ $con = getDBConnection();}
+		
+		$con = getDBConnection();
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		{
+			echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
+		
+		$result = mysqli_query($con, "SELECT * FROM users WHERE email='" . $email . "' AND password='" . $password . "'");
+		
+		if (func_num_args() < 3)
+		{ mysqli_close($con); }
 	
+		return $result;
+	}
 	
 	////////////////////// UPDATE OPERATIONS //////////////////////////////////////////////
 	

@@ -209,7 +209,7 @@ class Event
 		
 		while($row = mysqli_fetch_array($user_events))
 		{
-			purgeEvent(row['id_host']);
+			purgeEvent($row['id_host']);
 		}
 		
 		
@@ -247,7 +247,7 @@ class Event
 		
 		while($row = mysqli_fetch_array($network_events))
 		{
-			purgeEvent(row['id_network']);
+			purgeEvent($row['id_network']);
 		}
 		
 		

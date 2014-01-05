@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors', true);
-
+error_reporting(E_ALL ^ E_NOTICE);
 /**
   * Success - 1
   * Login info incorrect - 2
@@ -11,10 +11,17 @@ ini_set('display_errors', true);
 
 if($_POST['email'] && $_POST['password']){
 		include 'zz341/fxn.php';
+		include_once("data/dal_user.php");
+		include_once("data/dal_user-dt.php");
 		
-		$conn = getDBConnection();
-		$email = escape_string($_POST['email']);
-		$pass = escape_string($_POST['password']);
+		session_name("myDiaspora");
+		session_start();
+		//$conn = getDBConnection();
+		
+		//$user = new UserDT();
+		$email = mysql_escape_string($_POST['email']);
+		$pass = mysql_escape_string($_POST['password']);
+		//echo $pass;
 		
 		if($conn->connect_errno){
 		    printf("Connect failed! %s\n", $conn->connect_error);
@@ -22,22 +29,26 @@ if($_POST['email'] && $_POST['password']){
 		    exit();
 		}//db conect failure
 		
-		if (strlen($email) > 18)
+		if (strlen($email) > 50)
 		{
 			echo "3";
 		}
-		else if (strlen($password) > 18)
+		else if (strlen($pass) > 18)
 		{
 			echo "4";
 		}
 		else
-		{
-			$uQuery = $conn->query("SELECT * FROM users WHERE email_address='$email' AND password='".md5($pass)."'");
-			$data = $uQuery->fetch_assoc();
-		
-			$_SESSION['username'] = $data["email_address"]; // for now
+		{	
+			$pass = md5($pass);
+			$data = User::userLoginQuery($email, $pass);
+			//mysqli_close($conn);
 			
-			if($data["email_address"] != NULL){
+			$result = $data->fetch_assoc();
+			
+			if($result["email"] != NULL){
+				//session_name("myDiaspora");
+				//session_start();
+                		$_SESSION['uid'] = getMemberUID($email);
 				echo "1";
 			}
 			else
@@ -47,6 +58,7 @@ if($_POST['email'] && $_POST['password']){
 		}
 }
 else{
-    header("Location: index.php");
+    //header("Location: index.php");
+    echo "Invalid Post";
 }
 ?>

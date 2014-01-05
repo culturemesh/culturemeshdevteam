@@ -17,7 +17,7 @@ body {
 }
 
 #stage-area{
-    background:url("../images/cmfrontpage_image3.png");
+    /*background:url("../images/cmfrontpage_image3.png");*/
     height:525px;
     overflow:hidden;
 }
@@ -111,13 +111,14 @@ input[type="submit"].stage-button {
     clear:both;	
 }
 
+/*
 #welcome{
     display: none;
 }
 
 #sign-out{
     display: none;
-}
+}*/
 
 .modal
 {
@@ -167,7 +168,7 @@ input[class="modal-text-input"] {
     border-radius:4px;
     height:36px;
     font-size:18px;
-    color:#7F7F7F;
+    color:black;
 }
 
 #login-passwords
@@ -261,6 +262,10 @@ hr {
    margin:0 3 3;
 }
 
+.modal-body
+{
+    max-height: 500px;
+}
 .modal-header .close 
 {
     background-color:grey;
@@ -425,6 +430,7 @@ ul#bottom-links li, ul#top-links li{
 .btn-big{
     width:250px;
 }
+/*
 input[type="text"],input[type="email"],input[type="password"],textarea,select{
     border: solid 1px #ccc !important;
     border-radius: 0 !important;
@@ -433,6 +439,7 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
     color: #b2b2b2;
     font-weight: 300;
 }
+*/
 .section-break{
     height: 60px;
 }

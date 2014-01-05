@@ -20,6 +20,7 @@
 
 <script src="js/bootstrap.js"></script>
 <script src="js/validation.js"></script>
+<script src="js/account.js"></script>
 <script src="js/fxn.js"></script>
 
 <script type="text/javascript">

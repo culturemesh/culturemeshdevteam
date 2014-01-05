@@ -19,8 +19,8 @@ if(strlen($_POST['email'])>1 && strlen($_POST['password']) >=6 && strlen($_POST[
             echo 'inw';
             if(actionQuery("INSERT INTO users (email,role,password,register_date,last_login) values(
                 '{$email}',0,'".md5($_POST['password'])."', NOW(), NOW())")){
-                session_name("myDiaspora");
-                session_start();
+                //session_name("myDiaspora");
+               // session_start();
                 $_SESSION['uid'] = getMemberUID($email);
                 header("Location: profile_edit.php");
             }
