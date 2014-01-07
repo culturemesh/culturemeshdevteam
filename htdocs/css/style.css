@@ -1,7 +1,25 @@
-h4
+/*h4
 {
     color:#EF5330;
     font-size:24px;
+}
+*/
+h3{
+    font-size: 30px;
+    color: #e34036;
+    font-weight: 300;
+    font-family: 'Lato';
+}
+h4{
+    font-size: 26px;
+    color: #e34036;
+    font-weight: 300;
+    font-family: 'Lato';
+}
+h5{
+    font: 16px 'Lato';
+    font-weight: 300;
+    text-transform: uppercase;
 }
 /******
 INDEX PAGE
@@ -30,10 +48,11 @@ body {
     margin-left: 70px;
 }
 
-#stage-title {
+#stage-title{
     color:#FFFFFF;
     font-size:30px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato-bold', sans-serif;
+    font-weight: 20;
     letter-spacing:1px;
 }
 
@@ -81,7 +100,8 @@ input[type="submit"].stage-button {
     border:none;
     border-radius:3px;
     background-color:#3EB3CA;
-    font-size:24px;
+    font-family: 'Lato-bold', sans-serif;
+    font-size:20px;
     color:#FFFFFF
 }
 
@@ -94,13 +114,33 @@ input[type="submit"].stage-button {
 }
 
 .bottom-div{
-    width:30%;
+    width:32%;
     float:left;
     padding-left:10px;
     padding-right:10px;
     padding-top:15px;
 }
 
+#vision.bottom-div
+{
+    width:25%;
+    margin-right:10px;
+}
+
+#process.bottom-div
+{
+    margin-right:16px;
+}
+
+#pop-networks.bottom-div
+{
+    width:34%;
+}
+
+.bottom-div-material
+{
+    padding-top:10px;
+}
 .bottom-text
 {
     font:18px Lato, sans-serif;
@@ -229,6 +269,10 @@ input[class="submit"]
     clear:both;
 }
 
+#bottom-section
+{
+    margin-bottom: -45px;
+}
 ol {
   color: #ccc;
   list-style-type: none;
@@ -273,6 +317,40 @@ hr {
     border-radius:50%;
     color:white;
 }
+
+.popnet
+{
+     height:75px;
+}
+
+.popnet-img
+{
+     height:90%;
+     float:left;
+     margin-right:5px;
+}
+
+.popnet-img img
+{
+     position:absolute;
+     margin-top:10px;
+     float:left;
+}
+
+.popnet-info
+{
+     float:left;
+     width:85%;
+     margin-left:43px;
+     
+}
+.network-stats
+{
+     margin-top:-10px;
+     font: 14px Lato-Light, sans-serif;
+     color: #A6A6A6;
+}
+
 /*********************************/
 
 .team_thumb{
@@ -285,13 +363,17 @@ hr {
 }
 #header #top-logo{
     text-align: left;
+    width:50%;
+    float:left;
+    margin-top:20px;
+    margin-bottom:20px;
 }
 img.menu-logo{
     position:relative;
     top:15px;
 }
 ul#top-links{
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
 }
 ul#top-links a:hover, ul#top-links a.active{
     text-decoration: none;
@@ -305,29 +387,16 @@ ul#top-links a{
 }
 #right-top-btns{
     text-align:right;
+    float:right;
+    width:45%;
+    margin-top:50px;
 }
 
 h2.pheader{
     font-weight: normal;
     font-size: 36px;
 }
-h3{
-    font-size: 30px;
-    color: #e34036;
-    font-weight: 300;
-    font-family: 'Lato';
-}
-h4{
-    font-size: 26px;
-    color: #e34036;
-    font-weight: 300;
-    font-family: 'Lato';
-}
-h5{
-    font: 16px 'Lato';
-    font-weight: 300;
-    text-transform: uppercase;
-}
+
 label.checkbox{
     font: 14px 'Lato';
     font-weight: 300;

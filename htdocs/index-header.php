@@ -2,6 +2,18 @@
     <div id="top-logo">
         <a href="index.php"><img src="images/logo_header.png"></a>
     </div>
+    <div id="right-top-btns">
+        <ul id="top-links">
+            <li><a id="menu-about" href="about.php">About</a></li>
+
+            
+            	<li><a href="#login_modal" id="login-link" data-toggle="modal">Log In</a></li>
+            	<li><a href="#register_modal" id="register-link" data-toggle="modal">Sign Up</a></li>
+            	<li><a href="#" id="welcome">Welcome <?php echo $user_email; ?></a></li>
+            	<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
     <?php
         $reg_header = 'Join the</br></br><b>CultureMesh Community!</b>';
         $reg_body = '<form id="reg_form" method="post" action="r.php">
@@ -128,15 +140,4 @@
         echo buildModal($reg_header, $reg_body, $reg_footer, "register_modal");
         echo buildModal($log_header, $log_body, $log_footer, "login_modal");
     ?>
-    <div id="right-top-btns">
-        <ul id="top-links">
-            <li><a id="menu-about" href="about.php">About</a></li>
-
-            
-            	<li><a href="#login_modal" id="login-link" data-toggle="modal">Log In</a></li>
-            	<li><a href="#register_modal" id="register-link" data-toggle="modal">Sign Up</a></li>
-            	<li><a href="#" id="welcome">Welcome <?php echo $user_email; ?></a></li>
-            	<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
-        </ul>
-    </div>
 </div>

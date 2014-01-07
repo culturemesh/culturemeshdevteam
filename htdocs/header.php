@@ -2,6 +2,15 @@
     <div id="top-logo">
         <a href="index.php"><img src="images/logo_header.png"></a>
     </div>
+    <div id="right-top-btns">
+        <ul id="top-links">
+            <li><a id="menu-about" href="about.php">About</a></li>
+            <li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>
+            <li><a href="#login_modal" data-toggle="modal">Log In</a></li>
+            <li><a href="#register_modal" data-toggle="modal">Sign Up</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
     <?php
         $header = '<h4 class="text-center">Join the</h4>
                     <h3 class="text-center">CultureMesh Community!</h3>';
@@ -59,12 +68,4 @@
         $footer = '<span class="text-center">Already a member? <a href="login.php" id="sign_in_mod">Sign in!</a></span>';
         echo buildModal($header, $body, $footer, "register_modal");
     ?>
-    <div id="right-top-btns">
-        <ul id="top-links">
-            <li><a id="menu-about" href="about.php">About</a></li>
-            <li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>
-            <li><a href="#login_modal" data-toggle="modal">Log In</a></li>
-            <li><a href="#register_modal" data-toggle="modal">Sign Up</a></li>
-        </ul>
-    </div>
 </div>

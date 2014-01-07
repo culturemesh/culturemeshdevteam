@@ -5,6 +5,8 @@
 	error_reporting(E_ALL ^ E_NOTICE);
 	include "log.php";
 	
+	include_once("data/dal_network.php");
+	
 	session_name("myDiaspora");
 	session_start();
 	
@@ -12,6 +14,33 @@
 		$user_email = User::getMemberEmail($_SESSION['uid']);
 	else
 		$user_email = "";
+		
+	function displayPopNetwork($network)
+	{
+		// parse network for title
+		if ($network->language == NULL)
+		{
+			$title = "From {$network->country} in {$network->city}, {$network->region}";
+		}
+		else
+		{
+			$title = "{$network->language} language in {$network->city}, {$network->region}";
+		}
+		
+		// Print network
+		echo "
+		<div id='pn_{$network->city}' class='popnet'>
+			<div class='popnet-img'>
+				<img src='images/thumbnail-placeholder.png'>
+			</div>
+			<div class='popnet-info'>
+				<p class='bottom-text'>{$title}</p>
+				<p class='network-stats'>{$network->member_count} Members | {$network->post_count} Posts</p>
+			</div>
+			<div class='clear'></div>
+		</div>
+		";
+	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -95,7 +124,7 @@
 						<form id="search-form" action="">
 							<input type="text" class="stage-input" id="search-1" value="Find people who"></input>
 							<input type="text" class="stage-input" id="search-2" value="Near"></input>
-							<input type="submit" class="stage-button" value="Search"></input>
+							<input type="submit" class="stage-button" value="SEARCH"></input>
 						</form>
 					</div>
 				</div>
@@ -103,17 +132,20 @@
 			<div id="bottom-section">
 				<div id="vision" class="bottom-div">
 					<h4>Our Vision</h4>
-					<p class="bottom-text"> Millions of people live, work, and
-					play outside of their home towns, provinces,
-					states, and countries.
-					</p>
-					<p class="bottom-text"> At CultureMesh, we're building networks to
-					match these real-world dynamics and knit the
-					diverse fabrics of our world together.
-					</p>
+					<div class="bottom-div-material">
+						<p class="bottom-text"> Millions of people live, work, and
+						play outside of their home towns, provinces,
+						states, and countries.
+						</p>
+						<p class="bottom-text"> At CultureMesh, we're building networks to
+						match these real-world dynamics and knit the
+						diverse fabrics of our world together.
+						</p>
+					</div>
 				</div>
 				<div id="process" class="bottom-div">
 					<h4>How it works</h4>
+					<div class="bottom-div-material">
 					<ol>
 						<li><span>1</span>
 						    <p class="bottom-text">Join a network you belong to.
@@ -133,9 +165,18 @@
 						    </p>
 						</li>
 					</ol>
+					</div>
 				</div>
 				<div id="pop-networks" class="bottom-div">
 					<h4>Popular Networks</h4>
+					<div class="bottom-div-material">
+						<?php
+						$networks = Network::getTopFourNetworks();
+						
+						foreach ($networks as $network)
+							displayPopNetwork($network);
+						?>
+					</div>
 				</div>
 				<div class="clear"></div>
 			</div>
