@@ -8,22 +8,117 @@ define("SUPPORT_EMAIL", "");
 define("WEBSITE_BY_URL", "http://www.kostocoastdev.com");
 
 define("JS_HOLDER_64x64", "http://www.kostocoastdev.com/clients/hosted/js/holder.js/64x64");
-if(!file_exists("../localdbconn.php")
+
+if ( file_exists('../localdbconn.php'))
 {
-   define("DB_SERVER", "localhost");
-   define("DB_USER", "culturp7_ktc");
-   define("DB_PASS", "d4T48@$3");
-   define("DB_NAME", "culturp7_ktc");
+    include  "../localdbconn.php";
 }
 else
 {
-    include("../localdbconn.php");
+    echo("using other thing");
+    define("DB_SERVER", "localhost");
+    define("DB_USER", "culturp7");
+    define("DB_PASS", "d4T48@$3");
+    define("DB_NAME", "culturp7_ktc");
 }
-//define("DB_SERVER", "localhost"); * for use on server
-//define("DB_SERVER", "11.32.7.3");	// for local development
-//define("DB_USER", "culturp7_ktc");
-//define("DB_PASS", "d4T48@$3");
-//define("DB_NAME", "culturp7_ktc");
+
+function getDBConnection(){
+    $conn = new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
+    return $conn;
+}
+
+function sendEmailNotification($email, $mailsubject, $message){
+	$headers = 'From: '.DOMAIN_NAME.' <noreply@'.SHORT_DOMAIN_URL.'>' . "\r\n" .
+	'Reply-To: noreply@'.SHORT_DOMAIN_URL. "\r\n" .
+	'X-Mailer: PHP/' . phpversion();
+	mail($email, $mailsubject, $message, $headers);
+}
+
+/*
+function buildModal($header, $body, $footer, $modal_id = "modal"){
+    $modal = '<div id="'.$modal_id.'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>'.
+            $header.'
+        </div>
+        <div class="modal-body">'.
+          $body.'
+        </div>
+        <div class="modal-footer">'.
+            $footer.'
+        </div>
+      </div>';
+    return $modal;
+}
+*/
+
+function escape_string($string)
+{
+    $newstring = "";
+    
+    for ($i = 0; $i < strlen($string); $i = $i + 1)
+    {
+    	$char = $string[$i];
+    	
+    	if ($char == "'")
+    	{
+    	    $newstring = $newstring."\\".$char;
+    	}
+    	else if ($char == "\"")
+    	{
+    	    $newstring = $newstring."\\".$char;
+    	}
+    	else if ($char == "\\")
+    	{
+    		if (substr($i, $i+1) == "\n")
+    		{
+    		    $newstring = $newstring."'".substr($i, $i+1)."'";
+    		    $i = $i + 1;
+    		}
+    		else if (substr($i, $i+1) == "\r")
+    		{
+    		    $newstring = $newstring."'".substr($i, $i+1)."'";
+    		    $i = $i + 1;
+    		}
+    		else if (substr($i, $i+3) == "\x00")
+    		{
+    		    $newstring = $newstring."'".substr($i, $i+3)."'";
+    		    $i = $i + 3;
+    		}
+    		else if (substr($i, $i+3) == "\x1a")
+    		{
+    		    $newstring = $newstring."'".substr($i, $i+1)."'";
+    		    $i = $i + 3;
+    		}
+    		else
+    		{
+    		    $newstring = $newstring."'".$char."'";
+    		}
+    	}
+    	else
+    	{
+    	    $newstring = $newstring.$char;
+    	}
+    }
+    
+    return $newstring;
+}
+/*
+function getMonths(){
+	$months = array("january","february","march","april","may","june","july","august","september","october","november","december");
+	return $months;
+}
+
+
+
+function getIsValidCourse($course, $school){
+    $conn = getDBConnection();
+    $qc = mysql_query("SELECT * FROM courses WHERE name='$course' AND schooldomain='$school'");
+    if(mysql_num_rows($qc) >= 1){
+        return 1;
+    }
+    else{
+        return 0;
 
 define("PASSWORD_CONFIRM_MODAL_ID", "password_confirm_modal");
 class Email{
@@ -36,7 +131,7 @@ class Email{
         $this->Headers = 'From: '.$this->From. "\r\n" .
 	'Reply-To: '.$this->ReplyTo . "\r\n" .
 	'X-Mailer: PHP/' . phpversion();
-    }*/
+    }
     public function __construct(){
         $this->Headers = 'From: noreply@culturemesh.com'. "\r\n" .
 	'Reply-To: noreply@culturemesh.com'. "\r\n" .
@@ -71,14 +166,16 @@ class Email{
         //echo "Successfully ";
     }
 }
-
+*/
+/*
 class SiteEmail extends Email{
     /*public function __construct(){
         $this->Headers = 'From: CultureMesh Website Form Submission <noreply@culturemesh.com>' . "\r\n" .
 	'Reply-To: '.$this->ReplyTo . "\r\n" .
 	'X-Mailer: PHP/' . phpversion();
-    }*/
+    }
 }
+*/
 function getMonths(){
     $months = array('january','february','march','april','may','june','july','august','september','october','november','december');
     return $months;
@@ -99,9 +196,11 @@ function getCountries(){
     $countries_array = array("Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegowina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", "Congo, the Democratic Republic of the", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia (Hrvatska)", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "France Metropolitan", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard and Mc Donald Islands", "Holy See (Vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran (Islamic Republic of)", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic of", "Korea, Republic of", "Kuwait", "Kyrgyzstan", "Lao, People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia, The Former Yugoslav Republic of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Moldova, Republic of", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia (Slovak Republic)", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname", "Svalbard and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe");
     return $countries_array;
 }
+/*
 function getDBConnection(){
     return new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
 }
+*/
 function actionQuery($query){
     $conn = getDBConnection();
     $stmt = $conn->prepare($query);
@@ -192,12 +291,14 @@ function getNetworkCountries(){
 function getSuggestedNetworks(){
     return getRowsQuery("SELECT * FROM suggested_networks");
 }
+/*
 function sendEmailNotification($email, $mailsubject, $message){
 	$headers = 'From: '.DOMAIN_NAME.' <noreply@'.SHORT_DOMAIN_URL.'>' . "\r\n" .
 	'Reply-To: noreply@'.SHORT_DOMAIN_URL. "\r\n" .
 	'X-Mailer: PHP/' . phpversion();
 	mail($email, $mailsubject, $message, $headers);
 }
+*/
 function getIsEmailAvailable($email){
     $code = 0;
     $data = getRowQuery("SELECT email_address FROM users WHERE email_address='{$email}'");
