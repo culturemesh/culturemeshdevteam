@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', true);
-error_reporting(E_ALL ^ E_NOTICE);
 /**
   * Success - 1
   * Login info incorrect - 2
@@ -23,12 +21,13 @@ if($_POST['email'] && $_POST['password']){
 		$pass = mysql_escape_string($_POST['password']);
 		//echo $pass;
 		
+/*
 		if($conn->connect_errno){
 		    printf("Connect failed! %s\n", $conn->connect_error);
 		    echo "5";
 		    exit();
 		}//db conect failure
-		
+*/		
 		if (strlen($email) > 50)
 		{
 			echo "3";
