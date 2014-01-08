@@ -15,10 +15,9 @@ if ( file_exists('../localdbconn.php'))
 }
 else
 {
-    //echo("using other thing");
     define("DB_SERVER", "localhost");
     define("DB_USER", "culturp7");
-    define("DB_PASS", "d4T48@$3");
+    include "../../../abcd123.php";
     define("DB_NAME", "culturp7_ktc");
 }
 
@@ -386,9 +385,9 @@ function buildAdminRemoveNetworkModal(){
 }
 function getCurrentFilename($path){
     $finfo = pathinfo($path);
+    $q_prefix = $finfo['filename'];
     return $finfo['filename'];
 }
-    $q_prefix = $finfo['filename'];
 /*
 function getMonths(){
 	$months = array("january","february","march","april","may","june","july","august","september","october","november","december");
