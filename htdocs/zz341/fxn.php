@@ -15,7 +15,7 @@ if ( file_exists('../localdbconn.php'))
 }
 else
 {
-    echo("using other thing");
+    //echo("using other thing");
     define("DB_SERVER", "localhost");
     define("DB_USER", "culturp7");
     define("DB_PASS", "d4T48@$3");

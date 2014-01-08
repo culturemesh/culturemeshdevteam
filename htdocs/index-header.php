@@ -102,6 +102,7 @@
                          {
                             switch(data){
                                 case "1":
+                                    $("#login_modal").hide();
                                     $("#login-link").hide();
                                     $("#register-link").hide();
                                     $("#welcome").show();
