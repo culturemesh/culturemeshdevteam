@@ -6,66 +6,155 @@
         <ul id="top-links">
             <li><a id="menu-about" href="about.php">About</a></li>
             <li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>
-            <li><a href="#login_modal" data-toggle="modal">Log In</a></li>
-            <li><a href="#register_modal" data-toggle="modal">Sign Up</a></li>
+            <li><a id="login-link" href="#login_modal" data-toggle="modal">Log In</a></li>
+            <li><a id="register-link" href="#register_modal" data-toggle="modal">Sign Up</a></li>
+            <li><a href="#" id="welcome">Welcome <?php echo $user_email; ?></a></li>
+            	<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
         </ul>
     </div>
     <div class="clear"></div>
     <?php
-        $header = '<h4 class="text-center">Join the</h4>
-                    <h3 class="text-center">CultureMesh Community!</h3>';
-        $body = '<div id="modcontent">
-                <form id="reg_form" method="post" action="r.php">
-                <img src="ajx/cm_loader_small.gif" id="email_loader" class="hide"/>
-                <input type="email" id="email" name="email" placeholder="Email" required />
-                
+        $reg_header = 'Join the</br></br><b>CultureMesh Community!</b>';
+        $reg_body = '<form id="reg_form" method="post" action="r.php">
+        	<div id="register-div">
+                <input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
+                </br>
                 <span id="email_dup_txt" class="label label-important">That email address is already registered. If you\'ve forgotten your password, <a href="#">click here.</a></span>
-                <input type="password" name="password" placeholder="Password" required />
-                <input type="password" name="password_conf" placeholder="Confirm Password" required />
+                <div id="login-passwords">
+                <input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
+                <input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
+                <div class="clear"></div>
+                <span id="password_validation"></span>
+                </div>
+                </br>
+                </br>
                 <span id="pass_mism_txt" class="label label-important">Passwords don\'t match. Please try again.</span>
-                <input type="submit" id="reg_submit_btn" class="btn" data-loading-text="Checking..." value="Join Us" />
-                    </form>
+                <div class="clear"></div>
+                <input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
+                <span id="server_error"></span>
+                </div>
+                </form>
                     <script>
                     $("#email_dup_txt").hide();
                     $("#pass_mism_txt").hide();
-                    $("#email").keyup(function(){
-                        delay(function(){
-                            if($("#email").val().length >= 0){
-                            $("#email_loader").show();
-                            $.post("ajx/ps.php",{"reg_email":$("#email").val()}, function(data){
-                                $("#email_loader").hide(); // hide the spinner
-                                if(data == "1"){
-                                    $("#email_dup_txt").hide();
-                                    $("#valid_email").show();
-                                }
-                                else{
-                                    $("#email_dup_txt").show();
-                                }
-                                
-                            });
-                            }
-                        }, 1000 );
-                    });
-
                     /*$("#reg_sumbit_btn").click(function(){
-                        $.post("ajax/ps.php", {"reg_sub":$("#reg_form").serialize()})
+                        if( $("#reg-email").val().length() > 50))
+                        {
+                            $("#email_dup_txt").text("Your email address is too long");
+                        }
+                        if( $("#password").val() != $("#password_conf").val() )
+                        $.post("r.php", {"reg_sub":$("#reg_form").serialize()})
                         .done(function(data){
                             switch(data){
                                 case "1":
-                                    window.location("profile_settings.php");
+                                    $("#login-link").hide();
+                                    $("#register-link").hide();
+                                    $("#welcome").show(); 
+                                    $("#welcome").text("Welcome, " + email);
+                                    $("#sign-out").show();
+                                    $(".guest").show();
+                                    //window.location("profile_edit.php");
                                     break;
                                 case "2":
-                                    $("#email_dup_txt").hide();
+                                    $("#server_error").text("Your login information is incorrect.");
+                                    break;
+                                case "3":
+                                    $("#server_error").text("Your email address is too long.");
+                                    break;
+                                case "4":
+                                    $("#server_error").text("Your password is too long.");
+                                    break;
+                                case "5":
+                                    $("#server_error").text("We\'re having database troubles on our end");
                                     break;
                             }
                         });
                     });*/
                     </script>
-                    <hr>or
-                    <a>Join with Facebook</a>
-                    <br>It\'s fast and easy - and we\'ll never share your info or post without your permission, we promise!
-                    </div>';//end modcontent div
-        $footer = '<span class="text-center">Already a member? <a href="login.php" id="sign_in_mod">Sign in!</a></span>';
-        echo buildModal($header, $body, $footer, "register_modal");
+                    <hr width="100"> or <hr width="100">
+                    </br>
+                    <button class="submit-fbk">Join with Facebook</button>
+                    <br>
+                    <p>It\'s fast and easy - and we\'ll never share your info or post without your permission, we promise!</p>';
+        $reg_footer = 'Already a member? <a href="#" id="sign_in_mod">Sign in!</a>';
+        
+        $log_header = '<b>Welcome Back!</b>';
+        $log_body = '<form id="log_form" method="post" action="l.php">
+                <div id="login-div">
+                <input type="email" name="email" id="log_email" class="modal-text-input" placeholder="Email" required />
+                <input type="password" name="password" id="log_password" class="modal-text-input" onchange="validateInput(this, document.getElementById(\'log_validation\'))" placeholder="Password" required />
+                </br>
+                <span id="log_validation"></span>
+                </br>
+                </br>
+                <input type="submit" id="log_submit_btn" class="submit" data-loading-text="Checking..." value="Sign In" />
+                </div>    
+                </form>
+                    <script>
+                    $("#pass_mism_txt").hide();
+                    
+                    $("#log_submit_btn").click(function(event){
+                        event.preventDefault();
+                        var email = $("input#log_email").val();
+                        var password = $("input#log_password").val();
+                        var datastring = "email=" + email + "&password=" + password;
+                        
+                        $.ajax({
+                         type:"POST",
+                         url:"l.php",
+                         data: datastring,
+                         success: function(data)
+                         {
+                            var res_data = jQuery.parseJSON(data);
+                            
+                            switch(res_data.error){
+                                case null:
+                                    $("#login_modal").modal("hide");
+                                    $("#login-link").hide();
+                                    $("#register-link").hide();
+                                    $("#welcome").show(); 
+                                    $("#welcome").text("Welcome, " + email);
+                                    $("#sign-out").show();
+                                    $(".guest").hide();
+                                    
+                                    if (res_data.member === true)
+                                    	$(".member").show();
+                                    else
+                                    	$(".reg-guest").show();
+                                    	
+                                    break;
+                                case "2":
+                                    $("#log_validation").text("Your username/password combination is incorrect");
+                                    break;
+                                case "3":
+                                    $("#log_validation").text("Your email is too long.");
+                                    break;
+                                case "4":
+                                    $("#log_validation").text("Your password is too long.");
+                                    break;
+                                case "5":
+                                    $("#log_validation").text("Our servers are misbehaving. Come back later.");
+                                    break;
+                                default:
+                                    $("#log_validation").text("Something has gone wrong.");
+                                    $("#login_modal").modal("hide");
+                                    alert("click me");
+                                    break;
+                                }
+                          },
+                          error: function(jqXHR, exception)
+                          {
+                              alert(jqXHR.status + "\n" + exception);
+                          }
+                        });
+                    });
+                    </script>
+                    <hr width="100"> or <hr width="100">
+                    <button class="submit-fbk">Join with Facebook</button>
+                    <br><p>It\'s fast and easy - and we\'ll never share your info or post without your permission, we promise!</p>';
+        $log_footer = 'Not a member yet? <a href="#" id="sign_in_mod">Join Us!</a>';
+        
+        echo buildModal($reg_header, $reg_body, $reg_footer, "register_modal");
+        echo buildModal($log_header, $log_body, $log_footer, "login_modal");
     ?>
 </div>

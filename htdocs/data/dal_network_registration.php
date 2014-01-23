@@ -76,7 +76,55 @@ class NetworkRegistration
 		//mysqli_close($con);
 	}
 	
+	public static function getMemberCount($id)
+	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		{
+		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
+		
+		$result = mysqli_query($con,"SELECT COUNT(id_network) as member_count FROM network_registration WHERE id_network={$id}");
+		
+		while ($row = mysqli_fetch_array($result))
+			$count = $row['member_count'];
+		
+		if (func_num_args() < 2)
+			mysqli_close($con);
+		
+		return $count;
+	}
 	
+	public static function checkRegistration($netreg_dt)
+	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		{
+		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
+		
+		$result = mysqli_query($con,"SELECT COUNT(id_user) AS user_count FROM network_registration WHERE id_user={$netreg_dt->id_user} AND id_network={$netreg_dt->id_network}");
+		
+		if (func_num_args() < 2)
+			mysqli_close($con);
+		
+		$row = mysqli_fetch_array($result);
+		
+		if ($row['user_count'] == 0) 
+		{return false;}
+		else
+		{return true;}
+	}
 	////////////////////// UPDATE OPERATIONS /////////////////////
 	public static function updateNetRegistration($netreg_dt)
 	{
