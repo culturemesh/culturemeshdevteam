@@ -167,6 +167,27 @@ class Network
 		return $network_dt;
 	}
 	
+	public static function getNetworksByOrigin($origin)
+	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		  $result = mysqli_query($con,"SELECT * FROM networks WHERE city_origin='{$origin}' OR region_origin='{$origin}' OR country_origin='{$origin}'");
+		
+		if (func_num_args() < 2)
+			mysqli_close($con);
+		
+		return $result;
+	}
+	
 	public static function getNetworksByCity($city)
 	{
 		if (func_num_args() == 2)

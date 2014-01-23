@@ -86,7 +86,6 @@
 	// with location, query_str, and topic calculated, get the information
 		// for filling in the site
 	$networks = SearchQuery::getNetworkSearchResults($topic, $query_str, $location);
-	var_dump($networks);
 	
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

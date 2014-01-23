@@ -14,11 +14,11 @@ class SearchQuery
 		
 		switch($topic)
 		{
-		case "language":
+		case "language":	// language
 			$results = Network::getNetworksByLanguage($query_str);
 			break;
-		case "origin":
-			$results = Network::getNetworksByCountry($query_str);
+		case "origin":	// region
+			$results = Network::getNetworksByOrigin($query_str);
 			break;
 		}
 		
