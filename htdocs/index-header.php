@@ -44,7 +44,7 @@
                             $("#email_dup_txt").text("Your email address is too long");
                         }
                         if( $("#password").val() != $("#password_conf").val() )
-                        $.post("ajax/ps.php", {"reg_sub":$("#reg_form").serialize()})
+                        $.post("r.php", {"reg_sub":$("#reg_form").serialize()})
                         .done(function(data){
                             switch(data){
                                 case "1":
@@ -100,13 +100,23 @@
                          data: datastring,
                          success: function(data)
                          {
-                            switch(data){
-                                case "1":
+                            var res_data = jQuery.parseJSON(data);
+                            
+                            switch(res_data.error){
+                                case null:
+                                    $("#login_modal").modal("hide");
                                     $("#login-link").hide();
                                     $("#register-link").hide();
-                                    $("#welcome").show();
+                                    $("#welcome").show(); 
                                     $("#welcome").text("Welcome, " + email);
                                     $("#sign-out").show();
+                                    $(".guest").hide();
+                                    
+                                    if (res_data.member === true)
+                                    	$(".member").show();
+                                    else
+                                    	$(".reg-guest").show();
+                                    	
                                     break;
                                 case "2":
                                     $("#log_validation").text("Your username/password combination is incorrect");
@@ -122,6 +132,8 @@
                                     break;
                                 default:
                                     $("#log_validation").text("Something has gone wrong.");
+                                    $("#login_modal").modal("hide");
+                                    alert("click me");
                                     break;
                                 }
                           },

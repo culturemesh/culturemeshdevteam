@@ -9,6 +9,8 @@ class EventDT
 	public $date_created;	// timestamp
 	public $event_date;	// datetime
 	
+	public $title;
+	public $email;
 	public $address_1;	// varchar(40)
 	public $address_2;	// varchar(30)
 	public $city;		// varchar(50)
