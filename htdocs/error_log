@@ -876,3 +876,175 @@
 [07-Jan-2014 03:46:33 America/Denver] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 112
 [07-Jan-2014 03:46:33 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
 [07-Jan-2014 03:46:33 America/Denver] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 132
+[09-Jan-2014 11:34:49 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 11:34:49 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 11:34:49 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[09-Jan-2014 14:05:20 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:05:20 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:05:25 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:05:25 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:05:25 America/Denver] PHP Notice:  Undefined offset: 15 in /home3/culturp7/public_html/culturemeshdevteam/htdocs/careers.php on line 57
+[09-Jan-2014 14:05:32 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:05:32 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:05:32 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[09-Jan-2014 14:05:34 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:05:34 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:05:34 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[09-Jan-2014 14:05:36 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:05:36 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:05:36 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[09-Jan-2014 14:05:39 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:05:39 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:05:39 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[09-Jan-2014 14:05:55 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:05:55 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:05:55 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[09-Jan-2014 14:06:11 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:06:11 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:06:11 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[09-Jan-2014 14:19:03 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:19:03 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:19:03 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[09-Jan-2014 14:19:33 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:19:33 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:19:33 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[09-Jan-2014 14:19:42 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:19:42 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:19:42 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[09-Jan-2014 14:19:45 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:19:45 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:19:45 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[09-Jan-2014 14:25:09 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[09-Jan-2014 14:25:09 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jan-2014 14:25:09 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[11-Jan-2014 15:26:48 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[11-Jan-2014 15:26:48 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[11-Jan-2014 15:26:48 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[11-Jan-2014 15:26:54 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[11-Jan-2014 15:26:54 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[11-Jan-2014 15:26:54 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[11-Jan-2014 15:27:13 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[11-Jan-2014 15:27:13 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[11-Jan-2014 15:27:13 America/Denver] PHP Notice:  Undefined offset: 15 in /home3/culturp7/public_html/culturemeshdevteam/htdocs/careers.php on line 57
+[12-Jan-2014 12:49:19 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[12-Jan-2014 12:49:19 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[12-Jan-2014 12:49:19 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[12-Jan-2014 12:49:22 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[12-Jan-2014 12:49:22 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[12-Jan-2014 12:49:22 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[12-Jan-2014 12:49:24 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[12-Jan-2014 12:49:24 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[12-Jan-2014 12:49:24 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[12-Jan-2014 12:49:33 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[12-Jan-2014 12:49:33 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[12-Jan-2014 20:44:09 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[12-Jan-2014 20:44:09 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[12-Jan-2014 20:44:09 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 14
+[12-Jan-2014 20:44:09 America/Denver] PHP Warning:  include(unauthorized_content.php): failed to open stream: No such file or directory in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[12-Jan-2014 20:44:09 America/Denver] PHP Warning:  include(): Failed opening 'unauthorized_content.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[19-Jan-2014 10:46:31 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[19-Jan-2014 10:46:31 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[21-Jan-2014 19:32:31 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[21-Jan-2014 21:42:05 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[21-Jan-2014 21:42:24 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Jan-2014 21:42:24 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Jan-2014 21:42:24 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 14
+[21-Jan-2014 21:42:24 America/Denver] PHP Warning:  include(unauthorized_content.php): failed to open stream: No such file or directory in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[21-Jan-2014 21:42:24 America/Denver] PHP Warning:  include(): Failed opening 'unauthorized_content.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[21-Jan-2014 21:47:02 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[21-Jan-2014 21:47:32 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[21-Jan-2014 21:48:08 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[21-Jan-2014 21:48:46 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[21-Jan-2014 23:59:35 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 01:00:31 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 01:00:31 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 01:00:31 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 14
+[22-Jan-2014 01:00:31 America/Denver] PHP Warning:  include(unauthorized_content.php): failed to open stream: No such file or directory in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[22-Jan-2014 01:00:31 America/Denver] PHP Warning:  include(): Failed opening 'unauthorized_content.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[22-Jan-2014 01:01:02 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 01:01:02 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 01:01:02 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 01:01:04 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 01:01:04 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 01:01:04 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 01:01:05 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 01:01:05 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 01:01:05 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 01:01:12 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 01:01:12 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 01:01:12 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 01:01:13 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 01:01:13 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 01:01:13 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 01:01:14 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 01:01:14 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 01:01:14 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 01:01:17 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 01:01:17 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 01:01:17 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 14
+[22-Jan-2014 01:01:17 America/Denver] PHP Warning:  include(unauthorized_content.php): failed to open stream: No such file or directory in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[22-Jan-2014 01:01:17 America/Denver] PHP Warning:  include(): Failed opening 'unauthorized_content.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[22-Jan-2014 01:03:17 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 01:04:54 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 01:06:46 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 01:08:16 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 06:33:41 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 06:34:34 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 06:34:34 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 06:34:34 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 06:35:10 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 06:35:10 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 06:35:19 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 06:35:19 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 06:35:19 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 06:35:21 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 06:35:41 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 06:35:41 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 06:35:41 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 06:36:08 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 06:54:04 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 06:55:44 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 06:55:44 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 06:55:44 America/Denver] PHP Notice:  Undefined offset: 15 in /home3/culturp7/public_html/culturemeshdevteam/htdocs/careers.php on line 57
+[22-Jan-2014 06:56:02 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 11:44:48 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 11:45:19 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 11:45:40 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 11:45:40 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 11:45:40 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 11:46:23 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 11:46:23 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 11:46:23 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 11:47:04 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 11:47:04 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 11:47:04 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 14
+[22-Jan-2014 11:47:04 America/Denver] PHP Warning:  include(unauthorized_content.php): failed to open stream: No such file or directory in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[22-Jan-2014 11:47:04 America/Denver] PHP Warning:  include(): Failed opening 'unauthorized_content.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[22-Jan-2014 11:47:34 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 11:47:34 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 11:47:34 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 11:47:37 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 11:47:37 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 11:47:43 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 11:47:43 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 11:47:43 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 11:47:53 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 11:47:53 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 11:47:53 America/Denver] PHP Notice:  Undefined offset: 15 in /home3/culturp7/public_html/culturemeshdevteam/htdocs/careers.php on line 57
+[22-Jan-2014 19:53:49 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 20:00:06 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 20:00:06 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 20:00:06 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 14
+[22-Jan-2014 20:00:06 America/Denver] PHP Warning:  include(unauthorized_content.php): failed to open stream: No such file or directory in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[22-Jan-2014 20:00:06 America/Denver] PHP Warning:  include(): Failed opening 'unauthorized_content.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/culturp7/public_html/culturemeshdevteam/htdocs/page_tpl.php on line 15
+[22-Jan-2014 20:02:02 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 20:02:30 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 20:02:30 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 20:02:30 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 20:03:03 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 20:03:03 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[22-Jan-2014 20:03:03 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about.php on line 44
+[22-Jan-2014 20:03:40 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 20:04:26 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[22-Jan-2014 20:04:50 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117
+[23-Jan-2014 01:42:38 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 117

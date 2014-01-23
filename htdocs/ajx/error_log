@@ -1,0 +1,12 @@
+[22-Jan-2014 11:46:44 America/Denver] PHP Warning:  include(): Failed opening '../../../abcd123.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/culturp7/public_html/culturemeshdevteam/htdocs/zz341/fxn.php on line 20
+[22-Jan-2014 11:46:44 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 11:46:44 America/Denver] PHP Notice:  Use of undefined constant DB_PASS - assumed 'DB_PASS' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/zz341/fxn.php on line 25
+[22-Jan-2014 11:46:44 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'culturp7'@'localhost' (using password: YES) in /home3/culturp7/public_html/culturemeshdevteam/htdocs/zz341/fxn.php on line 25
+[22-Jan-2014 11:46:44 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home3/culturp7/public_html/culturemeshdevteam/htdocs/zz341/fxn.php on line 211
+[22-Jan-2014 11:46:44 America/Denver] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/zz341/fxn.php on line 212
+[22-Jan-2014 11:46:51 America/Denver] PHP Warning:  include(): Failed opening '../../../abcd123.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/culturp7/public_html/culturemeshdevteam/htdocs/zz341/fxn.php on line 20
+[22-Jan-2014 11:46:51 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[22-Jan-2014 11:46:51 America/Denver] PHP Notice:  Use of undefined constant DB_PASS - assumed 'DB_PASS' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/zz341/fxn.php on line 25
+[22-Jan-2014 11:46:51 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'culturp7'@'localhost' (using password: YES) in /home3/culturp7/public_html/culturemeshdevteam/htdocs/zz341/fxn.php on line 25
+[22-Jan-2014 11:46:51 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home3/culturp7/public_html/culturemeshdevteam/htdocs/zz341/fxn.php on line 211
+[22-Jan-2014 11:46:51 America/Denver] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/zz341/fxn.php on line 212
