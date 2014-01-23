@@ -44,10 +44,8 @@ class User
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		var_dump($user_dt);
-		
-		if (!mysqli_query($con, "INSERT INTO users (password, email, register_date, last_login) 
-			VALUES ('". $user_dt->password."', '". $user_dt->email ."', NOW(), NOW() )"))
+		if (!mysqli_query($con, "INSERT INTO users (username, password, role, email, register_date, last_login) 
+			VALUES (NULL, '". $user_dt->password."', {$user_dt->role}, '". $user_dt->email ."', NOW(), NOW() )"))
 		{
 			echo "Error message: " . $con->error;
 		}
@@ -82,18 +80,35 @@ class User
 	}
 	
 	public static function getMemberEmail($id){
-		if (func_num_args() == 1)
-		{ $con = func_get_arg(0); }
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
 		else
 		{ $con = getDBConnection();}
 		
-		$d = getRowQuery("SELECT email FROM users WHERE id={$id}");
-		return $d['email'];
+		$result = mysqli_query($con, "SELECT email FROM users WHERE id={$id}");
+		$row = mysqli_fetch_assoc($result);
 		
-		if (func_num_args() < 1)
+		if (func_num_args() < 2)
 			mysqli_close($con);
+		
+		return $row['email'];
     	}
 	
+    	public static function getUserId($email){
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+		
+		$result = mysqli_query($con, "SELECT id FROM users WHERE email={$email}");
+		$row = mysqli_fetch_assoc($result);
+		
+		if (func_num_args() < 2)
+			mysqli_close($con);
+		
+		return $row['id'];
+    	}
+    	
 	public static function getUserById($id)
 	{
 		if (func_num_args() == 2)
@@ -109,13 +124,27 @@ class User
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		$result = mysqli_query($con, "SELECT * FROM users WHERE id = " . $id );
+		$result = mysqli_query($con, "SELECT * FROM users WHERE id=" . $id );
 		
+		$user = new UserDT();
 		
+		while ($row = mysqli_fetch_array($result))
+		{
+			$user->id = $row['id'];
+			$user->username = $row['username'];
+			$user->first_name = $row['first_name'];
+			$user->last_name = $row['last_name'];
+			$user->email = $row['email'];
+			$user->password = $row['password'];
+			$user->role = $row['role'];
+			$user->register_date = $row['register_date'];
+			$user->last_login = $row['last_login'];
+			$user->gender = $row['gender'];
+		}
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
 	
-		return $result;
+		return $user;
 		/*
 		while($row = mysqli_fetch_array($result))
 		{
@@ -145,6 +174,32 @@ class User
 		{ mysqli_close($con); }
 	
 		return $result;
+	}
+	
+	public static function checkEmailMatch($email)
+	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+		
+		$con = getDBConnection();
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		{
+			echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
+		
+		$result = mysqli_query($con, "SELECT email FROM users WHERE email='{$email}'");
+		
+		if (func_num_args() < 2)
+		{ mysqli_close($con); }
+	
+		$row = mysqli_fetch_array($result);
+		
+		if ($row['email'] == NULL) { return false; }  // email not in use
+		else { return true; } // email free
 	}
 	
 	////////////////////// UPDATE OPERATIONS //////////////////////////////////////////////

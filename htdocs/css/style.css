@@ -284,7 +284,7 @@ ol li {
   margin-bottom: 20px;
 }
  
-li p {
+li p.bottom-text {
   background-color:white;
   font: 18px Lato, sans-serif;
   padding-left: 45px;
@@ -322,7 +322,7 @@ hr {
 {
      height:75px;
 }
-
+/*
 .popnet-img
 {
      height:90%;
@@ -336,12 +336,12 @@ hr {
      margin-top:10px;
      float:left;
 }
-
+*/
 .popnet-info
 {
-     float:left;
+     /*float:left;
      width:85%;
-     margin-left:43px;
+     margin-left:43px;*/
      
 }
 .network-stats
@@ -351,19 +351,225 @@ hr {
      color: #A6A6A6;
 }
 
+.lrg-network-stats
+{
+     font: 16px Lato-Light, sans-serif;
+     color: #000000;
+}
+
 /*********************************/
 
+/* NETWORK AND SEARCH RESULTS */
+
+h1.h-network
+{
+	font: 30px Lato-Bold, sans-serif; 
+	color: #EF5330; 
+}
+h2.h-network
+{
+	font: 24px Lato, sans-serif;
+	color: #e34036;
+}
+h3.h-network
+{
+	font: 20px Lato, sans-serif;
+	color: black;
+	margin-bottom:2px;
+}
+h4.h-network
+{
+	font: 14px Lato-Bold, sans-serif;
+	font-style:bold;
+	color:black;
+}
+h5.h-network
+{
+	font: 14px Lato-Bold, sans-serif;
+	font-style:bold;
+	color:#e34036;
+	margin-bottom:2px;
+	margin-top:0;
+}
+.net-left
+{
+	float:left;
+	width: 30%;
+	margin-top:40px;
+}
+
+.net-right
+{
+	float:left;
+	width: 64%;
+	margin-top:40px;
+	margin-left:55px;
+}
+.leftbar
+{	
+	margin-right: 10px;
+	margin-left: 10px;
+	padding: 24px;
+	border-style:solid;
+	border-width:10px;
+	border-color:#E6E6E6;
+	border-radius:5px;
+}
+
+input.net-search
+{
+	height:35px;
+	border-radius:0;
+	width:49%;
+	color:#A6A6A6;
+}
+#event-maker
+{
+	display:none;
+	margin-top:20px;
+}
+.event-form
+{
+	background-color:#E6E6E6;
+	width:600px;
+	padding: 3px 3px;
+}
+
+.event-text
+{
+	width:100%;
+	border-style:none;
+	border-radius:0;
+	margin-bottom:2px;
+}
+
+input.event-text
+{
+	height:35px;
+	width:100%;
+	border-style:none;
+	border-radius:0px;
+	margin-bottom:2px;
+	resize: none;
+}
+
+textarea.event-text
+{
+	height:60px;
+	resize: none;
+}
+
+button.network
+{
+	height:40px;
+	font: Lato;
+	font-size:20px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color:#e34036;;
+	border:none;
+	border-radius:5px;
+}
+input[type="submit"].network
+{
+	font: Lato;
+	font-size:20px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color:#e34036;;
+	border:none;
+	float:right;
+	margin-right:3px;
+}
+
+#event-info
+{
+	font: 13px Lato-Light, sans-serif;
+	color: #A6A6A6;
+}
+
+#event-desc
+{
+	font: 16px Lato-Light, sans-serif;
+	color: #404040;
+	margin-bottom:10px;;
+	margin-top:15px;
+}
+
+input[type="text"].hidden-field
+{
+	display:none;
+}
+
+li.event
+{
+	width:400px;
+	border-style:solid;
+	border-width:3px;
+	border-color:#E6E6E6;
+	border-radius:0;
+	padding-left:15px;
+}
+
+.post-text
+{
+	margin-top:10px;
+	margin-left:20px;
+	height:45px;
+	width:88%;
+	resize:none;
+}
+
+img.profile-post
+{
+	float:left;
+}
+
+ul.network
+{
+	list-style-type:none;
+}
+.network-post
+{
+	margin-bottom:10px;
+	margin-left:40px;
+	width:100%;
+}
+.post-img
+{
+	float:left;
+}
+
+.post-info
+{
+	float:left;
+	margin-left:20px;
+}
+
+p.network
+{
+	font: 14px Lato-Light, sans-serif;
+	color: #404040;
+	margin-bottom:0px;
+	margin-left:0px;
+}
+
+a.network
+{
+	
+}
+/**********************************/
 .team_thumb{
     width: 205px;
     height: 205px;
 }
 #header{
-    border-bottom: 2px solid #ccc;
+    border-bottom: 3px solid #ccc;
     /*margin-bottom:30px;*/
 }
 #header #top-logo{
     text-align: left;
-    width:50%;
+    width:35%;
     float:left;
     margin-top:20px;
     margin-bottom:20px;
@@ -388,7 +594,7 @@ ul#top-links a{
 #right-top-btns{
     text-align:right;
     float:right;
-    width:45%;
+    width:64%;
     margin-top:50px;
 }
 

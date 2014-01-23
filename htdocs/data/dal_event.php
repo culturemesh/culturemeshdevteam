@@ -36,8 +36,8 @@ class Event
 		}
 		
 		if (!mysqli_query($con, "INSERT INTO events 
-			(id_network, id_host, date_created, event_date, address_1, address_2, city, region, description)
-			VALUES (". $event_dt->network_id . ", ". $event_dt->host_id . ", NOW(), '" . $event_dt->event_date . "', '"
+			(id_network, id_host, date_created, event_date, title, address_1, address_2, city, region, description)
+			VALUES (". $event_dt->network_id . ", ". $event_dt->host_id . ", NOW(), '" . $event_dt->event_date . "', '" . $event_dt->title . "', '"
 			. $event_dt->address_1 . "', '" . $event_dt->address_2 . "', '" . $event_dt->city . "', '" 
 			. $event_dt->region . "', '" . $event_dt->description . "')"))
 		{
@@ -84,11 +84,10 @@ class Event
 	{
 		// if db connection was passed in to function, get it
 		// if not, get dbconnection yourself
-		if (func_num_args() == 1)
-		{ $con = func_get_arg(0); }
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
 		else
 		{ $con = getDBConnection();}
-		$con = func_get_arg(0);
 		
 		// Check connection
 		if (mysqli_connect_errno())
@@ -98,7 +97,7 @@ class Event
 		
 		$result = mysqli_query($con,"SELECT * FROM events WHERE id_host=" . $id);
 		
-		if (func_num_args() < 1)
+		if (func_num_args() < 2)
 		{ mysqli_close($con); }
 	
 		return $result;
@@ -108,11 +107,10 @@ class Event
 	{
 		// if db connection was passed in to function, get it
 		// if not, get dbconnection yourself
-		if (func_num_args() == 1)
-		{ $con = func_get_arg(0); }
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
 		else
 		{ $con = getDBConnection();}
-		$con = func_get_arg(0);
 		
 		// Check connection
 		if (mysqli_connect_errno())
@@ -120,12 +118,34 @@ class Event
 		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		$result = mysqli_query($con,"SELECT * FROM events WHERE id_network=" . $id);
+		$result = mysqli_query($con,"SELECT * FROM events e, users u WHERE e.id_host=u.id AND id_network=" . $id);
 		
-		if (func_num_args() < 1)
+		$events = array();
+		
+		while ($row = mysqli_fetch_array($result))
+		{
+			$event_dt = new EventDT();
+			
+			$event_dt->id = $row['id'];
+			$event_dt->network_id = $row['network_id'];
+			$event_dt->host_id = $row['host_id'];
+			$event_dt->date_created = $row['date_created'];
+			$event_dt->event_date = $row['event_date'];
+			$event_dt->title = $row['title'];
+			$event_dt->email = $row['email'];
+			$event_dt->address_1 = $row['address_1'];
+			$event_dt->address_2 = $row['address_2'];
+			$event_dt->city = $row['city'];
+			$event_dt->region = $row['region'];
+			$event_dt->description = $row['description'];
+			
+			array_push($events, $event_dt);
+		}
+		
+		if (func_num_args() < 2)
 		{ mysqli_close($con); }
 	
-		return $result;
+		return $events;
 	}
 	////////////////////// UPDATE OPERATIONS /////////////////////
 	public static function updateEvent($event_dt)

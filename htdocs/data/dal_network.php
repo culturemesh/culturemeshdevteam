@@ -7,6 +7,8 @@ ini_set('display_errors',1);
   *	READ
   *	    getAllNetworks
   *    	    getTopFourNetworks
+  *	    getNetworksByCountry
+  *	    getNetworksByLanguage
   *	UPDATE
   *	    updateNetwork
   *	DELETE
@@ -38,9 +40,9 @@ class Network
 		}
 		
 		if (!mysqli_query($con, "INSERT INTO networks 
-			(city, region, country, date_added, language)
-			VALUES ('". $network_dt->city. "', '". $network_dt->region .
-			"', '". $network_dt->country . "', NOW() , '" . $network_dt->language  . "')"))
+			(city_cur, region_cur, city_origin, region_origin, country_origin, language_origin, network_class, date_added, img_link)
+			VALUES ('". $network_dt->city_cur. "', '". $network_dt->region_cur. "', '". $network_dt->city_origin. "', '". $network_dt->region_origin .
+			"', '". $network_dt->city_origin. "', '". $network_dt->country_origin. "', '". $network_dt->language_origin . "', NOW() , '" . $network_dt->img_link  . "')"))
 		{
 			echo "Error message: " . $con->error;
 		}
@@ -99,29 +101,37 @@ class Network
 		// GET TABLE WITH  TOP FOUR NETWORKS +
 		// 	MEMBER COUNT
 		$result = mysqli_query($con,
-			"SELECT n.id, n.city, n.region, n.country, n.language, 
-				COUNT(nr.id_network) AS member_count, 
-				COUNT(p.id_network) AS post_count 
+			"SELECT n.id, n.city_cur, n.region_cur, n.city_origin, n.region_origin, n.country_origin, n.language_origin, n.network_class, nr.member_count, p.post_count
 			FROM networks n 
-			INNER JOIN network_registration nr 
-			ON n.id = nr.id_network 
-			LEFT JOIN posts p 
-			ON n.id = p.id_network AND nr.id_network = p.id_network 
-			GROUP BY nr.id_network 
-			ORDER BY member_count 
-			LIMIT 0,4");
+			JOIN (SELECT id_network, COUNT(id_network) AS member_count
+                                    FROM network_registration
+                                    GROUP BY id_network
+                                    ORDER BY member_count DESC) nr  
+			ON n.id = nr.id_network
+                        LEFT JOIN (SELECT id_network, COUNT(id_network) as post_count
+                                   FROM posts 
+                                   GROUP BY id_network) p
+			ON n.id = p.id_network AND nr.id_network = p.id_network
+                        GROUP BY n.id
+			ORDER BY nr.member_count DESC
+                        LIMIT 0,4");
 		
 		$networks = array();
-			
+		
+		
 		// populate array with network objects
 		while ($row = mysqli_fetch_array($result))
 		{
 			$network_dt = new NetworkDT();
 			
-			$network_dt->city = $row['city'];
-			$network_dt->region = $row['region'];
-			$network_dt->country = $row['country'];
-			$network_dt->language = $row['language'];
+			$network_dt->id = $row['id'];
+			$network_dt->city_cur = $row['city_cur'];
+			$network_dt->region_cur = $row['region_cur'];
+			$network_dt->city_origin = $row['city_origin'];
+			$network_dt->region_origin = $row['region_origin'];
+			$network_dt->country_origin = $row['country_origin'];
+			$network_dt->language_origin = $row['language_origin'];
+			$network_dt->network_class = $row['network_class'];
 			$network_dt->member_count = $row['member_count'];
 			$network_dt->post_count = $row['post_count'];
 			
@@ -132,6 +142,95 @@ class Network
 			mysqli_close($con);
 		
 		return $networks;
+	}
+	
+	public static function getNetworkById($id)
+	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		  $result = mysqli_query($con,"SELECT * FROM networks WHERE id={$id}");
+		
+		  $network_dt = Network::fillNetworkDT($result);
+
+		if (func_num_args() < 2)
+			mysqli_close($con);
+		
+		return $network_dt;
+	}
+	
+	public static function getNetworksByCity($city)
+	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		  $result = mysqli_query($con,"SELECT * FROM networks WHERE city_cur={$city}");
+		
+		if (func_num_args() < 2)
+			mysqli_close($con);
+		
+		return $result;
+	}
+	
+	public static function getNetworksByLanguage($language)
+	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		  $result = mysqli_query($con,"SELECT * FROM networks WHERE language_origin='{$language}'");
+		
+
+		if (func_num_args() < 2)
+			mysqli_close($con);
+		
+		return $result;
+	}
+	
+	public static function getNetworksByCountry($country)
+	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		  $result = mysqli_query($con,"SELECT * FROM networks WHERE country_origin='{$country}'");
+		
+		if (func_num_args() < 2)
+			mysqli_close($con);
+		
+		return $result;
 	}
 	
 	////////////////////// UPDATE OPERATIONS /////////////////////
@@ -149,9 +248,11 @@ class Network
 		}
 		
 		mysqli_query($con, "UPDATE networks 
-			SET city='". $network_dt->city ."', region='". $network_dt->region .
-			"', country='". $network_dt->country ."', language='". $network_dt->language .
-			" WHERE id=". $network_dt->id);
+			SET city_cur='". $network_dt->city_cur ."', region_cur='". $network_dt->region_cur .
+			"', city_origin='". $network_dt->city_origin ."', region_origin='". $network_dt->region_origin .
+			"', country_origin='". $network_dt->country_origin ."', language_origin='". $network_dt->language_origin . 
+			"', network_class='".$network_dt->network_class .
+			"' WHERE id=". $network_dt->id);
 		
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
@@ -164,7 +265,6 @@ class Network
 		{ $con = func_get_arg(1); }
 		else
 		{ $con = getDBConnection();}
-		//$con = func_get_arg(1);
 		
 		if (mysqli_connect_errno())
 		{
@@ -193,6 +293,27 @@ class Network
 		Event::deleteEventsByNetwork($id, $con);
 		Post::deletePostsByNetwork($id, $con);
 		NetworkRegistration::deleteRegistrationsByNetwork($id, $con);
+	}
+	
+	function fillNetworkDT($results)
+	{
+		$network_dt = new NetworkDT();
+		
+		while ($row = mysqli_fetch_array($results))
+		{	
+			$network_dt->id = $row['id'];
+			$network_dt->city_cur = $row['city_cur'];
+			$network_dt->region_cur = $row['region_cur'];
+			$network_dt->city_origin = $row['city_origin'];
+			$network_dt->region_origin = $row['region_origin'];
+			$network_dt->country_origin = $row['country_origin'];
+			$network_dt->language_origin = $row['language_origin'];
+			$network_dt->network_class = $row['network_class'];
+			$network_dt->member_count = $row['member_count'];
+			$network_dt->post_count = $row['post_count'];
+		}
+		
+		return $network_dt;
 	}
 }
 ?>

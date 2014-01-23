@@ -6,6 +6,7 @@
 	include "log.php";
 	
 	include_once("data/dal_network.php");
+	include_once("html_builder.php");
 	
 	session_name("myDiaspora");
 	session_start();
@@ -15,32 +16,6 @@
 	else
 		$user_email = "";
 		
-	function displayPopNetwork($network)
-	{
-		// parse network for title
-		if ($network->language == NULL)
-		{
-			$title = "From {$network->country} in {$network->city}, {$network->region}";
-		}
-		else
-		{
-			$title = "{$network->language} language in {$network->city}, {$network->region}";
-		}
-		
-		// Print network
-		echo "
-		<div id='pn_{$network->city}' class='popnet'>
-			<div class='popnet-img'>
-				<img src='images/thumbnail-placeholder.png'>
-			</div>
-			<div class='popnet-info'>
-				<p class='bottom-text'>{$title}</p>
-				<p class='network-stats'>{$network->member_count} Members | {$network->post_count} Posts</p>
-			</div>
-			<div class='clear'></div>
-		</div>
-		";
-	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -121,9 +96,9 @@
 				<div id="stage-content">
 					<h3 id="stage-title">Connecting the world's diasporas</h3>
 					<div id="search-bar">
-						<form id="search-form" action="">
-							<input type="text" class="stage-input" id="search-1" value="Find people who"></input>
-							<input type="text" class="stage-input" id="search-2" value="Near"></input>
+						<form id="search-form" method="GET" action="search_results.php">
+							<input type="text" class="stage-input" name="search-1" id="search-1" value="Find people who"></input>
+							<input type="text" class="stage-input" name="search-2" id="search-2" value="Near"></input>
 							<input type="submit" class="stage-button" value="SEARCH"></input>
 						</form>
 					</div>
@@ -173,8 +148,8 @@
 						<?php
 						$networks = Network::getTopFourNetworks();
 						
-						foreach ($networks as $network)
-							displayPopNetwork($network);
+						for ($i = 0; $i < count($networks); $i++)
+							HTMLBuilder::displayPopNetwork($networks[$i]);
 						?>
 					</div>
 				</div>

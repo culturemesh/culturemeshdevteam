@@ -20,9 +20,17 @@ function signOut() {
                             $("#register-link").show();
                             $("#welcome").hide();
                             $("#sign-out").hide();
+                            $(".member").hide();
+                            $(".reg-guest").hide();
+                            $(".guest").show();
 		  }
 	  }
 	  
 	  xmlhttp.open("GET", "sign_out.php", true);
 	  xmlhttp.send();
+}
+
+(".ajax").activate = function()
+{
+	
 }
