@@ -2,7 +2,7 @@
 session_name("myDiaspora");
 session_start();
 //$admins = array("jenki221@msu.edu", "jenki221@umich.edu", "admin@msu.edu", "professorkos@msu.edu", "jenki221", "jenki221@stanford.edu");
-include 'zz341/fxn.php';
+include_once 'zz341/fxn.php';
 //include 'static/classes.php';
 
 if($_GET['action'] == "login") {

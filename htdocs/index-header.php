@@ -5,10 +5,11 @@
     <div id="right-top-btns">
         <ul id="top-links">
             <li><a id="menu-about" href="about.php">About</a></li>
-            <li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>
-            <li><a id="login-link" href="#login_modal" data-toggle="modal">Log In</a></li>
-            <li><a id="register-link" href="#register_modal" data-toggle="modal">Sign Up</a></li>
-            <li><a href="#" id="welcome">Welcome <?php echo $user_email; ?></a></li>
+
+            
+            	<li><a href="#login_modal" id="login-link" data-toggle="modal">Log In</a></li>
+            	<li><a href="#register_modal" id="register-link" data-toggle="modal">Sign Up</a></li>
+            	<li><a href="#" id="welcome">Welcome <?php echo $user_email; ?></a></li>
             	<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
         </ul>
     </div>
@@ -47,13 +48,7 @@
                         .done(function(data){
                             switch(data){
                                 case "1":
-                                    $("#login-link").hide();
-                                    $("#register-link").hide();
-                                    $("#welcome").show(); 
-                                    $("#welcome").text("Welcome, " + email);
-                                    $("#sign-out").show();
-                                    $(".guest").show();
-                                    //window.location("profile_edit.php");
+                                    window.location("profile_settings.php");
                                     break;
                                 case "2":
                                     $("#server_error").text("Your login information is incorrect.");

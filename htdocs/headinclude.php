@@ -19,9 +19,41 @@
 
 
 <script src="js/bootstrap.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/account.js"></script>
 <script src="js/fxn.js"></script>
 
+<script type="text/javascript">
+// register validation
+
+// login validation
+</script>
 <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+
+<style type='text/css'>
+	<?php if (isset($_SESSION['uid'])) : ?>
+		#login-link {
+		    display:none;
+		}
+		
+		#register-link {
+		    display:none;
+		}
+		
+		.guest {
+		    display:none;
+		}
+	<?php else : ?>
+		#welcome {
+		    display: none;
+		}
+		
+		#sign-out {
+		    display: none;
+		}
+		
+	<?php endif; ?>
+</style>
 <!--GoogleAn-->
 
 <!--end googlan-->
