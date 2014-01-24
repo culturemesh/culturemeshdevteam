@@ -89,7 +89,7 @@ class HTMLBuilder
 		";
 	}
 	
-	private function formatNetworkTitle($network)
+	private static function formatNetworkTitle($network)
 	{
 		$title = '';
 		
