@@ -316,7 +316,7 @@ class Network
 		NetworkRegistration::deleteRegistrationsByNetwork($id, $con);
 	}
 	
-	function fillNetworkDT($results)
+	private static function fillNetworkDT($results)
 	{
 		$network_dt = new NetworkDT();
 		
