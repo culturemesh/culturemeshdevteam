@@ -30,7 +30,7 @@
 		$member = NetworkRegistration::checkRegistration($netreg);
 	}
 	
-	$id = mysql_escape_string($_GET['id']);
+	$id = $con->real_escape_string($_GET['id']);
 	$network = Network::getNetworkById($id, $con);
 	$network->member_count = NetworkRegistration::getMemberCount($id, $con);
 	$network->post_count = Post::getPostCount($id, $con);
