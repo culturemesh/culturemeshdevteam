@@ -5,7 +5,7 @@
 </div>
 <div class="profile_dashboard">
     <div class="profile_search_bar">
-        <form method="get" action="search.php">
+        <form method="get" action="search_results.php">
             <input type="text" name="query" placeholder="Search for types of people in locations" />
         </form>
     </div>
@@ -23,17 +23,17 @@
         </div>
         <div class="tab-pane" id="profile_dashboard_tab">
             db
-            <?php //include 'profile_dashboard_tab_include.php'; 
+            <?php include 'profile_dashboard_tab_include.php'; 
             ?>
         </div>
         <div class="tab-pane" id="profile_networks_tab">
             network
-            <?php //include 'profile_networks_tab_include.php';
+            <?php include 'profile_networks_tab_include.php';
             ?>
         </div>
         <div class="tab-pane" id="profile_events_tab">
             events
-            <?php //include 'profile_events_tab_include.php'; 
+            <?php include 'profile_events_tab_include.php'; 
             ?>
         </div>
         <div class="tab-pane" id="profile_inbox_tab">

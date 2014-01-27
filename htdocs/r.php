@@ -37,6 +37,7 @@ if(strlen($_POST['email'])>1 && strlen($_POST['password']) >=6 && strlen($_POST[
         	//{
         		$_SESSION['uid'] = User::getUserId($email);
         		mysqli_close($conn);
+        		echo $_SESSION['uid'];
         		header("Location: profile_edit.php");
         	//}
         	

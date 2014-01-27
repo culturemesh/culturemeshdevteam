@@ -118,7 +118,6 @@ class Network
 		
 		$networks = array();
 		
-		
 		// populate array with network objects
 		while ($row = mysqli_fetch_array($result))
 		{

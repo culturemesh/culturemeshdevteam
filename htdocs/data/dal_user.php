@@ -86,7 +86,7 @@ class User
 		{ $con = getDBConnection();}
 		
 		$result = mysqli_query($con, "SELECT email FROM users WHERE id={$id}");
-		$row = mysqli_fetch_assoc($result);
+		$row = mysqli_fetch_array($result);
 		
 		if (func_num_args() < 2)
 			mysqli_close($con);
@@ -100,8 +100,8 @@ class User
 		else
 		{ $con = getDBConnection();}
 		
-		$result = mysqli_query($con, "SELECT id FROM users WHERE email={$email}");
-		$row = mysqli_fetch_assoc($result);
+		$result = mysqli_query($con, "SELECT id FROM users WHERE email='{$email}'");
+		$row = mysqli_fetch_array($result);
 		
 		if (func_num_args() < 2)
 			mysqli_close($con);

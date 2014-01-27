@@ -8,7 +8,7 @@
             <li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>
             <li><a id="login-link" href="#login_modal" data-toggle="modal">Log In</a></li>
             <li><a id="register-link" href="#register_modal" data-toggle="modal">Sign Up</a></li>
-            <li><a href="#" id="welcome">Welcome <?php echo $user_email; ?></a></li>
+            <li><a href="profile_edit.php" id="welcome">Welcome <?php echo $user_email; ?></a></li>
             	<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
         </ul>
     </div>

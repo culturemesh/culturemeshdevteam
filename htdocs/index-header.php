@@ -9,7 +9,7 @@
             
             	<li><a href="#login_modal" id="login-link" data-toggle="modal">Log In</a></li>
             	<li><a href="#register_modal" id="register-link" data-toggle="modal">Sign Up</a></li>
-            	<li><a href="#" id="welcome">Welcome <?php echo $user_email; ?></a></li>
+            	<li><a href="profile_edit.php" id="welcome">Welcome <?php echo $user_email; ?></a></li>
             	<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
         </ul>
     </div>
