@@ -119,13 +119,7 @@
 					</div>
 				</div>
 				<div class="net-right">
-					<div id="search">
-						<form method="GET" action="search_results.php">
-							<input type="text" class="net-search" name="search-1" value="Find people who "/>
-							<input type="text" class="net-search" name="search-2" value="near"/>
-							<input type="submit" style="display:none"/>
-						</form>
-					</div>
+					<?php HTMLBuilder::displaySearchBar(); ?>
 					<?php HTMLBuilder::displayLrgNetwork($network); ?>
 					<div class="reg-guest">
 						<form method="POST" action="network_join.php">

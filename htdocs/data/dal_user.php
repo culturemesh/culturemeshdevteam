@@ -153,6 +153,44 @@ class User
 		*/
 	}
 	
+	public static function getUserByEmail($email)
+	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+		
+		$con = getDBConnection();
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		{
+			echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
+		
+		$result = mysqli_query($con, "SELECT * FROM users WHERE email='{$email}'");
+		
+		$user = new UserDT();
+		
+		while ($row = mysqli_fetch_array($result))
+		{
+			$user->id = $row['id'];
+			$user->username = $row['username'];
+			$user->first_name = $row['first_name'];
+			$user->last_name = $row['last_name'];
+			$user->email = $row['email'];
+			$user->password = $row['password'];
+			$user->role = $row['role'];
+			$user->register_date = $row['register_date'];
+			$user->last_login = $row['last_login'];
+			$user->gender = $row['gender'];
+		}
+		if (func_num_args() < 2)
+		{ mysqli_close($con); }
+	
+		return $user;
+	}
+	
 	public static function userLoginQuery($email, $password)
 	{
 		if (func_num_args() == 3)
@@ -224,6 +262,36 @@ class User
 		
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
+	}
+	
+	public static function changeUserPassword($id, $new_password, $con=false)
+	{
+		if (!$con)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		if (mysqli_connect_errno())
+		{
+			echo "Failed to connect to MySQL: ";
+		}
+		
+		if(!mysqli_query($con, "UPDATE users 
+			SET password='{$new_password}' 
+			WHERE id={$id}"))
+		{
+			echo "Error message" . $con->error;
+			
+			if ($must_close)
+			{
+				mysqli_close($con);
+			}
+			
+			return -1;	// FAILURE
+		}
+		else
+			return 1;	// SUCCESS
 	}
 	
 	////////////////////// DELETE OPERATIONS //////////////////////////////////////////////

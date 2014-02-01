@@ -10,10 +10,5 @@
     //$ppre = getCurrentFilename(__FILE__);
     $ppre = 'profile_edit_pg';
     include 'page_tpl.php';
-    include_once 'html_builder.php';
-    include_once 'data/dal_event.php';
-    include_once 'data/dal_event_registration.php';
-    include_once 'data/dal_network.php';
-    include_once 'data/dal_network_registration.php';
-    include_once 'data/dal_post.php';
+    include_once 'zz341/fxn.php';
 ?>

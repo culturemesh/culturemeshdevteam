@@ -1,5 +1,7 @@
 <div class="profile_left_panel">
-    <span class="profile_image"></span>
+    <span class="profile_image">
+    	<img src="images/blank_profile_lrg.png"/>
+    </span>
     <span class="profile_name"></span>
     <a href="">Edit Profile</a>
 </div>

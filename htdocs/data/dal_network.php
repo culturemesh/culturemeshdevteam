@@ -100,7 +100,7 @@ class Network
 		
 		// GET TABLE WITH  TOP FOUR NETWORKS +
 		// 	MEMBER COUNT
-		$result = mysqli_query($con,
+		if(!$result = mysqli_query($con,
 			"SELECT n.id, n.city_cur, n.region_cur, n.city_origin, n.region_origin, n.country_origin, n.language_origin, n.network_class, nr.member_count, p.post_count
 			FROM networks n 
 			JOIN (SELECT id_network, COUNT(id_network) AS member_count
@@ -114,7 +114,10 @@ class Network
 			ON n.id = p.id_network AND nr.id_network = p.id_network
                         GROUP BY n.id
 			ORDER BY nr.member_count DESC
-                        LIMIT 0,4");
+                        LIMIT 0,4"))
+                {
+                	echo "Error message: " . $con->error;
+                }
 		
 		$networks = array();
 		

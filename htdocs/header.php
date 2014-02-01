@@ -71,7 +71,7 @@
                         });
                     });*/
                     </script>
-                    <hr width="100"> or <hr width="100">
+                    <hr class="hr-modal" width="100"> or <hr class="hr-modal" width="100">
                     </br>
                     <button class="submit-fbk">Join with Facebook</button>
                     <br>
@@ -149,7 +149,7 @@
                         });
                     });
                     </script>
-                    <hr width="100"> or <hr width="100">
+                    <hr class="hr-modal" width="100"> or <hr class="hr-modal" width="100">
                     <button class="submit-fbk">Join with Facebook</button>
                     <br><p>It\'s fast and easy - and we\'ll never share your info or post without your permission, we promise!</p>';
         $log_footer = 'Not a member yet? <a href="#" id="sign_in_mod">Join Us!</a>';
