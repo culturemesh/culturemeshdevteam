@@ -15,6 +15,7 @@
                 include 'unauthorized_content.php';
             }
             else{
+                echo 'uid='.$_SESSION['uid'];
                 include $ppre.'_body.php';
             }
 	?>
