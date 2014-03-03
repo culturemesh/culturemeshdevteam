@@ -73,6 +73,14 @@ body {
     padding-left:10px;
 }
 
+ul.search
+{
+    display:none;
+	position:absolute;
+	top:100px;
+	list-style-type:none;
+	background:white;
+}
 /*
 #search-floater {
     float:left;
