@@ -1,7 +1,12 @@
 var opening = "Find people who ";
-var queries = ["speak...", "are from..."]
+var queries = ["speak", "are from"]
+var prompt_strings = ["Find people who speak",
+			"Find people who are from"];
 var q_results = [];
 var locations = [];
+var cur_locations[];
+var languages = [];
+var li_languages = [];
 
 loadInitialData();
 searchBar = new SearchBar();
@@ -12,7 +17,11 @@ function loadInitialData() {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
 		{
-			var raw_data = JSON.parse(xmlhttp.responseText);
+			raw_data = JSON.parse(xmlhttp.responseText); 
+			languages = raw_data["languages"];
+			locations raw_data["countries"], raw_data["regions"], raw_data["cities"]);
+			li_languages = languages.slice(0,4);
+			li_locations = locations.slice(0,4);
 		}
 	}
 
@@ -36,7 +45,7 @@ function SearchBar() {
 	searchTwo.onfocus = displayMainList;
 	searchOne.onblur = hideList;
 	searchTwo.onblur = hideList;
-	searchOne.onchange = updateList;
+	searchOne.onkeydown = updateList;
 	searchTwo.onchange = updateList;
 
 	queryUl.onmouseover = getChoices;
@@ -64,6 +73,7 @@ function SearchBar() {
 		{
 			case "search-1":
 				queryUl.style.display = "none";
+				varUl.style.display = "none";
 				break;
 			case "search-2":
 				locUl.style.display = "none";
@@ -84,12 +94,19 @@ function SearchBar() {
 		}
 	}
 
+	function clearUl(ul) {
+		while (ul.firstChild)
+			ul.removeChild(ul.firstChild);
+	}
+
 	/**
 	 *  Displays choices after asking for data from the db
 	 */
 	function getChoices(e) {
 		searchOne.value = opening + e.target.innerHTML;	
 		//searchQuery(e.target.innerHTML);
+		clearUl(varUl);
+		fillUl(varUl, li_languages);
 
 		// display list
 		varUl.style.display = "inline";
@@ -97,11 +114,57 @@ function SearchBar() {
 	}
 
 	function closeChoices(e) {
-
+		if (document.activeElement != searchOne)
+		{
+			clearUl(varUl);
+			// close var list
+			varUl.style.display = "none";
+		}
 	}
 
-	function updateList() {
+	function updateList(e) {
+		switch (e.target.getAttribute('id'))
+		{
+			case "search-1":
+				// Clear ul
+				clearUl(varUl);
+				li_languages = [];
 
+				// get value of search bar
+				raw_val = searchOne.value;
+				var vals = raw_val.split(" ");
+
+				// separate prompt from the user query
+				var query_str = null;
+				var index = null;
+				for (var i = 0; i < queries.length; i++)
+				{
+					index = raw_val.indexOf(queries[i]);
+					if(index > -1)	
+					{
+						query_str = raw_val.slice(index + queries[i].length + 1)
+						break;
+					}
+				}
+
+				// figure out which elements of the language
+				// array match the query as written so far
+				for (var i = 0; i < languages.length; i++)
+				{
+					match = languages[i].indexOf(query_str) == 0;
+					if (match)
+						li_languages.push(languages[i]);
+				}
+
+				// Fill up Ul
+				fillUl(varUl, li_languages.slice(0,4));
+
+				// Display the list
+				varUl.style.display = "inline";
+				break;
+			case "search-2":
+				break;
+		}
 	}
 }
 
@@ -123,5 +186,4 @@ function searchQuery(query, sText = "") {
 	xmlhttp.open("POST", "", true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send(pText);
-	
 }

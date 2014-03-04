@@ -10,6 +10,7 @@ ini_set('display_errors',1);
 **/ 
 
 include_once("zz341/fxn.php");
+include_once("dal_language-dt.php");
 
 class Language
 {
@@ -32,7 +33,10 @@ class Language
 			
 		if ($must_close)
 			mysqli_close($con);
-		
+
+		if (!$result)
+			echo $con->error;
+
 		return $result;
 	}
 }
