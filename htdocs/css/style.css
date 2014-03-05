@@ -75,11 +75,31 @@ body {
 
 ul.search
 {
-    display:none;
+   	display:none;
 	position:absolute;
 	top:100px;
 	list-style-type:none;
 	background:white;
+	font-size:18px;
+	font-family: 'Lato-Regular', sans-serif;
+	color:#EF5330;
+    letter-spacing:1px;
+	width:auto;
+}
+
+ul.search > li
+{
+	padding:5px;
+	background-color:#F9F9F9;
+	border: 1px soloid #CCCCCC;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+
+ul.search > li:hover {
+	color:#3EB3CA;
+	font-family: 'Lato-Bold', sans-serif;
+	background-color:#FFFFFF;
 }
 /*
 #search-floater {

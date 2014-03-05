@@ -1,7 +1,8 @@
 var opening = "Find people who ";
 var queries = ["speak", "are from"]
 var prompt_strings = ["Find people who speak",
-			"Find people who are from"];
+			"Find people who are from",
+			"Near"];
 var q_results, locations, origins, li_origins, li_locations, languages, li_languages;
 /*
 var locations = [];
@@ -68,6 +69,7 @@ function SearchBar() {
 	var queryUl = document.getElementById("s-query");
 	var varUl = document.getElementById("s-var");
 	var locUl = document.getElementById("s-location");
+	var loc_select, q_select, cur_query;
 
 	this.initialize = function() {
 		// FILL UP LISTS
@@ -82,9 +84,10 @@ function SearchBar() {
 		searchOne.onkeydown = updateList;
 		searchTwo.onkeydown = updateList;
 
-
 		queryUl.onmouseover = getChoices;
 		queryUl.onmouseout = closeChoices;
+		varUl.onmouseover = markSelection;
+		locUl.onmouseover = markSelection;
 	}
 	
 	/* Displays main list
@@ -108,13 +111,22 @@ function SearchBar() {
 		switch(barId)
 		{
 			case "search-1":
+				if (q_select = undefined)
+					q_select = "";
+				searchOne.value = prompt_strings[cur_query] + " " + q_select;
 				queryUl.style.display = "none";
 				varUl.style.display = "none";
 				break;
 			case "search-2":
+				if (loc_select = undefined)
+					loc_select = "";
+				searchTwo.value = prompt_strings[cur_query] + " " + loc_select;
 				locUl.style.display = "none";
 				break;
 		}
+
+		// RESET
+		cur_query = 0;
 	}
 
 	/** takes an unordered list and fills them
@@ -144,16 +156,18 @@ function SearchBar() {
 		switch (e.target.innerHTML)
 		{
 			case "speak":
-				fillUl(varUl, li_languages);
+				fillUl(varUl, li_languages.slice(0,4));
+				cur_query = 0;	// 0 for lingos
 				break;
 			case "are from":
-				fillUl(varUl, li_origins);
+				fillUl(varUl, li_origins.slice(0,4));
+				cur_query = 1; 	// 1 for origin
 				break;
 		}
 			
 		// display list
 		varUl.style.display = "inline";
-		varUl.style.left = queryUl.offsetWidth.toString + "px";
+		varUl.style.left = "-" + queryUl.offsetWidth.toString + "px";
 	}
 
 	function closeChoices(e) {
@@ -236,6 +250,19 @@ function SearchBar() {
 		}
 
 		return list;
+	}
+
+	function markSelection(e) {
+		switch(e.target.parentNode.getAttribute('id'))
+		{
+			case "s-var":
+				q_select = e.target.innerHTML;
+				break;
+			case "s-location":
+				loc_select = e.target.innerHTML;
+				cur_query = prompt_strings.length -1;	 // the index for the last prompt
+				break;
+		}
 	}
 }
 
