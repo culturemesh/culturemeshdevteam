@@ -26,17 +26,27 @@ while($row = mysqli_fetch_array($raw_languages))
 
 while ($row = mysqli_fetch_array($raw_countries))
 {
-	array_push($countries, array($row['id'], $row['name']));
+	array_push($countries, array(
+		'id' => $row['id'],
+	        'name' => $row['name']));
 }
 
 while($row = mysqli_fetch_array($raw_regions))
 {
-	array_push($regions, array($row['id'], $row['name'], $row['country_id'], $row['country_name']));
+	array_push($regions, array(
+		'id' => $row['id'],
+		'name' => $row['name'],
+		'country_id' =>	$row['country_id'],
+	        'country_name' => $row['country_name']));
 }
 
 while($row = mysqli_fetch_array($raw_cities))
 {
-	array_push($cities, array($row['id'], $row['name'], $row['country_id'], $row['country_name']));
+	array_push($cities, array(
+		'id' => $row['id'],
+		'name' => $row['name'],
+		'country_id' =>	$row['country_id'],
+		'country_name' => $row['country_name']));
 }
 
 $allthedata = array(
