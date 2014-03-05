@@ -73,6 +73,34 @@ body {
     padding-left:10px;
 }
 
+ul.search
+{
+   	display:none;
+	position:absolute;
+	top:100px;
+	list-style-type:none;
+	background:white;
+	font-size:18px;
+	font-family: 'Lato-Regular', sans-serif;
+	color:#EF5330;
+    letter-spacing:1px;
+	width:auto;
+}
+
+ul.search > li
+{
+	padding:5px;
+	background-color:#F9F9F9;
+	border: 1px soloid #CCCCCC;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+
+ul.search > li:hover {
+	color:#3EB3CA;
+	font-family: 'Lato-Bold', sans-serif;
+	background-color:#FFFFFF;
+}
 /*
 #search-floater {
     float:left;
@@ -601,6 +629,7 @@ ul#top-links a{
 h2.pheader{
     font-weight: normal;
     font-size: 36px;
+    padding: 30px 0;
 }
 
 label.checkbox{
@@ -611,15 +640,21 @@ h3.pheader{
     color: #fff;
     font-weight: normal;
 }
-ul.three-section-pics h3{
+/*ul.three-section-pics h3{
     display: inline;
+}*/
+ul.three-section-pics{
+    margin-top: 30px;
 }
 ul.three-section-pics li{
-    background: url('images/CM_Logo.png');
-    width:340px;
+    /*background: url('images/CM_Logo.png');*/
+    /*background: #000;*/
+    text-align: center;
+    width:234px;
+    margin: 0 -3px;
     height:222px;
     padding: 20px 40px;
-    display: inline;
+    display: inline-block;
 }
 .navbar-inverse .navbar-inner{
 	background-color: #8C1515 !important;
@@ -745,3 +780,52 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
 .failure-txt{
     color: #b5332b;
 }
+
+/**careers pg**/
+.careers_box_head{
+    margin-top: 55px;
+}
+.careers_box_btn{
+    margin: 25px 0;
+}
+.careers_box_engineering{
+    background: url('../images/code.jpg');
+    background-size: 100% 100%;
+}
+.careers_box_engineering .over{
+    /*position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;*/
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5); /*dim the background*/
+}
+.careers_box_creative{
+    background: url('../images/creative.jpg');
+    background-size: 314px 262px;
+}
+.careers_box_creative .over{
+    /*position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;*/
+    z-index: 10;
+    background-color: rgba(200,0,0,0.5); /*dim the background*/
+}
+.careers_box_business{
+    background: url('../images/business.jpg');
+    background-size: 314px 262px;
+}
+.careers_box_business .over{
+    /*position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;*/
+    z-index: 10;
+    background-color: rgba(0,200,255,0.5); /*dim the background*/
+}
+/****/
+

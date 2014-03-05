@@ -23,23 +23,28 @@
         </div>
         <div class="tab-pane" id="profile_dashboard_tab">
             db
-            <?php //include 'profile_dashboard_tab_include.php'; ?>
+            <?php //include 'profile_dashboard_tab_include.php'; 
+            ?>
         </div>
         <div class="tab-pane" id="profile_networks_tab">
             network
-            <?php //include 'profile_networks_tab_include.php'; ?>
+            <?php //include 'profile_networks_tab_include.php';
+            ?>
         </div>
         <div class="tab-pane" id="profile_events_tab">
             events
-            <?php //include 'profile_events_tab_include.php'; ?>
+            <?php //include 'profile_events_tab_include.php'; 
+            ?>
         </div>
         <div class="tab-pane" id="profile_inbox_tab">
             inbx
-            <?php //include 'profile_inbox_tab_include.php'; ?>
+            <?php //include 'profile_inbox_tab_include.php'; 
+            ?>
         </div>
         <div class="tab-pane" id="profile_accounts_tab">
             acct
-            <?php //include 'profile_accounts_tab_include.php'; ?>
+            <?php //include 'profile_accounts_tab_include.php'; 
+            ?>
         </div>
     </div>
 </div>

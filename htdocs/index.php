@@ -98,7 +98,10 @@
 					<div id="search-bar">
 						<form id="search-form" method="GET" action="search_results.php">
 							<input type="text" class="stage-input" name="search-1" id="search-1" value="Find people who"></input>
+								<ul id="s-query" class="search"></ul>
+								<ul id="s-var" class="search"></ul>
 							<input type="text" class="stage-input" name="search-2" id="search-2" value="Near"></input>
+								<ul id="s-location" class="search"></ul>
 							<input type="submit" class="stage-button" value="SEARCH"></input>
 						</form>
 					</div>
@@ -160,4 +163,5 @@
 			?>
 		</div>
 	</body>
+	<script src="js/searchbar.js"></script>
 </html>
