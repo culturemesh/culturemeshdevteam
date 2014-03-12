@@ -510,6 +510,24 @@ input[type="submit"].network
 	margin-right:3px;
 }
 
+div.event-slider
+{
+	height:150px;
+	width:475px;
+	float:left;
+	background-color:gray;
+	overflow:hidden;
+	overflow-y:hidden;
+	ms-overflow-y:hidden;
+}
+
+button.slider-button
+{
+	float:left;
+	height:150px;
+	width:45px;
+}
+
 #event-info
 {
 	font: 13px Lato-Light, sans-serif;
@@ -522,6 +540,13 @@ input[type="submit"].network
 	color: #404040;
 	margin-bottom:10px;;
 	margin-top:15px;
+}
+
+td.event-card
+{
+	padding: 0px 5px;
+	height: 140px;
+	background-color:white;
 }
 
 input[type="text"].hidden-field

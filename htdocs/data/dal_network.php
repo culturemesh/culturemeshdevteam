@@ -40,8 +40,8 @@ class Network
 		}
 		
 		if (!mysqli_query($con, "INSERT INTO networks 
-			(city_cur, region_cur, city_origin, region_origin, country_origin, language_origin, network_class, date_added, img_link)
-			VALUES ('". $network_dt->city_cur. "', '". $network_dt->region_cur. "', '". $network_dt->city_origin. "', '". $network_dt->region_origin .
+			(city_cur, country_cur, city_origin, region_origin, country_origin, language_origin, network_class, date_added, img_link)
+			VALUES ('". $network_dt->city_cur. "', '". $network_dt->country_cur. "', '". $network_dt->city_origin. "', '". $network_dt->region_origin .
 			"', '". $network_dt->city_origin. "', '". $network_dt->country_origin. "', '". $network_dt->language_origin . "', NOW() , '" . $network_dt->img_link  . "')"))
 		{
 			echo "Error message: " . $con->error;
@@ -101,7 +101,7 @@ class Network
 		// GET TABLE WITH  TOP FOUR NETWORKS +
 		// 	MEMBER COUNT
 		$result = mysqli_query($con,
-			"SELECT n.id, n.city_cur, n.region_cur, n.city_origin, n.region_origin, n.country_origin, n.language_origin, n.network_class, nr.member_count, p.post_count
+			"SELECT n.id, n.city_cur, n.country_cur, n.city_origin, n.region_origin, n.country_origin, n.language_origin, n.network_class, nr.member_count, p.post_count
 			FROM networks n 
 			JOIN (SELECT id_network, COUNT(id_network) AS member_count
                                     FROM network_registration
@@ -126,7 +126,7 @@ class Network
 			
 			$network_dt->id = $row['id'];
 			$network_dt->city_cur = $row['city_cur'];
-			$network_dt->region_cur = $row['region_cur'];
+			$network_dt->country_cur = $row['country_cur'];
 			$network_dt->city_origin = $row['city_origin'];
 			$network_dt->region_origin = $row['region_origin'];
 			$network_dt->country_origin = $row['country_origin'];
@@ -269,7 +269,7 @@ class Network
 		}
 		
 		mysqli_query($con, "UPDATE networks 
-			SET city_cur='". $network_dt->city_cur ."', region_cur='". $network_dt->region_cur .
+			SET city_cur='". $network_dt->city_cur ."', country_cur='". $network_dt->country_cur .
 			"', city_origin='". $network_dt->city_origin ."', region_origin='". $network_dt->region_origin .
 			"', country_origin='". $network_dt->country_origin ."', language_origin='". $network_dt->language_origin . 
 			"', network_class='".$network_dt->network_class .
@@ -324,7 +324,7 @@ class Network
 		{	
 			$network_dt->id = $row['id'];
 			$network_dt->city_cur = $row['city_cur'];
-			$network_dt->region_cur = $row['region_cur'];
+			$network_dt->country_cur = $row['country_cur'];
 			$network_dt->city_origin = $row['city_origin'];
 			$network_dt->region_origin = $row['region_origin'];
 			$network_dt->country_origin = $row['country_origin'];
