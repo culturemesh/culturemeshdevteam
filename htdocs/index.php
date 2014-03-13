@@ -103,6 +103,7 @@
 							<input type="text" class="stage-input" name="search-2" id="search-2" value="Near"></input>
 								<ul id="s-location" class="search"></ul>
 							<input type="submit" class="stage-button" value="SEARCH"></input>
+							<input type="hidden" id="search-topic"></input>
 						</form>
 					</div>
 				</div>

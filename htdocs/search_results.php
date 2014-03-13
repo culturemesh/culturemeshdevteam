@@ -28,14 +28,15 @@
 		[0] Best match
 		[1:4] - Other Suggestions
 	*/
-	$topic = "";
+	$topic = $_GET['topic'];
+	$queries = array("People who are from", "People who speak");
 	
 	$people_who = $_GET['search-1'];
 	
 	// get rid of 'near ' in location
 	$location_raw = substr($_GET['search-2'], 5);
 	
-	// now separate into city and region, if possible
+	// now separate into city and country, if possible
 	$location = str_getcsv($location_raw, ", ");
 	//$city = $loc_token;
 	//$loc_token = strtok(", ");

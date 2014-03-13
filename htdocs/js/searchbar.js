@@ -15,6 +15,11 @@ var li_languages = [];
 loadInitialData();
 searchBar = new SearchBar();
 
+function LocationItem() {
+	var loc_text;
+	var loc_type;
+}	
+
 function loadInitialData() {
 	// Create ajax request
 	var xmlhttp = new XMLHttpRequest();
@@ -34,25 +39,35 @@ function loadInitialData() {
 					continue;
 				}
 
+				// organize location data
 				for (var i = 0; i < raw_data[key].length; i++) {
+					loc_type = null;
 					loc_string = raw_data[key][i]["name"];
 					if (key == "regions" || key == "cities")
 					{
 						loc_string += ", " + raw_data[key][i]["country_name"];
+						
 					}
+					if (key == "regions")
+						loc_type = "rc";
+					if (key == "cities")
+						loc_type = "cc";
+					if (key == "countries")
+						loc_type = "co";
+
 					origins.push(loc_string);
 
 					// also push to locations,
 					// BUT ONLY CITIES
 					if (key == "cities")
-						locations.push(loc_string);
+						locations.push([loc_string, loc_type]);
 				}
 			}
 				
 			// get an initial sample of list items
 			li_languages = languages.slice(0,4);
 			li_origins = origins.slice(0,4);
-			li_locations = locations.slice(0,4);
+			li_locations = locations.slice(0,4)[0];
 
 			searchBar.initialize();
 		}
@@ -66,6 +81,7 @@ function loadInitialData() {
 function SearchBar() {
 	var searchOne = document.getElementById("search-1");
 	var searchTwo = document.getElementById("search-2");
+	var topic = document.getElementById("search-topic");
 	var queryUl = document.getElementById("s-query");
 	var varUl = document.getElementById("s-var");
 	var locUl = document.getElementById("s-location");
@@ -158,10 +174,12 @@ function SearchBar() {
 			case "speak":
 				fillUl(varUl, li_languages.slice(0,4));
 				cur_query = 0;	// 0 for lingos
+				topic.value = "_l";
 				break;
 			case "are from":
 				fillUl(varUl, li_origins.slice(0,4));
 				cur_query = 1; 	// 1 for origin
+				topic.value = "";
 				break;
 		}
 			
