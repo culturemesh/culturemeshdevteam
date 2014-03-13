@@ -88,6 +88,35 @@ class HTMLBuilder
 		</li>
 		";
 	}
+
+	public static function displayEventMonth($month)
+	{
+		echo "
+		<td class='date'>
+			<p>{$month}</p>
+		</td>
+		";
+	}
+
+	public static function displayEventCard($event)
+	{
+		$datetime = strtotime($event->event_date);
+		$datetime = date("m/d/y g:i", $datetime);
+		
+		echo "
+		<td class='event-card'>
+			<div >
+				<h3 class='h-network'>{$event->title}</h3>
+			</div>
+			<div >
+				<p id='event-info'>Hosted by {$event->email} and set for {$datetime}</p>
+				<p id='event-desc'>{$event->description}</p>
+				
+			</div>
+		</td>
+		";
+
+	}
 	
 	private static function formatNetworkTitle($network)
 	{

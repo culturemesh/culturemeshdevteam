@@ -39,6 +39,27 @@
 	$events = Event::getEventsByNetworkId($id, $con);
 	$posts = Post::getPostsByNetworkId($id, $con);
 	
+	// make an event calendar
+	$months = array("January", "February", "March", "April",
+		"May", "June", "July", "August", "September",
+		"October", "November", "December");
+
+	$calendar = array();
+	foreach($months as $month)
+	{
+		$calendar[$month] = array();
+	}
+	
+	foreach($events as $event)
+	{
+		// get month of event
+		$dt = new DateTime($event->event_date);
+		$month = $dt->format('n');
+
+		// push event into array
+		array_push( $calendar[$months[$month]], $event);
+	}
+
 	//var_dump($posts);
 	
 	mysqli_close($con);
@@ -137,11 +158,38 @@
 					</div>
 					<div id="event-wall">
 						<h2 class="h-network">Upcoming Events</h2>
-						<ul class="network">
-						<?php foreach($events as $event)
-							HTMLBuilder::displayEvent($event); 
-						?>
-						</ul>
+						<!--<ul class="network">-->
+						<div>
+						<button class="slider-button"></button>
+						<div class="event-slider">
+						<table class="network event">
+							<thead></thead>
+							<tbody>
+							<tr>
+								<?php 
+								foreach($months as $month)
+								{
+									if (empty($calendar[$month]))
+										continue;
+
+									HTMLBuilder::displayEventMonth($month);
+
+									// cycle through the month's events
+									for ($i = 0; $i < count($calendar[$month]); $i++)
+									{
+										HTMLBuilder::displayEventCard($calendar[$month][$i]);
+									}
+								}
+								?>
+							</tr>
+							</tbody>
+							</tr>
+						</table>
+						</div>
+						<button class="slider-button"></button>
+						</div>
+						<div class="clear"></div>
+						<!--</ul>-->
 					</div>
 					<a class="network member" onclick="toggleEventForm()">Post Event</a>
 					<div id="event-maker">

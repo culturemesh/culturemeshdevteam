@@ -127,14 +127,14 @@ function SearchBar() {
 		switch(barId)
 		{
 			case "search-1":
-				if (q_select = undefined)
+				if (q_select == undefined)
 					q_select = "";
 				searchOne.value = prompt_strings[cur_query] + " " + q_select;
 				queryUl.style.display = "none";
 				varUl.style.display = "none";
 				break;
 			case "search-2":
-				if (loc_select = undefined)
+				if (loc_select == undefined)
 					loc_select = "";
 				searchTwo.value = prompt_strings[cur_query] + " " + loc_select;
 				locUl.style.display = "none";
