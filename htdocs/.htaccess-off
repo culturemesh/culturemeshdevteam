@@ -1,5 +1,5 @@
-# Use PHP5.3 Single php.ini as default
-AddHandler application/x-httpd-php53s .php
+# Use PHP54.3 Single php.ini as default
+AddHandler application/x-httpd-php54s .php
 
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^culturemesh\.com$ [OR]

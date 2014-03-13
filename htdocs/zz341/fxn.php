@@ -20,12 +20,6 @@ else
     include "../../../abcd123.php";
     define("DB_NAME", "culturp7_ktc");
 }
-/***
-define("DB_SERVER", "localhost");
-define("DB_USER", "culturp7");
-define("DB_NAME", "culturp7_ktc");
-define("DB_PASS", "GoRoop2013!");
-**/
  
 function getDBConnection(){
     $conn = new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
