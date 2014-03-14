@@ -253,7 +253,114 @@ class Network
 		
 		return $result;
 	}
+
+	public static function getNetworksByCO($query, $con=null) {
+		$must_close = false;
+		if ($con == null)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
+			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
+			AND country_origin='{$query[3]}'");
+		
+		if ($must_close)
+			mysqli_close($con);
+		
+		if (!$result)
+			echo $con->error;
+		else
+			return $result;
+	}
+
+	public static function getNetworksByL($query, $con=null) {
+		$must_close = false;
+		if ($con == null)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
+			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
+			AND language_origin='{$query[3]}'");
+		
+		if ($must_close)
+			mysqli_close($con);
+		
+		if (!$result)
+			echo $con->error;
+		else
+			return $result;
+	}
+
+	public static function getNetworksByRC($query, $con=null) {
+		$must_close = false;
+		if ($con == null)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
+			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
+			AND region_origin='{$query[3]}' AND country_origin='{$query[4]}'");
+		
+		if ($must_close)
+			mysqli_close($con);
+		
+		if (!$result)
+			echo $con->error;
+		else
+			return $result;
+	}
 	
+	public static function getNetworksByCC($query, $con=null) {
+		$must_close = false;
+		if ($con == null)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
+			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
+			AND city_origin='{$query[3]}' AND country_origin='{$query[4]}'");
+		
+		if ($must_close)
+			mysqli_close($con);
+		
+		if (!$result)
+			echo $con->error;
+		else
+			return $result;
+	}
 	////////////////////// UPDATE OPERATIONS /////////////////////
 	public static function updateNetwork($network_dt)
 	{

@@ -8,6 +8,7 @@ include_once("data/dal_network_registration.php");
 /* Could perhaps be a query object, constructed with three parameters*/
 class SearchQuery
 {
+	/*
 	public static function getNetworkSearchResults($topic, $query_str, $location)
 	{
 		$networks = array();
@@ -42,5 +43,37 @@ class SearchQuery
 		
 		return $networks;
 	}
+	 */
+
+	public static function getNetworkSearchResults($query, $con)
+	{
+		$result = null;
+		// topic
+		switch ($query[0])
+		{
+		// HUNT DOWN A NETWORK FOR THE USERS!!!!
+		case "co":
+			// [1: o_country, 2: city_cur, 3: country_cur] in the future, region as well
+			$results = Network::getNetworksByCO($query, $con);
+			break;
+		case "cc":
+			// [1: o_city, 2: o_country, 3: city_cur, 4: country_cur]
+			$results = Network::getNetworksByCC($query, $con);
+			break;
+		case "rc":
+			// [1: o_region, 2: o_country, 3: city_cur, 4: country_cur]
+			$results = Network::getNetworksByRC($query, $con);
+			break;
+		case "_l":
+			// [1: o_language, 2: city_cur, 3: country_cur]
+			$results = Network::getNetworksByL($query, $con);
+			break;
+		}
+
+		return $results;
+		// get nearby cities
+	}
+
+
 }
 ?>

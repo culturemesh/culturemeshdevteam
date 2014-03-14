@@ -37,6 +37,36 @@ class HTMLBuilder
 		</div>
 		";
 	}
+
+	public static function displayPossibleNetwork($query)
+	{
+		$title = null;
+		switch ($query[0])
+		{
+		case "_l":
+			$title = "{$query[3]} speakers near {$query[1]}, {$query[2]}";
+			break;
+		case "co":
+			$title = "From {$query[3]} near {$query[1]}, {$query[2]}";
+			break;
+		case "rc":
+			$title = "From {$query[3]}, {$query[4]}  near {$query[1]}, {$query[2]}";
+			break;
+		case "cc":
+			$title = "From {$query[3]}, {$query[4]} near {$query[1]}, {$query[2]}";
+			break;
+		}
+
+		echo "
+		<div>
+			<div class='net-info'>
+				<p class='bottom-text'>{$title}</p>
+				<button id='launch-network'>Launch Network</button>
+			</div>
+			<div class='clear'></div>
+		</div>
+		";
+	}
 	
 	public static function displayLrgNetwork($network)
 	{

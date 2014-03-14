@@ -37,6 +37,7 @@ class NetworkDT
 	
 	public $member_count;
 	public $post_count;
+	public $existing;		// bool, not in db
 }
 
 ?>
