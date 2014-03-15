@@ -282,7 +282,7 @@ function SearchBar() {
 						// accounting for answers that are typed in
 						// 	assumes that if the length is one, 
 						// 	we havea match
-						if (li_origins.length >=  1)
+						if (li_origins.length <=  1)
 							topic.value = li_origins[0].type; // get type of first and only element
 						break;
 					case "speak" :
@@ -320,7 +320,7 @@ function SearchBar() {
 		var list = [];
 		for (var i = 0; i < src.length; i++)
 		{
-			match = src[i].indexOf(term) == 0;
+			match = src[i].name.indexOf(term) == 0;
 			if (match)
 				list.push(src[i]);
 		}
@@ -338,7 +338,7 @@ function SearchBar() {
 					for (var i = 0; i < children.length; i++) 
 						if (e.target == children[i]) break;
 					// get location type from parallel list
-					topic.value = li_locations[i].type;
+					topic.value = li_origins[i].type;
 				}
 				break;
 			case "s-location":

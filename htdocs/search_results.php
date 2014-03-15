@@ -20,7 +20,10 @@
 			}
 		}
 
-		return $loc_split;
+		if ($loc_split == null)
+			return $location;
+		else
+			return $loc_split;
 	}
 	/*
 		- Checkforerrors
@@ -45,8 +48,6 @@
 	// get topic from GET
 	if (isset($_GET['search-topic']))
 		$type = $_GET['search-topic'];
-
-	echo $type."\n";
 
 	$queries = array("Find people who speak", "Find people who are from");
 	
@@ -106,8 +107,10 @@
 	{
 		$query_str = $query_token;
 		$origin = parseLocation($query_str);
-		///echo $origin[0]."\n".$origin[1]."\n";
-		$query = array($type, $location[0], $location[1], $origin[0]);
+		if (gettype($origin) == "array")
+			$query = array($type, $location[0], $location[1], $origin[0]);
+		else
+			$query = array($type, $location[0], $location[1], $origin);
 	}
 	if ($type == "rc" || $type == "cc")
 	{
@@ -135,14 +138,13 @@
 	}
 	 */
 
-	var_dump($query);
 	// with location, query_str, and topic calculated, get the information
 	// for filling in the site
 	//
 	// start connection
 	$con = getDBConnection();
 	//$networks = SearchQuery::getNetworkSearchResults($topic, $query_str, $location);
-	//$networks = SearchQuery::getNetworkSearchResults($query, $con);
+	$networks = SearchQuery::getNetworkSearchResults($query, $con);
 
 	mysqli_close($con);
 
@@ -185,8 +187,11 @@
 					<div id="best-match">
 						<h3>Best Match</h3>
 						<?php 
-						if(!$networks)
-						{ HTMLBuilder::displayPossibleNetwork($query); }
+						if(count($networks) <= 0)
+							{ HTMLBuilder::displayPossibleNetwork($query); }
+						else {
+							 HTMLBuilder::displayNetwork($networks[0]); 
+						}
 						?>
 					</div>
 					<div id="related-networks">

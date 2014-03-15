@@ -7,6 +7,7 @@
 
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/style.css?<?php echo time(); ?>" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 <!--[if lt IE 9]>
   <script src="js/html5shiv.js"></script>
 <![endif]-->

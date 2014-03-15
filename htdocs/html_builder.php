@@ -60,8 +60,15 @@ class HTMLBuilder
 		echo "
 		<div>
 			<div class='net-info'>
-				<p class='bottom-text'>{$title}</p>
-				<button id='launch-network'>Launch Network</button>
+				<form method='POST' action='search_launch_network.php'> 
+					<p class='bottom-text'>{$title}</p>
+					<input type='submit' id='launch-network' value='Launch Network'></input>
+					<input type='hidden' name=type value='{$query[0]}'/>
+					<input type='hidden' name=city_cur value='{$query[1]}'/>
+					<input type='hidden' name=country_cur value='{$query[2]}'/>
+					<input type='hidden' name=q_1 value='{$query[3]}'/>
+					<input type='hidden' name=q_2 value='{$query[4]}'/>
+				</form>
 			</div>
 			<div class='clear'></div>
 		</div>
@@ -155,16 +162,16 @@ class HTMLBuilder
 		switch($network->network_class)
 		{
 		case '_l':	// LANGUAGE
-			$title = "{$network->language_origin} language in {$network->city_cur}, {$network->region_cur}";
+			$title = "{$network->language_origin} speakers in {$network->city_cur}, {$network->country_cur}";
 			break;
-		case 'cr':	// CITY,REGION
-			$title = "From {$network->city_origin}, {$network->region_origin} in {$network->city_cur}, {$network->region_cur}";
+		case 'cc':	// CITY,REGION
+			$title = "From {$network->city_origin}, {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
 			break;
-		case '_r':	// REGION
-			$title = "From {$network->region_origin} in {$network->city_cur}, {$network->region_cur}";
+		case 'rc':	// REGION
+			$title = "From {$network->region_origin}, {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
 			break;
 		case 'co':	// COUNTRY
-			$title = "From {$network->country_origin} in {$network->city_cur}, {$network->region_cur}";
+			$title = "From {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
 			break;
 		}
 		

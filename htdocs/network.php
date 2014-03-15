@@ -1,6 +1,6 @@
 <?php
-	ini_set('display_errors', true);
-	error_reporting(E_ALL ^ E_NOTICE);
+	//ini_set('display_errors', true);
+	//error_reporting(E_ALL ^ E_NOTICE);
 	include "log.php";
 	include_once "zz341/fxn.php";
 	include_once "data/dal_network.php";
