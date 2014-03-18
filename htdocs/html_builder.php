@@ -129,7 +129,7 @@ class HTMLBuilder
 	public static function displayEventMonth($month)
 	{
 		echo "
-		<td class='date'>
+		<td class='event-card month'>
 			<p>{$month}</p>
 		</td>
 		";
@@ -141,21 +141,26 @@ class HTMLBuilder
 		$datetime = date("m/d/y g:i", $datetime);
 		
 		echo "
-		<td class='event-card'>
+		<td class='event-card card'>
 			<div >
 				<h3 class='h-network'>{$event->title}</h3>
 			</div>
-			<div >
-				<p id='event-info'>Hosted by {$event->email} and set for {$datetime}</p>
-				<p id='event-desc'>{$event->description}</p>
-				
+			<div class='card-content'>
+				<div class='card-img'>
+					<img src='images/background-placeholder.png' alt='No image'></img>
+				</div>
+				<div class='card-info'>
+					<p id='event-info'>With {$event->email}</p>
+					<p id='event-date'>{$datetime}</p>
+				</div>
 			</div>
+			<div class='clear'></div>
 		</td>
 		";
 
 	}
 	
-	private static function formatNetworkTitle($network)
+	public static function formatNetworkTitle($network)
 	{
 		$title = '';
 		

@@ -149,6 +149,25 @@ function SearchBar() {
 		queryUl.onmouseout = closeChoices;
 		varUl.onmouseover = markSelection;
 		locUl.onmouseover = markSelection;
+
+		// position uls
+		oneX = searchOne.offsetLeft;
+		oneY = searchOne.offsetTop + searchOne.offsetHeight;
+		twoX = searchTwo.offsetLeft;
+		queryX = oneX;
+
+		queryUl.style.display = "block";
+		varX = oneX + queryUl.offsetWidth;
+		queryUl.style.display = "none";
+
+		queryUl.style.left = queryX.toString() + "px";
+		varUl.style.left = varX.toString() + "px";
+		locUl.style.left = twoX.toString() + "px";
+		queryUl.style.top = oneY.toString() + "px";
+		varUl.style.top  = oneY.toString() + "px";
+		locUl.style.top = oneY.toString() + "px";
+
+		//queryUl.style.display = "none";
 	}
 	
 	/* Displays main list
@@ -174,7 +193,10 @@ function SearchBar() {
 			case "search-1":
 				if (q_select == undefined)
 					q_select = "";
-				searchOne.value = prompt_strings[cur_query] + " " + q_select;
+				if (prompt_strings[cur_query] == undefined)
+					searchOne.value = opening;
+				else
+					searchOne.value = prompt_strings[cur_query] + " " + q_select;
 				queryUl.style.display = "none";
 				varUl.style.display = "none";
 				break;

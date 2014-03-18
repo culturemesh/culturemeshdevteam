@@ -8,8 +8,8 @@
 	include_once "data/dal_user.php";
 	include_once "html_builder.php";
 	
-	session_name("myDiaspora");
-	session_start();
+	//session_name("myDiaspora");
+	//session_start();
 
 	$con = getDBConnection();
 	
@@ -45,6 +45,7 @@
 		"October", "November", "December");
 
 	$calendar = array();
+	// add months to array as keys
 	foreach($months as $month)
 	{
 		$calendar[$month] = array();
@@ -57,7 +58,7 @@
 		$month = $dt->format('n');
 
 		// push event into array
-		array_push( $calendar[$months[$month]], $event);
+		array_push( $calendar[$months[$month - 1]], $event);
 	}
 
 	//var_dump($posts);
@@ -141,28 +142,41 @@
 				</div>
 				<div class="net-right">
 					<div id="search">
-						<form method="GET" action="search_results.php">
-							<input type="text" class="net-search" name="search-1" value="Find people who "/>
-							<input type="text" class="net-search" name="search-2" value="near"/>
+						<form id ="search-form" method="GET" action="search_results.php">
+							<input type="text" id="search-1" class="net-search" name="search-1" value="Find people who "/>
+								<ul id="s-query" class="network search"></ul>
+								<ul id="s-var" class="network search"></ul>
+							<input type="text" id="search-2" class="net-search" name="search-2" value="Near"/>
+								<ul id="s-location" class="network search"></ul>
 							<input type="submit" style="display:none"/>
+							<input type="hidden" id="search-topic" name="search-topic"></input>
 						</form>
 					</div>
-					<?php HTMLBuilder::displayLrgNetwork($network); ?>
-					<div class="reg-guest">
-						<form method="POST" action="network_join.php">
-							<button class="network">Join this Network!</button>
-						</form>
+					<?php //HTMLBuilder::displayLrgNetwork($network); ?>
+					<div>
+						<div class='net-info'>
+							<h1 class='h-network'><?php echo HTMLBuilder::formatNetworkTitle($network); ?></h1>
+							<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
+							<div class="reg-guest">
+								<form method="POST" action="network_join.php">
+									<button class="network">Join us!</button>
+								</form>
+							</div>
+							<div class="guest">
+								<button class="network" onclick="$('#register_modal').modal('show');">Join us!</button>
+							</div>
+						</div>
+						<div class="clear"></div>
 					</div>
-					<div class="guest">
-						<button class="network" onclick="$('#register_modal').modal('show');">Join this Network!</button>
-					</div>
+					</br>
+					<hr width="700">
 					<div id="event-wall">
 						<h2 class="h-network">Upcoming Events</h2>
 						<!--<ul class="network">-->
 						<div>
-						<button class="slider-button"></button>
-						<div class="event-slider">
-						<table class="network event">
+						<button id="slider-left" class="slider-button"></button>
+						<div id="slider-content" class="event-slider">
+						<table id="slider-table" class="network event">
 							<thead></thead>
 							<tbody>
 							<tr>
@@ -186,12 +200,14 @@
 							</tr>
 						</table>
 						</div>
-						<button class="slider-button"></button>
+						<button id="slider-right" class="slider-button"></button>
 						</div>
 						<div class="clear"></div>
 						<!--</ul>-->
 					</div>
-					<a class="network member" onclick="toggleEventForm()">Post Event</a>
+					<button id="event-post" class="network member" onclick="toggleEventForm()">Post Event</button>
+					</br>
+					</br>
 					<div id="event-maker">
 						<form class="event-form" method="POST" action="network_post-event.php" enctype="multipart/form-data">
 							<div>
@@ -202,16 +218,14 @@
 							<input type="text" name="address_2" class="event-text" placeholder="Address 2"/>
 							<textarea id="description" name="description" class="event-text" placeholder="What's happening?"></textarea>
 							<div id="clear"></div>
-							<input type="text" class="hidden-field" name="img_file"></input>
-							<input type="text" class="hidden-field" name="vid_file"></input>
-							<input type="file"  size="60"/>
-							<input type="file"  size="60"/>
 							<input type="text" class="hidden-field" name="city" value=<?php echo $network->city_cur;?>/></input>
-							<input type="text" class="hidden-field" name="region" value=<?php echo $network->region_cur;?>/></input>
+							<input type="text" class="hidden-field" name="country" value=<?php echo $network->country_cur;?>/></input>
 							<input type="submit" class="network" value="Post"></input>
 							</div>
 						</form>
 					</div>
+					</br>
+					<hr width="700">
 					<div id="post-wall">
 						<h2 class="h-network">Posts</h2>
 						<form method="POST" class="member" action="network_post.php">
@@ -237,4 +251,6 @@
 	</body>
 	<link rel="stylesheet" type="text/css" href="js/jsdatetime/jquery.datetimepicker.css"/ >
 	<script src="js/jsdatetime/jquery.datetimepicker.js"></script>
+	<script src="js/searchbar.js"></script>
+	<script src="js/slider.js"></script>
 </html>
