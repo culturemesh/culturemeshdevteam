@@ -1,6 +1,6 @@
 <?php
-	ini_set('display_errors', true);
-	error_reporting(E_ALL ^ E_NOTICE);
+//	ini_set('display_errors', true);
+//	error_reporting(E_ALL ^ E_NOTICE);
 	include "log.php";
 	include "search_query.php";
 	include "html_builder.php";
