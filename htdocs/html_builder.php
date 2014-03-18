@@ -37,6 +37,43 @@ class HTMLBuilder
 		</div>
 		";
 	}
+
+	public static function displayPossibleNetwork($query)
+	{
+		$title = null;
+		switch ($query[0])
+		{
+		case "_l":
+			$title = "{$query[3]} speakers near {$query[1]}, {$query[2]}";
+			break;
+		case "co":
+			$title = "From {$query[3]} near {$query[1]}, {$query[2]}";
+			break;
+		case "rc":
+			$title = "From {$query[3]}, {$query[4]}  near {$query[1]}, {$query[2]}";
+			break;
+		case "cc":
+			$title = "From {$query[3]}, {$query[4]} near {$query[1]}, {$query[2]}";
+			break;
+		}
+
+		echo "
+		<div>
+			<div class='net-info'>
+				<form method='POST' action='search_launch_network.php'> 
+					<p class='bottom-text'>{$title}</p>
+					<input type='submit' id='launch-network' value='Launch Network'></input>
+					<input type='hidden' name=type value='{$query[0]}'/>
+					<input type='hidden' name=city_cur value='{$query[1]}'/>
+					<input type='hidden' name=country_cur value='{$query[2]}'/>
+					<input type='hidden' name=q_1 value='{$query[3]}'/>
+					<input type='hidden' name=q_2 value='{$query[4]}'/>
+				</form>
+			</div>
+			<div class='clear'></div>
+		</div>
+		";
+	}
 	
 	public static function displayLrgNetwork($network)
 	{
@@ -88,24 +125,58 @@ class HTMLBuilder
 		</li>
 		";
 	}
+
+	public static function displayEventMonth($month)
+	{
+		echo "
+		<td class='event-card month'>
+			<p>{$month}</p>
+		</td>
+		";
+	}
+
+	public static function displayEventCard($event)
+	{
+		$datetime = strtotime($event->event_date);
+		$datetime = date("m/d/y g:i", $datetime);
+		
+		echo "
+		<td class='event-card card'>
+			<div >
+				<h3 class='h-network'>{$event->title}</h3>
+			</div>
+			<div class='card-content'>
+				<div class='card-img'>
+					<img src='images/background-placeholder.png' alt='No image'></img>
+				</div>
+				<div class='card-info'>
+					<p id='event-info'>With {$event->email}</p>
+					<p id='event-date'>{$datetime}</p>
+				</div>
+			</div>
+			<div class='clear'></div>
+		</td>
+		";
+
+	}
 	
-	private static function formatNetworkTitle($network)
+	public static function formatNetworkTitle($network)
 	{
 		$title = '';
 		
 		switch($network->network_class)
 		{
 		case '_l':	// LANGUAGE
-			$title = "{$network->language_origin} language in {$network->city_cur}, {$network->region_cur}";
+			$title = "{$network->language_origin} speakers in {$network->city_cur}, {$network->country_cur}";
 			break;
-		case 'cr':	// CITY,REGION
-			$title = "From {$network->city_origin}, {$network->region_origin} in {$network->city_cur}, {$network->region_cur}";
+		case 'cc':	// CITY,REGION
+			$title = "From {$network->city_origin}, {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
 			break;
-		case '_r':	// REGION
-			$title = "From {$network->region_origin} in {$network->city_cur}, {$network->region_cur}";
+		case 'rc':	// REGION
+			$title = "From {$network->region_origin}, {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
 			break;
 		case 'co':	// COUNTRY
-			$title = "From {$network->country_origin} in {$network->city_cur}, {$network->region_cur}";
+			$title = "From {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
 			break;
 		}
 		

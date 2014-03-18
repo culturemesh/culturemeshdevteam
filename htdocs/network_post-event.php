@@ -24,7 +24,7 @@ if ($valid)
 	$event->address_1 = mysql_escape_string($_POST['address_1']);
 	$event->address_2 = mysql_escape_string($_POST['address_2']);
 	$event->city = mysql_escape_string($_POST['city']);
-	$event->region = mysql_escape_string($_POST['region']);
+	$event->country = mysql_escape_string($_POST['country']);
 	$event->description = mysql_escape_string($_POST['description']);
 	
 	Event::createEvent($event);

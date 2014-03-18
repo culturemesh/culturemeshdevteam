@@ -8,6 +8,23 @@
 	session_name("myDiaspora");
 	session_start();
 
+	function parseLocation($location)
+	{
+		$loc_split = null;
+		for ($i = 0; $i < strlen($location); $i++) 
+		{
+			if (($location[$i] === ",") && ($location[$i + 1] === " "))
+			{
+				$loc_split = array(substr($location, 0, $i), substr($location, $i + 2, strlen($location)));	
+				break;
+			}
+		}
+
+		if ($loc_split == null)
+			return $location;
+		else
+			return $loc_split;
+	}
 	/*
 		- Checkforerrors
 			PART ONE
@@ -28,14 +45,18 @@
 		[0] Best match
 		[1:4] - Other Suggestions
 	*/
-	$topic = "";
+	// get topic from GET
+	if (isset($_GET['search-topic']))
+		$type = $_GET['search-topic'];
+
+	$queries = array("Find people who speak", "Find people who are from");
 	
 	$people_who = $_GET['search-1'];
 	
 	// get rid of 'near ' in location
 	$location_raw = substr($_GET['search-2'], 5);
 	
-	// now separate into city and region, if possible
+	// now separate into city and country, if possible
 	$location = str_getcsv($location_raw, ", ");
 	//$city = $loc_token;
 	//$loc_token = strtok(", ");
@@ -45,7 +66,9 @@
 	
 	// SOMEWHERE IN HERE, I'LL PROBABLY HAVE TO PROCESS THE QUERY TO MAKE SURE THE 
 		// THE PROGRAM WILL KNOW WHAT TO DO
-	
+
+	// Loop through the tokens of the string,
+	// until we've got the query	
 	while ($query_token != false)
 	{
 		if ($query_token == "speak")
@@ -71,23 +94,62 @@
 	}
 	
 	$query_str = "";
+	$query = null;
 	
-	switch ($topic)
+	if ($type == "_l")
 	{
-	case "language":
 		// probably the name of the language will be only one token
 		$query_str = $query_token;
-		break;
-	case "origin":
-		$query_str = $query_token;
-		break;
+		//echo $query_str."\n";
+		$query = array($type, $location[0], $location[1], $query_str);
 	}
-	
+	if ($type == "co")
+	{
+		$query_str = $query_token;
+		$origin = parseLocation($query_str);
+		if (gettype($origin) == "array")
+			$query = array($type, $location[0], $location[1], $origin[0]);
+		else
+			$query = array($type, $location[0], $location[1], $origin);
+	}
+	if ($type == "rc" || $type == "cc")
+	{
+		$query_str = $query_token;
+		$origin = parseLocation($query_str);
+		//echo $origin[0]."\n".$origin[1]."\n";
+		$query = array($type, $location[0], $location[1], $origin[0], $origin[1]);
+	}
+	/*
+	switch ($type)
+	{
+	case "_l":
+		// probably the name of the language will be only one token
+		$query_str = $query_token;
+		echo $query_str."\n";
+		$query = array($type, $location[0], $location[1], $query_str);
+		break;
+	case "cc":
+		$query_str = $query_token;
+		$origin = parseLocation($query_str);
+		echo $origin[0]."\n".$origin[1]."\n";
+		$query = array($type, $location[0], $location[1], $origin[0], $origin[1]);
+		break;
+	case ""
+	}
+	 */
+
 	// with location, query_str, and topic calculated, get the information
-		// for filling in the site
-	$networks = SearchQuery::getNetworkSearchResults($topic, $query_str, $location);
-	
+	// for filling in the site
+	//
+	// start connection
+	$con = getDBConnection();
+	//$networks = SearchQuery::getNetworkSearchResults($topic, $query_str, $location);
+	$networks = SearchQuery::getNetworkSearchResults($query, $con);
+
+	mysqli_close($con);
+
 ?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -124,23 +186,25 @@
 					</div>
 					<div id="best-match">
 						<h3>Best Match</h3>
-						<?php if (count($networks) == 0) : ?>
-							<p>No networks found</p>
-						<?php else:
-							HTMLBuilder::displayNetwork($networks[0]);
-							endif;
+						<?php 
+						if(count($networks) <= 0)
+							{ HTMLBuilder::displayPossibleNetwork($query); }
+						else {
+							 HTMLBuilder::displayNetwork($networks[0]); 
+						}
 						?>
 					</div>
 					<div id="related-networks">
 						<h3>Related Networks</h3>
-						<?php if (count($networks) < 2) : ?>
+						<?php// if (count($networks) < 2) : ?>
 							<p>No related networks</p>
-						<?php else : 
+						<?php/* else : 
 							for ($i=1; $i < count($networks); $i++)
 							{
 								HTMLBuilder::displayNetwork($networks[$i]);
 							}
 							endif;
+						 */
 						?>
 					</div>
 				</div>

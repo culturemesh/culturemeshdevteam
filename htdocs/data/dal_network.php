@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors',1);
+//ini_set('display_errors',1);
 /**
   * @operations - 
   * 	CREATE
@@ -40,9 +40,9 @@ class Network
 		}
 		
 		if (!mysqli_query($con, "INSERT INTO networks 
-			(city_cur, region_cur, city_origin, region_origin, country_origin, language_origin, network_class, date_added, img_link)
-			VALUES ('". $network_dt->city_cur. "', '". $network_dt->region_cur. "', '". $network_dt->city_origin. "', '". $network_dt->region_origin .
-			"', '". $network_dt->city_origin. "', '". $network_dt->country_origin. "', '". $network_dt->language_origin . "', NOW() , '" . $network_dt->img_link  . "')"))
+			(city_cur, country_cur, city_origin, region_origin, country_origin, language_origin, network_class, date_added)
+			VALUES ('". $network_dt->city_cur. "', '". $network_dt->country_cur. "', '". $network_dt->city_origin. "', '". $network_dt->region_origin .
+			"', '". $network_dt->city_origin. "', '". $network_dt->country_origin. "', '". $network_dt->language_origin . "', NOW())"))
 		{
 			echo "Error message: " . $con->error;
 		}
@@ -51,6 +51,111 @@ class Network
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
 		echo "finished";
+	}
+
+	/*
+	 * Creates a network and returns
+	 * THE ID
+	 */	
+	public static function launchNetwork($network, $con = null)
+	{
+		$statement = "INSERT INTO networks ";
+
+		switch ($network->network_class){
+		case "co":
+			echo $network->country_origin;
+			$statement = $statement."(id_city_cur, city_cur, id_country_cur, country_cur,
+				id_country_origin, country_origin, network_class) 
+				VALUES ({$network->id_city_cur}, '{$network->city_cur}', 
+				{$network->id_country_cur}, '{$network->country_cur}', 
+				{$network->id_country_origin}, '{$network->country_origin}', 
+				'{$network->network_class}')";
+			break;
+		case "cc":
+			$statement = $statement."(id_city_cur, city_cur, id_country_cur, country_cur,
+				id_city_origin, city_origin,
+				id_country_origin, country_origin, network_class) 
+				VALUES ({$network->id_city_cur}, '{$network->city_cur}',
+				{$network->id_country_cur}, '{$network->country_cur}',
+				{$network->id_city_origin}, '{$network->city_origin}',
+				{$network->id_country_origin}, '{$network->country_origin}', 
+				'{$network->network_class}')";
+			break;
+		case "rc":
+			$statement = $statement."(id_city_cur, city_cur, id_country_cur, country_cur,
+				id_region_origin, region_origin,
+				id_country_origin, country_origin, network_class) 
+				VALUES ({$network->id_city_cur}, '{$network->city_cur}',
+				{$network->id_country_cur}, '{$network->country_cur}',
+				{$network->id_region_origin}, '{$network->region_origin}',
+				{$network->id_country_origin}, '{$network->country_origin}', 
+				'{$network->network_class}')";
+			break;
+		case "_l":
+			$statement = $statement."(id_city_cur, city_cur, id_country_cur, country_cur,
+				id_language_origin, language_origin, network_class) 
+				VALUES ({$network->id_city_cur}, '{$network->city_cur}', 
+				{$network->id_country_cur}, '{$network->country_cur}', 
+				{$network->id_language_origin}, '{$network->language_origin}',
+				'{$network->network_class}')";
+			break;
+		}
+
+		$must_close = false;
+		if ($con == null)
+		{
+			$con = getDBConnection();
+			$must_close = true;
+		}
+
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+
+		$result = mysqli_query($con, $statement); 
+
+		echo $con->error;
+		if ($result)
+		{
+			$l_network = null;
+			$id = null;
+			switch ($network->network_class)
+			{
+			case "co":
+				$query = array(0, $network->city_cur, $network->country_cur, $network->country_origin);
+				$l_network = Network::getNetworksByCO($query, $con);
+				break;
+			case "cc":
+				$query = array(0, $network->city_cur, $network->country_cur, $network->city_origin, $network->country_origin);
+				$l_network = Network::getNetworksByCC($query, $con);
+				break;
+			case "rc":
+				$query = array(0, $network->city_cur, $network->country_cur, $network->region_origin, $network->country_origin);
+				$l_network = Network::getNetworksByRC($query, $con);
+				break;
+			case "_l":
+				$query = array(0, $network->city_cur, $network->country_cur, $network->language_origin);
+				var_dump( $query);
+				$l_network = Network::getNetworksByL($query, $con);
+				break;
+			}
+
+			// Close network
+			if ($must_close)
+			{
+				mysqli_close($con);
+			}
+
+			// fetch id
+			while ($row = mysqli_fetch_array($l_network))
+				$id = $row['id'];
+
+			return $id;
+		}
+		else 
+			return false;
 	}
 	
 	////////////////////// READ OPERATIONS //////////////////////////////////////////////
@@ -101,7 +206,7 @@ class Network
 		// GET TABLE WITH  TOP FOUR NETWORKS +
 		// 	MEMBER COUNT
 		$result = mysqli_query($con,
-			"SELECT n.id, n.city_cur, n.region_cur, n.city_origin, n.region_origin, n.country_origin, n.language_origin, n.network_class, nr.member_count, p.post_count
+			"SELECT n.id, n.city_cur, n.country_cur, n.city_origin, n.region_origin, n.country_origin, n.language_origin, n.network_class, nr.member_count, p.post_count
 			FROM networks n 
 			JOIN (SELECT id_network, COUNT(id_network) AS member_count
                                     FROM network_registration
@@ -126,7 +231,7 @@ class Network
 			
 			$network_dt->id = $row['id'];
 			$network_dt->city_cur = $row['city_cur'];
-			$network_dt->region_cur = $row['region_cur'];
+			$network_dt->country_cur = $row['country_cur'];
 			$network_dt->city_origin = $row['city_origin'];
 			$network_dt->region_origin = $row['region_origin'];
 			$network_dt->country_origin = $row['country_origin'];
@@ -253,7 +358,124 @@ class Network
 		
 		return $result;
 	}
+
+	public static function getNetworksByCO($query, $con=null) {
+		$must_close = false;
+		if ($con == null)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
+			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
+			AND country_origin='{$query[3]}'");
+		
+		if ($must_close)
+			mysqli_close($con);
+		
+		if (!$result)
+			echo $con->error;
+		else
+			return $result;
+	}
+
+	public static function getNetworksByL($query, $con=null) {
+		$must_close = false;
+		if ($con == null)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		echo "SELECT * FROM networks WHERE 
+			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
+			AND language_origin='{$query[3]}'";
+
+		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
+			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
+			AND language_origin='{$query[3]}'");
+		
+		if ($must_close)
+			mysqli_close($con);
+		
+		if (!$result){
+			echo $con->error;
+			return false;
+		}
+		else
+			return $result;
+	}
+
+	public static function getNetworksByRC($query, $con=null) {
+		$must_close = false;
+		if ($con == null)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
+			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
+			AND region_origin='{$query[3]}' AND country_origin='{$query[4]}'");
+		
+		if ($must_close)
+			mysqli_close($con);
+		
+		if (!$result) {
+			echo $con->error;
+			return false;
+		}
+		else
+			return $result;
+	}
 	
+	public static function getNetworksByCC($query, $con=null) {
+		$must_close = false;
+		if ($con == null)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		
+		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
+			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
+			AND city_origin='{$query[3]}' AND country_origin='{$query[4]}'");
+		
+		if ($must_close)
+			mysqli_close($con);
+		
+		if (!$result) {
+			echo $con->error;
+			return false;
+		}
+		else
+			return $result;
+	}
 	////////////////////// UPDATE OPERATIONS /////////////////////
 	public static function updateNetwork($network_dt)
 	{
@@ -269,7 +491,7 @@ class Network
 		}
 		
 		mysqli_query($con, "UPDATE networks 
-			SET city_cur='". $network_dt->city_cur ."', region_cur='". $network_dt->region_cur .
+			SET city_cur='". $network_dt->city_cur ."', country_cur='". $network_dt->country_cur .
 			"', city_origin='". $network_dt->city_origin ."', region_origin='". $network_dt->region_origin .
 			"', country_origin='". $network_dt->country_origin ."', language_origin='". $network_dt->language_origin . 
 			"', network_class='".$network_dt->network_class .
@@ -324,7 +546,7 @@ class Network
 		{	
 			$network_dt->id = $row['id'];
 			$network_dt->city_cur = $row['city_cur'];
-			$network_dt->region_cur = $row['region_cur'];
+			$network_dt->country_cur = $row['country_cur'];
 			$network_dt->city_origin = $row['city_origin'];
 			$network_dt->region_origin = $row['region_origin'];
 			$network_dt->country_origin = $row['country_origin'];
