@@ -39,5 +39,32 @@ class Language
 
 		return $result;
 	}
+
+	public static function getLanguage($name, $con=NULL)
+	{
+		$must_close = false;
+
+		if ($con == NULL)
+		{ $con = getDBConnection();
+		  $must_close = true;
+		}
+
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+
+		$result = mysqli_query($con,"SELECT name FROM languages 
+			WHERE name='{$name}'");
+			
+		if ($must_close)
+			mysqli_close($con);
+
+		if (!$result)
+			echo $con->error;
+
+		return $result;
+	}
 }
 ?>

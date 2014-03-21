@@ -62,7 +62,7 @@ class HTMLBuilder
 			<div class='net-info'>
 				<form method='POST' action='search_launch_network.php'> 
 					<p class='bottom-text'>{$title}</p>
-					<input type='submit' id='launch-network' value='Launch Network'></input>
+					<input type='submit' class='launch-network' value='Launch Network'></input>
 					<input type='hidden' name=type value='{$query[0]}'/>
 					<input type='hidden' name=city_cur value='{$query[1]}'/>
 					<input type='hidden' name=country_cur value='{$query[2]}'/>

@@ -398,7 +398,7 @@ class Network
 		  {
 		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		  }
-		
+
 		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
 			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
 			AND language_origin='{$query[3]}'");

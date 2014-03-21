@@ -53,7 +53,8 @@ LocList.prototype.slice = function(start, end) {
 LocList.prototype.search = function(term) {
 	var results = [];
 	for (var i = 0; i < this.list.length; i++) {
-		match = this.list[i].name.indexOf(term) == 0;
+		var lower_name = this.list[i].name.toLowerCase();
+		match = lower_name.indexOf(term.toLowerCase()) == 0;
 		if (match != false) 
 			results.push(this.list[i]);
 	}
@@ -217,7 +218,15 @@ function SearchBar() {
 	 * 	  - data, a list of text
 	**/
 	function fillUl(ul, data) {
+		var name = null;	
 		for (var i = 0; i < data.length; i++) {
+			// check for duplicate names
+			// if they're in there, forget em
+			if (name == data[i].name) 
+			  {continue;}
+			else 
+			  {name = data[i].name;}
+			
 			var item = document.createElement("LI");
 			var itemText = document.createTextNode(data[i].name);
 			item.appendChild(itemText);
@@ -342,7 +351,8 @@ function SearchBar() {
 		var list = [];
 		for (var i = 0; i < src.length; i++)
 		{
-			match = src[i].name.indexOf(term) == 0;
+			var lower_src = src[i].name.toLowerCase();
+			match = lower_src.indexOf(term.toLowerCase()) == 0;
 			if (match)
 				list.push(src[i]);
 		}

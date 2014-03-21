@@ -58,5 +58,8 @@ $id = Network::launchNetwork($network, $con);
 var_dump( $id);
 mysqli_close($con);
 
-header("Location: network.php?id={$id}");
+if (!$id)
+  { header("Location: search_results.php?error=Could+not+launch+network"); }
+else
+  { header("Location: network.php?id={$id}"); }
 ?>

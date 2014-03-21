@@ -1,9 +1,13 @@
 <?php
+ini_set('display_errors', true);
+error_reporting(E_ALL ^ E_NOTICE);
 
 include_once("data/dal_network.php");
 include_once("data/dal_network-dt.php");
 include_once("data/dal_post.php");
 include_once("data/dal_network_registration.php");
+include_once("data/dal_location.php");
+include_once("data/dal_language.php");
 
 /* Could perhaps be a query object, constructed with three parameters*/
 class SearchQuery
@@ -68,6 +72,8 @@ class SearchQuery
 			// [1: o_language, 2: city_cur, 3: country_cur]
 			$results = Network::getNetworksByL($query, $con);
 			break;
+		default:
+			return array();
 		}
 		// get nearby cities here
 		//
@@ -94,6 +100,29 @@ class SearchQuery
 		}
 		
 		return $networks;
+	}
+
+	public static function checkValue($value, $prompt, $con)
+	{
+		switch ($prompt)
+		{
+		case "language":
+			$result = Language::getLanguage($value, $con);
+			break;
+		case "country":
+			$result = Location::getCountry($value, $con);
+			break;
+		case "city/region":
+			$result = Location::getCity($value, $con);
+			if ($result->num_rows == 0)
+			  { $result = Location::getRegion($value, $con); }
+			break;
+		}
+
+		if ($result->num_rows == 0)
+		  { return false; }
+		else
+		  { return true; }
 	}
 
 
