@@ -204,17 +204,7 @@
 					</div>
 				</div>
 				<div class="net-right">
-					<div id="search">
-						<form id ="search-form" method="GET" action="search_results.php">
-							<input type="text" id="search-1" class="net-search" name="search-1" value="Find people who "/>
-								<ul id="s-query" class="network search"></ul>
-								<ul id="s-var" class="network search"></ul>
-							<input type="text" id="search-2" class="net-search" name="search-2" value="Near"/>
-								<ul id="s-location" class="network search"></ul>
-							<input type="submit" class="network search-button" value="Go"/>
-							<input type="hidden" id="search-topic" name="search-topic"></input>
-						</form>
-					</div>
+					<?php HTMLBuilder::displaySearchBar(); ?>
 					<div id="sr-error"><p><?php if( isset($_GET['error'])) echo $_GET['error']; ?></p></div>
 					<div id="invalid-search"><p><?php if(!$valid_search) echo "There are no networks that match. Try another search"; ?></p></div>
 					<div id="best-match">

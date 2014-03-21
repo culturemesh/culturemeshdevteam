@@ -141,17 +141,7 @@
 					</div>
 				</div>
 				<div class="net-right">
-					<div id="search">
-						<form id ="search-form" method="GET" action="search_results.php">
-							<input type="text" id="search-1" class="net-search" name="search-1" value="Find people who "/>
-								<ul id="s-query" class="network search"></ul>
-								<ul id="s-var" class="network search"></ul>
-							<input type="text" id="search-2" class="net-search" name="search-2" value="Near"/>
-								<ul id="s-location" class="network search"></ul>
-							<input type="submit" class="network search-button" value="Go">
-							<input type="hidden" id="search-topic" name="search-topic"></input>
-						</form>
-					</div>
+					<?php HTMLBuilder::displaySearchBar(); ?>	
 					<?php //HTMLBuilder::displayLrgNetwork($network); ?>
 					<div>
 						<div class='net-info'>
