@@ -158,7 +158,7 @@
                           },
                           error: function(jqXHR, exception)
                           {
-                              alert(jqXHR.status + "\n" + exception);
+				$("#log_validation").text("We\'re having server troubles. Try again later.");
                           }
                         });
                     });
