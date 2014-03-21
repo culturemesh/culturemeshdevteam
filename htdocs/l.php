@@ -7,7 +7,10 @@
   * Database connection failed - 5
 **/
 
+echo "Check";
+
 if($_POST['email'] && $_POST['password']){
+	
 		include 'zz341/fxn.php';
 		include_once("data/dal_user.php");
 		include_once("data/dal_user-dt.php");
@@ -74,7 +77,7 @@ if($_POST['email'] && $_POST['password']){
 }
 else{
     //header("Location: index.php");
-    $json_response = array
+    $json_response = array(
     "error" => NULL,
     "network" => NULL,
     "member" => NULL);
