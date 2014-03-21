@@ -7,8 +7,6 @@
   * Database connection failed - 5
 **/
 
-echo "Check";
-
 if($_POST['email'] && $_POST['password']){
 	
 		include 'zz341/fxn.php';
