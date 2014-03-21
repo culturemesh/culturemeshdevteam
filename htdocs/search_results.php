@@ -4,9 +4,21 @@
 	include "log.php";
 	include "search_query.php";
 	include "html_builder.php";
+	include_once "data/dal_user.php";
 	
 	session_name("myDiaspora");
 	session_start();
+
+	$guest = true;
+
+	if (!isset($_SESSION['uid']))
+		$guest = true;
+	else
+	{
+		$guest = false;
+		$user = User::getUserById($_SESSION['uid'], $con);
+		$user_email = $user->email;
+	}
 
 	function parseLocation($location)
 	{
