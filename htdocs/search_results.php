@@ -105,7 +105,7 @@
 		$location_raw = substr($_GET['search-2'], 5);
 		
 		// now separate into city and country, if possible
-		$location = str_getcsv($location_raw, ", ");
+		$location = explode(", ", $location_raw);
 		//$city = $loc_token;
 		//$loc_token = strtok(", ");
 		//$region = $loc_token;

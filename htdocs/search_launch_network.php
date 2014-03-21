@@ -12,6 +12,7 @@ $query = array($_POST['type'], $_POST['city_cur'], $_POST['country_cur'],
 // start db connection
 $con = getDBConnection();
 
+var_dump($query);
 // get current stuff
 $loc_data = Locations::getCCByName($query[1], $query[2], $con);
 $query_data = null;
@@ -55,7 +56,6 @@ $network->country_cur = $loc_data[3];
 //var_dump($network);
 $id = Network::launchNetwork($network, $con);
 
-var_dump( $id);
 mysqli_close($con);
 
 if (!$id)
