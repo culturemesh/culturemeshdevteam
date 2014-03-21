@@ -100,7 +100,7 @@ class User
 		else
 		{ $con = getDBConnection();}
 		
-		$result = mysqli_query($con, "SELECT id FROM users WHERE email={$email}");
+		$result = mysqli_query($con, "SELECT id FROM users WHERE email='{$email}'");
 		$row = mysqli_fetch_assoc($result);
 		
 		if (func_num_args() < 2)

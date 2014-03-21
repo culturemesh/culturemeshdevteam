@@ -67,7 +67,7 @@
 					    $(".guest").hide();
 				    }
 				 }
-				});
+				}); 
 			});
                     /*$("#reg_sumbit_btn").click(function(){
                         if( $("#reg-email").val().length() > 50))
