@@ -476,11 +476,11 @@ ul.search.network > li:hover
 
 #search-1.net-search
 {
-	width:48%;
+	width:43%;
 }
 #search-2.net-search
 {
-	width:48%;
+	width:43%;
 }
 #event-maker
 {
@@ -744,6 +744,30 @@ p.network
 a.network
 {
 
+}
+
+input[type="submit"].network.search-button
+{
+	margin-top:3px;
+}
+
+input[type="submit"].launch-network
+{
+	color:#E34036;
+	/*
+	border-style:solid;
+	border-width:1px;
+	border-color:#E34036;
+	*/
+	border:none;
+	background-color:white;
+	font: 14px Lato-Light, sans-serif;
+	margin-left:15px;
+}
+
+input[type="submit"].launch-network:hover
+{
+	color:#3EB3CA;
 }
 /**********************************/
 .team_thumb{

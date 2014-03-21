@@ -1,52 +1,79 @@
 <?php
-ini_set('display_errors', true);
-error_reporting(E_ALL ^ E_NOTICE);
+//ini_set('display_errors', true);
+//error_reporting(E_ALL ^ E_NOTICE);
 
-if(strlen($_POST['email'])>1 && strlen($_POST['password']) >=6 && strlen($_POST['password_conf'])>=6){
-    if($_POST['password'] != $_POST['password_conf']){
-        header("Location: registration_error.php?error=password_mismatch");
-    }//mismatch password
-    else{
-    	session_name("myDiaspora");
-    	session_start();
-    	
-        include 'zz341/fxn.php';
-        include 'data/dal_user.php';
-        
-        $conn = getDBConnection();
-        
-        $email = $conn->real_escape_string($_POST['email']);
-        
-        // check to see if email is already taken
-        $email_in_use = User::checkEmailMatch($email);
+$json_response = array(
+	"message" => NULL,
+	"error" => NULL,
+	"network" => NULL,
+	"member" => NULL
+);
+// make sure that the user has written
+// 	in all the required fields
+if(isset($_POST['email']) && isset($_POST['password'])
+	&& isset($_POST['password_conf'])){
 
-        if(!$email_in_use){
-        	$new_user = new UserDt();
-        	$new_user->username = null;
-        	$new_user->email = $email;
-        	$new_user->password = md5($_POST['password']);
-        	$new_user->role = 0;
-        	
-        	User::createUser($new_user, $conn);
-        	
-        	//if ($conn->error)
-        	//{
-        	//	header("Location: registration_error.php?error=registration_failed");
-        	//}
-        	//else
-        	//{
-        		$_SESSION['uid'] = User::getUserId($email);
-        		mysqli_close($conn);
-        		header("Location: profile_edit.php");
-        	//}
-        	
-        }//valid new user
-        else{
-            header("Location: registration_error.php?error=user_exists");
-        }//username already exists        
+	// Check if password is long enough to be 
+		// worthy of entry into my database
+	if( strlen($_POST['password']) < 6) {
+		$json_response["message"] = "Password must be longer than 6 characters.";
+		$json_response["error"] = 2;
+		echo json_encode($json_response);
+	}
+
+	// Check if password matches password confirmation
+	else if($_POST['password'] != $_POST['password_conf']){
+		$json_response["message"] = "Password confirmation does not match.";
+		$json_response["error"] = 3;
+		echo json_encode($json_response);
+	}
+	else
+	{
+		session_name("myDiaspora");
+		session_start();
+		
+		include 'zz341/fxn.php';
+		include 'data/dal_user.php';
+		
+		$conn = getDBConnection();
+
+		
+		$email = $conn->real_escape_string($_POST['email']);
+		
+		// check to see if email is already taken
+		$email_in_use = User::checkEmailMatch($email);
+
+		if(!$email_in_use){
+			$new_user = new UserDt();
+			$new_user->username = null;
+			$new_user->email = $email;
+			$new_user->password = md5($_POST['password']);
+			$new_user->role = 0;
+			
+			// create user
+			User::createUser($new_user, $conn);
+			
+			// get user id back
+			$_SESSION['uid'] = User::getUserId($email);
+
+			// close up
+			mysqli_close($conn);
+			$json_response["error"] = 5;
+			$json_response["message"] = "Account created successfully!";
+			echo json_encode($json_response);
+		}
+		else
+		{
+		    $json_response["error"] = 4;
+		    $json_response["message"] = "Username already exists.";
+		    echo json_encode($json_response);
+		}  
     }
 }
-else{
-    header("Location: index.php");
+
+else {
+	$json_response["error"] = 1;
+	$json_response["message"] = "Please fill out all of the fields.";
+	echo json_encode($json_response);
 }
 ?>

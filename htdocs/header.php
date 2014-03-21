@@ -25,18 +25,49 @@
                 <input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
                 <div class="clear"></div>
                 <span id="password_validation"></span>
+                <span id="server_error"></span>
                 </div>
                 </br>
                 </br>
                 <span id="pass_mism_txt" class="label label-important">Passwords don\'t match. Please try again.</span>
                 <div class="clear"></div>
                 <input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
-                <span id="server_error"></span>
                 </div>
                 </form>
                     <script>
-                    $("#email_dup_txt").hide();
-                    $("#pass_mism_txt").hide();
+			$("#email_dup_txt").hide();
+			$("#pass_mism_txt").hide();
+
+			$("#reg_submit_btn").click(function(event){
+				event.preventDefault();
+
+				
+				var email = $("#reg-email").val();
+				var password = $("#password").val();
+				var password_conf = $("#password_conf").val();
+				var datastring = "email=" + email + "&password=" + password + "&password_conf=" + password_conf;
+
+				$.ajax({
+				 type:"POST",
+				 url:"r.php",
+				 data: datastring,
+				 success: function(data)
+				 {
+				    var res_data = jQuery.parseJSON(data)
+				    $("#server_error").text(res_data["message"]);
+				    if (res_data["error"] == 5) {
+					    //window.location("profile_settings.php");
+					    $("#login_modal").modal("hide");
+					    $("#login-link").hide();
+					    $("#register-link").hide();
+					    $("#welcome").show(); 
+					    $("#welcome").text("Welcome, " + email);
+					    $("#sign-out").show();
+					    $(".guest").hide();
+				    }
+				 }
+				});
+			});
                     /*$("#reg_sumbit_btn").click(function(){
                         if( $("#reg-email").val().length() > 50))
                         {
@@ -45,28 +76,11 @@
                         if( $("#password").val() != $("#password_conf").val() )
                         $.post("r.php", {"reg_sub":$("#reg_form").serialize()})
                         .done(function(data){
-                            switch(data){
-                                case "1":
-                                    $("#login-link").hide();
-                                    $("#register-link").hide();
-                                    $("#welcome").show(); 
-                                    $("#welcome").text("Welcome, " + email);
-                                    $("#sign-out").show();
-                                    $(".guest").show();
-                                    //window.location("profile_edit.php");
-                                    break;
-                                case "2":
-                                    $("#server_error").text("Your login information is incorrect.");
-                                    break;
-                                case "3":
-                                    $("#server_error").text("Your email address is too long.");
-                                    break;
-                                case "4":
-                                    $("#server_error").text("Your password is too long.");
-                                    break;
-                                case "5":
-                                    $("#server_error").text("We\'re having database troubles on our end");
-                                    break;
+				    var res_data = jQuery.parseJSON(data)
+				    $("#server_error").text(res_data["message"]);
+				    if (res_data["error"] == 1) {
+					    //window.location("profile_settings.php");
+				    }
                             }
                         });
                     });*/
@@ -123,22 +137,21 @@
                                     	$(".reg-guest").show();
                                     	
                                     break;
-                                case "2":
+                                case 2:
                                     $("#log_validation").text("Your username/password combination is incorrect");
                                     break;
-                                case "3":
+                                case 3:
                                     $("#log_validation").text("Your email is too long.");
                                     break;
-                                case "4":
+                                case 4:
                                     $("#log_validation").text("Your password is too long.");
                                     break;
-                                case "5":
+                                case 5:
                                     $("#log_validation").text("Our servers are misbehaving. Come back later.");
                                     break;
                                 default:
-                                    $("#log_validation").text("Something has gone wrong.");
-                                    $("#login_modal").modal("hide");
-                                    alert("click me");
+                                    $("#log_validation").text("Something has gone wrong. Try again later.");
+                                    //$("#login_modal").modal("hide");
                                     break;
                                 }
                           },

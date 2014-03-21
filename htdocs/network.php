@@ -148,7 +148,7 @@
 								<ul id="s-var" class="network search"></ul>
 							<input type="text" id="search-2" class="net-search" name="search-2" value="Near"/>
 								<ul id="s-location" class="network search"></ul>
-							<input type="submit" style="display:none"/>
+							<input type="submit" class="network search-button" value="Go">
 							<input type="hidden" id="search-topic" name="search-topic"></input>
 						</form>
 					</div>

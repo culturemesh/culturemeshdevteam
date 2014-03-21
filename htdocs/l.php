@@ -74,6 +74,11 @@ if($_POST['email'] && $_POST['password']){
 }
 else{
     //header("Location: index.php");
-    echo "Invalid Post";
+    $json_response = array
+    "error" => NULL,
+    "network" => NULL,
+    "member" => NULL);
+
+    echo json_encode($json_response);
 }
 ?>
