@@ -4,7 +4,7 @@ var queryList = [];
 
 // Fill up queryList with List Items
 for (var i = 0; i < queries.length; i++) {
-	item = new ListItem();
+	var item = new ListItem();
 	item.name = queries[i];
 	queryList.push(item);
 }
@@ -74,7 +74,7 @@ function loadInitialData() {
 			languages = [];
 
 			for (var i = 0; i < raw_data["languages"].length; i++) {
-				item = new ListItem();
+				var item = new ListItem();
 				item.name = raw_data["languages"][i];
 				languages.push(item);
 			}
@@ -87,7 +87,7 @@ function loadInitialData() {
 
 				// organize location data
 				for (var i = 0; i < raw_data[key].length; i++) {
-					loc = new ListItem();
+					var loc = new ListItem();
 					loc.name = raw_data[key][i]["name"];
 					if (key == "regions" || key == "cities")
 					{
@@ -380,7 +380,7 @@ function SearchBar() {
 		}
 	}
 }
-
+/*
 function searchQuery(query, sText = "") {
 	var pText = "query=" + query;
 	// maybe process sText, then add
@@ -400,3 +400,4 @@ function searchQuery(query, sText = "") {
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send(pText);
 }
+*/
