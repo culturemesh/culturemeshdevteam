@@ -67,7 +67,7 @@
 					    $(".guest").hide();
 				    }
 				 }
-				});
+				}); 
 			});
                     /*$("#reg_sumbit_btn").click(function(){
                         if( $("#reg-email").val().length() > 50))
@@ -158,7 +158,7 @@
                           },
                           error: function(jqXHR, exception)
                           {
-                              alert(jqXHR.status + "\n" + exception);
+				$("#log_validation").text("We\'re having server troubles. Try again later.");
                           }
                         });
                     });

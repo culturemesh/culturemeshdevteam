@@ -4,3 +4,5 @@
 localdbconn.php
 htdocs/db_test*
 /nbproject/private/
+htdocs/error_log*
+htdocs/php.ini*

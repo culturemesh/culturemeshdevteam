@@ -4,9 +4,21 @@
 	include "log.php";
 	include "search_query.php";
 	include "html_builder.php";
+	include_once "data/dal_user.php";
 	
 	session_name("myDiaspora");
 	session_start();
+
+	$guest = true;
+
+	if (!isset($_SESSION['uid']))
+		$guest = true;
+	else
+	{
+		$guest = false;
+		$user = User::getUserById($_SESSION['uid'], $con);
+		$user_email = $user->email;
+	}
 
 	function parseLocation($location)
 	{
@@ -105,7 +117,7 @@
 		$location_raw = substr($_GET['search-2'], 5);
 		
 		// now separate into city and country, if possible
-		$location = str_getcsv($location_raw, ", ");
+		$location = explode(", ", $location_raw);
 		//$city = $loc_token;
 		//$loc_token = strtok(", ");
 		//$region = $loc_token;
