@@ -16,13 +16,13 @@ var q_results, locations, origins, li_origins, li_locations, locationClasses, la
 
 origins = new LocList();
 locations = new LocList();
-/*
+
 var locations = [];
 var li_origins = [];
 var cur_locations = [];
 var languages = [];
 var li_languages = [];
-*/
+
 
 loadInitialData();
 searchBar = new SearchBar();
@@ -37,8 +37,7 @@ function LocList() {
 
 
 }
-/* Push an object onto the list
- */
+// Push an object onto the list
 LocList.prototype.push = function(item) {
 	this.list.push(item);
 }
@@ -47,9 +46,8 @@ LocList.prototype.slice = function(start, end) {
 	return this.list.slice(start, end);
 }
 
-/* Returns a list of matches to 
- * a search
- */
+// Returns a list of matches to 
+// a search
 LocList.prototype.search = function(term) {
 	var results = [];
 	for (var i = 0; i < this.list.length; i++) {
@@ -123,6 +121,8 @@ function loadInitialData() {
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("data=initial");
 }
+
+searchBar = new SearchBar();
 
 function SearchBar() {
 	var searchOne = document.getElementById("search-1");
