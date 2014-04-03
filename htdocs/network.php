@@ -224,7 +224,7 @@
 							<div class="clear"></div>
 							<input type="submit" class="network" value="Send"></input>
 						</form>
-						<ul class="network">
+						<ul id="post-wall-ul" class="network">
 						<?php 
 						foreach($posts as $post)
 							HTMLBuilder::displayPost($post); 

@@ -118,7 +118,7 @@ class Event
 		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		$result = mysqli_query($con,"SELECT * FROM events e, users u WHERE e.id_host=u.id AND id_network=" . $id);
+		$result = mysqli_query($con,"SELECT * FROM events e, users u WHERE event_date >= CURDATE() AND e.id_host=u.id AND id_network=" . $id);
 		
 		$events = array();
 		
