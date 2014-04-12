@@ -226,12 +226,13 @@
 						</form>
 						<ul id="post-wall-ul" class="network">
 						<?php 
-						//foreach($posts as $post)
-						//	HTMLBuilder::displayPost($post); 
+						foreach($posts as $post)
+							HTMLBuilder::displayPost($post); 
 						?>
 						</ul>
 						<script src="js/post-wall.js"></script>
 						<script>
+						/*
 						var wall = document.getElementById("post-wall-ul");
 							var postData;
 							var grabData = function(data) {
@@ -251,13 +252,14 @@
 										else
 										  { replyPosts[origId].push(postData); }
 								       	}
-								 */
+								 *//*
 								}
 								// do something with replyPostslength data
 								// add a div for reply
 							}
 
 							loadPostData(<?php echo $_SESSION['cur_network']; ?>, grabData);
+						 */
 						</script>
 					</div>
 				</div>

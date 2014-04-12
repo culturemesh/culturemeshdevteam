@@ -12,7 +12,7 @@ for (var i = 0; i < queries.length; i++) {
 
 var prompt_strings = ["Find people who speak",
 			"Find people who are from",
-			"Near"];
+			"In"];
 var q_results, locations, origins, li_origins, li_locations, locationClasses, languages, li_languages;
 
 origins = new LocList();
@@ -338,7 +338,7 @@ function SearchBar() {
 				clearUl(locUl);
 
 				// extract the "Near"
-				var query_str = searchTwo.value.slice(5);
+				var query_str = searchTwo.value.slice(3);
 				li_locations = locations.search(query_str);
 				li_locations = rankLocations(li_locations);
 				fillUl(locUl, li_locations.slice(0,4));

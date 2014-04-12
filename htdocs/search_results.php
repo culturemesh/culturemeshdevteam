@@ -139,7 +139,10 @@
 		$valid_search = validateQuery($people_who, $con);
 
 		// get rid of 'near ' in location
-		$location_raw = mysql_escape_string(substr($_GET['search-2'], 5));
+		//$location_raw = mysql_escape_string(substr($_GET['search-2'], 5));
+
+		// get rid of 'in ' in location
+		$location_raw = mysql_escape_string(substr($_GET['search-2'], 3));
 		
 		// now separate into city and country, if possible
 		$location = explode(", ", $location_raw);

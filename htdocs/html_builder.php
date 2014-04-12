@@ -46,40 +46,48 @@ class HTMLBuilder
 		$title = null;
 		$location = null;
 		$query_str = null;
-		
-		for ($i = 1; $i < 4; $i++)
+		$location_start = 1;
+		$location_end = 4;
+
+		// get current location
+		for ($i = $location_start; $i < $location_end; $i++)
 		{
-			$location = $location.$query[$i];
-			if ($i < 3)
-			  { $location = $location . ", "; }
+			if ($query[$i] != null)
+			{ 
+				$location .= $query[$i];
+				if ( $location_end  - $i != 1)
+				  { $location .= ", "; }
+		       	}
+
 		}
 
-		switch ($query_length)
+		// get origin
+		if ($query[0] != "_l")
 		{
-		case 5:
-			$query_str = $query[4];
-			break;
-		case 6:
-			$query_str = $query[4] . ", " . $query[5];
-			break;
-		case 7:
-			$query_str = $query[4] . ", " . $query[5] . ", " . $query[6];
-			break;
+			for ($i = $location_end; $i < count($query); $i++)
+			{
+				if ($query[$i] != null)
+				{
+					$query_str .= $query[$i];
+					if (count($query) - $i != 1)
+					  { $query_str .= ", "; }
+				}
+			}
 		}
 
 		switch ($query[0])
 		{
 		case "_l":
-			$title = "{$query_str} speakers near {$location}";
+			$title = "{$query_str} speakers in {$location}";
 			break;
 		case "co":
-			$title = "From {$query_str} near {$location}";
+			$title = "From {$query_str} in {$location}";
 			break;
 		case "rc":
-			$title = "From {$query_str} near {$location}";
+			$title = "From {$query_str} in {$location}";
 			break;
 		case "cc":
-			$title = "From {$query_str} near {$location}";
+			$title = "From {$query_str} in {$location}";
 			break;
 		}
 
@@ -111,7 +119,7 @@ class HTMLBuilder
 				<input type='text' id='search-1' class='net-search' name='search-1' value='Find people who ' autocomplete='off'/>
 					<ul id='s-query' class='network search'></ul>
 					<ul id='s-var' class='network search'></ul>
-				<input type='text' id='search-2' class='net-search' name='search-2' value='Near ' autocomplete='off'/>
+				<input type='text' id='search-2' class='net-search' name='search-2' value='In ' autocomplete='off'/>
 					<ul id='s-location' class='network search'></ul>
 				<input type='submit' class='network search-button' value='Go'>
 				<input type='hidden' id='search-topic' name='search-topic'></input>
