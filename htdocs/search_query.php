@@ -51,25 +51,26 @@ class SearchQuery
 
 	public static function getNetworkSearchResults($query, $con)
 	{
+		//var_dump($query);
 		$result = null;
 		// topic
 		switch ($query[0])
 		{
 		// HUNT DOWN A NETWORK FOR THE USERS!!!!
 		case "co":
-			// [1: o_country, 2: city_cur, 3: country_cur] in the future, region as well
+			// [1: o_country, 2: city_cur, 3: region_cur, 4: country_cur] in the future, region as well
 			$results = Network::getNetworksByCO($query, $con);
 			break;
 		case "cc":
-			// [1: o_city, 2: o_country, 3: city_cur, 4: country_cur]
+			// [1: o_city, 2: o_country, 3: city_cur, 4: region_cur, 5: country_cur]
 			$results = Network::getNetworksByCC($query, $con);
 			break;
 		case "rc":
-			// [1: o_region, 2: o_country, 3: city_cur, 4: country_cur]
+			// [1: o_region, 2: o_country, 3: city_cur, 4: region_cur, 5: country_cur]
 			$results = Network::getNetworksByRC($query, $con);
 			break;
 		case "_l":
-			// [1: o_language, 2: city_cur, 3: country_cur]
+			// [1: o_language, 2: city_cur, 3: region_cur, 4: country_cur]
 			$results = Network::getNetworksByL($query, $con);
 			break;
 		default:
@@ -87,6 +88,7 @@ class SearchQuery
 			
 			$network_dt->id = $row['id'];
 			$network_dt->city_cur = $row['city_cur'];
+			$network_dt->region_cur = $row['region_cur'];
 			$network_dt->country_cur = $row['country_cur'];
 			$network_dt->city_origin = $row['city_origin'];
 			$network_dt->region_origin = $row['region_origin'];
@@ -101,7 +103,9 @@ class SearchQuery
 		
 		return $networks;
 	}
-
+	// make sure language is in database
+	// ONLY LEGIT THINGS ALLOWED
+	// 	- later, add checks for alternate spellings
 	public static function checkValue($value, $prompt, $con)
 	{
 		switch ($prompt)

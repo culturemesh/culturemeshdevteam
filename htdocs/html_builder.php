@@ -40,20 +40,54 @@ class HTMLBuilder
 
 	public static function displayPossibleNetwork($query)
 	{
+		// locations start at 1, have three addresses reserved (may be NULL)
+		// rest is variable
+		$query_length = count($query);
 		$title = null;
+		$location = null;
+		$query_str = null;
+		$location_start = 1;
+		$location_end = 4;
+
+		// get current location
+		for ($i = $location_start; $i < $location_end; $i++)
+		{
+			if ($query[$i] != null)
+			{ 
+				$location .= $query[$i];
+				if ( $location_end  - $i != 1)
+				  { $location .= ", "; }
+		       	}
+
+		}
+
+		// get origin
+		if ($query[0] != "_l")
+		{
+			for ($i = $location_end; $i < count($query); $i++)
+			{
+				if ($query[$i] != null)
+				{
+					$query_str .= $query[$i];
+					if (count($query) - $i != 1)
+					  { $query_str .= ", "; }
+				}
+			}
+		}
+
 		switch ($query[0])
 		{
 		case "_l":
-			$title = "{$query[3]} speakers near {$query[1]}, {$query[2]}";
+			$title = "{$query_str} speakers in {$location}";
 			break;
 		case "co":
-			$title = "From {$query[3]} near {$query[1]}, {$query[2]}";
+			$title = "From {$query_str} in {$location}";
 			break;
 		case "rc":
-			$title = "From {$query[3]}, {$query[4]}  near {$query[1]}, {$query[2]}";
+			$title = "From {$query_str} in {$location}";
 			break;
 		case "cc":
-			$title = "From {$query[3]}, {$query[4]} near {$query[1]}, {$query[2]}";
+			$title = "From {$query_str} in {$location}";
 			break;
 		}
 
@@ -65,12 +99,31 @@ class HTMLBuilder
 					<input type='submit' class='launch-network' value='Launch Network'></input>
 					<input type='hidden' name=type value='{$query[0]}'/>
 					<input type='hidden' name=city_cur value='{$query[1]}'/>
-					<input type='hidden' name=country_cur value='{$query[2]}'/>
-					<input type='hidden' name=q_1 value='{$query[3]}'/>
-					<input type='hidden' name=q_2 value='{$query[4]}'/>
+					<input type='hidden' name=region_cur value='{$query[2]}'/>
+					<input type='hidden' name=country_cur value='{$query[3]}'/>
+					<input type='hidden' name=q_1 value='{$query[4]}'/>
+					<input type='hidden' name=q_2 value='{$query[5]}'/>
+					<input type='hidden' name=q_3 value='{$query[6]}'/>
 				</form>
 			</div>
 			<div class='clear'></div>
+		</div>
+		";
+	}
+
+	public static function displaySearchBar()
+	{
+		echo "
+		<div id='search'>
+			<form id ='search-form' method='GET' action='search_results.php' autocomplete='off'>
+				<input type='text' id='search-1' class='net-search' name='search-1' value='Find people who ' autocomplete='off'/>
+					<ul id='s-query' class='network search'></ul>
+					<ul id='s-var' class='network search'></ul>
+				<input type='text' id='search-2' class='net-search' name='search-2' value='In ' autocomplete='off'/>
+					<ul id='s-location' class='network search'></ul>
+				<input type='submit' class='network search-button' value='Go'>
+				<input type='hidden' id='search-topic' name='search-topic'></input>
+			</form>
 		</div>
 		";
 	}
