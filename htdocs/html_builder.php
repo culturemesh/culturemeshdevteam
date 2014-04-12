@@ -37,6 +37,96 @@ class HTMLBuilder
 		</div>
 		";
 	}
+
+	public static function displayPossibleNetwork($query)
+	{
+		// locations start at 1, have three addresses reserved (may be NULL)
+		// rest is variable
+		$query_length = count($query);
+		$title = null;
+		$location = null;
+		$query_str = null;
+		$location_start = 1;
+		$location_end = 4;
+
+		// get current location
+		for ($i = $location_start; $i < $location_end; $i++)
+		{
+			if ($query[$i] != null)
+			{ 
+				$location .= $query[$i];
+				if ( $location_end  - $i != 1)
+				  { $location .= ", "; }
+		       	}
+
+		}
+
+		// get origin
+		if ($query[0] != "_l")
+		{
+			for ($i = $location_end; $i < count($query); $i++)
+			{
+				if ($query[$i] != null)
+				{
+					$query_str .= $query[$i];
+					if (count($query) - $i != 1)
+					  { $query_str .= ", "; }
+				}
+			}
+		}
+
+		switch ($query[0])
+		{
+		case "_l":
+			$title = "{$query_str} speakers in {$location}";
+			break;
+		case "co":
+			$title = "From {$query_str} in {$location}";
+			break;
+		case "rc":
+			$title = "From {$query_str} in {$location}";
+			break;
+		case "cc":
+			$title = "From {$query_str} in {$location}";
+			break;
+		}
+
+		echo "
+		<div>
+			<div class='net-info'>
+				<form method='POST' action='search_launch_network.php'> 
+					<p class='bottom-text'>{$title}</p>
+					<input type='submit' class='launch-network' value='Launch Network'></input>
+					<input type='hidden' name=type value='{$query[0]}'/>
+					<input type='hidden' name=city_cur value='{$query[1]}'/>
+					<input type='hidden' name=region_cur value='{$query[2]}'/>
+					<input type='hidden' name=country_cur value='{$query[3]}'/>
+					<input type='hidden' name=q_1 value='{$query[4]}'/>
+					<input type='hidden' name=q_2 value='{$query[5]}'/>
+					<input type='hidden' name=q_3 value='{$query[6]}'/>
+				</form>
+			</div>
+			<div class='clear'></div>
+		</div>
+		";
+	}
+
+	public static function displaySearchBar()
+	{
+		echo "
+		<div id='search'>
+			<form id ='search-form' method='GET' action='search_results.php' autocomplete='off'>
+				<input type='text' id='search-1' class='net-search' name='search-1' value='Find people who ' autocomplete='off'/>
+					<ul id='s-query' class='network search'></ul>
+					<ul id='s-var' class='network search'></ul>
+				<input type='text' id='search-2' class='net-search' name='search-2' value='In ' autocomplete='off'/>
+					<ul id='s-location' class='network search'></ul>
+				<input type='submit' class='network search-button' value='Go'>
+				<input type='hidden' id='search-topic' name='search-topic'></input>
+			</form>
+		</div>
+		";
+	}
 	
 	public static function displayLrgNetwork($network)
 	{
@@ -87,6 +177,40 @@ class HTMLBuilder
 			</div>
 		</li>
 		";
+	}
+
+	public static function displayEventMonth($month)
+	{
+		echo "
+		<td class='event-card month'>
+			<p>{$month}</p>
+		</td>
+		";
+	}
+
+	public static function displayEventCard($event)
+	{
+		$datetime = strtotime($event->event_date);
+		$datetime = date("m/d/y g:i", $datetime);
+		
+		echo "
+		<td class='event-card card'>
+			<div >
+				<h3 class='h-network'>{$event->title}</h3>
+			</div>
+			<div class='card-content'>
+				<div class='card-img'>
+					<img src='images/background-placeholder.png' alt='No image'></img>
+				</div>
+				<div class='card-info'>
+					<p id='event-info'>With {$event->email}</p>
+					<p id='event-date'>{$datetime}</p>
+				</div>
+			</div>
+			<div class='clear'></div>
+		</td>
+		";
+
 	}
 	
 	public static function displaySearchBar()
@@ -178,23 +302,23 @@ class HTMLBuilder
 		";
 	}
 	
-	private static function formatNetworkTitle($network)
+	public static function formatNetworkTitle($network)
 	{
 		$title = '';
 		
 		switch($network->network_class)
 		{
 		case '_l':	// LANGUAGE
-			$title = "{$network->language_origin} language in {$network->city_cur}, {$network->region_cur}";
+			$title = "{$network->language_origin} speakers in {$network->city_cur}, {$network->country_cur}";
 			break;
-		case 'cr':	// CITY,REGION
-			$title = "From {$network->city_origin}, {$network->region_origin} in {$network->city_cur}, {$network->region_cur}";
+		case 'cc':	// CITY,REGION
+			$title = "From {$network->city_origin}, {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
 			break;
-		case '_r':	// REGION
-			$title = "From {$network->region_origin} in {$network->city_cur}, {$network->region_cur}";
+		case 'rc':	// REGION
+			$title = "From {$network->region_origin}, {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
 			break;
 		case 'co':	// COUNTRY
-			$title = "From {$network->country_origin} in {$network->city_cur}, {$network->region_cur}";
+			$title = "From {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
 			break;
 		}
 		

@@ -23,6 +23,8 @@ if ($valid)
 	$post->id_user = $_SESSION['uid'];
 	$post->id_network = $_SESSION['cur_network'];
 	$post->post_text = mysql_escape_string($_POST['post_text']);
+	$post->post_class = mysql_escape_string($_POST['post_class']);
+	$post->post_original = mysql_escape_string($_POST['post_original']);
 	
 	Post::createPost($post);
 	

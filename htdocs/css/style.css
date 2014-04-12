@@ -73,6 +73,34 @@ body {
     padding-left:10px;
 }
 
+ul.search
+{
+   	display:none;
+	position:absolute;
+	top:100px;
+	list-style-type:none;
+	background:white;
+	font-size:18px;
+	font-family: 'Lato-Regular', sans-serif;
+	color:#EF5330;
+    letter-spacing:1px;
+	width:auto;
+}
+
+ul.search > li
+{
+	padding:5px;
+	background-color:#F9F9F9;
+	border: 1px soloid #CCCCCC;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+
+ul.search > li:hover {
+	color:#3EB3CA;
+	font-family: 'Lato-Bold', sans-serif;
+	background-color:#FFFFFF;
+}
 /*
 #search-floater {
     float:left;
@@ -112,6 +140,7 @@ input[type="submit"].stage-button {
 #search-2 {
     margin-left:10px;
 }
+
 
 .bottom-div{
     width:32%;
@@ -353,8 +382,18 @@ hr.hr-modal {
 
 .lrg-network-stats
 {
+     background-color:#E34036;
+     margin-left:0px;
+     padding-top:10px;
+     padding-left:6px;
+     padding-right:6px;
+     height:30px;
+     border: medium none;
+     border-radius: 5px;
+     width:auto;
+     float:left;
      font: 16px Lato-Light, sans-serif;
-     color: #000000;
+     color: white;
 }
 
 /*********************************/
@@ -423,6 +462,26 @@ input.net-search
 	width:46%;
 	color:#A6A6A6;
 }
+
+ul.search.network > li
+{
+	background-color:#97CB38;
+	color:white;
+}
+
+ul.search.network > li:hover
+{
+	background-color:#A7DB48;
+}
+
+#search-1.net-search
+{
+	width:43%;
+}
+#search-2.net-search
+{
+	width:43%;
+}
 #event-maker
 {
 	display:none;
@@ -433,6 +492,7 @@ input.net-search
 	background-color:#E6E6E6;
 	width:600px;
 	padding: 3px 3px;
+	height:238px;
 }
 
 .event-text
@@ -462,14 +522,23 @@ textarea.event-text
 button.network
 {
 	height:40px;
+	margin-left:10px;
 	font: Lato;
-	font-size:20px;
+	font-size:16px;
 	font-weight: bold;
 	color: #FFFFFF;
-	background-color:#e34036;;
+	background-color:#e34036;
 	border:none;
 	border-radius:5px;
+	float:left;
 }
+
+button.network:hover
+{
+	background-color:#97CB38;
+
+}
+
 input[type="submit"].network
 {
 	font: Lato;
@@ -482,7 +551,58 @@ input[type="submit"].network
 	margin-right:3px;
 }
 
+input[type="submit"].network:hover
+{
+	background-color:#C31016;
+
+}
+
+div.event-slider
+{
+	height:150px;
+	width:475px;
+	float:left;
+	background-color:#EEEEEE;
+	overflow:hidden;
+	overflow-y:hidden;
+	ms-overflow-y:hidden;
+	position:relative;
+}
+
+button.slider-button
+{
+	float:left;
+	height:150px;
+	width:45px;
+	border-style:none;
+	background-color:#EEEEEE;
+}
+
+button.slider-button:hover
+{
+	background-color:#3EB3CA;
+}
+
+#slider-left
+{
+	background-image:url('../images/arrow-left.png');
+	background-position:-15px;
+}
+
+#slider-right
+{
+	background-image:url('../images/arrow-right.png');
+	background-position:-8px;
+
+}
+
 #event-info
+{
+	font: 13px Lato-Light, sans-serif;
+	color: #A6A6A6;
+}
+
+#event-date
 {
 	font: 13px Lato-Light, sans-serif;
 	color: #A6A6A6;
@@ -494,6 +614,58 @@ input[type="submit"].network
 	color: #404040;
 	margin-bottom:10px;;
 	margin-top:15px;
+}
+
+td.event-card
+{
+	position:absolute;
+	height:140px;
+	margin-top:5px;
+}
+
+td.event-card.month
+{
+	height:79px;
+	width:75px;
+	text-align:center;
+	background-color:#DBDBDB;
+	color:white;
+	font-weight:bold;
+	vertical-align:middle;
+	padding-top:61px;
+}
+
+td.event-card.card
+{
+	padding: 0px 5px;
+	height: 140px;
+	background-color:white;
+	width: 275px;
+}
+
+td.event-card.card:hover
+{
+	border-style: solid;
+	border-width: 3px;
+	border-color: rgb(239, 83, 48);
+}
+.card-content
+{
+	margin-top:15px;
+}
+
+.card-img
+{
+	float:left;
+	height:70px;
+	width:70px;
+}
+
+.card-info
+{
+	float:left;
+	margin-left:10px;
+	width:65%;
 }
 
 input[type="text"].hidden-field
@@ -509,6 +681,11 @@ li.event
 	border-color:#E6E6E6;
 	border-radius:0;
 	padding-left:15px;
+}
+
+ul.post-wall-ul.child
+{
+	display:none;
 }
 
 .post-text
@@ -554,9 +731,48 @@ p.network
 	margin-left:0px;
 }
 
+#event-post
+{
+     border: medium none;
+     border-radius: 5px;
+     background-color:#3EB3CA;
+     color:white; 
+     height:30px;
+     margin-top: 10px;
+}
+
+#event-post:hover
+{
+     background-color:#1E93AA;
+}
+
 a.network
 {
-	
+
+}
+
+input[type="submit"].network.search-button
+{
+	margin-top:3px;
+}
+
+input[type="submit"].launch-network
+{
+	color:#E34036;
+	/*
+	border-style:solid;
+	border-width:1px;
+	border-color:#E34036;
+	*/
+	border:none;
+	background-color:white;
+	font: 14px Lato-Light, sans-serif;
+	margin-left:15px;
+}
+
+input[type="submit"].launch-network:hover
+{
+	color:#3EB3CA;
 }
 /**********************************/
 
@@ -776,6 +992,7 @@ ul#top-links a{
 h2.pheader{
     font-weight: normal;
     font-size: 36px;
+    padding: 30px 0;
 }
 
 label.checkbox{
@@ -786,15 +1003,21 @@ h3.pheader{
     color: #fff;
     font-weight: normal;
 }
-ul.three-section-pics h3{
+/*ul.three-section-pics h3{
     display: inline;
+}*/
+ul.three-section-pics{
+    margin-top: 30px;
 }
 ul.three-section-pics li{
-    background: url('images/CM_Logo.png');
-    width:340px;
+    /*background: url('images/CM_Logo.png');*/
+    /*background: #000;*/
+    text-align: center;
+    width:234px;
+    margin: 0 -3px;
     height:222px;
     padding: 20px 40px;
-    display: inline;
+    display: inline-block;
 }
 .navbar-inverse .navbar-inner{
 	background-color: #8C1515 !important;
@@ -938,3 +1161,52 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
 .failure-txt{
     color: #b5332b;
 }
+
+/**careers pg**/
+.careers_box_head{
+    margin-top: 55px;
+}
+.careers_box_btn{
+    margin: 25px 0;
+}
+.careers_box_engineering{
+    background: url('../images/code.jpg');
+    background-size: 100% 100%;
+}
+.careers_box_engineering .over{
+    /*position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;*/
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5); /*dim the background*/
+}
+.careers_box_creative{
+    background: url('../images/creative.jpg');
+    background-size: 314px 262px;
+}
+.careers_box_creative .over{
+    /*position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;*/
+    z-index: 10;
+    background-color: rgba(200,0,0,0.5); /*dim the background*/
+}
+.careers_box_business{
+    background: url('../images/business.jpg');
+    background-size: 314px 262px;
+}
+.careers_box_business .over{
+    /*position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;*/
+    z-index: 10;
+    background-color: rgba(0,200,255,0.5); /*dim the background*/
+}
+/****/
+

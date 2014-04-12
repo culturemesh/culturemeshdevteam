@@ -36,10 +36,10 @@ class Event
 		}
 		
 		if (!mysqli_query($con, "INSERT INTO events 
-			(id_network, id_host, date_created, event_date, title, address_1, address_2, city, region, description)
+			(id_network, id_host, date_created, event_date, title, address_1, address_2, city, country, description)
 			VALUES (". $event_dt->network_id . ", ". $event_dt->host_id . ", NOW(), '" . $event_dt->event_date . "', '" . $event_dt->title . "', '"
 			. $event_dt->address_1 . "', '" . $event_dt->address_2 . "', '" . $event_dt->city . "', '" 
-			. $event_dt->region . "', '" . $event_dt->description . "')"))
+			. $event_dt->country . "', '" . $event_dt->description . "')"))
 		{
 			echo "Error Message: " . $con->error;
 		}
@@ -140,7 +140,7 @@ class Event
 		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		$result = mysqli_query($con,"SELECT * FROM events e, users u WHERE e.id_host=u.id AND id_network=" . $id);
+		$result = mysqli_query($con,"SELECT * FROM events e, users u WHERE event_date >= CURDATE() AND e.id_host=u.id AND id_network=" . $id);
 		
 		$events = array();
 		

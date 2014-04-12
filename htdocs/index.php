@@ -96,10 +96,14 @@
 				<div id="stage-content">
 					<h3 id="stage-title">Connecting the world's diasporas</h3>
 					<div id="search-bar">
-						<form id="search-form" method="GET" action="search_results.php">
-							<input type="text" class="stage-input" name="search-1" id="search-1" value="Find people who"></input>
-							<input type="text" class="stage-input" name="search-2" id="search-2" value="Near"></input>
+						<form id="search-form" method="GET" action="search_results.php" autocomplete="off">
+							<input type="text" class="stage-input" name="search-1" id="search-1" value="Find people who " autocomplete="off"></input>
+								<ul id="s-query" class="search"></ul>
+								<ul id="s-var" class="search"></ul>
+							<input type="text" class="stage-input" name="search-2" id="search-2" value="In " autocomplete="off"></input>
+								<ul id="s-location" class="search"></ul>
 							<input type="submit" class="stage-button" value="SEARCH"></input>
+							<input type="hidden" id="search-topic" name="search-topic"></input>
 						</form>
 					</div>
 				</div>
@@ -160,4 +164,5 @@
 			?>
 		</div>
 	</body>
+	<script src="js/searchbar.js"></script>
 </html>
