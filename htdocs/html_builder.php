@@ -40,20 +40,46 @@ class HTMLBuilder
 
 	public static function displayPossibleNetwork($query)
 	{
+		// locations start at 1, have three addresses reserved (may be NULL)
+		// rest is variable
+		$query_length = count($query);
 		$title = null;
+		$location = null;
+		$query_str = null;
+		
+		for ($i = 1; $i < 4; $i++)
+		{
+			$location = $location.$query[$i];
+			if ($i < 3)
+			  { $location = $location . ", "; }
+		}
+
+		switch ($query_length)
+		{
+		case 5:
+			$query_str = $query[4];
+			break;
+		case 6:
+			$query_str = $query[4] . ", " . $query[5];
+			break;
+		case 7:
+			$query_str = $query[4] . ", " . $query[5] . ", " . $query[6];
+			break;
+		}
+
 		switch ($query[0])
 		{
 		case "_l":
-			$title = "{$query[3]} speakers near {$query[1]}, {$query[2]}";
+			$title = "{$query_str} speakers near {$location}";
 			break;
 		case "co":
-			$title = "From {$query[3]} near {$query[1]}, {$query[2]}";
+			$title = "From {$query_str} near {$location}";
 			break;
 		case "rc":
-			$title = "From {$query[3]}, {$query[4]}  near {$query[1]}, {$query[2]}";
+			$title = "From {$query_str} near {$location}";
 			break;
 		case "cc":
-			$title = "From {$query[3]}, {$query[4]} near {$query[1]}, {$query[2]}";
+			$title = "From {$query_str} near {$location}";
 			break;
 		}
 
@@ -65,9 +91,11 @@ class HTMLBuilder
 					<input type='submit' class='launch-network' value='Launch Network'></input>
 					<input type='hidden' name=type value='{$query[0]}'/>
 					<input type='hidden' name=city_cur value='{$query[1]}'/>
-					<input type='hidden' name=country_cur value='{$query[2]}'/>
-					<input type='hidden' name=q_1 value='{$query[3]}'/>
-					<input type='hidden' name=q_2 value='{$query[4]}'/>
+					<input type='hidden' name=region_cur value='{$query[2]}'/>
+					<input type='hidden' name=country_cur value='{$query[3]}'/>
+					<input type='hidden' name=q_1 value='{$query[4]}'/>
+					<input type='hidden' name=q_2 value='{$query[5]}'/>
+					<input type='hidden' name=q_3 value='{$query[6]}'/>
 				</form>
 			</div>
 			<div class='clear'></div>

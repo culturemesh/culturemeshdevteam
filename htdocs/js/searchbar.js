@@ -1,4 +1,5 @@
 var opening = "Find people who ";
+var LIST_SIZE = 4;
 var queries = ["speak", "are from"]
 var queryList = [];
 
@@ -17,7 +18,7 @@ var q_results, locations, origins, li_origins, li_locations, locationClasses, la
 origins = new LocList();
 locations = new LocList();
 
-var locations = [];
+//var locations = [];
 var li_origins = [];
 var cur_locations = [];
 var languages = [];
@@ -87,13 +88,15 @@ function loadInitialData() {
 				for (var i = 0; i < raw_data[key].length; i++) {
 					var loc = new ListItem();
 					loc.name = raw_data[key][i]["name"];
-					if (key == "regions" || key == "cities")
+					if (key == "cities")
+					{
+						loc.name += ", " + raw_data[key][i]['region_name'] + ", " + raw_data[key][i]["country_name"];
+						loc.type = "cc";
+					}
+					else if (key == "regions")
 					{
 						loc.name += ", " + raw_data[key][i]["country_name"];
-						if (key == "regions")
-							loc.type = "rc";
-						if (key == "cities")
-							loc.type = "cc";
+						loc.type = "rc";
 					}
 					else
 						// it's a country
@@ -103,8 +106,8 @@ function loadInitialData() {
 
 					// also push to locations,
 					// BUT ONLY CITIES
-					if (key == "cities")
-						locations.push(loc);
+					//if (key == "cities")
+					locations.push(loc);
 				}
 			}
 				
@@ -306,7 +309,8 @@ function SearchBar() {
 				{
 					case "are from" :
 						li_origins = origins.search(query_str);
-						//li_origins = searchList(query_str, origins);
+						// Rank search results
+						li_origins = rankLocations(li_origins);
 						// Fill up Ul
 						fillUl(varUl, li_origins.slice(0,4));
 						
@@ -336,6 +340,7 @@ function SearchBar() {
 				// extract the "Near"
 				var query_str = searchTwo.value.slice(5);
 				li_locations = locations.search(query_str);
+				li_locations = rankLocations(li_locations);
 				fillUl(locUl, li_locations.slice(0,4));
 
 				// display the list
@@ -378,6 +383,29 @@ function SearchBar() {
 				cur_query = prompt_strings.length -1;	 // the index for the last prompt
 				break;
 		}
+	}
+
+	function rankLocations(list) {
+		// in this rudimentary list, we just
+		// want to push items with United States
+		// to the top
+		var rankedList = [];
+		
+		// if list is short enough, return
+		if (list.length <= LIST_SIZE)
+			return list;
+		for (var i = 0; i < list.length; i++)
+		{
+			// if it's american,
+			// add to beginning of list,
+			// else add to end
+			if (list[i].name.indexOf("United States") != -1)
+			  { rankedList.unshift(list[i]); }
+			else
+			  { rankedList.push(list[i]); }
+		}
+
+		return rankedList;
 	}
 }
 /*

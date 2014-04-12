@@ -226,10 +226,39 @@
 						</form>
 						<ul id="post-wall-ul" class="network">
 						<?php 
-						foreach($posts as $post)
-							HTMLBuilder::displayPost($post); 
+						//foreach($posts as $post)
+						//	HTMLBuilder::displayPost($post); 
 						?>
 						</ul>
+						<script src="js/post-wall.js"></script>
+						<script>
+						var wall = document.getElementById("post-wall-ul");
+							var postData;
+							var grabData = function(data) {
+								postData = data;
+								replyPosts = [];
+								for (var i = 0; i < postData.length; i++) {
+									if (postData[i]['post_class'] == 'o')
+									  { wall.appendChild(createParent(postData, i)); }
+								/*
+									else 
+									{ 
+										origId = postData[i]['post_original'];
+										if (replyPosts[origId] == undefined) {
+											replyPosts[origId] = [];
+											replyPosts[origId].push(postData[i];
+										}
+										else
+										  { replyPosts[origId].push(postData); }
+								       	}
+								 */
+								}
+								// do something with replyPostslength data
+								// add a div for reply
+							}
+
+							loadPostData(<?php echo $_SESSION['cur_network']; ?>, grabData);
+						</script>
 					</div>
 				</div>
 				<div class="clear"></div>

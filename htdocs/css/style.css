@@ -683,6 +683,11 @@ li.event
 	padding-left:15px;
 }
 
+ul.post-wall-ul.child
+{
+	display:none;
+}
+
 .post-text
 {
 	margin-top:10px;
