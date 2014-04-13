@@ -16,7 +16,7 @@
         <li><a href="#">Dashboard</a></li>
         <li><a href="#">Networks</a></li>
         <li><a href="#">Events</a></li>
-        <li><a href="#">Inbox</a></li>
+<!--        <li><a href="#">Inbox</a></li> -->
         <li><a href="#">Account</a></li>
     </ul>
 </div>

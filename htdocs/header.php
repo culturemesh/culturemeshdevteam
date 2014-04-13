@@ -56,7 +56,8 @@
 				    var res_data = jQuery.parseJSON(data)
 				    $("#server_error").text(res_data["message"]);
 				    if (res_data["error"] == 5) {
-					    //window.location("profile_settings.php");
+					    if (document.URL.indexOf("network") == -1)
+					      { window.location.assign("profile_edit.php"); }
 					    $("#login_modal").modal("hide");
 					    $("#login-link").hide();
 					    $("#register-link").hide();
@@ -123,6 +124,8 @@
                             
                             switch(res_data.error){
                                 case null:
+				    if (document.URL.indexOf("network") == -1)
+			      	      { window.location.assign("profile_edit.php"); }
                                     $("#login_modal").modal("hide");
                                     $("#login-link").hide();
                                     $("#register-link").hide();

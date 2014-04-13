@@ -90,7 +90,7 @@
 	<body id="index">
 		<div class="wrapper">
 			<?php
-				include "index-header.php";
+				include "header.php";
 			?>
 			<div id="stage-area">
 				<div id="stage-content">

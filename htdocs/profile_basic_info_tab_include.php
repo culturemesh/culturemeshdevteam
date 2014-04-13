@@ -34,6 +34,7 @@
 </form>
 
 <script>
+/*
     $("#basic_info_update_btn").click(function(){
         $.post("ajx/ps.php", $("#basic_info_form").serialize())
         .done(function(data){
@@ -42,5 +43,19 @@
                 delay(function(){$("#basic_info_update_success_txt").fadeOut()}, 2000);
             }
         });
+    });
+ */
+    $("#basic_info_update_btn").click(function(){
+        $.post("profile_operations.php", $("#basic_info_form").serialize())
+        .done(function(data){
+            if(data == "1"){
+                $("#basic_info_update_success_txt").fadeIn();
+                delay(function(){$("#basic_info_update_success_txt").fadeOut()}, 2000);
+            }
+	})
+	.fail(function(data, ajaxOptions, thrownError) {
+		alert(data.status);
+		alert(thrownError);
+	});
     });
 </script>

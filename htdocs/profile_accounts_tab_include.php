@@ -14,7 +14,6 @@ $pass_body = '
 ';
 $pass_footer = '';
 echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal");?>
-<a data-toggle="modal" href="#password_confirm_modal">Change Password</a>
 <script>
     $("#password_conf").change(function(){
         if($("#password").val() != $("#password_conf").val()){
@@ -54,7 +53,6 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 	<h5>Send me emails when</h5>
 	<label class="checkbox"><input type="checkbox" name="notify_interesting_events" value="1" <?=getCheckboxVal(getMemberNotificationSettingsInterestingEvents($_SESSION['uid']));?>>CultureMesh finds events I\'d be interested in near me</label>
 	<label class="checkbox"><input type="checkbox" name="notify_company_news" value="1" <?=getCheckboxVal(getMemberNotificationSettingsCompanyNews($_SESSION['uid']));?>>CultureMesh has fun company news</label>
-	<hr class="dashboard">
 	<label class="checkbox"><input type="checkbox" name="notify_events_upcoming" value="1" <?=getCheckboxVal(getMemberNotificationSettingsUpcomingEvents($_SESSION['uid']));?>>I have an upcoming event</label>
 	<label class="checkbox"><input type="checkbox" name="notify_network_activity" value="1" <?=getCheckboxVal(getMemberNotificationSettingsNetworkActivity($_SESSION['uid']));?>>I have received comments to a network event I added</label>
 	<input type="hidden" name="notification" value="yes"/>

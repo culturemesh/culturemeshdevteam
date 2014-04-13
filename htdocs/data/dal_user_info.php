@@ -67,7 +67,7 @@ class UserInfo
 		}
 		
 		if (!$result = mysqli_query($con, "SELECT *
-			FROM user_notifications 
+			FROM user_info 
 			WHERE uid={$uid}"))
 		{
 			echo "Error message: " . $con->error;
@@ -113,17 +113,18 @@ class UserInfo
 			echo "Failed to connect to MySQL: ";
 		}
 		
-		if (!mysqli_query($con, "UPDATE user_notifications 
-			SET first_name={$info_dt->first_name}, last_name={$info_dt->last_name},
-			gender={$info_dt->gender}, about_me={$info_dt->about_me}"))
+		if (!mysqli_query($con, "UPDATE user_info 
+			SET first_name='{$info_dt->first_name}', last_name='{$info_dt->last_name}',
+			gender='{$info_dt->gender}', about_me='{$info_dt->about_me}'
+			WHERE uid={$info_dt->uid}"))
 		{
 			echo "Error message: " . $con->error;
-			return -1;
 			
 			if ($must_close)
 			{
 				mysqli_close($con);
 			}
+			return -1;
 		}
 		else
 		{

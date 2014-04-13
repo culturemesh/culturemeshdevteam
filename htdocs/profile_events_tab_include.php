@@ -2,7 +2,7 @@
 	//include_once 'data/dal_event_registration.php';
 ?>
 <div>
-	<h4>EVENTS YOU'RE HOSTING</h4>
+	<h5>EVENTS YOU'RE HOSTING</h5>
 	<ul class='dashboard item'>
 		<?php
 		$events = Event::getEventsByUserId($_SESSION['uid'], $con);
@@ -12,7 +12,7 @@
 	</ul>
 </div>
 <div>
-	<h4>EVENTS YOU'RE ATTENDING</h4>
+	<h5>EVENTS YOU'RE ATTENDING</h5>
 	<ul class='dashboard item'>
 		<?php
 		$events = EventRegistration::getEventRegistrationsByUserId($_SESSION['uid'], $con);

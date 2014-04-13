@@ -4,7 +4,7 @@
 	//include_once 'html_builder.php';
 ?>
 <div>
-	<h4>EVENTS YOU'RE HOSTING</h4>
+	<h5>EVENTS YOU'RE HOSTING</h5>
 	<ul class="dashboard item">
 		<?php
 		$events = Event::getEventsByUserId($_SESSION['uid'], $con);
@@ -14,7 +14,7 @@
 	</ul>
 </div>
 <div>
-	<h3>EVENTS IN YOUR NETWORKS</h3>
+	<h5>EVENTS IN YOUR NETWORKS</h5>
 	<ul class="dashboard item">
 		<?php
 		$events = Event::getEventsByNetworkId($_SESSION['uid'], $con);
@@ -24,10 +24,11 @@
 	</ul>
 </div>
 <div>
-	<h3>POSTS TO INTEREST YOU</h3>
+	<h5>POSTS TO INTEREST YOU</h5>
+	<ul class="dashboard item"></ul>
 </div>
 <div>
-	<h3>YOUR POSTS</h3>
+	<h5>YOUR POSTS</h5>
 	<ul class="network">
 		<?php
 		$posts = Post::getPostsByUserId($_SESSION['uid'], $con);

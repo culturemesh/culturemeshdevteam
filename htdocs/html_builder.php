@@ -213,19 +213,6 @@ class HTMLBuilder
 
 	}
 	
-	public static function displaySearchBar()
-	{
-		echo "
-		<div id='search'>
-			<form method='GET' action='search_results.php'>
-				<input type='text' class='net-search' name='search-1' value='Find people who '/>
-				<input type='text' class='net-search' name='search-2' value='near '/>
-				<input type='submit' style='display:none'/>
-			</form>
-		</div>
-		";
-	}
-	
 	/**************** USER DASHBOARD STUFF 	********************/
 	public static function displayDashPost($post)
 	{
