@@ -16,6 +16,8 @@ function signOut() {
 	  {
 	  	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		  {
+			    if (document.URL.indexOf("profile_edit") != -1)
+				{ window.location.assign("index.php"); }
 		    	    $("#login-link").show();
                             $("#register-link").show();
                             $("#welcome").hide();

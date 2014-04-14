@@ -59,8 +59,57 @@ class Network
 	 */	
 	public static function launchNetwork($network, $con = null)
 	{
-		$statement = "INSERT INTO networks ";
+		$col_names = "INSERT INTO networks (";
+		$values = "VALUES (";
 
+		// check network for null values
+		// get array with all the things we'll use
+		$network_keys = get_object_vars($network);
+		$statement_values = array();
+		/*
+		foreach ($network_keys as $key)
+		{
+			if ($network->$key == null)
+				continue;
+			array_push($statement_values, array($key, $network[$key]));
+		}
+		 */
+		foreach ($network as $key => $value)
+		{
+			if ($value == null)
+				continue;
+			array_push($statement_values, array($key, $value));
+		}
+		$sv_length = count($statement_values);
+
+		// now generate sql statement with all our stuff
+		for ($i = 0; $i < $sv_length; $i++)
+		{
+			// add key to column names statement
+			$col_names .= $statement_values[$i][0];
+			if ($sv_length - $i == 1)
+			  { $col_names .= ") "; }
+			else
+			  { $col_names .= ", "; }
+
+			// add value to VALUES values
+			$sv_next = $statement_values[$i][1];
+			if (gettype($sv_next) == "string")
+			  { $values .= "'".$sv_next."'"; }
+			else
+			  { $values .= $sv_next; }
+
+			// add a comma ( or parenthesis if
+			// we've reached the end
+			if ($sv_length - $i == 1)
+			  { $values .= ") "; }
+			else
+			  { $values .= ", "; }
+		}
+
+		$statement = $col_names . $values;
+
+		/*
 		switch ($network->network_class){
 		case "co":
 			echo $network->country_origin;
@@ -100,6 +149,7 @@ class Network
 				'{$network->network_class}')";
 			break;
 		}
+		 */
 
 		$must_close = false;
 		if ($con == null)
@@ -124,19 +174,19 @@ class Network
 			switch ($network->network_class)
 			{
 			case "co":
-				$query = array(0, $network->city_cur, $network->country_cur, $network->country_origin);
+				$query = array(0, $network->city_cur, $network->region_cur, $network->country_cur, null, null, $network->country_origin);
 				$l_network = Network::getNetworksByCO($query, $con);
 				break;
 			case "cc":
-				$query = array(0, $network->city_cur, $network->country_cur, $network->city_origin, $network->country_origin);
+				$query = array(0, $network->city_cur, $network->region_cur, $network->country_cur, $network->city_origin, $network->region_origin, $network->country_origin);
 				$l_network = Network::getNetworksByCC($query, $con);
 				break;
 			case "rc":
-				$query = array(0, $network->city_cur, $network->country_cur, $network->region_origin, $network->country_origin);
+				$query = array(0, $network->city_cur, $network->region_cur, $network->country_cur, null, $network->region_origin, $network->country_origin);
 				$l_network = Network::getNetworksByRC($query, $con);
 				break;
 			case "_l":
-				$query = array(0, $network->city_cur, $network->country_cur, $network->language_origin);
+				$query = array(0, $network->city_cur, $network->region_cur, $network->country_cur, $network->language_origin);
 				$l_network = Network::getNetworksByL($query, $con);
 				break;
 			}
@@ -204,7 +254,8 @@ class Network
 		
 		// GET TABLE WITH  TOP FOUR NETWORKS +
 		// 	MEMBER COUNT
-		$result = mysqli_query($con,
+
+		if(!$result = mysqli_query($con,
 			"SELECT n.id, n.city_cur, n.country_cur, n.city_origin, n.region_origin, n.country_origin, n.language_origin, n.network_class, nr.member_count, p.post_count
 			FROM networks n 
 			JOIN (SELECT id_network, COUNT(id_network) AS member_count
@@ -218,10 +269,12 @@ class Network
 			ON n.id = p.id_network AND nr.id_network = p.id_network
                         GROUP BY n.id
 			ORDER BY nr.member_count DESC
-                        LIMIT 0,4");
+                        LIMIT 0,4"))
+                {
+                	echo "Error message: " . $con->error;
+                }
 		
 		$networks = array();
-		
 		
 		// populate array with network objects
 		while ($row = mysqli_fetch_array($result))
@@ -230,6 +283,7 @@ class Network
 			
 			$network_dt->id = $row['id'];
 			$network_dt->city_cur = $row['city_cur'];
+			$network_dt->region_cur = $row['region_cur'];
 			$network_dt->country_cur = $row['country_cur'];
 			$network_dt->city_origin = $row['city_origin'];
 			$network_dt->region_origin = $row['region_origin'];
@@ -372,9 +426,39 @@ class Network
 		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		  }
 		
+		$cols = array("city_cur", "region_cur", "country_cur");	
+
+		$statement = "SELECT * FROM networks WHERE ";
+
+		// Get parameters from query, put them into query
+		for ($i = 0; $i < count($cols); $i++)
+		{
+			if ($query[$i+1] == null)
+			{
+				$statement .= $cols[$i]. " IS NULL ";
+			}
+			else
+			{
+				$statement .= $cols[$i]."=";
+				if (gettype($query[$i+1]) == "string")
+				  { $statement .= "'".$query[$i+1]."'"; }
+				else
+				  { $statement .= $query[$i+1]; }
+			}
+
+			// add an AND if we're not at the end
+			$statement .= " AND "; 
+			// at the end, add country_origin
+			if (count($cols) - $i == 1)
+			  { $statement .= "country_origin='".$query[$i+4]."'"; }
+		}
+		//echo $statement;
+		/*
 		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
 			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
 			AND country_origin='{$query[3]}'");
+		 */
+		$result = mysqli_query($con,$statement);
 		
 		if ($must_close)
 			mysqli_close($con);
@@ -399,9 +483,40 @@ class Network
 		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		  }
 
+		$cols = array("city_cur", "region_cur", "country_cur");	
+
+		$statement = "SELECT * FROM networks WHERE ";
+
+		// Get parameters from query, put them into query
+		for ($i = 0; $i < count($cols); $i++)
+		{
+			if ($query[$i+1] == null)
+			{
+				$statement .= $cols[$i]. " IS NULL ";
+			}
+			else
+			{
+				$statement .= $cols[$i]."=";
+				if (gettype($query[$i+1]) == "string")
+				  { $statement .= "'".$query[$i+1]."'"; }
+				else
+				  { $statement .= $query[$i+1]; }
+			}
+
+			// add an AND if we're not at the end
+			$statement .= " AND "; 
+			// at the end, add country_origin
+			if (count($cols) - $i == 1)
+			  { $statement .= "language_origin='{$query[$i+2]}'"; }
+		}
+		//echo $statement;
+
+		$result = mysqli_query($con, $statement);
+		/*
 		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
 			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
 			AND language_origin='{$query[3]}'");
+		 */
 		
 		if ($must_close)
 			mysqli_close($con);
@@ -427,10 +542,42 @@ class Network
 		  {
 		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		  }
-		
+
+		$cols = array("city_cur", "region_cur", "country_cur");	
+
+		$statement = "SELECT * FROM networks WHERE ";
+
+		// Get parameters from query, put them into query
+		for ($i = 0; $i < count($cols); $i++)
+		{
+			if ($query[$i+1] == null)
+			{
+				$statement .= $cols[$i]. " IS NULL ";
+			}
+			else
+			{
+				$statement .= $cols[$i]."=";
+				if (gettype($query[$i+1]) == "string")
+				  { $statement .= "'".$query[$i+1]."'"; }
+				else
+				  { $statement .= $query[$i+1]; }
+			}
+
+			// add an AND if we're not at the end
+			$statement .= " AND "; 
+			// at the end, add country_origin
+			if (count($cols) - $i == 1)
+			  { $statement .= "region_origin='{$query[$i+3]}' AND country_origin='".$query[$i+4]."'"; }
+		}
+		//echo $statement;
+		//var_dump($query);
+
+		$result = mysqli_query($con,$statement);
+		/*
 		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
 			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
 			AND region_origin='{$query[3]}' AND country_origin='{$query[4]}'");
+		 */
 		
 		if ($must_close)
 			mysqli_close($con);
@@ -456,10 +603,47 @@ class Network
 		  {
 		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		  }
-		
+
+		$cols = array("city_cur", "region_cur", "country_cur");	
+
+		$statement = "SELECT * FROM networks WHERE ";
+
+		// Get parameters from query, put them into query
+		for ($i = 0; $i < count($cols); $i++)
+		{
+			if ($query[$i+1] == null)
+			{
+				$statement .= $cols[$i]. " IS NULL ";
+			}
+			else
+			{
+				$statement .= $cols[$i]."=";
+				if (gettype($query[$i+1]) == "string")
+				  { $statement .= "'".$query[$i+1]."'"; }
+				else
+				  { $statement .= $query[$i+1]; }
+			}
+
+			// add an AND if we're not at the end
+			$statement .= " AND "; 
+			// at the end, add origins
+			if (count($cols) - $i == 1)
+			{ 
+				$statement .= "city_origin='{$query[$i+2]}' AND ";
+				if ($query[$i+3] == null)
+				  { $statement .= "region_origin IS NULL AND "; }
+				else
+				  { $statement .= "region_origin='".$query[$i+3]."' AND "; }
+				$statement .= "country_origin='".$query[$i+4]."'";
+			}
+		}	
+		//echo $statement;
+		$result = mysqli_query($con,$statement);
+		/*
 		$result = mysqli_query($con,"SELECT * FROM networks WHERE 
 			city_cur='{$query[1]}' AND country_cur='{$query[2]}' 
 			AND city_origin='{$query[3]}' AND country_origin='{$query[4]}'");
+		 */
 		
 		if ($must_close)
 			mysqli_close($con);
@@ -541,6 +725,7 @@ class Network
 		{	
 			$network_dt->id = $row['id'];
 			$network_dt->city_cur = $row['city_cur'];
+			$network_dt->region_cur = $row['region_cur'];
 			$network_dt->country_cur = $row['country_cur'];
 			$network_dt->city_origin = $row['city_origin'];
 			$network_dt->region_origin = $row['region_origin'];

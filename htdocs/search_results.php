@@ -22,6 +22,7 @@
 
 	function parseLocation($location)
 	{
+		/*
 		$loc_split = null;
 		for ($i = 0; $i < strlen($location); $i++) 
 		{
@@ -36,6 +37,14 @@
 			return $location;
 		else
 			return $loc_split;
+		 */
+		$loc_array = explode(", ", $location);
+
+		if (count($loc_array) == 2)
+		  { $loc_array = array(null, $loc_array[0], $loc_array[1]); }
+		else if (count($loc_array) == 1)
+		  { $loc_array = array(null, null, $loc_array[0]); }
+		return $loc_array;
 	}
 
 	function validateQuery($query, $con) 
@@ -45,10 +54,13 @@
 			"Find people who are from ");
 		$prompt_index = null;
 
+		// check which prompt we're dealing with
+		// extract query from it as $value
 		for ($prompt_index = 0; $prompt_index < count($prompts); $prompt_index++)
 		{
 			if (stristr($query, $prompts[$prompt_index]))
 			{
+				// break out query value from prompt
 				$value = substr($query, strlen($prompts[$prompt_index]));
 				break;
 			}
@@ -59,6 +71,7 @@
 		else if (strlen($value) < 1)
 		  { return false; }
 
+		// get all search values
 		$values = explode(", ", $value);
 		
 		if (count($values) <= 1)
@@ -74,8 +87,20 @@
 		}
 		else
 		{ 
-			if( SearchQuery::checkValue($values[0], "city/region", $con)) 
-			  { return SearchQuery::checkValue($values[1], "country", $con); }
+			// we've got a city or a region
+			// cities 
+			if (count($values) == 2)
+			{
+				if( SearchQuery::checkValue($values[0], "city/region", $con)) 
+				  { return SearchQuery::checkValue($values[1], "country", $con); }
+			}
+			if (count($values) == 3)
+			{
+				if( SearchQuery::checkValue($values[0], "city/region", $con)) {
+					if ( SearchQuery::checkValue($values[1], "city/region", $con))
+				  		{ return SearchQuery::checkValue($values[2], "country", $con); }
+				}
+			}
 		}
 	} 
 
@@ -109,19 +134,24 @@
 
 		$queries = array("Find people who speak", "Find people who are from");
 		
-		$people_who = $_GET['search-1'];
+		$people_who = mysql_escape_string($_GET['search-1']);
 		$con = getDBConnection();
 		$valid_search = validateQuery($people_who, $con);
 
 		// get rid of 'near ' in location
-		$location_raw = substr($_GET['search-2'], 5);
+		//$location_raw = mysql_escape_string(substr($_GET['search-2'], 5));
+
+		// get rid of 'in ' in location
+		$location_raw = mysql_escape_string(substr($_GET['search-2'], 3));
 		
 		// now separate into city and country, if possible
 		$location = explode(", ", $location_raw);
-		//$city = $loc_token;
-		//$loc_token = strtok(", ");
-		//$region = $loc_token;
-		
+
+		if (count($location) == 2)
+		  { $location = array(null, $location[0], $location[1]); }
+		if (count($location) == 1)
+		  { $location = array(null, null, $location[0]); }
+
 		$query_token = strtok($people_who, " ");
 		
 		// SOMEWHERE IN HERE, I'LL PROBABLY HAVE TO PROCESS THE QUERY TO MAKE SURE THE 
@@ -161,23 +191,27 @@
 			// probably the name of the language will be only one token
 			$query_str = $query_token;
 			//echo $query_str."\n";
-			$query = array($type, $location[0], $location[1], $query_str);
+			$query = array($type, $location[0], $location[1], $location[2], $query_str);
 		}
 		if ($type == "co")
 		{
 			$query_str = $query_token;
 			$origin = parseLocation($query_str);
+			//var_dump($location);
+			//var_dump($origin);
 			if (gettype($origin) == "array")
-				$query = array($type, $location[0], $location[1], $origin[0]);
+				$query = array($type, $location[0], $location[1], $location[2], $origin[0], $origin[1], $origin[2]);
 			else
-				$query = array($type, $location[0], $location[1], $origin);
+				$query = array($type, $location[0], $location[1], $location[2], $origin);
 		}
 		if ($type == "rc" || $type == "cc")
 		{
 			$query_str = $query_token;
 			$origin = parseLocation($query_str);
+			//var_dump($location);
+			//var_dump($origin);
 			//echo $origin[0]."\n".$origin[1]."\n";
-			$query = array($type, $location[0], $location[1], $origin[0], $origin[1]);
+			$query = array($type, $location[0], $location[1], $location[2], $origin[0], $origin[1], $origin[2]);
 		}
 
 		// with location, query_str, and topic calculated, get the information
@@ -216,17 +250,7 @@
 					</div>
 				</div>
 				<div class="net-right">
-					<div id="search">
-						<form id ="search-form" method="GET" action="search_results.php">
-							<input type="text" id="search-1" class="net-search" name="search-1" value="Find people who "/>
-								<ul id="s-query" class="network search"></ul>
-								<ul id="s-var" class="network search"></ul>
-							<input type="text" id="search-2" class="net-search" name="search-2" value="Near"/>
-								<ul id="s-location" class="network search"></ul>
-							<input type="submit" class="network search-button" value="Go"/>
-							<input type="hidden" id="search-topic" name="search-topic"></input>
-						</form>
-					</div>
+					<?php HTMLBuilder::displaySearchBar(); ?>
 					<div id="sr-error"><p><?php if( isset($_GET['error'])) echo $_GET['error']; ?></p></div>
 					<div id="invalid-search"><p><?php if(!$valid_search) echo "There are no networks that match. Try another search"; ?></p></div>
 					<div id="best-match">

@@ -2,7 +2,7 @@
 
 class Locations
 {
-	public static function getCCByName($city, $country, $con=null)
+	public static function getCCByName($city, $region, $country, $con=null)
 	{
 		$must_close = false;
 		if($con == null)
@@ -17,9 +17,9 @@ class Locations
 		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		  }
 		
-		$result = mysqli_query($con,"SELECT id, name, country_id, country_name
+		$result = mysqli_query($con,"SELECT id, name, region_id, region_name, country_id, country_name
 			FROM cities
-		       	WHERE name='{$city}' AND country_name='{$country}'");
+		       	WHERE name='{$city}' AND region_name='{$region}' AND country_name='{$country}'");
 		
 		if ($must_close)
 			mysqli_close($con);
@@ -31,7 +31,7 @@ class Locations
 			$city = null;
 
 			while($row = mysqli_fetch_array($result))
-				$city =	array($row['id'], $row['name'], $row['country_id'], $row['country_name']);	
+				$city =	array($row['id'], $row['name'], $row['region_id'], $row['region_name'], $row['country_id'], $row['country_name']);	
 
 			return $city;
 		}

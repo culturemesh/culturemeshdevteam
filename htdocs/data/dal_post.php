@@ -33,10 +33,15 @@ class Post
 			echo "Failed to connect to MySQL: ";
 		}
 		
-		if (!mysqli_query($con, "INSERT INTO posts
-			(id_user, id_network, post_date, post_text, vid_link, img_link) 
+		echo "INSERT INTO posts
+			(id_user, id_network, post_date, post_text, post_class, post_original, vid_link, img_link) 
 			VALUES (". $post_dt->id_user . ", ". $post_dt->id_network . ", NOW(), 
-			'". $post_dt->post_text ."', '". $post_dt->vid_link ."', '". $post_dt->img_link ."')"))
+			'". $post_dt->post_text ."', '". $post_dt->post_class ."', ". $post_dt->post_original .", '" . $post_dt->vid_link ."', '". $post_dt->img_link ."')";
+
+		if (!mysqli_query($con, "INSERT INTO posts
+			(id_user, id_network, post_date, post_text, post_class, post_original, vid_link, img_link) 
+			VALUES (". $post_dt->id_user . ", ". $post_dt->id_network . ", NOW(), 
+			'". $post_dt->post_text ."', '". $post_dt->post_class ."', ". $post_dt->post_original .", '" . $post_dt->vid_link ."', '". $post_dt->img_link ."')"))
 		{
 			echo "Error Message: " . $con->error;
 		}
@@ -81,10 +86,14 @@ class Post
 		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		$result = mysqli_query($con,"SELECT * FROM posts p, users u WHERE p.id_user=u.id AND id_network={$id}");
+		$result = mysqli_query($con,
+			"SELECT p.*, u.email 
+			FROM posts p, users u 
+			WHERE p.id_user=u.id 
+			AND id_network={$id}
+			ORDER BY post_date DESC");
 		
 		$posts = array();
-		
 		while ($row = mysqli_fetch_array($result))
 		{
 			$post_dt = new PostDT();
@@ -95,6 +104,9 @@ class Post
 			$post_dt->id_network = $id;
 			$post_dt->post_date = $row['post_date'];
 			$post_dt->post_text = $row['post_text'];
+			$post_dt->post_class = $row['post_class'];
+			$post_dt->post_original = $row['post_original'];
+			$post_dt->reply_count = $row['reply_count'];
 			$post_dt->vid_link = $row['vid_link'];
 			$post_dt->img_link = $row['img_link'];
 			
@@ -103,6 +115,45 @@ class Post
 		
 		if (func_num_args() < 2)
 			mysqli_close($con);
+		
+		return $posts;
+	}
+	
+	public static function getPostsByUserId($id)
+	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		{
+		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
+		
+		$result = mysqli_query($con,"SELECT * FROM posts WHERE id_user={$id}");
+		
+		if (func_num_args() < 2)
+			mysqli_close($con);
+		
+		$posts = array();
+		
+		while ($row = mysqli_fetch_array($result))
+		{
+			$post_dt = new PostDT();
+			
+			$post_dt->id = $row['id'];
+			$post_dt->id_user = $id;
+			$post_dt->email = $row['email'];
+			$post_dt->id_network = $row['id_network'];
+			$post_dt->post_date = $row['post_date'];
+			$post_dt->post_text = $row['post_text'];
+			$post_dt->vid_link = $row['vid_link'];
+			$post_dt->img_link = $row['img_link'];
+			
+			array_push($posts, $post_dt);
+		}
 		
 		return $posts;
 	}

@@ -141,29 +141,23 @@
 					</div>
 				</div>
 				<div class="net-right">
-					<div id="search">
-						<form id ="search-form" method="GET" action="search_results.php">
-							<input type="text" id="search-1" class="net-search" name="search-1" value="Find people who "/>
-								<ul id="s-query" class="network search"></ul>
-								<ul id="s-var" class="network search"></ul>
-							<input type="text" id="search-2" class="net-search" name="search-2" value="Near"/>
-								<ul id="s-location" class="network search"></ul>
-							<input type="submit" class="network search-button" value="Go">
-							<input type="hidden" id="search-topic" name="search-topic"></input>
-						</form>
-					</div>
+					<?php HTMLBuilder::displaySearchBar(); ?>	
 					<?php //HTMLBuilder::displayLrgNetwork($network); ?>
 					<div>
 						<div class='net-info'>
 							<h1 class='h-network'><?php echo HTMLBuilder::formatNetworkTitle($network); ?></h1>
-							<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
 							<div class="reg-guest">
 								<form method="POST" action="network_join.php">
+									<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
 									<button class="network">Join us!</button>
 								</form>
 							</div>
 							<div class="guest">
+								<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
 								<button class="network" onclick="$('#register_modal').modal('show');">Join us!</button>
+							</div>
+							<div class="member">
+								<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
 							</div>
 						</div>
 						<div class="clear"></div>
@@ -234,12 +228,43 @@
 							<div class="clear"></div>
 							<input type="submit" class="network" value="Send"></input>
 						</form>
-						<ul class="network">
+						<ul id="post-wall-ul" class="network">
 						<?php 
 						foreach($posts as $post)
 							HTMLBuilder::displayPost($post); 
 						?>
 						</ul>
+						<script src="js/post-wall.js"></script>
+						<script>
+						/*
+						var wall = document.getElementById("post-wall-ul");
+							var postData;
+							var grabData = function(data) {
+								postData = data;
+								replyPosts = [];
+								for (var i = 0; i < postData.length; i++) {
+									if (postData[i]['post_class'] == 'o')
+									  { wall.appendChild(createParent(postData, i)); }
+								/*
+									else 
+									{ 
+										origId = postData[i]['post_original'];
+										if (replyPosts[origId] == undefined) {
+											replyPosts[origId] = [];
+											replyPosts[origId].push(postData[i];
+										}
+										else
+										  { replyPosts[origId].push(postData); }
+								       	}
+								 *//*
+								}
+								// do something with replyPostslength data
+								// add a div for reply
+							}
+
+							loadPostData(<?php echo $_SESSION['cur_network']; ?>, grabData);
+						 */
+						</script>
 					</div>
 				</div>
 				<div class="clear"></div>
