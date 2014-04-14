@@ -3522,3 +3522,34 @@
 [10-Apr-2014 16:39:22 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 139
 [10-Apr-2014 16:39:22 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
 [10-Apr-2014 16:39:22 America/Denver] PHP Notice:  Undefined variable: user_email in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[14-Apr-2014 02:25:32 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:25:32 America/Denver] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_results.php on line 137
+[14-Apr-2014 02:26:34 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:26:34 America/Denver] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_results.php on line 137
+[14-Apr-2014 02:26:34 America/Denver] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_results.php on line 137
+[14-Apr-2014 02:26:34 America/Denver] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_results.php on line 145
+[14-Apr-2014 02:26:34 America/Denver] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_results.php on line 145
+[14-Apr-2014 02:29:53 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:29:53 America/Denver] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_results.php on line 137
+[14-Apr-2014 02:31:16 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:31:16 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 735
+[14-Apr-2014 02:31:16 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[14-Apr-2014 02:31:16 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 109
+[14-Apr-2014 02:31:16 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[14-Apr-2014 02:36:52 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:36:52 America/Denver] PHP Warning:  mysqli_real_escape_string() expects exactly 2 parameters, 1 given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_results.php on line 137
+[14-Apr-2014 02:36:52 America/Denver] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_results.php on line 145
+[14-Apr-2014 02:38:23 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:38:23 America/Denver] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_results.php on line 145
+[14-Apr-2014 02:38:45 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:39:15 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:39:15 America/Denver] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_results.php on line 137
+[14-Apr-2014 02:39:23 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:39:23 America/Denver] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_results.php on line 137
+[14-Apr-2014 02:40:18 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:40:43 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:41:18 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:41:54 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:43:51 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:44:23 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[14-Apr-2014 02:44:54 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8

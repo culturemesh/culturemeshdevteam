@@ -78,7 +78,7 @@ class HTMLBuilder
 		switch ($query[0])
 		{
 		case "_l":
-			$title = "{$query_str} speakers in {$location}";
+			$title = "{$query[4]} speakers in {$location}";
 			break;
 		case "co":
 			$title = "From {$query_str} in {$location}";

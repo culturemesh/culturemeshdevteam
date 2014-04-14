@@ -134,15 +134,15 @@
 
 		$queries = array("Find people who speak", "Find people who are from");
 		
-		$people_who = mysql_escape_string($_GET['search-1']);
 		$con = getDBConnection();
+		$people_who = mysqli_real_escape_string($con, $_GET['search-1']);
 		$valid_search = validateQuery($people_who, $con);
 
 		// get rid of 'near ' in location
 		//$location_raw = mysql_escape_string(substr($_GET['search-2'], 5));
 
 		// get rid of 'in ' in location
-		$location_raw = mysql_escape_string(substr($_GET['search-2'], 3));
+		$location_raw = mysqli_real_escape_string($con, substr($_GET['search-2'], 3));
 		
 		// now separate into city and country, if possible
 		$location = explode(", ", $location_raw);
