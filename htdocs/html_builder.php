@@ -292,20 +292,28 @@ class HTMLBuilder
 	public static function formatNetworkTitle($network)
 	{
 		$title = '';
+		$location = '';
+		
+		if ($network->city_cur != null)
+			$location .= $network->city_cur . ", ";
+		if ($network->region_cur != null)
+			$location .= $network->region_cur . ", ";
+
+		$location .= $network->country_cur;
 		
 		switch($network->network_class)
 		{
 		case '_l':	// LANGUAGE
-			$title = "{$network->language_origin} speakers in {$network->city_cur}, {$network->country_cur}";
+			$title = "{$network->language_origin} speakers in {$location}";
 			break;
 		case 'cc':	// CITY,REGION
-			$title = "From {$network->city_origin}, {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
+			$title = "From {$network->city_origin}, {$network->country_origin} in {$location}";
 			break;
 		case 'rc':	// REGION
-			$title = "From {$network->region_origin}, {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
+			$title = "From {$network->region_origin}, {$network->country_origin} in {$location}";
 			break;
 		case 'co':	// COUNTRY
-			$title = "From {$network->country_origin} in {$network->city_cur}, {$network->country_cur}";
+			$title = "From {$network->country_origin} in {$location}";
 			break;
 		}
 		
