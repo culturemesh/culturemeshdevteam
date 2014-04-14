@@ -89,7 +89,21 @@ class NetworkRegistration
 		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		$result = mysqli_query($con,"SELECT * FROM network_registration nr, networks n WHERE n.id = nr.id_network AND nr.id_user={$id}");
+		"";
+		$result = mysqli_query($con,
+			"SELECT n.*, nr.join_date, nr.member_count, p.post_count
+			FROM networks n
+			JOIN (select id_user, join_date, id_network, COUNT(id_network) AS member_count
+				FROM network_registration
+				GROUP BY id_network
+				ORDER BY member_count) nr
+			ON n.id = nr.id_network
+			LEFT JOIN (SELECT id_network, COUNT(id_network) AS post_count
+				   FROM posts
+				   GROUP BY id_network
+				   ORDER BY post_count) p
+			ON n.id = p.id_network AND nr.id_network = p.id_network
+			WHERE nr.id_user = {$id}");
 		
 		if (func_num_args() < 2)
 			mysqli_close($con);
@@ -102,6 +116,7 @@ class NetworkRegistration
 			$network_dt->id = $row['id'];
 			$network_dt->city_cur = $row['city_cur'];
 			$network_dt->region_cur = $row['region_cur'];
+			$network_dt->country_cur = $row['country_cur'];
 			$network_dt->city_origin = $row['city_origin'];
 			$network_dt->region_origin = $row['region_origin'];
 			$network_dt->country_origin = $row['country_origin'];
@@ -109,6 +124,7 @@ class NetworkRegistration
 			$network_dt->network_class = $row['network_class'];
 			$network_dt->member_count = $row['member_count'];
 			$network_dt->post_count = $row['post_count'];
+			$network_dt->join_date = $row['join_date'];
 			
 			array_push($networks, $network_dt);
 		}

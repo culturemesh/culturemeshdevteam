@@ -740,6 +740,7 @@ ul.network
 {
 	float:left;
 	margin-left:20px;
+	max-width:425px;
 }
 
 p.network
