@@ -36,6 +36,7 @@ class NetworkDT
 	
 	public $member_count;
 	public $post_count;
+	public $join_date;
 	public $existing;		// bool, not in db
 }
 

@@ -119,6 +119,45 @@ class Post
 		return $posts;
 	}
 	
+	public static function getPostsByUserId($id)
+	{
+		if (func_num_args() == 2)
+		{ $con = func_get_arg(1); }
+		else
+		{ $con = getDBConnection();}
+		
+		// Check connection
+		if (mysqli_connect_errno())
+		{
+		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
+		
+		$result = mysqli_query($con,"SELECT * FROM posts WHERE id_user={$id}");
+		
+		if (func_num_args() < 2)
+			mysqli_close($con);
+		
+		$posts = array();
+		
+		while ($row = mysqli_fetch_array($result))
+		{
+			$post_dt = new PostDT();
+			
+			$post_dt->id = $row['id'];
+			$post_dt->id_user = $id;
+			$post_dt->email = $row['email'];
+			$post_dt->id_network = $row['id_network'];
+			$post_dt->post_date = $row['post_date'];
+			$post_dt->post_text = $row['post_text'];
+			$post_dt->vid_link = $row['vid_link'];
+			$post_dt->img_link = $row['img_link'];
+			
+			array_push($posts, $post_dt);
+		}
+		
+		return $posts;
+	}
+	
 	public static function getPostCount($id)
 	{
 		

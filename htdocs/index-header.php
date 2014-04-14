@@ -9,7 +9,7 @@
             
             	<li><a href="#login_modal" id="login-link" data-toggle="modal">Log In</a></li>
             	<li><a href="#register_modal" id="register-link" data-toggle="modal">Sign Up</a></li>
-            	<li><a href="#" id="welcome">Welcome <?php echo $user_email; ?></a></li>
+            	<li><a href="profile_edit.php" id="welcome">Welcome <?php echo $user_email; ?></a></li>
             	<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
         </ul>
     </div>
@@ -86,7 +86,7 @@
                         });
                     });*/
                     </script>
-                    <hr width="100"> or <hr width="100">
+                    <hr class="hr-modal" width="100"> or <hr class="hr-modal" width="100">
                     </br>
                     <button class="submit-fbk">Join with Facebook</button>
                     <br>
@@ -163,7 +163,7 @@
                         });
                     });
                     </script>
-                    <hr width="100"> or <hr width="100">
+                    <hr class="hr-modal" width="100"> or <hr class="hr-modal" width="100">
                     <button class="submit-fbk">Join with Facebook</button>
                     <br><p>It\'s fast and easy - and we\'ll never share your info or post without your permission, we promise!</p>';
         $log_footer = 'Not a member yet? <a href="#" id="sign_in_mod">Join Us!</a>';

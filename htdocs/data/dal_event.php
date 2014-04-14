@@ -95,12 +95,34 @@ class Event
 		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		$result = mysqli_query($con,"SELECT * FROM events WHERE id_host=" . $id);
+		$result = mysqli_query($con,"SELECT * FROM events WHERE id_host={$id}");
 		
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
 	
-		return $result;
+		$events = array();
+		
+		while ($row = mysqli_fetch_array($result))
+		{
+			$event_dt = new EventDT();
+			
+			$event_dt->id = $row['id'];
+			$event_dt->network_id = $row['network_id'];
+			$event_dt->host_id = $row['host_id'];
+			$event_dt->date_created = $row['date_created'];
+			$event_dt->event_date = $row['event_date'];
+			$event_dt->title = $row['title'];
+			$event_dt->email = $row['email'];
+			$event_dt->address_1 = $row['address_1'];
+			$event_dt->address_2 = $row['address_2'];
+			$event_dt->city = $row['city'];
+			$event_dt->region = $row['region'];
+			$event_dt->description = $row['description'];
+			
+			array_push($events, $event_dt);
+		}
+	
+		return $events;
 	}
 	
 	public static function getEventsByNetworkId($id)

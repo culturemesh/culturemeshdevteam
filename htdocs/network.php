@@ -146,14 +146,18 @@
 					<div>
 						<div class='net-info'>
 							<h1 class='h-network'><?php echo HTMLBuilder::formatNetworkTitle($network); ?></h1>
-							<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
 							<div class="reg-guest">
 								<form method="POST" action="network_join.php">
+									<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
 									<button class="network">Join us!</button>
 								</form>
 							</div>
 							<div class="guest">
+								<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
 								<button class="network" onclick="$('#register_modal').modal('show');">Join us!</button>
+							</div>
+							<div class="member">
+								<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
 							</div>
 						</div>
 						<div class="clear"></div>

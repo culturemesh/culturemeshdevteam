@@ -12,7 +12,7 @@ $json_response = array(
 // 	in all the required fields
 if(isset($_POST['email']) && isset($_POST['password'])
 	&& isset($_POST['password_conf'])){
-
+	
 	// Check if password is long enough to be 
 		// worthy of entry into my database
 	if( strlen($_POST['password']) < 6) {
