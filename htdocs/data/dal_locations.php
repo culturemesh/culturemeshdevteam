@@ -67,7 +67,7 @@ class Locations
 			$region = null;
 
 			while($row = mysqli_fetch_array($result))
-				$region = array($row['id'], $row['name'], $row['country_id'], $row['country_name']);	
+				$region = array(null, null, $row['id'], $row['name'], $row['country_id'], $row['country_name']);	
 
 			return $region;
 		}
@@ -102,7 +102,7 @@ class Locations
 			$country = null;
 
 			while($row = mysqli_fetch_array($result))
-				$country = array($row['id'], $row['name']);	
+				$country = array(null, null, null, null, $row['id'], $row['name']);	
 
 			return $country;
 		}

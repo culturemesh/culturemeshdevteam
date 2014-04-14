@@ -164,6 +164,7 @@ class Network
 		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		  }
 
+		//echo $statement;
 		$result = mysqli_query($con, $statement); 
 
 		echo $con->error;
