@@ -23,6 +23,7 @@ var li_origins = [];
 var cur_locations = [];
 var languages = [];
 var li_languages = [];
+var li_locations = [];
 
 
 loadInitialData();
@@ -90,8 +91,11 @@ function loadInitialData() {
 					loc.name = raw_data[key][i]["name"];
 					if (key == "cities")
 					{
-						loc.name += ", " + raw_data[key][i]['region_name'] + ", " + raw_data[key][i]["country_name"];
-						loc.type = "cc";
+						if (raw_data[key][i]['region_name'] != loc.name
+							  && raw_data[key][i]['country_name'] != loc.name){
+							loc.name += ", " + raw_data[key][i]['region_name'] + ", " + raw_data[key][i]["country_name"];
+							loc.type = "cc";
+						}
 					}
 					else if (key == "regions")
 					{
@@ -112,9 +116,9 @@ function loadInitialData() {
 			}
 				
 			// get an initial sample of list items
-			li_languages = languages.slice(0,4);
-			li_origins = origins.slice(0,4);
-			li_locations = locations.slice(0,4);
+			//li_languages = languages.slice(0,4);
+			//li_origins = origins.slice(0,4);
+			//li_locations = locations.slice(0,4);
 
 			searchBar.initialize();
 		}
@@ -271,6 +275,8 @@ function SearchBar() {
 		if (document.activeElement != searchOne)
 		{
 			clearUl(varUl);
+			//li_origins = [];
+			//li_languages = [];
 			// close var list
 			varUl.style.display = "none";
 		}
@@ -283,7 +289,6 @@ function SearchBar() {
 				// Clear ul
 				clearUl(varUl);
 				
-
 				// get value of search bar
 				raw_val = searchOne.value;
 				var vals = raw_val.split(" ");
@@ -305,6 +310,7 @@ function SearchBar() {
 					}
 				}
 
+				if (query_str != "") {
 				switch (prompt_str) 
 				{
 					case "are from" :
@@ -332,6 +338,7 @@ function SearchBar() {
 
 				// set q_select
 				//q_select = query_str;
+				}
 				break;
 			case "search-2":
 				// clear

@@ -27,6 +27,12 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		$json_response["error"] = 3;
 		echo json_encode($json_response);
 	}
+	else if(strlen($_POST['email']) > 30)
+	{
+		$json_response["message"] = "Email too long. Must be less than 30 characters";
+		$json_response["error"] = 6;
+		echo json_encode($json_response);
+	}
 	else
 	{
 		session_name("myDiaspora");
