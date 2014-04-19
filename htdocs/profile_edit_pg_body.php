@@ -110,7 +110,7 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 				</tr>
 				<tr class="dashboard">
 					<!--<td class="dashboard"><h3 class="dashboard">About Me:</h3></td>-->
-					<td class="dashboard"><textarea class="dashboard" name="about_me" placeholder="Tell us about yourself..."><?=getMemberAboutMe($_SESSION["uid"])?></textarea></td>
+					<td class="dashboard"><textarea class="dashboard" name="about_me" placeholder="Tell us about yourself..."><?echo getMemberAboutMe($_SESSION["uid"])?></textarea></td>
 				</tr>
 			</tbody>
 			</table>

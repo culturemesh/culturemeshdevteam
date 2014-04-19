@@ -10,12 +10,6 @@
 	
 	session_name("myDiaspora");
 	session_start();
-	
-	if (isset($_SESSION['uid']))
-		$user_email = User::getMemberEmail($_SESSION['uid']);
-	else
-		$user_email = "";
-		
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

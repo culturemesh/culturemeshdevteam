@@ -118,7 +118,10 @@ class Event
 			$event_dt->city = $row['city'];
 			$event_dt->region = $row['region'];
 			$event_dt->description = $row['description'];
-			
+			$event_dt->username = $row['username'];
+			$event_dt->first_name = $row['first_name'];
+			$event_dt->last_name = $row['last_name'];
+
 			array_push($events, $event_dt);
 		}
 	
@@ -160,6 +163,9 @@ class Event
 			$event_dt->city = $row['city'];
 			$event_dt->region = $row['region'];
 			$event_dt->description = $row['description'];
+			$event_dt->username = $row['username'];
+			$event_dt->first_name = $row['first_name'];
+			$event_dt->last_name = $row['last_name'];
 			
 			array_push($events, $event_dt);
 		}

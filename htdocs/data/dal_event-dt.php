@@ -16,6 +16,10 @@ class EventDT
 	public $city;		// varchar(50)
 	public $country;	// varchar(50)
 	public $description;	// varchar(500)
+
+	public $username;
+	public $first_name;
+	public $last_name;
 }
 
 ?>

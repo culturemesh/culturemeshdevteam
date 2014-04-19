@@ -151,7 +151,7 @@ class HTMLBuilder
 				<img id='profile-post' src='images/blank_profile.png' width='45' height='45'>
 			</div>
 			<div class='post-info'>
-				<h5 class='h-network'>{$post->email}</h5>
+				<h5 class='h-network'>{$post->first_name} {$post->last_name}</h5>
 				<p class='network'>{$post->post_text}</p>
 				<a class='network member'>Reply</a>
 			</div>
@@ -171,7 +171,7 @@ class HTMLBuilder
 				<h3 class='h-network'>{$event->title}</h3>
 			</div>
 			<div class=''>
-				<p id='event-info'>Hosted by {$event->email} and set for {$datetime}</p>
+				<p id='event-info'>Hosted by {$event->first_name} {$event->last_name} and set for {$datetime}</p>
 				<p id='event-desc'>{$event->description}</p>
 				
 			</div>
@@ -203,7 +203,7 @@ class HTMLBuilder
 					<img src='images/background-placeholder.png' alt='No image'></img>
 				</div>
 				<div class='card-info'>
-					<p id='event-info'>With {$event->email}</p>
+					<p id='event-info'>With {$event->first_name} {$event->last_name}</p>
 					<p id='event-date'>{$datetime}</p>
 				</div>
 			</div>
