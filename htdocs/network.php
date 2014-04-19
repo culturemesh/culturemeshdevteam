@@ -11,6 +11,21 @@
 	//session_name("myDiaspora");
 	//session_start();
 
+?>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<?php
+			include "headinclude.php";
+		?>
+		
+		<title>CultureMesh - Connecting the World's Diasporas </title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="Welcome to CultureMesh - Connecting the world's diasporas!" />
+	
+<?php
+////////////////////////////////////////////////////
 	$con = getDBConnection();
 	
 	$guest = true;
@@ -21,9 +36,6 @@
 	else
 	{
 		$guest = false;
-		$user = User::getUserById($_SESSION['uid'], $con);
-		$user_email = $user->email;
-		
 		$netreg = new NetworkRegistrationDT();
 		$netreg->id_user = $user->id;
 		$netreg->id_network = $_GET['id'];
@@ -64,19 +76,10 @@
 	//var_dump($posts);
 	
 	mysqli_close($con);
+/////////////////////////////////////////////////////
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-	<head>
-		<?php
-			include "headinclude.php";
-		?>
-		
-		<title>CultureMesh - Connecting the World's Diasporas </title>
-		<meta name="keywords" content="" />
-		<meta name="description" content="Welcome to CultureMesh - Connecting the world's diasporas!" />
 		<style type='text/css'>
-		
+	
 		<?php 	// NOT A MEMBER OF NETWORK
 			if (!$member) : ?>
 		.member {
@@ -227,6 +230,8 @@
 							<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 							<div class="clear"></div>
 							<input type="submit" class="network" value="Send"></input>
+							<input type="hidden" name="post_class" value="o"></input>
+							<input type="hidden" name="post_original" value="NULL"></input>
 						</form>
 						<ul id="post-wall-ul" class="network">
 						<?php 
@@ -234,7 +239,7 @@
 							HTMLBuilder::displayPost($post); 
 						?>
 						</ul>
-						<script src="js/post-wall.js"></script>
+						<!--<script src="js/post-wall.js"></script>-->
 						<script>
 						/*
 						var wall = document.getElementById("post-wall-ul");

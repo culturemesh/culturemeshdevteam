@@ -12,6 +12,11 @@ class UserDT
 	public $register_date;	// timestamp
 	public $last_login;	// timestamp
 	public $gender;		// varchar(1)
+	public $about_me;
+	public $events_upcoming;
+	public $events_interested_in;
+	public $company_news;
+	public $network_activity;
 }
 
 ?>

@@ -8,7 +8,7 @@
             <li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>
             <li><a id="login-link" href="#login_modal" data-toggle="modal">Log In</a></li>
             <li><a id="register-link" href="#register_modal" data-toggle="modal">Sign Up</a></li>
-            <li><a href="profile_edit.php" id="welcome">Welcome <?php echo $user_email; ?></a></li>
+            <li><a href="profile_edit.php" id="welcome">Welcome, <?php echo $user->first_name; ?></a></li>
             	<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
         </ul>
     </div>
@@ -55,6 +55,7 @@
 				 {
 				    var res_data = jQuery.parseJSON(data)
 				    $("#server_error").text(res_data["message"]);
+				    // if successful
 				    if (res_data["error"] == 5) {
 					    if (document.URL.indexOf("network") == -1)
 					      { window.location.assign("profile_edit.php"); }
@@ -69,22 +70,6 @@
 				 }
 				});
 			});
-                    /*$("#reg_sumbit_btn").click(function(){
-                        if( $("#reg-email").val().length() > 50))
-                        {
-                            $("#email_dup_txt").text("Your email address is too long");
-                        }
-                        if( $("#password").val() != $("#password_conf").val() )
-                        $.post("r.php", {"reg_sub":$("#reg_form").serialize()})
-                        .done(function(data){
-				    var res_data = jQuery.parseJSON(data)
-				    $("#server_error").text(res_data["message"]);
-				    if (res_data["error"] == 1) {
-					    //window.location("profile_settings.php");
-				    }
-                            }
-                        });
-                    });*/
                     </script>
                     <hr class="hr-modal" width="100"> or <hr class="hr-modal" width="100">
                     </br>

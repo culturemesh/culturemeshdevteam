@@ -67,8 +67,8 @@ class UserNotification
 		}
 		
 		if (!$result = mysqli_query($con, "SELECT *
-			FROM user_notifications 
-			WHERE uid={$uid}"))
+			FROM users
+			WHERE id={$uid}"))
 		{
 			echo "Error message: " . $con->error;
 			return -1;
@@ -112,10 +112,10 @@ class UserNotification
 			echo "Failed to connect to MySQL: ";
 		}
 		
-		if (!mysqli_query($con, "UPDATE user_notifications 
+		if (!mysqli_query($con, "UPDATE users 
 			SET events_upcoming={$not_dt->events_upcoming}, events_interested_in={$not_dt->events_interested_in},
 			company_news={$not_dt->company_news}, network_activity={$not_dt->network_activity}
-			WHERE uid={$not_dt->uid}"))
+			WHERE id={$not_dt->uid}"))
 		{
 			echo "Error message: " . $con->error;
 			return -1;

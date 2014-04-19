@@ -31,6 +31,17 @@
 </script>
 <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
+<?php
+	$guest = true;
+	if (!isset($_SESSION['uid']))
+		$guest = true;
+	else
+	{
+		$guest = false;
+		$user = User::getUserById($_SESSION['uid'], $con);
+		$user_email = $user->email;
+	}
+?>
 <style type='text/css'>
 	<?php if (isset($_SESSION['uid'])) : ?>
 		#login-link {

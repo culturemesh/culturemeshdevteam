@@ -6,6 +6,8 @@
   *         createPost
   *	READ
   *	    getAllPosts
+  *	    getPostsByNetworkId
+  *	    getPostsByUserId
   *	UPDATE
   *	    updatePost
   *	DELETE
@@ -87,7 +89,7 @@ class Post
 		}
 		
 		$result = mysqli_query($con,
-			"SELECT p.*, u.email 
+			"SELECT p.*, u.email, u.first_name, u.last_name, u.username
 			FROM posts p, users u 
 			WHERE p.id_user=u.id 
 			AND id_network={$id}
@@ -101,6 +103,9 @@ class Post
 			$post_dt->id = $row['id'];
 			$post_dt->id_user = $row['id_user'];
 			$post_dt->email = $row['email'];
+			$post_dt->username = $row['username'];
+			$post_dt->first_name = $row['first_name'];
+			$post_dt->last_name = $row['last_name'];
 			$post_dt->id_network = $id;
 			$post_dt->post_date = $row['post_date'];
 			$post_dt->post_text = $row['post_text'];

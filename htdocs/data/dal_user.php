@@ -140,6 +140,11 @@ class User
 			$user->register_date = $row['register_date'];
 			$user->last_login = $row['last_login'];
 			$user->gender = $row['gender'];
+			$user->about_me = $row['about_me'];
+			$user->events_upcoming = $row['events_upcoming'];
+			$user->events_interested_in = $row['events_interested_in'];
+			$user->company_news = $row['company_news'];
+			$user->network_activity = $row['network_activity'];
 		}
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }

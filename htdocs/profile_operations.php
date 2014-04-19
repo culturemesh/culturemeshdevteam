@@ -11,6 +11,9 @@ session_start();
 
 if( isset($_SESSION['uid']))
 {
+	/**
+	 * BASIC INFO UPDATE
+	 */
 	if(isset($_POST['bi_update']) )
 	{
 		$con = getDBConnection();
@@ -28,10 +31,10 @@ if( isset($_SESSION['uid']))
 			$data = array(
 				"error" => 0,
 				"uid" => $info->uid,
-				"first_name" => $info->first_name,
-				"last_name" => $info->last_name,
-				"gender" => $info->gender,
-				"about_me" => $info->about_me);
+				"first_name" => $_POST['first_name'],
+				"last_name" => $_POST['last_name'],
+				"gender" => $_POST['gender'],
+				"about_me" => $_POST['about_me']);
 
 			echo json_encode($data);
 		}
@@ -44,6 +47,9 @@ if( isset($_SESSION['uid']))
 		}
 	}
 	 
+	/**
+	 * ACCOUNT INFO UPDATE
+	 */
 	if (isset($_POST['ai_update']))
 	{
 		$note = new UserNotificationDT();
