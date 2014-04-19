@@ -28,7 +28,7 @@ if ($valid)
 	
 	Post::createPost($post);
 	
-	header("Location: network.php?id={$_SESSION['cur_network']}");
+//	header("Location: network.php?id={$_SESSION['cur_network']}");
 
 }
 else

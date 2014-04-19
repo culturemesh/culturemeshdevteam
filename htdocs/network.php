@@ -230,6 +230,8 @@
 							<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 							<div class="clear"></div>
 							<input type="submit" class="network" value="Send"></input>
+							<input type="hidden" name="post_class" value="o"></input>
+							<input type="hidden" name="post_original" value="NULL"></input>
 						</form>
 						<ul id="post-wall-ul" class="network">
 						<?php 
@@ -237,7 +239,7 @@
 							HTMLBuilder::displayPost($post); 
 						?>
 						</ul>
-						<script src="js/post-wall.js"></script>
+						<!--<script src="js/post-wall.js"></script>-->
 						<script>
 						/*
 						var wall = document.getElementById("post-wall-ul");
