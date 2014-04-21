@@ -3,6 +3,6 @@
 *.swp
 localdbconn.php
 htdocs/db_test*
-/nbproject/private/
+nbproject/
 htdocs/error_log*
 htdocs/php.ini*
