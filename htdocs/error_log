@@ -3553,3 +3553,543 @@
 [14-Apr-2014 02:43:51 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
 [14-Apr-2014 02:44:23 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
 [14-Apr-2014 02:44:54 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:19:07 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:19:07 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:19:07 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:19:07 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:19:07 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:19:18 America/Denver] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network_post.php on line 25
+[19-Apr-2014 15:19:18 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:19:18 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:19:18 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:19:18 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:19:18 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:19:18 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:22:33 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:22:33 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:22:33 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:22:34 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:22:34 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:22:34 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:23:21 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:23:21 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:23:21 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:23:21 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:23:21 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:23:21 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:25:21 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:21 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:21 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:29 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:29 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:29 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:29 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:25:29 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:25:29 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:25:31 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:31 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:31 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:34 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:34 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:34 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:34 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:25:34 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:25:34 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:25:41 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:41 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:41 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:44 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:44 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:44 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:44 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:25:44 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:25:44 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:25:46 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:46 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:46 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:49 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:49 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:49 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:49 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:25:49 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:25:49 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:25:51 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:51 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:51 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:53 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:53 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:53 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:53 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:25:53 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:25:53 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:25:55 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:55 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:55 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:58 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:25:58 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:25:58 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:25:58 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:25:58 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:25:58 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:26:07 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:26:07 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:26:07 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 15:26:34 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:26:43 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:26:43 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:26:43 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:26:43 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:26:43 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:26:43 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 15:26:56 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:27:44 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:27:44 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:27:44 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:27:44 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:27:44 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:27:44 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 15:27:44 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 15:27:44 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 15:27:44 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 15:29:09 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 15:29:09 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 15:29:09 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 15:29:09 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 15:29:09 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 15:29:09 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 15:29:09 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 15:29:09 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 15:29:09 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:11:29 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:11:29 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:11:29 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:11:36 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:11:46 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:11:46 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:11:46 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:11:46 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:11:46 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:11:46 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:12:19 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:12:19 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:12:19 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:12:19 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:12:19 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:12:19 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:12:19 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:12:19 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:12:19 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:12:25 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:12:25 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:12:25 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:12:25 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:12:25 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:12:25 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:21:07 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:21:07 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:21:07 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:21:07 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:21:07 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:21:07 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:21:32 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:21:35 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:21:35 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:21:35 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:21:35 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:21:35 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:21:35 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:21:40 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:21:40 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:21:40 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:21:40 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:21:40 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:21:40 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:21:54 America/Denver] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network_post.php on line 25
+[19-Apr-2014 16:21:54 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:21:54 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:21:54 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:21:54 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:21:54 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:21:54 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:22:18 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:18 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:18 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:20 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:20 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:20 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:20 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:22:20 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:22:20 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:22:22 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:22 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:22 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:25 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:25 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:25 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:25 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:22:25 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:22:25 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:22:28 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:28 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:28 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:29 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:29 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:29 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:29 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:22:29 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:22:29 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:22:32 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:32 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:32 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:33 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:33 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:33 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:33 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:22:33 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:22:33 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:22:35 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:35 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:35 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:37 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:37 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:37 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:37 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:22:37 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:22:37 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:22:39 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:39 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:39 America/Denver] PHP Fatal error:  Class 'User' not found in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:41 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:22:41 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:22:41 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:22:41 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:22:41 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:22:41 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:23:11 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:23:11 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:23:11 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:23:11 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:23:11 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:23:11 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:25 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:23:34 America/Denver] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network_post.php on line 25
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:34 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:38 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:23:45 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:23:45 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:23:45 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:23:45 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:23:45 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:23:45 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:23:53 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:23:53 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:23:53 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:23:53 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:23:53 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:23:53 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[19-Apr-2014 16:23:53 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[19-Apr-2014 16:23:53 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[19-Apr-2014 16:23:53 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:24:03 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:24:03 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:24:03 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:24:03 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:24:03 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:24:03 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:24:30 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:25:00 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:25:52 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:26:02 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:26:28 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:26:35 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:26:35 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:26:35 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:26:35 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:26:35 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:26:49 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:26:49 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:26:49 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:26:49 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:26:49 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:26:55 America/Denver] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network_post.php on line 25
+[19-Apr-2014 16:26:55 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:26:55 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[19-Apr-2014 16:26:55 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[19-Apr-2014 16:26:55 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[19-Apr-2014 16:26:55 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[19-Apr-2014 16:26:55 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[19-Apr-2014 16:27:24 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:27:47 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[19-Apr-2014 16:28:20 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[20-Apr-2014 13:05:08 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[20-Apr-2014 13:05:15 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[20-Apr-2014 13:05:15 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[20-Apr-2014 13:05:15 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 41
+[20-Apr-2014 13:05:15 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[20-Apr-2014 13:05:15 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[20-Apr-2014 13:05:15 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[20-Apr-2014 18:44:11 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 19:06:59 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 19:06:59 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 19:06:59 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[21-Apr-2014 19:06:59 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[21-Apr-2014 19:06:59 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:06:59 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:06:59 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:06:59 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[21-Apr-2014 19:06:59 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 19:06:59 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 19:14:25 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 19:26:54 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 19:27:15 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 19:32:23 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 19:37:11 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: network_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 155
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 156
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 20:12:14 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 21:43:28 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 21:49:54 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 21:49:54 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 21:49:54 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 21:49:54 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 21:49:54 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about_pg_body.php on line 24
+[21-Apr-2014 21:54:58 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 21:55:08 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 21:55:11 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 21:55:52 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 21:57:41 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 21:57:41 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 21:57:41 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[21-Apr-2014 21:57:41 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[21-Apr-2014 21:57:41 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 21:57:41 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 22:02:16 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 22:02:45 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 22:03:27 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 22:03:40 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 22:03:40 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 22:03:40 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[21-Apr-2014 22:03:40 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[21-Apr-2014 22:03:40 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 22:03:40 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 22:04:01 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 22:04:01 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 22:04:01 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[21-Apr-2014 22:04:01 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[21-Apr-2014 22:04:01 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 22:04:01 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 22:05:16 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 22:05:21 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[21-Apr-2014 22:05:21 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[21-Apr-2014 22:05:21 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[21-Apr-2014 22:05:21 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[21-Apr-2014 22:05:21 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[21-Apr-2014 22:05:21 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11

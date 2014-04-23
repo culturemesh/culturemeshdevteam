@@ -3,6 +3,8 @@ var table = document.getElementById("slider-table");
 var leftButton = document.getElementById("slider-left");
 var rightButton = document.getElementById("slider-right");
 
+content.cmMaxScroll = content.scrollLeftMax | content.scrollWidth;
+
 var cardLength = 275;
 var timeLength = 75;
 var interval = 15;
@@ -47,7 +49,7 @@ function layEmOut() {
 }
 
 function moveRight() {
-	if (content.scrollLeft < content.scrollLeftMax)
+	if (content.scrollLeft < content.cmMaxScroll)
 		content.scrollLeft += MOVE_SPEED;
 }
 
