@@ -152,8 +152,8 @@ class Event
 			$event_dt = new EventDT();
 			
 			$event_dt->id = $row['id'];
-			$event_dt->network_id = $row['network_id'];
-			$event_dt->host_id = $row['host_id'];
+			$event_dt->id_network = $row['id_network'];
+			$event_dt->id_host = $row['id_host'];
 			$event_dt->date_created = $row['date_created'];
 			$event_dt->event_date = $row['event_date'];
 			$event_dt->title = $row['title'];
@@ -190,10 +190,9 @@ class Event
 		}
 		
 		if (!mysqli_query($con, "UPDATE events 
-			SET id_network=". $event_dt->network_id .", id_host=". $event_dt->host_id .
-			", event_date='". $event_dt->event_date ."', address_1='". $event_dt->address_1 .
+			SET event_date='". $event_dt->event_date ."', address_1='". $event_dt->address_1 .
 			"', address_2='". $event_dt->address_2 ."', city='". $event_dt->city .
-			"', region='". $event_dt->region ."', description='". $event_dt->description . 
+			"', description='". $event_dt->description . 
 			"' WHERE id=". $event_dt->id ))
 		{
 			echo "Error Message: " . $con->error;

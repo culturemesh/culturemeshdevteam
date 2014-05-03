@@ -115,7 +115,7 @@
                                     $("#login-link").hide();
                                     $("#register-link").hide();
                                     $("#welcome").show(); 
-                                    $("#welcome").text("Welcome, " + email);
+                                    $("#welcome").text("Welcome, " + res_data.title);
                                     $("#sign-out").show();
                                     $(".guest").hide();
                                     

@@ -57,21 +57,36 @@
 		"October", "November", "December");
 
 	$calendar = array();
-	// add months to array as keys
-	foreach($months as $month)
-	{
-		$calendar[$month] = array();
-	}
-	
+	$years = array();
+
 	foreach($events as $event)
 	{
-		// get month of event
+		// add year to array as keys
+		//   -- get year
 		$dt = new DateTime($event->event_date);
+		$year = $dt->format('y');
+
+		// 
+		if (!isset($calendar[$year])) {
+			$calendar[$year] = array();
+			array_push($years, $year);
+
+			// add months to array as keys
+			foreach($months as $month)
+			{
+				$calendar[$year][$month] = array();
+			}
+		}
+
+
+		// get month of event
 		$month = $dt->format('n');
 
 		// push event into array
-		array_push( $calendar[$months[$month - 1]], $event);
+		array_unshift( $calendar[$year][$months[$month - 1]], $event);
 	}
+
+	//var_dump($calendar);
 
 	//var_dump($posts);
 	
@@ -79,7 +94,9 @@
 /////////////////////////////////////////////////////
 ?>
 		<style type='text/css'>
-	
+
+
+
 		<?php 	// NOT A MEMBER OF NETWORK
 			if (!$member) : ?>
 		.member {
@@ -104,10 +121,11 @@
 		</style>
 		
 		 <script>
+		/*
 		$(function() {
 		$( "#datetimepicker" ).datetimepicker();
 		});
-		
+		 */
 		function toggleEventForm(){
 			if (document.getElementById("event-maker")) {
 				var elem = document.getElementById("event-maker");
@@ -178,17 +196,20 @@
 							<tbody>
 							<tr>
 								<?php 
-								foreach($months as $month)
-								{
-									if (empty($calendar[$month]))
-										continue;
-
-									HTMLBuilder::displayEventMonth($month);
-
-									// cycle through the month's events
-									for ($i = 0; $i < count($calendar[$month]); $i++)
+								foreach($years as $year) {
+									foreach($months as $month)
 									{
-										HTMLBuilder::displayEventCard($calendar[$month][$i]);
+										if (empty($calendar[$year][$month]))
+											continue;
+
+										HTMLBuilder::displayEventMonth($month, $year);
+
+										// cycle through the month's events
+										for ($i = 0; $i < count($calendar[$year][$month]); $i++)
+										{
+											HTMLBuilder::displayEventCard($calendar[$year][$month][$i]);
+											HTMLBuilder::displayEventModal($calendar[$year][$month][$i]);
+										} 
 									}
 								}
 								?>
@@ -209,7 +230,7 @@
 						<form class="event-form" method="POST" action="network_post-event.php" enctype="multipart/form-data">
 							<div>
 							<input type="text" id="title" name="title" class="event-text" placeholder="Name of Event "></input></br>
-							<input type="text" id="datetimepicker" name="datetime" class="event-text" placeholder="Event Date">
+							<input type="text" id="datetimepicker1" name="datetime" class="event-text datetimepicker" placeholder="Event Date">
 							<input type="text" class="hidden-field" name="date"></input>
 							<input type="text" name="address_1" class="event-text" placeholder="Address 1"/>
 							<input type="text" name="address_2" class="event-text" placeholder="Address 2"/>
@@ -283,4 +304,9 @@
 	<script src="js/jsdatetime/jquery.datetimepicker.js"></script>
 	<script src="js/searchbar.js"></script>
 	<script src="js/slider.js"></script>
+	<script src="js/event-wall.js"></script>
+	<script>
+		$(".datetimepicker").datetimepicker();
+	</script>	
+	</script>
 </html>
