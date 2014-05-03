@@ -4093,3 +4093,28 @@
 [21-Apr-2014 22:05:21 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
 [21-Apr-2014 22:05:21 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
 [21-Apr-2014 22:05:21 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[03-May-2014 00:51:15 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[03-May-2014 00:51:15 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[03-May-2014 00:51:15 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[03-May-2014 00:51:15 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[03-May-2014 00:51:15 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[03-May-2014 00:51:15 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[03-May-2014 00:51:15 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[03-May-2014 00:51:15 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[03-May-2014 00:51:15 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 289
+[03-May-2014 10:28:50 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[03-May-2014 10:28:50 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[03-May-2014 10:28:50 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[03-May-2014 10:28:50 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[03-May-2014 10:28:50 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 164
+[03-May-2014 10:28:50 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[03-May-2014 10:28:50 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[03-May-2014 10:28:50 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[03-May-2014 10:28:50 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 289
+[03-May-2014 11:07:02 America/Denver] PHP Parse error:  syntax error, unexpected '.', expecting ',' or ';' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/cm_email.php on line 5
+[03-May-2014 11:07:27 America/Denver] PHP Parse error:  syntax error, unexpected '.', expecting ',' or ';' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/cm_email.php on line 5
+[03-May-2014 11:07:33 America/Denver] PHP Parse error:  syntax error, unexpected '.', expecting ',' or ';' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/cm_email.php on line 5
+[03-May-2014 11:08:18 America/Denver] PHP Parse error:  syntax error, unexpected '.', expecting ',' or ';' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/cm_email.php on line 5
+[03-May-2014 11:08:22 America/Denver] PHP Parse error:  syntax error, unexpected '.', expecting ',' or ';' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/cm_email.php on line 5
+[03-May-2014 11:09:28 America/Denver] PHP Parse error:  syntax error, unexpected '$headers' (T_VARIABLE), expecting function (T_FUNCTION) in /home3/culturp7/public_html/culturemeshdevteam/htdocs/cm_email.php on line 6
+[03-May-2014 11:09:58 America/Denver] PHP Fatal error:  Cannot redeclare CMEmail::$headers in /home3/culturp7/public_html/culturemeshdevteam/htdocs/cm_email.php on line 6

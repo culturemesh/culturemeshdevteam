@@ -1,9 +1,13 @@
 <?php
 class CMEmail
 {
+//-------------------------------------
 ////////////// THE EMAILS /////////////
-private static $headers = "MIME-Version: 1.0\r\n
-	Content-type: text/html; charset=iso-8859-1\r\n";
+private static $headers = <<<EOF
+From: no-reply@culturemesh.com
+MIME-Version: 1.0
+Content-type: text/html; charset=iso-8859-1
+EOF;
 
 private static $confirmation = <<<EHTML
 <html>
@@ -18,15 +22,17 @@ private static $confirmation = <<<EHTML
 		access to CultureMesh, and all future notifications
 		will be sent to this email address</p>
 
-		<a href="localhost/culturemesh/culturemeshdevteam/
-		htdocs/ profile_edit.php?confirm=true"
+		<a href="http://www.culturemesh.com/culturemeshdevteam/
+		htdocs/confirmation.php"
 		>Click to confirm membership.</a>
 	</div>
 </body>
 </html>
 EHTML;
+/////////////////////////////////////
+// ----------------------------------
 
-
+	// sends a confirmation email to the address provided
 	public static function sendConfirmationEmail($address)
 	{
 		return mail($address, 'CultureMesh confirmation', self::$confirmation, self::$headers);
