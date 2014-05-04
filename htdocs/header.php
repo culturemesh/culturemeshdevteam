@@ -110,7 +110,7 @@
                             switch(res_data.error){
                                 case null:
 				    if (document.URL.indexOf("network") == -1)
-			      	      { window.location.assign("profile_edit.php"); }
+			      	      { window.location.assign("profile_edit.php?confirm=true"); }
                                     $("#login_modal").modal("hide");
                                     $("#login-link").hide();
                                     $("#register-link").hide();

@@ -130,6 +130,7 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 		// update stuff
 		$("#profile_name").text(results["first_name"] + " " + results["last_name"]);
 		$("#profile_about").text(results["about_me"]);
+		$("#welcome").text("Welcome, " + results["first_name"]);
                 $("#basic_info_update_success_txt").fadeIn();
                 delay(function(){$("#basic_info_update_success_txt").fadeOut()}, 2000);
             }
@@ -140,6 +141,12 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 	});
     });
 </script>
+<?php if($user->confirmed == 0) :?>
+<div id="confirmation_panel">
+	<p>An confirmation email has been sent to you.</p>
+	<p>Please respond so that you can enjoy full access to CultureMesh</p>
+</div>
+<?php endif; ?>
 <div class="profile_left_panel">
     <span class="profile_image">
     	<img src="images/blank_profile_lrg.png"/>
@@ -151,7 +158,9 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 	<p id="profile_about" class="profile"><?php echo $info->about_me; ?></p>
     </span>
     <p class="profile"><a href="#profile_edit_modal" class="profile" id="pro-edit-link" data-toggle="modal">Edit Profile</a></p>
+    <?php if($user->confirmed == 1) : ?>
     <p class="profile"><a data-toggle="modal" href="#password_confirm_modal">Change Password</a></p>
+    <?php endif; ?>
 </div>
 <div class="profile_dashboard">
     <?php HTMLBuilder::displaySearchBar(); ?>

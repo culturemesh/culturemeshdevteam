@@ -51,14 +51,23 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 	<label class="label label-success hide" id="account_info_update_success_txt">Information successfully updated!</label>
 	<label class="label label-important hide" id="account_info_update_failure_txt">Update failed. Please try again.</label>
 	<h5>Send me emails when</h5>
-	<label class="checkbox"><input type="checkbox" name="notify_interesting_events" value="1" <?=getCheckboxVal(getMemberNotificationSettingsInterestingEvents($_SESSION['uid']));?>>CultureMesh finds events I\'d be interested in near me</label>
+	<label class="checkbox"><input type="checkbox" name="notify_interesting_events" value="1" <?=getCheckboxVal(getMemberNotificationSettingsInterestingEvents($_SESSION['uid']));?>>CultureMesh finds events I'd be interested in near me</label>
 	<label class="checkbox"><input type="checkbox" name="notify_company_news" value="1" <?=getCheckboxVal(getMemberNotificationSettingsCompanyNews($_SESSION['uid']));?>>CultureMesh has fun company news</label>
 	<label class="checkbox"><input type="checkbox" name="notify_events_upcoming" value="1" <?=getCheckboxVal(getMemberNotificationSettingsUpcomingEvents($_SESSION['uid']));?>>I have an upcoming event</label>
 	<label class="checkbox"><input type="checkbox" name="notify_network_activity" value="1" <?=getCheckboxVal(getMemberNotificationSettingsNetworkActivity($_SESSION['uid']));?>>I have received comments to a network event I added</label>
 	<input type="hidden" name="notification" value="yes"/>
 </div>
+
+<?php if ($user->confirmed == 1) : ?>
 <div id="account-buttons">
 	<!--<input type="submit" class="btn cm-button btn-gray dash" value="Cancel"\>-->
 	<input type="submit" class="btn cm-button btn-green dash" value="Submit"\>
 </div>
+
+<?php else : ?>
+<div>
+	<p>You must confirm your email to submit these changes.</p>
+</div>
+<?php endif; ?>
+
 </form>

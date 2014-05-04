@@ -237,7 +237,7 @@ input[class="modal-text-input"] {
     border-radius:4px;
     height:36px;
     font-size:18px;
-    color:black;
+    color:#7F7F7F;
 }
 
 #login-passwords
@@ -1026,6 +1026,13 @@ div.event-text
 	width: 294px;
 	float:left;
 	padding-top:48px;
+}
+
+#confirmation_panel {
+	width: 100%;
+	color:#FFFFFF;
+	background-color:rgb(151, 203, 56);
+	padding:5px;
 }
 
 .profile_dashboard
