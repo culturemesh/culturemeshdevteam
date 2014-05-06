@@ -149,8 +149,13 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 <?php endif; ?>
 <div class="profile_left_panel">
     <span class="profile_image">
-    	<img src="images/blank_profile_lrg.png"/>
+    	<img id="profile_image" src="images/blank_profile_lrg.png"/>
     </span>
+    <form id="profile-pic-upload" method="POST" action="profile_img_upload.php" enctype="multipart/form-data"/>
+	<input type="file" name="picfile">
+	<input type="hidden" name="id" value="<?php echo $_SESSION["id"];?>">
+	<input type="submit" value="Upload File">
+    </form>
     </br>
     <span class="profile_name">
     	<h2 id="profile_name" class="dashboard"><?php echo $info->first_name . " " . $info->last_name ; ?></h2>

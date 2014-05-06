@@ -148,6 +148,8 @@
 			<div content>
 				<div class="net-left">
 					<div class="leftbar">
+						<?php HTMLBuilder::googleMapsEmbed(); ?>
+<!--
 						<div class="map">
 							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202
 							359.87608164057!2d-122.32141071468104!3d37.581606634196056!2m3!1f0!2f0!
@@ -155,6 +157,7 @@
 							!2sSan+Jose%2C+CA!5e0!3m2!1sen!2sus!4v1389926877454" width="100%" height="252"
 							frameborder="0" style="border:0"></iframe>
 						</div>
+-->
 						<div class="tags"></div>
 						<div class="suggestions">
 							<h4 class="h-network">People who viewed this network also viewed:</h4>

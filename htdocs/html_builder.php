@@ -1,5 +1,7 @@
 <?php
 
+include_once "zz341/fxn.php";
+
 class HTMLBuilder
 {
 	public static function displayPopNetwork($network)
@@ -357,11 +359,31 @@ $modal_2 = <<<EHTML
 	}
 </script>
 EHTML;
-
-// DISPLAY THE STUFFFFF!!!!
-echo $modal_1 . $modal_anchor . $modal_2;
+///////////////////////////////////////////////////
+	// DISPLAY THE STUFFFFF!!!!  
+	echo $modal_1 . $modal_anchor . $modal_2; 
+} 
+///////////////////////////////////////////////////
+public static function googleMapsEmbed() {
+////////////////////////////////////////////////
+	$location = "California,United+States";
+	$key = $GLOBALS['G_API_KEY'];
+	echo $key;
+/////////////////////////////////////////////////
+$template = <<<EHTML
+<div class="map">
+	<iframe
+	   width="100%" height="252" 
+	   frameborder="0" style="border:0"
+	   src="https://www.google.com/maps/embed/v1/place?key=$key&q=$location">
+	</iframe>
+</div>
+EHTML;
+////////////////////////////////////////////////
+	echo $template;
 }
-	
+
+///////////////////////////////////////////////// echo $template; } 
 	/**************** USER DASHBOARD STUFF 	********************/
 	public static function displayDashPost($post)
 	{
