@@ -1,4 +1,5 @@
 <?php
+define("IMG_DIR", "../../user_images/");
 include_once 'zz341/fxn.php';
 include_once 'html_builder.php';
 include_once 'data/dal_user.php';
@@ -149,11 +150,11 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 <?php endif; ?>
 <div class="profile_left_panel">
     <span class="profile_image">
-    	<img id="profile_image" src="images/blank_profile_lrg.png"/>
+    	<img id="profile_image" src="<?php echo IMG_DIR.$user->img_link; ?>"/>
     </span>
     <form id="profile-pic-upload" method="POST" action="profile_img_upload.php" enctype="multipart/form-data"/>
 	<input type="file" name="picfile">
-	<input type="hidden" name="id" value="<?php echo $_SESSION["id"];?>">
+	<input type="hidden" name="id" value="<?php echo $_SESSION["uid"];?>">
 	<input type="submit" value="Upload File">
     </form>
     </br>

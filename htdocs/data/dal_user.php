@@ -146,6 +146,7 @@ class User
 			$user->company_news = $row['company_news'];
 			$user->network_activity = $row['network_activity'];
 			$user->confirmed = $row['confirmed'];
+			$user->img_link = $row['img_link'];
 		}
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
@@ -352,6 +353,25 @@ class User
 		}
 		else
 			return 1;	// SUCCESS
+	}
+
+	public static function updateProfilePicture($dir, $id, $con = false)
+	{
+		$must_close = false;
+		if ($con == false)
+		{
+			$must_close = true;
+			$con = getDBConnection();
+		}
+
+		$result = mysqli_query($con, "UPDATE users
+			SET img_link='{$dir}' 
+			WHERE id={$id}");
+		
+		if ($must_close)
+		  { mysqli_close($con); }
+
+		return $result;
 	}
 		
 	

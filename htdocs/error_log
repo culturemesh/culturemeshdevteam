@@ -4118,3 +4118,21 @@
 [03-May-2014 11:08:22 America/Denver] PHP Parse error:  syntax error, unexpected '.', expecting ',' or ';' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/cm_email.php on line 5
 [03-May-2014 11:09:28 America/Denver] PHP Parse error:  syntax error, unexpected '$headers' (T_VARIABLE), expecting function (T_FUNCTION) in /home3/culturp7/public_html/culturemeshdevteam/htdocs/cm_email.php on line 6
 [03-May-2014 11:09:58 America/Denver] PHP Fatal error:  Cannot redeclare CMEmail::$headers in /home3/culturp7/public_html/culturemeshdevteam/htdocs/cm_email.php on line 6
+[06-May-2014 03:10:05 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[06-May-2014 03:10:05 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[06-May-2014 03:10:05 America/Denver] PHP Notice:  Undefined index: member_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 736
+[06-May-2014 03:10:05 America/Denver] PHP Notice:  Undefined index: post_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 737
+[06-May-2014 03:10:05 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[06-May-2014 03:10:05 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[06-May-2014 13:58:25 America/Denver] PHP Parse error:  syntax error, unexpected ';' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/profile_img_upload.php on line 13
+[06-May-2014 13:58:39 America/Denver] PHP Parse error:  syntax error, unexpected ';' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/profile_img_upload.php on line 13
+[06-May-2014 14:02:19 America/Denver] PHP Parse error:  syntax error, unexpected ';' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/profile_img_upload.php on line 15
+[06-May-2014 14:44:52 America/Denver] PHP Warning:  move_uploaded_file(/home3/culturp7/user_images/1/orange.png): failed to open stream: Permission denied in /home3/culturp7/public_html/culturemeshdevteam/htdocs/profile_img_upload.php on line 32
+[06-May-2014 14:44:53 America/Denver] PHP Warning:  move_uploaded_file(): Unable to move '/var/tmp/phpKeo6v6' to '/home3/culturp7/user_images/1/orange.png' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/profile_img_upload.php on line 32
+[07-May-2014 00:40:01 America/Denver] PHP Parse error:  syntax error, unexpected ',' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/profile_img_upload.php on line 22
+[07-May-2014 00:40:53 America/Denver] PHP Parse error:  syntax error, unexpected '=' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_user.php on line 365
+[07-May-2014 00:42:00 America/Denver] PHP Notice:  Use of undefined constant IMAGETYPE_JPG - assumed 'IMAGETYPE_JPG' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/profile_img_upload.php on line 22
+[07-May-2014 00:45:53 America/Denver] PHP Notice:  Use of undefined constant IMAGETYPE_JPG - assumed 'IMAGETYPE_JPG' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/profile_img_upload.php on line 22
+[07-May-2014 00:46:26 America/Denver] PHP Notice:  Undefined variable: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_user.php on line 368
+[07-May-2014 00:46:26 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, string given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_user.php on line 368
+[07-May-2014 00:46:26 America/Denver] PHP Notice:  Undefined variable: must_close in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_user.php on line 371
