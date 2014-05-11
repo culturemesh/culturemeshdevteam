@@ -29,12 +29,15 @@ if (!empty($_FILES['picfile'])) {
 	$name = preg_replace("/[^A-Z0-9._-]/i", "_", $file['name']);
 	//$name = 'pp';
 
-	$rel_dir = $_POST['id'] . '/';
+	$inc = 0;
+	$rel_dir = microtime().'_'.$inc.'/';
 	$dir = UPLOAD_DIR . $rel_dir;
+
+	$con = getDBConnection();
 
 	// check for existing user folder
 	// if it don't exist, make it exist
-	if (!is_dir( $dir )) {
+	(!is_dir( $dir )) {
 		echo 'Not a directory';
 		mkdir( $dir );
 		// set permissions
@@ -53,9 +56,7 @@ if (!empty($_FILES['picfile'])) {
 	// set permissions on file
 	//chmod($dir . $name, 0644);
 
-	// not creating a connection since it's this one thing
-	// only
-	if (User::updateProfilePicture($rel_dir.$name, $_POST['id']) == 1)
+	if (User::updateProfilePicture($rel_dir.$name, $_POST['id'], $con) == 1)
 	{
 		echo "Successfully updated";
 	}

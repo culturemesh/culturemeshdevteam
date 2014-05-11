@@ -95,7 +95,7 @@ class Event
 		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		$result = mysqli_query($con,"SELECT * FROM events WHERE id_host={$id}");
+		$result = mysqli_query($con,"SELECT * FROM events e, users u WHERE e.id_host=u.id AND id_host={$id}");
 		
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
@@ -121,6 +121,7 @@ class Event
 			$event_dt->username = $row['username'];
 			$event_dt->first_name = $row['first_name'];
 			$event_dt->last_name = $row['last_name'];
+			$event_dt->img_link = $row['img_link'];
 
 			array_push($events, $event_dt);
 		}
@@ -166,6 +167,7 @@ class Event
 			$event_dt->username = $row['username'];
 			$event_dt->first_name = $row['first_name'];
 			$event_dt->last_name = $row['last_name'];
+			$event_dt->img_link = $row['img_link'];
 			
 			array_push($events, $event_dt);
 		}

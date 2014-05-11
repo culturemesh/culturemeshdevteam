@@ -91,6 +91,16 @@
 	//var_dump($posts);
 	
 	mysqli_close($con);
+
+	// create location for gmap embed
+	$location = '';
+	if (isset($network->city_cur))
+	   { $location .= urlencode($network->city_cur); }
+	if (isset($network->region_cur))
+	   { $location .= ','.urlencode($network->region_cur); }
+	if (isset($network->country_cur))
+	   { $location .= ','.urlencode($network->country_cur); }
+
 /////////////////////////////////////////////////////
 ?>
 		<style type='text/css'>
@@ -148,7 +158,7 @@
 			<div content>
 				<div class="net-left">
 					<div class="leftbar">
-						<?php HTMLBuilder::googleMapsEmbed(); ?>
+						<?php HTMLBuilder::googleMapsEmbed($location); ?>
 <!--
 						<div class="map">
 							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202

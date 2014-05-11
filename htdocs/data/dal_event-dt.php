@@ -20,6 +20,7 @@ class EventDT
 	public $username;
 	public $first_name;
 	public $last_name;
+	public $img_link;
 }
 
 ?>

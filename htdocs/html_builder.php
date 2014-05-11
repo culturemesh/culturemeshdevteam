@@ -148,6 +148,14 @@ class HTMLBuilder
 	
 	public static function displayPost($post)
 	{
+		// get image
+		$img_link = NULL;
+		if ($post->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$post->img_link;
+
+		// parse name
 		$name = NULL;
 		if ($post->first_name == '')
 			//$name = $post->email;
@@ -160,7 +168,7 @@ class HTMLBuilder
 		echo "
 		<li class='network-post'>
 			<div class='post-img'>
-				<img id='profile-post' src='images/blank_profile.png' width='45' height='45'>
+				<img id='profile-post' src='{$img_link}' width='45' height='45'>
 			</div>
 			<div class='post-info'>
 				<h5 class='h-network'>{$name}</h5>
@@ -203,6 +211,14 @@ class HTMLBuilder
 
 	public static function displayEventCard($event)
 	{
+		// get image
+		$img_link = NULL;
+		if ($event->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$event->img_link;
+
+		// format name
 		$name = NULL;
 		if ($event->first_name == '')
 			//$name = $event->email;
@@ -226,7 +242,7 @@ class HTMLBuilder
 			</div>
 			<div class='card-content'>
 				<div class='card-img'>
-					<img src='images/background-placeholder.png' alt='No image'></img>
+					<img src='$img_link' alt='No image' width='65' height='65'></img>
 				</div>
 				<div class='card-info'>
 					<p id='event-info'>With $name</p>
@@ -364,11 +380,13 @@ EHTML;
 	echo $modal_1 . $modal_anchor . $modal_2; 
 } 
 ///////////////////////////////////////////////////
-public static function googleMapsEmbed() {
+public static function googleMapsEmbed($location) {
 ////////////////////////////////////////////////
-	$location = "California,United+States";
+	//$location = 'Los+Banos,California,United+States';
+	//$location = 'Los%20Banos,California';
+	//echo $location;
 	$key = $GLOBALS['G_API_KEY'];
-	echo $key;
+	//echo $key;
 /////////////////////////////////////////////////
 $template = <<<EHTML
 <div class="map">
@@ -387,13 +405,31 @@ EHTML;
 	/**************** USER DASHBOARD STUFF 	********************/
 	public static function displayDashPost($post)
 	{
+		// get image
+		$img_link = NULL;
+		if ($post->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$post->img_link;
+
+		// parse name
+		$name = NULL;
+		if ($post->first_name == '')
+			//$name = $post->email;
+			$name = "UNNAMED USER";
+		else {
+			$name = $post->first_name;
+			if (isset($post->last_name))
+				$name .= " ".$post->last_name;
+		}
+
 		echo "
 		<li class='network-post dashboard'>
 			<div class='post-img'>
-				<img id='profile-post' src='images/blank_profile.png' width='45' height='45'>
+				<img id='profile-post' src='{$img_link}' width='45' height='45'>
 			</div>
 			<div class='post-info'>
-				<h5 class='h-network'>{$post->email}</h5>
+				<h5 class='h-network'>{$name}</h5>
 				<p class='network'>{$post->post_text}</p>
 			</div>
 			<div class='clear'></div>
@@ -403,20 +439,27 @@ EHTML;
 	
 	public static function displayDashEvent($event)
 	{
+		// get image
+		$img_link = NULL;
+		if ($event->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$event->img_link;
+
 		$datetime = strtotime($event->event_date);
 		$datetime = date("m/d/y g:i", $datetime);
 		
 		echo "
 		<li class='event dashboard'>
 			<div class='event-host'>
-				<img src='images/blank_profile.png' width='72' height='72'/>
+				<img src='{$img_link}' width='72' height='72'/>
 			</div>
 			<div class='event-text'>
 				<div class='event-title'>
 					<h3 class='h-network'>{$event->title}</h3>
 				</div>
 				<div class='event-info'>
-					<p id='event-info'>Hosted by {$event->email} and set for {$datetime}</p>
+					<p id='event-info'>Hosted by YOU and set for {$datetime}</p>
 					<p id='event-desc'>{$event->description}</p>
 					
 				</div>
@@ -447,6 +490,13 @@ EHTML;
 			$email = $email.$conversation->id_user1_dt->email;
 		else
 			$email = $email.$conversation->id_user2_dt->email;
+
+		// get image
+		$img_link = NULL;
+		if ($post->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$post->img_link;
 			
 		echo "
 		<div class='user-img dashboard'>
