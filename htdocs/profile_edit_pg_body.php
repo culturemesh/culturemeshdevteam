@@ -1,5 +1,4 @@
 <?php
-define("IMG_DIR", "../../user_images/");
 include_once 'zz341/fxn.php';
 include_once 'html_builder.php';
 include_once 'data/dal_user.php';
@@ -16,6 +15,14 @@ $con = getDBConnection();
 
 $user = User::getUserById($_SESSION['uid'], $con);
 $info = UserInfo::getInfoByUser($_SESSION['uid'], $con);
+
+// check for image link
+$img_link = NULL;
+if($user->img_link == NULL)
+	$img_link = 'images/blank_profile.png';
+else
+	$img_link = IMG_DIR.$user->img_link;
+
 ?>
 <?php
 $pass_header = '<b>Change Password</b>';
@@ -150,13 +157,15 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 <?php endif; ?>
 <div class="profile_left_panel">
     <span class="profile_image">
-    	<img id="profile_image" src="<?php echo IMG_DIR.$user->img_link; ?>"/>
+    	<img id="profile_image" src="<?php echo $img_link; ?>"/>
     </span>
-    <form id="profile-pic-upload" method="POST" action="profile_img_upload.php" enctype="multipart/form-data"/>
-	<input type="file" name="picfile">
-	<input type="hidden" name="id" value="<?php echo $_SESSION["uid"];?>">
-	<input type="submit" value="Upload File">
-    </form>
+    <div id="pic-upload-div">
+	    <form id="profile-pic-upload" method="POST" action="profile_img_upload.php" enctype="multipart/form-data"/>
+		<input type="file" id="upload-input" name="picfile">
+		<input type="hidden" name="id" value="<?php echo $_SESSION["uid"];?>">
+		<!--<input type="submit" value="Load File">-->
+	    </form>
+    </div>
     </br>
     <span class="profile_name">
     	<h2 id="profile_name" class="dashboard"><?php echo $info->first_name . " " . $info->last_name ; ?></h2>
@@ -167,6 +176,7 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
     <?php if($user->confirmed == 1) : ?>
     <p class="profile"><a data-toggle="modal" href="#password_confirm_modal">Change Password</a></p>
     <?php endif; ?>
+    <p class="profile"><a id="pic-upload-toggle" href="#">Upload Picture</a></p>
 </div>
 <div class="profile_dashboard">
     <?php HTMLBuilder::displaySearchBar(); ?>
@@ -201,4 +211,5 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 </div>
 <div class="clear"></div>
 <script src="js/searchbar.js"></script>
+<script src="js/file-input.js"></script>
 <?php mysqli_close($con); ?>

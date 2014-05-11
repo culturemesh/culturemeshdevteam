@@ -1056,6 +1056,71 @@ div.event-text
 	padding-left:48px;
 }
 
+#profile_image
+{
+	width:198px;
+	height:198px;
+}
+
+#pic-upload-div
+{
+	text-align:center;
+	display:none;
+	margin:10px 10px -20px;
+}
+
+input[type="file"]#upload-input
+{
+	margin: 0px auto;
+	display:none;
+}
+
+input[type='submit'].upload
+{
+	font:16px Lato-Bold, sans-serif;
+	height: 25px;
+	width:198px;
+	background-color: #3EB3CA;
+	border: medium none;
+	border-radius: 5px;
+	color:#FFFFFF;
+}
+
+input[type='submit'].upload:hover
+{
+	background-color:#0088CC;
+}
+
+button.upload
+{
+	font:16px Lato-Bold, sans-serif;
+	height: 25px;
+	width:198px;
+	background-color: #3EB3CA;
+	border: medium none;
+	border-radius:5px;
+	color:#FFFFFF;
+	margin-bottom:4px;
+}
+
+button.upload:hover
+{
+	background-color:#0088CC;
+}
+
+p.upload
+{
+	background-color:#0088CC;
+	color:#FFFFFF;
+	width:198px;
+	margin:0px auto;
+	margin-bottom:4px;
+	text-align:center;
+	border: medium none;
+	border-radius:5px;
+
+}
+
 p.profile
 {
 	text-align:center;
