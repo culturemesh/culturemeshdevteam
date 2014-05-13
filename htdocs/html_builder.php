@@ -385,7 +385,8 @@ public static function googleMapsEmbed($location) {
 	//$location = 'Los+Banos,California,United+States';
 	//$location = 'Los%20Banos,California';
 	//echo $location;
-	$key = $GLOBALS['G_API_KEY'];
+	//$key = $GLOBALS['G_API_KEY'];
+	$key = 'AIzaSyBjyPoTyWraVQivJbIDH3XTh_9C9BvZK4A';
 	//echo $key;
 /////////////////////////////////////////////////
 $template = <<<EHTML

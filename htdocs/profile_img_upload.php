@@ -2,8 +2,8 @@
 ini_set("display_errors", true);
 
 // hackish
-define("UPLOAD_DIR", "/home3/culturp7/user_images/");
-//define("UPLOAD_DIR", "../../../user_images/");
+//define("UPLOAD_DIR", "/home3/culturp7/user_images/");
+define("UPLOAD_DIR", "../../user_images/");
 if (!empty($_FILES['picfile'])) {
 
 	// includes
@@ -26,41 +26,74 @@ if (!empty($_FILES['picfile'])) {
 	*/
 
 	// check file name for safety
-	$name = preg_replace("/[^A-Z0-9._-]/i", "_", $file['name']);
-	//$name = 'pp';
-
-	$inc = 0;
-	$rel_dir = microtime().'_'.$inc.'/';
-	$dir = UPLOAD_DIR . $rel_dir;
+	//$name = preg_replace("/[^A-Z0-9._-]/i", "_", $file['name']);
+	$name = 'pp.png';
 
 	$con = getDBConnection();
 
 	// check for existing user folder
 	// if it don't exist, make it exist
-	(!is_dir( $dir )) {
-		echo 'Not a directory';
+	$cur_link = User::getImgLink($_POST['id'], $con);
+	
+	// user doesn't have directory
+	if ($cur_link < 0) {
+		// get timestamp
+		list($msec, $sec) = explode(" ", microtime());
+
+		// prepare directory
+		$inc = 0;
+		$rel_dir = $sec.'_';
+		$dir = UPLOAD_DIR . $rel_dir.$inc.'/';
+
+		echo '</br>'.$dir;
+
+		echo 'user doesn\'t have directory';
+		// check to see if directory already exists
+		while (is_dir( $dir )) {
+			echo 'Not a directory';
+			$inc++;
+			$dir = UPLOAD_DIR . $rel_dir.$inc.'/';
+		}
+
+		// make directory
 		mkdir( $dir );
+		echo "directory made";
+
 		// set permissions
 	//	chmod( $dir, 0644); 
-	}
 
-	// move to real home
-	$success = move_uploaded_file($file['tmp_name'],
-		$dir . $name);
+		// permanentize reldir
+		$rel_dir = $rel_dir.$inc.'/';
+		echo '</br>'.$rel_dir;
+
+		// move to real home
+		$success = move_uploaded_file($file['tmp_name'],
+			$dir . $name);
+
+		// store directory in database
+		if (User::updateProfilePicture($rel_dir.$name, $_POST['id'], $con) == 1)
+		{
+			echo "Successfully updated";
+		}
+		else
+			echo "Successfully failed to update";
+	}
+	else 
+	{
+		// move to real home
+		$success = move_uploaded_file($file['tmp_name'],
+			UPLOAD_DIR . $cur_link);
+	}
 
 	if (!$success) {
 		echo "<p>Unable to save file</p>";
 		exit;
 	}
-
+	else {
+		echo "File saved successfully";
+	}
 	// set permissions on file
 	//chmod($dir . $name, 0644);
-
-	if (User::updateProfilePicture($rel_dir.$name, $_POST['id'], $con) == 1)
-	{
-		echo "Successfully updated";
-	}
-	else
-		echo "Successfully failed to update";
+	mysqli_close($con);
 }
 ?>

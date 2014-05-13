@@ -21,10 +21,17 @@ uploadForm.appendChild(promptLabel);
 uploadForm.appendChild(submitButton);
 
 // simulate a mouse event to pass to function
+
+/*
 clickEvent = new MouseEvent("click", {
 	canBubble:true,
 	cancelable:true,
 	view:window});
+*/
+
+var clickEvent = document.createEvent('MouseEvent');
+clickEvent.initMouseEvent('click', true, true, window,
+	0, 0, 0, 80, 20, false, false, false, false, 0, null);
 
 // get the correct dispatch event function
 // 	XBrowser stuff

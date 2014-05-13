@@ -246,7 +246,38 @@ class User
 		if ($row['email'] == NULL) { return false; }  // email not in use
 		else { return true; } // email free
 	}
-	
+
+	public static function getImgLink($id, $con = false)
+	{
+		$must_close = false;
+		if (!$con)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		if (mysqli_connect_errno())
+		{
+			echo "Failed to connect to MySQL: ";
+		}
+		
+		$result = mysqli_query($con, "SELECT img_link
+			FROM users 
+			WHERE id={$id}");
+
+		$row = mysqli_fetch_array($result);
+
+		if ($must_close)
+		{
+			mysqli_close($con);
+		}
+
+		if($row['img_link'] == NULL)
+			return -1;
+
+		return $row['img_link'];
+	}
+
 	////////////////////// UPDATE OPERATIONS //////////////////////////////////////////////
 	
 	public static function updateUser($user_dt)
