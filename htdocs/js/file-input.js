@@ -22,6 +22,15 @@ uploadForm.appendChild(submitButton);
 
 // simulate a mouse event to pass to function
 
+// create ajax request
+var fileUpload = new Ajax({
+	requestType: 'POST',
+    	requestUrl: 'profile_img_upload.php',
+    	requestParameters: ' ',
+    	data: ''
+	}, function(data) {
+
+	});
 /*
 clickEvent = new MouseEvent("click", {
 	canBubble:true,
