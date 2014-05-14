@@ -163,7 +163,10 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 	    <form id="profile-pic-upload" method="POST" action="profile_img_upload.php" enctype="multipart/form-data"/>
 		<input type="file" id="upload-input" name="picfile">
 		<input type="hidden" name="id" value="<?php echo $_SESSION["uid"];?>">
-		<!--<input type="submit" value="Load File">-->
+		<noscript>
+			<input type="submit" value="Load File">
+			<input type="hidden" name="ajax-enabled" value="false">
+		</noscript>
 	    </form>
     </div>
     </br>

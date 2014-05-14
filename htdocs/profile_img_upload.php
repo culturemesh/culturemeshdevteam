@@ -95,5 +95,7 @@ if (!empty($_FILES['picfile'])) {
 	// set permissions on file
 	//chmod($dir . $name, 0644);
 	mysqli_close($con);
+
+	header("Location: profile_edit.php");
 }
 ?>
