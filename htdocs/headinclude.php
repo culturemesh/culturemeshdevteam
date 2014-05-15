@@ -7,7 +7,7 @@
 
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/style.css?<?php echo time(); ?>" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+<!--<link href="css/style.css" rel="stylesheet">-->
 <!--[if lt IE 9]>
   <script src="js/html5shiv.js"></script>
 <![endif]-->
@@ -23,6 +23,7 @@
 <script src="js/validation.js"></script>
 <script src="js/account.js"></script>
 <script src="js/fxn.js"></script>
+<script src="js/ajax.js"></script>
 
 <script type="text/javascript">
 // register validation

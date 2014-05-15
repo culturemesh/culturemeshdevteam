@@ -7,9 +7,8 @@
 	<h5>EVENTS YOU'RE HOSTING</h5>
 	<ul class="dashboard item">
 		<?php
-		$events = Event::getEventsByUserId($_SESSION['uid'], $con);
-		foreach($events as $event)
-			HTMLBuilder::displayDashEvent($event);
+		foreach($yh_events as $event)
+			HTMLBuilder::displayDashEvent($event, true);
 		?>
 	</ul>
 </div>
@@ -17,8 +16,7 @@
 	<h5>EVENTS IN YOUR NETWORKS</h5>
 	<ul class="dashboard item">
 		<?php
-		$events = Event::getEventsByNetworkId($_SESSION['uid'], $con);
-		foreach($events as $event)
+		foreach($yn_events as $event)
 			HTMLBuilder::displayDashEvent($event);
 		?>
 	</ul>
@@ -31,9 +29,8 @@
 	<h5>YOUR POSTS</h5>
 	<ul class="network">
 		<?php
-		$posts = Post::getPostsByUserId($_SESSION['uid'], $con);
-		foreach($posts as $post)
-			HTMLBuilder::displayDashPost($post);
+		foreach($yp_posts as $post)
+			HTMLBuilder::displayDashPost($post, true);
 		?>
 	</ul>
 </div>

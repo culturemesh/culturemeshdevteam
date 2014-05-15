@@ -4,6 +4,8 @@ ini_set("display_errors", true);
 // hackish
 //define("UPLOAD_DIR", "/home3/culturp7/user_images/");
 define("UPLOAD_DIR", "../../user_images/");
+var_dump($_POST);
+exit();
 if (!empty($_FILES['picfile'])) {
 
 	// includes
@@ -85,6 +87,10 @@ if (!empty($_FILES['picfile'])) {
 			UPLOAD_DIR . $cur_link);
 	}
 
+	// set permissions on file
+	//chmod($dir . $name, 0644);
+
+	/*
 	if (!$success) {
 		echo "<p>Unable to save file</p>";
 		exit;
@@ -92,10 +98,27 @@ if (!empty($_FILES['picfile'])) {
 	else {
 		echo "File saved successfully";
 	}
-	// set permissions on file
-	//chmod($dir . $name, 0644);
+	 */
+
 	mysqli_close($con);
 
-	header("Location: profile_edit.php");
+	// return to profile edit
+	// AJAX
+	if ($_POST['ajax'] == true) {
+		$return_data = array(
+			'success' => true);
+
+		if (!$success)
+			$return_data['success'] = false;
+
+		echo json_encode($return_data);
+	}
+	// NOJS
+	else {
+		if (!$success)
+			header("Location: profile_edit.php?upload=fail");
+		else
+			header("Location: profile_edit.php");
+	}
 }
 ?>

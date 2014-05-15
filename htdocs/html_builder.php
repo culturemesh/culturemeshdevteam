@@ -399,7 +399,7 @@ EHTML;
 
 ///////////////////////////////////////////////// echo $template; } 
 	/**************** USER DASHBOARD STUFF 	********************/
-	public static function displayDashPost($post)
+	public static function displayDashPost($post, $u_data = false)
 	{
 		// get image
 		$img_link = NULL;
@@ -422,7 +422,7 @@ EHTML;
 		echo "
 		<li class='network-post dashboard'>
 			<div class='post-img'>
-				<img id='profile-post' src='{$img_link}' width='45' height='45'>
+				<img id='profile-post' src='{$img_link}' class='{$i_class}' width='45' height='45'>
 			</div>
 			<div class='post-info'>
 				<h5 class='h-network'>{$name}</h5>
@@ -433,8 +433,12 @@ EHTML;
 		";
 	}
 	
-	public static function displayDashEvent($event)
+	public static function displayDashEvent($event, $u_data = false)
 	{
+		$i_class = '';
+		if ($u_data) 
+		  { $i_class = 'usr_image'; }
+
 		// get image
 		$img_link = NULL;
 		if ($event->img_link == NULL)
@@ -448,7 +452,7 @@ EHTML;
 		echo "
 		<li class='event dashboard'>
 			<div class='event-host'>
-				<img src='{$img_link}' width='72' height='72'/>
+				<img src='{$img_link}' class='{$i_class}' width='72' height='72'/>
 			</div>
 			<div class='event-text'>
 				<div class='event-title'>
@@ -468,7 +472,7 @@ EHTML;
 	public static function displayDashNetwork($network)
 	{
 		$title = HTMLBuilder::formatNetworkTitle($network);
-		
+
 		echo "
 		<div class='net-info dashboard'>
 			<a href='network.php?id={$network->id}'><p class='bottom-text dashboard'>{$title}</p></a>
