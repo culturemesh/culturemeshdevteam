@@ -401,6 +401,11 @@ EHTML;
 	/**************** USER DASHBOARD STUFF 	********************/
 	public static function displayDashPost($post, $u_data = false)
 	{
+		// add a user image class for ajax change
+		$i_class = '';
+		if ($u_data) 
+		  { $i_class = 'usr_image'; }
+
 		// get image
 		$img_link = NULL;
 		if ($post->img_link == NULL)
@@ -421,7 +426,7 @@ EHTML;
 
 		echo "
 		<li class='network-post dashboard'>
-			<div class='post-img'>
+			<div class='post-img {$i_class}'>
 				<img id='profile-post' src='{$img_link}' class='{$i_class}' width='45' height='45'>
 			</div>
 			<div class='post-info'>

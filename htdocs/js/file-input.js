@@ -55,10 +55,8 @@ input.onchange = function() {
 	promptLabel.innerHTML = input.value;	
 }
 
-// onclick, toggle div
-toggle.onclick = function(e) {
-	e.preventDefault();
-
+// toggles the visibility of uploadDiv
+function uploadToggle() {
 	// do the thing i said it would do
 	if (uploadDiv.style.display == "none" ||
 			uploadDiv.style.display == "") {
@@ -69,6 +67,12 @@ toggle.onclick = function(e) {
 		uploadDiv.style.display = "none";
 		toggle.innerHTML = "Upload Picture";
 	}
+}
+
+// onclick, toggle div
+toggle.onclick = function(e) {
+	e.preventDefault();
+	uploadToggle();
 }
 
 // SUBMIT IMAGE TO SERVER
@@ -111,6 +115,7 @@ uploadForm.onsubmit = function (e) {
 		dataType: 'FormData',
 	    	sendNow: true
 		}, function(data) {
+			// success function
 			var response = JSON.parse(data);
 			if (response['success'] == true) {
 				// update successLabel
@@ -119,7 +124,14 @@ uploadForm.onsubmit = function (e) {
 
 				// try and reload all the images
 				for (var i = 0; i < myImages.length; i++)
-					myImages[i].src = myImages[i].src;
-			}
+					myImages[i].src = myImages[i].src + "#" + new Date().getTime(); // add datetime to force browser to reload image
+
+				// disappear upload div
+				// additionally: booger
+				//uploadToggle();
+			} 
+		}, function(response, rStatus) {
+			// failure function
+			successLabel.innerHTML = "There was a problem on our end. Try again later";
 		});
 }

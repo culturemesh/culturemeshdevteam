@@ -4,15 +4,13 @@ ini_set("display_errors", true);
 // hackish
 //define("UPLOAD_DIR", "/home3/culturp7/user_images/");
 define("UPLOAD_DIR", "../../user_images/");
-var_dump($_POST);
-exit();
-if (!empty($_FILES['picfile'])) {
 
+// if files aren't empty
+if (!empty($_FILES['picfile'])) {
 	// includes
 	include_once 'data/dal_user.php';
 	include_once 'zz341/fxn.php';
 
-	echo 'here';
 	$file = $_FILES['picfile'];
 
 	if ($file['error'] !== UPLOAD_ERR_OK) {
@@ -47,26 +45,26 @@ if (!empty($_FILES['picfile'])) {
 		$rel_dir = $sec.'_';
 		$dir = UPLOAD_DIR . $rel_dir.$inc.'/';
 
-		echo '</br>'.$dir;
+		//echo '</br>'.$dir;
 
-		echo 'user doesn\'t have directory';
+		//echo 'user doesn\'t have directory';
 		// check to see if directory already exists
 		while (is_dir( $dir )) {
-			echo 'Not a directory';
+			//echo 'Not a directory';
 			$inc++;
 			$dir = UPLOAD_DIR . $rel_dir.$inc.'/';
 		}
 
 		// make directory
 		mkdir( $dir );
-		echo "directory made";
+		//echo "directory made";
 
 		// set permissions
 	//	chmod( $dir, 0644); 
 
 		// permanentize reldir
 		$rel_dir = $rel_dir.$inc.'/';
-		echo '</br>'.$rel_dir;
+		//echo '</br>'.$rel_dir;
 
 		// move to real home
 		$success = move_uploaded_file($file['tmp_name'],
@@ -75,16 +73,24 @@ if (!empty($_FILES['picfile'])) {
 		// store directory in database
 		if (User::updateProfilePicture($rel_dir.$name, $_POST['id'], $con) == 1)
 		{
-			echo "Successfully updated";
+			//echo "Successfully updated";
 		}
-		else
-			echo "Successfully failed to update";
+		else {
+			//echo "Successfully failed to update";
+		}
 	}
 	else 
 	{
+		// unlink previous file
+		if (file_exists(UPLOAD_DIR . $cur_link))
+			unlink(UPLOAD_DIR . $cur_link);
+
 		// move to real home
 		$success = move_uploaded_file($file['tmp_name'],
 			UPLOAD_DIR . $cur_link);
+
+		// update last modified
+		touch(UPLOAD_DIR . $cur_link);
 	}
 
 	// set permissions on file
@@ -92,7 +98,7 @@ if (!empty($_FILES['picfile'])) {
 
 	/*
 	if (!$success) {
-		echo "<p>Unable to save file</p>";
+		//echo "<p>Unable to save file</p>";
 		exit;
 	}
 	else {

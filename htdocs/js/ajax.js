@@ -43,7 +43,7 @@ function Ajax(arguments, success, failure) {
 		this.xhr.setRequestHeader("Content-type", "application/json");
 	}
 	
-	else {
+	else if (this.dataType === 'string') {
 		this.xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	}
 
@@ -53,7 +53,7 @@ function Ajax(arguments, success, failure) {
 			success(requestedData);
 		}
 		else {
-			failure (this.responseText, this.status)
+			//failure (this.responseText, this.status)
 		}
 	};
 

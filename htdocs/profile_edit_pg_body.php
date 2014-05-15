@@ -178,7 +178,7 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 <?php endif; ?>
 <div class="profile_left_panel">
     <span class="profile_image">
-    	<img id="profile_image" class='usr_image' src="<?php echo $img_link; ?>"/>
+    	<img id="profile_image" class='usr_image' src="<?php echo $img_link; ?>#<?php echo rand() ?>"/>
     </span>
     <div id="pic-upload-div">
 	    <p id="success-label"></p>
