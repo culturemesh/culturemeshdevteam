@@ -5,9 +5,8 @@
 	<h5>EVENTS YOU'RE HOSTING</h5>
 	<ul class='dashboard item'>
 		<?php
-		$events = Event::getEventsByUserId($_SESSION['uid'], $con);
-		foreach($events as $event)
-			HTMLBuilder::displayDashEvent($event);
+		foreach($yh_events as $event)
+			HTMLBuilder::displayDashEvent($event, true);
 		?>
 	</ul>
 </div>
@@ -15,8 +14,7 @@
 	<h5>EVENTS YOU'RE ATTENDING</h5>
 	<ul class='dashboard item'>
 		<?php
-		$events = EventRegistration::getEventRegistrationsByUserId($_SESSION['uid'], $con);
-		foreach($events as $event)
+		foreach($ya_events as $event)
 			HTMLBuilder::displayDashEvent($event);
 		?>
 	</ul>

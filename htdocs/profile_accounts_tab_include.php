@@ -1,4 +1,5 @@
 <?php
+/*
 $pass_header = '<b>Change Password</b>';
 $pass_body = '
 <form id="password_change_form" action="change_password.php" method="POST">
@@ -13,7 +14,10 @@ $pass_body = '
 </form>
 ';
 $pass_footer = '';
-echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal");?>
+echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal");
+ */
+?>
+<!--
 <script>
     $("#password_conf").change(function(){
         if($("#password").val() != $("#password_conf").val()){
@@ -32,7 +36,7 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
                 $("#current_password").val("");
                 $("#current_password_failure_txt").hide();
                 $("#invalid_email_txt").hide();
-                $("#<?=PASSWORD_CONFIRM_MODAL_ID?>").modal("hide");
+                $("#<?//=PASSWORD_CONFIRM_MODAL_ID?>").modal("hide");
                 $("#account_info_update_success_txt").fadeIn();
                 delay(function(){$("#account_info_update_success_txt").fadeOut()}, 2000);
                 break;
@@ -46,15 +50,16 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
         });
     });
 </script>
+-->
 <form id="account_info_form" method="POST" action="update_notifications.php">
 <div>
 	<label class="label label-success hide" id="account_info_update_success_txt">Information successfully updated!</label>
 	<label class="label label-important hide" id="account_info_update_failure_txt">Update failed. Please try again.</label>
 	<h5>Send me emails when</h5>
-	<label class="checkbox"><input type="checkbox" name="notify_interesting_events" value="1" <?=getCheckboxVal(getMemberNotificationSettingsInterestingEvents($_SESSION['uid']));?>>CultureMesh finds events I'd be interested in near me</label>
-	<label class="checkbox"><input type="checkbox" name="notify_company_news" value="1" <?=getCheckboxVal(getMemberNotificationSettingsCompanyNews($_SESSION['uid']));?>>CultureMesh has fun company news</label>
-	<label class="checkbox"><input type="checkbox" name="notify_events_upcoming" value="1" <?=getCheckboxVal(getMemberNotificationSettingsUpcomingEvents($_SESSION['uid']));?>>I have an upcoming event</label>
-	<label class="checkbox"><input type="checkbox" name="notify_network_activity" value="1" <?=getCheckboxVal(getMemberNotificationSettingsNetworkActivity($_SESSION['uid']));?>>I have received comments to a network event I added</label>
+	<label class="checkbox"><input type="checkbox" name="notify_interesting_events" value="1" <?=getCheckboxVal($user->events_interested_in);?>>CultureMesh finds events I'd be interested in near me</label>
+	<label class="checkbox"><input type="checkbox" name="notify_company_news" value="1" <?=getCheckboxVal($user->company_news);?>>CultureMesh has fun company news</label>
+	<label class="checkbox"><input type="checkbox" name="notify_events_upcoming" value="1" <?=getCheckboxVal($user->events_upcoming);?>>I have an upcoming event</label>
+	<label class="checkbox"><input type="checkbox" name="notify_network_activity" value="1" <?=getCheckboxVal($user->network_activity);?>>I have received comments to a network event I added</label>
 	<input type="hidden" name="notification" value="yes"/>
 </div>
 

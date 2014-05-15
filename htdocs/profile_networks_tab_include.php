@@ -5,8 +5,7 @@
 <div>
 	<h5>Your Networks</h5>
 	<?php
-	$networks = NetworkRegistration::getNetworksByUserId($_SESSION['uid'], $con);
-	foreach($networks as $network)
+	foreach($yn_networks as $network)
 	{
 		HTMLBuilder::displayDashNetwork($network);
 	}

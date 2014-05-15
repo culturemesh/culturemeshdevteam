@@ -1,8 +1,10 @@
 // THE ESSENTIAL PLAYERS
 var input = document.getElementById("upload-input");
+var upId = document.getElementById("upload-id");
 var uploadForm = document.getElementById("profile-pic-upload");
 var uploadDiv = document.getElementById("pic-upload-div");
 var toggle = document.getElementById("pic-upload-toggle");
+var successLabel = document.getElementById('success-label');
 
 // create replacement elements
 var promptButton = document.createElement('button');
@@ -22,15 +24,8 @@ uploadForm.appendChild(submitButton);
 
 // simulate a mouse event to pass to function
 
-// create ajax request
-var fileUpload = new Ajax({
-	requestType: 'POST',
-    	requestUrl: 'profile_img_upload.php',
-    	requestParameters: ' ',
-    	data: ''
-	}, function(data) {
 
-	});
+
 /*
 clickEvent = new MouseEvent("click", {
 	canBubble:true,
@@ -74,4 +69,57 @@ toggle.onclick = function(e) {
 		uploadDiv.style.display = "none";
 		toggle.innerHTML = "Upload Picture";
 	}
+}
+
+// SUBMIT IMAGE TO SERVER
+uploadForm.onsubmit = function (e) {
+	// prevent regular form submit
+	e.preventDefault();
+	
+	// keep user up to date
+	submitButton.innerHTML = 'Submitting';
+
+	// get the files from input
+	var files = input.files;
+
+	// create FormData object
+	var formData = new FormData(uploadForm);
+	formData.append('ajax', true);
+
+	// user may only upload one file at a time
+	if (files.length > 1) {
+		alert('Only one file at a time');
+		return -1;
+	}
+
+	var file = files[0];
+	
+	// check file type
+	//if (!file.type.match('
+	
+	// add all the stuff to form data
+	//formData.append('picfile', file, file.name);
+	//formData.append(upId.name, upId.value);
+	//alert(formData);
+
+	// create ajax request
+	var fileUpload = new Ajax({
+		requestType: 'POST',
+		requestUrl: 'profile_img_upload.php',
+		requestParameters: ' ',
+		data: formData,
+		dataType: 'FormData',
+	    	sendNow: true
+		}, function(data) {
+			var response = JSON.parse(data);
+			if (response['success'] == true) {
+				// update successLabel
+				successLabel.innerHTML = "File uploaded successfully!";
+				var myImages = document.getElementsByClassName('usr_image');
+
+				// try and reload all the images
+				for (var i = 0; i < myImages.length; i++)
+					myImages[i].src = myImages[i].src;
+			}
+		});
 }

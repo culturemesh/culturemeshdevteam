@@ -11,10 +11,31 @@ include_once 'data/dal_network_registration.php';
 include_once 'data/dal_post.php';
 include_once 'data/dal_conversation.php';
 
+// DATA LOAAADD!!!
+// // will probably shorten to one or two
+// // queries eventually
 $con = getDBConnection();
 
 $user = User::getUserById($_SESSION['uid'], $con);
-$info = UserInfo::getInfoByUser($_SESSION['uid'], $con);
+//$info = UserInfo::getInfoByUser($_SESSION['uid'], $con);
+
+// events you're hosting
+$yh_events = Event::getEventsByUserId($_SESSION['uid'], $con);
+
+// events in your network
+$yn_events = Event::getEventsByNetworkId($_SESSION['uid'], $con);
+
+// events you're attending
+$ya_events = EventRegistration::getEventRegistrationsByUserId($_SESSION['uid'], $con);
+
+// your posts
+$yp_posts = Post::getPostsByUserId($_SESSION['uid'], $con);
+
+// your networks
+$yn_networks = NetworkRegistration::getNetworksByUserId($_SESSION['uid'], $con);
+
+// and now the herculean task is done
+mysqli_close($con);
 
 // check for image link
 $img_link = NULL;
@@ -31,7 +52,7 @@ $pass_body = '
 	<div>
 	<input type="hidden" name="pi_update" value="1"/>
 	<input type="hidden" name="c_pw" id="c_pw" />
-	<input type="email" name="email" id="password_email" class="dashboard" value="'.getMemberEmail($_SESSION['uid']).'" placeholder="Email Address"></br>
+	<input type="email" name="email" id="password_email" class="dashboard" value="'.$user->email.'" placeholder="Email Address"></br>
 	<input type="password" name="cur_password" id="password_cur" class="dashboard" placeholder="Current Password"/></br>
 	<input type="password" name="password" id="password" class="dashboard" placeholder="New Password"/></br>
 	<input type="password" name="password_conf" id="password_conf" class="dashboard" placeholder="Confirm Password"/></br>
@@ -100,25 +121,25 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 				<input type="hidden" name="bi_update" value="1"/>
 				<tr class="dashboard">
 					<!--<td class="dashboard"><h3 class="dashboard">First Name:</h3></td>-->
-					<td class="dashboard"><input class="dashboard" type="text" name="first_name" value="<?=getMemberFirstName($_SESSION["uid"])?>" placeholder="First Name"></td>
+					<td class="dashboard"><input class="dashboard" type="text" name="first_name" value="<?php echo $user->first_name;?>" placeholder="First Name"></td>
 				</tr>
 				<tr class="dashboard">
 					<!--<td class="dashboard"><h3 class="dashboard">Last Name:</h3></td>-->
-					<td class="dashboard"><input class="dashboard" type="text" name="last_name" value="<?=getMemberLastName($_SESSION["uid"])?>" placeholder="Last Name"></td>
+					<td class="dashboard"><input class="dashboard" type="text" name="last_name" value="<?php echo $user->last_name;?>" placeholder="Last Name"></td>
 				</tr>
 				<tr class="dashboard">
 					<!--<td class="dashboard"><h3 class="dashboard">Gender:</h3></td>-->
 					<td class="dashboard">
 					
 					    <select class="dashboard" name="gender">
-						<option '.<?php if(getMemberGender($_SESSION["uid"]) == "m"){echo "selected";}?>'>Male</option>
-						<option '<?php if(getMemberGender($_SESSION["uid"]) == "f"){echo "selected";}?>'>Female</option>
+						<option '.<?php if($user->gender == "m"){echo "selected";}?>'>Male</option>
+						<option '<?php if($user->gender == "f"){echo "selected";}?>'>Female</option>
 					    </select>
 					</td>
 				</tr>
 				<tr class="dashboard">
 					<!--<td class="dashboard"><h3 class="dashboard">About Me:</h3></td>-->
-					<td class="dashboard"><textarea class="dashboard" name="about_me" placeholder="Tell us about yourself..."><?echo getMemberAboutMe($_SESSION["uid"])?></textarea></td>
+					<td class="dashboard"><textarea class="dashboard" name="about_me" placeholder="Tell us about yourself..."><?php echo $user->about_me; ?></textarea></td>
 				</tr>
 			</tbody>
 			</table>
@@ -157,12 +178,13 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 <?php endif; ?>
 <div class="profile_left_panel">
     <span class="profile_image">
-    	<img id="profile_image" src="<?php echo $img_link; ?>"/>
+    	<img id="profile_image" class='usr_image' src="<?php echo $img_link; ?>"/>
     </span>
     <div id="pic-upload-div">
+	    <p id="success-label"></p>
 	    <form id="profile-pic-upload" method="POST" action="profile_img_upload.php" enctype="multipart/form-data"/>
 		<input type="file" id="upload-input" name="picfile">
-		<input type="hidden" name="id" value="<?php echo $_SESSION["uid"];?>">
+		<input type="hidden" id="upload-id" name="id" value="<?php echo $_SESSION["uid"];?>">
 		<noscript>
 			<input type="submit" value="Load File">
 			<input type="hidden" name="ajax-enabled" value="false">
@@ -171,9 +193,9 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
     </div>
     </br>
     <span class="profile_name">
-    	<h2 id="profile_name" class="dashboard"><?php echo $info->first_name . " " . $info->last_name ; ?></h2>
+    	<h2 id="profile_name" class="dashboard"><?php echo $user->first_name . " " . $user->last_name ; ?></h2>
 <!--	<p id="profile_gender" class="profile"><?php //echo $info->gender; ?></p>-->
-	<p id="profile_about" class="profile"><?php echo $info->about_me; ?></p>
+	<p id="profile_about" class="profile"><?php echo $user->about_me; ?></p>
     </span>
     <p class="profile"><a href="#profile_edit_modal" class="profile" id="pro-edit-link" data-toggle="modal">Edit Profile</a></p>
     <?php if($user->confirmed == 1) : ?>
@@ -192,9 +214,9 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
         <li><a href="#profile_accounts_tab" data-toggle="pill">Account</a></li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" id="profile_basic_info_tab">
-            <?php include 'profile_basic_info_tab_include.php'; ?>
-        </div>
+<!--        <div class="tab-pane" id="profile_basic_info_tab">
+            <?php //include 'profile_basic_info_tab_include.php'; ?>
+        </div>-->
         <div class="tab-pane active" id="profile_dashboard_tab">
             <?php include 'profile_dashboard_tab_include.php'; ?>
         </div>
@@ -204,9 +226,9 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
         <div class="tab-pane" id="profile_events_tab">
             <?php include 'profile_events_tab_include.php'; ?>
         </div>
-        <div class="tab-pane" id="profile_inbox_tab">
-            <?php include 'profile_inbox_tab_include.php'; ?>
-        </div>
+<!--        <div class="tab-pane" id="profile_inbox_tab">
+            <?php //include 'profile_inbox_tab_include.php'; ?>
+        </div>-->
         <div class="tab-pane" id="profile_accounts_tab">
             <?php include 'profile_accounts_tab_include.php'; ?>
         </div>
@@ -215,4 +237,3 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
 <div class="clear"></div>
 <script src="js/searchbar.js"></script>
 <script src="js/file-input.js"></script>
-<?php mysqli_close($con); ?>
