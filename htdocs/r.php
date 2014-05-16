@@ -6,8 +6,10 @@ $json_response = array(
 	"message" => NULL,
 	"error" => NULL,
 	"network" => NULL,
-	"member" => NULL
+	"member" => NULL,
+	"other" => NULL
 );
+
 // make sure that the user has written
 // 	in all the required fields
 if(isset($_POST['email']) && isset($_POST['password'])
@@ -40,6 +42,7 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		
 		include 'zz341/fxn.php';
 		include 'data/dal_user.php';
+		include 'cm_email.php';
 		
 		$conn = getDBConnection();
 
@@ -55,12 +58,17 @@ if(isset($_POST['email']) && isset($_POST['password'])
 			$new_user->email = $email;
 			$new_user->password = md5($_POST['password']);
 			$new_user->role = 0;
+			$new_user->act_code = md5(microtime());
 			
 			// create user
 			User::createUser($new_user, $conn);
 			
 			// get user id back
-			$_SESSION['uid'] = User::getUserId($email);
+			$_SESSION['uid'] = User::getUserId($email, $conn);
+
+			// send confirmation email
+			if(!CMEmail::sendConfirmationEmail($email, $_SESSION['uid'], $new_user->act_code))
+				$json_response["other"] = "Email couldn't be sent";
 
 			// close up
 			mysqli_close($conn);

@@ -44,8 +44,8 @@ class User
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		if (!mysqli_query($con, "INSERT INTO users (username, password, role, email, register_date, last_login) 
-			VALUES (NULL, '". $user_dt->password."', {$user_dt->role}, '". $user_dt->email ."', NOW(), NOW() )"))
+		if (!mysqli_query($con, "INSERT INTO users (username, password, role, email, register_date, last_login, act_code) 
+			VALUES (NULL, '". $user_dt->password."', {$user_dt->role}, '". $user_dt->email ."', NOW(), NOW(), '{$user_dt->act_code}')"))
 		{
 			echo "Error message: " . $con->error;
 		}
@@ -145,6 +145,8 @@ class User
 			$user->events_interested_in = $row['events_interested_in'];
 			$user->company_news = $row['company_news'];
 			$user->network_activity = $row['network_activity'];
+			$user->confirmed = $row['confirmed'];
+			$user->img_link = $row['img_link'];
 		}
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
@@ -244,7 +246,38 @@ class User
 		if ($row['email'] == NULL) { return false; }  // email not in use
 		else { return true; } // email free
 	}
-	
+
+	public static function getImgLink($id, $con = false)
+	{
+		$must_close = false;
+		if (!$con)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		if (mysqli_connect_errno())
+		{
+			echo "Failed to connect to MySQL: ";
+		}
+		
+		$result = mysqli_query($con, "SELECT img_link
+			FROM users 
+			WHERE id={$id}");
+
+		$row = mysqli_fetch_array($result);
+
+		if ($must_close)
+		{
+			mysqli_close($con);
+		}
+
+		if($row['img_link'] == NULL)
+			return -1;
+
+		return $row['img_link'];
+	}
+
 	////////////////////// UPDATE OPERATIONS //////////////////////////////////////////////
 	
 	public static function updateUser($user_dt)
@@ -298,6 +331,80 @@ class User
 		else
 			return 1;	// SUCCESS
 	}
+
+	public static function activateUser($uid, $act_code, $con = false)
+	{
+		$must_close = false;
+		if ($con == false)
+		{ 
+			$con = getDBConnection(); 
+			$must_close = true;
+		}
+
+		if (mysqli_connect_errno())
+		{
+			echo "Failed to connect to MySQL: ";
+		}
+		
+		$result = mysqli_query($con, "UPDATE users
+			SET confirmed=1			
+			WHERE id={$uid} AND act_code='{$act_code}'");
+
+		if ($must_close)
+		{ mysqli_close($con); }
+
+		return $result;
+	}
+
+	public static function updateActCode($id, $act_code)
+	{
+		if (!$con)
+		{ 
+			$con = getDBConnection();
+			$must_close = true;
+		}
+		
+		if (mysqli_connect_errno())
+		{
+			echo "Failed to connect to MySQL: ";
+		}
+		
+		if(!mysqli_query($con, "UPDATE users 
+			SET act_code='{$act_code}' 
+			WHERE id={$id}"))
+		{
+			echo "Error message" . $con->error;
+			
+			if ($must_close)
+			{
+				mysqli_close($con);
+			}
+			
+			return -1;	// FAILURE
+		}
+		else
+			return 1;	// SUCCESS
+	}
+
+	public static function updateProfilePicture($dir, $id, $con = false)
+	{
+		$must_close = false;
+		if ($con == false)
+		{
+			$must_close = true;
+			$con = getDBConnection();
+		}
+
+		$result = mysqli_query($con, "UPDATE users
+			SET img_link='{$dir}' 
+			WHERE id={$id}");
+		
+		if ($must_close)
+		  { mysqli_close($con); }
+
+		return $result;
+	}
+		
 	
 	////////////////////// DELETE OPERATIONS //////////////////////////////////////////////
 	public static function deleteUser($user_dt)
