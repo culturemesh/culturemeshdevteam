@@ -17,6 +17,8 @@ class UserDT
 	public $events_interested_in;
 	public $company_news;
 	public $network_activity;
+	public $confirmed;
+	public $act_code;
 }
 
 ?>

@@ -25,7 +25,8 @@ if($_POST['email'] && $_POST['password']){
 		$json_response = array(
 			"error" => NULL,
 			"network" => NULL,
-			"member" => NULL
+			"member" => NULL,
+			"title" => NULL
 		);
 		
 		if (strlen($email) > 50)
@@ -59,6 +60,16 @@ if($_POST['email'] && $_POST['password']){
 					$netreg->id_user = $_SESSION['uid'];
 					$netreg->id_network = $_SESSION['cur_network'];
 					$json_response['member'] = NetworkRegistration::checkRegistration($netreg, $con);
+
+					// get title
+					if ($result['first_name'] != NULL)
+						$json_response['title'] = $result['first_name'];
+					else if ($result['username'] != NULL)
+						$json_response['title'] = $result['username'];
+					else
+						$json_response['title'] = $email;
+
+					// return successful
 					echo json_encode($json_response);
 				}
 				else // came from somewhere else, may be expanded later
@@ -78,7 +89,8 @@ else{
     $json_response = array(
     "error" => NULL,
     "network" => NULL,
-    "member" => NULL);
+    "member" => NULL,
+    "title" => NULL);
 
     echo json_encode($json_response);
 }

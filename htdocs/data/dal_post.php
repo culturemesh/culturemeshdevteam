@@ -89,7 +89,7 @@ class Post
 		}
 		
 		$result = mysqli_query($con,
-			"SELECT p.*, u.email, u.first_name, u.last_name, u.username
+			"SELECT p.*, u.email, u.first_name, u.last_name, u.username, u.img_link
 			FROM posts p, users u 
 			WHERE p.id_user=u.id 
 			AND id_network={$id}
@@ -137,7 +137,7 @@ class Post
 		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		$result = mysqli_query($con,"SELECT * FROM posts WHERE id_user={$id}");
+		$result = mysqli_query($con,"SELECT * FROM posts p, users u WHERE p.id_user=u.id AND id_user={$id}");
 		
 		if (func_num_args() < 2)
 			mysqli_close($con);
@@ -150,6 +150,9 @@ class Post
 			
 			$post_dt->id = $row['id'];
 			$post_dt->id_user = $id;
+			$post_dt->first_name = $row['first_name'];
+			$post_dt->last_name = $row['last_name'];
+			$post_dt->username = $row['username'];
 			$post_dt->email = $row['email'];
 			$post_dt->id_network = $row['id_network'];
 			$post_dt->post_date = $row['post_date'];

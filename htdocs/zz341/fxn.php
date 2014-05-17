@@ -20,6 +20,9 @@ else
     include "../../../abcd123.php";
     define("DB_NAME", "culturp7_ktc");
 }
+
+define("IMG_DIR", "../../user_images/");
+define("BLANK_IMG", 'images/blank_profile.png');
  
 function getDBConnection(){
     $conn = new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);

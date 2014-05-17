@@ -1,4 +1,7 @@
 <?php
+
+include_once "zz341/fxn.php";
+
 class HTMLBuilder
 {
 	public static function displayPopNetwork($network)
@@ -145,13 +148,30 @@ class HTMLBuilder
 	
 	public static function displayPost($post)
 	{
+		// get image
+		$img_link = NULL;
+		if ($post->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$post->img_link;
+
+		// parse name
+		$name = NULL;
+		if ($post->first_name == '')
+			//$name = $post->email;
+			$name = "UNNAMED USER";
+		else {
+			$name = $post->first_name;
+			if (isset($post->last_name))
+				$name .= " ".$post->last_name;
+		}
 		echo "
 		<li class='network-post'>
 			<div class='post-img'>
-				<img id='profile-post' src='images/blank_profile.png' width='45' height='45'>
+				<img id='profile-post' src='{$img_link}' width='45' height='45'>
 			</div>
 			<div class='post-info'>
-				<h5 class='h-network'>{$post->first_name} {$post->last_name}</h5>
+				<h5 class='h-network'>{$name}</h5>
 				<p class='network'>{$post->post_text}</p>
 				<a class='network member'>Reply</a>
 			</div>
@@ -179,50 +199,238 @@ class HTMLBuilder
 		";
 	}
 
-	public static function displayEventMonth($month)
+	public static function displayEventMonth($month, $year)
 	{
 		echo "
 		<td class='event-card month'>
 			<p>{$month}</p>
+			<p>20{$year}</p>
 		</td>
 		";
 	}
 
 	public static function displayEventCard($event)
 	{
+		// get image
+		$img_link = NULL;
+		if ($event->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$event->img_link;
+
+		// format name
+		$name = NULL;
+		if ($event->first_name == '')
+			//$name = $event->email;
+			$name = "UNNAMED USER";
+		else {
+			$name = $event->first_name;
+			if (isset($event->last_name))
+				$name .= " ".$event->last_name;
+		}
+
 		$datetime = strtotime($event->event_date);
 		$datetime = date("m/d/y g:i", $datetime);
+
+		$datetime = self::formatDateTime($datetime);
 		
-		echo "
+		//echo "
+		$card = <<<EHTML
 		<td class='event-card card'>
-			<div >
-				<h3 class='h-network'>{$event->title}</h3>
+			<div>
+				<h3 class='h-network'>$event->title</h3>
 			</div>
 			<div class='card-content'>
 				<div class='card-img'>
-					<img src='images/background-placeholder.png' alt='No image'></img>
+					<img src='$img_link' alt='No image' width='65' height='65'></img>
 				</div>
 				<div class='card-info'>
-					<p id='event-info'>With {$event->first_name} {$event->last_name}</p>
-					<p id='event-date'>{$datetime}</p>
+					<p id='event-info'>With $name</p>
+					<p id='event-date'>$datetime</p>
+					<a data-toggle="modal" href="#event-modal-$event->id">More Info</a>
 				</div>
 			</div>
 			<div class='clear'></div>
 		</td>
-		";
+EHTML;
 
+		echo $card;
 	}
-	
-	/**************** USER DASHBOARD STUFF 	********************/
-	public static function displayDashPost($post)
+
+//////////////////////
+public static function displayEventModal($event) {
+//////////////////////
+
+// this is split into three parts
+// right now, not exactly pretty,
+// but I need it to make a part of the
+// template conditional
+
+$modal_1 = <<<EHTML
+<div id="event-modal-$event->id" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+	</div>
+	<div class="modal-body event">
+		<div id="event-modal-info-$event->id" class="modal-event info">
+		    <form class="event-modal-form" method="POST" action="network_update-event.php" >
+			<div class="event-modal-section">
+			<h1 class="h-network nomargin info-$event->id">$event->title</h1>
+				<input type="text" id="title" name="title" class="event-text-modal edit-$event->id" placeholder="Name of Event " value="$event->title"></input>
+			</div>
+			<div class="event-modal-section">
+			<h3 class="h-network">With $event->first_name $event->last_name</h3>
+			<p class="event-modal info-$event->id">$event->description</p>
+				<textarea id="description" name="description" class="event-text-modal edit-$event->id" placeholder="What's happening?">$event->description</textarea>
+			</div>
+			<div class="event-modal-section">
+			<h3 class="h-network">Date</h3>
+				<input type="text" id="datetimepicker" class="event-text-modal edit-$event->id datetimepicker" name="datetime" class="event-text" placeholder="Event Date" value="$event->event_date">
+				<input type="text" class="hidden-field" name="date"></input>
+			<p class="event-modal info-$event->id">$event->event_date</p>
+			</div>
+			<div class="event-modal-section">
+			<h3 class="h-network">Address</h3>
+			<p class="event-modal info-$event->id">$event->address_1</p>
+				<input type="text" name="address_1" class="event-text-modal edit-$event->id" placeholder="Address 1" value="$event->address_1"/>
+			<p class="event-modal info-$event->id">$event->address_2</p>
+				<input type="text" name="address_2" class="event-text-modal edit-$event->id" placeholder="Address 2" value="$event->address_2"/>
+			<p class="event-modal info-$event->id">$event->city</p>
+			<p class="event-modal info-$event->id">$event->country</p>
+			</div>
+				<input type="submit" class="submit edit-$event->id" value="Submit Changes"></input>
+		    </form>
+		</div>
+EHTML;
+
+$modal_anchor = NULL;
+if ($_SESSION['uid'] == $event->id_host)
+{
+$modal_anchor= <<<EHTML
+<!--
+		<div id="event-modal-form-$event->id" class="modal-event edit owner" style="display:none;">
+				<div>
+				<div class="event-modal-section">
+				<h3 class="h-network">Title</h3>
+				</div>
+				<div class="event-modal-section">
+				<h3 class="h-network">Date & Time</h3>
+				</div>
+				<div class="event-modal-section">
+				<h3 class="h-network">Address</h3>
+				</div>
+				<div class="event-modal-section">
+				</div>
+				<div id="clear"></div>
+				<input type="hidden" class="hidden-field" name="id_event" value="$event->id"/>
+				<input type="text" class="hidden-field" name="city" value="$network->city_cur"/></input>
+				<input type="text" class="hidden-field" name="country" value="$network->country_cur"/></input>
+				</div>
+		</div>
+-->
+		<a id="event-modify-toggle-$event->id" class="">Edit Event</a> 
+EHTML;
+}
+
+$modal_2 = <<<EHTML
+	</div>
+<!--
+	<div class="modal-footer">
+		<p>Footer</p>
+	</div>
+-->
+</div>
+<script>
+	// all the variables
+	//var info$event->id = document.getElementById("event-modal-info-$event->id");
+	var link$event->id = document.getElementById("event-modify-toggle-$event->id");
+	if (link$event->id != null)
 	{
+		//var form$event->id = document.getElementById("event-modal-form-$event->id");
+		//var editList$event->id = document.getElementsByClassName("");
+		//var displayList$event->id = document.getElementsByClassName("");
+		var info$event->id = document.getElementsByClassName("info-$event->id");
+		var form$event->id = document.getElementsByClassName("edit-$event->id");
+
+		link$event->id.onclick = function() {
+			if (form$event->id[0].style.display == "none") { 
+				link$event->id.innerHTML = "Cancel Changes";
+				for (var i = 0; i < form$event->id.length; i++) {
+					form$event->id[i].style.display = "block";
+				}
+				for (var i = 0; i < info$event->id.length; i++) {
+					info$event->id[i].style.display = "none";
+				}
+			}
+			else {
+				link$event->id.innerHTML = "Edit Event";
+				for (var i = 0; i < form$event->id.length; i++) {
+					form$event->id[i].style.display = "none";
+				}
+				for (var i = 0; i < info$event->id.length; i++) {
+					info$event->id[i].style.display="block";
+				}
+			}
+		}
+	}
+</script>
+EHTML;
+///////////////////////////////////////////////////
+	// DISPLAY THE STUFFFFF!!!!  
+	echo $modal_1 . $modal_anchor . $modal_2; 
+} 
+///////////////////////////////////////////////////
+public static function googleMapsEmbed($location) {
+////////////////////////////////////////////////
+	$key = $GLOBALS['G_API_KEY'];
+/////////////////////////////////////////////////
+$template = <<<EHTML
+<div class="map">
+	<iframe
+	   width="100%" height="252" 
+	   frameborder="0" style="border:0"
+	   src="https://www.google.com/maps/embed/v1/place?key=$key&q=$location">
+	</iframe>
+</div>
+EHTML;
+////////////////////////////////////////////////
+	echo $template;
+}
+
+///////////////////////////////////////////////// echo $template; } 
+	/**************** USER DASHBOARD STUFF 	********************/
+	public static function displayDashPost($post, $u_data = false)
+	{
+		// add a user image class for ajax change
+		$i_class = '';
+		if ($u_data) 
+		  { $i_class = 'usr_image'; }
+
+		// get image
+		$img_link = NULL;
+		if ($post->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$post->img_link;
+
+		// parse name
+		$name = NULL;
+		if ($post->first_name == '')
+			//$name = $post->email;
+			$name = "UNNAMED USER";
+		else {
+			$name = $post->first_name;
+			if (isset($post->last_name))
+				$name .= " ".$post->last_name;
+		}
+
 		echo "
 		<li class='network-post dashboard'>
-			<div class='post-img'>
-				<img id='profile-post' src='images/blank_profile.png' width='45' height='45'>
+			<div class='post-img {$i_class}'>
+				<img id='profile-post' src='{$img_link}' class='{$i_class}' width='45' height='45'>
 			</div>
 			<div class='post-info'>
-				<h5 class='h-network'>{$post->email}</h5>
+				<h5 class='h-network'>{$name}</h5>
 				<p class='network'>{$post->post_text}</p>
 			</div>
 			<div class='clear'></div>
@@ -230,22 +438,33 @@ class HTMLBuilder
 		";
 	}
 	
-	public static function displayDashEvent($event)
+	public static function displayDashEvent($event, $u_data = false)
 	{
+		$i_class = '';
+		if ($u_data) 
+		  { $i_class = 'usr_image'; }
+
+		// get image
+		$img_link = NULL;
+		if ($event->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$event->img_link;
+
 		$datetime = strtotime($event->event_date);
 		$datetime = date("m/d/y g:i", $datetime);
 		
 		echo "
 		<li class='event dashboard'>
 			<div class='event-host'>
-				<img src='images/blank_profile.png' width='72' height='72'/>
+				<img src='{$img_link}' class='{$i_class}' width='72' height='72'/>
 			</div>
 			<div class='event-text'>
 				<div class='event-title'>
 					<h3 class='h-network'>{$event->title}</h3>
 				</div>
 				<div class='event-info'>
-					<p id='event-info'>Hosted by {$event->email} and set for {$datetime}</p>
+					<p id='event-info'>Hosted by YOU and set for {$datetime}</p>
 					<p id='event-desc'>{$event->description}</p>
 					
 				</div>
@@ -258,7 +477,7 @@ class HTMLBuilder
 	public static function displayDashNetwork($network)
 	{
 		$title = HTMLBuilder::formatNetworkTitle($network);
-		
+
 		echo "
 		<div class='net-info dashboard'>
 			<a href='network.php?id={$network->id}'><p class='bottom-text dashboard'>{$title}</p></a>
@@ -276,6 +495,13 @@ class HTMLBuilder
 			$email = $email.$conversation->id_user1_dt->email;
 		else
 			$email = $email.$conversation->id_user2_dt->email;
+
+		// get image
+		$img_link = NULL;
+		if ($post->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$post->img_link;
 			
 		echo "
 		<div class='user-img dashboard'>
@@ -318,6 +544,36 @@ class HTMLBuilder
 		}
 		
 		return $title;
+	}
+
+	private static function formatDateTime($date)
+	{
+		$months = array("NOTHING", "January", "February", "March", "April",
+			"May", "June", "July", "August", "September",
+			"October", "November", "December");
+
+		// turn date into assoc array
+		$p_date = date_parse($date);
+
+		// assign month
+		$month = $months[$p_date['month']];
+
+		// handle hours
+		$hour = $p_date['hour'];
+		$period = "AM";
+		if ($hour > 12) {
+			$hour -= 12;
+			$period = "PM";
+		}
+
+		// check minute
+		$minute = $p_date['minute'];
+		if ($minute < 10)
+			$minute = '0'.$minute;
+
+		// format and return string
+		$f_datetime = $month." ".$p_date['day'].", ".$p_date['year']." @ ".$hour.":".$minute." ".$period;
+		return $f_datetime;
 	}
 }
 ?>

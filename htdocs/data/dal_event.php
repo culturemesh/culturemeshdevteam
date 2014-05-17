@@ -95,7 +95,7 @@ class Event
 		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		$result = mysqli_query($con,"SELECT * FROM events WHERE id_host={$id}");
+		$result = mysqli_query($con,"SELECT * FROM events e, users u WHERE e.id_host=u.id AND id_host={$id}");
 		
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
@@ -121,6 +121,7 @@ class Event
 			$event_dt->username = $row['username'];
 			$event_dt->first_name = $row['first_name'];
 			$event_dt->last_name = $row['last_name'];
+			$event_dt->img_link = $row['img_link'];
 
 			array_push($events, $event_dt);
 		}
@@ -152,8 +153,8 @@ class Event
 			$event_dt = new EventDT();
 			
 			$event_dt->id = $row['id'];
-			$event_dt->network_id = $row['network_id'];
-			$event_dt->host_id = $row['host_id'];
+			$event_dt->id_network = $row['id_network'];
+			$event_dt->id_host = $row['id_host'];
 			$event_dt->date_created = $row['date_created'];
 			$event_dt->event_date = $row['event_date'];
 			$event_dt->title = $row['title'];
@@ -166,6 +167,7 @@ class Event
 			$event_dt->username = $row['username'];
 			$event_dt->first_name = $row['first_name'];
 			$event_dt->last_name = $row['last_name'];
+			$event_dt->img_link = $row['img_link'];
 			
 			array_push($events, $event_dt);
 		}
@@ -190,10 +192,9 @@ class Event
 		}
 		
 		if (!mysqli_query($con, "UPDATE events 
-			SET id_network=". $event_dt->network_id .", id_host=". $event_dt->host_id .
-			", event_date='". $event_dt->event_date ."', address_1='". $event_dt->address_1 .
+			SET event_date='". $event_dt->event_date ."', address_1='". $event_dt->address_1 .
 			"', address_2='". $event_dt->address_2 ."', city='". $event_dt->city .
-			"', region='". $event_dt->region ."', description='". $event_dt->description . 
+			"', description='". $event_dt->description . 
 			"' WHERE id=". $event_dt->id ))
 		{
 			echo "Error Message: " . $con->error;
