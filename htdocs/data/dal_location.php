@@ -1,6 +1,7 @@
 <?php
 ini_set("display_errors", 1);
 include_once("zz341/fxn.php");
+include_once("dal_query_handler.php");
 
 class Location
 {
@@ -170,5 +171,11 @@ class Location
 			return $result;
 	}
 
+	public static function getNearbyCities($name, $con=NULL) 
+	{
+		$query = "SELECT * FROM nearby_cities WHERE city_name={$name}";
+		$result = QueryHandler::executeQuery($query, $con);
+		return $result;
+	}
 }
 ?>

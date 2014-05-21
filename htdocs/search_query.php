@@ -76,8 +76,21 @@ class SearchQuery
 		default:
 			return array();
 		}
-		// get nearby cities here
+		// get nearby data here
 		//
+		switch ($query[0])
+		{
+		case "co":
+			break;
+		case "cc":
+			break;
+		case "rc":
+			break;
+		case "_l":
+			break;
+		default:
+			break;
+		}
 
 		// push everything into an array!!
 		$networks = array();

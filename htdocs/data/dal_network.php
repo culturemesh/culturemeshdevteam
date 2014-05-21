@@ -612,6 +612,7 @@ class Network
 		// Get parameters from query, put them into query
 		for ($i = 0; $i < count($cols); $i++)
 		{
+			// if something is null, make it so
 			if ($query[$i+1] == null)
 			{
 				$statement .= $cols[$i]. " IS NULL ";

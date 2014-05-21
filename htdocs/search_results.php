@@ -9,6 +9,14 @@
 	session_name("myDiaspora");
 	session_start();
 
+	/* Most of this overhead stuff
+	 * is error checking/query parsing
+	 */
+
+	/* Query results takes the actual results
+	 * and makes networks out of them
+	 */
+
 	function parseLocation($location)
 	{
 		/*
