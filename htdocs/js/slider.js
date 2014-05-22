@@ -3,12 +3,14 @@ var table = document.getElementById("slider-table");
 var leftButton = document.getElementById("slider-left");
 var rightButton = document.getElementById("slider-right");
 
+
 var cardLength = 275;
 var timeLength = 75;
 var interval = 15;
 var MOVE_SPEED = 30;
 
 layEmOut();
+content.cmMaxScroll = content.scrollLeftMax | content.scrollWidth; 
 
 leftButton.onclick = function () {
 	//moveRight();
@@ -44,10 +46,13 @@ function layEmOut() {
 		if (col.className == "event-card month")
 			totalX += timeLength + interval;
 	}
+
+	// get maxscroll
+	//content.cmMaxScroll = content.scrollLeftMax | content.scrollWidth;
 }
 
 function moveRight() {
-	if (content.scrollLeft < content.scrollLeftMax)
+	if (content.scrollLeft < content.cmMaxScroll)
 		content.scrollLeft += MOVE_SPEED;
 }
 

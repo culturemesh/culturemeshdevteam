@@ -237,7 +237,7 @@ input[class="modal-text-input"] {
     border-radius:4px;
     height:36px;
     font-size:18px;
-    color:black;
+    color:#7F7F7F;
 }
 
 #login-passwords
@@ -420,6 +420,11 @@ h1.h-network
 {
 	font: 30px Lato-Bold, sans-serif; 
 	color: #EF5330; 
+}
+
+h1.h-network.nomargin
+{
+	margin-bottom:0px;
 }
 h2.h-network
 {
@@ -687,6 +692,8 @@ td.event-card.card:hover
 	width:65%;
 }
 
+
+
 input[type="text"].hidden-field
 {
 	display:none;
@@ -700,6 +707,94 @@ li.event
 	border-color:#E6E6E6;
 	border-radius:0;
 	padding-left:15px;
+}
+
+/* I've got this here because the event-info
+ * modal won't stretch to the correct length without
+ * it
+ *
+ * I'm not sure why this is necessary
+ * maybe someone will figure it out
+ *
+ */
+div.modal-body.event {
+	width:100%;
+	padding: 0;
+}
+
+input.event-text-modal
+{
+    border-color: #B3B3B3;
+    border-radius: 4px 4px 4px 4px;
+    border-width: 1px;
+    font-size: 18px;
+    height: 36px;
+    margin: 0 auto;
+    width: 85%;
+    padding-top:12px;
+}
+
+textarea.event-text-modal
+{
+    border-color: #B3B3B3;
+    border-radius: 4px 4px 4px 4px;
+    border-width: 1px;
+    font-size: 18px;
+    height: 36px;
+    margin: 0 auto;
+    width: 85%;
+    padding-top:12px;
+    margin-bottom:-4px;
+}
+
+input[class*="edit-"] {
+	color: #404040;
+	font: 16px Lato-Light, sans-serif;
+	display:none;
+	text-align:center;
+}
+
+input[class*="edit-"][name="title"] {
+	color: #EF5330;
+	font: 30px Lato-Bold, sans-serif;
+	margin-bottom:0;
+	padding:0;
+}
+
+input[class*="edit-"][name="datetime"] {
+	margin-bottom:-4px;
+}
+
+textarea[class*="edit-"] {
+	color: #404040;
+	font: 16px Lato-Light, sans-serif;
+	display:none;
+	text-align:center;
+}
+
+input[type="submit"][class*="edit-"] {
+	background-color: #97CB38;
+	border: medium none;
+	border-radius: 5px;
+	color: white;
+	font: 21px Lato, sans-serif;
+	height: 45px;
+	width: 190px;
+	margin: 0px auto;
+	margin-top: 10px;
+}
+
+p.event-modal
+{
+	font: 16px Lato-Light, sans-serif;
+	color: #404040;
+	margin-bottom:10px;
+	margin-top:15px;
+}
+
+div.event-modal-section
+{
+	margin:0px auto 23px;
 }
 
 ul.post-wall-ul.child
@@ -933,6 +1028,13 @@ div.event-text
 	padding-top:48px;
 }
 
+#confirmation_panel {
+	width: 100%;
+	color:#FFFFFF;
+	background-color:rgb(151, 203, 56);
+	padding:5px;
+}
+
 .profile_dashboard
 {
 	min-height:300px;
@@ -952,6 +1054,71 @@ div.event-text
 .profile_image
 {
 	padding-left:48px;
+}
+
+#profile_image
+{
+	width:198px;
+	height:198px;
+}
+
+#pic-upload-div
+{
+	text-align:center;
+	display:none;
+	margin:10px 10px -20px;
+}
+
+input[type="file"]#upload-input
+{
+	margin: 0px auto;
+	display:none;
+}
+
+input[type='submit'].upload
+{
+	font:16px Lato-Bold, sans-serif;
+	height: 25px;
+	width:198px;
+	background-color: #3EB3CA;
+	border: medium none;
+	border-radius: 5px;
+	color:#FFFFFF;
+}
+
+input[type='submit'].upload:hover
+{
+	background-color:#0088CC;
+}
+
+button.upload
+{
+	font:16px Lato-Bold, sans-serif;
+	height: 25px;
+	width:198px;
+	background-color: #3EB3CA;
+	border: medium none;
+	border-radius:5px;
+	color:#FFFFFF;
+	margin-bottom:4px;
+}
+
+button.upload:hover
+{
+	background-color:#0088CC;
+}
+
+p.upload
+{
+	background-color:#0088CC;
+	color:#FFFFFF;
+	width:198px;
+	margin:0px auto;
+	margin-bottom:4px;
+	text-align:center;
+	border: medium none;
+	border-radius:5px;
+
 }
 
 p.profile

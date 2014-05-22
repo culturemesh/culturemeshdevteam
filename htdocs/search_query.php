@@ -59,6 +59,7 @@ class SearchQuery
 		// HUNT DOWN A NETWORK FOR THE USERS!!!!
 		case "co":
 			// [1: o_country, 2: city_cur, 3: region_cur, 4: country_cur] in the future, region as well
+			// [1: city_cur, 2: region_cur, 3: country_cur, 4: o_country]
 			$results = Network::getNetworksByCO($query, $con);
 			break;
 		case "cc":

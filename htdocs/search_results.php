@@ -216,6 +216,18 @@
 		//
 		$networks = SearchQuery::getNetworkSearchResults($query, $con);
 		mysqli_close($con);
+
+		// add location data for gmaps embed
+		$location = '';
+		if ($valid_search)
+		{
+			if (isset($query[1]))
+			   { $location .= urlencode($query[1]).','; }
+			if (isset($query[2]))
+			   { $location .= urlencode($query[2]).','; }
+			if (isset($query[3]))
+			   { $location .= urlencode($query[3]); }
+		}
 	}
 
 ?>
@@ -240,9 +252,16 @@
 			<div id="content">
 				<div class="net-left">
 					<div class="leftbar">
-						<div id="map">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202359.87608164057!2d-122.32141071468104!3d37.581606634196056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcae48af93ff5%3A0xb99d8c0aca9f717b!2sSan+Jose%2C+CA!5e0!3m2!1sen!2sus!4v1389926877454" width="200" height="300" frameborder="0" style="border:0"></iframe>
+						<?php HTMLBuilder::googleMapsEmbed($location); ?>
+<!--
+						<div class="map">
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202
+							359.87608164057!2d-122.32141071468104!3d37.581606634196056!2m3!1f0!2f0!
+							3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcae48af93ff5%3A0xb99d8c0aca9f717b
+							!2sSan+Jose%2C+CA!5e0!3m2!1sen!2sus!4v1389926877454" width="100%" height="252"
+							frameborder="0" style="border:0"></iframe>
 						</div>
+-->
 						<div id="tags"></div>
 					</div>
 				</div>

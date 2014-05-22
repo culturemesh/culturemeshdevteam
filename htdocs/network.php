@@ -57,29 +57,56 @@
 		"October", "November", "December");
 
 	$calendar = array();
-	// add months to array as keys
-	foreach($months as $month)
-	{
-		$calendar[$month] = array();
-	}
-	
+	$years = array();
+
 	foreach($events as $event)
 	{
-		// get month of event
+		// add year to array as keys
+		//   -- get year
 		$dt = new DateTime($event->event_date);
+		$year = $dt->format('y');
+
+		// 
+		if (!isset($calendar[$year])) {
+			$calendar[$year] = array();
+			array_push($years, $year);
+
+			// add months to array as keys
+			foreach($months as $month)
+			{
+				$calendar[$year][$month] = array();
+			}
+		}
+
+
+		// get month of event
 		$month = $dt->format('n');
 
 		// push event into array
-		array_push( $calendar[$months[$month - 1]], $event);
+		array_unshift( $calendar[$year][$months[$month - 1]], $event);
 	}
+
+	//var_dump($calendar);
 
 	//var_dump($posts);
 	
 	mysqli_close($con);
+
+	// create location for gmap embed
+	$location = '';
+	if (isset($network->city_cur))
+	   { $location .= urlencode($network->city_cur); }
+	if (isset($network->region_cur))
+	   { $location .= ','.urlencode($network->region_cur); }
+	if (isset($network->country_cur))
+	   { $location .= ','.urlencode($network->country_cur); }
+
 /////////////////////////////////////////////////////
 ?>
 		<style type='text/css'>
-	
+
+
+
 		<?php 	// NOT A MEMBER OF NETWORK
 			if (!$member) : ?>
 		.member {
@@ -104,10 +131,11 @@
 		</style>
 		
 		 <script>
+		/*
 		$(function() {
 		$( "#datetimepicker" ).datetimepicker();
 		});
-		
+		 */
 		function toggleEventForm(){
 			if (document.getElementById("event-maker")) {
 				var elem = document.getElementById("event-maker");
@@ -130,6 +158,8 @@
 			<div content>
 				<div class="net-left">
 					<div class="leftbar">
+						<?php HTMLBuilder::googleMapsEmbed($location); ?>
+<!--
 						<div class="map">
 							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202
 							359.87608164057!2d-122.32141071468104!3d37.581606634196056!2m3!1f0!2f0!
@@ -137,6 +167,7 @@
 							!2sSan+Jose%2C+CA!5e0!3m2!1sen!2sus!4v1389926877454" width="100%" height="252"
 							frameborder="0" style="border:0"></iframe>
 						</div>
+-->
 						<div class="tags"></div>
 						<div class="suggestions">
 							<h4 class="h-network">People who viewed this network also viewed:</h4>
@@ -178,17 +209,20 @@
 							<tbody>
 							<tr>
 								<?php 
-								foreach($months as $month)
-								{
-									if (empty($calendar[$month]))
-										continue;
-
-									HTMLBuilder::displayEventMonth($month);
-
-									// cycle through the month's events
-									for ($i = 0; $i < count($calendar[$month]); $i++)
+								foreach($years as $year) {
+									foreach($months as $month)
 									{
-										HTMLBuilder::displayEventCard($calendar[$month][$i]);
+										if (empty($calendar[$year][$month]))
+											continue;
+
+										HTMLBuilder::displayEventMonth($month, $year);
+
+										// cycle through the month's events
+										for ($i = 0; $i < count($calendar[$year][$month]); $i++)
+										{
+											HTMLBuilder::displayEventCard($calendar[$year][$month][$i]);
+											HTMLBuilder::displayEventModal($calendar[$year][$month][$i]);
+										} 
 									}
 								}
 								?>
@@ -209,7 +243,7 @@
 						<form class="event-form" method="POST" action="network_post-event.php" enctype="multipart/form-data">
 							<div>
 							<input type="text" id="title" name="title" class="event-text" placeholder="Name of Event "></input></br>
-							<input type="text" id="datetimepicker" name="datetime" class="event-text" placeholder="Event Date">
+							<input type="text" id="datetimepicker1" name="datetime" class="event-text datetimepicker" placeholder="Event Date">
 							<input type="text" class="hidden-field" name="date"></input>
 							<input type="text" name="address_1" class="event-text" placeholder="Address 1"/>
 							<input type="text" name="address_2" class="event-text" placeholder="Address 2"/>
@@ -283,4 +317,9 @@
 	<script src="js/jsdatetime/jquery.datetimepicker.js"></script>
 	<script src="js/searchbar.js"></script>
 	<script src="js/slider.js"></script>
+	<script src="js/event-wall.js"></script>
+	<script>
+		$(".datetimepicker").datetimepicker();
+	</script>	
+	</script>
 </html>
