@@ -272,8 +272,8 @@
 					<div id="best-match">
 						<h3>Best Match</h3>
 						<?php 
-						if(count($networks) <= 0 && $valid_search)
-						  { HTMLBuilder::displayPossibleNetwork($query); }
+						if(!$network[0]->existing)
+						  { HTMLBuilder::displayPossibleNetwork($networks[0]); }
 						else if (!$valid_search)
 						  { echo "No matches found."; }
 						else 
@@ -282,8 +282,17 @@
 					</div>
 					<div id="related-networks">
 						<h3>Related Networks</h3>
-						<?php// if (count($networks) < 2) : ?>
+						<?php for ($i = 1; $i < count($networks); $i++)
+							{
+								if ($networks[$i]->existing)
+								  { HTMLBuilder::displayNetwork($networks[$i]); }
+								else
+								  { HTMLBuilder::displayPossibleNetwork($networks[$i]); }
+							}
+						?>
+						<?php if (count($networks) < 2) : ?>
 							<p>No related networks</p>
+						<?php endif; ?>
 						<?php/* else : 
 							for ($i=1; $i < count($networks); $i++)
 							{

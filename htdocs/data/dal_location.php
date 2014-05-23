@@ -173,7 +173,73 @@ class Location
 
 	public static function getNearbyCities($name, $con=NULL) 
 	{
-		$query = "SELECT * FROM nearby_cities WHERE city_name={$name}";
+//////////////////////////////////////////////////////////////////
+		
+		$query = <<<SQL
+
+			SELECT * FROM nearby_cities 
+			WHERE city_name='$name'
+			ORDER BY distance
+SQL;
+
+//////////////////////////////////////////////////////////////////
+		$result = QueryHandler::executeQuery($query, $con);
+		return $result;
+	}
+
+	public static function getNearbyRegions($name, $con=NULL)
+	{
+		// query
+		$query = <<<SQL
+
+			SELECT * FROM nearby_regions
+			WHERE region_name='$name'
+			ORDER BY distance
+
+SQL;
+		$result = QueryHandler::executeQuery($query, $con);
+		return $result;	
+	}
+
+	public static function getRegionsByCountry($name, $con=NULL)
+	{
+		// query
+		$query = <<<SQL
+
+			SELECT *
+			FROM regions
+			WHERE country_name = '$name'
+			LIMIT 0,5
+SQL;
+	//-----------------------------------------
+		$result = QueryHandler::executeQuery($query, $con);
+		return $result;	
+	}
+
+	public static function getCitiesByCountry($name, $con=NULL)
+	{
+		$query = <<<SQL
+
+			SELECT *
+			FROM cities
+			WHERE country_name = '$name'
+			LIMIT 0,5
+SQL;
+	//------------------------------------------------
+		$result = QueryHandler::executeQuery($query, $con);
+		return $result;
+	}
+
+	public static function getCitiesByRegion($name, $con=NULL)
+	{
+		$query = <<<SQL
+
+			SELECT *
+			FROM cities
+			WHERE region_name = '$name'
+			LIMIT 0,5
+SQL;
+	//-------------------------------------------------
 		$result = QueryHandler::executeQuery($query, $con);
 		return $result;
 	}
