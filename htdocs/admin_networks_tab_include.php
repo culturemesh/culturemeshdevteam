@@ -4,47 +4,76 @@
     }
 </style>
 <div id="admin_add_network_inputs">
-<form id="admin_add_new_form" method="post">
-<label>Add New</label>
-<select name="admin_attr" id="admin_attr">
-    <option>City</option>
-    <option>Language</option>
-</select>
-<label>Name</label>
-<input type="text" name="admin_attr_name">
+	<form id="admin_add_new_form" method="post">
+		<label>Add New</label>
+		<select name="admin_attr" id="admin_attr">
+		    <option>City</option>
+		    <option>Language</option>
+		</select>
+		<div id="admin_region_selector">
 
-<div id="admin_region_selector">
-<label>Region</label>
-<input type="text" name="admin_network_region">
+			<label>City Name</label>
+			<input type="text" name="city_name">
 
-<label>Country</label>
-<select name="admin_network_country">
-    <?php foreach(getCountries() as $country):?>
-    <option><?=$country?></option>
-    <?php endforeach; ?>
-</select>
-</div>
+			<label>Region ID</label>
+			<input type="text" name="region_id">
 
-</form>
-<button class="btn cm-button" id="admin_add_btn">Add</button>
-<script>
-    $("#admin_attr").change(function(){
-    if ($("#admin_attr").val() == "Language") {
-        $("#admin_region_selector").hide();
-    }
-    else{
-        $("#admin_region_selector").show();
-    }
-    });
-    $("#admin_add_btn").click(function(){
-        $.post("ajx/ps.php", $("#admin_add_new_form").serialize())
-        .done(function(data){
-            if(data == "1"){
-                refresh();
-            }
-        });
-    });
-</script>
+			<label>Region Name</label>
+			<input type="text" name="region_name">
+
+			<label>Country ID</label>
+			<input type="text" name="country_id">
+
+			<label>Country Name</label>
+			<input type="text" name="country_name">
+
+<!--
+			<label>Country</label>
+			<select name="admin_network_country">
+			    <?php //foreach(getCountries() as $country):?>
+			    <option><?//=$country?></option>
+			    <?php //endforeach; ?>
+			</select>
+-->
+			<label>Population</label>
+			<input type="text" name="population">
+
+			<label>Latitude</label>
+			<input type="text" name="latitude">
+
+			<label>Longitude</label>
+			<input type="text" name="longitude">
+		</div>
+		<div id="admin_language_selector" style='display:none;'>
+			<label>Name</label>
+			<input type="text" name="lang_name">
+
+			<label>Number of Speakers (millions)</label>
+			<input type="text" name="num_speakers">
+		</div>
+
+	</form>
+	<button class="btn cm-button" id="admin_add_btn">Add</button>
+	<script>
+	    $("#admin_attr").change(function(){
+	    if ($("#admin_attr").val() == "Language") {
+		$("#admin_region_selector").hide();
+		$("#admin_language_selector").show();
+	    }
+	    else{
+		$("#admin_region_selector").show();
+		$("#admin_language_selector").hide();
+	    }
+	    });
+	    $("#admin_add_btn").click(function(){
+		$.post("ps.php", $("#admin_add_new_form").serialize())
+		.done(function(data){
+		    if(data == "1"){
+			refresh();
+		    }
+		});
+	    });
+	</script>
 </div>
 
 <ul class="nav nav-pills">

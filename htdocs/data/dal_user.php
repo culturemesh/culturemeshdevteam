@@ -278,6 +278,18 @@ class User
 		return $row['img_link'];
 	}
 
+	public static function loginAdmin($user, $pass, $con=NULL)
+	{
+		$query = <<<SQL
+			SELECT username
+			FROM users_admin
+			WHERE username='$user'
+			AND password='$pass'
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+	}
+
 	////////////////////// UPDATE OPERATIONS //////////////////////////////////////////////
 	
 	public static function updateUser($user_dt)

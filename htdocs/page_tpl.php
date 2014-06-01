@@ -1,4 +1,4 @@
-<?php require_once('log.php'); ?>
+<?php //require_once('log.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,14 +10,7 @@
 <body>
     <div class="wrapper">
         <?php include 'header.php';?>
-        <?php
-            if(!isset($_SESSION['uid'])){
-                include 'unauthorized_content.php';
-            }
-            else{
-                include $ppre.'_body.php';
-            }
-	?>
+	<?php include $ppre.'_body.php'; ?>
 	<?php include 'footer.php'; ?>
     </div>
 </body>

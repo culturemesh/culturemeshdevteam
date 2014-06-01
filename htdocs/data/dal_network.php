@@ -22,6 +22,7 @@ include_once("dal_network-dt.php");
 include_once("dal_event.php");
 include_once("dal_network_registration.php");
 include_once("dal_post.php");
+include_once("dal_query_handler.php");
 
 class Network
 {
@@ -448,7 +449,7 @@ class Network
 			}
 
 			// add an AND if we're not at the end
-			$statement .= " AND "; 
+			$statement .= " AND city_origin IS NULL AND region_origin IS NULL AND "; 
 			// at the end, add country_origin
 			if (count($cols) - $i == 1)
 			  { $statement .= "country_origin='".$query[$i+4]."'"; }
@@ -565,7 +566,7 @@ class Network
 			}
 
 			// add an AND if we're not at the end
-			$statement .= " AND "; 
+			$statement .= " AND city_origin IS NULL AND "; 
 			// at the end, add country_origin
 			if (count($cols) - $i == 1)
 			  { $statement .= "region_origin='{$query[$i+3]}' AND country_origin='".$query[$i+4]."'"; }
@@ -612,6 +613,7 @@ class Network
 		// Get parameters from query, put them into query
 		for ($i = 0; $i < count($cols); $i++)
 		{
+			// if something is null, make it so
 			if ($query[$i+1] == null)
 			{
 				$statement .= $cols[$i]. " IS NULL ";
@@ -656,6 +658,119 @@ class Network
 		else
 			return $result;
 	}
+
+	public static function getNetworksByRegions($regions, $con=NULL)
+	{
+		// craft statement with all the regions 
+		// inside
+		$stmt_regions='';
+		for ($i = 0; $i < count($regions); $i++) {
+
+			// add region
+			$stmt_regions .= '\''.$regions[$i].'\'';
+
+			// add comma if not the last
+			// thing in the list
+			if (count($regions) - $i > 1)
+			  { $stmt_regions .= ','; }
+			  
+		}
+
+		$query = <<<SQL
+
+			SELECT *
+			FROM networks
+			WHERE region_cur IN ($stmt_regions)	
+			LIMIT 0,5
+
+SQL;
+		// -----------------------------------------
+
+		$result = QueryHandler::executeQuery($query, $con);
+		return $result;
+
+	}
+
+	public static function getNetworksByCities($cities, $con=NULL)
+	{
+		// craft statement with all the cities
+		// inside
+		$stmt_cities='';
+		for ($i = 0; $i < count($cities); $i++) {
+
+			// add city
+			$stmt_cities .= '\''.$cities[$i].'\'';
+
+			// add comma if not the last
+			// thing in the list
+			if (count($cities) - $i > 1)
+			  { $stmt_cities .= ','; }
+			  
+		}
+
+		$query = <<<SQL
+
+			SELECT *
+			FROM networks
+			WHERE city_cur IN ($stmt_cities)	
+			LIMIT 0,5
+
+SQL;
+		echo $query;
+		// -----------------------------------------
+
+		$result = QueryHandler::executeQuery($query, $con);
+		return $result;
+
+	}
+
+	public static function getNetworksAllClasses($data, $con=NULL)
+	{
+		switch($data[0])
+		{
+		case '_l':
+			return static::getNetworksByL($data, $con);
+		case 'co':
+			return static::getNetworksByCO($data, $con);
+		case 'rc':
+			return static::getNetworksByRC($data, $con);
+		case 'cc':
+			return static::getNetworksByCC($data, $con);
+		}
+	}
+
+	public static function networkToQuery($network, $con=NULL)
+	{
+		$query = array(NULL, NULL, NULL, NULL,
+				NULL, NULL, NULL);
+
+		$query[0] = $network->network_class;
+		$query[1] = $network->city_cur;
+		$query[2] = $network->region_cur;
+		$query[3] = $network->country_cur;
+
+		switch($query[0])
+		{
+		case '_l':
+			$query[4] = $network->language_origin;
+			break;
+		case 'co':
+			$query[6] = $network->country_origin;
+			break;
+		case 'rc':
+			$query[5] = $network->region_origin;
+			$query[6] = $network->country_origin;
+			break;
+		case 'cc':
+			$query[4] = $network->city_origin;
+			$query[5] = $network->region_origin;
+			$query[6] = $network->country_origin;
+			break;
+		}
+
+		return $query;
+	}
+
 	////////////////////// UPDATE OPERATIONS /////////////////////
 	public static function updateNetwork($network_dt)
 	{
@@ -718,12 +833,75 @@ class Network
 		NetworkRegistration::deleteRegistrationsByNetwork($id, $con);
 	}
 	
-	private static function fillNetworkDT($results)
+	public static function fillNetworkDT($result, $con=NULL)
+	{
+		//var_dump($result);
+		$row = mysqli_fetch_array($result);
+		$network_dt = new NetworkDT();
+
+		$network_dt->id = $row['id'];
+		$network_dt->city_cur = $row['city_cur'];
+		$network_dt->region_cur = $row['region_cur'];
+		$network_dt->country_cur = $row['country_cur'];
+		$network_dt->city_origin = $row['city_origin'];
+		$network_dt->region_origin = $row['region_origin'];
+		$network_dt->country_origin = $row['country_origin'];
+		$network_dt->language_origin = $row['language_origin'];
+		$network_dt->network_class = $row['network_class'];
+		$network_dt->member_count = NetworkRegistration::getMemberCount($network_dt->id, $con);
+		$network_dt->post_count = Post::getPostCount($network_dt->id, $con);
+	//	$network_dt->member_count = $row['member_count'];
+	//	$network_dt->post_count = $row['post_count'];
+		$network_dt->existing = true;
+		
+		return $network_dt;
+	}
+
+	public static function fillDTWithQuery($query)
 	{
 		$network_dt = new NetworkDT();
 		
+		// some particulars
+		$network_dt->network_class = $query[0];
+		$network_dt->existing = false;
+
+		// location
+		$network_dt->city_cur = $query[1]; 
+		$network_dt->region_cur = $query[2];
+		$network_dt->country_cur = $query[3];
+
+		// origin stuff
+		switch ($query[0])
+		{
+		case "_l":
+			$network_dt->language_origin = $query[4];
+			break;
+		case "co":
+			$network_dt->country_origin = $query[6];
+			break;
+		case "rc":
+			$network_dt->region_origin = $query[5];
+			$network_dt->country_origin = $query[6];
+			break;
+		case "cc":
+			$network_dt->city_origin = $query[4];
+			$network_dt->region_origin = $query[5];
+			$network_dt->country_origin = $query[6];
+			break;
+		}
+		//var_dump($network_dt);
+
+		return $network_dt;
+	}
+
+	public static function fillNetworkDTs($results)
+	{
+		$networks = array();
+		
 		while ($row = mysqli_fetch_array($results))
 		{	
+			$network_dt = new NetworkDT();
+
 			$network_dt->id = $row['id'];
 			$network_dt->city_cur = $row['city_cur'];
 			$network_dt->region_cur = $row['region_cur'];
@@ -735,9 +913,12 @@ class Network
 			$network_dt->network_class = $row['network_class'];
 			$network_dt->member_count = $row['member_count'];
 			$network_dt->post_count = $row['post_count'];
+			$network_dt->existing = true;
+
+			array_push($networks, $network_dt);
 		}
 		
-		return $network_dt;
+		return $networks;
 	}
 }
 ?>

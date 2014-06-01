@@ -10,6 +10,13 @@
 	
 	session_name("myDiaspora");
 	session_start();
+
+	/*
+	if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "") {
+		$redirect = "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		header("Location: {$redirect}");
+	}
+	 */
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

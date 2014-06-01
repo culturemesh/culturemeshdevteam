@@ -3,8 +3,8 @@ ini_set("display_errors", true);
 
 include_once("data/dal_network.php");
 include_once("data/dal_network-dt.php");
-include_once("data/dal_locations.php");
-include_once("data/dal_languages.php");
+include_once("data/dal_location.php");
+include_once("data/dal_language.php");
 
 // start db connection
 $con = getDBConnection();
@@ -13,13 +13,14 @@ $query = array($_POST['type'], mysqli_real_escape_string($con, $_POST['city_cur'
 
 $loc_data = null;
 if ($query[1] == null && $query[2] == null)
-  { $loc_data = Locations::getCOByName($query[3], $con); }
+  { $loc_data = Location::getCOByName($query[3], $con); }
 else if ($query[1] == null)
-  { $loc_data = Locations::getRCByName($query[2], $query[3], $con); }
+  { $loc_data = Location::getRCByName($query[2], $query[3], $con); }
 else
-  { $loc_data = Locations::getCCByName($query[1], $query[2], $query[3], $con); }
+  { $loc_data = Location::getCCByName($query[1], $query[2], $query[3], $con); }
 
 //var_dump($query);
+//echo '<br><br>';
 // get current stuff
 //var_dump($loc_data);
 $query_data = null;
@@ -29,12 +30,12 @@ $network->network_class = $query[0];
 switch ($query[0])
 {
 case "co":
-	$query_data = Locations::getCOByName($query[6], $con);
+	$query_data = Location::getCOByName($query[6], $con);
 	$network->id_country_origin = $query_data[4];
 	$network->country_origin = $query_data[5];
 	break;
 case "cc":
-	$query_data = Locations::getCCByName($query[4], $query[5], $query[6], $con);
+	$query_data = Location::getCCByName($query[4], $query[5], $query[6], $con);
 	$network->id_city_origin = $query_data[0];
 	$network->city_origin = $query_data[1];
 	$network->id_region_origin = $query_data[2];
@@ -43,14 +44,14 @@ case "cc":
 	$network->country_origin = $query_data[5];
 	break;
 case "rc":
-	$query_data = Locations::getRCByName($query[5], $query[6], $con);
+	$query_data = Location::getRCByName($query[5], $query[6], $con);
 	$network->id_region_origin = $query_data[2];
 	$network->region_origin = $query_data[3];
 	$network->id_country_origin = $query_data[4];
 	$network->country_origin = $query_data[5];
 	break;
 case "_l":
-	$query_data = Languages::getLanguageByName($query[4], $con);
+	$query_data = Language::getLanguageByName($query[4], $con);
 	$network->id_language_origin = $query_data[0];
 	$network->language_origin = $query_data[1];
 	break;
@@ -65,12 +66,29 @@ $network->id_country_cur = $loc_data[4];
 $network->country_cur = $loc_data[5];
 
 //var_dump($network);
-$id = Network::launchNetwork($network, $con);
 
-mysqli_close($con);
+// If network doesn't exist, create it
+$test_query = Network::networkToQuery($network);
+$result = Network::getNetworksAllClasses($test_query, $con);
+$id = NULL;
+//var_dump($network);
+if(mysqli_num_rows($result) == 0)
+  { $id = Network::launchNetwork($network, $con); }
+$rows = QueryHandler::getRows($result);
 
+// close connection
+mysqli_close($con); 
+
+// redirect
+// 	success: network page
+// 	failure: search results
 if (!$id)
-  { header("Location: search_results.php?error=Could+not+launch+network"); }
+{ 
+	if ($id==NULL)
+	  { header("Location: search_results.php?error=Network+exists"); }
+	else
+	  { header("Location: search_results.php?error=Could+not+launch+network"); }
+}
 else
   { header("Location: network.php?id={$id}"); }
 ?>
