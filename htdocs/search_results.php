@@ -44,6 +44,8 @@
 		return $loc_array;
 	}
 
+	// validate to see if a possible network
+	// has been submitted
 	function validateQuery($query, $con) 
 	{
 		// check for form	
@@ -135,6 +137,8 @@
 		$people_who = mysqli_real_escape_string($con, $_GET['search-1']);
 		$valid_search = validateQuery($people_who, $con);
 
+		/// 
+		// CHECKING THE CURRENT LOCATION
 		// get rid of 'near ' in location
 		//$location_raw = mysql_escape_string(substr($_GET['search-2'], 5));
 
@@ -229,6 +233,7 @@
 			   { $location .= urlencode($query[3]); }
 		}
 	}
+	//var_dump($networks);
 
 ?>
 
@@ -272,10 +277,8 @@
 					<div id="best-match">
 						<h3>Best Match</h3>
 						<?php 
-						if(!$network[0]->existing)
-						  { HTMLBuilder::displayPossibleNetwork($networks[0]); }
-						else if (!$valid_search)
-						  { echo "No matches found."; }
+						if(!$networks[0]->existing)
+						  { HTMLBuilder::displayPossibleNetwork($query); }
 						else 
 						  { HTMLBuilder::displayNetwork($networks[0]); }
 						?>

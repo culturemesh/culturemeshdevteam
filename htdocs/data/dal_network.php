@@ -449,7 +449,7 @@ class Network
 			}
 
 			// add an AND if we're not at the end
-			$statement .= " AND "; 
+			$statement .= " AND city_origin IS NULL AND region_origin IS NULL AND "; 
 			// at the end, add country_origin
 			if (count($cols) - $i == 1)
 			  { $statement .= "country_origin='".$query[$i+4]."'"; }
@@ -566,7 +566,7 @@ class Network
 			}
 
 			// add an AND if we're not at the end
-			$statement .= " AND "; 
+			$statement .= " AND city_origin IS NULL AND "; 
 			// at the end, add country_origin
 			if (count($cols) - $i == 1)
 			  { $statement .= "region_origin='{$query[$i+3]}' AND country_origin='".$query[$i+4]."'"; }
@@ -723,6 +723,54 @@ SQL;
 		return $result;
 
 	}
+
+	public static function getNetworksAllClasses($data, $con=NULL)
+	{
+		switch($data[0])
+		{
+		case '_l':
+			return static::getNetworksByL($data, $con);
+		case 'co':
+			return static::getNetworksByCO($data, $con);
+		case 'rc':
+			return static::getNetworksByRC($data, $con);
+		case 'cc':
+			return static::getNetworksByCC($data, $con);
+		}
+	}
+
+	public static function networkToQuery($network, $con=NULL)
+	{
+		$query = array(NULL, NULL, NULL, NULL,
+				NULL, NULL, NULL);
+
+		$query[0] = $network->network_class;
+		$query[1] = $network->city_cur;
+		$query[2] = $network->region_cur;
+		$query[3] = $network->country_cur;
+
+		switch($query[0])
+		{
+		case '_l':
+			$query[4] = $network->language_origin;
+			break;
+		case 'co':
+			$query[6] = $network->country_origin;
+			break;
+		case 'rc':
+			$query[5] = $network->region_origin;
+			$query[6] = $network->country_origin;
+			break;
+		case 'cc':
+			$query[4] = $network->city_origin;
+			$query[5] = $network->region_origin;
+			$query[6] = $network->country_origin;
+			break;
+		}
+
+		return $query;
+	}
+
 	////////////////////// UPDATE OPERATIONS /////////////////////
 	public static function updateNetwork($network_dt)
 	{
@@ -785,9 +833,10 @@ SQL;
 		NetworkRegistration::deleteRegistrationsByNetwork($id, $con);
 	}
 	
-	public static function fillNetworkDT($result)
+	public static function fillNetworkDT($result, $con=NULL)
 	{
-		$row = mysqli_fetch_array($results);
+		//var_dump($result);
+		$row = mysqli_fetch_array($result);
 		$network_dt = new NetworkDT();
 
 		$network_dt->id = $row['id'];
@@ -799,8 +848,10 @@ SQL;
 		$network_dt->country_origin = $row['country_origin'];
 		$network_dt->language_origin = $row['language_origin'];
 		$network_dt->network_class = $row['network_class'];
-		$network_dt->member_count = $row['member_count'];
-		$network_dt->post_count = $row['post_count'];
+		$network_dt->member_count = NetworkRegistration::getMemberCount($network_dt->id, $con);
+		$network_dt->post_count = Post::getPostCount($network_dt->id, $con);
+	//	$network_dt->member_count = $row['member_count'];
+	//	$network_dt->post_count = $row['post_count'];
 		$network_dt->existing = true;
 		
 		return $network_dt;
@@ -838,6 +889,7 @@ SQL;
 			$network_dt->country_origin = $query[6];
 			break;
 		}
+		//var_dump($network_dt);
 
 		return $network_dt;
 	}

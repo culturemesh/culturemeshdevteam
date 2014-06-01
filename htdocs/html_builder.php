@@ -30,6 +30,7 @@ class HTMLBuilder
 	{
 		$title = HTMLBuilder::formatNetworkTitle($network);
 		
+		//var_dump($network);
 		echo "
 		<div>
 			<div class='net-info'>
@@ -147,7 +148,7 @@ class HTMLBuilder
 			switch ($query->network_class)
 			{
 			case "_l":
-				$title = "$query->language_origin speakers in location}";
+				$title = "$query->language_origin speakers in {$location}";
 				$q1 = $query->language_origin;
 				break;
 			case "co":
