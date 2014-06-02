@@ -29,8 +29,7 @@ $confirmation = <<<EHTML
 		access to CultureMesh, and all future notifications
 		will be sent to this email address</p>
 
-		<a href="http://www.culturemesh.com/culturemeshdevteam/
-		htdocs/confirmation.php?uid=$id&act_code=$act_code"
+		<a href="http://www.culturemesh.com/confirmation.php?uid=$id&act_code=$act_code"
 		>Click to confirm membership.</a>
 	</div>
 </body>

@@ -14,9 +14,9 @@ var submitButton = document.createElement('input')
 promptButton.innerHTML = "Browse...:)";
 promptButton.setAttribute('class', 'upload');
 submitButton.setAttribute('type', 'submit');
-submitButton.setAttribute('value', 'Load File');
+submitButton.setAttribute('value', 'Upload File');
 submitButton.setAttribute('class', 'upload');
-submitButton.value = 'Load File';
+submitButton.value = 'Upload File';
 promptLabel.setAttribute('class', 'upload');
 uploadForm.appendChild(promptButton);
 uploadForm.appendChild(promptLabel);

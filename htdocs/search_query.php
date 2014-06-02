@@ -115,6 +115,95 @@ class SearchQuery
 			array_push($networks, $network_dt);
 		}
 
+		//var_dump($query);
+		// GET CURRENT LOCATION THINGS
+		if ($query[1] != null)
+		{
+			// pull from nearby cities
+			$cities = Location::getNearbyCities($query[1], $con);
+			$cities_nm = QueryHandler::getRows($cities);
+			$alt_query = $query;
+
+			// get from two origin cities
+			for ($i = 0; $i < $org_result_count && $i < count($cities_nm); $i++)
+			{
+				$alt_query[1] = $cities_nm[$i]['name'];
+				$alt_query[2] = $cities_nm[$i]['region_name'];
+				$alt_query[3] = $cities_nm[$i]['country_name'];
+				$results = Network::getNetworksAllClasses($alt_query, $con);
+				if (mysqli_num_rows($results) > 0)
+				  { $network_dt = Network::fillNetworkDT($results, $con); }
+				else
+				  { $network_dt = Network::fillDTWithQuery($alt_query); }
+
+				array_push($networks, $network_dt);
+			}
+		}
+		else if ($query[2] != null)
+		{
+			// pull from nearby regions
+			$regions = Location::getNearbyRegions($query[2], $con);
+			$regions_nm = QueryHandler::getRows($regions);
+			$alt_query = $query;
+
+			// get from two origin regions 
+			for ($i = 0; $i < $org_result_count && $i < count($regions_nm); $i++)
+			{
+				$alt_query[2] = $regions_nm[$i]['name'];
+				$alt_query[3] = $regions_nm[$i]['country_name'];
+
+				$results = Network::getNetworksAllClasses($alt_query, $con);
+				if (mysqli_num_rows($results) > 0)
+				  { $network_dt = Network::fillNetworkDT($results, $con); }
+				else
+				  { $network_dt = Network::fillDTWithQuery($alt_query); }
+
+				array_push($networks, $network_dt);
+			}
+		}
+		else
+		{
+			// get cities by country
+			$cities = Location::getCitiesByCountry($query[3], $con);
+			$cities_nm = QueryHandler::getRows($cities);
+			$alt_query = $query;
+
+			// get from two origin cities within
+			for ($i = 0; $i < $org_result_count && $i < count($cities_nm); $i++)
+			{
+				$alt_query[1] = $cities_nm[$i]['name'];
+				$alt_query[2] = mysqli_real_escape_string($con, $cities_nm[$i]['region_name']);
+				$alt_query[3] = $cities_nm[$i]['country_name'];
+
+				$results = Network::getNetworksAllClasses($alt_query, $con);
+				if (mysqli_num_rows($results) > 0)
+				  { $network_dt = Network::fillNetworkDT($results, $con); }
+				else
+				  { $network_dt = Network::fillDTWithQuery($alt_query); }
+
+				array_push($networks, $network_dt);
+			}
+			/*
+			// pull from regions within country
+			$regions = Location::getRegionsByCountry($query[3], $con);
+			$regions_nm = QueryHandler::getRows($regions);
+			$alt_query = $query;
+
+			// get from two origin regions within
+			for ($i = 0; $i < $org_result_count && $i < count($regions_nm); $i++)
+			{
+				$alt_query[2] = $regions_nm[$i]["name"];
+				$alt_query[3] = $regions_nm[$i]["country_name"];
+				$results = Network::getNetworksAllClasses($alt_query, $con);
+				if (mysqli_num_rows($results) > 0)
+				  { $network_dt = Network::fillNetworkDT($results, $con); }
+				else
+				  { $network_dt = Network::fillDTWithQuery($alt_query); }
+
+				array_push($networks, $network_dt);
+			}
+			 */
+		}
 
 		// get nearby data here
 		//  - origin country
@@ -225,97 +314,6 @@ class SearchQuery
 			break;
 		default:
 			break;
-		}
-
-
-		//var_dump($query);
-		// GET CURRENT LOCATION THINGS
-		if ($query[1] != null)
-		{
-			// pull from nearby cities
-			$cities = Location::getNearbyCities($query[1], $con);
-			$cities_nm = QueryHandler::getRows($cities);
-			$alt_query = $query;
-
-			// get from two origin cities
-			for ($i = 0; $i < $org_result_count && $i < count($cities_nm); $i++)
-			{
-				$alt_query[1] = $cities_nm[$i]['name'];
-				$alt_query[2] = $cities_nm[$i]['region_name'];
-				$alt_query[3] = $cities_nm[$i]['country_name'];
-				$results = Network::getNetworksAllClasses($alt_query, $con);
-				if (mysqli_num_rows($results) > 0)
-				  { $network_dt = Network::fillNetworkDT($results, $con); }
-				else
-				  { $network_dt = Network::fillDTWithQuery($alt_query); }
-
-				array_push($networks, $network_dt);
-			}
-		}
-		else if ($query[2] != null)
-		{
-			// pull from nearby regions
-			$regions = Location::getNearbyRegions($query[2], $con);
-			$regions_nm = QueryHandler::getRows($regions);
-			$alt_query = $query;
-
-			// get from two origin regions 
-			for ($i = 0; $i < $org_result_count && $i < count($regions_nm); $i++)
-			{
-				$alt_query[2] = $regions_nm[$i]['name'];
-				$alt_query[3] = $regions_nm[$i]['country_name'];
-
-				$results = Network::getNetworksAllClasses($alt_query, $con);
-				if (mysqli_num_rows($results) > 0)
-				  { $network_dt = Network::fillNetworkDT($results, $con); }
-				else
-				  { $network_dt = Network::fillDTWithQuery($alt_query); }
-
-				array_push($networks, $network_dt);
-			}
-		}
-		else
-		{
-			// get cities by country
-			$cities = Location::getCitiesByCountry($query[3], $con);
-			$cities_nm = QueryHandler::getRows($cities);
-			$alt_query = $query;
-
-			// get from two origin cities within
-			for ($i = 0; $i < $org_result_count && $i < count($cities_nm); $i++)
-			{
-				$alt_query[1] = $cities_nm[$i]['name'];
-				$alt_query[2] = mysqli_real_escape_string($con, $cities_nm[$i]['region_name']);
-				$alt_query[3] = $cities_nm[$i]['country_name'];
-
-				$results = Network::getNetworksAllClasses($alt_query, $con);
-				if (mysqli_num_rows($results) > 0)
-				  { $network_dt = Network::fillNetworkDT($results, $con); }
-				else
-				  { $network_dt = Network::fillDTWithQuery($alt_query); }
-
-				array_push($networks, $network_dt);
-			}
-			/*
-			// pull from regions within country
-			$regions = Location::getRegionsByCountry($query[3], $con);
-			$regions_nm = QueryHandler::getRows($regions);
-			$alt_query = $query;
-
-			// get from two origin regions within
-			for ($i = 0; $i < $org_result_count && $i < count($regions_nm); $i++)
-			{
-				$alt_query[2] = $regions_nm[$i]["name"];
-				$alt_query[3] = $regions_nm[$i]["country_name"];
-				$results = Network::getNetworksAllClasses($alt_query, $con);
-				if (mysqli_num_rows($results) > 0)
-				  { $network_dt = Network::fillNetworkDT($results, $con); }
-				else
-				  { $network_dt = Network::fillDTWithQuery($alt_query); }
-
-				array_push($networks, $network_dt);
-			}
-			 */
 		}
 
 		return $networks;
