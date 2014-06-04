@@ -23,7 +23,7 @@ $user = User::getUserById($_SESSION['uid'], $con);
 $yh_events = Event::getEventsByUserId($_SESSION['uid'], $con);
 
 // events in your network
-$yn_events = Event::getEventsByNetworkId($_SESSION['uid'], $con);
+$yn_events = Event::getEventsYourNetworks($_SESSION['uid'], $con);
 
 // events you're attending
 $ya_events = EventRegistration::getEventRegistrationsByUserId($_SESSION['uid'], $con);

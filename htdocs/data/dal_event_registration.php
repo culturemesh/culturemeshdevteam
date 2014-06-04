@@ -13,33 +13,22 @@
 
 include_once("zz341/fxn.php");
 include_once("dal_event_registration-dt.php");
+include_once('dal_query_handler.php');
 
 class EventRegistration
 {
 	////////////////////// CREATE OPERATIONS /////////////////////
-	public static function createEventRegistration($eventreg_dt)
+	public static function createEventRegistration($uid, $eid, $con=NULL)
 	{
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
-		//$con = func_get_arg(1);
-		
-		if (mysqli_connect_errno())
-		{
-			echo "Failed to connect to MySQL: ";
-		}
-		
-		if(!mysqli_query($con, "INSERT INTO event_registration 
-			(id_guest, id_event, date_registered, job)
-			VALUES (". $eventreg_dt->id_guest . ", ". $eventreg_dt->id_event .
-			", NOW() , '" . $eventreg_dt->job  . "')"))
-		{
-			echo "Error Message: " . $con->error;
-		}
-		
-		if (func_num_args() < 2)
-		{ mysqli_close($con); }
+		$query = <<<SQL
+			INSERT INTO event_registration
+			(id_guest, id_event)
+			VALUES
+			($uid, $eid)
+SQL;
+
+		echo $query;
+		return QueryHandler::executeQuery($query, $con);
 	}
 	
 	////////////////////// READ OPERATIONS //////////////////////////////////////////////
@@ -124,6 +113,27 @@ class EventRegistration
 		*/
 		
 		//mysqli_close($con);
+	}
+
+	public static function getEventRegistrationByUid($uid, $con=NULL)
+	{
+		$query = <<<SQL
+			SELECT *
+			FROM event_registration
+			WHERE id_guest=$uid
+SQL;
+		return QueryHandler::executeQuery($query, $con);
+	}
+
+	public static function checkAttendance($uid, $eid, $con=NULL)
+	{
+		$query = <<<SQL
+			SELECT *
+			FROM event_registration
+			WHERE id_guest=$uid
+			AND id_event=$eid
+SQL;
+		return QueryHandler::executeQuery($query, $con);
 	}
 	////////////////////// UPDATE OPERATIONS /////////////////////
 	public static function updateEventRegistration($eventreg_dt)

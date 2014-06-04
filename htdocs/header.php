@@ -5,7 +5,7 @@
     <div id="right-top-btns">
         <ul id="top-links">
             <li><a id="menu-about" href="about.php">About</a></li>
-            <li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>
+            <!--<li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>-->
             <li><a id="login-link" href="#login_modal" data-toggle="modal">Log In</a></li>
             <li><a id="register-link" href="#register_modal" data-toggle="modal">Sign Up</a></li>
             <li><a href="profile_edit.php" id="welcome">Welcome, <?php echo $user->first_name; ?></a></li>
@@ -71,9 +71,9 @@
 				});
 			});
                     </script>
-                    <hr class="hr-modal" width="100"> or <hr class="hr-modal" width="100">
+                    <!--<hr class="hr-modal" width="100"> or <hr class="hr-modal" width="100">-->
                     </br>
-                    <button class="submit-fbk">Join with Facebook</button>
+                    <!--<button class="submit-fbk">Join with Facebook</button>-->
                     <br>
                     <p>It\'s fast and easy - and we\'ll never share your info or post without your permission, we promise!</p>';
         $reg_footer = 'Already a member? <a href="#" id="sign_in_mod">Sign in!</a>';
@@ -124,6 +124,20 @@
                                     else
                                     	$(".reg-guest").show();
                                     	
+				    if ("events" in window) {
+					    // get user\'s events
+					    var userEvents = res_data.events;
+
+					    	for (var i = 0; i < events.length; i++) {
+							$("#join-event-form-"+events[i].id).show();
+						}
+						for (var i = 0; i < userEvents.length; i++) {
+							// hide if joined
+							$("#join-event-form-"+userEvents[i].id_event).hide();
+							$("#attending_div-" + userEvents[i].id_event).show();
+						}
+					    }
+
                                     break;
                                 case 2:
                                     $("#log_validation").text("Your username/password combination is incorrect");
@@ -151,8 +165,9 @@
                         });
                     });
                     </script>
-                    <hr class="hr-modal" width="100"> or <hr class="hr-modal" width="100">
-                    <button class="submit-fbk">Join with Facebook</button>
+                    <!--<hr class="hr-modal" width="100"> or <hr class="hr-modal" width="100">-->
+                    <!--<button class="submit-fbk">Join with Facebook</button>-->
+		    <a href="forgotpass.php">Forgot your password?</a>
                     <br><p>It\'s fast and easy - and we\'ll never share your info or post without your permission, we promise!</p>';
         $log_footer = 'Not a member yet? <a href="#" id="sign_in_mod">Join Us!</a>';
         

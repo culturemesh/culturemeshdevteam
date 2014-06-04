@@ -49,6 +49,16 @@
 	$_SESSION['cur_network'] = $network->id;
 	
 	$events = Event::getEventsByNetworkId($id, $con);
+
+	if (isset($_SESSION['uid']))
+	{
+		// check membership
+		foreach($events as $event) {
+			$result = EventRegistration::checkAttendance($_SESSION['uid'], $event->id, $con);
+			if (mysqli_num_rows($result) > 0)
+				$event->attending = true;
+		}
+	}
 	$posts = Post::getPostsByNetworkId($id, $con);
 	
 	// make an event calendar
@@ -86,8 +96,11 @@
 		array_unshift( $calendar[$year][$months[$month - 1]], $event);
 	}
 
-	//var_dump($calendar);
+	// Load events object into static page
+	$json_events = json_encode($events);
+	echo "<script>var events = {$json_events}</script>\n";
 
+	//var_dump($calendar);
 	//var_dump($posts);
 	
 	mysqli_close($con);
@@ -100,6 +113,13 @@
 	   { $location .= ','.urlencode($network->region_cur); }
 	if (isset($network->country_cur))
 	   { $location .= ','.urlencode($network->country_cur); }
+
+	// check for image link
+	$img_link = NULL;
+	if($user->img_link == NULL)
+		$img_link = 'images/blank_profile.png';
+	else
+		$img_link = IMG_DIR.$user->img_link;
 
 /////////////////////////////////////////////////////
 ?>
@@ -192,6 +212,8 @@
 							</div>
 							<div class="member">
 								<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
+								<button class="network">Leave Network</button>
+
 							</div>
 						</div>
 						<div class="clear"></div>
@@ -260,7 +282,7 @@
 					<div id="post-wall">
 						<h2 class="h-network">Posts</h2>
 						<form method="POST" class="member" action="network_post.php">
-							<img id="profile-post" src="images/blank_profile.png" width="45" height="45">
+						<img id="profile-post" src="<?php echo $img_link; ?>" width="45" height="45">
 							<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 							<div class="clear"></div>
 							<input type="submit" class="network" value="Send"></input>

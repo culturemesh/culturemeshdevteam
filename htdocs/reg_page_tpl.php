@@ -1,4 +1,4 @@
-<?php require_once('log.php'); ?>
+<?php //include_once('log.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

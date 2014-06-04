@@ -242,14 +242,15 @@ HTML;
 				$name .= " ".$post->last_name;
 		}
 		echo "
-		<li class='network-post'>
+		<li class='network-post' id='post-{$post->id}'>
 			<div class='post-img'>
 				<img id='profile-post' src='{$img_link}' width='45' height='45'>
 			</div>
 			<div class='post-info'>
 				<h5 class='h-network'>{$name}</h5>
 				<p class='network'>{$post->post_text}</p>
-				<a class='network member'>Reply</a>
+				<!--<a class='network member'>Reply</a>-->
+				<!--<button class='delete-button user'>Delete Post</button>-->
 			</div>
 			<div class='clear'></div>
 		</li>
@@ -336,6 +337,11 @@ EHTML;
 //////////////////////
 public static function displayEventModal($event) {
 //////////////////////
+// create join form
+$join_form = null;
+$attending_div = null;
+$nid = $_GET['id'];
+$uid = $_SESSION['uid'];
 
 // this is split into three parts
 // right now, not exactly pretty,
@@ -376,6 +382,18 @@ $modal_1 = <<<EHTML
 			</div>
 				<input type="submit" class="submit edit-$event->id" value="Submit Changes"></input>
 		    </form>
+		<div id="join-event-form-$event->id">
+		<form id="je-form-$event->id" method="POST" action="network_join-event.php">
+			<input type="hidden" name="nid" value="$nid"/>
+			<input type="hidden" value="$uid" name="uid"/>
+			<input type="hidden" name="event_id" value="$event->id"/>
+			<button class="event-modal">Join Event</button>
+		</form>
+		</div>
+		<div id="attending_div-$event->id">
+			<p>You're attending this event</p>
+			<button class="event-modal">Leave Event</button>
+		</div>
 		</div>
 EHTML;
 
@@ -383,27 +401,6 @@ $modal_anchor = NULL;
 if ($_SESSION['uid'] == $event->id_host)
 {
 $modal_anchor= <<<EHTML
-<!--
-		<div id="event-modal-form-$event->id" class="modal-event edit owner" style="display:none;">
-				<div>
-				<div class="event-modal-section">
-				<h3 class="h-network">Title</h3>
-				</div>
-				<div class="event-modal-section">
-				<h3 class="h-network">Date & Time</h3>
-				</div>
-				<div class="event-modal-section">
-				<h3 class="h-network">Address</h3>
-				</div>
-				<div class="event-modal-section">
-				</div>
-				<div id="clear"></div>
-				<input type="hidden" class="hidden-field" name="id_event" value="$event->id"/>
-				<input type="text" class="hidden-field" name="city" value="$network->city_cur"/></input>
-				<input type="text" class="hidden-field" name="country" value="$network->country_cur"/></input>
-				</div>
-		</div>
--->
 		<a id="event-modify-toggle-$event->id" class="">Edit Event</a> 
 EHTML;
 }
@@ -451,9 +448,36 @@ $modal_2 = <<<EHTML
 	}
 </script>
 EHTML;
+
+// Check for attendance
+$ad_display = null;
+$jf_display = null;
+
+if ($_SESSION['uid'] == $event->host_id
+	|| $event->attending) {
+		////////////////////////
+		$jf_display = <<<EHTML
+			<style>
+			#join-event-form-$event->id {
+				display:none;
+			}
+			</style>
+EHTML;
+//////////////////////////////////////////
+}  // endif
+
+if (!$event->attending) {
+		$ad_display = <<<EHTML
+			<style>
+			#attending_div-$event->id {
+				display:none;
+			}
+			</style>
+EHTML;
+} // endif
 ///////////////////////////////////////////////////
 	// DISPLAY THE STUFFFFF!!!!  
-	echo $modal_1 . $modal_anchor . $modal_2; 
+	echo $modal_1 . $modal_anchor . $modal_2 . $ad_display . $jf_display; 
 } 
 ///////////////////////////////////////////////////
 public static function googleMapsEmbed($location) {
@@ -506,7 +530,7 @@ EHTML;
 				<img id='profile-post' src='{$img_link}' class='{$i_class}' width='45' height='45'>
 			</div>
 			<div class='post-info'>
-				<h5 class='h-network'>{$name}</h5>
+				<h5 class='h-network'><a href='network.php?id={$post->id_network}#post-{$post->id}'>{$name}</a></h5>
 				<p class='network'>{$post->post_text}</p>
 			</div>
 			<div class='clear'></div>
@@ -537,7 +561,7 @@ EHTML;
 			</div>
 			<div class='event-text'>
 				<div class='event-title'>
-					<h3 class='h-network'>{$event->title}</h3>
+					<h3 class='h-network'><a href='network.php?id={$event->id_network}#event-modal-{$event->id}'>{$event->title}</a></h3>
 				</div>
 				<div class='event-info'>
 					<p id='event-info'>Hosted by YOU and set for {$datetime}</p>
@@ -591,6 +615,9 @@ EHTML;
 		";
 	}
 	
+	// formats network title
+	// 	+ if current country and origin country
+	// 	+ are the same, it doesn't include country
 	public static function formatNetworkTitle($network)
 	{
 		$title = '';
@@ -599,9 +626,12 @@ EHTML;
 		if ($network->city_cur != null)
 			$location .= $network->city_cur . ", ";
 		if ($network->region_cur != null)
-			$location .= $network->region_cur . ", ";
+			$location .= $network->region_cur;
 
-		$location .= $network->country_cur;
+
+		if($network->country_cur != $network->country_origin && $network->class != 'co') {
+			$location .= ", " . $network->country_cur;
+		}
 		
 		switch($network->network_class)
 		{
@@ -609,10 +639,22 @@ EHTML;
 			$title = "{$network->language_origin} speakers in {$location}";
 			break;
 		case 'cc':	// CITY,REGION
-			$title = "From {$network->city_origin}, {$network->country_origin} in {$location}";
+			if ($network->country_origin == $network->country_cur)
+			{ 
+				$title .= "From {$network->city_origin}";
+				if ($network->region_origin != null)
+					$title .= ", {$network->region_origin} near {$location}"; 
+			}
+			else
+			{
+				$title = "From {$network->city_origin}, {$network->region_origin}, {$network->country_origin} in {$location}";
+			}
 			break;
 		case 'rc':	// REGION
-			$title = "From {$network->region_origin}, {$network->country_origin} in {$location}";
+			if ($network->id_country_origin == $network->id_country_cur)
+				$title = "From {$network->region_origin} in {$location}";
+			else
+				$title = "From {$network->region_origin}, {$network->country_origin} in {$location}";
 			break;
 		case 'co':	// COUNTRY
 			$title = "From {$network->country_origin} in {$location}";
