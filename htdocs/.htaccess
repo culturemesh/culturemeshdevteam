@@ -1,13 +1,13 @@
 # Use PHP54.4 as default
-AddHandler application/x-httpd-php54 .php
+#AddHandler application/x-httpd-php54 .php
 
 # Enable Rewriting
-RewriteEngine on
+#RewriteEngine on
 
 # Redirect to launchrock page
-RewriteCond %{HTTP_HOST} ^culturemesh\.com$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.culturemesh\.com$
-RewriteRule ^/?$ "http\:\/\/culturemesh\.launchrock\.com\/" [R=302,L]
+#RewriteCond %{HTTP_HOST} ^culturemesh\.com$ [OR]
+#RewriteCond %{HTTP_HOST} ^www\.culturemesh\.com$
+#RewriteRule ^/?$ "http\:\/\/culturemesh\.launchrock\.com\/" [R=302,L]
 
 # Prevent image caching
 #<filesMatch "\.(png|gif|jpg)$">
