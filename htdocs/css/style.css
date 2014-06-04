@@ -464,7 +464,14 @@ h5.h-network
 	width: 64%;
 	margin-top:40px;
 	margin-left:55px;
+	margin-bottom:30px;
 }
+
+div.net-info {
+	margin-bottom:20px;
+	margin-left:23px;
+}
+
 .leftbar
 {	
 	margin-right: 10px;

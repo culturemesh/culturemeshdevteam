@@ -5,8 +5,8 @@
 <link rel="image_src" href="<?php echo DOMAIN_URL; ?>/logo.png" title="<?php echo DOMAIN_NAME;?>" id="<?php echo DOMAIN_NAME;?>" />
 <noscript> <meta http-equiv=refresh content="0; URL=/noscript.php" /> </noscript>
 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/style.css?<?php echo time(); ?>" rel="stylesheet">
+<link href="/culturemesh-live/htdocs/css/bootstrap.css" rel="stylesheet">
+<link href="/culturemesh-live/htdocs/css/style.css?<?php echo time(); ?>" rel="stylesheet">
 <!--<link href="css/style.css" rel="stylesheet">-->
 <!--[if lt IE 9]>
   <script src="js/html5shiv.js"></script>
@@ -19,11 +19,11 @@
 <!--end CDN items-->
 
 
-<script src="js/bootstrap.js"></script>
-<script src="js/validation.js"></script>
-<script src="js/account.js"></script>
-<script src="js/fxn.js"></script>
-<script src="js/ajax.js"></script>
+<script src="/culturemesh-live/htdocs/js/bootstrap.js"></script>
+<script src="/culturemesh-live/htdocs/js/validation.js"></script>
+<script src="/culturemesh-live/htdocs/js/account.js"></script>
+<script src="/culturemesh-live/htdocs/js/fxn.js"></script>
+<script src="/culturemesh-live/htdocs/js/ajax.js"></script>
 
 <script type="text/javascript">
 // register validation

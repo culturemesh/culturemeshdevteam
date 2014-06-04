@@ -9,6 +9,14 @@
 	session_name("myDiaspora");
 	session_start();
 
+	/* Most of this overhead stuff
+	 * is error checking/query parsing
+	 */
+
+	/* Query results takes the actual results
+	 * and makes networks out of them
+	 */
+
 	function parseLocation($location)
 	{
 		/*
@@ -36,6 +44,8 @@
 		return $loc_array;
 	}
 
+	// validate to see if a possible network
+	// has been submitted
 	function validateQuery($query, $con) 
 	{
 		// check for form	
@@ -127,6 +137,8 @@
 		$people_who = mysqli_real_escape_string($con, $_GET['search-1']);
 		$valid_search = validateQuery($people_who, $con);
 
+		/// 
+		// CHECKING THE CURRENT LOCATION
 		// get rid of 'near ' in location
 		//$location_raw = mysql_escape_string(substr($_GET['search-2'], 5));
 
@@ -221,6 +233,7 @@
 			   { $location .= urlencode($query[3]); }
 		}
 	}
+	//var_dump($networks);
 
 ?>
 
@@ -264,18 +277,25 @@
 					<div id="best-match">
 						<h3>Best Match</h3>
 						<?php 
-						if(count($networks) <= 0 && $valid_search)
+						if(!$networks[0]->existing)
 						  { HTMLBuilder::displayPossibleNetwork($query); }
-						else if (!$valid_search)
-						  { echo "No matches found."; }
 						else 
 						  { HTMLBuilder::displayNetwork($networks[0]); }
 						?>
 					</div>
 					<div id="related-networks">
 						<h3>Related Networks</h3>
-						<?php// if (count($networks) < 2) : ?>
+						<?php for ($i = 1; $i < count($networks); $i++)
+							{
+								if ($networks[$i]->existing)
+								  { HTMLBuilder::displayNetwork($networks[$i]); }
+								else
+								  { HTMLBuilder::displayPossibleNetwork($networks[$i]); }
+							}
+						?>
+						<?php if (count($networks) < 2) : ?>
 							<p>No related networks</p>
+						<?php endif; ?>
 						<?php/* else : 
 							for ($i=1; $i < count($networks); $i++)
 							{

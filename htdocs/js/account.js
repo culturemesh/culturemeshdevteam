@@ -16,8 +16,14 @@ function signOut() {
 	  {
 	  	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		  {
+			// will probably change this soon,
+			// 	USERS WILL BE ABLE TO SEE EACH OTHER's
+			// 	PROFILES, SO NO REDIRECT AT LOGOFF
 			    if (document.URL.indexOf("profile_edit") != -1)
-				{ window.location.assign("index.php"); }
+				{ window.location.assign("index.php?signout=true"); }
+
+			    $("#signout_panel").show();
+			    $("#signout_panel").fadeOut(5000);
 		    	    $("#login-link").show();
                             $("#register-link").show();
                             $("#welcome").hide();

@@ -160,3 +160,6 @@
         echo buildModal($log_header, $log_body, $log_footer, "login_modal");
     ?>
 </div>
+<div id="signout_panel" style="display:none">
+	<p>You have successfully signed out.</p>
+</div>

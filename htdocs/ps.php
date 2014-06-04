@@ -1,5 +1,5 @@
 <?php
-require '../log.php';
+require 'log.php';
 /*
  */
 /*
@@ -7,12 +7,12 @@ if(file_exists('../zz341/fxn.php'))
 	echo "Naughty Mama";
  */
 
-include_once('../zz341/fxn.php');
-include_once('../data/dal_query_handler.php');
-include_once('../data/dal_language.php');
-include_once('../data/dal_language-dt.php');
-include_once('../data/dal_location-dt.php');
-include_once('../data/dal_location.php');
+include_once('zz341/fxn.php');
+include_once('data/dal_query_handler.php');
+include_once('data/dal_language.php');
+include_once('data/dal_language-dt.php');
+include_once('data/dal_location-dt.php');
+include_once('data/dal_location.php');
 
 if($_POST['reg_email']){
     echo getIsEmailAvailable($_POST['reg_email']);

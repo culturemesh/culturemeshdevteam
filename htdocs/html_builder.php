@@ -30,6 +30,7 @@ class HTMLBuilder
 	{
 		$title = HTMLBuilder::formatNetworkTitle($network);
 		
+		//var_dump($network);
 		echo "
 		<div>
 			<div class='net-info'>
@@ -43,75 +44,150 @@ class HTMLBuilder
 
 	public static function displayPossibleNetwork($query)
 	{
-		// locations start at 1, have three addresses reserved (may be NULL)
-		// rest is variable
-		$query_length = count($query);
-		$title = null;
-		$location = null;
-		$query_str = null;
-		$location_start = 1;
-		$location_end = 4;
-
-		// get current location
-		for ($i = $location_start; $i < $location_end; $i++)
+		if (is_array($query))
 		{
-			if ($query[$i] != null)
-			{ 
-				$location .= $query[$i];
-				if ( $location_end  - $i != 1)
-				  { $location .= ", "; }
-		       	}
+			// locations start at 1, have three addresses reserved (may be NULL)
+			// rest is variable
+			$query_length = count($query);
+			$title = null;
+			$location = null;
+			$query_str = null;
+			$location_start = 1;
+			$location_end = 4;
 
-		}
-
-		// get origin
-		if ($query[0] != "_l")
-		{
-			for ($i = $location_end; $i < count($query); $i++)
+			// get current location
+			for ($i = $location_start; $i < $location_end; $i++)
 			{
 				if ($query[$i] != null)
+				{ 
+					$location .= $query[$i];
+					if ( $location_end  - $i != 1)
+					  { $location .= ", "; }
+				}
+
+			}
+
+			// get origin
+			if ($query[0] != "_l")
+			{
+				for ($i = $location_end; $i < count($query); $i++)
 				{
-					$query_str .= $query[$i];
-					if (count($query) - $i != 1)
-					  { $query_str .= ", "; }
+					if ($query[$i] != null)
+					{
+						$query_str .= $query[$i];
+						if (count($query) - $i != 1)
+						  { $query_str .= ", "; }
+					}
 				}
 			}
-		}
 
-		switch ($query[0])
-		{
-		case "_l":
-			$title = "{$query[4]} speakers in {$location}";
-			break;
-		case "co":
-			$title = "From {$query_str} in {$location}";
-			break;
-		case "rc":
-			$title = "From {$query_str} in {$location}";
-			break;
-		case "cc":
-			$title = "From {$query_str} in {$location}";
-			break;
-		}
+			switch ($query[0])
+			{
+			case "_l":
+				$title = "{$query[4]} speakers in {$location}";
+				break;
+			case "co":
+				$title = "From {$query_str} in {$location}";
+				break;
+			case "rc":
+				$title = "From {$query_str} in {$location}";
+				break;
+			case "cc":
+				$title = "From {$query_str} in {$location}";
+				break;
+			}
 
-		echo "
-		<div>
-			<div class='net-info'>
-				<form method='POST' action='search_launch_network.php'> 
-					<p class='bottom-text'>{$title}</p>
-					<input type='submit' class='launch-network' value='Launch Network'></input>
-					<input type='hidden' name=type value='{$query[0]}'/>
-					<input type='hidden' name=city_cur value='{$query[1]}'/>
-					<input type='hidden' name=region_cur value='{$query[2]}'/>
-					<input type='hidden' name=country_cur value='{$query[3]}'/>
-					<input type='hidden' name=q_1 value='{$query[4]}'/>
-					<input type='hidden' name=q_2 value='{$query[5]}'/>
-					<input type='hidden' name=q_3 value='{$query[6]}'/>
-				</form>
+			echo "
+			<div>
+				<div class='net-info'>
+					<form method='POST' action='search_launch_network.php'> 
+						<p class='bottom-text'>{$title}</p>
+						<input type='submit' class='launch-network' value='Launch Network'></input>
+						<input type='hidden' name=type value='{$query[0]}'/>
+						<input type='hidden' name=city_cur value='{$query[1]}'/>
+						<input type='hidden' name=region_cur value='{$query[2]}'/>
+						<input type='hidden' name=country_cur value='{$query[3]}'/>
+						<input type='hidden' name=q_1 value='{$query[4]}'/>
+						<input type='hidden' name=q_2 value='{$query[5]}'/>
+						<input type='hidden' name=q_3 value='{$query[6]}'/>
+					</form>
+				</div>
+				<div class='clear'></div>
 			</div>
-			<div class='clear'></div>
-		</div>
-		";
+			";
+		}
+		else	// network_dt object
+		{
+			// locations start at 1, have three addresses reserved (may be NULL)
+			// rest is variable
+			$title = null;
+			$location = '';
+			$origin = '';
+			$query_str = null;
+			$q1 = null;
+			$q2 = null;
+			$q3 = null;
+
+			// get location
+			if (isset($query->city_cur))
+				$location .= $query->city_cur.', ';
+			if (isset($query->region_cur))
+				$location .= $query->region_cur.', ';
+			if (isset($query->country_cur))
+				$location .= $query->country_cur;
+			
+			// get origin
+			if (isset($query->city_origin))
+				$origin .= $query->city_origin.', ';
+			if (isset($query->region_origin))
+				$origin .= $query->region_origin.', ';
+			if (isset($query->country_origin))
+				$origin .= $query->country_origin;
+
+			// write the title
+			switch ($query->network_class)
+			{
+			case "_l":
+				$title = "$query->language_origin speakers in {$location}";
+				$q1 = $query->language_origin;
+				break;
+			case "co":
+				$title = "From {$origin} in {$location}";
+				$q3 = $query->country_origin;
+				break;
+			case "rc":
+				$title = "From {$origin} in {$location}";
+				$q2 = $query->region_origin;
+				$q3 = $query->country_origin;
+				break;
+			case "cc":
+				$title = "From {$origin} in {$location}";
+				$q1 = $query->city_origin;
+				$q2 = $query->region_origin;
+				$q3 = $query->country_origin;
+				break;
+			}
+			$html = <<<HTML
+			<div>
+				<div class='net-info'>
+					<form method='POST' action='search_launch_network.php'> 
+						<p class='bottom-text'>$title</p>
+						<input type='submit' class='launch-network' value='Launch Network'></input>
+						<input type='hidden' name=type value='$query->network_class'/>
+						<input type='hidden' name=city_cur value='$query->city_cur'/>
+						<input type='hidden' name=region_cur value='$query->region_cur'/>
+						<input type='hidden' name=country_cur value='$query->country_cur'/>
+						<input type='hidden' name=q_1 value='$q1'/>
+						<input type='hidden' name=q_2 value='$q2'/>
+						<input type='hidden' name=q_3 value='$q3'/>
+					</form>
+				</div>
+				<div class='clear'></div>
+			</div>
+
+HTML;
+			echo $html;
+		}
 	}
 
 	public static function displaySearchBar()
