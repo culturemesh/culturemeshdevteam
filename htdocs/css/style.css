@@ -571,6 +571,11 @@ button.network:hover
 
 }
 
+button.network.modal
+{
+	float:none;
+}
+
 input[type="submit"].network
 {
 	font: Lato;
@@ -797,6 +802,25 @@ p.event-modal
 	color: #404040;
 	margin-bottom:10px;
 	margin-top:15px;
+}
+
+button.event-modal
+{
+	height:40px;
+	margin-left:10px;
+	font: Lato;
+	font-size:16px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color:#e34036;
+	border:none;
+	border-radius:5px;
+}
+
+button.event-modal:hover
+{
+	background-color:#97CB38;
+
 }
 
 div.event-modal-section

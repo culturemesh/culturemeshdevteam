@@ -91,19 +91,24 @@ class NetworkRegistration
 		
 		"";
 		$result = mysqli_query($con,
-			"SELECT n.*, nr.join_date, nr.member_count, p.post_count
+			"SELECT n.*, mc.member_count, pc.post_count
 			FROM networks n
-			JOIN (select id_user, join_date, id_network, COUNT(id_network) AS member_count
-				FROM network_registration
-				GROUP BY id_network
-				ORDER BY member_count) nr
-			ON n.id = nr.id_network
-			LEFT JOIN (SELECT id_network, COUNT(id_network) AS post_count
-				   FROM posts
+			JOIN ( SELECT id_network 
+				   FROM network_registration
+				   WHERE id_user ={$id}) nr
+			ON nr.id_network = n.id
+			LEFT JOIN ( SELECT id_network, COUNT(id_network) AS member_count
+				   FROM network_registration
 				   GROUP BY id_network
-				   ORDER BY post_count) p
-			ON n.id = p.id_network AND nr.id_network = p.id_network
-			WHERE nr.id_user = {$id}");
+				   ORDER BY member_count) mc
+			ON mc.id_network=nr.id_network AND mc.id_network=n.id
+			LEFT JOIN (SELECT id_network, COUNT(id_network) AS post_count
+				  FROM posts
+				  GROUP BY id_network
+				  ORDER BY post_count) pc
+				  ON pc.id_network=nr.id_network 
+				  AND pc.id_network=mc.id_network 
+				  AND pc.id_network=n.id");
 		
 		if (func_num_args() < 2)
 			mysqli_close($con);

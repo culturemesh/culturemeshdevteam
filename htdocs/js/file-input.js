@@ -17,6 +17,7 @@ submitButton.setAttribute('type', 'submit');
 submitButton.setAttribute('value', 'Upload File');
 submitButton.setAttribute('class', 'upload');
 submitButton.value = 'Upload File';
+submitButton.style.display = 'none';
 promptLabel.setAttribute('class', 'upload');
 uploadForm.appendChild(promptButton);
 uploadForm.appendChild(promptLabel);
@@ -53,6 +54,8 @@ promptButton.onclick = function(event) {
 // show file name in label
 input.onchange = function() {
 	promptLabel.innerHTML = input.value;	
+	if (input.value != null)
+	   submitButton.style.display = 'inline';
 }
 
 // toggles the visibility of uploadDiv

@@ -21,6 +21,8 @@ class EventDT
 	public $first_name;
 	public $last_name;
 	public $img_link;
+
+	public $attending;
 }
 
 ?>

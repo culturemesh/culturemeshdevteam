@@ -39,5 +39,28 @@ EHTML;
 	return mail($address, 'CultureMesh confirmation', $confirmation, self::$headers);
 // ---------------------------------------
 } // end function
+
+public static function sendChangePasswordEmail($email, $fp_code)
+{
+// DEFINE EMAIL
+$cp_html = <<<EHTML
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Forgotten Password</title>
+</head>
+<body>
+	<div>
+		<h1>Almost There!</h1>
+		<a href="http://www.culturemesh.com/forgotpass.php?email=$email&code=$fp_code"
+		>Click here to reset your password.</a>
+	</div>
+</body>
+</html>
+EHTML;
+// ---------------------------------------
+	return mail($email, 'Forgotten Password', $cp_html, self::$headers);
+// ---------------------------------------
+} // end function
 } // end class
 ?>
