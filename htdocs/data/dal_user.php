@@ -290,6 +290,18 @@ SQL;
 		return QueryHandler::executeQuery($query, $con);
 	}
 
+	public static function checkFPCode($email, $code, $con=NULL)
+	{
+		$query = <<<SQL
+			SELECT *
+			FROM users
+			WHERE email='$email'
+			AND fp_code='$code'
+SQL;
+		
+		return QueryHandler::executeQuery($query, $con);
+	}
+
 	////////////////////// UPDATE OPERATIONS //////////////////////////////////////////////
 	
 	public static function updateUser($user_dt)

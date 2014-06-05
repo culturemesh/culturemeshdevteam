@@ -11,8 +11,17 @@ EOF;
 /////////////////////////////////////
 // ----------------------------------
 
+private static function getURI() {
+	if(strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') !== false) {
+		return 'culturemeshdevteam/htdocs/';
+	}
+	else
+	 { return ''; }
+}
 // sends a confirmation email to the address provided
 public static function sendConfirmationEmail($address, $id, $act_code) {
+
+	$uri = 'http://www.culturemesh.com/'.self::getURI().'forgotpass.php?uid='.$id.'&act_code='.$act_code;
 // --------------------------------------
 // DEFINE EMAIL
 //----------------------------------------
@@ -29,7 +38,7 @@ $confirmation = <<<EHTML
 		access to CultureMesh, and all future notifications
 		will be sent to this email address</p>
 
-		<a href="http://www.culturemesh.com/confirmation.php?uid=$id&act_code=$act_code"
+		<a href="$uri"
 		>Click to confirm membership.</a>
 	</div>
 </body>
@@ -42,6 +51,8 @@ EHTML;
 
 public static function sendChangePasswordEmail($email, $fp_code)
 {
+	$uri = 'http://www.culturemesh.com/'.self::getURI().'forgotpass.php?email='.$email.'&code='.$fp_code;
+
 // DEFINE EMAIL
 $cp_html = <<<EHTML
 <html>
@@ -52,7 +63,7 @@ $cp_html = <<<EHTML
 <body>
 	<div>
 		<h1>Almost There!</h1>
-		<a href="http://www.culturemesh.com/forgotpass.php?email=$email&code=$fp_code"
+		<a href="$uri"
 		>Click here to reset your password.</a>
 	</div>
 </body>
