@@ -14,6 +14,8 @@ if($_POST['email'] && $_POST['password']){
 		include_once("data/dal_user-dt.php");
 		include_once("data/dal_network_registration.php");
 		include_once("data/dal_network_registration-dt.php");
+		include_once("data/dal_event.php");
+		include_once("data/dal_event_registration.php");
 		
 		session_name("myDiaspora");
 		session_start();
@@ -26,7 +28,9 @@ if($_POST['email'] && $_POST['password']){
 			"error" => NULL,
 			"network" => NULL,
 			"member" => NULL,
-			"title" => NULL
+			"title" => NULL,
+			"events" => NULL,
+			"uid" => NULL
 		);
 		
 		if (strlen($email) > 50)
@@ -49,6 +53,7 @@ if($_POST['email'] && $_POST['password']){
 			if($result["email"] != NULL){
 				// set session variable
                 		$_SESSION['uid'] = getMemberUID($email, $con);
+				$json_response['uid'] = $_SESSION['uid'];
                 		
                 		// check to see if we came from network.php, if so,
                 			// we must find out if we're a member of the network we logged in from
@@ -59,6 +64,9 @@ if($_POST['email'] && $_POST['password']){
 					$netreg = new NetworkRegistrationDT();
 					$netreg->id_user = $_SESSION['uid'];
 					$netreg->id_network = $_SESSION['cur_network'];
+					$events = EventRegistration::getEventRegistrationByUid($_SESSION['uid'], $con);
+					$events = QueryHandler::getRows($events);
+					$json_response['events'] = $events;
 					$json_response['member'] = NetworkRegistration::checkRegistration($netreg, $con);
 
 					// get title

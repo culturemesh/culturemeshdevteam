@@ -5,6 +5,7 @@
 localdbconn.php
 htdocs/db_test*
 nbproject/
+htdocs/error_log
 htdocs/error_log*
 htdocs/php.ini*
 .DS_Store

@@ -18,6 +18,7 @@
 
 include_once("zz341/fxn.php");
 include_once("dal_event-dt.php");
+include_once("dal_query_handler.php");
 
 class Event
 {
@@ -144,8 +145,53 @@ class Event
 		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
-		$result = mysqli_query($con,"SELECT * FROM events e, users u WHERE event_date >= CURDATE() AND e.id_host=u.id AND id_network=" . $id);
+		$result = mysqli_query($con,"SELECT e.id AS event_id, e.*, u.* FROM events e, users u WHERE event_date >= CURDATE() AND e.id_host=u.id AND id_network=" . $id);
 		
+		$events = array();
+		
+		while ($row = mysqli_fetch_array($result))
+		{
+			$event_dt = new EventDT();
+			
+			$event_dt->id = $row['event_id'];
+			$event_dt->id_network = $row['id_network'];
+			$event_dt->id_host = $row['id_host'];
+			$event_dt->date_created = $row['date_created'];
+			$event_dt->event_date = $row['event_date'];
+			$event_dt->title = $row['title'];
+			$event_dt->email = $row['email'];
+			$event_dt->address_1 = $row['address_1'];
+			$event_dt->address_2 = $row['address_2'];
+			$event_dt->city = $row['city'];
+			$event_dt->region = $row['region'];
+			$event_dt->description = $row['description'];
+			$event_dt->username = $row['username'];
+			$event_dt->first_name = $row['first_name'];
+			$event_dt->last_name = $row['last_name'];
+			$event_dt->img_link = $row['img_link'];
+			
+			array_push($events, $event_dt);
+		}
+		
+		if (func_num_args() < 2)
+		{ mysqli_close($con); }
+	
+		return $events;
+	}
+
+	public static function getEventsYourNetworks($id, $con=NULL)
+	{
+		$query = <<<SQL
+			SELECT *
+			FROM events
+			WHERE id_network IN (
+				SELECT id_network
+				FROM network_registration
+				WHERE id_user=$id)
+SQL;
+
+		$result = QueryHandler::executeQuery($query, $con);
+
 		$events = array();
 		
 		while ($row = mysqli_fetch_array($result))
@@ -171,10 +217,7 @@ class Event
 			
 			array_push($events, $event_dt);
 		}
-		
-		if (func_num_args() < 2)
-		{ mysqli_close($con); }
-	
+
 		return $events;
 	}
 	////////////////////// UPDATE OPERATIONS /////////////////////

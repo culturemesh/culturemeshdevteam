@@ -290,6 +290,18 @@ SQL;
 		return QueryHandler::executeQuery($query, $con);
 	}
 
+	public static function checkFPCode($email, $code, $con=NULL)
+	{
+		$query = <<<SQL
+			SELECT *
+			FROM users
+			WHERE email='$email'
+			AND fp_code='$code'
+SQL;
+		
+		return QueryHandler::executeQuery($query, $con);
+	}
+
 	////////////////////// UPDATE OPERATIONS //////////////////////////////////////////////
 	
 	public static function updateUser($user_dt)
@@ -342,6 +354,17 @@ SQL;
 		}
 		else
 			return 1;	// SUCCESS
+	}
+
+	public static function changeUserPasswordByEmail($email, $password, $con=NULL)
+	{
+		$query = <<<SQL
+			UPDATE users
+			SET password='$password'
+			WHERE email='$email'
+SQL;
+
+		return QueryHandler::executeQuery($query);
 	}
 
 	public static function activateUser($uid, $act_code, $con = false)
@@ -415,6 +438,20 @@ SQL;
 		  { mysqli_close($con); }
 
 		return $result;
+	}
+
+	public static function updateFPCode($email, $fp_code, $con=NULL)
+	{
+		$code = $fp_code;
+		if ($fp_code == null)
+			$code = 'NULL';
+		
+		$query = <<<SQL
+			UPDATE users
+			SET fp_code='$code'
+			WHERE email='$email'
+SQL;
+		return QueryHandler::executeQuery($query, $con);
 	}
 		
 	

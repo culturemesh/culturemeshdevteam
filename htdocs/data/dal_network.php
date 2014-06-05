@@ -258,7 +258,7 @@ class Network
 		// 	MEMBER COUNT
 
 		if(!$result = mysqli_query($con,
-			"SELECT n.id, n.city_cur, n.country_cur, n.city_origin, n.region_origin, n.country_origin, n.language_origin, n.network_class, nr.member_count, p.post_count
+			"SELECT n.id, n.city_cur, n.region_cur, n.country_cur, n.city_origin, n.region_origin, n.country_origin, n.language_origin, n.network_class, nr.member_count, p.post_count
 			FROM networks n 
 			JOIN (SELECT id_network, COUNT(id_network) AS member_count
                                     FROM network_registration
