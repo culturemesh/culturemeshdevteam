@@ -5,6 +5,7 @@
 	include "zz341/fxn.php";
 	include "data/dal_user.php";
 
+	$act_success = false;
 	if (isset($_GET['uid']) && isset($_GET['act_code']))
 	{
 		$con = getDBConnection();
