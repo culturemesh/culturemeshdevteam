@@ -21,7 +21,7 @@ private static function getURI() {
 // sends a confirmation email to the address provided
 public static function sendConfirmationEmail($address, $id, $act_code) {
 
-	$uri = 'http://www.culturemesh.com/'.self::getURI().'forgotpass.php?uid='.$id.'&act_code='.$act_code;
+	$uri = 'http://www.culturemesh.com/'.self::getURI().'confirmation.php?uid='.$id.'&act_code='.$act_code;
 // --------------------------------------
 // DEFINE EMAIL
 //----------------------------------------
