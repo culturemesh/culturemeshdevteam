@@ -171,9 +171,27 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
     });
 </script>
 <?php if($user->confirmed == 0) :?>
+<script>
+	function resendEmail(uid) {
+		var confirmTxt = document.getElementById("confirm_txt");
+		var query = "uid="+uid;
+
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200)	{
+				confirmTxt.style.display = "block";
+			}
+		}
+		xmlhttp.open("POST", "confirmation_resend.php", true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send(query);
+	}
+</script>
 <div id="confirmation_panel">
 	<p>An confirmation email has been sent to you.</p>
 	<p>Please respond so that you can enjoy full access to CultureMesh</p>
+	<p>If you need another confirmation email, <a href="#" onclick="resendEmail(<?php echo $_SESSION['uid']; ?>)">click here</a></p>
+	<p id="confirm_txt" style="display:none;">Confirmation sent</p>
 </div>
 <?php endif; ?>
 <div class="profile_left_panel">

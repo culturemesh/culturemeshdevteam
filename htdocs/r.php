@@ -35,6 +35,12 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		$json_response["error"] = 6;
 		echo json_encode($json_response);
 	}
+	else if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+	{
+		$json_response["message"] = 'Not a valid email. Must be like example@example.com';
+		$json_response['error'] = 7;
+		echo json_encode($json_response);
+	}
 	else
 	{
 		session_name("myDiaspora");

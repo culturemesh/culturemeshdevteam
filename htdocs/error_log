@@ -4866,3 +4866,307 @@
 [05-Jun-2014 14:37:16 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
 [05-Jun-2014 14:37:16 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
 [05-Jun-2014 14:37:16 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 14:59:19 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[05-Jun-2014 14:59:19 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 14:59:19 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 15:06:54 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[05-Jun-2014 15:06:54 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 15:06:54 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 15:06:54 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about_pg_body.php on line 24
+[05-Jun-2014 15:29:38 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[05-Jun-2014 15:29:38 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 15:29:38 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 16:51:52 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[05-Jun-2014 16:51:52 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 16:51:52 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:13:10 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[05-Jun-2014 19:13:10 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:13:10 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:13:19 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[05-Jun-2014 19:13:19 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:13:19 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:13:19 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about_pg_body.php on line 24
+[05-Jun-2014 19:13:51 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[05-Jun-2014 19:13:51 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:13:51 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:14:08 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[05-Jun-2014 19:14:08 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:14:08 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:47:24 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[05-Jun-2014 19:47:24 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[05-Jun-2014 19:47:24 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[05-Jun-2014 19:47:24 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[05-Jun-2014 19:47:24 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[05-Jun-2014 19:47:24 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[05-Jun-2014 19:47:24 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[05-Jun-2014 19:47:24 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[05-Jun-2014 19:47:24 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[05-Jun-2014 19:47:24 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[05-Jun-2014 19:47:24 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[05-Jun-2014 19:47:24 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:47:24 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:47:24 America/Denver] PHP Notice:  Undefined property: NetworkDT::$class in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 632
+[05-Jun-2014 19:55:40 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[05-Jun-2014 19:55:40 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[05-Jun-2014 19:55:40 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[05-Jun-2014 19:55:40 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[05-Jun-2014 19:55:40 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[05-Jun-2014 19:55:40 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[05-Jun-2014 19:55:40 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[05-Jun-2014 19:55:40 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[05-Jun-2014 19:55:40 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[05-Jun-2014 19:55:40 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[05-Jun-2014 19:55:40 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 19:55:40 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[05-Jun-2014 20:09:19 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[05-Jun-2014 20:09:19 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[05-Jun-2014 20:09:19 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[05-Jun-2014 20:09:19 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 166
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[05-Jun-2014 20:09:19 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[06-Jun-2014 04:09:18 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[06-Jun-2014 04:09:18 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[06-Jun-2014 04:09:18 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[06-Jun-2014 04:09:18 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about_pg_body.php on line 24
+[06-Jun-2014 10:03:14 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[06-Jun-2014 10:03:14 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[06-Jun-2014 10:03:14 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[06-Jun-2014 10:03:14 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[06-Jun-2014 10:03:14 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[06-Jun-2014 10:03:14 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[06-Jun-2014 10:03:14 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[06-Jun-2014 10:03:14 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[06-Jun-2014 10:03:14 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[06-Jun-2014 10:03:14 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[06-Jun-2014 10:03:14 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[06-Jun-2014 10:03:14 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[06-Jun-2014 10:03:14 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[06-Jun-2014 10:03:14 America/Denver] PHP Notice:  Undefined property: NetworkDT::$class in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 632
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[06-Jun-2014 10:14:36 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[06-Jun-2014 10:14:36 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[06-Jun-2014 10:14:36 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[06-Jun-2014 10:14:36 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 166
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[06-Jun-2014 10:14:36 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[06-Jun-2014 10:22:11 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[06-Jun-2014 10:22:11 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[06-Jun-2014 10:22:11 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[06-Jun-2014 10:22:11 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[06-Jun-2014 10:22:11 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[06-Jun-2014 10:22:11 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[06-Jun-2014 10:22:11 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[06-Jun-2014 10:22:11 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[06-Jun-2014 10:22:11 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[06-Jun-2014 10:22:11 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[06-Jun-2014 10:22:11 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[06-Jun-2014 10:22:11 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[06-Jun-2014 18:09:39 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[06-Jun-2014 18:09:39 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[06-Jun-2014 18:09:39 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 11:45:36 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[08-Jun-2014 11:45:36 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[08-Jun-2014 11:45:36 America/Denver] PHP Notice:  Undefined index: id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 45
+[08-Jun-2014 11:45:36 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network.php on line 839
+[08-Jun-2014 11:45:36 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[08-Jun-2014 11:45:36 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[08-Jun-2014 11:45:36 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[08-Jun-2014 11:45:36 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[08-Jun-2014 11:45:36 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[08-Jun-2014 11:45:36 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[08-Jun-2014 11:45:36 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[08-Jun-2014 11:45:36 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[08-Jun-2014 11:45:36 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[08-Jun-2014 11:45:36 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[08-Jun-2014 11:45:36 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 152
+[08-Jun-2014 11:45:36 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[08-Jun-2014 11:45:36 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[08-Jun-2014 11:45:36 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 11:45:36 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 11:46:30 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[08-Jun-2014 11:46:30 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 11:46:30 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 11:46:30 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about_pg_body.php on line 24
+[08-Jun-2014 13:45:58 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[08-Jun-2014 13:45:58 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 13:45:58 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 14:12:01 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[08-Jun-2014 14:12:02 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 14:12:02 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 14:12:02 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about_pg_body.php on line 24
+[08-Jun-2014 14:48:29 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[08-Jun-2014 14:48:29 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 14:48:29 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 15:04:26 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[08-Jun-2014 15:04:27 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 15:04:27 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 16:49:25 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[08-Jun-2014 16:49:26 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[08-Jun-2014 16:49:26 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[08-Jun-2014 16:49:26 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[08-Jun-2014 16:49:26 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[08-Jun-2014 16:49:26 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[08-Jun-2014 16:49:26 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[08-Jun-2014 16:49:26 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[08-Jun-2014 16:49:26 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 166
+[08-Jun-2014 16:49:26 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[08-Jun-2014 16:49:26 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[08-Jun-2014 16:49:26 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[08-Jun-2014 16:49:26 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 16:49:26 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 16:49:26 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[08-Jun-2014 16:49:26 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[08-Jun-2014 16:52:01 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[08-Jun-2014 16:52:01 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[08-Jun-2014 16:52:01 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[08-Jun-2014 16:52:01 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 166
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[08-Jun-2014 16:52:01 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[08-Jun-2014 16:57:20 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[08-Jun-2014 16:57:20 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[08-Jun-2014 16:57:20 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[08-Jun-2014 16:57:20 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[08-Jun-2014 16:57:20 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[08-Jun-2014 16:57:20 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[08-Jun-2014 16:57:20 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[08-Jun-2014 16:57:20 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[08-Jun-2014 16:57:20 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[08-Jun-2014 16:57:20 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[08-Jun-2014 16:57:20 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[08-Jun-2014 16:57:20 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 16:57:20 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 16:57:20 America/Denver] PHP Notice:  Undefined property: NetworkDT::$class in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 632
+[08-Jun-2014 20:11:21 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[08-Jun-2014 20:11:21 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[08-Jun-2014 20:11:21 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[08-Jun-2014 20:11:21 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[08-Jun-2014 20:11:21 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[08-Jun-2014 20:11:21 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[08-Jun-2014 20:11:21 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[08-Jun-2014 20:11:21 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[08-Jun-2014 20:11:21 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[08-Jun-2014 20:11:21 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[08-Jun-2014 20:11:21 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[08-Jun-2014 20:11:21 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 20:11:21 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[08-Jun-2014 20:11:21 America/Denver] PHP Notice:  Undefined property: NetworkDT::$class in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 632
+[09-Jun-2014 22:18:41 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jun-2014 22:18:41 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[09-Jun-2014 22:18:41 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[09-Jun-2014 22:39:31 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jun-2014 22:39:32 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[09-Jun-2014 22:39:32 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[09-Jun-2014 22:39:32 America/Denver] PHP Notice:  Undefined index: contact_name in /home3/culturp7/public_html/culturemeshdevteam/htdocs/about_pg_body.php on line 24
+[09-Jun-2014 23:00:22 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jun-2014 23:00:23 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[09-Jun-2014 23:00:23 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[09-Jun-2014 23:28:47 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[09-Jun-2014 23:28:47 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[09-Jun-2014 23:28:47 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[10-Jun-2014 01:36:23 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[10-Jun-2014 01:36:23 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[10-Jun-2014 01:36:23 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[10-Jun-2014 01:36:23 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 166
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[10-Jun-2014 01:36:23 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[10-Jun-2014 01:43:57 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[10-Jun-2014 01:43:57 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[10-Jun-2014 01:43:57 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[10-Jun-2014 01:43:57 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Undefined index: region in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_event.php on line 166
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 344
+[10-Jun-2014 01:43:57 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 456
+[10-Jun-2014 01:51:32 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[10-Jun-2014 01:51:32 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[10-Jun-2014 01:51:32 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[10-Jun-2014 01:51:32 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[10-Jun-2014 01:51:32 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[10-Jun-2014 01:51:32 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[10-Jun-2014 01:51:32 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[10-Jun-2014 01:51:32 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[10-Jun-2014 01:51:32 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[10-Jun-2014 01:51:32 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[10-Jun-2014 01:51:32 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[10-Jun-2014 01:51:32 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[10-Jun-2014 01:51:32 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[10-Jun-2014 01:51:32 America/Denver] PHP Notice:  Undefined property: NetworkDT::$class in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 632
+[10-Jun-2014 02:02:55 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[10-Jun-2014 02:02:55 America/Denver] PHP Notice:  Use of undefined constant META_AUTHOR - assumed 'META_AUTHOR' in /home3/culturp7/public_html/culturemeshdevteam/htdocs/headinclude.php on line 3
+[10-Jun-2014 02:02:55 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 153
+[10-Jun-2014 02:02:55 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 155
+[10-Jun-2014 02:02:55 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_network_registration.php on line 161
+[10-Jun-2014 02:02:55 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 183
+[10-Jun-2014 02:02:55 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 185
+[10-Jun-2014 02:02:55 America/Denver] PHP Notice:  Undefined variable: count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 191
+[10-Jun-2014 02:02:55 America/Denver] PHP Notice:  Undefined index: reply_count in /home3/culturp7/public_html/culturemeshdevteam/htdocs/data/dal_post.php on line 114
+[10-Jun-2014 02:02:55 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[10-Jun-2014 02:02:55 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/network.php on line 119
+[10-Jun-2014 02:02:55 America/Denver] PHP Notice:  Undefined variable: user in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[10-Jun-2014 02:02:55 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/culturp7/public_html/culturemeshdevteam/htdocs/header.php on line 11
+[10-Jun-2014 02:02:55 America/Denver] PHP Notice:  Undefined property: NetworkDT::$class in /home3/culturp7/public_html/culturemeshdevteam/htdocs/html_builder.php on line 632
+[11-Jun-2014 12:16:17 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/confirmation_resend.php on line 8
+[11-Jun-2014 12:16:19 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/confirmation_resend.php on line 8
+[11-Jun-2014 12:16:20 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/confirmation_resend.php on line 8
+[11-Jun-2014 12:19:24 America/Denver] PHP Notice:  Undefined variable: con in /home3/culturp7/public_html/culturemeshdevteam/htdocs/confirmation_resend.php on line 8
