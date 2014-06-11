@@ -9,6 +9,7 @@
 	</head>
 	<body>
 <?php
+/*
 	$con = QueryHandler::getDBConnection();
 	$regions = Location::getRegionsByCountry("United States", $con);
 	$regions = QueryHandler::getRows($regions);
@@ -26,6 +27,8 @@
 	var_dump($result);
 	echo "</br></br>";
 	mysqli_close($con);
+*/
+	var_dump( filter_var("jumpergm@ail", FILTER_VALIDATE_EMAIL));
 ?>
 	</body>
 </html>
