@@ -73,6 +73,28 @@ body {
     padding-left:10px;
 }
 
+#opening
+{
+	font-size:20px;
+	font-family: 'Lato-Light', sans-serif;
+	color:white;
+}
+
+select.stage-input
+{
+	background:url('logo-header.png');
+	color:white;
+	font-size:20px;
+	font-family: 'Lato-Light', sans-serif;
+	width: 150px;
+	border-color: white;
+}
+
+select.stage-input option
+{
+	color:black;
+}
+
 ul.search
 {
    	display:none;

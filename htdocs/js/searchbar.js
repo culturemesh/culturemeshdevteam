@@ -1,33 +1,24 @@
-var opening = "Find people who ";
 var LIST_SIZE = 4;
-var queries = ["speak", "are from"]
+//var queries = ["speak", "are from"]
 var queryList = [];
 
-// Fill up queryList with List Items
-for (var i = 0; i < queries.length; i++) {
-	var item = new ListItem();
-	item.name = queries[i];
-	queryList.push(item);
-}
-
-var prompt_strings = ["Find people who speak",
-			"Find people who are from",
-			"In"];
-var q_results, locations, origins, li_origins, li_locations, locationClasses, languages, li_languages;
+var q_results, locations, origins, 
+    li_origins, li_locations,
+    languages, li_languages;
 
 origins = new LocList();
 locations = new LocList();
+languages = new LocList();
 
 //var locations = [];
-var li_origins = [];
+li_origins = [];
 var cur_locations = [];
-var languages = [];
-var li_languages = [];
-var li_locations = [];
+li_languages = [];
+li_locations = [];
 
 
-loadInitialData();
 searchBar = new SearchBar();
+loadInitialData();
 
 function ListItem() {
 	this.name = null;
@@ -51,180 +42,307 @@ LocList.prototype.slice = function(start, end) {
 // Returns a list of matches to 
 // a search
 LocList.prototype.search = function(term) {
+	// list aren't sorted, so no binary search
+	// --- maybe a sort would be in order...
 	var results = [];
+	// unshift count, stop at some number
+	var uCount = 0;
+	var uMax = 20;
 	for (var i = 0; i < this.list.length; i++) {
+		// stop count at uMax
+		// prevent from taking too long
+		if (uCount >= uMax)
+			break;
+
+		// convert list item to lowercase,
+		// 	may move somewhere else 
 		var lower_name = this.list[i].name.toLowerCase();
-		match = lower_name.indexOf(term.toLowerCase()) == 0;
-		if (match != false) 
-			results.push(this.list[i]);
+		// check if name is in string
+		match = lower_name.indexOf(term.toLowerCase());
+		if (match >= 0) {
+			// put beginning matches at front of list
+			if (match == 0) {
+				results.unshift(this.list[i]);
+				uCount++;
+			}
+			else
+				results.push(this.list[i]);
+		}
 	}
 	return results;
 }
+// Returns a list of matches to 
+// a search
+LocList.prototype.searchLocations = function(term) {
+	// list aren't sorted, so no binary search
+	// --- maybe a sort would be in order...
+	var results = [];
+	var cMatches = [];
+	var fcMatches = [];
+	// unshift count, stop at some number
+	var uCount = 0;
+	var uMax = 20;
+	for (var i = 0; i < this.list.length; i++) {
+		// stop count at uMax
+		// prevent from taking too long
+		if (uCount >= uMax)
+			break;
 
-function loadInitialData() {
-	// Create ajax request
-	var xmlhttp = new XMLHttpRequest();
-	
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-		{
-			raw_data = JSON.parse(xmlhttp.responseText); 
-			//locations = [];
-			//origins = [];
-			languages = [];
-
-			for (var i = 0; i < raw_data["languages"].length; i++) {
-				var item = new ListItem();
-				item.name = raw_data["languages"][i];
-				languages.push(item);
-			}
-
-			for (var key in raw_data)
+		// convert list item to lowercase,
+		// 	may move somewhere else 
+		var lower_name = this.list[i].name.toLowerCase();
+		// check if name is in string
+		match = lower_name.indexOf(term.toLowerCase());
+		if (match >= 0) {
+			// unshift beginning match stuff
+			if (match == 0 && lower_name.indexOf('united states') > -1)
 			{
-				if ( key == "languages" ) {
-					continue;
-				}
-
-				// organize location data
-				for (var i = 0; i < raw_data[key].length; i++) {
-					var loc = new ListItem();
-					loc.name = raw_data[key][i]["name"];
-					if (key == "cities")
-					{
-						if (raw_data[key][i]['region_name'] != loc.name
-							  && raw_data[key][i]['country_name'] != loc.name){
-							loc.name += ", " + raw_data[key][i]['region_name'] + ", " + raw_data[key][i]["country_name"];
-							loc.type = "cc";
-						}
-					}
-					else if (key == "regions")
-					{
-						loc.name += ", " + raw_data[key][i]["country_name"];
-						loc.type = "rc";
-					}
-					else
-						// it's a country
-						loc.type = "co";
-					
-					origins.push(loc);
-
-					// also push to locations,
-					// BUT ONLY CITIES
-					//if (key == "cities")
-					locations.push(loc);
-				}
+				fcMatches.unshift(this.list[i]);
+				uCount++;
 			}
-				
-			// get an initial sample of list items
-			//li_languages = languages.slice(0,4);
-			//li_origins = origins.slice(0,4);
-			//li_locations = locations.slice(0,4);
-
-			searchBar.initialize();
+			// unshift us stuff
+			else if (lower_name.indexOf('united states') > -1) {
+				cMatches.unshift(this.list[i]);
+				uCount ++;
+			}
+			else
+				results.push(this.list[i]);
 		}
 	}
-
-	xmlhttp.open("POST", "searchbar-data.php", true);
-	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("data=initial");
+	return fcMatches.concat(cMatches,results);
 }
 
-searchBar = new SearchBar();
+function fillACArray(acArray, data, type) {
+	acArray.push = function(item) {
+		acArray.list.push(item);
+	}
+
+	var items = data.split('\n');
+
+	// for each line, excluding the first
+	for (var i = 1; i < items.length; i++) {
+		// create list item
+		var item = new ListItem();
+		item.type = type;
+		item.name = '';
+
+		// split line (by tab)
+		iSplit = items[i].split('\t');
+
+		// if there is a split to worry about,
+		// we gotta do some looping, b/c there's
+		// comma stuff to worry about - easier this way
+		if (iSplit.length > 1) {
+			var j = 0;
+			for (; j < iSplit.length - 1; j++) {
+				if (iSplit[j] != 'NULL')
+					item.name += iSplit[j] + ', ';
+			}
+
+			// don't add comma on last item
+			item.name += iSplit[j];
+		}
+		else
+		  { item.name = items[i]; }
+
+		// go ahead and push the item into the list
+		acArray.push(item);
+	}
+}
+
+function loadInitialData() {
+	// search bar
+	searchBar.initialize();
+	
+	// load countries
+	var countryRequest = new Ajax({
+		requestType: 'GET',
+		requestUrl: 'data/s_countries.txt',
+		requestParameters: ' ',
+		sendNow: true
+		}, function(data) {
+			fillACArray(locations, data, 'co');
+		});
+
+	// load languages
+	var langRequest = new Ajax({
+		requestType: 'GET',
+		requestUrl: 'data/s_languages.txt',
+		requestParameters: ' ',
+		sendNow: true
+		}, function(data) {
+			fillACArray(languages, data, '_l');
+		});
+
+	// load regions
+	var regionRequest = new Ajax({
+		requestType: 'GET',
+		requestUrl: 'data/s_regions.txt',
+		requestParameters: ' ',
+		sendNow: true
+		}, function(data) {
+			fillACArray(locations, data, 'rc');
+		});
+
+	// load cities
+	var cityRequest = new Ajax({
+		requestType: 'GET',
+		requestUrl: 'data/s_cities.txt',
+		requestParameters: ' ',
+		sendNow: true
+		}, function(data) { 
+			fillACArray(locations, data, 'cc');
+		});
+}
+
+//searchBar = new SearchBar();
 
 function SearchBar() {
+	// indices
+	//  1 : are from
+	//  2 : speak
 	var searchOne = document.getElementById("search-1");
+	var clik1 = document.getElementById('clik1');
 	var searchTwo = document.getElementById("search-2");
+	var clik2 = document.getElementById('clik2');
+
 	var topic = document.getElementById("search-topic");
-	var queryUl = document.getElementById("s-query");
 	var varUl = document.getElementById("s-var");
 	var locUl = document.getElementById("s-location");
-	var loc_select, q_select, cur_query;
+//	var loc_select, q_select, cur_query;
+
+	var selector = document.getElementById("verb-select");
 
 	this.initialize = function() {
-		// FILL UP LISTS
-		fillUl(queryUl, queryList);
-		fillUl(locUl, li_locations);
 
-		// ADD EVENTS
-		searchOne.onfocus = displayMainList;
-		searchTwo.onfocus = displayMainList;
-		searchOne.onblur = hideList;
-		searchTwo.onblur = hideList;
-		searchOne.onkeydown = updateList;
-		searchTwo.onkeydown = updateList;
+		///////////////////////////////////
+		//////// ADD EVENTS
+		////////////////////////////////
 
-		queryUl.onmouseover = getChoices;
-		queryUl.onmouseout = closeChoices;
-		varUl.onmouseover = markSelection;
-		locUl.onmouseover = markSelection;
+		// Allow for exit by clicking
+		// outside search boxes
+		window.onclick = function() {
+			hideUl(varUl);
+			hideUl(locUl);		
+		}
+
+		searchOne.onclick = function(e) {
+			e.stopPropagation();	
+		}
+
+		searchTwo.onclick = function(e) {
+			e.stopPropagation();
+		}
+
+		selector.onchange = function() {
+			clearUl(varUl);
+		}
+
+		//  display autocompletes
+		searchOne.onfocus = function() {
+			showUl(varUl);
+		}
+
+		searchTwo.onfocus = function() {
+			showUl(locUl);
+		}
+
+		// update list
+		searchOne.onkeydown = function(e) {
+			// clear ul
+			clearUl(varUl);
+			
+			// get new value
+			var value = updateValue(e, searchOne);
+
+			// if value has changed(could have been nothing), unclick
+			// and reset topic
+			if (value != searchOne.value) {
+				clik1.value = 0;
+				topic.value = '';
+			}
+
+			if (value == '')
+				return;
+
+			// handle different verbs different-like
+			switch (selector.selectedIndex) {
+				case 0:
+					li_locations = locations.searchLocations(value);
+					// Rank search results
+					//li_locations = rankLocations(li_locations);
+					// Fill up Ul
+					fillUl(varUl, li_locations.slice(0,4), searchOne, clik1);
+					boldifyMatch(varUl, value);
+					break;
+				case 1:
+					// search for language
+					li_languages = languages.searchLocations(value);
+					// fill ul
+					fillUl(varUl, li_languages.slice(0,4), searchOne, clik1);
+					boldifyMatch(varUl, value);
+					break;
+			}
+
+			// displayUl
+			showUl(varUl);
+		}
+
+		// update list
+		searchTwo.onkeydown = function(e) {
+			// clear ul
+			clearUl(locUl);
+			// get new value
+			var value = updateValue(e, searchTwo);
+
+			// if value changes, unclick
+			if (value != searchTwo.value)
+				clik2.value = 0;
+
+			if (value == '')
+				return;
+
+			// get locations
+			li_locations = locations.search(value);
+			// Rank search results
+			//li_locations = rankLocations(li_locations);
+			// Fill up Ul
+			fillUl(locUl, li_locations.slice(0,4), searchTwo, clik2);
+			boldifyMatch(locUl, value);
+		}
+
+		selector.onchange = function() {
+			topic.value = '';
+		}
 
 		// position uls
 		oneX = searchOne.offsetLeft;
 		oneY = searchOne.offsetTop + searchOne.offsetHeight;
 		twoX = searchTwo.offsetLeft;
-		queryX = oneX;
+		//queryX = oneX;
 
-		queryUl.style.display = "block";
-		varX = oneX + queryUl.offsetWidth;
-		queryUl.style.display = "none";
+		//queryUl.style.display = "block";
+		//varX = oneX + queryUl.offsetWidth;
+		//queryUl.style.display = "none";
 
-		queryUl.style.left = queryX.toString() + "px";
+		// set varX to searchbar offset
+		varX = oneX;
+
+		//queryUl.style.left = queryX.toString() + "px";
 		varUl.style.left = varX.toString() + "px";
 		locUl.style.left = twoX.toString() + "px";
-		queryUl.style.top = oneY.toString() + "px";
+		//queryUl.style.top = oneY.toString() + "px";
 		varUl.style.top  = oneY.toString() + "px";
 		locUl.style.top = oneY.toString() + "px";
-
-		//queryUl.style.display = "none";
-	}
-	
-	/* Displays main list
-	 *
-	 */
-	function displayMainList(e) {
-		var barId = e.target.getAttribute('id');
-		switch(barId)
-		{
-			case "search-1":
-				queryUl.style.display = "block";
-				break;
-			case "search-2":
-				locUl.style.display = "inline";
-				break;
-		}
 	}
 
-	function hideList(e) {
-		var barId = e.target.getAttribute('id');
-		switch(barId)
-		{
-			case "search-1":
-				if (q_select == undefined)
-					q_select = "";
-				if (prompt_strings[cur_query] == undefined)
-					searchOne.value = opening;
-				else
-					searchOne.value = prompt_strings[cur_query] + " " + q_select;
-				queryUl.style.display = "none";
-				varUl.style.display = "none";
-				break;
-			case "search-2":
-				if (loc_select == undefined)
-					loc_select = "";
-				searchTwo.value = prompt_strings[2] + " " + loc_select;
-				locUl.style.display = "none";
-				break;
-		}
-
-		// RESET
-		cur_query = 0;
-	}
 
 	/** takes an unordered list and fills them
 	 * @param - ul, unordered list dom element
 	 * 	  - data, a list of text
+	 * 	  - clickTarg, to receive click value
 	**/
-	function fillUl(ul, data) {
+	function fillUl(ul, data, clickTarg, clickTrk) {
 		var name = null;	
 		for (var i = 0; i < data.length; i++) {
 			// check for duplicate names
@@ -238,6 +356,46 @@ function SearchBar() {
 			var itemText = document.createTextNode(data[i].name);
 			item.appendChild(itemText);
 			ul.appendChild(item);
+
+			// add onclick function to
+			// add value to element
+			item.onclick = function(e) {
+				e.stopPropagation();
+				// get element
+				var elem = e.target;
+
+				//alert (e.target.tagName);
+				// check if we've got a bold tag by accident
+				//  if so, get the parent (li) 
+				if (elem.tagName == 'B')
+					elem = elem.parentNode;
+
+				// remove tags
+				var value = elem.innerHTML.replace(/(<([^>]+)>)/ig,"");
+
+				// change value of target
+				clickTarg.value = value;
+
+				// change value of track
+				clickTrk.value = 1;
+
+				// mark down topic if we're varUl
+				if (e.target.parentNode.id == 's-var') {
+					// get type from parallel list
+					var children = e.target.parentNode.childNodes;
+					var i = 0;
+					for (; i < children.length; i++) 
+						if (e.target == children[i]) 
+							break;
+					// set type
+					topic.value = data[i].type;
+				}
+				// disappear parent
+				ul.style.display = 'none';
+
+				// clear ul
+				clearUl(ul);
+			}
 		}
 	}
 
@@ -246,149 +404,76 @@ function SearchBar() {
 			ul.removeChild(ul.firstChild);
 	}
 
-	/**
-	 *  Displays choices after asking for data from the db
-	 */
-	function getChoices(e) {
-		searchOne.value = opening + e.target.innerHTML;
-		clearUl(varUl);
-		switch (e.target.innerHTML)
-		{
-			case "speak":
-				fillUl(varUl, li_languages.slice(0,4));
-				cur_query = 0;	// 0 for lingos
-				topic.value = "_l";
-				break;
-			case "are from":
-				fillUl(varUl, li_origins.slice(0,4));
-				cur_query = 1; 	// 1 for origin
-				topic.value = "";
-				break;
-		}
-			
-		// display list
-		varUl.style.display = "inline";
-		varUl.style.left = "-" + queryUl.offsetWidth.toString + "px";
+	function hideUl(ul) {
+		ul.style.display = 'none';
 	}
 
-	function closeChoices(e) {
-		if (document.activeElement != searchOne)
-		{
-			clearUl(varUl);
-			//li_origins = [];
-			//li_languages = [];
-			// close var list
-			varUl.style.display = "none";
-		}
+	function showUl(ul) {
+		ul.style.display = 'block';
 	}
 
-	function updateList(e) {
-		switch (e.target.getAttribute('id'))
-		{
-			case "search-1":
-				// Clear ul
-				clearUl(varUl);
-				
-				// get value of search bar
-				raw_val = searchOne.value;
-				var vals = raw_val.split(" ");
+	function updateValue(e, box) {
+		// get pressed key
+		var keyCode = ('which' in e) ? e.which : e.keyCode;
 
-				// separate prompt from the user query
-				// get query, and update the list based on
-				//   what the user has chosen
-				var query_str = null;
-				var index = null;
-				var prompt_str = null;
-				for (var i = 0; i < queries.length; i++)
-				{
-					prompt_str = queries[i];
-					index = raw_val.indexOf(queries[i]);
-					if(index > -1)	
-					{
-						query_str = raw_val.slice(index + queries[i].length + 1)
-						break;
-					}
-				}
+		// if it's a smelly shift, 
+		//  don't care
+		if (keyCode === 16)
+			return box.value;
 
-				if (query_str != "") {
-				switch (prompt_str) 
-				{
-					case "are from" :
-						li_origins = origins.search(query_str);
-						// Rank search results
-						li_origins = rankLocations(li_origins);
-						// Fill up Ul
-						fillUl(varUl, li_origins.slice(0,4));
-						
-						// accounting for answers that are typed in
-						// 	assumes that if the length is one, 
-						// 	we havea match
-						if (li_origins.length <=  1)
-							topic.value = li_origins[0].type; // get type of first and only element
-						break;
-					case "speak" :
-						li_languages = searchList(query_str, languages);
-						// Fill up Ul
-						fillUl(varUl, li_languages.slice(0,4));
-						break;
-				}
+		// if backspace, return string
+		// minus 1
+		if (keyCode === 8)
+			return box.value.substring(0, box.value.length-1);
 
-				// Display the list
-				varUl.style.display = "inline";
-
-				// set q_select
-				//q_select = query_str;
-				}
-				break;
-			case "search-2":
-				// clear
-				clearUl(locUl);
-
-				// extract the "Near"
-				var query_str = searchTwo.value.slice(3);
-				li_locations = locations.search(query_str);
-				li_locations = rankLocations(li_locations);
-				fillUl(locUl, li_locations.slice(0,4));
-
-				// display the list
-				locUl.style.display = "inline";
-
-				// set loc_selected
-				//loc_select = query_str;
-				break;
-		}
+		// otherwise add to value
+		keyCode = String.fromCharCode(keyCode).toLowerCase();
+		return box.value + keyCode;
 	}
+
 
 	function searchList(term, src) {
 		var list = [];
 		for (var i = 0; i < src.length; i++)
 		{
 			var lower_src = src[i].name.toLowerCase();
-			match = lower_src.indexOf(term.toLowerCase()) == 0;
-			if (match)
-				list.push(src[i]);
+			match = lower_src.indexOf(term.toLowerCase());
+
+			// if it's a hit,
+			// 	prioritize matches at beginning
+			if (match >= 0)
+				if (match == 0)
+					list.unshift(src[i]);
+				else
+					list.push(src[i]);
 		}
-;
+
 		return list;
 	}
-;
-	function markSelection(e) {
-		switch(e.target.parentNode.getAttribute('id'))
-		{
-			case "s-var":
-				q_select = e.target.innerHTML;
-				if (cur_query == 1) {
-					var children = e.target.parentNode.childNodes;
-					for (var i = 0; i < children.length; i++) 
-						if (e.target == children[i]) break;
-					// get location type from parallel list
-					topic.value = li_origins[i].type;
-				}
-				break;
-			case "s-location":
-				loc_select = e.target.innerHTML;
-				cur_query = prompt_strings.length -1;	 // the index for the last prompt
-				break;
+
+	function boldifyMatch(ul, term)
+	{
+		var sub;
+
+		// for each term in the list
+		for (var i = 0; i < ul.children.length; i++) {
+			sub = term.toLowerCase();
+
+			// get start and endpoints
+			//  of term, and li string
+			var tStart = ul.children[i].innerHTML.toLowerCase().indexOf(sub);
+			var tEnd = tStart + term.length;
+			var iEnd = ul.children[i].innerHTML.length;
+
+			var t1 = ul.children[i].innerHTML.substr(0,tStart);
+			var t2 = ul.children[i].innerHTML.substr(tStart, term.length);
+			var t3 = ul.children[i].innerHTML.substr(tEnd,iEnd);
+
+			// if match starts @ beginning...
+			if (tStart == 0)
+				ul.children[i].innerHTML = '<b>' + t2 + '</b>' + t3;
+			else
+				ul.children[i].innerHTML = t1 + '<b>' + t2 + '</b>' + t3;
 		}
 	}
 
@@ -401,13 +486,26 @@ function SearchBar() {
 		// if list is short enough, return
 		if (list.length <= LIST_SIZE)
 			return list;
+
+		var unshiftCount = 0;
+
 		for (var i = 0; i < list.length; i++)
 		{
+			/*
+			// break if you've got
+			// four priority things
+			if (unshiftCount >= 4)
+				break;
+				*/
+
 			// if it's american,
 			// add to beginning of list,
 			// else add to end
 			if (list[i].name.indexOf("United States") != -1)
-			  { rankedList.unshift(list[i]); }
+			  { 
+				  rankedList.unshift(list[i]); 
+				  //unshiftCount += 1;
+			  }
 			else
 			  { rankedList.push(list[i]); }
 		}
@@ -415,24 +513,4 @@ function SearchBar() {
 		return rankedList;
 	}
 }
-/*
-function searchQuery(query, sText = "") {
-	var pText = "query=" + query;
-	// maybe process sText, then add
-	pText += sText;
 
-	// Open xmlhttp request
-	var xmlhttp = new XMLHttpRequest();
-
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-		{
-			return JSON.parse(xmlhttp.responseText);
-		}
-	}
-
-	xmlhttp.open("POST", "", true);
-	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send(pText);
-}
-*/
