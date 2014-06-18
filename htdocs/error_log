@@ -9678,3 +9678,5 @@
 [11-Jun-2014 08:57:47 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemesh-live/htdocs/html_builder.php on line 456
 [11-Jun-2014 08:57:47 America/Denver] PHP Notice:  Undefined index: uid in /home3/culturp7/public_html/culturemesh-live/htdocs/html_builder.php on line 344
 [11-Jun-2014 08:57:47 America/Denver] PHP Notice:  Undefined property: EventDT::$host_id in /home3/culturp7/public_html/culturemesh-live/htdocs/html_builder.php on line 456
+[18-Jun-2014 03:35:52 America/Denver] PHP Notice:  Undefined index: action in /home3/culturp7/public_html/culturemeshdevteam/htdocs/log.php on line 8
+[18-Jun-2014 03:35:52 America/Denver] PHP Parse error:  syntax error, unexpected 'if' (T_IF), expecting function (T_FUNCTION) in /home3/culturp7/public_html/culturemeshdevteam/htdocs/search_query.php on line 122
