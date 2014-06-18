@@ -118,6 +118,8 @@ class SearchQuery
 		}
 	}
 
+	private static function handleGoodInput($input, $verb=NULL)
+	{
 		// if it's a language...easy
 		if ($verb == 'speak')
 			// return array with class
