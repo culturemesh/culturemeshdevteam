@@ -101,13 +101,12 @@
 			<?php endif; ?>
 			<div id="stage-area">
 				<div id="stage-content">
-
 					<h3 id="stage-title">Connecting the world's diasporas</h3>
 					<form id="search-form" method="GET" action="search_results.php" autocomplete="off">
 					<div id="opening">Find people who
-					<select id="verb-select" class="stage-input">
-						<option>are from</option>
-						<option>speak</option>
+					<select id="verb-select" name="verb" class="stage-input">
+						<option value="arefrom">are from</option>
+						<option value="speak">speak</option>
 					</select>
 					At
 					</div>

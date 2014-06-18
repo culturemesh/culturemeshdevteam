@@ -88,6 +88,8 @@ select.stage-input
 	font-family: 'Lato-Light', sans-serif;
 	width: 150px;
 	border-color: white;
+	padding: 0;
+	margin-bottom:3px;
 }
 
 select.stage-input option

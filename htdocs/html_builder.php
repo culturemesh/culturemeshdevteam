@@ -195,13 +195,21 @@ HTML;
 		echo "
 		<div id='search'>
 			<form id ='search-form' method='GET' action='search_results.php' autocomplete='off'>
-				<input type='text' id='search-1' class='net-search' name='search-1' value='Find people who ' autocomplete='off'/>
-					<ul id='s-query' class='network search'></ul>
-					<ul id='s-var' class='network search'></ul>
-				<input type='text' id='search-2' class='net-search' name='search-2' value='In ' autocomplete='off'/>
-					<ul id='s-location' class='network search'></ul>
-				<input type='submit' class='network search-button' value='Go'>
-				<input type='hidden' id='search-topic' name='search-topic'></input>
+			<div id='opening'>Find people who
+			<select id='verb-select' name='verb' class=''>
+				<option value='arefrom'>are from</option>
+				<option value='speak'>speak</option>
+			</select>
+			At
+			<input type='text' id='search-1' class='net-search' name='search-1' autocomplete='off'/>
+				<ul id='s-query' class='network search'></ul>
+				<ul id='s-var' class='network search'></ul>
+				<input type='hidden' id='clik1' name='clik1' value=0></ul>
+			<input type='text' id='search-2' class='net-search' name='search-2' autocomplete='off'/>
+				<ul id='s-location' class='network search'></ul>
+				<input type='hidden' id='clik2' name='clik2' value=0></ul>
+			<input type='submit' class='network search-button' value='Go'>
+			<input type='hidden' id='search-topic' name='search-topic'></input>
 			</form>
 		</div>
 		";
