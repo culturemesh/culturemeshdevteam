@@ -58,7 +58,7 @@ class Language
 		  }
 
 		$result = mysqli_query($con,"SELECT name FROM languages 
-			WHERE name='{$name}'");
+			WHERE name LIKE '{$name}'");
 			
 		if ($must_close)
 			mysqli_close($con);
