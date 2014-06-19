@@ -74,15 +74,19 @@ EHTML;
 // ---------------------------------------
 } // end function
 
-public static function sendContactUsMsg($address, $msg)
+public static function sendContactUsMsg($name, $address, $msg)
 {
 	$form = <<<EHTML
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Contact Us</title>
 	</head>
 	<body>
+		<h1>Contact Us</h1>
 		<div>
-			From: $address
+			<p>From: $name</p>
+			<p>Email: $address</p>
 		</div>
 		<div>
 			$msg
