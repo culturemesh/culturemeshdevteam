@@ -33,18 +33,20 @@
 		/////////////////////////////////////////////////////////////////////
 		// MAKING SURE PICTURES VARY N SUCH
 		
-		$bg_links = array("images/cmfrontpage_image1.png", 
-			"images/cmfrontpage_image2.png", 
-			"images/cmfrontpage_image3.png");
+	//"images/cmfrontpage_image1.jpg",
+	// too much white
+		$bg_links = array( 
+			"images/cmfrontpage_image2.jpg", 
+			"images/cmfrontpage_image3.jpg");
 		
-		$i = rand(0,2);
+		$i = rand(0,1);
 		
 		if (isset($_SESSION['cur_bg']))
 		{
 			if ($_SESSION['cur_bg'] == $i)
 			{
 				$i+=1;
-				if ($i > 2)
+				if ($i > 1)
 				{
 					$i = 0;
 					$_SESSION['cur_bg'] = $i;
@@ -102,17 +104,26 @@
 			<div id="stage-area">
 				<div id="stage-content">
 					<h3 id="stage-title">Connecting the world's diasporas</h3>
+					<form id="search-form" method="GET" action="search_results.php" autocomplete="off">
+					<div id="opening" class='stage'>Find people who
+					<select id="verb-select" name="verb" class="stage-input">
+						<option value="arefrom">are from</option>
+						<option value="speak">speak</option>
+					</select>
+					<span class='at stage'>In/Near</span>
+					</div>
 					<div id="search-bar">
-						<form id="search-form" method="GET" action="search_results.php" autocomplete="off">
-							<input type="text" class="stage-input" name="search-1" id="search-1" value="Find people who " autocomplete="off"></input>
+							<input type="text" class="stage-input" name="search-1" id="search-1" autocomplete="off"></input>
 								<ul id="s-query" class="search"></ul>
 								<ul id="s-var" class="search"></ul>
-							<input type="text" class="stage-input" name="search-2" id="search-2" value="In " autocomplete="off"></input>
+								<input type="hidden" id="clik1" name="clik1" value=0></ul>
+							<input type="text" class="stage-input" name="search-2" id="search-2" autocomplete="off"></input>
 								<ul id="s-location" class="search"></ul>
+								<input type="hidden" id="clik2" name="clik2" value=0></ul>
 							<input type="submit" class="stage-button" value="SEARCH"></input>
 							<input type="hidden" id="search-topic" name="search-topic"></input>
-						</form>
 					</div>
+					</form>
 				</div>
 			</div>
 			<div id="bottom-section">

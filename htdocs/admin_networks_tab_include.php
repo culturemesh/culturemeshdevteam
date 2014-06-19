@@ -3,11 +3,16 @@
         display:inline;
     }
 </style>
+<script>
+	
+</script>
 <div id="admin_add_network_inputs">
 	<form id="admin_add_new_form" method="post">
 		<label>Add New</label>
 		<select name="admin_attr" id="admin_attr">
 		    <option>City</option>
+		    <option>Region</option>
+		    <option>Country</option>
 		    <option>Language</option>
 		</select>
 		<div id="admin_region_selector">
@@ -35,6 +40,38 @@
 			    <?php //endforeach; ?>
 			</select>
 -->
+			<label>Population</label>
+			<input type="text" name="population">
+
+			<label>Latitude</label>
+			<input type="text" name="latitude">
+
+			<label>Longitude</label>
+			<input type="text" name="longitude">
+		</div>
+		<div id="admin_region_selector" style='display:none;'>
+			<label>Name</label>
+			<input type="text" name="lang_name">
+
+			<label>Country ID</label>
+			<input type="text" name="country_id">
+
+			<label>Country Name</label>
+			<input type="text" name="country_name">
+
+			<label>Population</label>
+			<input type="text" name="population">
+
+			<label>Latitude</label>
+			<input type="text" name="latitude">
+
+			<label>Longitude</label>
+			<input type="text" name="longitude">
+		</div>
+		<div id="admin_country_selector" style='display:none;'>
+			<label>Name</label>
+			<input type="text" name="lang_name">
+
 			<label>Population</label>
 			<input type="text" name="population">
 
@@ -107,6 +144,7 @@
         display: inline-block;
     }
 </style>
+<!--
 <div id="admin_networks_tabs" class="tab-content center-elem">
     <div class="tab-pane fade active in" id="admin_regions">
         <?php //include 'admin_panel_cities_table.php'?>
@@ -128,3 +166,4 @@
         });
     </script>
 </div>
+-->
