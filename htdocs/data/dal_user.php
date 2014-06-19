@@ -147,6 +147,7 @@ class User
 			$user->network_activity = $row['network_activity'];
 			$user->confirmed = $row['confirmed'];
 			$user->img_link = $row['img_link'];
+			$user->act_code = $row['act_code'];
 		}
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }

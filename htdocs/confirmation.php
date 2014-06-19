@@ -9,11 +9,18 @@
 	if (isset($_GET['uid']) && isset($_GET['act_code']))
 	{
 		$con = getDBConnection();
-		$act_success = User::activateUser($_GET['uid'], $_GET['act_code'], $con);
-		mysqli_close($con);
+		$id = mysqli_real_escape_string($con, $_GET['uid']);
 
-		if ($act_success)
-		  { $_SESSION['uid'] = $_GET['uid']; }
+		$user = User::getUserById($id, $con);
+		
+		if ($user->act_code === $_GET['act_code']) {
+			if (User::activateUser($_GET['uid'], $_GET['act_code'], $con)) {
+				$act_success = true;
+				$_SESSION['uid'] = $_GET['uid']; 
+			}
+		}
+
+		mysqli_close($con);
 	}
 
 
@@ -56,7 +63,7 @@
 			<a href="profile_edit.php?confirm=true">Go to profile</a>
 			<?php else : ?>
 			<h3>Your confirmation was unsuccessful.</h3>
-			<a onclick="resendEmail(<?php echo $_GET['uid']; ?>)">Click here to send another confirmation</a>
+			<a href="#" onclick="resendEmail(<?php echo $_GET['uid']; ?>)">Click here to send another confirmation</a>
 			<p id="confirm_txt" style="display:none;">Confirmation sent</p>
 			<?php endif; ?>
 		</div>
