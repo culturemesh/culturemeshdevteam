@@ -195,12 +195,13 @@ HTML;
 		echo "
 		<div id='search'>
 			<form id ='search-form' method='GET' action='search_results.php' autocomplete='off'>
-			<div id='opening'>Find people who
-			<select id='verb-select' name='verb' class=''>
+			<div id='opening' class='network'>Find people who
+			<select id='verb-select' name='verb' class='netsearch'>
 				<option value='arefrom'>are from</option>
 				<option value='speak'>speak</option>
 			</select>
-			At
+			<span class='at network'>In/Near</span>
+			</div>
 			<input type='text' id='search-1' class='net-search' name='search-1' autocomplete='off'/>
 				<ul id='s-query' class='network search'></ul>
 				<ul id='s-var' class='network search'></ul>
@@ -623,6 +624,49 @@ EHTML;
 		";
 	}
 	
+	public static function formatQueryTitle($query) {
+		// initialize location
+		$location = 'in/near ';
+
+		for ($i = 1; $i < 4; $i++) {
+			// add query items
+			if($query[$i] != NULL)
+				$location .= $query[$i];
+			// if we aren't on the last thing
+			// add comma
+			if($i-1 < 3)
+				$location .= ', ';
+		}
+
+		// initialize query string
+		$qstring = '';
+
+		// if it's a language, simply add
+		if ($query[0] == '_l') {
+			$qstring .= 'People who speak '. $query[4];
+		}
+
+		// if it's a location....
+		if ($query[0] == 'cc' ||
+			$query[0] == 'rc' ||
+			$query[0] == 'co')
+		{	
+			$qstring .= 'People from ';
+			for ($i = 4; $i < 7; $i++) {
+				// add query items
+				if($query[$i] != NULL)
+					$qstring .= $query[$i];
+				// if we aren't on the last thing
+				// add comma
+				if($i-1 < 6)
+					$qstring .= ', ';
+			}
+		}
+
+		// return string
+		return $qstring . ' ' . $location;
+	}
+
 	// formats network title
 	// 	+ if current country and origin country
 	// 	+ are the same, it doesn't include country

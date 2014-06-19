@@ -73,5 +73,26 @@ EHTML;
 	return mail($email, 'Forgotten Password', $cp_html, self::$headers);
 // ---------------------------------------
 } // end function
+
+public static function sendContactUsMsg($address, $msg)
+{
+	$form = <<<EHTML
+<html>
+	<head>
+	</head>
+	<body>
+		<div>
+			From: $address
+		</div>
+		<div>
+			$msg
+		</div>
+	</body>
+</html>
+EHTML;
+	// -------------------------
+	return mail('ken@culturemesh.com', 'CultureMesh - Contact Us '.time() , $form, self::$headers);
+	// -------------------------
+} // end function
 } // end class
 ?>

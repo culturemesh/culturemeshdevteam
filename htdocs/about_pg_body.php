@@ -22,9 +22,12 @@
     <h2 class="pheader text-center">Contact Us</h2>
     <?php
         if($_POST['contact_name'] && $_POST['contact_body']){
+		$msg = $_POST['contact_email'];
+		if (CMEmail::sendContactUsMsg($_POST['contact_name'], $_POST['contact_email']))
+            		echo '<span class="label label-success">Thanks! Our team is looking forward to reading what you had to say!</span>';
+		else echo '<span class="label label-success">Sorry, your email didn\'t get sent. Try again later. We want to hear what you have to say!</span>';
             //$msg = $_POST['contact_name']."(".$_POST['contact_email'].") said: \r\n".$_POST['contact_body'];
             //sendEmailNotification(CONTACT_EMAIL, "Website Contact Form Submitted", $msg);
-            echo '<span class="label label-success">Thanks! Our team is looking forward to reading what you had to say!</span>';
         }
     ?>
     <form method="post" action="" class="center-elem fullwidth">

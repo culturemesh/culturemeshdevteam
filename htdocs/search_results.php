@@ -52,11 +52,15 @@
 		$clik1 = mysqli_real_escape_string($con, $_GET['clik1']);
 		$clik2 = mysqli_real_escape_string($con, $_GET['clik2']);
 
-		$query = SearchQuery::buildQuery($search_1, $search_2,
+		$response = SearchQuery::buildQuery($search_1, $search_2,
 						$topic, $verb,
 						$clik1, $clik2, $con);
 
-		$networks = SearchQuery::getNetworkSearchResults($query, $con);
+		$query = $response[0];
+
+		if ($response[1] && $response[2])
+			$networks = SearchQuery::getNetworkSearchResults($query, $con);
+
 		mysqli_close($con);
 
 		// add location data for gmaps embed
@@ -92,15 +96,6 @@
 				<div class="net-left">
 					<div class="leftbar">
 						<?php HTMLBuilder::googleMapsEmbed($location); ?>
-<!--
-						<div class="map">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202
-							359.87608164057!2d-122.32141071468104!3d37.581606634196056!2m3!1f0!2f0!
-							3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcae48af93ff5%3A0xb99d8c0aca9f717b
-							!2sSan+Jose%2C+CA!5e0!3m2!1sen!2sus!4v1389926877454" width="100%" height="252"
-							frameborder="0" style="border:0"></iframe>
-						</div>
--->
 						<div id="tags"></div>
 					</div>
 				</div>
@@ -108,8 +103,10 @@
 					<?php HTMLBuilder::displaySearchBar(); ?>
 					<div id="sr-error"><p><?php if( isset($_GET['error'])) echo $_GET['error']; ?></p></div>
 					<div id="search-report">
-						<p>You searched for <?php echo $search_1 . ' at ' . $search_2; ?></p>
-						<p>Displaying results for <?php echo $query[4] .' '. $query[5] .' '. $query[6] . ' at ' . $query[1] .' '. $query[2] .' '. $query[3]; ?></p>
+						<?php if($clik1 + $clik2 < 2): ?>
+						<p class='search-result'>You searched for <?php echo $search_1 . ' at ' . $search_2; ?></p>
+						<p class='search-result'>Displaying results for <?php echo HTMLBuilder::formatQueryTitle($query); ?></p>
+						<?php endif; ?>
 					</div>
 					<div id="best-match">
 						<h3>Best Match</h3>
