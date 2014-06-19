@@ -241,10 +241,12 @@ function SearchBar() {
 		//  display autocompletes
 		searchOne.onfocus = function() {
 			showUl(varUl);
+			hideUl(locUl);
 		}
 
 		searchTwo.onfocus = function() {
 			showUl(locUl);
+			hideUl(varUl);
 		}
 
 		// update list

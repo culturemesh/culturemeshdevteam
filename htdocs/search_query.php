@@ -13,6 +13,10 @@ include_once("data/dal_language.php");
 class SearchQuery
 {
 	private static function minimumCandidate($candidates) {
+		// stop if no candidates can be found
+		if (count($candidates) == 0)
+			return false;
+
 		$min = $candidates[0];
 		for ($i = 0; $i < count($candidates); $i++) {
 			if ($min['distance'] > $candidates[$i]['distance'])
@@ -60,12 +64,15 @@ class SearchQuery
 				'type' => $type,
 				'match' => true,
 				'value' => trim($lines[$i]));
+
+		return $candidates;
 	}
 
 	private static function salvageInput($input, $verb)
 	{
-		// lowercase input
+		// lowercase input, get rid of commas
 		$input = strtolower($input);
+		$input = str_replace(',', '', $input);
 
 		// separate based on type
 		if ($verb == 'arefrom') {
@@ -198,20 +205,24 @@ class SearchQuery
 		//  special case, click 1 is the query
 		if ($clik1 == 0) {
 			$input_1 = self::salvageInput($search1, $verb);
-			// talk to database about gettin the full story
-			// will probably simplify to something else
-			$candidate = NULL;
-			if ($verb == 'arefrom') {
-				$candidate = Location::getLocation($input_1, $con);
-				// get rows
-				$input_1 = QueryHandler::getRows($candidate);
-				$input_1 = self::resultRowsToNumArray($input_1[0], 'location');
-			}
-			if ($verb == 'speak') {
-				$candidate = Language::getLanguage($input_1, $con);
-				// get rows
-				$input_1 = QueryHandler::getRows($candidate);
-				$input_1 = self::resultRowsToNumArray($input_1[0], 'language');
+
+			// if we could salvage input, continue
+			if ($input_1) {
+				// talk to database about gettin the full story
+				// will probably simplify to something else
+				$candidate = NULL;
+				if ($verb == 'arefrom') {
+					$candidate = Location::getLocation($input_1, $con);
+					// get rows
+					$input_1 = QueryHandler::getRows($candidate);
+					$input_1 = self::resultRowsToNumArray($input_1[0], 'location');
+				}
+				if ($verb == 'speak') {
+					$candidate = Language::getLanguage($input_1, $con);
+					// get rows
+					$input_1 = QueryHandler::getRows($candidate);
+					$input_1 = self::resultRowsToNumArray($input_1[0], 'language');
+				}
 			}
 		}
 		else {
@@ -223,9 +234,13 @@ class SearchQuery
 		//  //////////
 		if ($clik2 == 0) {
 			$input_2 = self::salvageInput($search2, $verb);
-			$candidate = Location::getLocation($input_2, $con);
-			$input_2 = QueryHandler::getRows($candidate);
-			$input_2 = self::resultRowsToNumArray($input_2[0], 'location');
+
+			// if we could salvage input
+			if ($input_2) {
+				$candidate = Location::getLocation($input_2, $con);
+				$input_2 = QueryHandler::getRows($candidate);
+				$input_2 = self::resultRowsToNumArray($input_2[0], 'location');
+			}
 		}
 		else {
 			$input_2 = self::handleGoodInput($search2);
@@ -238,7 +253,7 @@ class SearchQuery
 		$query = self::fillQuery($query, $input_2, 'location');
 
 		// return
-		return $query;
+		return array($query, $input_1, $input_2);
 	}
 
 	public static function getNetworkSearchResults($query, $con)

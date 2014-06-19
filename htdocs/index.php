@@ -33,18 +33,20 @@
 		/////////////////////////////////////////////////////////////////////
 		// MAKING SURE PICTURES VARY N SUCH
 		
-		$bg_links = array("images/cmfrontpage_image1.jpg", 
+	//"images/cmfrontpage_image1.jpg",
+	// too much white
+		$bg_links = array( 
 			"images/cmfrontpage_image2.jpg", 
 			"images/cmfrontpage_image3.jpg");
 		
-		$i = rand(0,2);
+		$i = rand(0,1);
 		
 		if (isset($_SESSION['cur_bg']))
 		{
 			if ($_SESSION['cur_bg'] == $i)
 			{
 				$i+=1;
-				if ($i > 2)
+				if ($i > 1)
 				{
 					$i = 0;
 					$_SESSION['cur_bg'] = $i;
@@ -103,12 +105,12 @@
 				<div id="stage-content">
 					<h3 id="stage-title">Connecting the world's diasporas</h3>
 					<form id="search-form" method="GET" action="search_results.php" autocomplete="off">
-					<div id="opening">Find people who
+					<div id="opening" class='stage'>Find people who
 					<select id="verb-select" name="verb" class="stage-input">
 						<option value="arefrom">are from</option>
 						<option value="speak">speak</option>
 					</select>
-					At
+					<span class='at stage'>In/Near</span>
 					</div>
 					<div id="search-bar">
 							<input type="text" class="stage-input" name="search-1" id="search-1" autocomplete="off"></input>
