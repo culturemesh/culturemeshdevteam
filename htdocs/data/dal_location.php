@@ -106,7 +106,7 @@ class Location
 		}
 
 		$result = mysqli_query($con, "SELECT id, name FROM cities
-				WHERE name='{$name}'");
+				WHERE name LIKE '{$name}'");
 
 		if ($must_close)
 			mysqli_close($con);
@@ -134,7 +134,7 @@ class Location
 		}
 
 		$result = mysqli_query($con, "SELECT id, name FROM regions
-				WHERE name='{$name}'");
+				WHERE name LIKE '{$name}'");
 
 		if ($must_close)
 			mysqli_close($con);
@@ -162,7 +162,7 @@ class Location
 		}
 
 		$result = mysqli_query($con, "SELECT id, name FROM countries 
-				WHERE name='{$name}'");
+				WHERE name LIKE '{$name}'");
 
 		if ($must_close)
 			mysqli_close($con);
@@ -172,6 +172,54 @@ class Location
 
 		else
 			return $result;
+	}
+
+	// take a lowercasestring, see if it matches anything
+	// in the database
+	public static function getLocation($term, $con=NULL)
+	{
+		// account for different data types
+		$name = NULL;
+		if(isset($term['value']))
+			$name = $term['value'];
+		else
+			$name = $term;
+
+		$limit = 1;
+//////////////////////////////////////////////////////////////////
+		
+		$query1 = <<<SQL
+			SELECT *
+			FROM cities
+			WHERE name LIKE '$name'
+			ORDER BY population DESC
+			LIMIT 0,$limit
+SQL;
+
+		$query2 = <<<SQL
+			SELECT *
+			FROM regions 
+			WHERE name LIKE '$name'
+			LIMIT 0,$limit
+SQL;
+
+		$query3 = <<<SQL
+			SELECT *
+			FROM countries
+			WHERE name LIKE '$name'
+			LIMIT 0,$limit
+SQL;
+
+
+//////////////////////////////////////////////////////////////////
+		// execute queries
+		// for now, return results
+		if ($term['type'] == 'city')
+			return QueryHandler::executeQuery($query1, $con);
+		if ($term['type'] == 'region')
+			return QueryHandler::executeQuery($query2, $con);
+		if ($term['type'] == 'country')
+			return QueryHandler::executeQuery($query3, $con);
 	}
 
 	public static function getNearbyCities($name, $con=NULL) 

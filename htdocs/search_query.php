@@ -12,42 +12,249 @@ include_once("data/dal_language.php");
 /* Could perhaps be a query object, constructed with three parameters*/
 class SearchQuery
 {
-	/*
-	public static function getNetworkSearchResults($topic, $query_str, $location)
-	{
-		$networks = array();
-		
-		switch($topic)
-		{
-		case "language":	// language
-			$results = Network::getNetworksByLanguage($query_str);
-			break;
-		case "origin":	// region
-			$results = Network::getNetworksByOrigin($query_str);
-			break;
+	private static function minimumCandidate($candidates) {
+		// stop if no candidates can be found
+		if (count($candidates) == 0)
+			return false;
+
+		$min = $candidates[0];
+		for ($i = 0; $i < count($candidates); $i++) {
+			if ($min['distance'] > $candidates[$i]['distance'])
+				$min = $candidates[$i];
 		}
-		
-		while ($row = mysqli_fetch_array($results))
-		{
-			$network_dt = new NetworkDT();
-			
-			$network_dt->id = $row['id'];
-			$network_dt->city_cur = $row['city_cur'];
-			$network_dt->region_cur = $row['region_cur'];
-			$network_dt->city_origin = $row['city_origin'];
-			$network_dt->region_origin = $row['region_origin'];
-			$network_dt->country_origin = $row['country_origin'];
-			$network_dt->language_origin = $row['language_origin'];
-			$network_dt->network_class = $row['network_class'];
-			$network_dt->member_count = NetworkRegistration::getMemberCount($network_dt->id);
-			$network_dt->post_count = Post::getPostCount($network_dt->id);
-			
-			array_push($networks, $network_dt);
-		}
-		
-		return $networks;
+
+		return $min;
 	}
-	 */
+
+	// goes through a file line by line
+	// returns  a list of candidates, 
+	// 	or returns a match
+	private static function checkFile($filename, $input, $type) {
+		// get file lines
+		$lines = file($filename);
+
+		// initialize i, and candidates
+		$candidates = array();
+		$i = 0;
+
+		for (; $i < count($lines); $i++) {
+			// strip whitespace that
+			// shows up for no reason
+			$line = trim($lines[$i]);
+
+			// get distance
+			$distance = levenshtein($input, $line);
+
+			// do stuff based on distance
+			if ($distance == 0){
+				$match = true;
+				break;
+			}
+			else if ($distance < 4)
+				array_push($candidates, array(
+					'name' => $name,
+					'distance' => $distance,
+					'type' => $type));
+
+		}
+
+		// return if match
+		if($match == true)
+			return array(
+				'type' => $type,
+				'match' => true,
+				'value' => trim($lines[$i]));
+
+		return $candidates;
+	}
+
+	private static function salvageInput($input, $verb)
+	{
+		// lowercase input, get rid of commas
+		$input = strtolower($input);
+		$input = str_replace(',', '', $input);
+
+		// separate based on type
+		if ($verb == 'arefrom') {
+			// check cities
+			$r1 = self::checkFile('data/s_citynames.txt', $input, 'city');
+
+			if ($r1['match'] == true)
+				return $r1;
+
+			// check regions
+			$r2 = self::checkFile('data/s_regionnames.txt', $input, 'region');
+
+			if ($r2['match'] == true)
+				return $r2;
+
+			// check countries
+			$r3 = self::checkFile('data/s_countrynames.txt', $input, 'country');
+
+			if ($r3['match'] == true)
+				return $r3;
+
+			// return minimum of all arrays,
+			// 	-- if we made it this far
+			return self::minimumCandidate(array_merge($r1, $r2, $r3));
+		}
+		if ($verb == 'speak') {
+
+			$results = self::checkFile('data/s_langnames.txt', $input, 'language');
+			return minimumCandidates($results);
+		}
+	}
+
+
+	private static function figureLocationType($values) {
+		// country
+		if(count($values) == 1)
+		{
+			return array('co', NULL, NULL, $values[0]);
+		}
+		// region
+		if (count($values) == 2)
+		{
+			return array('rc', NULL, $values[0], $values[1]);
+		}
+
+		// city
+		if (count($values) == 3)
+		{
+			return array('cc', $values[0], $values[1], $values[2]);
+		}
+	}
+
+	private static function handleGoodInput($input, $verb=NULL)
+	{
+		// if it's a language...easy
+		if ($verb == 'speak')
+			// return array with class
+			return array('_l', $input);
+
+		// else it's a location
+		$raw_values = explode(', ', $input);
+		return self::figureLocationType($raw_values);
+	}
+
+	private static function resultRowsToNumArray($values, $type) {
+		if ($type == 'location') {
+			$array = array(NULL, NULL, NULL, NULL);
+
+			// city
+			if (isset($values['region_name'])
+				&& isset($values['country_name'])) {
+				// set array
+				$array[0] = 'cc';
+				$array[1] = $values['name'];
+				$array[2] = $values['region_name'];
+				$array[3] = $values['country_name'];
+			}
+			// region
+			else if (isset($values['country_name'])) {
+				$array[0] = 'rc';
+				$array[2] = $values['name'];
+				$array[3] = $values['country_name'];
+			}
+			else
+			{
+				$array[0] = 'co';
+				$array[3] = $values['name'];
+			}
+
+			// return array
+			return $array; 
+		}
+
+		if ($type == 'language') {
+			// initialize language array
+			return array('_l', $values['name']);
+		}
+	}
+
+
+	private static function fillQuery($query, $data, $type)
+	{
+		// add types n shit
+		if ($type == 'query') {
+			$query[0] = $data[0];
+			$query[4] = $data[1];
+			$query[5] = $data[2];
+			$query[6] = $data[3];
+		}
+		if ($type == 'location') {
+			$query[1] = $data[1];
+			$query[2] = $data[2];
+			$query[3] = $data[3];
+		}
+
+		return $query;
+	}
+
+	public static function buildQuery($search1, $search2,
+					$topic, $verb,
+					$clik1, $clik2, $con)
+	{
+		// SAAALLLVAAGGEEE
+		$input_1 = NULL;
+		$input_2 = NULL;
+
+		/////////////////////////////////
+		// check clik1
+		//  if manual input
+		//  special case, click 1 is the query
+		if ($clik1 == 0) {
+			$input_1 = self::salvageInput($search1, $verb);
+
+			// if we could salvage input, continue
+			if ($input_1) {
+				// talk to database about gettin the full story
+				// will probably simplify to something else
+				$candidate = NULL;
+				if ($verb == 'arefrom') {
+					$candidate = Location::getLocation($input_1, $con);
+					// get rows
+					$input_1 = QueryHandler::getRows($candidate);
+					$input_1 = self::resultRowsToNumArray($input_1[0], 'location');
+				}
+				if ($verb == 'speak') {
+					$candidate = Language::getLanguage($input_1, $con);
+					// get rows
+					$input_1 = QueryHandler::getRows($candidate);
+					$input_1 = self::resultRowsToNumArray($input_1[0], 'language');
+				}
+			}
+		}
+		else {
+			$input_1 = self::handleGoodInput($search1, $verb);
+		}
+
+		//////////////////////////////
+		//  check clik2
+		//  //////////
+		if ($clik2 == 0) {
+			$input_2 = self::salvageInput($search2, $verb);
+
+			// if we could salvage input
+			if ($input_2) {
+				$candidate = Location::getLocation($input_2, $con);
+				$input_2 = QueryHandler::getRows($candidate);
+				$input_2 = self::resultRowsToNumArray($input_2[0], 'location');
+			}
+		}
+		else {
+			$input_2 = self::handleGoodInput($search2);
+		}
+
+		///////////////////////////////////
+		// we should have all the good nooch
+		// //////////
+		$query = self::fillQuery($query, $input_1, 'query');
+		$query = self::fillQuery($query, $input_2, 'location');
+
+		// return
+		return array($query, $input_1, $input_2);
+	}
 
 	public static function getNetworkSearchResults($query, $con)
 	{
@@ -87,7 +294,6 @@ class SearchQuery
 		if (mysqli_num_rows($results) > 0) {
 			while ($row = mysqli_fetch_array($results))
 			{
-				echo 'here';
 				$network_dt = new NetworkDT();
 				
 				$network_dt->id = $row['id'];
