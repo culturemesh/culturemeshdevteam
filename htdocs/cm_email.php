@@ -88,8 +88,12 @@ public static function sendContactUsMsg($name, $address, $msg)
 			<p>From: $name</p>
 			<p>Email: $address</p>
 		</div>
+		</br>
 		<div>
+			<h2>Message</h2>
+			<div>
 			$msg
+			</div>
 		</div>
 	</body>
 </html>

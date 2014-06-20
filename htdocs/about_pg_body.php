@@ -23,7 +23,7 @@
     <?php
         if(isset($_POST['contact_name']) && ($_POST['contact_body'])
 		&& isset($_POST['contact_email'])){
-		if (CMEmail::sendContactUsMsg($_POST['contact_name'], $_POST['contact_body']))
+		if (CMEmail::sendContactUsMsg($_POST['contact_name'], $_POST['contact_email'], $_POST['contact_body']))
             		echo '<span class="label label-success">Thanks! Our team is looking forward to reading what you had to say!</span>';
 		else echo '<span class="label label-success">Sorry, your email didn\'t get sent. Try again later. We want to hear what you have to say!</span>';
         }
