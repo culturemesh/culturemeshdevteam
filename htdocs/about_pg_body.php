@@ -28,7 +28,7 @@
 		else echo '<span class="label label-success">Sorry, your email didn\'t get sent. Try again later. We want to hear what you have to say!</span>';
         }
 	else {
-		echo '<span class="label label-success">Please fill out all fields.</span>';
+		//echo '<span class="label label-success">Please fill out all fields.</span>';
 	}
     ?>
     <form method="post" action="" class="center-elem fullwidth">
