@@ -91,9 +91,9 @@ class NetworkRegistration
 		
 		"";
 		$result = mysqli_query($con,
-			"SELECT n.*, mc.member_count, pc.post_count
+			"SELECT n.*, mc.member_count, pc.post_count, nr.join_date
 			FROM networks n
-			JOIN ( SELECT id_network 
+			JOIN ( SELECT id_network, join_date 
 				   FROM network_registration
 				   WHERE id_user ={$id}) nr
 			ON nr.id_network = n.id

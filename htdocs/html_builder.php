@@ -610,12 +610,13 @@ EHTML;
 	public static function displayDashNetwork($network)
 	{
 		$title = HTMLBuilder::formatNetworkTitle($network);
+		$date = HTMLBuilder::formatDate($network->join_date);
 
 		echo "
 		<div class='net-info dashboard'>
 			<a href='network.php?id={$network->id}'><p class='bottom-text dashboard'>{$title}</p></a>
 			<p class='network-stats'>{$network->member_count} Members | {$network->post_count} Posts</p>
-			<p class='network-stats'>Joined {$network->join_date}</p>
+			<p class='network-stats'>Joined {$date}</p>
 		</div>
 		";
 	}
@@ -775,6 +776,22 @@ EHTML;
 
 		// format and return string
 		$f_datetime = $month." ".$p_date['day'].", ".$p_date['year']." @ ".$hour.":".$minute." ".$period;
+		return $f_datetime;
+	}
+
+	private static function formatDate($date) {
+		$months = array("NOTHING", "January", "February", "March", "April",
+			"May", "June", "July", "August", "September",
+			"October", "November", "December");
+
+		// turn date into assoc array
+		$p_date = date_parse($date);
+
+		// assign month
+		$month = $months[$p_date['month']];
+
+		// format and return string
+		$f_datetime = $month." ".$p_date['day'].", ".$p_date['year'];
 		return $f_datetime;
 	}
 }
