@@ -108,8 +108,8 @@ class Event
 			$event_dt = new EventDT();
 			
 			$event_dt->id = $row['id'];
-			$event_dt->network_id = $row['network_id'];
-			$event_dt->host_id = $row['host_id'];
+			$event_dt->id_network = $row['id_network'];
+			$event_dt->id_host = $row['id_host'];
 			$event_dt->date_created = $row['date_created'];
 			$event_dt->event_date = $row['event_date'];
 			$event_dt->title = $row['title'];
@@ -132,21 +132,18 @@ class Event
 	
 	public static function getEventsByNetworkId($id)
 	{
-		// if db connection was passed in to function, get it
-		// if not, get dbconnection yourself
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
+
+		$query = <<<SQL
+			SELECT e.id AS event_id, e.*, u.* 
+			FROM events e, users u 
+			WHERE event_date >= CURDATE() 
+			AND e.id_host=u.id 
+			AND id_network=$id
+			ORDER BY id_network
+SQL;
 		
-		// Check connection
-		if (mysqli_connect_errno())
-		{
-		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		}
-		
-		$result = mysqli_query($con,"SELECT e.id AS event_id, e.*, u.* FROM events e, users u WHERE event_date >= CURDATE() AND e.id_host=u.id AND id_network=" . $id);
-		
+		$result = QueryHandler::executeQuery($query, $con);	
+
 		$events = array();
 		
 		while ($row = mysqli_fetch_array($result))
@@ -173,21 +170,21 @@ class Event
 			array_push($events, $event_dt);
 		}
 		
-		if (func_num_args() < 2)
-		{ mysqli_close($con); }
-	
 		return $events;
 	}
 
 	public static function getEventsYourNetworks($id, $con=NULL)
 	{
 		$query = <<<SQL
-			SELECT *
-			FROM events
+			SELECT *, u.img_link AS usr_image
+			FROM events e, users u, networks n
 			WHERE id_network IN (
 				SELECT id_network
 				FROM network_registration
 				WHERE id_user=$id)
+			AND e.id_host = u.id
+			AND n.id = e.id_network
+			ORDER BY e.id_network
 SQL;
 
 		$result = QueryHandler::executeQuery($query, $con);
@@ -213,7 +210,17 @@ SQL;
 			$event_dt->username = $row['username'];
 			$event_dt->first_name = $row['first_name'];
 			$event_dt->last_name = $row['last_name'];
-			$event_dt->img_link = $row['img_link'];
+			$event_dt->img_link = $row['usr_image'];
+
+			// add network data
+			$event_dt->network_class = $row['network_class'];
+			$event_dt->city_cur = $row['city_cur'];
+			$event_dt->region_cur = $row['region_cur'];
+			$event_dt->country_cur = $row['country_cur'];
+			$event_dt->city_origin = $row['city_origin'];
+			$event_dt->region_origin = $row['region_origin'];
+			$event_dt->country_origin = $row['country_origin'];
+			$event_dt->language_origin = $row['language_origin'];
 			
 			array_push($events, $event_dt);
 		}

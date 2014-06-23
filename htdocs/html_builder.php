@@ -549,6 +549,30 @@ EHTML;
 	
 	public static function displayDashEvent($event, $u_data = false)
 	{
+		//$net_title = self::formatNetworkTitle($event);
+
+		$host = NULL;
+
+		if ($_SESSION['uid'] == $event->id_host)
+			$host = 'YOU';
+		else {
+			// last resort, email
+			if (isset($event->email))
+				$host = $event->email;
+
+			// make host username
+			if (isset($event->username))
+				$host = $event->username;
+
+			// prioritize names
+			if (isset($event->first_name)) {
+				$host = $event->first_name;
+
+				if (isset($event->last_name))
+					$host .= ' '.$event->last_name;
+			}
+		}
+
 		$i_class = '';
 		if ($u_data) 
 		  { $i_class = 'usr_image'; }
@@ -573,7 +597,7 @@ EHTML;
 					<h3 class='h-network'><a href='network.php?id={$event->id_network}#event-modal-{$event->id}'>{$event->title}</a></h3>
 				</div>
 				<div class='event-info'>
-					<p id='event-info'>Hosted by YOU and set for {$datetime}</p>
+					<p id='event-info'>Hosted by {$host} and set for {$datetime}</p>
 					<p id='event-desc'>{$event->description}</p>
 					
 				</div>
@@ -594,6 +618,13 @@ EHTML;
 			<p class='network-stats'>Joined {$network->join_date}</p>
 		</div>
 		";
+	}
+
+	public static function displayDashNetworkTitle($network)
+	{
+		$title = HTMLBuilder::formatNetworkTitle($network);
+
+		echo "<p>{$title}</p>";
 	}
 	
 	public static function displayDashConversation($conversation)
@@ -623,6 +654,7 @@ EHTML;
 		<div class='clear'></div>
 		";
 	}
+
 	
 	public static function formatQueryTitle($query) {
 		// initialize location

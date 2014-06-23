@@ -1,4 +1,6 @@
 <?php
+
+
 include_once 'zz341/fxn.php';
 include_once 'html_builder.php';
 include_once 'data/dal_user.php';
@@ -44,6 +46,13 @@ if($user->img_link == NULL)
 else
 	$img_link = IMG_DIR.$user->img_link;
 
+// runs a linear search through array of networks
+function findNetwork($id, $networks) {
+	foreach ($networks as $network) {
+		if($id == $network->id)
+			return $network;
+	}
+}
 ?>
 <?php
 $pass_header = '<b>Change Password</b>';

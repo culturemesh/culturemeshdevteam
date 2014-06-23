@@ -22,6 +22,15 @@ class EventDT
 	public $last_name;
 	public $img_link;
 
+	public $city_cur;
+	public $region_cur;
+	public $country_cur;
+	public $city_origin;
+	public $region_origin;
+	public $country_origin;
+	public $language_origin;
+	public $network_class;
+
 	public $attending;
 }
 
