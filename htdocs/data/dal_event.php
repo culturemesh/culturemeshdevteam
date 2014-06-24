@@ -23,30 +23,22 @@ include_once("dal_query_handler.php");
 class Event
 {
 	////////////////////// CREATE OPERATIONS /////////////////////
-	public static function createEvent($event_dt)
+	public static function createEvent($event_dt, $con=NULL)
 	{
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
-		//$con = func_get_arg(1);
 		
-		if (mysqli_connect_errno())
-		{
-			echo "Failed to connect to MySQL: ";
-		}
-		
-		if (!mysqli_query($con, "INSERT INTO events 
-			(id_network, id_host, date_created, event_date, title, address_1, address_2, city, country, description)
-			VALUES (". $event_dt->network_id . ", ". $event_dt->host_id . ", NOW(), '" . $event_dt->event_date . "', '" . $event_dt->title . "', '"
-			. $event_dt->address_1 . "', '" . $event_dt->address_2 . "', '" . $event_dt->city . "', '" 
-			. $event_dt->country . "', '" . $event_dt->description . "')"))
-		{
-			echo "Error Message: " . $con->error;
-		}
-		
-		if (func_num_args() < 2)
-		{ mysqli_close($con); }
+		$query = <<<SQL
+			INSERT INTO events 
+			(id_network, id_host, date_created, 
+			event_date, title, address_1, address_2,
+			 city, region, description)
+			VALUES ($event_dt->network_id, $event_dt->host_id, NOW(),
+				'$event_dt->event_date', '$event_dt->title', 
+				'$event_dt->address_1', '$event_dt->address_2', 
+				'$event_dt->city', '$event_dt->region', 
+				'$event_dt->description')
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
 	}
 	
 	////////////////////// READ OPERATIONS //////////////////////////////////////////////
@@ -130,7 +122,7 @@ class Event
 		return $events;
 	}
 	
-	public static function getEventsByNetworkId($id)
+	public static function getEventsByNetworkId($id, $con=NULL)
 	{
 
 		$query = <<<SQL
@@ -140,6 +132,49 @@ class Event
 			AND e.id_host=u.id 
 			AND id_network=$id
 			ORDER BY id_network
+SQL;
+		
+		$result = QueryHandler::executeQuery($query, $con);	
+
+		$events = array();
+		
+		while ($row = mysqli_fetch_array($result))
+		{
+			$event_dt = new EventDT();
+			
+			$event_dt->id = $row['event_id'];
+			$event_dt->id_network = $row['id_network'];
+			$event_dt->id_host = $row['id_host'];
+			$event_dt->date_created = $row['date_created'];
+			$event_dt->event_date = $row['event_date'];
+			$event_dt->title = $row['title'];
+			$event_dt->email = $row['email'];
+			$event_dt->address_1 = $row['address_1'];
+			$event_dt->address_2 = $row['address_2'];
+			$event_dt->city = $row['city'];
+			$event_dt->region = $row['region'];
+			$event_dt->description = $row['description'];
+			$event_dt->username = $row['username'];
+			$event_dt->first_name = $row['first_name'];
+			$event_dt->last_name = $row['last_name'];
+			$event_dt->img_link = $row['img_link'];
+			
+			array_push($events, $event_dt);
+		}
+		
+		return $events;
+	}
+
+	public static function getEventsByNetworkId_D($id, $con=NULL)
+	{
+
+		$query = <<<SQL
+			SELECT e.id AS event_id, e.*, u.* 
+			FROM events e, users u 
+			WHERE event_date >= CURDATE() 
+			AND e.id_host=u.id 
+			AND id_network=$id
+			ORDER BY event_date 
 SQL;
 		
 		$result = QueryHandler::executeQuery($query, $con);	
@@ -228,30 +263,17 @@ SQL;
 		return $events;
 	}
 	////////////////////// UPDATE OPERATIONS /////////////////////
-	public static function updateEvent($event_dt)
+	public static function updateEvent($event_dt, $con=NULL)
 	{
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
-		//$con = func_get_arg(1);
+		$query = <<<SQL
+			UPDATE events 
+			SET event_date='$event_dt->event_date', address_1='$event_dt->address_1',
+			address_2='$event_dt->address_2', city='$event_dt->city', region='$event_dt->region',
+			description='$event_dt->description'
+			WHERE id=$event_dt->id
+SQL;
 		
-		if (mysqli_connect_errno())
-		{
-			echo "Failed to connect to MySQL: ";
-		}
-		
-		if (!mysqli_query($con, "UPDATE events 
-			SET event_date='". $event_dt->event_date ."', address_1='". $event_dt->address_1 .
-			"', address_2='". $event_dt->address_2 ."', city='". $event_dt->city .
-			"', description='". $event_dt->description . 
-			"' WHERE id=". $event_dt->id ))
-		{
-			echo "Error Message: " . $con->error;
-		}
-		
-		if (func_num_args() < 2)
-		{ mysqli_close($con); }
+		return QueryHandler::executeQuery($query, $con);
 	}
 	
 	////////////////////// DELETE OPERATIONS /////////////////////

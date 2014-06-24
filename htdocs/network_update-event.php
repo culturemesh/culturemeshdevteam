@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['uid']))
 	exit("Can't be done");
 
+/*
 if (!isset($_POST['title']) ||
 	!isset($_POST['date']) ||
 	!isset($_POST['address_1']) ||
@@ -11,8 +12,9 @@ if (!isset($_POST['title']) ||
 	!isset($_POST['description']) ||
 	!isset($_POST['id_event']) ||
 	!isset($_POST['city']) ||
-	!isset($_POST['country']))
+	!isset($_POST['region']))
 	exit("Not all necessary data is in here");
+ */
 
 include_once("data/dal_event-dt.php");
 include_once("data/dal_event.php");
@@ -27,7 +29,7 @@ $event->address_1 = mysqli_real_escape_string($con, $_POST['address_1']);
 $event->address_2 = mysqli_real_escape_string($con, $_POST['address_2']);
 $event->description = mysqli_real_escape_string($con, $_POST['description']);
 $event->city = mysqli_real_escape_string($con, $_POST['city']);
-$event->country = mysqli_real_escape_string($con, $_POST['country']);
+$event->region = mysqli_real_escape_string($con, $_POST['region']);
 
 Event::updateEvent($event, $con);
 

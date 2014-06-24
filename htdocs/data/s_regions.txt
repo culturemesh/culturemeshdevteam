@@ -1,17 +1,17 @@
 name	country_name
 Canillo	Andorra
-ParrÃ²quia d'Andorra la Vella	Andorra
-ParrÃ²quia d'Encamp	Andorra
-ParrÃ²quia d'Escaldes-Engordany	Andorra
-ParrÃ²quia d'Ordino	Andorra
-ParrÃ²quia de Sant JuliÃ  de LÃ²ria	Andorra
-ParrÃ²quia de la Massana	Andorra
+Parròquia d'Andorra la Vella	Andorra
+Parròquia d'Encamp	Andorra
+Parròquia d'Escaldes-Engordany	Andorra
+Parròquia d'Ordino	Andorra
+Parròquia de Sant Julià de Lòria	Andorra
+Parròquia de la Massana	Andorra
 Abu Dhabi	United Arab Emirates
 Ajman	United Arab Emirates
 Al Fujayrah	United Arab Emirates
-Ash ShÄriqah	United Arab Emirates
+Ash Shāriqah	United Arab Emirates
 Dubai	United Arab Emirates
-Raâ€™s al Khaymah	United Arab Emirates
+Ra’s al Khaymah	United Arab Emirates
 Umm al Qaywayn	United Arab Emirates
 Badakhshan	Afghanistan
 Badghis	Afghanistan
@@ -22,30 +22,30 @@ Ghowr	Afghanistan
 Helmand	Afghanistan
 Herat	Afghanistan
 Kabul	Afghanistan
-KandahÄr	Afghanistan
+Kandahār	Afghanistan
 Kunduz	Afghanistan
-NangarhÄr	Afghanistan
-OrÅ«zgÄn	Afghanistan
+Nangarhār	Afghanistan
+Orūzgān	Afghanistan
 Paktia	Afghanistan
 Panjshir	Afghanistan
-ParwÄn	Afghanistan
-SamangÄn	Afghanistan
+Parwān	Afghanistan
+Samangān	Afghanistan
 Sar-e Pul	Afghanistan
-VelÄyat-e Khowst	Afghanistan
-VelÄyat-e NÅ«restÄn	Afghanistan
+Velāyat-e Khowst	Afghanistan
+Velāyat-e Nūrestān	Afghanistan
 Wardak	Afghanistan
-WilÄyat-e BaghlÄn	Afghanistan
-WilÄyat-e BÄmyÄn	Afghanistan
-WilÄyat-e DÄykundÄ«	Afghanistan
-WilÄyat-e GhaznÄ«	Afghanistan
-WilÄyat-e JowzjÄn	Afghanistan
-WilÄyat-e Kunaá¹Ÿ	Afghanistan
-WilÄyat-e KÄpÄ«sÄ	Afghanistan
-WilÄyat-e LaghmÄn	Afghanistan
-WilÄyat-e LÅgar	Afghanistan
-WilÄyat-e NÄ«mrÅz	Afghanistan
-WilÄyat-e PaktÄ«kÄ	Afghanistan
-WilÄyat-e TakhÄr	Afghanistan
+Wilāyat-e Baghlān	Afghanistan
+Wilāyat-e Bāmyān	Afghanistan
+Wilāyat-e Dāykundī	Afghanistan
+Wilāyat-e Ghaznī	Afghanistan
+Wilāyat-e Jowzjān	Afghanistan
+Wilāyat-e Kunaṟ	Afghanistan
+Wilāyat-e Kāpīsā	Afghanistan
+Wilāyat-e Laghmān	Afghanistan
+Wilāyat-e Lōgar	Afghanistan
+Wilāyat-e Nīmrōz	Afghanistan
+Wilāyat-e Paktīkā	Afghanistan
+Wilāyat-e Takhār	Afghanistan
 Zabul	Afghanistan
 Barbuda	Antigua and Barbuda
 Parish of Saint George	Antigua and Barbuda
@@ -56,27 +56,27 @@ Parish of Saint Peter	Antigua and Barbuda
 Parish of Saint Philip	Antigua and Barbuda
 Redonda	Antigua and Barbuda
 Qarku i Beratit	Albania
-Qarku i DibrÃ«s	Albania
-Qarku i DurrÃ«sit	Albania
+Qarku i Dibrës	Albania
+Qarku i Durrësit	Albania
 Qarku i Elbasanit	Albania
 Qarku i Fierit	Albania
-Qarku i GjirokastrÃ«s	Albania
-Qarku i KorÃ§Ã«s	Albania
-Qarku i KukÃ«sit	Albania
-Qarku i LezhÃ«s	Albania
-Qarku i ShkodrÃ«s	Albania
-Qarku i TiranÃ«s	Albania
-Qarku i VlorÃ«s	Albania
+Qarku i Gjirokastrës	Albania
+Qarku i Korçës	Albania
+Qarku i Kukësit	Albania
+Qarku i Lezhës	Albania
+Qarku i Shkodrës	Albania
+Qarku i Tiranës	Albania
+Qarku i Vlorës	Albania
 Aragatsotni Marz	Armenia
 Ararati Marz	Armenia
 Armaviri Marz	Armenia
-Gegharkâ€™unikâ€™i Marz	Armenia
-Kotaykâ€™i Marz	Armenia
+Geghark’unik’i Marz	Armenia
+Kotayk’i Marz	Armenia
 Lorru Marz	Armenia
 Shiraki Marz	Armenia
-Syunikâ€™i Marz	Armenia
+Syunik’i Marz	Armenia
 Tavushi Marz	Armenia
-Vayotsâ€™ Dzori Marz	Armenia
+Vayots’ Dzori Marz	Armenia
 Yerevan	Armenia
 Bengo Province	Angola
 Benguela	Angola
@@ -93,32 +93,32 @@ Lunda Sul	Angola
 Malanje Province	Angola
 Moxico	Angola
 Namibe Province	Angola
-ProvÃ­ncia do BiÃ©	Angola
-ProvÃ­ncia do UÃ­ge	Angola
+Província do Bié	Angola
+Província do Uíge	Angola
 Zaire	Angola
 Buenos Aires F.D.	Argentina
 Provincia de Buenos Aires	Argentina
 Provincia de Catamarca	Argentina
 Provincia de Corrientes	Argentina
-Provincia de CÃ³rdoba	Argentina
-Provincia de Entre RÃ­os	Argentina
+Provincia de Córdoba	Argentina
+Provincia de Entre Ríos	Argentina
 Provincia de Formosa	Argentina
 Provincia de Jujuy	Argentina
 Provincia de La Pampa	Argentina
 Provincia de La Rioja	Argentina
 Provincia de Mendoza	Argentina
 Provincia de Misiones	Argentina
-Provincia de RÃ­o Negro	Argentina
+Provincia de Río Negro	Argentina
 Provincia de San Juan	Argentina
 Provincia de San Luis	Argentina
 Provincia de Santa Cruz	Argentina
 Provincia de Santa Fe	Argentina
 Provincia de Santiago del Estero	Argentina
-Provincia de Tierra del Fuego, AntÃ¡rtida e Islas 	Argentina
-Provincia de TucumÃ¡n	Argentina
+Provincia de Tierra del Fuego, Antártida e Islas d	Argentina
+Provincia de Tucumán	Argentina
 Provincia del Chaco	Argentina
 Provincia del Chubut	Argentina
-Provincia del NeuquÃ©n	Argentina
+Provincia del Neuquén	Argentina
 Salta	Argentina
 Burgenland	Austria
 Carinthia	Austria
@@ -137,22 +137,22 @@ South Australia	Australia
 Tasmania	Australia
 Victoria	Australia
 Western Australia	Australia
-BrÃ¤ndÃ¶	Ã…land
-EckerÃ¶	Ã…land
-FinstrÃ¶m	Ã…land
-FÃ¶glÃ¶	Ã…land
+Brändö	Ã…land
+Eckerö	Ã…land
+Finström	Ã…land
+Föglö	Ã…land
 Geta	Ã…land
 Hammarland	Ã…land
 Jomala	Ã…land
 Kumlinge	Ã…land
-KÃ¶kar	Ã…land
+Kökar	Ã…land
 Lemland	Ã…land
 Lumparland	Ã…land
 Mariehamn	Ã…land
 Saltvik	Ã…land
 Sottunga	Ã…land
 Sund	Ã…land
-VÃ¥rdÃ¶	Ã…land
+Vårdö	Ã…land
 Absheron Rayon	Azerbaijan
 Aghdam Rayon	Azerbaijan
 Aghdash Rayon	Azerbaijan
@@ -166,7 +166,7 @@ Balakan Rayon	Azerbaijan
 Barda Rayon	Azerbaijan
 Beylagan Rayon	Azerbaijan
 Bilasuvar Rayon	Azerbaijan
-CÉ™brayÄ±l Rayonu	Azerbaijan
+Cəbrayıl Rayonu	Azerbaijan
 Dashkasan Rayon	Azerbaijan
 Davachi Rayon	Azerbaijan
 Fizuli Rayon	Azerbaijan
@@ -183,16 +183,16 @@ Jalilabad Rayon	Azerbaijan
 Khachmaz Rayon	Azerbaijan
 Khizi Rayon	Azerbaijan
 Kurdamir Rayon	Azerbaijan
-KÉ™lbÉ™cÉ™r Rayonu	Azerbaijan
+Kəlbəcər Rayonu	Azerbaijan
 Lankaran Rayon	Azerbaijan
-LaÃ§Ä±n Rayonu	Azerbaijan
+Laçın Rayonu	Azerbaijan
 Lerik Rayon	Azerbaijan
-LÉ™nkÉ™ran ÅžÉ™hÉ™ri	Azerbaijan
+Lənkəran Şəhəri	Azerbaijan
 Masally Rayon	Azerbaijan
 Mingacevir City	Azerbaijan
 Naftalan City	Azerbaijan
 Nakhichevan	Azerbaijan
-NaxÃ§Ä±van ÅžÉ™hÉ™ri	Azerbaijan
+Naxçıvan Şəhəri	Azerbaijan
 Neftchala Rayon	Azerbaijan
 Oghuz Rayon	Azerbaijan
 Qabala Rayon	Azerbaijan
@@ -214,18 +214,18 @@ Sumqayit City	Azerbaijan
 Tartar Rayon	Azerbaijan
 Tovuz Rayon	Azerbaijan
 Ujar Rayon	Azerbaijan
-XankÉ™ndi ÅžÉ™hÉ™ri	Azerbaijan
-XocalÄ± Rayonu	Azerbaijan
-XocavÉ™nd Rayonu	Azerbaijan
+Xankəndi Şəhəri	Azerbaijan
+Xocalı Rayonu	Azerbaijan
+Xocavənd Rayonu	Azerbaijan
 Yardymli Rayon	Azerbaijan
 Yevlakh Rayon	Azerbaijan
 Yevlax City	Azerbaijan
 Zangilan Rayon	Azerbaijan
 Zaqatala Rayon	Azerbaijan
 Zardab Rayon	Azerbaijan
-ÅžuÅŸa Rayonu	Azerbaijan
-ÅžuÅŸa ÅžÉ™hÉ™ri	Azerbaijan
-BrÄko	Bosnia and Herzegovina
+Şuşa Rayonu	Azerbaijan
+Şuşa Şəhəri	Azerbaijan
+Brčko	Bosnia and Herzegovina
 Federation of Bosnia and Herzegovina	Bosnia and Herzegovina
 Republika Srpska	Bosnia and Herzegovina
 Christ Church	Barbados
@@ -244,7 +244,7 @@ Chittagong	Bangladesh
 Dhaka Division	Bangladesh
 Khulna Division	Bangladesh
 Rangpur Division	Bangladesh
-RÄjshÄhi Division	Bangladesh
+Rājshāhi Division	Bangladesh
 Sylhet Division	Bangladesh
 Brussels Capital	Belgium
 Flemish Region	Belgium
@@ -269,7 +269,7 @@ Lovech	Bulgaria
 Oblast Dobrich	Bulgaria
 Oblast Khaskovo	Bulgaria
 Oblast Kyustendil	Bulgaria
-Oblast KÅ­rdzhali	Bulgaria
+Oblast Kŭrdzhali	Bulgaria
 Oblast Montana	Bulgaria
 Oblast Pleven	Bulgaria
 Oblast Razgrad	Bulgaria
@@ -279,8 +279,8 @@ Oblast Silistra	Bulgaria
 Oblast Sliven	Bulgaria
 Oblast Smolyan	Bulgaria
 Oblast Stara Zagora	Bulgaria
-Oblast TÅ­rgovishte	Bulgaria
-Oblast Veliko TÅ­rnovo	Bulgaria
+Oblast Tŭrgovishte	Bulgaria
+Oblast Veliko Tŭrnovo	Bulgaria
 Oblast Vidin	Bulgaria
 Oblast Vratsa	Bulgaria
 Oblast Yambol	Bulgaria
@@ -318,7 +318,7 @@ Atlantique Department	Benin
 Borgou Department	Benin
 Collines Department	Benin
 Donga	Benin
-DÃ©partement de lâ€™ OuÃ©mÃ©	Benin
+Département de l’ Ouémé	Benin
 Kouffo Department	Benin
 Littoral	Benin
 Mono	Benin
@@ -330,9 +330,9 @@ Hamilton city	Bermuda
 Paget	Bermuda
 Pembroke Parish	Bermuda
 Saint George	Bermuda
-Saint Georgeâ€™s Parish	Bermuda
+Saint George’s Parish	Bermuda
 Sandys Parish	Bermuda
-Smithâ€™s Parish	Bermuda
+Smith’s Parish	Bermuda
 Southampton Parish	Bermuda
 Warwick Parish	Bermuda
 Belait District	Brunei
@@ -343,7 +343,7 @@ Departamento de Chuquisaca	Bolivia
 Departamento de Cochabamba	Bolivia
 Departamento de La Paz	Bolivia
 Departamento de Pando	Bolivia
-Departamento de PotosÃ­	Bolivia
+Departamento de Potosí	Bolivia
 Departamento de Santa Cruz	Bolivia
 Departamento de Tarija	Bolivia
 El Beni	Bolivia
@@ -353,26 +353,26 @@ Saba	Bonaire
 Sint Eustatius	Bonaire
 Amazonas	Brazil
 Bahia	Brazil
-Estado da ParaÃ­ba	Brazil
+Estado da Paraíba	Brazil
 Estado de Alagoas	Brazil
-Estado de GoiÃ¡s	Brazil
+Estado de Goiás	Brazil
 Estado de Mato Grosso	Brazil
 Estado de Minas Gerais	Brazil
 Estado de Pernambuco	Brazil
-Estado de RondÃ´nia	Brazil
+Estado de Rondônia	Brazil
 Estado de Roraima	Brazil
 Estado de Santa Catarina	Brazil
 Estado de Sergipe	Brazil
-Estado de SÃ£o Paulo	Brazil
+Estado de São Paulo	Brazil
 Estado de Tocantins	Brazil
 Estado do Acre	Brazil
-Estado do AmapÃ¡	Brazil
-Estado do CearÃ¡	Brazil
-Estado do EspÃ­rito Santo	Brazil
-Estado do MaranhÃ£o	Brazil
-Estado do ParanÃ¡	Brazil
-Estado do ParÃ¡	Brazil
-Estado do PiauÃ­	Brazil
+Estado do Amapá	Brazil
+Estado do Ceará	Brazil
+Estado do Espírito Santo	Brazil
+Estado do Maranhão	Brazil
+Estado do Paraná	Brazil
+Estado do Pará	Brazil
+Estado do Piauí	Brazil
 Estado do Rio Grande do Norte	Brazil
 Estado do Rio Grande do Sul	Brazil
 Federal	Brazil
@@ -402,7 +402,7 @@ Long Island District	Bahamas
 Mangrove Cay District	Bahamas
 Marsh Harbour District	Bahamas
 Mayaguana District	Bahamas
-Mooreâ€™s Island District	Bahamas
+Moore’s Island District	Bahamas
 New Providence District	Bahamas
 North Abaco District	Bahamas
 North Andros District	Bahamas
@@ -445,13 +445,13 @@ North East District	Botswana
 North West District	Botswana
 South East District	Botswana
 Southern District	Botswana
-Brestskaya Oblastâ€™	Belarus
+Brestskaya Oblast’	Belarus
 Gomel Region	Belarus
-Grodnenskaya Oblastâ€™	Belarus
+Grodnenskaya Oblast’	Belarus
 Minsk	Belarus
-Minskaja Voblastsâ€™	Belarus
-MogilÃ«vskaya Oblastâ€™	Belarus
-Vitebskaya Oblastâ€™	Belarus
+Minskaja Voblasts’	Belarus
+Mogilëvskaya Oblast’	Belarus
+Vitebskaya Oblast’	Belarus
 Belize District	Belize
 Cayo District	Belize
 Corozal District	Belize
@@ -476,10 +476,10 @@ Eastern Province	Democratic Republic of the Congo
 Katanga Province	Democratic Republic of the Congo
 Kinshasa City	Democratic Republic of the Congo
 Nord Kivu	Democratic Republic of the Congo
-Province de lâ€™ Ã‰quateur	Democratic Republic of the Congo
+Province de l’ Équateur	Democratic Republic of the Congo
 Province du Bas-Congo	Democratic Republic of the Congo
-Province du KasaÃ¯-Occidental	Democratic Republic of the Congo
-Province du KasaÃ¯-Oriental	Democratic Republic of the Congo
+Province du Kasaï-Occidental	Democratic Republic of the Congo
+Province du Kasaï-Oriental	Democratic Republic of the Congo
 Province du Maniema	Democratic Republic of the Congo
 South Kivu	Democratic Republic of the Congo
 Bamingui-Bangoran	Central African Republic
@@ -488,16 +488,16 @@ Commune de Bangui	Central African Republic
 Haut-Mbomou	Central African Republic
 Haute-Kotto	Central African Republic
 Lobaye	Central African Republic
-MambÃ©rÃ©-KadÃ©Ã¯	Central African Republic
+Mambéré-Kadéï	Central African Republic
 Mbomou	Central African Republic
 Ombella-Mpoko	Central African Republic
 Ouaka	Central African Republic
 Ouham	Central African Republic
-PrÃ©fecture de la KÃ©mo	Central African Republic
-PrÃ©fecture de la Nana-GrÃ©bizi	Central African Republic
-PrÃ©fecture de la Nana-MambÃ©rÃ©	Central African Republic
-PrÃ©fecture de la Sangha-MbaÃ©rÃ©	Central African Republic
-PrÃ©fecture de lâ€™ Ouham-PendÃ©	Central African Republic
+Préfecture de la Kémo	Central African Republic
+Préfecture de la Nana-Grébizi	Central African Republic
+Préfecture de la Nana-Mambéré	Central African Republic
+Préfecture de la Sangha-Mbaéré	Central African Republic
+Préfecture de l’ Ouham-Pendé	Central African Republic
 Vakaga	Central African Republic
 Commune de Brazzaville	Republic of the Congo
 Cuvette	Republic of the Congo
@@ -506,10 +506,10 @@ Likouala	Republic of the Congo
 Plateaux	Republic of the Congo
 Pointe-Noire	Republic of the Congo
 Pool	Republic of the Congo
-RÃ©gion de la Bouenza	Republic of the Congo
-RÃ©gion de la LÃ©koumou	Republic of the Congo
-RÃ©gion du Kouilou	Republic of the Congo
-RÃ©gion du Niari	Republic of the Congo
+Région de la Bouenza	Republic of the Congo
+Région de la Lékoumou	Republic of the Congo
+Région du Kouilou	Republic of the Congo
+Région du Niari	Republic of the Congo
 Sangha	Republic of the Congo
 Aargau	Switzerland
 Appenzell Ausserrhoden	Switzerland
@@ -523,7 +523,7 @@ Glarus	Switzerland
 Grisons	Switzerland
 Jura	Switzerland
 Lucerne	Switzerland
-NeuchÃ¢tel	Switzerland
+Neuchâtel	Switzerland
 Nidwalden	Switzerland
 Obwalden	Switzerland
 Saint Gallen	Switzerland
@@ -537,40 +537,40 @@ Valais	Switzerland
 Vaud	Switzerland
 Zug	Switzerland
 Zurich	Switzerland
-AgnÃ©by	Ivory Coast
+Agnéby	Ivory Coast
 Bafing	Ivory Coast
 Bas-Sassandra	Ivory Coast
-DenguÃ©lÃ©	Ivory Coast
+Denguélé	Ivory Coast
 District des Montagnes	Ivory Coast
 Fromager	Ivory Coast
 Haut-Sassandra	Ivory Coast
 Lacs	Ivory Coast
 Lagunes	Ivory Coast
-MarahouÃ©	Ivory Coast
+Marahoué	Ivory Coast
 Moyen-Cavally	Ivory Coast
-Moyen-ComoÃ©	Ivory Coast
-Nâ€™zi-ComoÃ©	Ivory Coast
-RÃ©gion du Sud-ComoÃ©	Ivory Coast
+Moyen-Comoé	Ivory Coast
+N’zi-Comoé	Ivory Coast
+Région du Sud-Comoé	Ivory Coast
 Savanes	Ivory Coast
 Sud-Bandama	Ivory Coast
-VallÃ©e du Bandama	Ivory Coast
+Vallée du Bandama	Ivory Coast
 Worodougou	Ivory Coast
 Zanzan	Ivory Coast
 Antofagasta	Chile
 Atacama	Chile
-AysÃ©n	Chile
+Aysén	Chile
 Coquimbo	Chile
 Los Lagos	Chile
 Maule	Chile
-RegiÃ³n de Arica y Parinacota	Chile
-RegiÃ³n de Los RÃ­os	Chile
-RegiÃ³n de Magallanes y de la AntÃ¡rtica Chilena	Chile
-RegiÃ³n de ValparaÃ­so	Chile
-RegiÃ³n de la AraucanÃ­a	Chile
-RegiÃ³n del BiobÃ­o	Chile
-RegiÃ³n del Libertador General Bernardo Oâ€™Higgin	Chile
+Región de Arica y Parinacota	Chile
+Región de Los Ríos	Chile
+Región de Magallanes y de la Antártica Chilena	Chile
+Región de Valparaíso	Chile
+Región de la Araucanía	Chile
+Región del Biobío	Chile
+Región del Libertador General Bernardo O’Higgins	Chile
 Santiago Metropolitan	Chile
-TarapacÃ¡	Chile
+Tarapacá	Chile
 Adamaoua	Cameroon
 Centre	Cameroon
 East	Cameroon
@@ -613,59 +613,59 @@ Xinjiang Uygur Zizhiqu	China
 Yunnan	China
 Zhejiang Sheng	China
 Antioquia	Colombia
-AtlÃ¡ntico	Colombia
+Atlántico	Colombia
 Bogota D.C.	Colombia
 Cundinamarca	Colombia
 Departamento de Arauca	Colombia
-Departamento de BolÃ­var	Colombia
-Departamento de BoyacÃ¡	Colombia
+Departamento de Bolívar	Colombia
+Departamento de Boyacá	Colombia
 Departamento de Caldas	Colombia
 Departamento de Casanare	Colombia
-Departamento de CÃ³rdoba	Colombia
+Departamento de Córdoba	Colombia
 Departamento de La Guajira	Colombia
-Departamento de NariÃ±o	Colombia
+Departamento de Nariño	Colombia
 Departamento de Norte de Santander	Colombia
 Departamento de Risaralda	Colombia
 Departamento de Santander	Colombia
 Departamento de Sucre	Colombia
 Departamento de Tolima	Colombia
 Departamento del Amazonas	Colombia
-Departamento del CaquetÃ¡	Colombia
+Departamento del Caquetá	Colombia
 Departamento del Cauca	Colombia
 Departamento del Cesar	Colombia
-Departamento del ChocÃ³	Colombia
-Departamento del GuainÃ­a	Colombia
+Departamento del Chocó	Colombia
+Departamento del Guainía	Colombia
 Departamento del Guaviare	Colombia
 Departamento del Huila	Colombia
 Departamento del Magdalena	Colombia
 Departamento del Meta	Colombia
 Departamento del Putumayo	Colombia
 Departamento del Valle del Cauca	Colombia
-Departamento del VaupÃ©s	Colombia
+Departamento del Vaupés	Colombia
 Departamento del Vichada	Colombia
 Providencia y Santa Catalina, Departamento de Arch	Colombia
-QuindÃ­o Department	Colombia
+Quindío Department	Colombia
 Provincia de Alajuela	Costa Rica
 Provincia de Cartago	Costa Rica
 Provincia de Guanacaste	Costa Rica
 Provincia de Heredia	Costa Rica
-Provincia de LimÃ³n	Costa Rica
+Provincia de Limón	Costa Rica
 Provincia de Puntarenas	Costa Rica
-Provincia de San JosÃ©	Costa Rica
+Provincia de San José	Costa Rica
 Artemisa Province	Cuba
 Las Tunas	Cuba
 Mayabeque	Cuba
 Municipio Especial Isla de la Juventud	Cuba
 Provincia Granma	Cuba
-Provincia de CamagÃ¼ey	Cuba
-Provincia de Ciego de Ãvila	Cuba
+Provincia de Camagüey	Cuba
+Provincia de Ciego de Ávila	Cuba
 Provincia de Cienfuegos	Cuba
-Provincia de GuantÃ¡namo	Cuba
-Provincia de HolguÃ­n	Cuba
+Provincia de Guantánamo	Cuba
+Provincia de Holguín	Cuba
 Provincia de La Habana	Cuba
 Provincia de Matanzas	Cuba
-Provincia de Pinar del RÃ­o	Cuba
-Provincia de Sancti SpÃ­ritus	Cuba
+Provincia de Pinar del Río	Cuba
+Provincia de Sancti Spíritus	Cuba
 Provincia de Santiago de Cuba	Cuba
 Provincia de Villa Clara	Cuba
 Concelho da Boa Vista	Cape Verde
@@ -677,17 +677,17 @@ Concelho de Ribeira Grande de Santiago	Cape Verde
 Concelho de Santa Catarina	Cape Verde
 Concelho de Santa Catarina do Fogo	Cape Verde
 Concelho de Santa Cruz	Cape Verde
-Concelho de SÃ£o Domingos	Cape Verde
-Concelho de SÃ£o LourenÃ§o dos Ã“rgÃ£os	Cape Verde
-Concelho de SÃ£o Miguel	Cape Verde
-Concelho de SÃ£o Salvador do Mundo	Cape Verde
-Concelho de SÃ£o Vicente	Cape Verde
+Concelho de São Domingos	Cape Verde
+Concelho de São Lourenço dos Órgãos	Cape Verde
+Concelho de São Miguel	Cape Verde
+Concelho de São Salvador do Mundo	Cape Verde
+Concelho de São Vicente	Cape Verde
 Concelho do Maio	Cape Verde
 Concelho do Paul	Cape Verde
 Concelho do Porto Novo	Cape Verde
-Concelho do SÃ£o Filipe	Cape Verde
+Concelho do São Filipe	Cape Verde
 Concelho do Tarrafal	Cape Verde
-Concelho do Tarrafal de SÃ£o Nicolau	Cape Verde
+Concelho do Tarrafal de São Nicolau	Cape Verde
 Concelho dos Mosteiros	Cape Verde
 Sal	Cape Verde
 Ammochostos	Cyprus
@@ -697,20 +697,20 @@ Lefkosia	Cyprus
 Limassol	Cyprus
 Pafos	Cyprus
 Central Bohemia	Czechia
-HlavnÃ­ mÄ›sto Praha	Czechia
-JihoÄeskÃ½ kraj	Czechia
-KarlovarskÃ½ kraj	Czechia
-Kraj VysoÄina	Czechia
-KrÃ¡lovÃ©hradeckÃ½ kraj	Czechia
-LibereckÃ½ kraj	Czechia
-MoravskoslezskÃ½ kraj	Czechia
-OlomouckÃ½ kraj	Czechia
-PardubickÃ½ kraj	Czechia
-PlzeÅˆskÃ½ kraj	Czechia
+Hlavní město Praha	Czechia
+Jihočeský kraj	Czechia
+Karlovarský kraj	Czechia
+Kraj Vysočina	Czechia
+Královéhradecký kraj	Czechia
+Liberecký kraj	Czechia
+Moravskoslezský kraj	Czechia
+Olomoucký kraj	Czechia
+Pardubický kraj	Czechia
+Plzeňský kraj	Czechia
 South Moravian	Czechia
-ZlÃ­n Region	Czechia
-ÃšsteckÃ½ kraj	Czechia
-Baden-WÃ¼rttemberg	Germany
+Zlín Region	Czechia
+Ústecký kraj	Czechia
+Baden-Württemberg	Germany
 Bavaria	Germany
 Brandenburg	Germany
 Bremen	Germany
@@ -750,35 +750,35 @@ Saint Peter	Dominica
 Distrito Nacional	Dominican Republic
 Provincia Duarte	Dominican Republic
 Provincia Espaillat	Dominican Republic
-Provincia MarÃ­a Trinidad SÃ¡nchez	Dominican Republic
-Provincia SÃ¡nchez RamÃ­rez	Dominican Republic
+Provincia María Trinidad Sánchez	Dominican Republic
+Provincia Sánchez Ramírez	Dominican Republic
 Provincia de Azua	Dominican Republic
 Provincia de Baoruco	Dominican Republic
 Provincia de Barahona	Dominican Republic
-Provincia de DajabÃ³n	Dominican Republic
+Provincia de Dajabón	Dominican Republic
 Provincia de El Seibo	Dominican Republic
-Provincia de ElÃ­as PiÃ±a	Dominican Republic
+Provincia de Elías Piña	Dominican Republic
 Provincia de Hato Mayor	Dominican Republic
 Provincia de Hermanas Mirabal	Dominican Republic
 Provincia de Independencia	Dominican Republic
 Provincia de La Altagracia	Dominican Republic
 Provincia de La Romana	Dominican Republic
 Provincia de La Vega	Dominican Republic
-Provincia de MonseÃ±or Nouel	Dominican Republic
+Provincia de Monseñor Nouel	Dominican Republic
 Provincia de Monte Cristi	Dominican Republic
 Provincia de Monte Plata	Dominican Republic
 Provincia de Pedernales	Dominican Republic
 Provincia de Peravia	Dominican Republic
-Provincia de San CristÃ³bal	Dominican Republic
-Provincia de San JosÃ© de Ocoa	Dominican Republic
+Provincia de San Cristóbal	Dominican Republic
+Provincia de San José de Ocoa	Dominican Republic
 Provincia de San Juan	Dominican Republic
-Provincia de San Pedro de MacorÃ­s	Dominican Republic
+Provincia de San Pedro de Macorís	Dominican Republic
 Provincia de Santiago	Dominican Republic
-Provincia de Santiago RodrÃ­guez	Dominican Republic
+Provincia de Santiago Rodríguez	Dominican Republic
 Provincia de Santo Domingo	Dominican Republic
 Provincia de Valverde	Dominican Republic
 Puerto Plata	Dominican Republic
-SamanÃ¡	Dominican Republic
+Samaná	Dominican Republic
 Adrar	Algeria
 Annaba	Algeria
 El Bayadh	Algeria
@@ -787,20 +787,20 @@ El Tarf	Algeria
 Illizi	Algeria
 Oran	Algeria
 Oum el Bouaghi	Algeria
-Wilaya de AÃ¯n Defla	Algeria
-Wilaya de AÃ¯n Temouchent	Algeria
+Wilaya de Aïn Defla	Algeria
+Wilaya de Aïn Temouchent	Algeria
 Wilaya de Batna	Algeria
-Wilaya de BejaÃ¯a	Algeria
+Wilaya de Bejaïa	Algeria
 Wilaya de Biskra	Algeria
 Wilaya de Blida	Algeria
-Wilaya de Bordj Bou ArrÃ©ridj	Algeria
+Wilaya de Bordj Bou Arréridj	Algeria
 Wilaya de Bouira	Algeria
 Wilaya de Boumerdes	Algeria
-Wilaya de BÃ©char	Algeria
+Wilaya de Béchar	Algeria
 Wilaya de Chlef	Algeria
 Wilaya de Constantine	Algeria
 Wilaya de Djelfa	Algeria
-Wilaya de GhardaÃ¯a	Algeria
+Wilaya de Ghardaïa	Algeria
 Wilaya de Guelma	Algeria
 Wilaya de Jijel	Algeria
 Wilaya de Khenchela	Algeria
@@ -808,16 +808,16 @@ Wilaya de Laghouat	Algeria
 Wilaya de Mascara	Algeria
 Wilaya de Mila	Algeria
 Wilaya de Mostaganem	Algeria
-Wilaya de MÃ©dÃ©a	Algeria
-Wilaya de Mâ€™Sila	Algeria
+Wilaya de Médéa	Algeria
+Wilaya de M’Sila	Algeria
 Wilaya de Naama	Algeria
 Wilaya de Ouargla	Algeria
 Wilaya de Relizane	Algeria
-Wilaya de SaÃ¯da	Algeria
-Wilaya de Sidi Bel AbbÃ¨s	Algeria
+Wilaya de Saïda	Algeria
+Wilaya de Sidi Bel Abbès	Algeria
 Wilaya de Skikda	Algeria
 Wilaya de Souk Ahras	Algeria
-Wilaya de SÃ©tif	Algeria
+Wilaya de Sétif	Algeria
 Wilaya de Tamanghasset	Algeria
 Wilaya de Tiaret	Algeria
 Wilaya de Tindouf	Algeria
@@ -825,28 +825,28 @@ Wilaya de Tipaza	Algeria
 Wilaya de Tissemsilt	Algeria
 Wilaya de Tizi Ouzou	Algeria
 Wilaya de Tlemcen	Algeria
-Wilaya de TÃ©bessa	Algeria
-Wilaya dâ€™ Alger	Algeria
-Provincia de BolÃ­var	Ecuador
+Wilaya de Tébessa	Algeria
+Wilaya d’ Alger	Algeria
+Provincia de Bolívar	Ecuador
 Provincia de Cotopaxi	Ecuador
 Provincia de El Oro	Ecuador
 Provincia de Esmeraldas	Ecuador
 Provincia de Francisco de Orellana	Ecuador
-Provincia de GalÃ¡pagos	Ecuador
+Provincia de Galápagos	Ecuador
 Provincia de Imbabura	Ecuador
 Provincia de Loja	Ecuador
-Provincia de Los RÃ­os	Ecuador
-Provincia de ManabÃ­	Ecuador
+Provincia de Los Ríos	Ecuador
+Provincia de Manabí	Ecuador
 Provincia de Morona-Santiago	Ecuador
 Provincia de Napo	Ecuador
 Provincia de Pichincha	Ecuador
 Provincia de Santa Elena	Ecuador
-Provincia de Santo Domingo de los TsÃ¡chilas	Ecuador
-Provincia de SucumbÃ­os	Ecuador
+Provincia de Santo Domingo de los Tsáchilas	Ecuador
+Provincia de Sucumbíos	Ecuador
 Provincia de Zamora-Chinchipe	Ecuador
 Provincia del Azuay	Ecuador
 Provincia del Carchi	Ecuador
-Provincia del CaÃ±ar	Ecuador
+Provincia del Cañar	Ecuador
 Provincia del Chimborazo	Ecuador
 Provincia del Guayas	Ecuador
 Provincia del Pastaza	Ecuador
@@ -854,43 +854,43 @@ Provincia del Tungurahua	Ecuador
 Harju	Estonia
 Hiiumaa	Estonia
 Ida-Virumaa	Estonia
-JÃ¤rvamaa	Estonia
-JÃµgevamaa	Estonia
-LÃ¤Ã¤ne	Estonia
-LÃ¤Ã¤ne-Virumaa	Estonia
-PÃ¤rnumaa	Estonia
-PÃµlvamaa	Estonia
+Järvamaa	Estonia
+Jõgevamaa	Estonia
+Lääne	Estonia
+Lääne-Virumaa	Estonia
+Pärnumaa	Estonia
+Põlvamaa	Estonia
 Raplamaa	Estonia
 Saare	Estonia
 Tartu	Estonia
 Valgamaa	Estonia
 Viljandimaa	Estonia
-VÃµrumaa	Estonia
+Võrumaa	Estonia
 Alexandria	Egypt
 As Suways	Egypt
 Beheira Governorate	Egypt
 Eastern Province	Egypt
 Ismailia Governorate	Egypt
 Kafr ash Shaykh	Egypt
-Muá¸©ÄfazÌ§at AswÄn	Egypt
-Muá¸©ÄfazÌ§at AsyÅ«Å£	Egypt
-Muá¸©ÄfazÌ§at BanÄ« Suwayf	Egypt
-Muá¸©ÄfazÌ§at BÅ«r Saâ€˜Ä«d	Egypt
-Muá¸©ÄfazÌ§at DumyÄÅ£	Egypt
-Muá¸©ÄfazÌ§at MaÅ£rÅ«á¸©	Egypt
-Muá¸©ÄfazÌ§at QinÄ	Egypt
-Muá¸©ÄfazÌ§at ShamÄl SÄ«nÄâ€™	Egypt
-Muá¸©ÄfazÌ§at SÅ«hÄj	Egypt
-Muá¸©ÄfazÌ§at ad DaqahlÄ«yah	Egypt
-Muá¸©ÄfazÌ§at al FayyÅ«m	Egypt
-Muá¸©ÄfazÌ§at al GharbÄ«yah	Egypt
-Muá¸©ÄfazÌ§at al JÄ«zah	Egypt
-Muá¸©ÄfazÌ§at al MinyÄ	Egypt
-Muá¸©ÄfazÌ§at al MinÅ«fÄ«yah	Egypt
-Muá¸©ÄfazÌ§at al QalyÅ«bÄ«yah	Egypt
-Muá¸©ÄfazÌ§at al QÄhirah	Egypt
-Muá¸©ÄfazÌ§at al UqÅŸur	Egypt
-Muá¸©ÄfazÌ§at al WÄdÄ« al JadÄ«d	Egypt
+Muḩāfaz̧at Aswān	Egypt
+Muḩāfaz̧at Asyūţ	Egypt
+Muḩāfaz̧at Banī Suwayf	Egypt
+Muḩāfaz̧at Būr Sa‘īd	Egypt
+Muḩāfaz̧at Dumyāţ	Egypt
+Muḩāfaz̧at Maţrūḩ	Egypt
+Muḩāfaz̧at Qinā	Egypt
+Muḩāfaz̧at Shamāl Sīnā’	Egypt
+Muḩāfaz̧at Sūhāj	Egypt
+Muḩāfaz̧at ad Daqahlīyah	Egypt
+Muḩāfaz̧at al Fayyūm	Egypt
+Muḩāfaz̧at al Gharbīyah	Egypt
+Muḩāfaz̧at al Jīzah	Egypt
+Muḩāfaz̧at al Minyā	Egypt
+Muḩāfaz̧at al Minūfīyah	Egypt
+Muḩāfaz̧at al Qalyūbīyah	Egypt
+Muḩāfaz̧at al Qāhirah	Egypt
+Muḩāfaz̧at al Uqşur	Egypt
+Muḩāfaz̧at al Wādī al Jadīd	Egypt
 Red Sea Governorate	Egypt
 South Sinai Governorate	Egypt
 Anseba Region	Eritrea
@@ -906,7 +906,7 @@ Balearic Islands	Spain
 Basque Country	Spain
 Canary Islands	Spain
 Cantabria	Spain
-Castille and LeÃ³n	Spain
+Castille and León	Spain
 Castille-La Mancha	Spain
 Catalonia	Spain
 Ceuta	Spain
@@ -919,7 +919,7 @@ Murcia	Spain
 Navarre	Spain
 Valencia	Spain
 Amhara	Ethiopia
-BÄ«nshangul Gumuz	Ethiopia
+Bīnshangul Gumuz	Ethiopia
 Dire Dawa	Ethiopia
 Gambela	Ethiopia
 Harari	Ethiopia
@@ -927,18 +927,18 @@ Oromiya	Ethiopia
 Somali	Ethiopia
 Southern Nations, Nationalities, and People's Regi	Ethiopia
 Tigray	Ethiopia
-Ä€dÄ«s Ä€beba Ä€stedader	Ethiopia
-Ä€far	Ethiopia
-BrÃ¤ndÃ¶	Ã…land
+Ādīs Ābeba Āstedader	Ethiopia
+Āfar	Ethiopia
+Brändö	Ã…land
 Eastern Finland	Finland
-EckerÃ¶	Ã…land
-FinstrÃ¶m	Ã…land
-FÃ¶glÃ¶	Ã…land
+Eckerö	Ã…land
+Finström	Ã…land
+Föglö	Ã…land
 Geta	Ã…land
 Hammarland	Ã…land
 Jomala	Ã…land
 Kumlinge	Ã…land
-KÃ¶kar	Ã…land
+Kökar	Ã…land
 Lapland	Finland
 Lemland	Ã…land
 Lumparland	Ã…land
@@ -948,7 +948,7 @@ Saltvik	Ã…land
 Sottunga	Ã…land
 Southern Finland	Finland
 Sund	Ã…land
-VÃ¥rdÃ¶	Ã…land
+Vårdö	Ã…land
 Western Finland	Finland
 Central	Fiji
 Eastern	Fiji
@@ -961,11 +961,11 @@ State of Kosrae	Micronesia
 State of Pohnpei	Micronesia
 State of Yap	Micronesia
 Eysturoy	Faroe Islands
-NorÃ°oyar	Faroe Islands
+Norðoyar	Faroe Islands
 Sandoy	Faroe Islands
 Streymoy	Faroe Islands
-SuÃ°uroy	Faroe Islands
-VÃ¡gar	Faroe Islands
+Suðuroy	Faroe Islands
+Vágar	Faroe Islands
 Alsace	France
 Aquitaine	France
 Auvergne	France
@@ -974,7 +974,7 @@ Brittany	France
 Centre	France
 Champagne-Ardenne	France
 Corsica	France
-Franche-ComtÃ©	France
+Franche-Comté	France
 Guadeloupe	Guadeloupe
 Guyane	French Guiana
 Languedoc-Roussillon	France
@@ -982,24 +982,24 @@ Limousin	France
 Lorraine	France
 Lower Normandy	France
 Martinique	Martinique
-Midi-PyrÃ©nÃ©es	France
+Midi-Pyrénées	France
 Nord-Pas-de-Calais	France
 Pays de la Loire	France
 Picardie	France
 Poitou-Charentes	France
-Provence-Alpes-CÃ´te d'Azur	France
-RhÃ´ne-Alpes	France
-RÃ©union	RÃ©union
+Provence-Alpes-Côte d'Azur	France
+Rhône-Alpes	France
+Réunion	RÃ©union
 Upper Normandy	France
-ÃŽle-de-France	France
+Île-de-France	France
 Estuaire	Gabon
-Province de la NgouniÃ©	Gabon
+Province de la Ngounié	Gabon
 Province de la Nyanga	Gabon
-Province de lâ€™ OgoouÃ©-Ivindo	Gabon
-Province de lâ€™ OgoouÃ©-Lolo	Gabon
-Province de lâ€™ OgoouÃ©-Maritime	Gabon
-Province du Haut-OgoouÃ©	Gabon
-Province du Moyen-OgoouÃ©	Gabon
+Province de l’ Ogooué-Ivindo	Gabon
+Province de l’ Ogooué-Lolo	Gabon
+Province de l’ Ogooué-Maritime	Gabon
+Province du Haut-Ogooué	Gabon
+Province du Moyen-Ogooué	Gabon
 Province du Woleu-Ntem	Gabon
 Castel	Guernsey
 England	United Kingdom
@@ -1072,15 +1072,15 @@ Conakry Region	Guinea
 Faranah	Guinea
 Kankan Region	Guinea
 Kindia	Guinea
-LabÃ© Region	Guinea
+Labé Region	Guinea
 Mamou Region	Guinea
 Nzerekore Region	Guinea
 Guadeloupe	Guadeloupe
-Provincia de AnnobÃ³n	Equatorial Guinea
+Provincia de Annobón	Equatorial Guinea
 Provincia de Bioko Norte	Equatorial Guinea
 Provincia de Bioko Sur	Equatorial Guinea
 Provincia de Centro Sur	Equatorial Guinea
-Provincia de KiÃ©-Ntem	Equatorial Guinea
+Provincia de Kié-Ntem	Equatorial Guinea
 Provincia de Litoral	Equatorial Guinea
 Provincia de Wele-Nzas	Equatorial Guinea
 Attica	Greece
@@ -1110,15 +1110,15 @@ Departamento de Jalapa	Guatemala
 Departamento de Jutiapa	Guatemala
 Departamento de Quetzaltenango	Guatemala
 Departamento de Retalhuleu	Guatemala
-Departamento de SacatepÃ©quez	Guatemala
+Departamento de Sacatepéquez	Guatemala
 Departamento de San Marcos	Guatemala
 Departamento de Santa Rosa	Guatemala
-Departamento de SololÃ¡	Guatemala
-Departamento de SuchitepÃ©quez	Guatemala
-Departamento de TotonicapÃ¡n	Guatemala
+Departamento de Sololá	Guatemala
+Departamento de Suchitepéquez	Guatemala
+Departamento de Totonicapán	Guatemala
 Departamento de Zacapa	Guatemala
-Departamento del PetÃ©n	Guatemala
-Departamento del QuichÃ©	Guatemala
+Departamento del Petén	Guatemala
+Departamento del Quiché	Guatemala
 Agana Heights	Guam
 Agat	Guam
 Asan	Guam
@@ -1138,12 +1138,12 @@ Tamuning	Guam
 Umatac	Guam
 Yigo	Guam
 Yona	Guam
-BafatÃ¡	Guinea-Bissau
+Bafatá	Guinea-Bissau
 Biombo	Guinea-Bissau
 Bissau Autonomous Region	Guinea-Bissau
 Bolama and Bijagos	Guinea-Bissau
 Cacheu Region	Guinea-Bissau
-GabÃº	Guinea-Bissau
+Gabú	Guinea-Bissau
 Oio Region	Guinea-Bissau
 Quinara	Guinea-Bissau
 Tombali	Guinea-Bissau
@@ -1176,73 +1176,73 @@ Wong Tai Sin	Hong Kong
 Yau Tsim Mong	Hong Kong
 Yuen Long District	Hong Kong
 Bay Islands	Honduras
-Departamento de AtlÃ¡ntida	Honduras
+Departamento de Atlántida	Honduras
 Departamento de Choluteca	Honduras
-Departamento de ColÃ³n	Honduras
+Departamento de Colón	Honduras
 Departamento de Comayagua	Honduras
-Departamento de CopÃ¡n	Honduras
-Departamento de CortÃ©s	Honduras
-Departamento de El ParaÃ­so	Honduras
-Departamento de Francisco MorazÃ¡n	Honduras
+Departamento de Copán	Honduras
+Departamento de Cortés	Honduras
+Departamento de El Paraíso	Honduras
+Departamento de Francisco Morazán	Honduras
 Departamento de Gracias a Dios	Honduras
-Departamento de IntibucÃ¡	Honduras
+Departamento de Intibucá	Honduras
 Departamento de La Paz	Honduras
 Departamento de Lempira	Honduras
 Departamento de Ocotepeque	Honduras
 Departamento de Olancho	Honduras
-Departamento de Santa BÃ¡rbara	Honduras
+Departamento de Santa Bárbara	Honduras
 Departamento de Valle	Honduras
 Departamento de Yoro	Honduras
-Bjelovarsko-Bilogorska Å½upanija	Croatia
-Brodsko-Posavska Å½upanija	Croatia
-DubrovaÄko-Neretvanska Å½upanija	Croatia
+Bjelovarsko-Bilogorska Županija	Croatia
+Brodsko-Posavska Županija	Croatia
+Dubrovačko-Neretvanska Županija	Croatia
 Grad Zagreb	Croatia
-Istarska Å½upanija	Croatia
-KarlovaÄka Å½upanija	Croatia
-KoprivniÄko-KriÅ¾evaÄka Å½upanija	Croatia
-Krapinsko-Zagorska Å½upanija	Croatia
-LiÄko-Senjska Å½upanija	Croatia
-MeÄ‘imurska Å½upanija	Croatia
-OsjeÄko-Baranjska Å½upanija	Croatia
-PoÅ¾eÅ¡ko-Slavonska Å½upanija	Croatia
-Primorsko-Goranska Å½upanija	Croatia
-SisaÄko-MoslavaÄka Å½upanija	Croatia
-Splitsko-Dalmatinska Å½upanija	Croatia
-VaraÅ¾dinska Å½upanija	Croatia
-VirovitiÄko-Podravska Å½upanija	Croatia
-Vukovarsko-Srijemska Å½upanija	Croatia
-Zadarska Å½upanija	Croatia
+Istarska Županija	Croatia
+Karlovačka Županija	Croatia
+Koprivničko-Križevačka Županija	Croatia
+Krapinsko-Zagorska Županija	Croatia
+Ličko-Senjska Županija	Croatia
+Međimurska Županija	Croatia
+Osječko-Baranjska Županija	Croatia
+Požeško-Slavonska Županija	Croatia
+Primorsko-Goranska Županija	Croatia
+Sisačko-Moslavačka Županija	Croatia
+Splitsko-Dalmatinska Županija	Croatia
+Varaždinska Županija	Croatia
+Virovitičko-Podravska Županija	Croatia
+Vukovarsko-Srijemska Županija	Croatia
+Zadarska Županija	Croatia
 Zagreb County	Croatia
-Å ibensko-Kninska Å½upanija	Croatia
+Šibensko-Kninska Županija	Croatia
 Centre	Haiti
-DÃ©partement de Nippes	Haiti
-DÃ©partement de l'Artibonite	Haiti
-DÃ©partement de l'Ouest	Haiti
-DÃ©partement de la Grandâ€™Anse	Haiti
-DÃ©partement du Nord-Est	Haiti
+Département de Nippes	Haiti
+Département de l'Artibonite	Haiti
+Département de l'Ouest	Haiti
+Département de la Grand’Anse	Haiti
+Département du Nord-Est	Haiti
 Nord	Haiti
 Nord-Ouest	Haiti
 Sud	Haiti
 Sud-Est	Haiti
 Baranya	Hungary
 Bekes	Hungary
-Borsod-AbaÃºj-ZemplÃ©n	Hungary
-Budapest fÅ‘vÃ¡ros	Hungary
-BÃ¡cs-Kiskun	Hungary
-CsongrÃ¡d megye	Hungary
-FejÃ©r	Hungary
-GyÅ‘r-Moson-Sopron	Hungary
-HajdÃº-Bihar	Hungary
+Borsod-Abaúj-Zemplén	Hungary
+Budapest főváros	Hungary
+Bács-Kiskun	Hungary
+Csongrád megye	Hungary
+Fejér	Hungary
+Győr-Moson-Sopron	Hungary
+Hajdú-Bihar	Hungary
 Heves megye	Hungary
-JÃ¡sz-Nagykun-Szolnok	Hungary
-KomÃ¡rom-Esztergom	Hungary
-NÃ³grÃ¡d megye	Hungary
+Jász-Nagykun-Szolnok	Hungary
+Komárom-Esztergom	Hungary
+Nógrád megye	Hungary
 Pest megye	Hungary
 Somogy megye	Hungary
-Szabolcs-SzatmÃ¡r-Bereg	Hungary
+Szabolcs-Szatmár-Bereg	Hungary
 Tolna megye	Hungary
 Vas	Hungary
-VeszprÃ©m megye	Hungary
+Veszprém megye	Hungary
 Zala	Hungary
 Bali	Indonesia
 Bangka-Belitung	Indonesia
@@ -1306,9 +1306,9 @@ Nagaland	India
 Rajasthan	India
 State of Andhra Pradesh	India
 State of Assam	India
-State of ChhattÄ«sgarh	India
-State of GujarÄt	India
-State of HimÄchal Pradesh	India
+State of Chhattīsgarh	India
+State of Gujarāt	India
+State of Himāchal Pradesh	India
 State of Jharkhand	India
 State of Madhya Pradesh	India
 State of Manipur	India
@@ -1319,7 +1319,7 @@ State of Sikkim	India
 State of Tripura	India
 Tamil Nadu	India
 Union Territory of Andaman and Nicobar Islands	India
-Union Territory of DÄdra and Nagar Haveli	India
+Union Territory of Dādra and Nagar Haveli	India
 Union Territory of Puducherry	India
 Uttar Pradesh	India
 Uttarakhand	India
@@ -1332,44 +1332,44 @@ Mayorality of Baghdad	Iraq
 Maysan	Iraq
 Muhafazat Salah ad Din	Iraq
 Muhafazat Wasit	Iraq
-Muá¸©ÄfazÌ§at ArbÄ«l	Iraq
-Muá¸©ÄfazÌ§at BÄbil	Iraq
-Muá¸©ÄfazÌ§at KarbalÄâ€™	Iraq
-Muá¸©ÄfazÌ§at KirkÅ«k	Iraq
-Muá¸©ÄfazÌ§at NÄ«nawÃ¡	Iraq
-Muá¸©ÄfazÌ§at al BaÅŸrah	Iraq
-Muá¸©ÄfazÌ§at al MuthannÃ¡	Iraq
-Muá¸©ÄfazÌ§at al QÄdisÄ«yah	Iraq
-Muá¸©ÄfazÌ§at as SulaymÄnÄ«yah	Iraq
+Muḩāfaz̧at Arbīl	Iraq
+Muḩāfaz̧at Bābil	Iraq
+Muḩāfaz̧at Karbalā’	Iraq
+Muḩāfaz̧at Kirkūk	Iraq
+Muḩāfaz̧at Nīnawá	Iraq
+Muḩāfaz̧at al Başrah	Iraq
+Muḩāfaz̧at al Muthanná	Iraq
+Muḩāfaz̧at al Qādisīyah	Iraq
+Muḩāfaz̧at as Sulaymānīyah	Iraq
 Alborz	Iran
 Bushehr	Iran
 East Azarbaijan	Iran
-FÄrs	Iran
-HormozgÄn	Iran
+Fārs	Iran
+Hormozgān	Iran
 Markazi	Iran
-MÄzandarÄn	Iran
-OstÄn-e ArdabÄ«l	Iran
-OstÄn-e ChahÄr Maá¸©Äl va BakhtÄ«ÄrÄ«	Iran
-OstÄn-e EÅŸfahÄn	Iran
-OstÄn-e GolestÄn	Iran
-OstÄn-e GÄ«lÄn	Iran
-OstÄn-e HamadÄn	Iran
-OstÄn-e KermÄn	Iran
-OstÄn-e KermÄnshÄh	Iran
-OstÄn-e KhorÄsÄn-e JonÅ«bÄ«	Iran
-OstÄn-e KhorÄsÄn-e ShomÄlÄ«	Iran
-OstÄn-e KhÅ«zestÄn	Iran
-OstÄn-e KohgÄ«lÅ«yeh va Bowyer Aá¸©mad	Iran
-OstÄn-e KordestÄn	Iran
-OstÄn-e LorestÄn	Iran
-OstÄn-e QazvÄ«n	Iran
-OstÄn-e SÄ«stÄn va BalÅ«chestÄn	Iran
-OstÄn-e TehrÄn	Iran
-OstÄn-e Ä€zÌ„arbÄyjÄn-e GharbÄ«	Iran
-OstÄn-e ÄªlÄm	Iran
+Māzandarān	Iran
+Ostān-e Ardabīl	Iran
+Ostān-e Chahār Maḩāl va Bakhtīārī	Iran
+Ostān-e Eşfahān	Iran
+Ostān-e Golestān	Iran
+Ostān-e Gīlān	Iran
+Ostān-e Hamadān	Iran
+Ostān-e Kermān	Iran
+Ostān-e Kermānshāh	Iran
+Ostān-e Khorāsān-e Jonūbī	Iran
+Ostān-e Khorāsān-e Shomālī	Iran
+Ostān-e Khūzestān	Iran
+Ostān-e Kohgīlūyeh va Bowyer Aḩmad	Iran
+Ostān-e Kordestān	Iran
+Ostān-e Lorestān	Iran
+Ostān-e Qazvīn	Iran
+Ostān-e Sīstān va Balūchestān	Iran
+Ostān-e Tehrān	Iran
+Ostān-e Āz̄arbāyjān-e Gharbī	Iran
+Ostān-e Īlām	Iran
 Qom	Iran
 Razavi Khorasan	Iran
-SemnÄn	Iran
+Semnān	Iran
 Yazd	Iran
 Zanjan	Iran
 Capital Region	Iceland
@@ -1423,7 +1423,7 @@ Jerash	Jordan
 Karak	Jordan
 Madaba	Jordan
 Mafraq	Jordan
-Maâ€™an	Jordan
+Ma’an	Jordan
 Tafielah	Jordan
 Zarqa	Jordan
 Aichi	Japan
@@ -1437,8 +1437,8 @@ Fukushima	Japan
 Gifu	Japan
 Gunma	Japan
 Hiroshima	Japan
-HokkaidÅ	Japan
-HyÅgo	Japan
+Hokkaidō	Japan
+Hyōgo	Japan
 Ibaraki	Japan
 Ishikawa	Japan
 Iwate	Japan
@@ -1446,8 +1446,8 @@ Kagawa	Japan
 Kagoshima	Japan
 Kanagawa	Japan
 Kumamoto	Japan
-KyÅto	Japan
-KÅchi-ken	Japan
+Kyōto	Japan
+Kōchi-ken	Japan
 Mie	Japan
 Miyagi	Japan
 Miyazaki	Japan
@@ -1466,13 +1466,13 @@ Tochigi	Japan
 Tokushima	Japan
 Tottori	Japan
 Toyama	Japan
-TÅkyÅ	Japan
+Tōkyō	Japan
 Wakayama	Japan
 Yamagata	Japan
 Yamaguchi	Japan
 Yamanashi	Japan
-ÅŒita	Japan
-ÅŒsaka	Japan
+Ōita	Japan
+Ōsaka	Japan
 Baringo	Kenya
 Bomet	Kenya
 Bungoma	Kenya
@@ -1520,9 +1520,9 @@ Vihiga	Kenya
 Wajir	Kenya
 West Pokot	Kenya
 Batken	Kyrgyzstan
-Chuyskaya Oblastâ€™	Kyrgyzstan
+Chuyskaya Oblast’	Kyrgyzstan
 Gorod Bishkek	Kyrgyzstan
-Issyk-Kulâ€™skaya Oblastâ€™	Kyrgyzstan
+Issyk-Kul’skaya Oblast’	Kyrgyzstan
 Jalal-Abad	Kyrgyzstan
 Naryn	Kyrgyzstan
 Osh Oblasty	Kyrgyzstan
@@ -1550,7 +1550,7 @@ Siem Reap	Cambodia
 Stung Treng	Cambodia
 Svay Rieng	Cambodia
 Takeo	Cambodia
-ÅŽtÃ¢r MÃ©anchey	Cambodia
+Ŏtâr Méanchey	Cambodia
 Gilbert Islands	Kiribati
 Line Islands	Kiribati
 Phoenix Islands	Kiribati
@@ -1576,10 +1576,10 @@ Hambuk	North Korea
 Hamnam	North Korea
 Hwanghae-bukto	North Korea
 Hwanghae-namdo	North Korea
-KangwÅn-do	North Korea
+Kangwŏn-do	North Korea
 Pyongyang	North Korea
-Pâ€™yÅngan-bukto	North Korea
-Pâ€™yÅngan-namdo	North Korea
+P’yŏngan-bukto	North Korea
+P’yŏngan-namdo	North Korea
 Rason	North Korea
 Yanggang-do	North Korea
 Busan	South Korea
@@ -1602,36 +1602,36 @@ Ulsan	South Korea
 Al Ahmadi Governorate	Kuwait
 Al Asimah	Kuwait
 Al Farwaniyah	Kuwait
-Muá¸©ÄfazÌ§at MubÄrak al KabÄ«r	Kuwait
-Muá¸©ÄfazÌ§at al JahrÄâ€™	Kuwait
-Muá¸©ÄfazÌ§at á¸¨awallÄ«	Kuwait
-Aktyubinskaya Oblastâ€™	Kazakhstan
+Muḩāfaz̧at Mubārak al Kabīr	Kuwait
+Muḩāfaz̧at al Jahrā’	Kuwait
+Muḩāfaz̧at Ḩawallī	Kuwait
+Aktyubinskaya Oblast’	Kazakhstan
 Almaty Oblysy	Kazakhstan
 Almaty Qalasy	Kazakhstan
 Aqmola Oblysy	Kazakhstan
 Astana Qalasy	Kazakhstan
-AtyraÅ« Oblysy	Kazakhstan
+Atyraū Oblysy	Kazakhstan
 Batys Qazaqstan Oblysy	Kazakhstan
 Bayqongyr Qalasy	Kazakhstan
 East Kazakhstan	Kazakhstan
-Mangistauskaya Oblastâ€™	Kazakhstan
+Mangistauskaya Oblast’	Kazakhstan
 Pavlodar Oblysy	Kazakhstan
 Qaraghandy Oblysy	Kazakhstan
 Qostanay Oblysy	Kazakhstan
 Qyzylorda Oblysy	Kazakhstan
-Severo-Kazakhstanskaya Oblastâ€™	Kazakhstan
-Yuzhno-Kazakhstanskaya Oblastâ€™	Kazakhstan
+Severo-Kazakhstanskaya Oblast’	Kazakhstan
+Yuzhno-Kazakhstanskaya Oblast’	Kazakhstan
 Zhambyl Oblysy	Kazakhstan
 Attapu	Laos
 Bolikhamxai	Laos
 Champasak	Laos
 Houaphan	Laos
 Khammouan	Laos
-KhouÃ¨ng BokÃ¨o	Laos
-KhouÃ¨ng OudÃ´mxai	Laos
-KhouÃ¨ng PhÃ´ngsali	Laos
-KhouÃ¨ng SavannakhÃ©t	Laos
-KhouÃ¨ng XÃ©kong	Laos
+Khouèng Bokèo	Laos
+Khouèng Oudômxai	Laos
+Khouèng Phôngsali	Laos
+Khouèng Savannakhét	Laos
+Khouèng Xékong	Laos
 Louangnamtha	Laos
 Luang Prabang Province	Laos
 Salavan	Laos
@@ -1640,13 +1640,13 @@ Vientiane	Laos
 Xaignabouli	Laos
 Xiangkhouang	Laos
 Beyrouth	Lebanon
-Mohafazat AakkÃ¢r	Lebanon
+Mohafazat Aakkâr	Lebanon
 Mohafazat Baalbek-Hermel	Lebanon
-Mohafazat BÃ©qaa	Lebanon
+Mohafazat Béqaa	Lebanon
 Mohafazat Liban-Nord	Lebanon
 Mohafazat Liban-Sud	Lebanon
 Mohafazat Mont-Liban	Lebanon
-Mohafazat NabatÃ®yÃ©	Lebanon
+Mohafazat Nabatîyé	Lebanon
 Quarter of Anse-la-Raye	Saint Lucia
 Quarter of Castries	Saint Lucia
 Quarter of Choiseul	Saint Lucia
@@ -1656,7 +1656,7 @@ Quarter of Gros-Islet	Saint Lucia
 Quarter of Laborie	Saint Lucia
 Quarter of Micoud	Saint Lucia
 Quarter of Praslin	Saint Lucia
-Quarter of SoufriÃ¨re	Saint Lucia
+Quarter of Soufrière	Saint Lucia
 Quarter of Vieux-Fort	Saint Lucia
 Balzers	Liechtenstein
 Eschen	Liechtenstein
@@ -1698,46 +1698,46 @@ Butha-Buthe	Lesotho
 Leribe	Lesotho
 Mafeteng District	Lesotho
 Maseru	Lesotho
-Mohaleâ€™s Hoek District	Lesotho
+Mohale’s Hoek District	Lesotho
 Mokhotlong	Lesotho
-Qachaâ€™s Nek	Lesotho
+Qacha’s Nek	Lesotho
 Quthing	Lesotho
 Thaba-Tseka	Lesotho
 Alytaus Apskritis	Lithuania
 Kauno Apskritis	Lithuania
-KlaipÄ—dos Apskritis	Lithuania
-MarijampolÄ—s Apskritis	Lithuania
-PanevÄ—Å¾ys County	Lithuania
-TauragÄ—s Apskritis	Lithuania
-TelÅ¡iÅ³ Apskritis	Lithuania
+Klaipėdos Apskritis	Lithuania
+Marijampolės Apskritis	Lithuania
+Panevėžys County	Lithuania
+Tauragės Apskritis	Lithuania
+Telšių Apskritis	Lithuania
 Utenos Apskritis	Lithuania
 Vilniaus Apskritis	Lithuania
-Å iauliÅ³ Apskritis	Lithuania
+Šiaulių Apskritis	Lithuania
 District de Diekirch	Luxembourg
 District de Grevenmacher	Luxembourg
 District de Luxembourg	Luxembourg
 Aglona	Latvia
 Aizkraukles Rajons	Latvia
 Aizpute	Latvia
-AknÄ«stes Novads	Latvia
+Aknīstes Novads	Latvia
 Alojas Novads	Latvia
 Alsungas Novads	Latvia
-AlÅ«ksnes Rajons	Latvia
+Alūksnes Rajons	Latvia
 Amatas Novads	Latvia
 Apes Novads	Latvia
 Auces Novads	Latvia
-BabÄ«tes Novads	Latvia
+Babītes Novads	Latvia
 Baldones Novads	Latvia
 Baltinavas Novads	Latvia
 Balvu Rajons	Latvia
 Bauskas Rajons	Latvia
-BeverÄ«nas Novads	Latvia
-BrocÄ“nu Novads	Latvia
+Beverīnas Novads	Latvia
+Brocēnu Novads	Latvia
 Burtnieku Novads	Latvia
 Carnikavas Novads	Latvia
 Cesvaines Novads	Latvia
 Ciblas Novads	Latvia
-CÄ“su Rajons	Latvia
+Cēsu Rajons	Latvia
 Dagdas Novads	Latvia
 Daugavpils	Latvia
 Daugavpils	Latvia
@@ -1746,171 +1746,171 @@ Dundagas Novads	Latvia
 Durbes Novads	Latvia
 Engures Novads	Latvia
 Garkalne	Latvia
-GrobiÅ†a	Latvia
+Grobiņa	Latvia
 Gulbenes Rajons	Latvia
-IkÅ¡Ä·ile	Latvia
-IlÅ«kstes Novads	Latvia
-InÄukalns	Latvia
+Ikšķile	Latvia
+Ilūkstes Novads	Latvia
+Inčukalns	Latvia
 Jaunjelgava	Latvia
 Jaunpiebalga	Latvia
 Jaunpils	Latvia
 Jelgava	Latvia
 Jelgavas Rajons	Latvia
-JÄ“kabpils	Latvia
-JÄ“kabpils Municipality	Latvia
-JÅ«rmala	Latvia
+Jēkabpils	Latvia
+Jēkabpils Municipality	Latvia
+Jūrmala	Latvia
 Kandava	Latvia
 Karsava	Latvia
-KocÄ“nu Novads	Latvia
+Kocēnu Novads	Latvia
 Koknese	Latvia
 Krimulda	Latvia
 Krustpils	Latvia
-KrÄslavas Rajons	Latvia
-KuldÄ«gas Rajons	Latvia
+Krāslavas Rajons	Latvia
+Kuldīgas Rajons	Latvia
 Lecava	Latvia
-LielvÄrde	Latvia
-LiepÄja	Latvia
-LimbaÅ¾u Rajons	Latvia
-LubÄna	Latvia
+Lielvārde	Latvia
+Liepāja	Latvia
+Limbažu Rajons	Latvia
+Lubāna	Latvia
 Ludzas Rajons	Latvia
-LÄ«gatne	Latvia
-LÄ«vÄni	Latvia
+Līgatne	Latvia
+Līvāni	Latvia
 Madona Municipality	Latvia
 Mazsalaca	Latvia
-MÄlpils	Latvia
-MÄrupe	Latvia
-MÄ“rsraga Novads	Latvia
-NaukÅ¡Ä“ni	Latvia
+Mālpils	Latvia
+Mārupe	Latvia
+Mērsraga Novads	Latvia
+Naukšēni	Latvia
 Nereta	Latvia
-NÄ«ca	Latvia
+Nīca	Latvia
 Ogre	Latvia
 Olaine	Latvia
 Ozolnieku Novads	Latvia
-PreiÄ¼i Municipality	Latvia
+Preiļi Municipality	Latvia
 Priekule	Latvia
-PriekuÄ¼i Municipality	Latvia
-PÄrgaujas Novads	Latvia
-PÄvilostas Novads	Latvia
-PÄ¼aviÅ†u Novads	Latvia
+Priekuļi Municipality	Latvia
+Pārgaujas Novads	Latvia
+Pāvilostas Novads	Latvia
+Pļaviņu Novads	Latvia
 Raunas Novads	Latvia
-RiebiÅ†u Novads	Latvia
+Riebiņu Novads	Latvia
 Rojas Novads	Latvia
-RopaÅ¾u Novads	Latvia
+Ropažu Novads	Latvia
 Rucavas Novads	Latvia
-RugÄju Novads	Latvia
-RundÄles Novads	Latvia
-RÄ“zekne	Latvia
-RÄ“zeknes Rajons	Latvia
-RÄ«ga	Latvia
-RÅ«jienas Novads	Latvia
-SalacgrÄ«vas Novads	Latvia
+Rugāju Novads	Latvia
+Rundāles Novads	Latvia
+Rēzekne	Latvia
+Rēzeknes Rajons	Latvia
+Rīga	Latvia
+Rūjienas Novads	Latvia
+Salacgrīvas Novads	Latvia
 Salas Novads	Latvia
 Salaspils Novads	Latvia
 Saldus Municipality	Latvia
 Saulkrastu Novads	Latvia
 Siguldas Novads	Latvia
 Skrundas Novads	Latvia
-SkrÄ«veru Novads	Latvia
+Skrīveru Novads	Latvia
 Smiltenes Novads	Latvia
-StopiÅ†u Novads	Latvia
-StrenÄu Novads	Latvia
-SÄ“jas Novads	Latvia
+Stopiņu Novads	Latvia
+Strenču Novads	Latvia
+Sējas Novads	Latvia
 Talsi Municipality	Latvia
 Tukuma Rajons	Latvia
-TÄ“rvetes Novads	Latvia
-VaiÅ†odes Novads	Latvia
+Tērvetes Novads	Latvia
+Vaiņodes Novads	Latvia
 Valka Municipality	Latvia
 Valmiera District	Latvia
-VarakÄ¼Änu Novads	Latvia
+Varakļānu Novads	Latvia
 Vecpiebalgas Novads	Latvia
 Vecumnieku Novads	Latvia
 Ventspils	Latvia
 Ventspils Municipality	Latvia
-ViesÄ«tes Novads	Latvia
-ViÄ¼akas Novads	Latvia
-ViÄ¼Änu Novads	Latvia
-VÄrkavas Novads	Latvia
+Viesītes Novads	Latvia
+Viļakas Novads	Latvia
+Viļānu Novads	Latvia
+Vārkavas Novads	Latvia
 Zilupes Novads	Latvia
-Ä€daÅ¾i	Latvia
-Ä’rgÄ¼i	Latvia
-Ä¶egums	Latvia
-Ä¶ekava	Latvia
+Ādaži	Latvia
+Ērgļi	Latvia
+Ķegums	Latvia
+Ķekava	Latvia
 Al Jufrah	Libya
 Al Kufrah	Libya
 Al Marj	Libya
 Al Marqab	Libya
 Darnah	Libya
 Murzuq	Libya
-Shaâ€˜bÄ«yat BanghÄzÄ«	Libya
-Shaâ€˜bÄ«yat GhÄt	Libya
-Shaâ€˜bÄ«yat MiÅŸrÄtah	Libya
-Shaâ€˜bÄ«yat NÄlÅ«t	Libya
-Shaâ€˜bÄ«yat SabhÄ	Libya
-Shaâ€˜bÄ«yat WÄdÄ« al á¸¨ayÄt	Libya
-Shaâ€˜bÄ«yat WÄdÄ« ash ShÄÅ£iâ€™	Libya
-Shaâ€˜bÄ«yat al BuÅ£nÄn	Libya
-Shaâ€˜bÄ«yat al Jabal al Akhá¸‘ar	Libya
-Shaâ€˜bÄ«yat al Jabal al GharbÄ«	Libya
-Shaâ€˜bÄ«yat al JafÄrah	Libya
-Shaâ€˜bÄ«yat al WÄá¸©Ät	Libya
-Shaâ€˜bÄ«yat an NuqÄÅ£ al Khams	Libya
-Shaâ€˜bÄ«yat az ZÄwiyah	Libya
+Sha‘bīyat Banghāzī	Libya
+Sha‘bīyat Ghāt	Libya
+Sha‘bīyat Mişrātah	Libya
+Sha‘bīyat Nālūt	Libya
+Sha‘bīyat Sabhā	Libya
+Sha‘bīyat Wādī al Ḩayāt	Libya
+Sha‘bīyat Wādī ash Shāţi’	Libya
+Sha‘bīyat al Buţnān	Libya
+Sha‘bīyat al Jabal al Akhḑar	Libya
+Sha‘bīyat al Jabal al Gharbī	Libya
+Sha‘bīyat al Jafārah	Libya
+Sha‘bīyat al Wāḩāt	Libya
+Sha‘bīyat an Nuqāţ al Khams	Libya
+Sha‘bīyat az Zāwiyah	Libya
 Surt	Libya
 Tripoli District	Libya
 Chaouia-Ouardigha	Morocco
 Doukkala-Abda	Morocco
 Gharb-Chrarda-Beni Hssen	Morocco
 Guelmim-Es Semara	Morocco
-LaÃ¢youne-Boujdour-Sakia El Hamra	Morocco
+Laâyoune-Boujdour-Sakia El Hamra	Morocco
 Marrakech-Tensift-Al Haouz	Morocco
 Oriental	Morocco
 Oued ed Dahab-Lagouira	Morocco
-RÃ©gion de FÃ¨s-Boulemane	Morocco
-RÃ©gion de MeknÃ¨s-Tafilalet	Morocco
-RÃ©gion de Rabat-SalÃ©-Zemmour-ZaÃ«r	Morocco
-RÃ©gion de Souss-Massa-DrÃ¢a	Morocco
-RÃ©gion de Tanger-TÃ©touan	Morocco
-RÃ©gion du Grand Casablanca	Morocco
+Région de Fès-Boulemane	Morocco
+Région de Meknès-Tafilalet	Morocco
+Région de Rabat-Salé-Zemmour-Zaër	Morocco
+Région de Souss-Massa-Drâa	Morocco
+Région de Tanger-Tétouan	Morocco
+Région du Grand Casablanca	Morocco
 Tadla-Azilal	Morocco
 Taza-Al Hoceima-Taounate	Morocco
 Commune de Monaco	Monaco
 Cahul	Moldova
 Drochia	Moldova
-GÄƒgÄƒuzia	Moldova
+Găgăuzia	Moldova
 Municipiul Bender	Moldova
-Municipiul BÄƒlÅ£i	Moldova
-Municipiul ChiÅŸinÄƒu	Moldova
+Municipiul Bălţi	Moldova
+Municipiul Chişinău	Moldova
 Raionul Anenii Noi	Moldova
 Raionul Basarabeasca	Moldova
 Raionul Briceni	Moldova
 Raionul Cantemir	Moldova
-Raionul CimiÅŸlia	Moldova
+Raionul Cimişlia	Moldova
 Raionul Criuleni	Moldova
-Raionul CÄƒlÄƒraÅŸi	Moldova
-Raionul CÄƒuÅŸeni	Moldova
-Raionul DonduÅŸeni	Moldova
-Raionul DubÄƒsari	Moldova
-Raionul EdineÅ£	Moldova
-Raionul FloreÅŸti	Moldova
-Raionul FÄƒleÅŸti	Moldova
+Raionul Călăraşi	Moldova
+Raionul Căuşeni	Moldova
+Raionul Donduşeni	Moldova
+Raionul Dubăsari	Moldova
+Raionul Edineţ	Moldova
+Raionul Floreşti	Moldova
+Raionul Făleşti	Moldova
 Raionul Glodeni	Moldova
-Raionul HÃ®nceÅŸti	Moldova
+Raionul Hînceşti	Moldova
 Raionul Ialoveni	Moldova
 Raionul Leova	Moldova
 Raionul Nisporeni	Moldova
-Raionul OcniÅ£a	Moldova
+Raionul Ocniţa	Moldova
 Raionul Orhei	Moldova
 Raionul Rezina	Moldova
-Raionul RÃ®ÅŸcani	Moldova
+Raionul Rîşcani	Moldova
 Raionul Soroca	Moldova
-Raionul SÃ®ngerei	Moldova
+Raionul Sîngerei	Moldova
 Raionul Taraclia	Moldova
-Raionul TeleneÅŸti	Moldova
-Raionul ÅžoldÄƒneÅŸti	Moldova
-Raionul Åžtefan VodÄƒ	Moldova
-StrÄƒÈ™eni	Moldova
+Raionul Teleneşti	Moldova
+Raionul Şoldăneşti	Moldova
+Raionul Ştefan Vodă	Moldova
+Strășeni	Moldova
 Ungheni	Moldova
-Unitatea TeritorialÄƒ din StÃ®nga Nistrului	Moldova
+Unitatea Teritorială din Stînga Nistrului	Moldova
 Andrijevica	Montenegro
 Bar	Montenegro
 Berane	Montenegro
@@ -1921,13 +1921,13 @@ Danilovgrad	Montenegro
 Herceg Novi	Montenegro
 Kotor	Montenegro
 Mojkovac	Montenegro
-OpÅ¡tina KolaÅ¡in	Montenegro
-OpÅ¡tina NikÅ¡iÄ‡	Montenegro
-OpÅ¡tina Plav	Montenegro
-OpÅ¡tina PluÅ¾ine	Montenegro
-OpÅ¡tina RoÅ¾aje	Montenegro
-OpÅ¡tina Å avnik	Montenegro
-OpÅ¡tina Å½abljak	Montenegro
+Opština Kolašin	Montenegro
+Opština Nikšić	Montenegro
+Opština Plav	Montenegro
+Opština Plužine	Montenegro
+Opština Rožaje	Montenegro
+Opština Šavnik	Montenegro
+Opština Žabljak	Montenegro
 Pljevlja	Montenegro
 Podgorica	Montenegro
 Tivat	Montenegro
@@ -2024,34 +2024,34 @@ Ohrid	Macedonia
 Opstina Gjorce Petrov	Macedonia
 Opstina Lipkovo	Macedonia
 Opstina Rankovce	Macedonia
-OpÅ¡tina AraÄinovo	Macedonia
-OpÅ¡tina Centar	Macedonia
-OpÅ¡tina Centar Å½upa	Macedonia
-OpÅ¡tina DelÄevo	Macedonia
-OpÅ¡tina Dojran	Macedonia
-OpÅ¡tina KarpoÅ¡	Macedonia
-OpÅ¡tina KiÄevo	Macedonia
-OpÅ¡tina KonÄe	Macedonia
-OpÅ¡tina KoÄani	Macedonia
-OpÅ¡tina KrivogaÅ¡tani	Macedonia
-OpÅ¡tina KruÅ¡evo	Macedonia
-OpÅ¡tina Mavrovo i RostuÅ¡a	Macedonia
-OpÅ¡tina PehÄevo	Macedonia
-OpÅ¡tina ProbiÅ¡tip	Macedonia
-OpÅ¡tina RadoviÅ¡	Macedonia
-OpÅ¡tina SopiÅ¡te	Macedonia
-OpÅ¡tina Staro NagoriÄane	Macedonia
-OpÅ¡tina StudeniÄani	Macedonia
-OpÅ¡tina VevÄani	Macedonia
-OpÅ¡tina VraneÅ¡tica	Macedonia
-OpÅ¡tina VrapÄiÅ¡te	Macedonia
-OpÅ¡tina ÄŒair	Macedonia
-OpÅ¡tina ÄŒaÅ¡ka	Macedonia
-OpÅ¡tina ÄŒeÅ¡inovo-ObleÅ¡evo	Macedonia
-OpÅ¡tina ÄŒuÄer-Sandevo	Macedonia
-OpÅ¡tina Å tip	Macedonia
-OpÅ¡tina Å uto Orizari	Macedonia
-OpÅ¡tina Å½elino	Macedonia
+Opština Aračinovo	Macedonia
+Opština Centar	Macedonia
+Opština Centar Župa	Macedonia
+Opština Delčevo	Macedonia
+Opština Dojran	Macedonia
+Opština Karpoš	Macedonia
+Opština Kičevo	Macedonia
+Opština Konče	Macedonia
+Opština Kočani	Macedonia
+Opština Krivogaštani	Macedonia
+Opština Kruševo	Macedonia
+Opština Mavrovo i Rostuša	Macedonia
+Opština Pehčevo	Macedonia
+Opština Probištip	Macedonia
+Opština Radoviš	Macedonia
+Opština Sopište	Macedonia
+Opština Staro Nagoričane	Macedonia
+Opština Studeničani	Macedonia
+Opština Vevčani	Macedonia
+Opština Vraneštica	Macedonia
+Opština Vrapčište	Macedonia
+Opština Čair	Macedonia
+Opština Čaška	Macedonia
+Opština Češinovo-Obleševo	Macedonia
+Opština Čučer-Sandevo	Macedonia
+Opština Štip	Macedonia
+Opština Šuto Orizari	Macedonia
+Opština Želino	Macedonia
 Oslomej	Macedonia
 Petrovec	Macedonia
 Plasnica	Macedonia
@@ -2078,7 +2078,7 @@ Kidal	Mali
 Koulikoro	Mali
 Mopti	Mali
 Sikasso	Mali
-SÃ©gou	Mali
+Ségou	Mali
 Tombouctou	Mali
 Ayeyawady Region	Myanmar [Burma]
 Bago Region	Myanmar [Burma]
@@ -2095,27 +2095,27 @@ Shan State	Myanmar [Burma]
 Taninthayi Region	Myanmar [Burma]
 Yangon Region	Myanmar [Burma]
 Arhangay Aymag	Mongolia
-Bayan-Ã–lgiy Aymag	Mongolia
+Bayan-Ölgiy Aymag	Mongolia
 Bayanhongor Aymag	Mongolia
 Bulgan Province	Mongolia
 Central	Mongolia
 Darhan-Uul Aymag	Mongolia
 Dzavhan Aymag	Mongolia
-East GovÄ­	Mongolia
+East Govĭ	Mongolia
 Eastern Aymag	Mongolia
-GovÄ­-Altay Aymag	Mongolia
-GovÄ­-Sumber	Mongolia
+Govĭ-Altay Aymag	Mongolia
+Govĭ-Sumber	Mongolia
 Hentiy Aymag	Mongolia
 Hovd Province	Mongolia
-HÃ¶vsgÃ¶l Aymag	Mongolia
-Middle GovÄ­	Mongolia
+Hövsgöl Aymag	Mongolia
+Middle Govĭ	Mongolia
 Orhon Aymag	Mongolia
 Selenge Aymag	Mongolia
-SÃ¼hbaatar Aymag	Mongolia
+Sühbaatar Aymag	Mongolia
 Ulaanbaatar Hot	Mongolia
 Uvs Aymag	Mongolia
-Ã–mnÃ¶govÄ­	Mongolia
-Ã–vÃ¶rhangay	Mongolia
+Ömnögovĭ	Mongolia
+Övörhangay	Mongolia
 Municipality of Macau	Macao
 Municipality of the Islands	Macao
 Northern Islands	Northern Mariana Islands
@@ -2142,45 +2142,45 @@ Parish of Saint Peter	Montserrat
 Attard	Malta
 Balzan	Malta
 Birkirkara	Malta
-BirÅ¼ebbuÄ¡a	Malta
+Birżebbuġa	Malta
 Bormla	Malta
 Dingli	Malta
-GÄ§ajnsielem	Malta
+Għajnsielem	Malta
 Il-Belt Valletta	Malta
 Il-Birgu	Malta
 Il-Fgura	Malta
 Il-Fontana	Malta
 Il-Furjana	Malta
 Il-Gudja	Malta
-Il-GÅ¼ira	Malta
+Il-Gżira	Malta
 Il-Kalkara	Malta
 Il-Marsa	Malta
-Il-MellieÄ§a	Malta
+Il-Mellieħa	Malta
 Il-Mosta	Malta
 Il-Munxar	Malta
 Il-Qala	Malta
 Il-Qrendi	Malta
-Il-Ä¦amrun	Malta
+Il-Ħamrun	Malta
 In-Nadur	Malta
 In-Naxxar	Malta
 Ir-Rabat	Malta
-Is-SiÄ¡Ä¡iewi	Malta
+Is-Siġġiewi	Malta
 Is-Swieqi	Malta
-Ix-XagÄ§ra	Malta
+Ix-Xagħra	Malta
 Ix-Xewkija	Malta
-Ix-XgÄ§ajra	Malta
-IÅ¼-Å»ebbuÄ¡	Malta
-IÅ¼-Å»ejtun	Malta
-IÅ¼-Å»urrieq	Malta
+Ix-Xgħajra	Malta
+Iż-Żebbuġ	Malta
+Iż-Żejtun	Malta
+Iż-Żurrieq	Malta
 Kirkop	Malta
-L-GÄ§arb	Malta
-L-GÄ§asri	Malta
+L-Għarb	Malta
+L-Għasri	Malta
 L-Iklin	Malta
 L-Imdina	Malta
 L-Imqabba	Malta
 L-Imsida	Malta
 L-Imtarfa	Malta
-L-ImÄ¡arr	Malta
+L-Imġarr	Malta
 L-Isla	Malta
 Lija	Malta
 Luqa	Malta
@@ -2194,18 +2194,18 @@ Saint John	Malta
 Saint Julian	Malta
 Saint Lawrence	Malta
 Saint Lucia	Malta
-Saint Paulâ€™s Bay	Malta
+Saint Paul’s Bay	Malta
 Saint Venera	Malta
 Sannat	Malta
-Tal-PietÃ 	Malta
+Tal-Pietà	Malta
 Tarxien	Malta
 Tas-Sliema	Malta
-Taâ€™ KerÄ‹em	Malta
-Taâ€™ Xbiex	Malta
-Ä¦al GÄ§argÄ§ur	Malta
-Ä¦al GÄ§axaq	Malta
-Ä¦aÅ¼-Å»abbar	Malta
-Ä¦aÅ¼-Å»ebbuÄ¡	Malta
+Ta’ Kerċem	Malta
+Ta’ Xbiex	Malta
+Ħal Għargħur	Malta
+Ħal Għaxaq	Malta
+Ħaż-Żabbar	Malta
+Ħaż-Żebbuġ	Malta
 Agalega Islands	Mauritius
 Black River District	Mauritius
 Cargados Carajos	Mauritius
@@ -2215,7 +2215,7 @@ Moka District	Mauritius
 Pamplemousses District	Mauritius
 Plaines Wilhems District	Mauritius
 Port Louis District	Mauritius
-RiviÃ¨re du Rempart District	Mauritius
+Rivière du Rempart District	Mauritius
 Rodrigues	Mauritius
 Savanne District	Mauritius
 Baa Atholhu	Maldives
@@ -2257,28 +2257,28 @@ Coahuila	Mexico
 Colima	Mexico
 Durango	Mexico
 Estado de Baja California	Mexico
-Estado de MÃ©xico	Mexico
+Estado de México	Mexico
 Estado de Veracruz-Llave	Mexico
 Guanajuato	Mexico
 Guerrero	Mexico
 Hidalgo	Mexico
 Jalisco	Mexico
-MichoacÃ¡n	Mexico
+Michoacán	Mexico
 Morelos	Mexico
 Nayarit	Mexico
-Nuevo LeÃ³n	Mexico
+Nuevo León	Mexico
 Oaxaca	Mexico
 Puebla	Mexico
-QuerÃ©taro	Mexico
+Querétaro	Mexico
 Quintana Roo	Mexico
-San Luis PotosÃ­	Mexico
+San Luis Potosí	Mexico
 Sinaloa	Mexico
 Sonora	Mexico
 Tabasco	Mexico
 Tamaulipas	Mexico
 The Federal District	Mexico
 Tlaxcala	Mexico
-YucatÃ¡n	Mexico
+Yucatán	Mexico
 Zacatecas	Mexico
 Johor	Malaysia
 Kedah	Malaysia
@@ -2304,7 +2304,7 @@ Manica Province	Mozambique
 Maputo	Mozambique
 Nampula	Mozambique
 Niassa Province	Mozambique
-ProvÃ­ncia de ZambÃ©zia	Mozambique
+Província de Zambézia	Mozambique
 Sofala Province	Mozambique
 Tete	Mozambique
 //Karas	Namibia
@@ -2374,19 +2374,19 @@ Departamento de Boaco	Nicaragua
 Departamento de Carazo	Nicaragua
 Departamento de Chinandega	Nicaragua
 Departamento de Chontales	Nicaragua
-Departamento de EstelÃ­	Nicaragua
+Departamento de Estelí	Nicaragua
 Departamento de Granada	Nicaragua
 Departamento de Jinotega	Nicaragua
-Departamento de LeÃ³n	Nicaragua
+Departamento de León	Nicaragua
 Departamento de Madriz	Nicaragua
 Departamento de Managua	Nicaragua
 Departamento de Masaya	Nicaragua
 Departamento de Matagalpa	Nicaragua
 Departamento de Nueva Segovia	Nicaragua
 Departamento de Rivas	Nicaragua
-Departamento de RÃ­o San Juan	Nicaragua
-RegiÃ³n AutÃ³noma AtlÃ¡ntico Norte	Nicaragua
-RegiÃ³n AutÃ³noma AtlÃ¡ntico Sur	Nicaragua
+Departamento de Río San Juan	Nicaragua
+Región Autónoma Atlántico Norte	Nicaragua
+Región Autónoma Atlántico Sur	Nicaragua
 Friesland	Netherlands
 Groningen	Netherlands
 North Brabant	Netherlands
@@ -2405,19 +2405,19 @@ Buskerud	Norway
 Finnmark Fylke	Norway
 Hedmark	Norway
 Hordaland Fylke	Norway
-MÃ¸re og Romsdal fylke	Norway
-Nord-TrÃ¸ndelag Fylke	Norway
+Møre og Romsdal fylke	Norway
+Nord-Trøndelag Fylke	Norway
 Nordland Fylke	Norway
 Oppland	Norway
 Oslo County	Norway
 Rogaland Fylke	Norway
 Sogn og Fjordane Fylke	Norway
-SÃ¸r-TrÃ¸ndelag Fylke	Norway
+Sør-Trøndelag Fylke	Norway
 Telemark	Norway
 Troms Fylke	Norway
 Vest-Agder Fylke	Norway
 Vestfold	Norway
-Ã˜stfold	Norway
+Østfold	Norway
 Central Region	Nepal
 Eastern Region	Nepal
 Far Western	Nepal
@@ -2455,28 +2455,28 @@ Waikato	New Zealand
 Wellington	New Zealand
 West Coast	New Zealand
 Ash Sharqiyah South	Oman
-AzÌ§ ZÌ§Ähirah	Oman
+Az̧ Z̧āhirah	Oman
 Musandam	Oman
-Muá¸©ÄfazÌ§at JanÅ«b al BÄÅ£inah	Oman
-Muá¸©ÄfazÌ§at MasqaÅ£	Oman
-Muá¸©ÄfazÌ§at ShamÄl al BÄÅ£inah	Oman
-Muá¸©ÄfazÌ§at ShamÄl ash SharqÄ«yah	Oman
-Muá¸©ÄfazÌ§at ZÌ§ufÄr	Oman
-Muá¸©ÄfazÌ§at ad DÄkhilÄ«yah	Oman
-Muá¸©ÄfazÌ§at al BuraymÄ«	Oman
-Muá¸©ÄfazÌ§at al WusÅ£Ã¡	Oman
-EmberÃ¡-Wounaan	Panama
+Muḩāfaz̧at Janūb al Bāţinah	Oman
+Muḩāfaz̧at Masqaţ	Oman
+Muḩāfaz̧at Shamāl al Bāţinah	Oman
+Muḩāfaz̧at Shamāl ash Sharqīyah	Oman
+Muḩāfaz̧at Z̧ufār	Oman
+Muḩāfaz̧at ad Dākhilīyah	Oman
+Muḩāfaz̧at al Buraymī	Oman
+Muḩāfaz̧at al Wusţá	Oman
+Emberá-Wounaan	Panama
 Guna Yala	Panama
-NgÃ¶be-BuglÃ©	Panama
+Ngöbe-Buglé	Panama
 Provincia de Bocas del Toro	Panama
-Provincia de ChiriquÃ­	Panama
-Provincia de CoclÃ©	Panama
-Provincia de ColÃ³n	Panama
+Provincia de Chiriquí	Panama
+Provincia de Coclé	Panama
+Provincia de Colón	Panama
 Provincia de Herrera	Panama
 Provincia de Los Santos	Panama
-Provincia de PanamÃ¡	Panama
+Provincia de Panamá	Panama
 Provincia de Veraguas	Panama
-Provincia del DariÃ©n	Panama
+Provincia del Darién	Panama
 Amazonas	Peru
 Ancash	Peru
 Apurimac	Peru
@@ -2488,7 +2488,7 @@ Cusco	Peru
 Departamento de Moquegua	Peru
 Huancavelica	Peru
 Ica	Peru
-JunÃ­n	Peru
+Junín	Peru
 La Libertad	Peru
 Lambayeque	Peru
 Lima	Peru
@@ -2498,16 +2498,16 @@ Pasco	Peru
 Piura	Peru
 Provincia de Lima	Peru
 Puno	Peru
-RegiÃ³n de HuÃ¡nuco	Peru
-RegiÃ³n de San MartÃ­n	Peru
+Región de Huánuco	Peru
+Región de San Martín	Peru
 Tacna	Peru
 Tumbes	Peru
 Ucayali	Peru
-ÃŽles Australes	French Polynesia
-ÃŽles Marquises	French Polynesia
-ÃŽles Sous-le-Vent	French Polynesia
-ÃŽles Tuamotu-Gambier	French Polynesia
-ÃŽles du Vent	French Polynesia
+Îles Australes	French Polynesia
+Îles Marquises	French Polynesia
+Îles Sous-le-Vent	French Polynesia
+Îles Tuamotu-Gambier	French Polynesia
+Îles du Vent	French Polynesia
 Bougainville	Papua New Guinea
 Central Province	Papua New Guinea
 Chimbu Province	Papua New Guinea
@@ -2548,10 +2548,10 @@ Soccsksargen	Philippines
 Western Visayas	Philippines
 Zamboanga Peninsula	Philippines
 Azad Kashmir	Pakistan
-BalochistÄn	Pakistan
+Balochistān	Pakistan
 Federally Administered Tribal Areas	Pakistan
 Gilgit-Baltistan	Pakistan
-IslÄmÄbÄd Capital Territory	Pakistan
+Islāmābād Capital Territory	Pakistan
 Khyber Pakhtunkhwa	Pakistan
 Punjab	Pakistan
 Sindh	Pakistan
@@ -2569,8 +2569,8 @@ Silesian Voivodeship	Poland
 Subcarpathian Voivodeship	Poland
 Warmian-Masurian Voivodeship	Poland
 West Pomeranian Voivodeship	Poland
-ÅÃ³dÅº Voivodeship	Poland
-ÅšwiÄ™tokrzyskie	Poland
+Łódź Voivodeship	Poland
+Świętokrzyskie	Poland
 Commune de Miquelon-Langlade	Saint Pierre and Miquelon
 Commune de Saint-Pierre	Saint Pierre and Miquelon
 Adjuntas	Puerto Rico
@@ -2580,22 +2580,22 @@ Aguas Buenas	Puerto Rico
 Aibonito	Puerto Rico
 Arecibo	Puerto Rico
 Arroyo	Puerto Rico
-AÃ±asco	Puerto Rico
+Añasco	Puerto Rico
 Barceloneta	Puerto Rico
 Barranquitas	Puerto Rico
-BayamÃ³n Municipio	Puerto Rico
+Bayamón Municipio	Puerto Rico
 Cabo Rojo Municipio	Puerto Rico
 Caguas Municipio	Puerto Rico
 Camuy Municipio	Puerto Rico
-CanÃ³vanas Municipio	Puerto Rico
+Canóvanas Municipio	Puerto Rico
 Carolina Municipio	Puerto Rico
-CataÃ±o Municipio	Puerto Rico
+Cataño Municipio	Puerto Rico
 Cayey Municipio	Puerto Rico
 Ceiba Municipio	Puerto Rico
 Ciales Municipio	Puerto Rico
 Cidra Municipio	Puerto Rico
 Coamo Municipio	Puerto Rico
-ComerÃ­o Municipio	Puerto Rico
+Comerío Municipio	Puerto Rico
 Corozal Municipio	Puerto Rico
 Culebra Municipio	Puerto Rico
 Dorado Municipio	Puerto Rico
@@ -2605,21 +2605,21 @@ Guayama Municipio	Puerto Rico
 Guayanilla Municipio	Puerto Rico
 Guaynabo Municipio	Puerto Rico
 Gurabo Municipio	Puerto Rico
-GuÃ¡nica Municipio	Puerto Rico
+Guánica Municipio	Puerto Rico
 Hatillo Municipio	Puerto Rico
 Hormigueros Municipio	Puerto Rico
 Humacao Municipio	Puerto Rico
-Juana DÃ­az Municipio	Puerto Rico
+Juana Díaz Municipio	Puerto Rico
 Lajas Municipio	Puerto Rico
 Lares Municipio	Puerto Rico
-Las MarÃ­as Municipio	Puerto Rico
+Las Marías Municipio	Puerto Rico
 Las Piedras Municipio	Puerto Rico
-LoÃ­za Municipio	Puerto Rico
+Loíza Municipio	Puerto Rico
 Luquillo Municipio	Puerto Rico
-ManatÃ­ Municipio	Puerto Rico
+Manatí Municipio	Puerto Rico
 Maricao Municipio	Puerto Rico
 Maunabo Municipio	Puerto Rico
-MayagÃ¼ez Municipio	Puerto Rico
+Mayagüez Municipio	Puerto Rico
 Moca Municipio	Puerto Rico
 Morovis Municipio	Puerto Rico
 Municipio de Isabela	Puerto Rico
@@ -2629,17 +2629,17 @@ Naguabo Municipio	Puerto Rico
 Naranjito Municipio	Puerto Rico
 Orocovis Municipio	Puerto Rico
 Patillas Municipio	Puerto Rico
-PeÃ±uelas Municipio	Puerto Rico
+Peñuelas Municipio	Puerto Rico
 Ponce Municipio	Puerto Rico
 Quebradillas Municipio	Puerto Rico
-RincÃ³n Municipio	Puerto Rico
-RÃ­o Grande Municipio	Puerto Rico
+Rincón Municipio	Puerto Rico
+Río Grande Municipio	Puerto Rico
 Sabana Grande Municipio	Puerto Rico
 Salinas Municipio	Puerto Rico
-San GermÃ¡n Municipio	Puerto Rico
+San Germán Municipio	Puerto Rico
 San Juan	Puerto Rico
 San Lorenzo Municipio	Puerto Rico
-San SebastiÃ¡n Municipio	Puerto Rico
+San Sebastián Municipio	Puerto Rico
 Santa Isabel Municipio	Puerto Rico
 Toa Alta Municipio	Puerto Rico
 Toa Baja Municipio	Puerto Rico
@@ -2655,7 +2655,7 @@ Gaza Strip	Palestine
 West Bank	Palestine
 Autonomous Region of the Azores	Portugal
 Aveiro	Portugal
-BraganÃ§a	Portugal
+Bragança	Portugal
 Distrito da Guarda	Portugal
 Distrito de Beja	Portugal
 Distrito de Braga	Portugal
@@ -2664,12 +2664,12 @@ Distrito de Coimbra	Portugal
 Distrito de Faro	Portugal
 Distrito de Leiria	Portugal
 Distrito de Portalegre	Portugal
-Distrito de SantarÃ©m	Portugal
-Distrito de SetÃºbal	Portugal
+Distrito de Santarém	Portugal
+Distrito de Setúbal	Portugal
 Distrito de Viana do Castelo	Portugal
 Distrito de Vila Real	Portugal
 Distrito de Viseu	Portugal
-Distrito de Ã‰vora	Portugal
+Distrito de Évora	Portugal
 Distrito do Porto	Portugal
 Lisbon	Portugal
 Madeira	Portugal
@@ -2689,40 +2689,40 @@ State of Ngeremlengui	Palau
 State of Ngiwal	Palau
 State of Peleliu	Palau
 State of Sonsorol	Palau
-AsunciÃ³n	Paraguay
+Asunción	Paraguay
 Departamento Central	Paraguay
 Departamento de Alto Paraguay	Paraguay
-Departamento de BoquerÃ³n	Paraguay
-Departamento de CaaguazÃº	Paraguay
-Departamento de CaazapÃ¡	Paraguay
-Departamento de CanindeyÃº	Paraguay
-Departamento de ConcepciÃ³n	Paraguay
-Departamento de ItapÃºa	Paraguay
+Departamento de Boquerón	Paraguay
+Departamento de Caaguazú	Paraguay
+Departamento de Caazapá	Paraguay
+Departamento de Canindeyú	Paraguay
+Departamento de Concepción	Paraguay
+Departamento de Itapúa	Paraguay
 Departamento de Misiones	Paraguay
-Departamento de ParaguarÃ­	Paraguay
+Departamento de Paraguarí	Paraguay
 Departamento de Presidente Hayes	Paraguay
 Departamento de San Pedro	Paraguay
 Departamento de la Cordillera	Paraguay
-Departamento de Ã‘eembucÃº	Paraguay
-Departamento del Alto ParanÃ¡	Paraguay
+Departamento de Ñeembucú	Paraguay
+Departamento del Alto Paraná	Paraguay
 Departamento del Amambay	Paraguay
-Departamento del GuairÃ¡	Paraguay
+Departamento del Guairá	Paraguay
 Al Wakrah	Qatar
-BaladÄ«yat JarayÄn al BÄÅ£inah	Qatar
-BaladÄ«yat Umm Saâ€˜Ä«d	Qatar
-BaladÄ«yat Umm ÅžalÄl	Qatar
-BaladÄ«yat ad Dawá¸©ah	Qatar
-BaladÄ«yat al GhuwayrÄ«yah	Qatar
-BaladÄ«yat al JumaylÄ«yah	Qatar
-BaladÄ«yat al Khawr wa adh DhakhÄ«rah	Qatar
-BaladÄ«yat ar RayyÄn	Qatar
-BaladÄ«yat ash ShamÄl	Qatar
-BaladÄ«yat azÌ§ ZÌ§aâ€˜Äyin	Qatar
-RÃ©union	RÃ©union
+Baladīyat Jarayān al Bāţinah	Qatar
+Baladīyat Umm Sa‘īd	Qatar
+Baladīyat Umm Şalāl	Qatar
+Baladīyat ad Dawḩah	Qatar
+Baladīyat al Ghuwayrīyah	Qatar
+Baladīyat al Jumaylīyah	Qatar
+Baladīyat al Khawr wa adh Dhakhīrah	Qatar
+Baladīyat ar Rayyān	Qatar
+Baladīyat ash Shamāl	Qatar
+Baladīyat az̧ Z̧a‘āyin	Qatar
+Réunion	RÃ©union
 Arad	Romania
 Bihor	Romania
-BucureÈ™ti	Romania
-ConstanÈ›a	Romania
+București	Romania
+Constanța	Romania
 Covasna	Romania
 Dolj	Romania
 Giurgiu	Romania
@@ -2730,29 +2730,29 @@ Gorj	Romania
 Harghita	Romania
 Hunedoara	Romania
 Ilfov	Romania
-JudeÅ£ul Alba	Romania
-JudeÅ£ul ArgeÅŸ	Romania
-JudeÅ£ul BacÄƒu	Romania
-JudeÅ£ul BistriÅ£a-NÄƒsÄƒud	Romania
-JudeÅ£ul BotoÅŸani	Romania
-JudeÅ£ul BraÅŸov	Romania
-JudeÅ£ul BrÄƒila	Romania
-JudeÅ£ul BuzÄƒu	Romania
-JudeÅ£ul CaraÅŸ-Severin	Romania
-JudeÅ£ul Cluj	Romania
-JudeÅ£ul CÄƒlÄƒraÅŸi	Romania
-JudeÅ£ul DÃ¢mboviÅ£a	Romania
-JudeÅ£ul GalaÅ£i	Romania
-JudeÅ£ul IalomiÅ£a	Romania
-JudeÅ£ul IaÅŸi	Romania
-JudeÅ£ul MehedinÅ£i	Romania
-JudeÅ£ul MureÅŸ	Romania
-JudeÅ£ul NeamÅ£	Romania
-JudeÅ£ul Sibiu	Romania
-JudeÅ£ul SÄƒlaj	Romania
-JudeÅ£ul TimiÅŸ	Romania
-JudeÅ£ul VÃ¢lcea	Romania
-MaramureÅŸ	Romania
+Judeţul Alba	Romania
+Judeţul Argeş	Romania
+Judeţul Bacău	Romania
+Judeţul Bistriţa-Năsăud	Romania
+Judeţul Botoşani	Romania
+Judeţul Braşov	Romania
+Judeţul Brăila	Romania
+Judeţul Buzău	Romania
+Judeţul Caraş-Severin	Romania
+Judeţul Cluj	Romania
+Judeţul Călăraşi	Romania
+Judeţul Dâmboviţa	Romania
+Judeţul Galaţi	Romania
+Judeţul Ialomiţa	Romania
+Judeţul Iaşi	Romania
+Judeţul Mehedinţi	Romania
+Judeţul Mureş	Romania
+Judeţul Neamţ	Romania
+Judeţul Sibiu	Romania
+Judeţul Sălaj	Romania
+Judeţul Timiş	Romania
+Judeţul Vâlcea	Romania
+Maramureş	Romania
 Olt	Romania
 Prahova	Romania
 Satu Mare	Romania
@@ -2764,54 +2764,54 @@ Vrancea	Romania
 Autonomna Pokrajina Vojvodina	Serbia
 Central Serbia	Serbia
 Altayskiy Kray	Russia
-Amurskaya Oblastâ€™	Russia
+Amurskaya Oblast’	Russia
 Arkhangelskaya	Russia
-Astrakhanskaya Oblastâ€™	Russia
+Astrakhanskaya Oblast’	Russia
 Bashkortostan	Russia
-Belgorodskaya Oblastâ€™	Russia
-Bryanskaya Oblastâ€™	Russia
+Belgorodskaya Oblast’	Russia
+Bryanskaya Oblast’	Russia
 Chechnya	Russia
 Chelyabinsk	Russia
 Chukotskiy Avtonomnyy Okrug	Russia
 Chuvashia	Russia
 Dagestan	Russia
-Irkutskaya Oblastâ€™	Russia
-Ivanovskaya Oblastâ€™	Russia
+Irkutskaya Oblast’	Russia
+Ivanovskaya Oblast’	Russia
 Jewish Autonomous Oblast	Russia
 Kabardino-Balkarskaya Respublika	Russia
-Kaliningradskaya Oblastâ€™	Russia
+Kaliningradskaya Oblast’	Russia
 Kalmykiya	Russia
-Kaluzhskaya Oblastâ€™	Russia
+Kaluzhskaya Oblast’	Russia
 Kamtchatski Kray	Russia
 Karachayevo-Cherkesiya	Russia
-Kemerovskaya Oblastâ€™	Russia
+Kemerovskaya Oblast’	Russia
 Khabarovsk Krai	Russia
 Khanty-Mansiyskiy Avtonomnyy Okrug	Russia
-Kirovskaya Oblastâ€™	Russia
+Kirovskaya Oblast’	Russia
 Komi Republic	Russia
-Kostromskaya Oblastâ€™	Russia
+Kostromskaya Oblast’	Russia
 Krasnodarskiy Kray	Russia
 Krasnoyarskiy Kray	Russia
-Kurganskaya Oblastâ€™	Russia
-Kurskaya Oblastâ€™	Russia
+Kurganskaya Oblast’	Russia
+Kurskaya Oblast’	Russia
 Leningrad	Russia
-Lipetskaya Oblastâ€™	Russia
-Magadanskaya Oblastâ€™	Russia
+Lipetskaya Oblast’	Russia
+Magadanskaya Oblast’	Russia
 Moscow	Russia
 Moskovskaya	Russia
 Murmansk	Russia
 Nenetskiy Avtonomnyy Okrug	Russia
-Nizhegorodskaya Oblastâ€™	Russia
+Nizhegorodskaya Oblast’	Russia
 North Ossetia	Russia
-Novgorodskaya Oblastâ€™	Russia
-Novosibirskaya Oblastâ€™	Russia
-Omskaya Oblastâ€™	Russia
-Orenburgskaya Oblastâ€™	Russia
-Orlovskaya Oblastâ€™	Russia
-Penzenskaya Oblastâ€™	Russia
+Novgorodskaya Oblast’	Russia
+Novosibirskaya Oblast’	Russia
+Omskaya Oblast’	Russia
+Orenburgskaya Oblast’	Russia
+Orlovskaya Oblast’	Russia
+Penzenskaya Oblast’	Russia
 Perm Krai	Russia
 Primorskiy Kray	Russia
-Pskovskaya Oblastâ€™	Russia
+Pskovskaya Oblast’	Russia
 Respublika Adygeya	Russia
 Respublika Altay	Russia
 Respublika Buryatiya	Russia
@@ -2822,30 +2822,30 @@ Respublika Mariy-El	Russia
 Respublika Mordoviya	Russia
 Respublika Sakha (Yakutiya)	Russia
 Respublika Tyva	Russia
-Rostovskaya Oblastâ€™	Russia
-Ryazanskaya Oblastâ€™	Russia
-Sakhalinskaya Oblastâ€™	Russia
-Samarskaya Oblastâ€™	Russia
-Saratovskaya Oblastâ€™	Russia
-Smolenskaya Oblastâ€™	Russia
+Rostovskaya Oblast’	Russia
+Ryazanskaya Oblast’	Russia
+Sakhalinskaya Oblast’	Russia
+Samarskaya Oblast’	Russia
+Saratovskaya Oblast’	Russia
+Smolenskaya Oblast’	Russia
 St.-Petersburg	Russia
-Stavropolâ€™skiy Kray	Russia
-Sverdlovskaya Oblastâ€™	Russia
-Tambovskaya Oblastâ€™	Russia
+Stavropol’skiy Kray	Russia
+Sverdlovskaya Oblast’	Russia
+Tambovskaya Oblast’	Russia
 Tatarstan	Russia
-Tomskaya Oblastâ€™	Russia
-Tulâ€™skaya Oblast'	Russia
-Tverskaya Oblastâ€™	Russia
-Tyumenskaya Oblastâ€™	Russia
+Tomskaya Oblast’	Russia
+Tul’skaya Oblast'	Russia
+Tverskaya Oblast’	Russia
+Tyumenskaya Oblast’	Russia
 Udmurtskaya Respublika	Russia
 Ulyanovsk Oblast	Russia
-Vladimirskaya Oblastâ€™	Russia
-Volgogradskaya Oblastâ€™	Russia
-Vologodskaya Oblastâ€™	Russia
-Voronezhskaya Oblastâ€™	Russia
+Vladimirskaya Oblast’	Russia
+Volgogradskaya Oblast’	Russia
+Vologodskaya Oblast’	Russia
+Voronezhskaya Oblast’	Russia
 Yamalo-Nenetskiy Avtonomnyy Okrug	Russia
-Yaroslavskaya Oblastâ€™	Russia
-Zabaykalâ€™skiy Kray	Russia
+Yaroslavskaya Oblast’	Russia
+Zabaykal’skiy Kray	Russia
 Eastern Province	Rwanda
 Kigali	Rwanda
 Northern Province	Rwanda
@@ -2856,12 +2856,12 @@ Al-Qassim	Saudi Arabia
 Eastern Province	Saudi Arabia
 Jizan Region	Saudi Arabia
 Makkah Province	Saudi Arabia
-MinÅ£aqat NajrÄn	Saudi Arabia
-MinÅ£aqat TabÅ«k	Saudi Arabia
-MinÅ£aqat al BÄá¸©ah	Saudi Arabia
-MinÅ£aqat al MadÄ«nah	Saudi Arabia
-MinÅ£aqat á¸¨Äâ€™il	Saudi Arabia
-MinÅ£aqat â€˜AsÄ«r	Saudi Arabia
+Minţaqat Najrān	Saudi Arabia
+Minţaqat Tabūk	Saudi Arabia
+Minţaqat al Bāḩah	Saudi Arabia
+Minţaqat al Madīnah	Saudi Arabia
+Minţaqat Ḩā’il	Saudi Arabia
+Minţaqat ‘Asīr	Saudi Arabia
 Northern Borders	Saudi Arabia
 Riyadh Province	Saudi Arabia
 Central Province	Solomon Islands
@@ -2898,8 +2898,8 @@ Port Glaud	Seychelles
 Roche Caiman	Seychelles
 Saint Louis	Seychelles
 Takamaka	Seychelles
-Al JazÄ«rah	Sudan
-Al Qaá¸‘Ärif	Sudan
+Al Jazīrah	Sudan
+Al Qaḑārif	Sudan
 Blue Nile State	Sudan
 Central Darfur	Sudan
 Eastern Darfur	Sudan
@@ -2909,8 +2909,8 @@ Northern Darfur	Sudan
 Northern State	Sudan
 Red Sea State	Sudan
 River Nile State	Sudan
-ShamÄl KurdufÄn	Sudan
-SinnÄr	Sudan
+Shamāl Kurdufān	Sudan
+Sinnār	Sudan
 Southern Darfur	Sudan
 Southern Kordofan	Sudan
 Western Darfur	Sudan
@@ -2918,24 +2918,24 @@ White Nile	Sudan
 Blekinge	Sweden
 Dalarna	Sweden
 Gotland	Sweden
-GÃ¤vleborg	Sweden
+Gävleborg	Sweden
 Halland	Sweden
-JÃ¤mtland	Sweden
-JÃ¶nkÃ¶ping	Sweden
+Jämtland	Sweden
+Jönköping	Sweden
 Kalmar	Sweden
 Kronoberg	Sweden
 Norrbotten	Sweden
-SkÃ¥ne	Sweden
+Skåne	Sweden
 Stockholm	Sweden
-SÃ¶dermanland	Sweden
+Södermanland	Sweden
 Uppsala	Sweden
-VÃ¤rmland	Sweden
-VÃ¤sterbotten	Sweden
-VÃ¤sternorrland	Sweden
-VÃ¤stmanland	Sweden
-VÃ¤stra GÃ¶taland	Sweden
-Ã–rebro	Sweden
-Ã–stergÃ¶tland	Sweden
+Värmland	Sweden
+Västerbotten	Sweden
+Västernorrland	Sweden
+Västmanland	Sweden
+Västra Götaland	Sweden
+Örebro	Sweden
+Östergötland	Sweden
 Central Singapore Community Development Council	Singapore
 North East Community Development Region	Singapore
 North West Community Development Council	Singapore
@@ -3013,7 +3013,7 @@ Makole	Slovenia
 Maribor	Slovenia
 Markovci	Slovenia
 Medvode	Slovenia
-Mestna ObÄina Novo mesto	Slovenia
+Mestna Občina Novo mesto	Slovenia
 Metlika	Slovenia
 Miren-Kostanjevica	Slovenia
 Mislinja	Slovenia
@@ -3025,81 +3025,81 @@ Muta	Slovenia
 Naklo	Slovenia
 Nazarje	Slovenia
 Nova Gorica	Slovenia
-ObÄina AjdovÅ¡Äina	Slovenia
-ObÄina ApaÄe	Slovenia
-ObÄina Bled	Slovenia
-ObÄina Bovec	Slovenia
-ObÄina BraslovÄe	Slovenia
-ObÄina BreÅ¾ice	Slovenia
-ObÄina DivaÄa	Slovenia
-ObÄina DomÅ¾ale	Slovenia
-ObÄina GoriÅ¡nica	Slovenia
-ObÄina HoÄe-Slivnica	Slovenia
-ObÄina IvanÄna Gorica	Slovenia
-ObÄina KidriÄevo	Slovenia
-ObÄina Kobarid	Slovenia
-ObÄina KoÄevje	Slovenia
-ObÄina KriÅ¾evci	Slovenia
-ObÄina KrÅ¡ko	Slovenia
-ObÄina LaÅ¡ko	Slovenia
-ObÄina LoÅ¡ka Dolina	Slovenia
-ObÄina LoÅ¡ki Potok	Slovenia
-ObÄina LuÄe	Slovenia
-ObÄina MajÅ¡perk	Slovenia
-ObÄina MengeÅ¡	Slovenia
-ObÄina MeÅ¾ica	Slovenia
-ObÄina MiklavÅ¾ na Dravskem Polju	Slovenia
-ObÄina Mirna PeÄ	Slovenia
-ObÄina MoravÄe	Slovenia
-ObÄina OrmoÅ¾	Slovenia
-ObÄina PodÄetrtek	Slovenia
-ObÄina PoljÄane	Slovenia
-ObÄina RadeÄe	Slovenia
-ObÄina Ravne na KoroÅ¡kem	Slovenia
-ObÄina RazkriÅ¾je	Slovenia
-ObÄina RaÄe-Fram	Slovenia
-ObÄina RenÄe-Vogrsko	Slovenia
-ObÄina ReÄica ob Savinji	Slovenia
-ObÄina RogaÅ¡ka Slatina	Slovenia
-ObÄina RuÅ¡e	Slovenia
-ObÄina SemiÄ	Slovenia
-ObÄina SeÅ¾ana	Slovenia
-ObÄina SodraÅ¾ica	Slovenia
-ObÄina SolÄava	Slovenia
-ObÄina SrediÅ¡Äe ob Dravi	Slovenia
-ObÄina StarÅ¡e	Slovenia
-ObÄina StraÅ¾a	Slovenia
-ObÄina Sveti AndraÅ¾ v Slovenskih Goricah	Slovenia
-ObÄina Sveti Jurij ob Å Äavnici	Slovenia
-ObÄina Sveti TomaÅ¾	Slovenia
-ObÄina TiÅ¡ina	Slovenia
-ObÄina Tolmin	Slovenia
-ObÄina TrÅ¾iÄ	Slovenia
-ObÄina Velike LaÅ¡Äe	Slovenia
-ObÄina VerÅ¾ej	Slovenia
-ObÄina ZreÄe	Slovenia
-ObÄina ÄŒrna na KoroÅ¡kem	Slovenia
-ObÄina ÄŒrnomelj	Slovenia
-ObÄina Å alovci	Slovenia
-ObÄina Å entilj	Slovenia
-ObÄina Å entjernej	Slovenia
-ObÄina Å entjur	Slovenia
-ObÄina Å entrupert	Slovenia
-ObÄina Å enÄur	Slovenia
-ObÄina Å kocjan	Slovenia
-ObÄina Å kofja Loka	Slovenia
-ObÄina Å kofljica	Slovenia
-ObÄina Å marje pri JelÅ¡ah	Slovenia
-ObÄina Å marjeÅ¡ke Toplice	Slovenia
-ObÄina Å martno ob Paki	Slovenia
-ObÄina Å martno pri Litiji	Slovenia
-ObÄina Å oÅ¡tanj	Slovenia
-ObÄina Å tore	Slovenia
-ObÄina Å½alec	Slovenia
-ObÄina Å½elezniki	Slovenia
-ObÄina Å½etale	Slovenia
-ObÄina Å½iri	Slovenia
-ObÄina Å½irovnica	Slovenia
+Občina Ajdovščina	Slovenia
+Občina Apače	Slovenia
+Občina Bled	Slovenia
+Občina Bovec	Slovenia
+Občina Braslovče	Slovenia
+Občina Brežice	Slovenia
+Občina Divača	Slovenia
+Občina Domžale	Slovenia
+Občina Gorišnica	Slovenia
+Občina Hoče-Slivnica	Slovenia
+Občina Ivančna Gorica	Slovenia
+Občina Kidričevo	Slovenia
+Občina Kobarid	Slovenia
+Občina Kočevje	Slovenia
+Občina Križevci	Slovenia
+Občina Krško	Slovenia
+Občina Laško	Slovenia
+Občina Loška Dolina	Slovenia
+Občina Loški Potok	Slovenia
+Občina Luče	Slovenia
+Občina Majšperk	Slovenia
+Občina Mengeš	Slovenia
+Občina Mežica	Slovenia
+Občina Miklavž na Dravskem Polju	Slovenia
+Občina Mirna Peč	Slovenia
+Občina Moravče	Slovenia
+Občina Ormož	Slovenia
+Občina Podčetrtek	Slovenia
+Občina Poljčane	Slovenia
+Občina Radeče	Slovenia
+Občina Ravne na Koroškem	Slovenia
+Občina Razkrižje	Slovenia
+Občina Rače-Fram	Slovenia
+Občina Renče-Vogrsko	Slovenia
+Občina Rečica ob Savinji	Slovenia
+Občina Rogaška Slatina	Slovenia
+Občina Ruše	Slovenia
+Občina Semič	Slovenia
+Občina Sežana	Slovenia
+Občina Sodražica	Slovenia
+Občina Solčava	Slovenia
+Občina Središče ob Dravi	Slovenia
+Občina Starše	Slovenia
+Občina Straža	Slovenia
+Občina Sveti Andraž v Slovenskih Goricah	Slovenia
+Občina Sveti Jurij ob Ščavnici	Slovenia
+Občina Sveti Tomaž	Slovenia
+Občina Tišina	Slovenia
+Občina Tolmin	Slovenia
+Občina Tržič	Slovenia
+Občina Velike Lašče	Slovenia
+Občina Veržej	Slovenia
+Občina Zreče	Slovenia
+Občina Črna na Koroškem	Slovenia
+Občina Črnomelj	Slovenia
+Občina Šalovci	Slovenia
+Občina Šentilj	Slovenia
+Občina Šentjernej	Slovenia
+Občina Šentjur	Slovenia
+Občina Šentrupert	Slovenia
+Občina Šenčur	Slovenia
+Občina Škocjan	Slovenia
+Občina Škofja Loka	Slovenia
+Občina Škofljica	Slovenia
+Občina Šmarje pri Jelšah	Slovenia
+Občina Šmarješke Toplice	Slovenia
+Občina Šmartno ob Paki	Slovenia
+Občina Šmartno pri Litiji	Slovenia
+Občina Šoštanj	Slovenia
+Občina Štore	Slovenia
+Občina Žalec	Slovenia
+Občina Železniki	Slovenia
+Občina Žetale	Slovenia
+Občina Žiri	Slovenia
+Občina Žirovnica	Slovenia
 Odranci	Slovenia
 Oplotnica	Slovenia
 Osilnica	Slovenia
@@ -3144,14 +3144,14 @@ Vransko	Slovenia
 Vrhnika	Slovenia
 Vuzenica	Slovenia
 Zagorje ob Savi	Slovenia
-BanskobystrickÃ½ kraj	Slovakia
-BratislavskÃ½ kraj	Slovakia
-KoÅ¡ickÃ½ kraj	Slovakia
+Banskobystrický kraj	Slovakia
+Bratislavský kraj	Slovakia
+Košický kraj	Slovakia
 Nitriansky kraj	Slovakia
-PreÅ¡ovskÃ½ kraj	Slovakia
-TrenÄiansky kraj	Slovakia
-TrnavskÃ½ kraj	Slovakia
-Å½ilinskÃ½ kraj	Slovakia
+Prešovský kraj	Slovakia
+Trenčiansky kraj	Slovakia
+Trnavský kraj	Slovakia
+Žilinský kraj	Slovakia
 Eastern Province	Sierra Leone
 Northern Province	Sierra Leone
 Southern Province	Sierra Leone
@@ -3162,7 +3162,7 @@ Castello di Domagnano	San Marino
 Castello di Faetano	San Marino
 Castello di Fiorentino	San Marino
 Castello di Montegiardino	San Marino
-Castello di San Marino CittÃ 	San Marino
+Castello di San Marino Città	San Marino
 Chiesanuova	San Marino
 Serravalle	San Marino
 Dakar	Senegal
@@ -3172,10 +3172,10 @@ Kaolack	Senegal
 Kolda	Senegal
 Louga	Senegal
 Matam	Senegal
-RÃ©gion de Kaffrine	Senegal
-RÃ©gion de KÃ©dougou	Senegal
-RÃ©gion de SÃ©dhiou	Senegal
-RÃ©gion de ThiÃ¨s	Senegal
+Région de Kaffrine	Senegal
+Région de Kédougou	Senegal
+Région de Sédhiou	Senegal
+Région de Thiès	Senegal
 Saint-Louis	Senegal
 Tambacounda	Senegal
 Ziguinchor	Senegal
@@ -3217,22 +3217,22 @@ Upper Nile State	South Sudan
 Warrap	South Sudan
 Western Bahr al Ghazal	South Sudan
 Western Equatoria	South Sudan
-PrÃ­ncipe	SÃ£o TomÃ© and PrÃ­ncipe
-SÃ£o TomÃ© Island	SÃ£o TomÃ© and PrÃ­ncipe
-Departamento de AhuachapÃ¡n	El Salvador
-Departamento de CabaÃ±as	El Salvador
+Príncipe	SÃ£o TomÃ© and PrÃ­ncipe
+São Tomé Island	SÃ£o TomÃ© and PrÃ­ncipe
+Departamento de Ahuachapán	El Salvador
+Departamento de Cabañas	El Salvador
 Departamento de Chalatenango	El Salvador
-Departamento de CuscatlÃ¡n	El Salvador
+Departamento de Cuscatlán	El Salvador
 Departamento de La Libertad	El Salvador
 Departamento de La Paz	El Salvador
-Departamento de La UniÃ³n	El Salvador
-Departamento de MorazÃ¡n	El Salvador
+Departamento de La Unión	El Salvador
+Departamento de Morazán	El Salvador
 Departamento de San Miguel	El Salvador
 Departamento de San Salvador	El Salvador
 Departamento de San Vicente	El Salvador
 Departamento de Santa Ana	El Salvador
 Departamento de Sonsonate	El Salvador
-Departamento de UsulutÃ¡n	El Salvador
+Departamento de Usulután	El Salvador
 Al-Hasakah	Syria
 Aleppo	Syria
 Ar-Raqqah	Syria
@@ -3273,13 +3273,13 @@ Salamat Region	Chad
 Sila	Chad
 Tandjile Region	Chad
 Tibesti Region	Chad
-Ville de N'DjamÃ©na	Chad
+Ville de N'Djaména	Chad
 Wadi Fira Region	Chad
 Archipel des Crozet	French Southern Territories
 Archipel des Kerguelen	French Southern Territories
-La Terre-AdÃ©lie	French Southern Territories
-ÃŽles Saint-Paul et Nouvelle-Amsterdam	French Southern Territories
-ÃŽles Ã‰parses de l'ocÃ©an Indien	French Southern Territories
+La Terre-Adélie	French Southern Territories
+Îles Saint-Paul et Nouvelle-Amsterdam	French Southern Territories
+Îles Éparses de l'océan Indien	French Southern Territories
 Centrale	Togo
 Kara	Togo
 Maritime	Togo
@@ -3375,32 +3375,32 @@ Ainaro	East Timor
 Baucau	East Timor
 Bobonaro	East Timor
 Cova Lima	East Timor
-DÃ­li	East Timor
+Díli	East Timor
 Ermera	East Timor
-LautÃ©m	East Timor
-LiquiÃ§Ã¡	East Timor
+Lautém	East Timor
+Liquiçá	East Timor
 Manatuto	East Timor
 Manufahi	East Timor
 Oecusse	East Timor
 Viqueque	East Timor
 Ahal	Turkmenistan
 Balkan	Turkmenistan
-DaÅŸoguz WelaÃ½aty	Turkmenistan
+Daşoguz Welaýaty	Turkmenistan
 Lebap	Turkmenistan
 Mary	Turkmenistan
 Gafsa Governorate	Tunisia
 Gouvernorat de Ben Arous	Tunisia
 Gouvernorat de Bizerte	Tunisia
-Gouvernorat de BÃ©ja	Tunisia
-Gouvernorat de GabÃ¨s	Tunisia
+Gouvernorat de Béja	Tunisia
+Gouvernorat de Gabès	Tunisia
 Gouvernorat de Jendouba	Tunisia
 Gouvernorat de Kairouan	Tunisia
 Gouvernorat de Kasserine	Tunisia
 Gouvernorat de Kef	Tunisia
-Gouvernorat de KÃ©bili	Tunisia
+Gouvernorat de Kébili	Tunisia
 Gouvernorat de Mahdia	Tunisia
 Gouvernorat de Monastir	Tunisia
-Gouvernorat de MÃ©denine	Tunisia
+Gouvernorat de Médenine	Tunisia
 Gouvernorat de Nabeul	Tunisia
 Gouvernorat de Sfax	Tunisia
 Gouvernorat de Sidi Bouzid	Tunisia
@@ -3409,16 +3409,16 @@ Gouvernorat de Sousse	Tunisia
 Gouvernorat de Tozeur	Tunisia
 Gouvernorat de Tunis	Tunisia
 Gouvernorat de Zaghouan	Tunisia
-Gouvernorat de lâ€™ Ariana	Tunisia
+Gouvernorat de l’ Ariana	Tunisia
 Manouba	Tunisia
 Tataouine	Tunisia
 Eua	Tonga
-Haâ€˜apai	Tonga
+Ha‘apai	Tonga
 Niuas	Tonga
 Tongatapu	Tonga
-Vavaâ€˜u	Tonga
+Vava‘u	Tonga
 Adana	Turkey
-AdÄ±yaman	Turkey
+Adıyaman	Turkey
 Afyonkarahisar	Turkey
 Aksaray	Turkey
 Amasya	Turkey
@@ -3426,36 +3426,36 @@ Ankara	Turkey
 Antalya	Turkey
 Ardahan	Turkey
 Artvin	Turkey
-AydÄ±n	Turkey
-AÄŸrÄ±	Turkey
-BalÄ±kesir	Turkey
-BartÄ±n	Turkey
+Aydın	Turkey
+Ağrı	Turkey
+Balıkesir	Turkey
+Bartın	Turkey
 Batman	Turkey
 Bayburt	Turkey
 Bilecik	Turkey
-BingÃ¶l	Turkey
+Bingöl	Turkey
 Bitlis	Turkey
 Bolu	Turkey
 Burdur	Turkey
 Bursa	Turkey
 Denizli	Turkey
-DiyarbakÄ±r	Turkey
-DÃ¼zce	Turkey
+Diyarbakır	Turkey
+Düzce	Turkey
 Edirne	Turkey
-ElazÄ±ÄŸ	Turkey
+Elazığ	Turkey
 Erzincan	Turkey
 Erzurum	Turkey
-EskiÅŸehir	Turkey
+Eskişehir	Turkey
 Gaziantep	Turkey
 Giresun	Turkey
-GÃ¼mÃ¼ÅŸhane	Turkey
-HakkÃ¢ri	Turkey
+Gümüşhane	Turkey
+Hakkâri	Turkey
 Hatay	Turkey
 Isparta	Turkey
 Istanbul	Turkey
-IÄŸdÄ±r	Turkey
-KahramanmaraÅŸ	Turkey
-KarabÃ¼k	Turkey
+Iğdır	Turkey
+Kahramanmaraş	Turkey
+Karabük	Turkey
 Karaman	Turkey
 Kars	Turkey
 Kastamonu	Turkey
@@ -3463,18 +3463,18 @@ Kayseri	Turkey
 Kilis	Turkey
 Kocaeli	Turkey
 Konya	Turkey
-KÃ¼tahya	Turkey
-KÄ±rklareli	Turkey
-KÄ±rÄ±kkale	Turkey
-KÄ±rÅŸehir	Turkey
+Kütahya	Turkey
+Kırklareli	Turkey
+Kırıkkale	Turkey
+Kırşehir	Turkey
 Malatya	Turkey
 Manisa	Turkey
 Mardin	Turkey
 Mersin	Turkey
-MuÄŸla	Turkey
-MuÅŸ	Turkey
-NevÅŸehir	Turkey
-NiÄŸde	Turkey
+Muğla	Turkey
+Muş	Turkey
+Nevşehir	Turkey
+Niğde	Turkey
 Ordu	Turkey
 Osmaniye	Turkey
 Rize	Turkey
@@ -3483,21 +3483,21 @@ Samsun	Turkey
 Siirt	Turkey
 Sinop	Turkey
 Sivas	Turkey
-TekirdaÄŸ	Turkey
+Tekirdağ	Turkey
 Tokat	Turkey
 Trabzon	Turkey
 Tunceli	Turkey
-UÅŸak	Turkey
+Uşak	Turkey
 Van	Turkey
 Yalova	Turkey
 Yozgat	Turkey
 Zonguldak	Turkey
-Ã‡anakkale	Turkey
-Ã‡ankÄ±rÄ±	Turkey
-Ã‡orum	Turkey
-Ä°zmir	Turkey
-ÅžanlÄ±urfa	Turkey
-ÅžÄ±rnak	Turkey
+Çanakkale	Turkey
+Çankırı	Turkey
+Çorum	Turkey
+İzmir	Turkey
+Şanlıurfa	Turkey
+Şırnak	Turkey
 Borough of Arima	Trinidad and Tobago
 Chaguanas	Trinidad and Tobago
 City of Port of Spain	Trinidad and Tobago
@@ -3557,32 +3557,32 @@ Zanzibar Central/South	Tanzania
 Zanzibar North	Tanzania
 Zanzibar Urban/West	Tanzania
 Avtonomna Respublika Krym	Ukraine
-Cherkasâ€™ka Oblastâ€™	Ukraine
-Chernihivsâ€™ka Oblastâ€™	Ukraine
+Cherkas’ka Oblast’	Ukraine
+Chernihivs’ka Oblast’	Ukraine
 Chernivets'ka Oblast'	Ukraine
 Dnipropetrovska Oblast'	Ukraine
-Donetsâ€™ka Oblastâ€™	Ukraine
-Ivano-Frankivsâ€™ka Oblastâ€™	Ukraine
-Kharkivsâ€™ka Oblastâ€™	Ukraine
-Khersonsâ€™ka Oblastâ€™	Ukraine
-Khmelâ€™nytsâ€™ka Oblastâ€™	Ukraine
-Kirovohradsâ€™ka Oblastâ€™	Ukraine
+Donets’ka Oblast’	Ukraine
+Ivano-Frankivs’ka Oblast’	Ukraine
+Kharkivs’ka Oblast’	Ukraine
+Khersons’ka Oblast’	Ukraine
+Khmel’nyts’ka Oblast’	Ukraine
+Kirovohrads’ka Oblast’	Ukraine
 Kyiv City	Ukraine
 Kyiv Oblast	Ukraine
-Luhansâ€™ka Oblastâ€™	Ukraine
-Lâ€™vivsâ€™ka Oblastâ€™	Ukraine
-Misto Sevastopolâ€™	Ukraine
-Mykolayivsâ€™ka Oblastâ€™	Ukraine
+Luhans’ka Oblast’	Ukraine
+L’vivs’ka Oblast’	Ukraine
+Misto Sevastopol’	Ukraine
+Mykolayivs’ka Oblast’	Ukraine
 Odessa	Ukraine
-Poltavsâ€™ka Oblastâ€™	Ukraine
-Rivnensâ€™ka Oblastâ€™	Ukraine
-Sumsâ€™ka Oblastâ€™	Ukraine
-Ternopilâ€™sâ€™ka Oblastâ€™	Ukraine
-Vinnytsâ€™ka Oblastâ€™	Ukraine
-Volynsâ€™ka Oblastâ€™	Ukraine
+Poltavs’ka Oblast’	Ukraine
+Rivnens’ka Oblast’	Ukraine
+Sums’ka Oblast’	Ukraine
+Ternopil’s’ka Oblast’	Ukraine
+Vinnyts’ka Oblast’	Ukraine
+Volyns’ka Oblast’	Ukraine
 Zakarpattia Oblast	Ukraine
-Zaporizâ€™ka Oblastâ€™	Ukraine
-Zhytomyrsâ€™ka Oblastâ€™	Ukraine
+Zaporiz’ka Oblast’	Ukraine
+Zhytomyrs’ka Oblast’	Ukraine
 Central Region	Uganda
 Eastern Region	Uganda
 Northern Region	Uganda
@@ -3653,13 +3653,13 @@ Colonia	Uruguay
 Departamento de Durazno	Uruguay
 Departamento de Flores	Uruguay
 Departamento de Montevideo	Uruguay
-Departamento de PaysandÃº	Uruguay
+Departamento de Paysandú	Uruguay
 Departamento de Rivera	Uruguay
 Departamento de Rocha	Uruguay
-Departamento de RÃ­o Negro	Uruguay
+Departamento de Río Negro	Uruguay
 Departamento de Salto	Uruguay
-Departamento de San JosÃ©	Uruguay
-Departamento de TacuarembÃ³	Uruguay
+Departamento de San José	Uruguay
+Departamento de Tacuarembó	Uruguay
 Departamento de Treinta y Tres	Uruguay
 Florida	Uruguay
 Lavalleja	Uruguay
@@ -3686,28 +3686,28 @@ Parish of Saint David	Saint Vincent and the Grenadines
 Parish of Saint George	Saint Vincent and the Grenadines
 Parish of Saint Patrick	Saint Vincent and the Grenadines
 Amazonas	Venezuela
-AnzoÃ¡tegui	Venezuela
+Anzoátegui	Venezuela
 Apure	Venezuela
 Aragua	Venezuela
 Barinas	Venezuela
-BolÃ­var	Venezuela
+Bolívar	Venezuela
 Carabobo	Venezuela
 Cojedes	Venezuela
 Delta Amacuro	Venezuela
 Dependencias Federales	Venezuela
 Distrito Federal	Venezuela
 Estado Yaracuy	Venezuela
-FalcÃ³n	Venezuela
-GuÃ¡rico	Venezuela
+Falcón	Venezuela
+Guárico	Venezuela
 Lara	Venezuela
 Miranda	Venezuela
 Monagas	Venezuela
-MÃ©rida	Venezuela
+Mérida	Venezuela
 Nueva Esparta	Venezuela
 Portuguesa	Venezuela
 Sucre	Venezuela
 Trujillo	Venezuela
-TÃ¡chira	Venezuela
+Táchira	Venezuela
 Vargas	Venezuela
 Zulia	Venezuela
 Saint Croix Island	U.S. Virgin Islands
@@ -3716,66 +3716,66 @@ Saint Thomas Island	U.S. Virgin Islands
 An Giang	Vietnam
 Gia Lai	Vietnam
 Hau Giang	Vietnam
-Huyá»‡n Ãiá»‡n BiÃªn	Vietnam
+Huyện Ðiện Biên	Vietnam
 Kon Tum	Vietnam
 Long An	Vietnam
 Saigon	Vietnam
-ThÃ nh Phá»‘ Cáº§n ThÆ¡	Vietnam
-ThÃ nh Phá»‘ HÃ  Ná»™i	Vietnam
-ThÃ nh Phá»‘ Háº£i PhÃ²ng	Vietnam
-ThÃ nh Phá»‘ ÄÃ  Náºµng	Vietnam
-Tá»‰nh BÃ  Rá»‹a-VÅ©ng TÃ u	Vietnam
-Tá»‰nh BÃ¬nh DÆ°Æ¡ng	Vietnam
-Tá»‰nh BÃ¬nh PhÆ°á»›c	Vietnam
-Tá»‰nh BÃ¬nh Thuáº­n	Vietnam
-Tá»‰nh BÃ¬nh Äá»‹nh	Vietnam
-Tá»‰nh Báº¡c LiÃªu	Vietnam
-Tá»‰nh Báº¯c Giang	Vietnam
-Tá»‰nh Báº¯c Káº¡n	Vietnam
-Tá»‰nh Báº¯c Ninh	Vietnam
-Tá»‰nh Báº¿n Tre	Vietnam
-Tá»‰nh Cao Báº±ng	Vietnam
-Tá»‰nh CÃ  Mau	Vietnam
-Tá»‰nh HÃ  Giang	Vietnam
-Tá»‰nh HÃ  Nam	Vietnam
-Tá»‰nh HÃ  TÄ©nh	Vietnam
-Tá»‰nh HÃ²a BÃ¬nh	Vietnam
-Tá»‰nh HÆ°ng YÃªn	Vietnam
-Tá»‰nh Háº£i DÆ°Æ¡ng	Vietnam
-Tá»‰nh KhÃ¡nh HÃ²a	Vietnam
-Tá»‰nh Kiáº¿n Giang	Vietnam
-Tá»‰nh Lai ChÃ¢u	Vietnam
-Tá»‰nh LÃ o Cai	Vietnam
-Tá»‰nh LÃ¢m Äá»“ng	Vietnam
-Tá»‰nh Láº¡ng SÆ¡n	Vietnam
-Tá»‰nh Nam Äá»‹nh	Vietnam
-Tá»‰nh Nghá»‡ An	Vietnam
-Tá»‰nh Ninh BÃ¬nh	Vietnam
-Tá»‰nh Ninh Thuáº­n	Vietnam
-Tá»‰nh PhÃº Thá»	Vietnam
-Tá»‰nh PhÃº YÃªn	Vietnam
-Tá»‰nh Quáº£ng BÃ¬nh	Vietnam
-Tá»‰nh Quáº£ng Nam	Vietnam
-Tá»‰nh Quáº£ng NgÃ£i	Vietnam
-Tá»‰nh Quáº£ng Ninh	Vietnam
-Tá»‰nh Quáº£ng Trá»‹	Vietnam
-Tá»‰nh SÃ³c TrÄƒng	Vietnam
-Tá»‰nh SÆ¡n La	Vietnam
-Tá»‰nh Thanh HÃ³a	Vietnam
-Tá»‰nh ThÃ¡i BÃ¬nh	Vietnam
-Tá»‰nh ThÃ¡i NguyÃªn	Vietnam
-Tá»‰nh Thá»«a ThiÃªn-Huáº¿	Vietnam
-Tá»‰nh Tiá»n Giang	Vietnam
-Tá»‰nh TrÃ  Vinh	Vietnam
-Tá»‰nh TuyÃªn Quang	Vietnam
-Tá»‰nh TÃ¢y Ninh	Vietnam
-Tá»‰nh VÄ©nh Long	Vietnam
-Tá»‰nh VÄ©nh PhÃºc	Vietnam
-Tá»‰nh YÃªn BÃ¡i	Vietnam
-Tá»‰nh Äáº¯k Láº¯k	Vietnam
-Tá»‰nh Äá»“ng Nai	Vietnam
-Tá»‰nh Äá»“ng ThÃ¡p	Vietnam
-Ãáº¯k NÃ´ng	Vietnam
+Thành Phố Cần Thơ	Vietnam
+Thành Phố Hà Nội	Vietnam
+Thành Phố Hải Phòng	Vietnam
+Thành Phố Đà Nẵng	Vietnam
+Tỉnh Bà Rịa-Vũng Tàu	Vietnam
+Tỉnh Bình Dương	Vietnam
+Tỉnh Bình Phước	Vietnam
+Tỉnh Bình Thuận	Vietnam
+Tỉnh Bình Định	Vietnam
+Tỉnh Bạc Liêu	Vietnam
+Tỉnh Bắc Giang	Vietnam
+Tỉnh Bắc Kạn	Vietnam
+Tỉnh Bắc Ninh	Vietnam
+Tỉnh Bến Tre	Vietnam
+Tỉnh Cao Bằng	Vietnam
+Tỉnh Cà Mau	Vietnam
+Tỉnh Hà Giang	Vietnam
+Tỉnh Hà Nam	Vietnam
+Tỉnh Hà Tĩnh	Vietnam
+Tỉnh Hòa Bình	Vietnam
+Tỉnh Hưng Yên	Vietnam
+Tỉnh Hải Dương	Vietnam
+Tỉnh Khánh Hòa	Vietnam
+Tỉnh Kiến Giang	Vietnam
+Tỉnh Lai Châu	Vietnam
+Tỉnh Lào Cai	Vietnam
+Tỉnh Lâm Đồng	Vietnam
+Tỉnh Lạng Sơn	Vietnam
+Tỉnh Nam Định	Vietnam
+Tỉnh Nghệ An	Vietnam
+Tỉnh Ninh Bình	Vietnam
+Tỉnh Ninh Thuận	Vietnam
+Tỉnh Phú Thọ	Vietnam
+Tỉnh Phú Yên	Vietnam
+Tỉnh Quảng Bình	Vietnam
+Tỉnh Quảng Nam	Vietnam
+Tỉnh Quảng Ngãi	Vietnam
+Tỉnh Quảng Ninh	Vietnam
+Tỉnh Quảng Trị	Vietnam
+Tỉnh Sóc Trăng	Vietnam
+Tỉnh Sơn La	Vietnam
+Tỉnh Thanh Hóa	Vietnam
+Tỉnh Thái Bình	Vietnam
+Tỉnh Thái Nguyên	Vietnam
+Tỉnh Thừa Thiên-Huế	Vietnam
+Tỉnh Tiền Giang	Vietnam
+Tỉnh Trà Vinh	Vietnam
+Tỉnh Tuyên Quang	Vietnam
+Tỉnh Tây Ninh	Vietnam
+Tỉnh Vĩnh Long	Vietnam
+Tỉnh Vĩnh Phúc	Vietnam
+Tỉnh Yên Bái	Vietnam
+Tỉnh Đắk Lắk	Vietnam
+Tỉnh Đồng Nai	Vietnam
+Tỉnh Đồng Tháp	Vietnam
+Ðắk Nông	Vietnam
 Malampa Province	Vanuatu
 Penama Province	Vanuatu
 Sanma Province	Vanuatu
@@ -3783,86 +3783,86 @@ Shefa Province	Vanuatu
 Tafea Province	Vanuatu
 Torba Province	Vanuatu
 Circonscription d'Alo	Wallis and Futuna
-Circonscription d'UvÃ©a	Wallis and Futuna
-Circonscription de SigavÃ©	Wallis and Futuna
+Circonscription d'Uvéa	Wallis and Futuna
+Circonscription de Sigavé	Wallis and Futuna
 A'ana	Samoa
 Aiga-i-le-Tai	Samoa
 Atua	Samoa
-Faâ€˜asaleleaga	Samoa
+Fa‘asaleleaga	Samoa
 Gagaifomauga	Samoa
-Gagaâ€˜emauga	Samoa
+Gaga‘emauga	Samoa
 Palauli	Samoa
-Satupaâ€˜itea	Samoa
+Satupa‘itea	Samoa
 Tuamasaga	Samoa
 Vaisigano	Samoa
-Vaâ€˜a-o-Fonoti	Samoa
+Va‘a-o-Fonoti	Samoa
 Hani i Elezit	Kosovo
 Kamenica	Kosovo
-Komuna e DeÃ§anit	Kosovo
+Komuna e Deçanit	Kosovo
 Komuna e Dragashit	Kosovo
 Komuna e Drenasit	Kosovo
 Komuna e Ferizajt	Kosovo
-Komuna e GjakovÃ«s	Kosovo
+Komuna e Gjakovës	Kosovo
 Komuna e Gjilanit	Kosovo
-Komuna e GraÃ§anicÃ«s	Kosovo
+Komuna e Graçanicës	Kosovo
 Komuna e Istogut	Kosovo
 Komuna e Junikut	Kosovo
-Komuna e KaÃ§anikut	Kosovo
+Komuna e Kaçanikut	Kosovo
 Komuna e Klines	Kosovo
 Komuna e Kllokotit	Kosovo
 Komuna e Leposaviqit	Kosovo
 Komuna e Malisheves	Kosovo
-Komuna e MamushÃ«s	Kosovo
-Komuna e MitrovicÃ«s	Kosovo
+Komuna e Mamushës	Kosovo
+Komuna e Mitrovicës	Kosovo
 Komuna e Obiliqit	Kosovo
 Komuna e Parteshit	Kosovo
-Komuna e PejÃ«s	Kosovo
-Komuna e PrishtinÃ«s	Kosovo
+Komuna e Pejës	Kosovo
+Komuna e Prishtinës	Kosovo
 Komuna e Ranillugut	Kosovo
 Komuna e Shtimes	Kosovo
 Komuna e Skenderajt	Kosovo
-Komuna e ThÃ«randÃ«s	Kosovo
-Komuna e VitisÃ«	Kosovo
+Komuna e Thërandës	Kosovo
+Komuna e Vitisë	Kosovo
 Komuna e Zubin Potokut	Kosovo
 Kosovo Polje	Kosovo
 Lipjan	Kosovo
 Novo Brdo	Kosovo
-OpÅ¡tina ZveÄan	Kosovo
-OpÅ¡tina Å trpce	Kosovo
+Opština Zvečan	Kosovo
+Opština Štrpce	Kosovo
 Orahovac	Kosovo
 Podujevo	Kosovo
 Prizren	Kosovo
 Vushtrri	Kosovo
 Aden	Yemen
 Al Mahrah	Yemen
-Al Maá¸©wÄ«t	Yemen
+Al Maḩwīt	Yemen
 Amanat Al Asimah	Yemen
 Ibb	Yemen
-Muá¸©ÄfazÌ§at Abyan	Yemen
-Muá¸©ÄfazÌ§at DhamÄr	Yemen
-Muá¸©ÄfazÌ§at Laá¸©ij	Yemen
-Muá¸©ÄfazÌ§at Maâ€™rib	Yemen
-Muá¸©ÄfazÌ§at Raymah	Yemen
-Muá¸©ÄfazÌ§at Taâ€˜izz	Yemen
-Muá¸©ÄfazÌ§at al Bayá¸‘Äâ€™	Yemen
-Muá¸©ÄfazÌ§at al Jawf	Yemen
-Muá¸©ÄfazÌ§at al á¸¨udaydah	Yemen
-Muá¸©ÄfazÌ§at aá¸‘ á¸Äliâ€˜	Yemen
-Muá¸©ÄfazÌ§at Åžaâ€˜dah	Yemen
-Muá¸©ÄfazÌ§at á¸¨ajjah	Yemen
-Muá¸©ÄfazÌ§at á¸¨aá¸‘ramawt	Yemen
+Muḩāfaz̧at Abyan	Yemen
+Muḩāfaz̧at Dhamār	Yemen
+Muḩāfaz̧at Laḩij	Yemen
+Muḩāfaz̧at Ma’rib	Yemen
+Muḩāfaz̧at Raymah	Yemen
+Muḩāfaz̧at Ta‘izz	Yemen
+Muḩāfaz̧at al Bayḑā’	Yemen
+Muḩāfaz̧at al Jawf	Yemen
+Muḩāfaz̧at al Ḩudaydah	Yemen
+Muḩāfaz̧at aḑ Ḑāli‘	Yemen
+Muḩāfaz̧at Şa‘dah	Yemen
+Muḩāfaz̧at Ḩajjah	Yemen
+Muḩāfaz̧at Ḩaḑramawt	Yemen
 Omran	Yemen
 Sanaa	Yemen
 Shabwah	Yemen
 Acoua	Mayotte
 Bandraboua	Mayotte
 Bandrele	Mayotte
-BouÃ©ni	Mayotte
+Bouéni	Mayotte
 Chiconi	Mayotte
 Chirongui	Mayotte
 Dembeni	Mayotte
 Dzaoudzi	Mayotte
-Kani-KÃ©li	Mayotte
+Kani-Kéli	Mayotte
 Koungou	Mayotte
 M'Tsangamouji	Mayotte
 Mamoudzou	Mayotte

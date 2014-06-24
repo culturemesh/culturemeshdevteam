@@ -16,6 +16,7 @@
 
 include_once("zz341/fxn.php");
 include_once("dal_network_registration-dt.php");
+include_once("data/dal_query_handler.php");
 
 class NetworkRegistration
 {
@@ -210,24 +211,15 @@ class NetworkRegistration
 	}
 	
 	////////////////////// DELETE OPERATIONS /////////////////////
-	public static function deleteNetRegistration($netreg_dt)
+	public static function deleteNetRegistration($uid, $nid, $con=NULL)
 	{
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
-		//$con = func_get_arg(1);
-		
-		if (mysqli_connect_errno())
-		{
-			echo "Failed to connect to MySQL: ";
-		}
-		
-		mysqli_query($con, "DELETE FROM network_registration 
-			WHERE id_user=". $netreg_dt->id_user ." AND id_network=". $netreg_dt->id_network);
-		
-		if (func_num_args() < 2)
-		{ mysqli_close($con); }
+		$query = <<<SQL
+			DELETE FROM network_registration 
+			WHERE id_user=$uid 
+			AND id_network=$nid
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
 	}
 	
 	public static function deleteRegistrationByUser($id)

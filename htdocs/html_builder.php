@@ -290,7 +290,7 @@ HTML;
 		echo "
 		<td class='event-card month'>
 			<p>{$month}</p>
-			<p>20{$year}</p>
+			<p>{$year}</p>
 		</td>
 		";
 	}
@@ -345,6 +345,7 @@ EHTML;
 
 //////////////////////
 public static function displayEventModal($event) {
+
 //////////////////////
 // create join form
 $join_form = null;
@@ -386,9 +387,11 @@ $modal_1 = <<<EHTML
 				<input type="text" name="address_1" class="event-text-modal edit-$event->id" placeholder="Address 1" value="$event->address_1"/>
 			<p class="event-modal info-$event->id">$event->address_2</p>
 				<input type="text" name="address_2" class="event-text-modal edit-$event->id" placeholder="Address 2" value="$event->address_2"/>
-			<p class="event-modal info-$event->id">$event->city</p>
-			<p class="event-modal info-$event->id">$event->country</p>
+			<p class="event-modal info-$event->id">$event->city, $event->region</p>
+				<input type="text" name="city" class="event-text-modal edit-$event->id" placeholder="City" value="$event->city"/>
+				<input type="text" name="region" class="event-text-modal edit-$event->id" placeholder="Region" value="$event->region"/>
 			</div>
+				<input type="hidden" name="id_event" class="edit-$event->id" value="$event->id"/>
 				<input type="submit" class="submit edit-$event->id" value="Submit Changes"></input>
 		    </form>
 		<div id="join-event-form-$event->id">
@@ -462,7 +465,7 @@ EHTML;
 $ad_display = null;
 $jf_display = null;
 
-if ($_SESSION['uid'] == $event->host_id
+if ($_SESSION['uid'] == $event->id_host
 	|| $event->attending) {
 		////////////////////////
 		$jf_display = <<<EHTML

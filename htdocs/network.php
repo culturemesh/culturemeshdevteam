@@ -48,7 +48,7 @@
 	$network->post_count = Post::getPostCount($id, $con);
 	$_SESSION['cur_network'] = $network->id;
 	
-	$events = Event::getEventsByNetworkId($id, $con);
+	$events = Event::getEventsByNetworkId_D($id, $con);
 
 	if (isset($_SESSION['uid']))
 	{
@@ -74,7 +74,7 @@
 		// add year to array as keys
 		//   -- get year
 		$dt = new DateTime($event->event_date);
-		$year = $dt->format('y');
+		$year = $dt->format('Y');
 
 		// 
 		if (!isset($calendar[$year])) {
@@ -93,7 +93,7 @@
 		$month = $dt->format('n');
 
 		// push event into array
-		array_unshift( $calendar[$year][$months[$month - 1]], $event);
+		array_push( $calendar[$year][$months[$month - 1]], $event);
 	}
 
 	// Load events object into static page
@@ -162,9 +162,12 @@
 				if (elem.style.display == "none" || elem.style.display == "")
 				{
 					elem.style.display = "block";
+					$("#event-post").text("Cancel");
 				}
-				else if (elem.style.display == "block")
+				else if (elem.style.display == "block") {
 					elem.style.display = "none";
+					$("#event-post").text("Post Event");
+				}
 			}
 		}
 		</script>
@@ -212,8 +215,11 @@
 							</div>
 							<div class="member">
 								<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
-								<button class="network">Leave Network</button>
-
+								<form method="POST" action="network_leave.php">
+									<button class="network">Leave Network</button>
+									<input type="hidden" name="uid" value="<?php echo $_SESSION['uid']; ?>"/>
+									<input type="hidden" name="nid" value="<?php echo $network->id; ?>"/>
+								</form>
 							</div>
 						</div>
 						<div class="clear"></div>
@@ -271,8 +277,8 @@
 							<input type="text" name="address_2" class="event-text" placeholder="Address 2"/>
 							<textarea id="description" name="description" class="event-text" placeholder="What's happening?"></textarea>
 							<div id="clear"></div>
-							<input type="text" class="hidden-field" name="city" value=<?php echo $network->city_cur;?>/></input>
-							<input type="text" class="hidden-field" name="country" value=<?php echo $network->country_cur;?>/></input>
+							<input type="text" class="event-text" name="city" placeholder="City"/></input>
+							<input type="text" class="event-text" name="region" placeholder="Region"/></input>
 							<input type="submit" class="network" value="Post"></input>
 							</div>
 						</form>
