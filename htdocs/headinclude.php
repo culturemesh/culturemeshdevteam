@@ -30,8 +30,19 @@
 
 // login validation
 </script>
-<link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
+<?php
+////////////////////////////////////////////////////////////////////
+// 	MAKE HTTPS for non logged-in users
+if (!isset($_SESSION['uid'])) {
+	if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "") {
+		$redirect = "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		//echo $redirect;
+		header("Location: {$redirect}");
+	}
+}
+?>
 <?php
 	$guest = true;
 	if (!isset($_SESSION['uid']))
