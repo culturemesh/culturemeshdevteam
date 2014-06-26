@@ -1470,8 +1470,12 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
 .section-break{
     height: 60px;
 }
+
+div.mid-grid {
+}
 .img-strip-ul{
     list-style-type: none;
+    margin:0 auto;
 }
 .img-strip-ul li{
     display: inline;

@@ -25,10 +25,11 @@ $boxes = array(
 ?>
 <h2 class="pheader text-center">Careers</h2>
 <p class="text-center">CultureMesh is building networks to match the real-world dynamics of people living, working, and traveling outside of their home countries to knit the diverse fabrics of our world together.</p>
+<!--
 <a href="" class="btn cm-button center-elem btn-big">See Current Openings</a>
 
 <div id="js-container">
-<?php for($i=0;$i<count($boxes);$i++):
+<?php/* for($i=0;$i<count($boxes);$i++):
     $box = $boxes[$i];?>
     <div class="js-image size-<?php echo $box['size']; ?>" style="top:<?php echo $box['top']; ?>px;left:<?php echo $box['left']; ?>px;">		
         <a href="#wolf!"><img class="js-small-image" src="images/wolf-moon.jpg"/></a>
@@ -40,8 +41,9 @@ $boxes = array(
             <p>Random stuff that'll match each picture...blah</p>
         </div>
     </div>
-<?php endfor; ?>
+<?php endfor; */?>
 </div>
+-->
 
 <div class="bottom-info">
     <h2 class="pheader text-center">Current Openings</h2>

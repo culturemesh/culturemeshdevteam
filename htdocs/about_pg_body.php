@@ -9,13 +9,20 @@
 </div>
 <div class="mid-grid">
     <h2 class="pheader text-center">The Team</h2>
-    <ul class="img-strip-ul center-elem">
-        <?php
-        $team_members = getRowsQuery("SELECT * FROM internal_team");
-        foreach($team_members as $member):?>
-            <li><img src="<?php echo $member['thumb_url'];?>" title="<?php echo $member['name'];?>" alt="<?php echo $member['name'];?>" class="team_thumb" /></li>
-        <?php endforeach;?>
-    </ul>
+    <div>
+	    <?php
+		$pic_length = 205;
+		$team_members = getRowsQuery("SELECT * FROM internal_team");
+		$width = count($team_members) * $pic_length + 15;
+	    ?>
+	    <!--<ul class="img-strip-ul center-elem">-->
+	    <ul class="img-strip-ul" style="width:<?php echo $width; ?>px;">
+		<?php
+		foreach($team_members as $member):?>
+		    <li><img src="<?php echo $member['thumb_url'];?>" title="<?php echo $member['name'];?>" alt="<?php echo $member['name'];?>" class="team_thumb" /></li>
+		<?php endforeach;?>
+	    </ul>
+    </div>
 </div>
 
 <div class="bottom-info">
@@ -32,8 +39,11 @@
 	}
     ?>
     <form method="post" action="" class="center-elem fullwidth">
+	<div style="float:left;">
         <input placeholder="Name" type="text" required name="contact_name" class="input-half left" id="contact_name">
         <input placeholder="Your Email" type="email" class="input-half right" id="contact_email" name="contact_email">
+	</div>
+	<div class="clear"></div>
         <textarea class="center-elem full" placeholder="What do you have to say?" name="contact_body" id="contact_body" required></textarea>
         <input type="submit" value="Send Message" class="btn cm-button center-elem">
     </form>

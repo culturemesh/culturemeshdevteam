@@ -34,11 +34,16 @@
 
 <?php
 ////////////////////////////////////////////////////////////////////
+//
 // 	MAKE HTTPS for non logged-in users
-if (!isset($_SESSION['uid'])) {
+
+// check for localhost access
+$whitelist = array("127.0.0.1", "::1");
+
+if (!isset($_SESSION['uid']) && !in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
 	if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "") {
+		// redirect
 		$redirect = "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-		//echo $redirect;
 		header("Location: {$redirect}");
 	}
 }
