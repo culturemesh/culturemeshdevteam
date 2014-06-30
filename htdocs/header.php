@@ -13,6 +13,8 @@
         </ul>
     </div>
     <div class="clear"></div>
+
+<?php /*
     <?php
         $reg_header = 'Join the</br></br><b>CultureMesh Community!</b>';
         $reg_body = '<form id="reg_form" method="post" action="r.php">
@@ -91,6 +93,7 @@
                 </div>    
                 </form>
                     <script>
+			/*
                     $("#pass_mism_txt").hide();
                     
                     $("#log_submit_btn").click(function(event){
@@ -173,7 +176,61 @@
         
         echo buildModal($reg_header, $reg_body, $reg_footer, "register_modal");
         echo buildModal($log_header, $log_body, $log_footer, "login_modal");
+
+		*/
     ?>
+		<div id="register_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			</div>
+			<div class="modal-body">
+				<form id="reg_form" method="post" action="r.php">
+					<div id="register-div">
+						<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
+						</br>
+						<span id="email_dup_txt" class="label label-important">That email address is already registered. If you\'ve forgotten your password, <a href="#">click here.</a></span>
+						<div id="login-passwords">
+						<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
+						<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
+						<div class="clear"></div>
+						<span id="password_validation"></span>
+						<span id="server_error"></span>
+						</div>
+						</br>
+						</br>
+						<span id="pass_mism_txt" class="label label-important">Passwords don\'t match. Please try again.</span>
+						<div class="clear"></div>
+						<input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				Already a member? <a href="#" id="sign_in_mod">Sign in!</a>
+			</div>
+		</div>
+		<div id="login_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
+			<div class="modal-header">
+				<b>Welcome Back!</b>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			</div>
+			<div class="modal-body">
+				<form id="log_form" method="post" action="l.php">
+					<div id="login-div">
+						<input type="email" name="email" id="log_email" class="modal-text-input" placeholder="Email" required />
+						<input type="password" name="password" id="log_password" class="modal-text-input" onchange="validateInput(this, document.getElementById(\'log_validation\'))" placeholder="Password" required />
+						</br>
+						<span id="log_validation"></span>
+						</br>
+						</br>
+						<input type="submit" id="log_submit_btn" class="submit" data-loading-text="Checking..." value="Sign In" />
+					</div>    
+				</form>
+			</div>
+			<div class="modal-footer">
+				Not a member yet? <a href="#" id="sign_in_mod">Join Us!</a>
+			</div>
+		</div>
+	</div>
 </div>
 <div id="signout_panel" style="display:none">
 	<p>You have successfully signed out.</p>

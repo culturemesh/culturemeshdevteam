@@ -7,6 +7,28 @@
   * Database connection failed - 5
 **/
 
+// check if we came from a network page
+$netpos = strpos($_SERVER['HTTP_REFERER'], "network");
+
+// set the redirect page
+// it may be a network page,
+if ($netpos > -1) {
+	$netend = strpos($_SERVER['HTTP_REFERER'], "&");
+
+	// if there's a &, ignore it
+	if ($netend > -1)
+	{
+		$length = $netend - $netpos;
+		$redirect = substr($_SERVER['HTTP_REFERER'], $netpos, $length);
+	}
+	else {
+		$redirect = substr($_SERVER['HTTP_REFERER'], $netpos);
+	}
+}
+else
+	$redirect = "profile_edit.php";
+
+// start working on stuff
 if($_POST['email'] && $_POST['password']){
 	
 		include 'zz341/fxn.php';
@@ -35,13 +57,21 @@ if($_POST['email'] && $_POST['password']){
 		
 		if (strlen($email) > 50)
 		{
+			mysqli_close($con);
+			header("Location: ".$redirect);
+			/*
 			$json_response['error'] = 3;
 			echo json_encode($json_response);
+			 */
 		}
 		else if (strlen($pass) > 18)
 		{
+			mysqli_close($con);
+			header("Location: ".$redirect);
+			/*
 			$json_response['error'] = 4;
 			echo json_encode($json_response);
+			 */
 		}
 		else
 		{	
@@ -69,6 +99,9 @@ if($_POST['email'] && $_POST['password']){
 					$json_response['events'] = $events;
 					$json_response['member'] = NetworkRegistration::checkRegistration($netreg, $con);
 
+					// close connection
+					mysqli_close($con);
+
 					// get title
 					if ($result['first_name'] != NULL)
 						$json_response['title'] = $result['first_name'];
@@ -78,22 +111,30 @@ if($_POST['email'] && $_POST['password']){
 						$json_response['title'] = $email;
 
 					// return successful
-					echo json_encode($json_response);
+					header("Location: ".$redirect);
+					//echo json_encode($json_response);
 				}
 				else // came from somewhere else, may be expanded later
 				{
-					echo json_encode($json_response);
+					mysqli_close($con);
+					header("Location: ".$redirect);
+					//echo json_encode($json_response);
 				}
 			}
 			else
 			{
+			   mysqli_close($con);
+			   header("Location: ".$redirect);
+			   /*
 			    $json_response['error'] = 2;
 			    echo json_encode($json_response);
+			    */
 			}
 		}
 }
 else{
-    //header("Location: index.php");
+    header("Location: index.php");
+    /*
     $json_response = array(
     "error" => NULL,
     "network" => NULL,
@@ -101,5 +142,6 @@ else{
     "title" => NULL);
 
     echo json_encode($json_response);
+     */
 }
 ?>

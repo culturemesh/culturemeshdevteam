@@ -18,38 +18,32 @@
 
 include_once("zz341/fxn.php");
 include_once("dal_post-dt.php");
+include_once("dal_query_handler.php");
 
 class Post
 {
 	////////////////////// CREATE OPERATIONS ////////////////////////////////////////
-	public static function createPost($post_dt)
+	public static function createPost($post_dt, $con=NULL)
 	{
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
-		//$con = func_get_arg(1);
-		
-		if (mysqli_connect_errno())
-		{
-			echo "Failed to connect to MySQL: ";
-		}
-		
-		echo "INSERT INTO posts
+		$query = <<<SQL
+			INSERT INTO posts
 			(id_user, id_network, post_date, post_text, post_class, post_original, vid_link, img_link) 
-			VALUES (". $post_dt->id_user . ", ". $post_dt->id_network . ", NOW(), 
-			'". $post_dt->post_text ."', '". $post_dt->post_class ."', ". $post_dt->post_original .", '" . $post_dt->vid_link ."', '". $post_dt->img_link ."')";
+			VALUES ($post_dt->id_user, $post_dt->id_network, NOW(), 
+			'$post_dt->post_text', '$post_dt->post_class', $post_dt->post_original, '$post_dt->vid_link', '$post_dt->img_link')
+SQL;
 
-		if (!mysqli_query($con, "INSERT INTO posts
-			(id_user, id_network, post_date, post_text, post_class, post_original, vid_link, img_link) 
-			VALUES (". $post_dt->id_user . ", ". $post_dt->id_network . ", NOW(), 
-			'". $post_dt->post_text ."', '". $post_dt->post_class ."', ". $post_dt->post_original .", '" . $post_dt->vid_link ."', '". $post_dt->img_link ."')"))
-		{
-			echo "Error Message: " . $con->error;
-		}
-		
-		if (func_num_args() < 2)
-		{ mysqli_close($con); }
+		return QueryHandler::executeQuery($query, $con);
+	}
+
+	public static function createReply($text, $nid, $uid, $id_parent, $con=NULL)
+	{
+		$query = <<<SQL
+			INSERT INTO post_replies
+			(id_parent, id_user, id_network, reply_text) 
+			VALUES ($id_parent, $uid, $nid, '$text')
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
 	}
 	
 	////////////////////// READ OPERATIONS //////////////////////////////////////////////
@@ -75,26 +69,25 @@ class Post
 		return $result;
 	}
 	
-	public static function getPostsByNetworkId($id)
+	public static function getPostsByNetworkId($id, $con=NULL)
 	{
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
-		
-		// Check connection
-		if (mysqli_connect_errno())
-		{
-		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		}
-		
-		$result = mysqli_query($con,
-			"SELECT p.*, u.email, u.first_name, u.last_name, u.username, u.img_link
-			FROM posts p, users u 
-			WHERE p.id_user=u.id 
-			AND id_network={$id}
-			ORDER BY post_date DESC");
-		
+		$query = <<<SQL
+			SELECT p.*, u.email, u.username, u.first_name, u.last_name, u.img_link, reply_count 
+			FROM posts p
+			LEFT JOIN (SELECT id_parent, COUNT(id_parent) AS reply_count
+					FROM post_replies
+					GROUP BY id_parent) pr
+			ON p.id = pr.id_parent
+			JOIN (SELECT *
+				FROM users) u
+			ON p.id_user = u.id
+			AND p.id_network=$id
+			ORDER BY post_date DESC
+SQL;
+		// execute
+		$result = QueryHandler::executeQuery($query, $con);
+
+		// process posts
 		$posts = array();
 		while ($row = mysqli_fetch_array($result))
 		{
@@ -117,9 +110,6 @@ class Post
 			
 			array_push($posts, $post_dt);
 		}
-		
-		if (func_num_args() < 2)
-			mysqli_close($con);
 		
 		return $posts;
 	}
@@ -166,30 +156,99 @@ class Post
 		return $posts;
 	}
 	
-	public static function getPostCount($id)
+	public static function getPostCount($id, $con=NULL)
 	{
 		
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
+		$query = <<<SQL
+			SELECT reply_count, COUNT(p.id_network) AS post_count
+			FROM posts p
+			LEFT JOIN (SELECT id_network, COUNT(id_network) AS reply_count
+					FROM post_replies
+					GROUP BY id_network) pr
+			ON p.id_network = pr.id_network
+			WHERE p.id_network=$id
+SQL;
+	//	$result = mysqli_query($con,"SELECT COUNT(id_network) as post_count FROM posts WHERE id_network={$id}");
+		$result = QueryHandler::executeQuery($query, $con);
 		
-		// Check connection
-		if (mysqli_connect_errno())
-		{
-		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		while ($row = mysqli_fetch_array($result)) {
+			$post_count = $row['post_count'];
+			$reply_count = $row['reply_count'];
 		}
 		
-		$result = mysqli_query($con,"SELECT COUNT(id_network) as post_count FROM posts WHERE id_network={$id}");
+		return $post_count + $reply_count;
+	}
+
+	public static function getRepliesByParentId($id, $con=NULL)
+	{
+		$query = <<<SQL
+			SELECT p.*, u.email, u.username, u.first_name, u.last_name, u.img_link
+			FROM post_replies p, users u
+			WHERE p.id_user=u.id
+			AND p.id_parent=$id
+SQL;
+
+		$result = QueryHandler::executeQuery($query, $con);
+
+		$posts = array();
 		
 		while ($row = mysqli_fetch_array($result))
-			$count = $row['post_count'];
+		{
+			$post_dt = new PostDT();
+			
+			$post_dt->id = $row['id'];
+			$post_dt->id_user = $row['id_user'];
+			$post_dt->id_parent = $row['id_parent'];
+			$post_dt->first_name = $row['first_name'];
+			$post_dt->last_name = $row['last_name'];
+			$post_dt->username = $row['username'];
+			$post_dt->email = $row['email'];
+			$post_dt->id_network = $row['id_network'];
+			$post_dt->reply_date = $row['reply_date'];
+			$post_dt->reply_text = $row['reply_text'];
+			$post_dt->vid_link = $row['vid_link'];
+			$post_dt->img_link = $row['img_link'];
+			
+			array_push($posts, $post_dt);
+		}
 		
-		if (func_num_args() < 2)
-			mysqli_close($con);
-		
-		return $count;
+		return $posts;
 	}
+
+	public static function getImmediateReply($text, $nid, $uid, $id_parent, $con=NULL) {
+		$query = <<<SQL
+			SELECT p.*, u.email, u.username, u.first_name, u.last_name, u.img_link
+			FROM post_replies p, users u
+			WHERE p.id_user=u.id
+			AND p.reply_text='$text'
+			AND p.id_network=$nid
+			AND p.id_user=$uid
+			AND p.id_parent=$id_parent
+			ORDER BY reply_date DESC
+SQL;
+
+		$result = QueryHandler::executeQuery($query, $con);
+
+		$row = mysqli_fetch_array($result);
+
+		$post_dt = new PostDT();
+		
+		$post_dt->id = $row['id'];
+		$post_dt->id_user = $row['id_user'];
+		$post_dt->id_parent = $row['id_parent'];
+		$post_dt->first_name = $row['first_name'];
+		$post_dt->last_name = $row['last_name'];
+		$post_dt->username = $row['username'];
+		$post_dt->email = $row['email'];
+		$post_dt->id_network = $row['id_network'];
+		$post_dt->reply_date = $row['reply_date'];
+		$post_dt->reply_text = $row['reply_text'];
+		$post_dt->vid_link = $row['vid_link'];
+		$post_dt->img_link = $row['img_link'];
+			
+		return $post_dt;
+	}
+
 	////////////////////// UPDATE OPERATIONS /////////////////////
 	public static function updatePost($post_dt)
 	{
@@ -217,27 +276,24 @@ class Post
 	}
 	
 	////////////////////// DELETE OPERATIONS /////////////////////
-	public static function deletePost($post_dt)
+	public static function deletePost($id, $con=NULL)
 	{
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
-		//$con = func_get_arg(1);
-		
-		if (mysqli_connect_errno())
-		{
-			echo "Failed to connect to MySQL: ";
-		}
-		
-		if (!mysqli_query($con, "DELETE FROM posts 
-			WHERE id=". $post_dt->id))
-		{
-			echo "Error Message: " . $con->error;
-		}
-		
-		if (func_num_args() < 2)
-		{ mysqli_close($con); }
+		$query = <<<SQL
+			DELETE FROM posts 
+			WHERE id=$id
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+	}
+
+	public static function deleteReply($id, $con=NULL)
+	{
+		$query = <<<SQL
+			DELETE FROM post_replies 
+			WHERE id=$id
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
 	}
 	
 	public static function deletePostsByUser($id)

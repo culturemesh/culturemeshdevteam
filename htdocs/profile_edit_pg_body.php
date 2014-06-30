@@ -172,6 +172,11 @@ echo buildModal($pass_header, $pass_body, $pass_footer, "password_confirm_modal"
                 $("#basic_info_update_success_txt").fadeIn();
                 delay(function(){$("#basic_info_update_success_txt").fadeOut()}, 2000);
             }
+	    else {
+		$("#basic_info_update_success_txt").text(results["error"]);
+                $("#basic_info_update_success_txt").fadeIn();
+                //delay(function(){$("#basic_info_update_success_txt").fadeOut()}, 2000);
+	    }
 	})
 	.fail(function(data, ajaxOptions, thrownError) {
 		alert(data.status);

@@ -231,14 +231,25 @@ HTML;
 		";
 	}
 	
-	public static function displayPost($post)
+	// be careful, it's a fucking mess in here
+	//  sorry, just trying to resolve nojs with js
+	//  this is why templates are helpful
+	public static function displayPost($post, $replies)
 	{
+		// jsonencode post
+		$jpost = json_encode($post);
+		// jsonencode user
+		$juser = json_encode($user);
 		// get image
 		$img_link = NULL;
 		if ($post->img_link == NULL)
 			$img_link = BLANK_IMG;
 		else
 			$img_link = IMG_DIR.$post->img_link;
+
+		// set reply count if null
+		if ($post->reply_count == NULL)
+			$post->reply_count = 0;
 
 		// parse name
 		$name = NULL;
@@ -250,20 +261,162 @@ HTML;
 			if (isset($post->last_name))
 				$name .= " ".$post->last_name;
 		}
-		echo "
-		<li class='network-post' id='post-{$post->id}'>
-			<div class='post-img'>
-				<img id='profile-post' src='{$img_link}' width='45' height='45'>
-			</div>
-			<div class='post-info'>
-				<h5 class='h-network'>{$name}</h5>
-				<p class='network'>{$post->post_text}</p>
-				<!--<a class='network member'>Reply</a>-->
-				<!--<button class='delete-button user'>Delete Post</button>-->
-			</div>
-			<div class='clear'></div>
-		</li>
-		";
+
+////////////////////////////////////////////
+
+		if ($post->id_user == $_SESSION['uid']) {
+			$del_button = <<<EHTML
+			<form id='post-delete-$post->id' class='personal' method="POST" action="network_post_delete.php">
+				<noscript>
+				<input type="hidden" name="NOJS" value="NOJS"/>
+				</noscript>
+				<input type="hidden" name="pid" value="$post->id"/>
+				<input type="hidden" name="nid" value="$post->id_network"/>
+				<button class='delete-button user'>Delete Post</button>
+			</form>
+EHTML;
+		}
+
+		if (isset($_SESSION['uid'])) {
+			$uid = $_SESSION['uid'];
+			$toggle = <<<EHTML
+<form class="request_reply" method="POST" action="network_request_reply.php">
+	<noscript>
+	<input type="hidden" name="NOJS" value="NOJS"/>
+	</noscript>
+	<input type="hidden" name="uid" value="$uid"/>
+	<input type="hidden" name="pid" value="$post->id"/>
+	<input type="hidden" name="nid" value="$post->id_network"/>
+	<button class='r'>Reply</button>
+</form>
+EHTML;
+		}
+
+		// GET Replies from get, NOJS
+		$rids = urlencode($_GET['reply']);
+		$rids_ray = explode('+', $rids);
+
+		$nid = $post->id_network;
+		$pid = $post->id;
+
+		if ($post->reply_count <= 0 && !in_array($post->id, $rids_ray)) {
+			$display = 'display:none';
+		}
+		
+		$sr_toggle = <<<EHTML
+<form id="" class="show_reply" method="POST" style="$display" action="network_show_reply.php">
+	<input type="hidden" name="rids" value="$rids"/>
+	<input type="hidden" name="pid" value="$pid"/>
+	<input type="hidden" name="nid" value="$nid"/>
+	<noscript>
+	<input type="hidden" name="NOJS" value="NOJS"/>
+	</noscript>
+	<input type="submit" value="Show Replies"/>
+</form>
+EHTML;
+
+		$reply_ul = self::displayReplies($replies);
+
+		if(isset($_SESSION['uid']) && $post->id == $_GET['pid']) {
+			$reply_request = self::displayReplyPrompt($post->id, $_SESSION['uid'], $post->id_network);
+		}
+
+/////////////////////////////////////////////
+		$post_html = <<<EHTML
+<li class='network-post' id='post-$post->id'>
+	<div class='post-img'>
+		<img id='profile-post' src='$img_link' width='45' height='45'>
+	</div>
+	<div class='post-info'>
+		<h5 class='h-network'>$name</h5>
+		<p class='network'>$post->post_text</p>
+		<p class='network'>$post->reply_count replies</p>
+		$toggle
+		$del_button
+		$sr_toggle
+		$reply_request
+	</div>
+	<div class='clear'></div>
+	<div class="replies">
+		<ul>
+			$reply_ul
+		</ul>
+	</div>
+	<div class="prompt"></div>
+</li>
+EHTML;
+
+
+
+
+///////////////////////////////
+		return $post_html;
+	}
+
+	public static function displayReplyPrompt($pid, $uid, $nid)
+	{
+////////////////////////////////////////
+		$post = <<<EHTML
+<form method="POST" class="member reply_form" action="network_post_reply.php">
+<!--<img id="profile-reply" src="<?php //echo $img_link; ?>" width="45" height="45">-->
+	<textarea class="post-text" name="reply_text" placeholder="Post reply..."></textarea>
+	<div class="clear"></div>
+	<input type="submit" class="network" value="Send"></input>
+	<input type="hidden" name="nid" value="$nid"/>
+	<input type="hidden" name="uid" value="$uid"/>
+	<input type="hidden" name="id_parent" value="$pid"/>
+	<noscript>
+		<input type="hidden" name="NOJS" value="NOJS"/>
+	</noscript>
+</form>
+EHTML;
+/////////////////////////////
+		return $post;
+	}
+
+	public static function displayReplies($replies, $pid=NULL, $nid=NULL) {
+
+
+		$list = '';
+
+		// construct each reply
+		foreach($replies as $reply) {
+			$list .= HTMLBuilder::constructReply($reply); 
+		}
+
+		return $list;
+	}
+
+	public static function constructReply($reply) {
+		// stuffs
+		if ($reply->id_user == $_SESSION['uid']) {
+			$list.=$del_button;
+			$del_button = <<<EHTML
+			<form class='personal delete_reply' method="POST" action="network_reply_delete.php">
+				<noscript>
+				<input type="hidden" name="NOJS" value="NOJS"/>
+				</noscript>
+				<input type="hidden" name="rid" value="$reply->id"/>
+				<input type="hidden" name="nid" value="$reply->id_network"/>
+				<button class='delete-button user'>Delete Reply</button>
+			</form>
+EHTML;
+		}
+
+		$li_reply = <<<EHTML
+<li>
+	<div class='post-img'>
+		<img id='profile-post' src='$img_link' width='45' height='45'>
+	</div>
+	<div class='post-info'>
+		<h5 class='h-network'>$name</h5>
+		<p class='network'>$reply->reply_text</p>
+	</div>
+	<div class='clear'></div>
+	$del_button
+</li>
+EHTML;
+		return $li_reply;
 	}
 	
 	public static function displayEvent($event)

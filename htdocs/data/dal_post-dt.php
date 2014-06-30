@@ -16,6 +16,11 @@ class PostDT
 	public $post_original;	// bigint(20)
 	public $vid_link;	// varchar(100)
 	public $img_link;	// varchar(100)
+
+	// reply stuff
+	public $id_parent;
+	public $reply_date;
+	public $reply_text;
 }
 
 ?>

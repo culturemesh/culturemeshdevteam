@@ -23,27 +23,44 @@ if( isset($_SESSION['uid']))
 		$info->last_name = mysql_escape_string( $_POST['last_name']);
 		$info->gender = mysql_escape_string( $_POST['gender'][0] );
 		$info->about_me = mysql_escape_string( $_POST['about_me'] );
-		$success = UserInfo::updateInfo($info);
-		if($success == 1)
-		{
-			mysqli_close($con);
-			// put valid info in array
-			$data = array(
-				"error" => 0,
-				"uid" => $info->uid,
-				"first_name" => $_POST['first_name'],
-				"last_name" => $_POST['last_name'],
-				"gender" => $_POST['gender'],
-				"about_me" => $_POST['about_me']);
 
-			echo json_encode($data);
-		}
-		else
+		// end conditions
+		if (strlen($info->first_name) > 30)
 		{
-			mysqli_close($con);
-			$data = array(
-				"error" => $con->error);
-			echo json_encode($data);
+			echo json_encode(array("error" => "First name too long. Please keep it 30 characters or less."));
+		}
+		else if (strlen($info->last_name) > 30)
+		{
+			echo json_encode(array("error" => "Last name too long. Please keep it 30 characters or less."));
+		}
+		else if (strlen($info->about_me) > 500)
+		{
+			echo json_encode(array("error" => "Please limit about me to 500 characters or less."));
+
+		}
+		else {
+			$success = UserInfo::updateInfo($info);
+			if($success == 1)
+			{
+				mysqli_close($con);
+				// put valid info in array
+				$data = array(
+					"error" => 0,
+					"uid" => $info->uid,
+					"first_name" => $_POST['first_name'],
+					"last_name" => $_POST['last_name'],
+					"gender" => $_POST['gender'],
+					"about_me" => $_POST['about_me']);
+
+				echo json_encode($data);
+			}
+			else
+			{
+				mysqli_close($con);
+				$data = array(
+					"error" => $con->error);
+				echo json_encode($data);
+			}
 		}
 	}
 	 

@@ -1,6 +1,6 @@
 <?php
-	//ini_set('display_errors', true);
-	//error_reporting(E_ALL ^ E_NOTICE);
+	ini_set('display_errors', true);
+	error_reporting(E_ALL ^ E_NOTICE);
 	include "log.php";
 	include_once "zz341/fxn.php";
 	include_once "data/dal_network.php";
@@ -60,6 +60,30 @@
 		}
 	}
 	$posts = Post::getPostsByNetworkId($id, $con);
+
+	// get replies
+	if (isset($_GET['reply'])) {
+		// create replies assoc array
+		$replies = array();
+		// examine GET array
+		$pids = explode(' ', $_GET['reply']);
+
+		// add keys into replies
+		foreach ($pids as $pid) {
+			$replies[$pid] = NULL;
+		}
+
+		// for each post, check if it's in get
+		// get replies from database,
+		// push into array
+		foreach ($posts as $post) {
+			if (in_array($post->id, $pids)) {
+				$prs = Post::getRepliesByParentId($post->id, $con);
+				// push into array
+				$replies[$post->id] = $prs;
+			}
+		}
+	}
 	
 	// make an event calendar
 	$months = array("January", "February", "March", "April",
@@ -226,67 +250,14 @@
 					</div>
 					</br>
 					<hr width="700">
-					<div id="event-wall">
-						<h2 class="h-network">Upcoming Events</h2>
-						<!--<ul class="network">-->
-						<div>
-						<button id="slider-left" class="slider-button"></button>
-						<div id="slider-content" class="event-slider">
-						<table id="slider-table" class="network event">
-							<thead></thead>
-							<tbody>
-							<tr>
-								<?php 
-								foreach($years as $year) {
-									foreach($months as $month)
-									{
-										if (empty($calendar[$year][$month]))
-											continue;
-
-										HTMLBuilder::displayEventMonth($month, $year);
-
-										// cycle through the month's events
-										for ($i = 0; $i < count($calendar[$year][$month]); $i++)
-										{
-											HTMLBuilder::displayEventCard($calendar[$year][$month][$i]);
-											HTMLBuilder::displayEventModal($calendar[$year][$month][$i]);
-										} 
-									}
-								}
-								?>
-							</tr>
-							</tbody>
-							</tr>
-						</table>
-						</div>
-						<button id="slider-right" class="slider-button"></button>
-						</div>
-						<div class="clear"></div>
-						<!--</ul>-->
-					</div>
-					<button id="event-post" class="network member" onclick="toggleEventForm()">Post Event</button>
-					</br>
-					</br>
-					<div id="event-maker">
-						<form class="event-form" method="POST" action="network_post-event.php" enctype="multipart/form-data">
-							<div>
-							<input type="text" id="title" name="title" class="event-text" placeholder="Name of Event "></input></br>
-							<input type="text" id="datetimepicker1" name="datetime" class="event-text datetimepicker" placeholder="Event Date">
-							<input type="text" class="hidden-field" name="date"></input>
-							<input type="text" name="address_1" class="event-text" placeholder="Address 1"/>
-							<input type="text" name="address_2" class="event-text" placeholder="Address 2"/>
-							<textarea id="description" name="description" class="event-text" placeholder="What's happening?"></textarea>
-							<div id="clear"></div>
-							<input type="text" class="event-text" name="city" placeholder="City"/></input>
-							<input type="text" class="event-text" name="region" placeholder="Region"/></input>
-							<input type="submit" class="network" value="Post"></input>
-							</div>
-						</form>
-					</div>
-					</br>
-					<hr width="700">
-					<div id="post-wall">
-						<h2 class="h-network">Posts</h2>
+					<!-------------- -->
+					<ul class="nav nav-pills dashboard">
+						<li class="active"><a href="#post-wall" data-toggle="pill">Posts</a></li>
+						<li><a href="#event-wall" data-toggle="pill">Events</a></li>
+					</ul>
+					<!-------------- -->
+					<div class="tab-content">
+					<div id="post-wall" class="tab-pane active">
 						<form method="POST" class="member" action="network_post.php">
 						<img id="profile-post" src="<?php echo $img_link; ?>" width="45" height="45">
 							<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
@@ -297,8 +268,21 @@
 						</form>
 						<ul id="post-wall-ul" class="network">
 						<?php 
-						foreach($posts as $post)
-							HTMLBuilder::displayPost($post); 
+						foreach($posts as $post) {
+							// display post
+							echo HTMLBuilder::displayPost($post, $replies[$post->id]); 
+
+							/*
+							// display replies
+							echo HTMLBuilder::displayReplies($replies[$post->id], $post->id, $post->id_network);
+
+							// display reply prompt
+							if(isset($_SESSION['uid'])
+								&& $post->id == $_GET['pid']) {
+								echo HTMLBuilder::displayReplyPrompt($post->id, $user->id, $post->id_network);
+							}
+							 */
+						}
 						?>
 						</ul>
 						<!--<script src="js/post-wall.js"></script>-->
@@ -333,6 +317,69 @@
 						 */
 						</script>
 					</div>
+					<div id="event-wall" class="tab-pane">
+						<!--<ul class="network">-->
+						<div>
+						<button id="slider-left" class="slider-button"></button>
+						<div id="slider-content" class="event-slider">
+						<table id="slider-table" class="network event">
+							<thead></thead>
+							<tbody>
+							<tr>
+								<?php 
+								foreach($years as $year) {
+									foreach($months as $month)
+									{
+										if (empty($calendar[$year][$month]))
+											continue;
+
+										HTMLBuilder::displayEventMonth($month, $year);
+
+										// cycle through the month's events
+										for ($i = 0; $i < count($calendar[$year][$month]); $i++)
+										{
+											HTMLBuilder::displayEventCard($calendar[$year][$month][$i]);
+											HTMLBuilder::displayEventModal($calendar[$year][$month][$i]);
+										} 
+									}
+								}
+								?>
+							</tr>
+							</tbody>
+							</tr>
+						</table>
+
+						</div>
+						<button id="slider-right" class="slider-button"></button>
+						</div>
+						<div class="clear"></div>
+						<!--</ul>-->
+						<button id="event-post" class="network member" onclick="toggleEventForm()">Post Event</button>
+						<?php if (isset($_GET['eperror'])): ?>
+						<span><?php echo $_GET['eperror']; ?></span>
+						<?php endif; ?>
+						<div id="event-maker">
+							<form class="event-form" method="POST" action="network_post-event.php" enctype="multipart/form-data">
+								<div>
+								<input type="text" id="title" name="title" class="event-text" placeholder="Name of Event "></input></br>
+								<input type="text" id="datetimepicker1" name="datetime" class="event-text datetimepicker" placeholder="Event Date">
+								<input type="text" class="hidden-field" name="date"></input>
+								<input type="text" name="address_1" class="event-text" placeholder="Address 1"/>
+								<input type="text" name="address_2" class="event-text" placeholder="Address 2"/>
+								<textarea id="description" name="description" class="event-text" placeholder="What's happening?"></textarea>
+								<div id="clear"></div>
+								<input type="text" class="event-text" name="city" placeholder="City"/></input>
+								<input type="text" class="event-text" name="region" placeholder="Region"/></input>
+								<input type="submit" class="network" value="Post"></input>
+								</div>
+							</form>
+						</div>
+					</div>
+					</br>
+					</br>
+
+					</div>
+					</br>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -349,5 +396,119 @@
 	<script>
 		$(".datetimepicker").datetimepicker();
 	</script>	
+	</script>
+	<script>
+		///// SHOW REPLY ///////////
+		$(".show_reply").on("submit", function(e) {
+			e.preventDefault();
+			// check if replies have already been fetched
+			var replies_div = $( e.target ).parents('div.post-info').siblings('div.replies');
+
+			if ( replies_div.children('ul').children().length == 0 ) {
+				var postForm = $(this).serialize();
+				var getReply = new Ajax({
+					requestType: 'POST',
+						requestUrl: 'network_show_reply.php',
+						requestParameters: ' ',
+						data: postForm,
+						dataType: 'string',
+						sendNow: true
+				}, function(data) {
+					// success function
+					var response = JSON.parse(data);
+					if (response.error == 0) {
+						var targ = e.target;
+						$( targ ).children(':submit').val('Hide Replies');
+						$( targ ).parents('div.post-info').siblings('div.replies').children('ul').html(response.html);
+					}
+				}, function(response, rStatus) {
+
+				});
+			}
+			else {
+				if ($( e.target ).children(':submit').val() == 'Hide Replies') {
+					$( replies_div ).hide();
+					$( e.target ).children(':submit').val('Show Replies');
+				}
+				else {
+					$( replies_div ).show();
+					$( e.target ).children(':submit').val('Hide Replies');
+				}
+			}
+		});
+
+		/////////// REQUEST REPLY /////////
+		$(".request_reply").on("submit", function(e) {
+			e.preventDefault();
+			var postForm = $(this).serialize();
+			if( $( e.target ).children('button').text() == 'Reply') {
+				var requestReply = new Ajax({
+					requestType: 'POST',
+						requestUrl: 'network_request_reply.php',
+						requestParameters: ' ',
+						data: postForm,
+						dataType: 'string',
+						sendNow: true
+				}, function(data) {
+					// success function
+					var response = JSON.parse(data);
+					if (response.error == 0) {
+						var targ = e.target;
+						$( e.target ).parents('li.network-post').children('div.prompt').show();
+						$( targ ).children('button').text('Cancel');
+						$( targ ).parents('li.network-post').children('div.prompt').html(response.html);
+						primeReplyForms();
+					}
+				}, function(response, rStatus) {
+
+				});
+			}
+			else {
+				$( e.target ).parents('li.network-post').children('div.prompt').hide();
+				$( e.target ).children('button').text('Reply');
+			}
+		});
+
+		////////// SEND REPLY //////////////
+		function primeReplyForms() {
+			$( '.reply_form' ).on('submit', function(e) {
+				// prevent default behavior
+				e.preventDefault();
+				// get target
+				var targ = e.target;
+				var postForm = $( targ ).serialize();
+
+				var sendReply = new Ajax({
+					requestType: 'POST',
+						requestUrl: 'network_post_reply.php',
+						requestParameters: ' ',
+						data: postForm,
+						dataType: 'string',
+						sendNow: true
+				}, function(data) {
+					// success function
+					var response = JSON.parse(data);
+					if (response.error == 0) {
+						var targ = e.target;
+						$( targ ).parents( 'li.network-post' ).children('div.replies').children('ul').append(response.html);
+						// activate showreplies button, change to hide replies 
+						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('form.show_reply').show();
+						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('form.show_reply').children(':submit').val('Hide Replies');
+					}
+				}, function(response, rStatus) {
+
+				});
+			});
+		}
+
+
+		////////// DELETE REPLY /////////////
+		//
+		//
+		$( 'delete_reply' ).on('submit', function(e) {
+
+		});
+
+		console.log("buttons");
 	</script>
 </html>

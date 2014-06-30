@@ -29,6 +29,7 @@ function signOut() {
                             $("#welcome").hide();
                             $("#sign-out").hide();
                             $(".member").hide();
+			    $(".personal").hide();
                             $(".reg-guest").hide();
                             $(".guest").show();
 		  }
