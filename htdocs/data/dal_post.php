@@ -156,6 +156,38 @@ SQL;
 		return $posts;
 	}
 	
+	public static function getPostById($id, $con=NULL) {
+		$query = <<<SQL
+			SELECT p.*, reply_count 
+			FROM posts p
+			LEFT JOIN (SELECT id_parent, COUNT(id_parent) AS reply_count
+					FROM post_replies
+					GROUP BY id_parent) pr
+			ON p.id = pr.id_parent
+			WHERE p.id=$id
+			ORDER BY post_date DESC
+SQL;
+
+		$result = QueryHandler::executeQuery($query, $con);
+
+		$post = new PostDT();
+
+		$row = mysqli_fetch_array($result);
+
+		$post->id = $row['id'];
+		$post->id_user = $row['id_user'];
+		$post->id_network = $row['id_network'];
+		$post->post_date = $row['post_date'];
+		$post->post_text = $row['post_text'];
+		$post->post_class = $row['post_class'];
+		$post->post_original = $row['post_original'];
+		$post->reply_count = $row['reply_count'];
+		$post->vid_link = $row['vid_link'];
+		$post->img_link = $row['img_link'];
+
+		return $post;
+	}
+
 	public static function getPostCount($id, $con=NULL)
 	{
 		
@@ -274,6 +306,16 @@ SQL;
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
 	}
+
+	public static function wipePost($pid, $con=NULL)
+	{
+		$query = <<<SQL
+			UPDATE posts
+			SET post_text = NULL
+			WHERE id=$pid
+SQL;
+		return QueryHandler::executeQuery($query, $con);
+	}
 	
 	////////////////////// DELETE OPERATIONS /////////////////////
 	public static function deletePost($id, $con=NULL)
@@ -293,6 +335,15 @@ SQL;
 			WHERE id=$id
 SQL;
 
+		return QueryHandler::executeQuery($query, $con);
+	}
+
+	public static function deleteRepliesByParentId($pid, $con)
+	{
+		$query = <<<SQL
+			DELETE FROM post_replies
+			WHERE id_parent=$pid
+SQL;
 		return QueryHandler::executeQuery($query, $con);
 	}
 	

@@ -1,6 +1,6 @@
 <?php
-	ini_set('display_errors', true);
-	error_reporting(E_ALL ^ E_NOTICE);
+//	ini_set('display_errors', true);
+//	error_reporting(E_ALL ^ E_NOTICE);
 	include "log.php";
 	include_once "zz341/fxn.php";
 	include_once "data/dal_network.php";
@@ -399,75 +399,81 @@
 	</script>
 	<script>
 		///// SHOW REPLY ///////////
-		$(".show_reply").on("submit", function(e) {
-			e.preventDefault();
-			// check if replies have already been fetched
-			var replies_div = $( e.target ).parents('div.post-info').siblings('div.replies');
+		function primeShowReplies() {
+			$(".show_reply").on("submit", function(e) {
+				e.preventDefault();
+				// check if replies have already been fetched
+				var replies_div = $( e.target ).parents('div.post-info').siblings('div.replies');
 
-			if ( replies_div.children('ul').children().length == 0 ) {
-				var postForm = $(this).serialize();
-				var getReply = new Ajax({
-					requestType: 'POST',
-						requestUrl: 'network_show_reply.php',
-						requestParameters: ' ',
-						data: postForm,
-						dataType: 'string',
-						sendNow: true
-				}, function(data) {
-					// success function
-					var response = JSON.parse(data);
-					if (response.error == 0) {
-						var targ = e.target;
-						$( targ ).children(':submit').val('Hide Replies');
-						$( targ ).parents('div.post-info').siblings('div.replies').children('ul').html(response.html);
-					}
-				}, function(response, rStatus) {
+				if ( replies_div.children('ul').children().length == 0 ) {
+					var postForm = $(this).serialize();
+					var getReply = new Ajax({
+						requestType: 'POST',
+							requestUrl: 'network_show_reply.php',
+							requestParameters: ' ',
+							data: postForm,
+							dataType: 'string',
+							sendNow: true
+					}, function(data) {
+						// success function
+						var response = JSON.parse(data);
+						if (response.error == 0) {
+							var targ = e.target;
+							$( targ ).children(':submit').val('Hide Replies');
+							$( targ ).parents('div.post-info').siblings('div.replies').children('ul').html(response.html);
+							primeDeletes();
+						}
+					}, function(response, rStatus) {
 
-				});
-			}
-			else {
-				if ($( e.target ).children(':submit').val() == 'Hide Replies') {
-					$( replies_div ).hide();
-					$( e.target ).children(':submit').val('Show Replies');
+					});
 				}
 				else {
-					$( replies_div ).show();
-					$( e.target ).children(':submit').val('Hide Replies');
+					if ($( e.target ).children(':submit').val() == 'Hide Replies') {
+						$( replies_div ).hide();
+						$( e.target ).children(':submit').val('Show Replies');
+					}
+					else {
+						$( replies_div ).show();
+						$( e.target ).children(':submit').val('Hide Replies');
+						primeDeletes();
+					}
 				}
-			}
-		});
+			});
+		}
 
 		/////////// REQUEST REPLY /////////
-		$(".request_reply").on("submit", function(e) {
-			e.preventDefault();
-			var postForm = $(this).serialize();
-			if( $( e.target ).children('button').text() == 'Reply') {
-				var requestReply = new Ajax({
-					requestType: 'POST',
-						requestUrl: 'network_request_reply.php',
-						requestParameters: ' ',
-						data: postForm,
-						dataType: 'string',
-						sendNow: true
-				}, function(data) {
-					// success function
-					var response = JSON.parse(data);
-					if (response.error == 0) {
-						var targ = e.target;
-						$( e.target ).parents('li.network-post').children('div.prompt').show();
-						$( targ ).children('button').text('Cancel');
-						$( targ ).parents('li.network-post').children('div.prompt').html(response.html);
-						primeReplyForms();
-					}
-				}, function(response, rStatus) {
+		function primeRequestReplies() {
+			$(".request_reply").on("submit", function(e) {
+				e.preventDefault();
+				var postForm = $(this).serialize();
+				if( $( e.target ).children('button').text() == 'Reply') {
+					var requestReply = new Ajax({
+						requestType: 'POST',
+							requestUrl: 'network_request_reply.php',
+							requestParameters: ' ',
+							data: postForm,
+							dataType: 'string',
+							sendNow: true
+					}, function(data) {
+						// success function
+						var response = JSON.parse(data);
+						if (response.error == 0) {
+							var targ = e.target;
+							$( e.target ).parents('li.network-post').children('div.prompt').show();
+							$( targ ).children('button').text('Cancel');
+							$( targ ).parents('li.network-post').children('div.prompt').html(response.html);
+							primeReplyForms();
+						}
+					}, function(response, rStatus) {
 
-				});
-			}
-			else {
-				$( e.target ).parents('li.network-post').children('div.prompt').hide();
-				$( e.target ).children('button').text('Reply');
-			}
-		});
+					});
+				}
+				else {
+					$( e.target ).parents('li.network-post').children('div.prompt').hide();
+					$( e.target ).children('button').text('Reply');
+				}
+			});
+		}
 
 		////////// SEND REPLY //////////////
 		function primeReplyForms() {
@@ -490,10 +496,23 @@
 					var response = JSON.parse(data);
 					if (response.error == 0) {
 						var targ = e.target;
-						$( targ ).parents( 'li.network-post' ).children('div.replies').children('ul').append(response.html);
+						// put all lis out on display
+						$( targ ).parents( 'li.network-post' ).children('div.replies').children('ul').html(response.html);
+
 						// activate showreplies button, change to hide replies 
 						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('form.show_reply').show();
 						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('form.show_reply').children(':submit').val('Hide Replies');
+
+						// increment replies
+						//  a) get reply count
+						var replyCount = $( targ ).parents( 'div.prompt' ).siblings('div.replies').children('ul.replies').children().length;
+						//  b) increment in obvious place
+						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('p.reply_count').text(replyCount + ' replies');
+						//  c) increment in hidden submit
+						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('form.post_delete').children("input[name='replies']").val(replyCount)
+
+						// activate delete buttons
+						primeDeletes();
 					}
 				}, function(response, rStatus) {
 
@@ -505,9 +524,108 @@
 		////////// DELETE REPLY /////////////
 		//
 		//
-		$( 'delete_reply' ).on('submit', function(e) {
+		function primeDeletes() {
+			// event handler
+			$( '.delete_reply' ).on('submit', function(e) {
+				// prevent default behavior
+				e.preventDefault();
+				// get target
+				var targ = e.target;
+				var postForm = $( targ ).serialize();
+
+				var sendReply = new Ajax({
+					requestType: 'POST',
+						requestUrl: 'network_reply_delete.php',
+						requestParameters: ' ',
+						data: postForm,
+						dataType: 'string',
+						sendNow: true
+				}, function(data) {
+					// success function
+					var response = JSON.parse(data);
+					
+					if (response.error == 0) {
+						// delete parent li
+						// get form
+						var targ = e.target;
+						var ul = $( targ ).parents('ul.replies');
+
+						$( targ ).parents('li.reply').remove();
+
+						// delete whole post
+						if (response.status == 'postdelete') {
+							$( ul ).parents('li.network-post').remove();
+						}
+						else {
+							var replyCount =  ul.children().length;
+
+							// update reply counts elsewhere
+							// post info div
+							var div = $( ul ).parents('div.replies').siblings('div.post-info');
+
+							//  1) hidden input on delete post
+							$( div ).children('form.post_delete').children("input[name|='replies']").val(replyCount);
+							//  2) reply count
+							$( div ).children('p.reply_count').text(replyCount + ' replies');
+
+							// update 
+							// if ul is now empty...
+							if ( replyCount == 0 ) {
+								// hide show replies form
+								$( ul ).parents('div.replies').siblings('div.post-info').children('form.show_reply').children(':submit').val('Show Replies');
+								$( ul ).parents('div.replies').siblings('div.post-info').children('form.show_reply').hide();
+							}	
+						}
+					}
+				}, function(response, rStatus) {
+
+				});
+			});
+		}
+
+		/////// DELETE POST ///////////////////
+		//function primeDeletePosts() {
+		$('.post_delete').on('submit', function(e) {
+
+			// prevent default behavior 
+			e.preventDefault();
+
+			var postForm = $( e.target ).serialize();
+
+			postDelete = new Ajax({
+				requestType: 'POST',
+					requestUrl: 'network_post_delete.php',
+					requestHeaders: ' ',
+					data: postForm,
+					dataType: 'string',
+					sendNow: true
+			}, function(data) {
+				var response = JSON.parse(data);
+
+				if (response.error == 0) {
+					var targ = $( e.target );
+					if (response.status == 'destroyed') {
+						// remove li 
+						targ.parents('li.network-post').remove();
+						// decrement number of posts up top
+					}
+
+					if (response.status == 'wiped') {
+						targ.parents('li.network-post').replaceWith(response.html);
+						primeRequestReplies();
+						primeReplyForms();
+						primeDeletes();
+						primeShowReplies();
+					}
+				}
+			}, function(response, rStatus) {
+
+			});
 
 		});
+
+		primeShowReplies();
+		primeRequestReplies();
 
 		console.log("buttons");
 	</script>

@@ -44,8 +44,6 @@ else if ($uid == "" || $id_parent == "") {
 else {
 	// set up post
 	$success = Post::createReply($text, $nid, $uid, $id_parent, $con);
-
-
 	
 	// redirect to main page
 	if($success)

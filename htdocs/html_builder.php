@@ -266,10 +266,11 @@ HTML;
 
 		if ($post->id_user == $_SESSION['uid']) {
 			$del_button = <<<EHTML
-			<form id='post-delete-$post->id' class='personal' method="POST" action="network_post_delete.php">
+			<form id='post-delete-$post->id' class='personal post_delete' method="POST" action="network_post_delete.php">
 				<noscript>
 				<input type="hidden" name="NOJS" value="NOJS"/>
 				</noscript>
+				<input type="hidden" name="replies" value="$post->reply_count" />
 				<input type="hidden" name="pid" value="$post->id"/>
 				<input type="hidden" name="nid" value="$post->id_network"/>
 				<button class='delete-button user'>Delete Post</button>
@@ -321,24 +322,47 @@ EHTML;
 			$reply_request = self::displayReplyPrompt($post->id, $_SESSION['uid'], $post->id_network);
 		}
 
+		// wiped post
+		if ($post->post_text == NULL) {
+			$img_link = BLANK_IMG;
+			$post_info = <<<EHTML
+<div class='post-img'>
+	<img id='profile-post' src='$img_link' width='45' height='45'>
+</div>
+<div class='post-info'>
+	<p class='network'><i>The user has deleted this post</i></p>
+	<p class='network reply_count'>$post->reply_count replies</p>
+	$toggle
+	$sr_toggle
+	$reply_request
+</div>
+EHTML;
+		} 
+		// regular post
+		else {
+			$post_info = <<<EHTML
+<div class='post-img'>
+	<img id='profile-post' src='$img_link' width='45' height='45'>
+</div>
+<div class='post-info'>
+	<h5 class='h-network'>$name</h5>
+	<p class='network'>$post->post_text</p>
+	<p class='network reply_count'>$post->reply_count replies</p>
+	$toggle
+	$del_button
+	$sr_toggle
+	$reply_request
+</div>
+EHTML;
+		}
+
 /////////////////////////////////////////////
 		$post_html = <<<EHTML
 <li class='network-post' id='post-$post->id'>
-	<div class='post-img'>
-		<img id='profile-post' src='$img_link' width='45' height='45'>
-	</div>
-	<div class='post-info'>
-		<h5 class='h-network'>$name</h5>
-		<p class='network'>$post->post_text</p>
-		<p class='network'>$post->reply_count replies</p>
-		$toggle
-		$del_button
-		$sr_toggle
-		$reply_request
-	</div>
+	$post_info
 	<div class='clear'></div>
 	<div class="replies">
-		<ul>
+		<ul class="replies">
 			$reply_ul
 		</ul>
 	</div>
@@ -398,13 +422,14 @@ EHTML;
 				</noscript>
 				<input type="hidden" name="rid" value="$reply->id"/>
 				<input type="hidden" name="nid" value="$reply->id_network"/>
+				<input type="hidden" name="pid" value="$reply->id_parent"/>
 				<button class='delete-button user'>Delete Reply</button>
 			</form>
 EHTML;
 		}
 
 		$li_reply = <<<EHTML
-<li>
+<li class='reply'>
 	<div class='post-img'>
 		<img id='profile-post' src='$img_link' width='45' height='45'>
 	</div>
