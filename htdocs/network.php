@@ -249,23 +249,24 @@
 						<div class="clear"></div>
 					</div>
 					</br>
-					<hr width="700">
+					<hr width="630">
 					<!-------------- -->
 					<ul class="nav nav-pills dashboard">
-						<li class="active"><a href="#post-wall" data-toggle="pill">Posts</a></li>
-						<li><a href="#event-wall" data-toggle="pill">Events</a></li>
+						<li id="post-nav" class="active"><a href="#post-wall" data-toggle="pill">Posts</a></li>
+						<li id="event-nav"><a href="#event-wall" data-toggle="pill">Events</a></li>
 					</ul>
 					<!-------------- -->
-					<div class="tab-content">
+					<div class="network tab-content">
 					<div id="post-wall" class="tab-pane active">
 						<form method="POST" class="member" action="network_post.php">
 						<img id="profile-post" src="<?php echo $img_link; ?>" width="45" height="45">
 							<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 							<div class="clear"></div>
-							<input type="submit" class="network" value="Send"></input>
+							<input type="submit" class="network post" value="Send"></input>
 							<input type="hidden" name="post_class" value="o"></input>
 							<input type="hidden" name="post_original" value="NULL"></input>
 						</form>
+						<hr>
 						<ul id="post-wall-ul" class="network">
 						<?php 
 						foreach($posts as $post) {
@@ -495,7 +496,9 @@
 					// success function
 					var response = JSON.parse(data);
 					if (response.error == 0) {
+						// get div
 						var targ = e.target;
+
 						// put all lis out on display
 						$( targ ).parents( 'li.network-post' ).children('div.replies').children('ul').html(response.html);
 
@@ -510,9 +513,14 @@
 						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('p.reply_count').text(replyCount + ' replies');
 						//  c) increment in hidden submit
 						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('form.post_delete').children("input[name='replies']").val(replyCount)
+						//  d) increment at top of page
 
 						// activate delete buttons
 						primeDeletes();
+
+						// clear out reply thing and change text
+						$( targ ).parents( 'div.prompt' ).siblings();
+						$( targ ).parents( 'div.prompt' ).hide();
 					}
 				}, function(response, rStatus) {
 

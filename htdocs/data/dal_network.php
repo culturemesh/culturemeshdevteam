@@ -743,6 +743,47 @@ SQL;
 		}
 	}
 
+	public static function getNetworksWithUserPost($ids, $con=NULL)
+	{
+		// add ids into friendly mysql variable
+		$inlist = '(';
+		
+		for ($i = 0; $i < count($ids); $i++) {
+			// add item
+			$inlist .= $ids[$i];
+
+			// add comma
+			if (count($ids) - $i > 1) {
+				$inlist .= ', ';
+			}
+		}
+
+		// add end parenthesis
+		$inlist .= ')';
+
+		$query = <<<SQL
+			SELECT *
+			FROM networks
+			WHERE id IN $inlist
+SQL;
+
+		$result = QueryHandler::executeQuery($query, $con);
+
+		$networks = Network::fillNetworkDTs($result);
+		/*
+		while ($row = mysqli_fetch_array($result)) {
+			// create and fill dt
+			$network_dt = new NetworkDT();
+			$network_dt = Network::fillNetworkDT($result);
+
+			// add to array
+			array_push($networks, $network_dt);
+		}
+		 */
+
+		return $networks;
+	}
+
 	public static function networkToQuery($network, $con=NULL)
 	{
 		$query = array(NULL, NULL, NULL, NULL,

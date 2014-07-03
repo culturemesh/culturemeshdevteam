@@ -12,7 +12,6 @@
             	<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
         </ul>
     </div>
-    <div class="clear"></div>
 
 <?php /*
     <?php
@@ -181,6 +180,7 @@
     ?>
 		<div id="register_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
 			<div class="modal-header">
+				Join the</br></br><b>CultureMesh Community!</b>
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
 			</div>
 			<div class="modal-body">
@@ -188,7 +188,7 @@
 					<div id="register-div">
 						<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
 						</br>
-						<span id="email_dup_txt" class="label label-important">That email address is already registered. If you\'ve forgotten your password, <a href="#">click here.</a></span>
+						<span id="email_dup_txt" style="display:none" class="label label-important"></span>
 						<div id="login-passwords">
 						<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
 						<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
@@ -198,14 +198,15 @@
 						</div>
 						</br>
 						</br>
-						<span id="pass_mism_txt" class="label label-important">Passwords don\'t match. Please try again.</span>
+						<span id="pass_mism_txt" class="label label-important"></span>
 						<div class="clear"></div>
 						<input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
 					</div>
 				</form>
 			</div>
+
 			<div class="modal-footer">
-				Already a member? <a href="#" id="sign_in_mod">Sign in!</a>
+				Already a member? <a href="#" onclick="toggleLogin()" id="sign_in_mod">Sign in!</a>
 			</div>
 		</div>
 		<div id="login_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
@@ -227,10 +228,24 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				Not a member yet? <a href="#" id="sign_in_mod">Join Us!</a>
+				Not a member yet? <a href="#" id="sign_in_mod" onclick='toggleRegister()'>Join Us!</a>
 			</div>
 		</div>
-	</div>
+		<script>
+			function toggleLogin() {
+				$("#register_modal").attr('aria-hidden', true)
+					.attr('class', 'modal hide fade').hide()
+				$("#login_modal").attr('aria-hidden', false)
+					.attr('class', 'modal hide fade in').show();
+			}
+			function toggleRegister() {
+				$("#login_modal").attr('aria-hidden', true)
+					.attr('class', 'modal hide fade').hide()
+				$("#register_modal").attr('aria-hidden', false)
+					.attr('class', 'modal hide fade in').show();
+			}
+		</script>
+	<div class="clear"></div>
 </div>
 <div id="signout_panel" style="display:none">
 	<p>You have successfully signed out.</p>

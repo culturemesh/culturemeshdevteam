@@ -33,6 +33,15 @@ $ya_events = EventRegistration::getEventRegistrationsByUserId($_SESSION['uid'], 
 // your posts
 $yp_posts = Post::getPostsByUserId($_SESSION['uid'], $con);
 
+// get ids of networks with posts
+$yp_nids = array();
+foreach ($yp_posts as $post) {
+	array_push($yp_nids, $post->id_network);
+}
+
+// your post networks
+$yp_networks = Network::getNetworksWithUserPost($yp_nids, $con);
+
 // your networks
 $yn_networks = NetworkRegistration::getNetworksByUserId($_SESSION['uid'], $con);
 

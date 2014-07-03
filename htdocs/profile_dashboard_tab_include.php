@@ -69,7 +69,7 @@
 			// check network
 			if ($cur_network->id !== $post->id_network) {
 				// change network
-				$cur_network = findNetwork($post->id_network, $yn_networks);
+				$cur_network = findNetwork($post->id_network, $yp_networks);
 
 				// display network
 				HTMLBuilder::displayDashNetworkTitle($cur_network);

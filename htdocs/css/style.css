@@ -545,6 +545,11 @@ div.net-info {
 	border-radius:5px;
 }
 
+div.network.tab-content
+{
+	overflow:hidden;
+}
+
 input.net-search
 {
 	height:35px;
@@ -648,11 +653,11 @@ button.network.modal
 input[type="submit"].network
 {
 	font: Lato;
-	font-size:20px;
-	font-weight: bold;
+	font-size:16px;
 	color: #FFFFFF;
 	background-color:#e34036;;
-	border:none;
+	border-width:0px;
+	border-radius:2px;
 	margin-right:3px;
 }
 
@@ -662,10 +667,15 @@ input[type="submit"].network:hover
 
 }
 
+input[type="submit"].network.post
+{
+	width:545px;
+}
+
 div.event-slider
 {
 	height:150px;
-	width:475px;
+	width:450px;
 	float:left;
 	background-color:#EEEEEE;
 	overflow:hidden;
@@ -902,10 +912,19 @@ ul.post-wall-ul.child
 	display:none;
 }
 
+textarea.reply-text
+{
+	margin-top:10px;
+	margin-left:0px;
+	height:45px;
+	width:89%;
+	resize:none;
+}
+
 .post-text
 {
 	margin-top:10px;
-	margin-left:20px;
+	margin-left:0px;
 	height:45px;
 	width:88%;
 	resize:none;
@@ -920,10 +939,12 @@ ul.network
 {
 	list-style-type:none;
 }
-.network-post
+
+li.network-post
 {
-	margin-bottom:10px;
+	margin-bottom:30px;
 	margin-left:40px;
+	padding:20px 0px;
 	width:100%;
 }
 .post-img
@@ -944,6 +965,90 @@ p.network
 	color: #404040;
 	margin-bottom:0px;
 	margin-left:0px;
+	max-width:400px;
+}
+
+p.network.reply
+{
+	max-width:375px;
+}
+
+p.network.date
+{
+	color:gray;
+	font-size: 11px;
+}
+
+div.replies
+{
+	margin-left:10px;
+}
+
+ul.replies
+{
+	list-style-type:none;
+}
+
+li.reply
+{
+	margin-bottom: 10px;
+}
+
+div.reply-button
+{
+	float:left;
+}
+
+input[type="submit"].post.show
+{
+	border:none;
+	background-color:#DBDBDB;
+	color:#FBFBFB;
+	width:300px;
+}
+
+input[type="submit"].post.show:hover
+{
+	background-color:white;
+	color:#0088CC;
+}
+
+input[type="submit"].post.send
+{
+	border-width:0px;
+	background-color:#E34036;
+	color:#FFFFFF;
+	border-radius:2px;
+}
+
+button.post {
+	background-color:#CBCBCB;
+	color:#FBFBFB;
+	border-width:0px;
+	border-radius:2px;
+}
+
+button.post:hover {
+	background-color:white;
+	color:#0088CC;
+}
+
+button.delete-button {
+	background:none;
+	color:#E34036;
+}
+
+button.delete-button:hover {
+	color:#C33036;
+}
+
+button.delete-button.reply {
+	margin-left:60px;
+}
+
+div.prompt
+{
+	margin-left:35px;
 }
 
 #event-post

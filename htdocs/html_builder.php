@@ -240,6 +240,7 @@ HTML;
 		$jpost = json_encode($post);
 		// jsonencode user
 		$juser = json_encode($user);
+
 		// get image
 		$img_link = NULL;
 		if ($post->img_link == NULL)
@@ -266,30 +267,34 @@ HTML;
 
 		if ($post->id_user == $_SESSION['uid']) {
 			$del_button = <<<EHTML
-			<form id='post-delete-$post->id' class='personal post_delete' method="POST" action="network_post_delete.php">
-				<noscript>
-				<input type="hidden" name="NOJS" value="NOJS"/>
-				</noscript>
-				<input type="hidden" name="replies" value="$post->reply_count" />
-				<input type="hidden" name="pid" value="$post->id"/>
-				<input type="hidden" name="nid" value="$post->id_network"/>
-				<button class='delete-button user'>Delete Post</button>
-			</form>
+<div class='reply-button'>
+	<form id='post-delete-$post->id' class='personal post_delete' method="POST" action="network_post_delete.php">
+		<noscript>
+		<input type="hidden" name="NOJS" value="NOJS"/>
+		</noscript>
+		<input type="hidden" name="replies" value="$post->reply_count" />
+		<input type="hidden" name="pid" value="$post->id"/>
+		<input type="hidden" name="nid" value="$post->id_network"/>
+		<button class='post delete-button user'>&#10006</button>
+	</form>
+</div>
 EHTML;
 		}
 
 		if (isset($_SESSION['uid'])) {
 			$uid = $_SESSION['uid'];
-			$toggle = <<<EHTML
-<form class="request_reply" method="POST" action="network_request_reply.php">
-	<noscript>
-	<input type="hidden" name="NOJS" value="NOJS"/>
-	</noscript>
-	<input type="hidden" name="uid" value="$uid"/>
-	<input type="hidden" name="pid" value="$post->id"/>
-	<input type="hidden" name="nid" value="$post->id_network"/>
-	<button class='r'>Reply</button>
-</form>
+			$rr_toggle = <<<EHTML
+<div class='reply-button'>
+	<form class="request_reply" method="POST" action="network_request_reply.php">
+		<noscript>
+		<input type="hidden" name="NOJS" value="NOJS"/>
+		</noscript>
+		<input type="hidden" name="uid" value="$uid"/>
+		<input type="hidden" name="pid" value="$post->id"/>
+		<input type="hidden" name="nid" value="$post->id_network"/>
+		<button class='post'>Reply</button>
+	</form>
+</div>
 EHTML;
 		}
 
@@ -305,15 +310,17 @@ EHTML;
 		}
 		
 		$sr_toggle = <<<EHTML
-<form id="" class="show_reply" method="POST" style="$display" action="network_show_reply.php">
-	<input type="hidden" name="rids" value="$rids"/>
-	<input type="hidden" name="pid" value="$pid"/>
-	<input type="hidden" name="nid" value="$nid"/>
-	<noscript>
-	<input type="hidden" name="NOJS" value="NOJS"/>
-	</noscript>
-	<input type="submit" value="Show Replies"/>
-</form>
+<div class='reply-button'>
+	<form id="" class="show_reply" method="POST" style="$display" action="network_show_reply.php">
+		<input type="hidden" name="rids" value="$rids"/>
+		<input type="hidden" name="pid" value="$pid"/>
+		<input type="hidden" name="nid" value="$nid"/>
+		<noscript>
+		<input type="hidden" name="NOJS" value="NOJS"/>
+		</noscript>
+		<input type="submit" class="post show" value="Show Replies"/>
+	</form>
+</div>
 EHTML;
 
 		$reply_ul = self::displayReplies($replies);
@@ -332,9 +339,10 @@ EHTML;
 <div class='post-info'>
 	<p class='network'><i>The user has deleted this post</i></p>
 	<p class='network reply_count'>$post->reply_count replies</p>
-	$toggle
-	$sr_toggle
+	$rr_toggle
 	$reply_request
+	<div class="clear"></div>
+	$sr_toggle
 </div>
 EHTML;
 		} 
@@ -347,11 +355,12 @@ EHTML;
 <div class='post-info'>
 	<h5 class='h-network'>$name</h5>
 	<p class='network'>$post->post_text</p>
-	<p class='network reply_count'>$post->reply_count replies</p>
-	$toggle
+	<p class='network date'><i>$post->post_date</i></p>
 	$del_button
-	$sr_toggle
+	$rr_toggle
 	$reply_request
+	<div class="clear"></div>
+	$sr_toggle
 </div>
 EHTML;
 		}
@@ -383,9 +392,9 @@ EHTML;
 		$post = <<<EHTML
 <form method="POST" class="member reply_form" action="network_post_reply.php">
 <!--<img id="profile-reply" src="<?php //echo $img_link; ?>" width="45" height="45">-->
-	<textarea class="post-text" name="reply_text" placeholder="Post reply..."></textarea>
+	<textarea class="reply-text" name="reply_text" placeholder="Post reply..."></textarea>
 	<div class="clear"></div>
-	<input type="submit" class="network" value="Send"></input>
+	<input type="submit" class="post send" value="Send"></input>
 	<input type="hidden" name="nid" value="$nid"/>
 	<input type="hidden" name="uid" value="$uid"/>
 	<input type="hidden" name="id_parent" value="$pid"/>
@@ -412,6 +421,24 @@ EHTML;
 	}
 
 	public static function constructReply($reply) {
+		// get image
+		$img_link = NULL;
+		if ($reply->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$reply->img_link;
+
+		// parse name
+		$name = NULL;
+		if ($reply->first_name == '')
+			//$name = $reply->email;
+			$name = "UNNAMED USER";
+		else {
+			$name = $reply->first_name;
+			if (isset($reply->last_name))
+				$name .= " ".$reply->last_name;
+		}
+
 		// stuffs
 		if ($reply->id_user == $_SESSION['uid']) {
 			$list.=$del_button;
@@ -423,7 +450,7 @@ EHTML;
 				<input type="hidden" name="rid" value="$reply->id"/>
 				<input type="hidden" name="nid" value="$reply->id_network"/>
 				<input type="hidden" name="pid" value="$reply->id_parent"/>
-				<button class='delete-button user'>Delete Reply</button>
+				<button class='post delete-button user reply'>&#10006</button>
 			</form>
 EHTML;
 		}
@@ -435,7 +462,8 @@ EHTML;
 	</div>
 	<div class='post-info'>
 		<h5 class='h-network'>$name</h5>
-		<p class='network'>$reply->reply_text</p>
+		<p class='network reply'>$reply->reply_text</p>
+		<p class='network reply date'>$reply->reply_date</p>
 	</div>
 	<div class='clear'></div>
 	$del_button

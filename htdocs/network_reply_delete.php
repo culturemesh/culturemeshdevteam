@@ -21,29 +21,46 @@ if (isset($_POST['rid']) && isset($_POST['nid']) && isset($_POST['pid'])) {
 
 		// delete if no replies are left
 		if (count($replies) == 0) {
-			// delete success
-			if (Post::deletePost($pid, $con)) {
-				mysqli_close($con);
-				if (isset($_POST['NOJS']))
-					header("Location: network.php?id={$_POST['nid']}&dr=true&dp=true");
+			
+			// check if post is null
+			$post = Post::getPostById($pid, $con);
+
+			// 	delete if true
+			if ($post->post_text == NULL) {
+				// delete success
+				if (Post::deletePost($pid, $con)) {
+					mysqli_close($con);
+					if (isset($_POST['NOJS']))
+						header("Location: network.php?id={$_POST['nid']}&dr=true&dp=true");
+					else {
+						// ajax
+						$response['error'] = 0;
+						$response['status'] = 'postdelete';
+						echo json_encode($response);
+					}
+				}
+				// fail
 				else {
-					// ajax
-					$response['error'] = 0;
-					$response['status'] = 'postdelete';
-					echo json_encode($response);
+					mysqli_close($con);
+					if (isset($_POST['NOJS']))
+						header("Location: network.php?id={$_POST['nid']}&dr=true&dp=false");
+					else {
+						// ajax
+						$response['error'] = 'Final delete failed';
+						echo json_encode($response);
+					}
+
 				}
 			}
-			// fail
 			else {
 				mysqli_close($con);
 				if (isset($_POST['NOJS']))
 					header("Location: network.php?id={$_POST['nid']}&dr=true&dp=false");
 				else {
 					// ajax
-					$response['error'] = 'Final delete failed';
+					$response['error'] = 0;
 					echo json_encode($response);
 				}
-
 			}
 		}
 		else {
