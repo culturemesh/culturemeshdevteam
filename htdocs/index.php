@@ -102,7 +102,6 @@
 				</script>
 			<?php endif; ?>
 			<div id="stage-area">
-				<a href="r.php">rtext</a>
 				<div id="stage-content">
 					<h3 id="stage-title">Connecting the world's diasporas</h3>
 					<form id="search-form" method="GET" action="search_results.php" autocomplete="off">
