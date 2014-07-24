@@ -308,26 +308,22 @@ class Network
 		return $networks;
 	}
 	
-	public static function getNetworkById($id)
+	public static function getNetworkById($id, $con=NULL)
 	{
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
+		$query = <<<SQL
+			SELECT * 
+			FROM networks 
+			WHERE id=$id
+SQL;
+		  //$result = mysqli_query($con,"SELECT * FROM networks WHERE id={$id}");
 		
-		// Check connection
-		if (mysqli_connect_errno())
-		  {
-		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		  }
-		
-		  $result = mysqli_query($con,"SELECT * FROM networks WHERE id={$id}");
-		
-		  $network_dt = Network::fillNetworkDT($result);
+		/// execute
+		$result = QueryHandler::executeQuery($query, $con);
 
-		if (func_num_args() < 2)
-			mysqli_close($con);
-		
+		// fill dt
+		$network_dt = Network::fillNetworkDT($result);
+
+		// leave
 		return $network_dt;
 	}
 	
@@ -744,6 +740,47 @@ SQL;
 	}
 
 	public static function getNetworksWithUserPost($ids, $con=NULL)
+	{
+		// add ids into friendly mysql variable
+		$inlist = '(';
+		
+		for ($i = 0; $i < count($ids); $i++) {
+			// add item
+			$inlist .= $ids[$i];
+
+			// add comma
+			if (count($ids) - $i > 1) {
+				$inlist .= ', ';
+			}
+		}
+
+		// add end parenthesis
+		$inlist .= ')';
+
+		$query = <<<SQL
+			SELECT *
+			FROM networks
+			WHERE id IN $inlist
+SQL;
+
+		$result = QueryHandler::executeQuery($query, $con);
+
+		$networks = Network::fillNetworkDTs($result);
+		/*
+		while ($row = mysqli_fetch_array($result)) {
+			// create and fill dt
+			$network_dt = new NetworkDT();
+			$network_dt = Network::fillNetworkDT($result);
+
+			// add to array
+			array_push($networks, $network_dt);
+		}
+		 */
+
+		return $networks;
+	}
+
+	public static function getNetworksWithEvents($ids, $con=NULL)
 	{
 		// add ids into friendly mysql variable
 		$inlist = '(';

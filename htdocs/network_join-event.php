@@ -8,10 +8,10 @@ include_once 'data/dal_query_handler.php';
 
 if(EventRegistration::createEventRegistration($_POST['uid'], $_POST['event_id']))
 {
-	header("Location: network.php?id={$_POST['nid']}&jeerror=success");
+	header("Location: network.php?id={$_POST['nid']}&eid={$_POST['event_id']}&jeerror=You joined the event");
 }
 else
 {
-	header("Location: network.php?id={$_POST['nid']}&jeerror=failure");
+	header("Location: network.php?id={$_POST['nid']}&eid={$_POST['event_id']}&jeerror=Server error. Try again later");
 }
 ?>

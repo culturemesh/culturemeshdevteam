@@ -69,7 +69,7 @@ SQL;
 		return $result;
 	}
 	
-	public static function getPostsByNetworkId($id, $con=NULL)
+	public static function getPostsByNetworkId($id, $bound, $con=NULL)
 	{
 		$query = <<<SQL
 			SELECT p.*, u.email, u.username, u.first_name, u.last_name, u.img_link, reply_count 
@@ -83,6 +83,7 @@ SQL;
 			ON p.id_user = u.id
 			AND p.id_network=$id
 			ORDER BY post_date DESC
+			LIMIT $bound[0], $bound[1] 
 SQL;
 		// execute
 		$result = QueryHandler::executeQuery($query, $con);
@@ -113,25 +114,23 @@ SQL;
 		
 		return $posts;
 	}
-	
-	public static function getPostsByUserId($id)
+
+	public static function getPostsByUserId($id, $bounds, $con=NULL)
 	{
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
+		$query = <<<SQL
+			SELECT p.*, u.first_name, u.last_name, u.img_link
+			FROM posts p, users u 
+			WHERE p.id_user=u.id 
+			AND p.post_text <> ''
+			AND id_user=$id
+			ORDER BY p.id_network, p.post_date DESC
+			LIMIT $bounds[0], $bounds[1]
+SQL;
+
+//		$result = mysqli_query($con,"SELECT * FROM posts p, users u WHERE p.id_user=u.id AND id_user={$id}");
 		
-		// Check connection
-		if (mysqli_connect_errno())
-		{
-		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		}
-		
-		$result = mysqli_query($con,"SELECT * FROM posts p, users u WHERE p.id_user=u.id AND id_user={$id}");
-		
-		if (func_num_args() < 2)
-			mysqli_close($con);
-		
+		$result = QueryHandler::executeQuery($query, $con);
+
 		$posts = array();
 		
 		while ($row = mysqli_fetch_array($result))
@@ -139,7 +138,7 @@ SQL;
 			$post_dt = new PostDT();
 			
 			$post_dt->id = $row['id'];
-			$post_dt->id_user = $id;
+			$post_dt->id_user = $row['id_user'];
 			$post_dt->first_name = $row['first_name'];
 			$post_dt->last_name = $row['last_name'];
 			$post_dt->username = $row['username'];
@@ -209,6 +208,31 @@ SQL;
 		}
 		
 		return $post_count + $reply_count;
+	}
+
+	public static function getPostCountAA($id, $con=NULL)
+	{
+		
+		$query = <<<SQL
+			SELECT reply_count, COUNT(p.id_network) AS post_count
+			FROM posts p
+			LEFT JOIN (SELECT id_network, COUNT(id_network) AS reply_count
+					FROM post_replies
+					GROUP BY id_network) pr
+			ON p.id_network = pr.id_network
+			WHERE p.id_network=$id
+SQL;
+	//	$result = mysqli_query($con,"SELECT COUNT(id_network) as post_count FROM posts WHERE id_network={$id}");
+		$result = QueryHandler::executeQuery($query, $con);
+		
+		while ($row = mysqli_fetch_array($result)) {
+			$post_count = $row['post_count'];
+			$reply_count = $row['reply_count'];
+		}
+		
+		return array('post_count' => $post_count,
+			'reply_count' => $reply_count,
+			'total' => $post_count + $reply_count);
 	}
 
 	public static function getRepliesByParentId($id, $con=NULL)

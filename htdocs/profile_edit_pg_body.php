@@ -30,8 +30,25 @@ $yn_events = Event::getEventsYourNetworks($_SESSION['uid'], $con);
 // events you're attending
 $ya_events = EventRegistration::getEventRegistrationsByUserId($_SESSION['uid'], $con);
 
+// get ids of networks from events
+$ye_nids = array();
+$all_events = array_merge($yh_events, $yn_events, $ya_events);
+
+// add network id if not already in array
+foreach($all_events as $event) {
+	if (!in_array($event->id_network, $ye_nids)) {
+		array_push($ye_nids, $event->id_network);
+	}
+}
+
+// post bounds
+$post_bounds = array(0,10);
+$test_bounds = array(0, 11);
+
 // your posts
-$yp_posts = Post::getPostsByUserId($_SESSION['uid'], $con);
+$yp_posts = Post::getPostsByUserId($_SESSION['uid'], $test_bounds, $con);
+
+
 
 // get ids of networks with posts
 $yp_nids = array();
@@ -41,6 +58,9 @@ foreach ($yp_posts as $post) {
 
 // your post networks
 $yp_networks = Network::getNetworksWithUserPost($yp_nids, $con);
+
+// your event networks
+$ye_networks = Network::getNetworksWithEvents($ye_nids, $con);
 
 // your networks
 $yn_networks = NetworkRegistration::getNetworksByUserId($_SESSION['uid'], $con);

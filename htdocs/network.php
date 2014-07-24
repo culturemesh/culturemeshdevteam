@@ -8,6 +8,7 @@
 	include_once "data/dal_user.php";
 	include_once "html_builder.php";
 	
+	
 	//session_name("myDiaspora");
 	//session_start();
 
@@ -30,7 +31,7 @@
 	
 	$guest = true;
 	$member = false;
-	
+
 	if (!isset($_SESSION['uid']))
 		$guest = true;
 	else
@@ -45,7 +46,8 @@
 	$id = $con->real_escape_string($_GET['id']);
 	$network = Network::getNetworkById($id, $con);
 	$network->member_count = NetworkRegistration::getMemberCount($id, $con);
-	$network->post_count = Post::getPostCount($id, $con);
+	$pc_data = Post::getPostCountAA($id, $con);
+	$network->post_count = $pc_data['total']; 
 	$_SESSION['cur_network'] = $network->id;
 	
 	$events = Event::getEventsByNetworkId_D($id, $con);
@@ -59,9 +61,33 @@
 				$event->attending = true;
 		}
 	}
-	$posts = Post::getPostsByNetworkId($id, $con);
+
+	$post_bounds = NULL;
+
+	if (isset($_GET['ap'])) {
+		$post_bounds = array(0, 9999);
+	}
+	else {
+		$post_bounds = array(0, 10);
+	}
+
+	$posts = Post::getPostsByNetworkId($id, $post_bounds, $con);
+
+	// create replies assoc array
+	$replies = array();
+
+	// for each post, check if it's in get
+	// get replies from database,
+	// push into array
+	foreach ($posts as $post) {
+		// get replies
+		$prs = Post::getRepliesByParentId($post->id, $con);
+		// push into array
+		$replies[$post->id] = $prs;
+	}
 
 	// get replies
+	/*
 	if (isset($_GET['reply'])) {
 		// create replies assoc array
 		$replies = array();
@@ -84,6 +110,7 @@
 			}
 		}
 	}
+	 */
 	
 	// make an event calendar
 	$months = array("January", "February", "March", "April",
@@ -198,7 +225,10 @@
 		
 	</head>
 	<body>
+
 		<div class="wrapper">
+
+
 			<?php
 				include "header.php";
 			?>
@@ -206,15 +236,6 @@
 				<div class="net-left">
 					<div class="leftbar">
 						<?php HTMLBuilder::googleMapsEmbed($location); ?>
-<!--
-						<div class="map">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202
-							359.87608164057!2d-122.32141071468104!3d37.581606634196056!2m3!1f0!2f0!
-							3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcae48af93ff5%3A0xb99d8c0aca9f717b
-							!2sSan+Jose%2C+CA!5e0!3m2!1sen!2sus!4v1389926877454" width="100%" height="252"
-							frameborder="0" style="border:0"></iframe>
-						</div>
--->
 						<div class="tags"></div>
 						<div class="suggestions">
 							<h4 class="h-network">People who viewed this network also viewed:</h4>
@@ -227,6 +248,9 @@
 					<div>
 						<div class='net-info'>
 							<h1 class='h-network'><?php echo HTMLBuilder::formatNetworkTitle($network); ?></h1>
+							<div id="share">
+							</div>
+
 							<div class="reg-guest">
 								<form method="POST" action="network_join.php">
 									<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
@@ -244,6 +268,11 @@
 									<input type="hidden" name="uid" value="<?php echo $_SESSION['uid']; ?>"/>
 									<input type="hidden" name="nid" value="<?php echo $network->id; ?>"/>
 								</form>
+							</div>
+							<div class="clear"></div>
+							<div>
+							<p id="lnerror"></p>
+							<p id="jnerror"></p>
 							</div>
 						</div>
 						<div class="clear"></div>
@@ -271,7 +300,7 @@
 						<?php 
 						foreach($posts as $post) {
 							// display post
-							echo HTMLBuilder::displayPost($post, $replies[$post->id]); 
+							echo HTMLBuilder::displayPost($post, $replies[$post->id], 4); 
 
 							/*
 							// display replies
@@ -286,6 +315,16 @@
 						}
 						?>
 						</ul>
+						<?php if ($pc_data['post_count'] > 10 && !isset($_GET['ap'])) : ?>
+						<div>
+							<form class="more_posts" method="POST" action="network_more_posts.php">
+								<input type="hidden" id="nmp_lb" name="lb" value=10 />
+								<input type="hidden" id="nmp_ub" name="ub" value=10 />
+								<input type="hidden" id="nmp_nid" name="nid" value="<?php echo $network->id; ?>" />
+								<button id="mp_button" class="post show">Load Older Posts</button>
+							</form>
+						</div>
+						<?php endif; ?>
 						<!--<script src="js/post-wall.js"></script>-->
 						<script>
 						/*
@@ -355,23 +394,28 @@
 						</div>
 						<div class="clear"></div>
 						<!--</ul>-->
+						<div>
 						<button id="event-post" class="network member" onclick="toggleEventForm()">Post Event</button>
-						<?php if (isset($_GET['eperror'])): ?>
-						<span><?php echo $_GET['eperror']; ?></span>
+						</div>
+						<div class="clear"></div>
+						<?php if(isset($_GET['eperror'])) : ?>
+						<script>
+						</script>
 						<?php endif; ?>
 						<div id="event-maker">
 							<form class="event-form" method="POST" action="network_post-event.php" enctype="multipart/form-data">
 								<div>
-								<input type="text" id="title" name="title" class="event-text" placeholder="Name of Event "></input></br>
-								<input type="text" id="datetimepicker1" name="datetime" class="event-text datetimepicker" placeholder="Event Date">
+								<input type="text" id="title" name="title" class="event-text" placeholder="Name of Event " required></input></br>
+								<input type="text" id="datetimepicker1" name="datetime" class="event-text datetimepicker" placeholder="Event Date" required>
 								<input type="text" class="hidden-field" name="date"></input>
-								<input type="text" name="address_1" class="event-text" placeholder="Address 1"/>
+								<input type="text" name="address_1" class="event-text" placeholder="Address 1" required/>
 								<input type="text" name="address_2" class="event-text" placeholder="Address 2"/>
-								<textarea id="description" name="description" class="event-text" placeholder="What's happening?"></textarea>
+								<textarea id="description" name="description" class="event-text" placeholder="What's happening?" required></textarea>
 								<div id="clear"></div>
-								<input type="text" class="event-text" name="city" placeholder="City"/></input>
-								<input type="text" class="event-text" name="region" placeholder="Region"/></input>
+								<input type="text" class="event-text" name="city" placeholder="City" required/></input>
+								<input type="text" class="event-text" name="region" placeholder="Region" required/></input>
 								<input type="submit" class="network" value="Post"></input>
+								<span id="eperror"><?php echo $_GET['eperror']; ?></span>
 								</div>
 							</form>
 						</div>
@@ -406,7 +450,7 @@
 				// check if replies have already been fetched
 				var replies_div = $( e.target ).parents('div.post-info').siblings('div.replies');
 
-				if ( replies_div.children('ul').children().length == 0 ) {
+				if ( replies_div.children('ul').children().length <= 4 ) {
 					var postForm = $(this).serialize();
 					var getReply = new Ajax({
 						requestType: 'POST',
@@ -538,103 +582,198 @@
 				// prevent default behavior
 				e.preventDefault();
 				// get target
-				var targ = e.target;
-				var postForm = $( targ ).serialize();
 
-				var sendReply = new Ajax({
-					requestType: 'POST',
-						requestUrl: 'network_reply_delete.php',
-						requestParameters: ' ',
-						data: postForm,
-						dataType: 'string',
-						sendNow: true
-				}, function(data) {
-					// success function
-					var response = JSON.parse(data);
-					
-					if (response.error == 0) {
-						// delete parent li
-						// get form
-						var targ = e.target;
-						var ul = $( targ ).parents('ul.replies');
+				if (confirm("Are you sure you want to delete this reply?")) {
+					var targ = e.target;
+					var postForm = $( targ ).serialize();
 
-						$( targ ).parents('li.reply').remove();
+					var sendReply = new Ajax({
+						requestType: 'POST',
+							requestUrl: 'network_reply_delete.php',
+							requestParameters: ' ',
+							data: postForm,
+							dataType: 'string',
+							sendNow: true
+					}, function(data) {
+						// success function
+						var response = JSON.parse(data);
+						
+						if (response.error == 0) {
+							// delete parent li
+							// get form
+							var targ = e.target;
+							var ul = $( targ ).parents('ul.replies');
 
-						// delete whole post
-						if (response.status == 'postdelete') {
-							$( ul ).parents('li.network-post').remove();
+							$( targ ).parents('li.reply').remove();
+
+							// delete whole post
+							if (response.status == 'postdelete') {
+								$( ul ).parents('li.network-post').remove();
+							}
+							else {
+								var replyCount =  ul.children().length;
+
+								// update reply counts elsewhere
+								// post info div
+								var div = $( ul ).parents('div.replies').siblings('div.post-info');
+
+								//  1) hidden input on delete post
+								$( div ).children('form.post_delete').children("input[name|='replies']").val(replyCount);
+								//  2) reply count
+								$( div ).children('p.reply_count').text(replyCount + ' replies');
+
+								// update 
+								// if ul is now empty...
+								if ( replyCount == 0 ) {
+									// hide show replies form
+									$( ul ).parents('div.replies').siblings('div.post-info').children('form.show_reply').children(':submit').val('Show Replies');
+									$( ul ).parents('div.replies').siblings('div.post-info').children('form.show_reply').hide();
+								}	
+							}
 						}
-						else {
-							var replyCount =  ul.children().length;
+					}, function(response, rStatus) {
 
-							// update reply counts elsewhere
-							// post info div
-							var div = $( ul ).parents('div.replies').siblings('div.post-info');
-
-							//  1) hidden input on delete post
-							$( div ).children('form.post_delete').children("input[name|='replies']").val(replyCount);
-							//  2) reply count
-							$( div ).children('p.reply_count').text(replyCount + ' replies');
-
-							// update 
-							// if ul is now empty...
-							if ( replyCount == 0 ) {
-								// hide show replies form
-								$( ul ).parents('div.replies').siblings('div.post-info').children('form.show_reply').children(':submit').val('Show Replies');
-								$( ul ).parents('div.replies').siblings('div.post-info').children('form.show_reply').hide();
-							}	
-						}
-					}
-				}, function(response, rStatus) {
-
-				});
+					});
+				}
 			});
 		}
 
 		/////// DELETE POST ///////////////////
 		//function primeDeletePosts() {
 		$('.post_delete').on('submit', function(e) {
-
 			// prevent default behavior 
 			e.preventDefault();
 
-			var postForm = $( e.target ).serialize();
+			if (confirm("Are you sure you want to delete this post?")) {
+				var postForm = $( e.target ).serialize();
 
-			postDelete = new Ajax({
-				requestType: 'POST',
-					requestUrl: 'network_post_delete.php',
+				postDelete = new Ajax({
+					requestType: 'POST',
+						requestUrl: 'network_post_delete.php',
+						requestHeaders: ' ',
+						data: postForm,
+						dataType: 'string',
+						sendNow: true
+				}, function(data) {
+					var response = JSON.parse(data);
+
+					if (response.error == 0) {
+						var targ = $( e.target );
+						if (response.status == 'destroyed') {
+							// remove li 
+							targ.parents('li.network-post').remove();
+							// decrement number of posts up top
+						}
+
+						if (response.status == 'wiped') {
+							targ.parents('li.network-post').replaceWith(response.html);
+							primeRequestReplies();
+							primeReplyForms();
+							primeDeletes();
+							primeShowReplies();
+						}
+					}
+				}, function(response, rStatus) {
+
+				});
+			}
+		});
+
+		$('.more_posts').on('submit', function(e) {
+			
+			// prevent default
+			e.preventDefault();
+
+			// get form
+			var targ = $(e.target);
+			var postForm = $( targ ).serialize();
+			
+			var requestPosts = new Ajax({
+					requestType: 'POST',
+					requestUrl: 'network_more_posts.php',
 					requestHeaders: ' ',
 					data: postForm,
 					dataType: 'string',
 					sendNow: true
 			}, function(data) {
 				var response = JSON.parse(data);
+				// add stuff to post wall
+				$("#post-wall-ul").append(response.html);
 
-				if (response.error == 0) {
-					var targ = $( e.target );
-					if (response.status == 'destroyed') {
-						// remove li 
-						targ.parents('li.network-post').remove();
-						// decrement number of posts up top
-					}
+				// with new stuff, call primes
+				callPrimes();
 
-					if (response.status == 'wiped') {
-						targ.parents('li.network-post').replaceWith(response.html);
-						primeRequestReplies();
-						primeReplyForms();
-						primeDeletes();
-						primeShowReplies();
-					}
+				if(response['continue'] == 'n') {
+					$( targ ).hide();
 				}
-			}, function(response, rStatus) {
+				else {
+					$('#nmp_lb').val(response['lb']);
+				}
 
+			}, function() {
 			});
-
 		});
+
+		function callPrimes() {
+			primeShowReplies();
+			primeRequestReplies();
+			primeReplyForms();
+			primeDeletes();
+			primeShowReplies();
+		}
 
 		primeShowReplies();
 		primeRequestReplies();
 
 		console.log("buttons");
+	</script>
+	<script>
+		function switchTab() {
+			// remove post active status
+			$('#post-nav').removeClass('active');
+			$('#post-wall').removeClass('active');
+
+			// add event active status
+			$('#event-nav').addClass('active');
+			$("#event-wall").addClass('active');
+		}
+	</script>
+	<?php if (isset($_GET['eperror'])): ?>
+	<script>
+		switchTab();
+
+		toggleEventForm();
+		$('#eperror').goTo();
+		$('#eperror').text('<?php echo $_GET['eperror']; ?>');
+		
+	</script>
+	<?php endif; ?>
+	<script>
+		var qs = new QueryStringParser();
+		if (qs.qsGet['lnerror'] != undefined) {
+			$('#lnerror').text(qs.qsGet['lnerror']);
+		}
+		if (qs.qsGet['jnerror'] != undefined) {
+			$('#jnerror').text(qs.qsGet['jnerror']);
+		}
+		if (qs.qsGet['ueerror']!= undefined) {
+			var mid = qs.qsGet['eid'];
+			switchTab();
+
+			$('#event-modal-'+mid).modal('show');
+			$('#ueerror-'+mid).text(qs.qsGet['ueerror']);
+		}
+		if (qs.qsGet['jeerror']!= undefined) {
+			var mid = qs.qsGet['eid'];
+			switchTab();
+
+			$('#event-modal-'+mid).modal('show');
+			$('#jeerror-'+mid).text(qs.qsGet['jeerror']);
+		}
+		if (qs.qsGet['elink']!= undefined) {
+			switchTab();		
+			$('#event-modal-'+ qs.qsGet['elink']).modal('show');
+
+		}
 	</script>
 </html>

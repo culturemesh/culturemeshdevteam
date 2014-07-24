@@ -1,4 +1,7 @@
 <?php
+//ini_set('display_errors', true);
+//error_reporting(E_ALL ^ E_NOTICE);
+
 /**
   * Success - 1
   * Login info incorrect - 2
@@ -7,26 +10,24 @@
   * Database connection failed - 5
 **/
 
-// check if we came from a network page
-$netpos = strpos($_SERVER['HTTP_REFERER'], "network");
+/*
+ * 1) check http_referer to find the site
+ * 	a) GETS ARE CRITICAL HERE
+ * 		i) network
+ * 		ii) search results
+ * 	b) NOT SO MUCH
+ * 		i) index
+ */
 
-// set the redirect page
-// it may be a network page,
-if ($netpos > -1) {
-	$netend = strpos($_SERVER['HTTP_REFERER'], "&");
+include_once('http_redirect.php');
 
-	// if there's a &, ignore it
-	if ($netend > -1)
-	{
-		$length = $netend - $netpos;
-		$redirect = substr($_SERVER['HTTP_REFERER'], $netpos, $length);
-	}
-	else {
-		$redirect = substr($_SERVER['HTTP_REFERER'], $netpos);
-	}
-}
-else
-	$redirect = "profile_edit.php";
+// possible pages that we could be logging in from
+$pages = array('index', 'network', 'search_results', 
+	'careers', 'about', 'press');
+
+$prev_url = $_SERVER['HTTP_REFERER'];
+
+$redirect = new HTTPRedirect($prev_url, $pages);
 
 // start working on stuff
 if($_POST['email'] && $_POST['password']){
@@ -58,7 +59,9 @@ if($_POST['email'] && $_POST['password']){
 		if (strlen($email) > 50)
 		{
 			mysqli_close($con);
-			header("Location: ".$redirect);
+			$redirect->addQueryParameter('lerror', 'Email too long, must be 50 characters or less');
+			$redirect->execute();
+			//header("Location: ".$redirect);
 			/*
 			$json_response['error'] = 3;
 			echo json_encode($json_response);
@@ -67,7 +70,9 @@ if($_POST['email'] && $_POST['password']){
 		else if (strlen($pass) > 18)
 		{
 			mysqli_close($con);
-			header("Location: ".$redirect);
+			$redirect->addQueryParameter('lerror', 'Password too long, must be 18 characters or less');
+			$redirect->execute();
+//			header("Location: ".$redirect);
 			/*
 			$json_response['error'] = 4;
 			echo json_encode($json_response);
@@ -84,7 +89,51 @@ if($_POST['email'] && $_POST['password']){
 				// set session variable
                 		$_SESSION['uid'] = getMemberUID($email, $con);
 				$json_response['uid'] = $_SESSION['uid'];
-                		
+
+				// if not coming from network, redirect to profile_edit
+				if (!$redirect->pathContains('network')) {
+					
+					$redirect->setPath('profile_edit.php');
+					// will sooon have to set get parameter here
+				}
+
+				// return successful
+				$redirect->addQueryParameter('lerror', 'success');
+				$redirect->execute();
+
+			}
+			else
+			{
+			   mysqli_close($con);
+
+			   // Server error
+			   $redirect->addQueryParameter('lerror', 'Username and password are incorrect');
+			   $redirect->execute();
+			   //header("Location: ".$redirect);
+			   /*
+			    $json_response['error'] = 2;
+			    echo json_encode($json_response);
+			    */
+			}
+		}
+}
+// no data provided
+else {
+	$redirect->addQueryParameter('lerror', 'No data');
+	$redirect->execute();
+    //header("Location: index.php");
+    /*
+    $json_response = array(
+    "error" => NULL,
+    "network" => NULL,
+    "member" => NULL,
+    "title" => NULL);
+
+    echo json_encode($json_response);
+     */
+}
+
+				/*
                 		// check to see if we came from network.php, if so,
                 			// we must find out if we're a member of the network we logged in from
                 		if (isset($_SESSION['cur_network']))
@@ -110,8 +159,6 @@ if($_POST['email'] && $_POST['password']){
 					else
 						$json_response['title'] = $email;
 
-					// return successful
-					header("Location: ".$redirect);
 					//echo json_encode($json_response);
 				}
 				else // came from somewhere else, may be expanded later
@@ -120,28 +167,5 @@ if($_POST['email'] && $_POST['password']){
 					header("Location: ".$redirect);
 					//echo json_encode($json_response);
 				}
-			}
-			else
-			{
-			   mysqli_close($con);
-			   header("Location: ".$redirect);
-			   /*
-			    $json_response['error'] = 2;
-			    echo json_encode($json_response);
-			    */
-			}
-		}
-}
-else{
-    header("Location: index.php");
-    /*
-    $json_response = array(
-    "error" => NULL,
-    "network" => NULL,
-    "member" => NULL,
-    "title" => NULL);
-
-    echo json_encode($json_response);
-     */
-}
+				 */
 ?>

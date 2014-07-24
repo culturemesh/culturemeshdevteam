@@ -4,10 +4,15 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 include_once "data/dal_post.php";
 include_once "data/dal_network_registration.php";
+include_once "http_redirect.php";
 
 session_name("myDiaspora");
 session_start();
 
+// create redirect
+$prev_url = $_SERVER['HTTP_REFERER'];
+$pages = array('network');
+$redirect = new HTTPRedirect($prev_url, $pages);
 
 $test = new NetworkRegistrationDT();
 $test->id_user = $_SESSION['uid'];
@@ -17,7 +22,6 @@ $valid = NetworkRegistration::checkRegistration($test);
 
 if ($valid)
 {
-
 	$post = new PostDT();
 	
 	$post->id_user = $_SESSION['uid'];
@@ -26,13 +30,22 @@ if ($valid)
 	$post->post_class = mysql_escape_string($_POST['post_class']);
 	$post->post_original = mysql_escape_string($_POST['post_original']);
 	
-	Post::createPost($post);
-	
-	header("Location: network.php?id={$_SESSION['cur_network']}");
-
+	if (strlen($post->post_text) <= 0) {
+		$redirect->addQueryParameter('perror', 'No text in post');
+		$redirect->execute();
+	}
+	else {
+		Post::createPost($post);
+		header("Location: network.php?id={$_SESSION['cur_network']}");
+	}
 }
 else
 {
-	header("Location: network.php?id={$_SESSION['cur_network']}&success=false");
+	if (isset($_SESSION['cur_network'])) {
+		header("Location: network.php?id={$_SESSION['cur_network']}&success=false");
+	}
+	else {
+		header("Location: index.php?signout=true");
+	}
 }
 ?>

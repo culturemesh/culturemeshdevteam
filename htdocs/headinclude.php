@@ -83,6 +83,59 @@ if (!isset($_SESSION['uid']) && !in_array($_SERVER['REMOTE_ADDR'], $whitelist)) 
 		
 	<?php endif; ?>
 </style>
+<script>
+	/*
+		* Goto function
+	 */
+	(function($) {
+	    $.fn.goTo = function() {
+		$('html, body').animate({
+		    scrollTop: $(this).offset().top + 'px'
+		}, 'fast');
+		return this; // for chaining...
+	    }
+	})(jQuery);
+
+	/*
+		* Query string parser
+	 */
+	function QueryStringParser() {
+
+		this.length = 0;
+		this.qsGet = null;
+
+		// get query string
+		var qs = window.location.search.substring(1).split('?')[0];
+
+		// split into array of key value pairs
+		if (qs.length == 0) {
+			this.length = 0;
+		}
+		else {
+			// initialize qsGET
+			this.qsGet = {};
+
+			// split qs again in case of multiple params
+			qs = qs.split('&');
+
+			// for each  param, 
+			// 	- split into key, value
+			// 	- add to qsGET
+			var param;
+			for (var i = 0; i < qs.length; i++) {
+				// split into two values
+				param = qs[i].split('=');
+
+				// add to object
+				this.qsGet[param[0]] = decodeURIComponent(param[1]);
+			}
+		}
+	}
+
+	QueryStringParser.prototype.getQSObject = function() {
+		return this.qsGet;
+	}
+</script>
 <!--GoogleAn-->
 
 <!--end googlan-->

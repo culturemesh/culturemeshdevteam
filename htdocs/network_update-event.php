@@ -1,8 +1,10 @@
 <?php
 session_name("myDiaspora");
 session_start();
-if (!isset($_SESSION['uid']))
-	exit("Can't be done");
+if (!isset($_SESSION['uid'])) {
+	header("index.php?signout=true");
+}
+else {
 
 /*
 if (!isset($_POST['title']) ||
@@ -34,6 +36,7 @@ $event->region = mysqli_real_escape_string($con, $_POST['region']);
 Event::updateEvent($event, $con);
 
 mysqli_close($con);
-header("Location: network.php?id=".$_SESSION['cur_network']);
+header("Location: network.php?id=".$_SESSION['cur_network']."&ueerror=Event updated successfully&eid={$event->id}");
+}
 ?>
 

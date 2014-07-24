@@ -22,13 +22,18 @@ if (!empty($_FILES['picfile'])) {
 
 		// check if it's an image file
 		$fileType = getimagesize($file['tmp_name']);
-		$allowed_types = array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_BMP);
-		if (!in_array($fileType, $allowed_types)) {
+//		$allowed_types = array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_BMP);
+		$allowed_types = array('image/png', 'image/jpeg', 'image/gif', 'image/bmp');
+		//echo $fileType;
+//		var_dump($fileType);
+		//var_dump(IMAGETYPE_GIF);
+		//echo ($fileType['mime']);
+		if (!in_array($fileType['mime'], $allowed_types)) {
 			echo json_encode(array(
 				'success' => false,
-				'error' => "Not an image"));
+				'error' => "Not the right image type. Must be png, jpeg, gif, or bmp."));
+			
 		}
-
 		else {
 
 			// check file name for safety

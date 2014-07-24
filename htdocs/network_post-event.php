@@ -14,11 +14,11 @@ $test->id_user = $_SESSION['uid'];
 $test->id_network = $_SESSION['cur_network'];
 $valid = NetworkRegistration::checkRegistration($test);
 
+// create redirect
+
 
 if ($valid)
 {
-	echo "here";
-
 	$event = new EventDT();
 	$con = QueryHandler::getDBConnection();
 	
@@ -95,7 +95,7 @@ if ($valid)
 		// create event
 		if(Event::createEvent($event, $con)) {
 			mysqli_close($con);
-			header("Location: network.php?id={$_SESSION['cur_network']}");
+			header("Location: network.php?id={$_SESSION['cur_network']}&eperror=Success");
 		}
 		else
 		{
@@ -108,8 +108,7 @@ if ($valid)
 }
 else
 {
-	header("Location: network.php?id={$_SESSION['cur_network']}&error=false");
-
+	header("Location: network.php?id={$_SESSION['cur_network']}&eperror=Not a member");
 }
 ?>
 

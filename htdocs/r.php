@@ -1,6 +1,7 @@
 <?php
 //ini_set('display_errors', true);
 //error_reporting(E_ALL ^ E_NOTICE);
+include("http_redirect.php");
 
 $json_response = array(
 	"message" => NULL,
@@ -10,66 +11,21 @@ $json_response = array(
 	"other" => NULL
 );
 
-// check if we came from a network page
-$netpos = strpos($_SERVER['HTTP_REFERER'], "network");
+// pages you can register from
+$pages = array('index', 'network', 'search_results', 
+	'careers', 'about', 'press');
 
-// set the redirect page
-// it may be a network page,
-if ($netpos > -1) {
-	$netend = strpos($_SERVER['HTTP_REFERER'], "&");
+// get prev url
+$prev_url = $_SERVER['HTTP_REFERER'];
 
-	// if there's a &, ignore it
-	if ($netend > -1)
-	{
-		$length = $netend - $netpos;
-		$redirect = substr($_SERVER['HTTP_REFERER'], $netpos, $length);
-	}
-	else {
-		$redirect = substr($_SERVER['HTTP_REFERER'], $netpos);
-	}
-}
-else {
-	$redirect = "profile_edit.php";
-}
-
-
-/*
-// Figure out error redirect
-$files = array('index', 'search_results');
-
-foreach($files as $file) {
-	// check for string
-	$refstart = strpos($_SERVER['HTTP_REFERER'], $file);
-
-	// if the string is in the referer, we got a hit
-	if ($refstart > -1) {
-		// get string position
-		$refend = strpos($_SERVER['HTTP_REFERER'], '&');
-
-		// check for query string, cut it out
-		if ($refend > -1) {
-			$length = $refend - $refstart;
-			$err_redirect = substr($_SERVER['HTTP_REFERER'], $refstart, $length);
-		}
-		else {
-			$err_redirect = substr($_SERVER['HTTP_REFERER'], $refstart);
-		}
-
-		// end
-		break;
-	}
-}
-
-if ($err_redirect == NULL)
-	$redirect = 'index.php';
-
- */
-$err_redirect = 'index.php';
+// create redirect object
+$redirect = new HTTPRedirect($prev_url, $pages);
 
 // make sure that the user has written
 // 	in all the required fields
 if(isset($_POST['email']) && isset($_POST['password'])
-	&& isset($_POST['password_conf'])){
+	&& isset($_POST['password_conf']) && isset($_POST['fname'])
+	&& isset($_POST['lname'])){
 	
 	// Check if password is long enough to be 
 		// worthy of entry into my database
@@ -79,8 +35,10 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		$json_response["error"] = 2;
 		echo json_encode($json_response);
 		 */
-		$msg = urlencode("Password must be longer than 6 characters.");
-		header("Location: ".$redirect."?regerror=true&msg={$msg}");
+		//$msg = urlencode("Password must be longer than 6 characters.");
+		//header("Location: ".$redirect."?regerror=true&msg={$msg}");
+		$redirect->addQueryParameter('rerror', 'Password must be longer than 6 characters.');
+		$redirect->execute();
 	}
 
 	// Check if password matches password confirmation
@@ -90,8 +48,10 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		$json_response["error"] = 3;
 		echo json_encode($json_response);
 		 */
-		$msg = urlencode("Password confirmation does not match.");
-		header("Location: ".$redirect."?regerror=true&msg={$msg}");
+		//$msg = urlencode("Password confirmation does not match.");
+		//header("Location: ".$redirect."?regerror=true&msg={$msg}");
+		$redirect->addQueryParameter('rerror', 'Password confirmation does not match');
+		$redirect->execute();
 	}
 	else if(strlen($_POST['email']) > 30)
 	{
@@ -100,8 +60,18 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		$json_response["error"] = 6;
 		echo json_encode($json_response);
 		 */
-		$msg = urlencode("Email too long. Must be less than 30 characters");
-		header("Location: ".$redirect."?regerror=true&msg={$msg}");
+		//$msg = urlencode("Email too long. Must be less than 30 characters");
+		//header("Location: ".$redirect."?regerror=true&msg={$msg}");
+		$redirect->addQueryParameter('rerror', 'Email too long. Must be less than 30 characters');
+		$redirect->execute();
+	}
+	else if(strlen($_POST['fname']) > 30) {
+		$redirect->addQueryParameter('rerror', 'First Name too long. Must be less than 30 characters');
+		$redirect->execute();
+	}
+	else if(strlen($_POST['lname']) > 30) {
+		$redirect->addQueryParameter('rerror', 'Last Name too long. Must be less than 30 characters');
+		$redirect->execute();
 	}
 	else if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 	{
@@ -110,8 +80,10 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		$json_response['error'] = 7;
 		echo json_encode($json_response);
 		 */
-		$msg = urlencode('Not a valid email. Must be like example@example.com');
-		header("Location: ".$redirect."?regerror=true&msg={$msg}");
+		//$msg = urlencode('Not a valid email. Must be like example@example.com');
+		//header("Location: ".$redirect."?regerror=true&msg={$msg}");
+		$redirect->addQueryParameter('rerror', 'Not a valid email. Must follow form: example@example.com');
+		$redirect->execute();
 	}
 	else
 	{
@@ -126,6 +98,8 @@ if(isset($_POST['email']) && isset($_POST['password'])
 
 		
 		$email = $conn->real_escape_string($_POST['email']);
+		$fname = $conn->real_escape_string($_POST['fname']);
+		$lname = $conn->real_escape_string($_POST['lname']);
 		
 		// check to see if email is already taken
 		$email_in_use = User::checkEmailMatch($email);
@@ -134,6 +108,8 @@ if(isset($_POST['email']) && isset($_POST['password'])
 			$new_user = new UserDt();
 			$new_user->username = null;
 			$new_user->email = $email;
+			$new_user->first_name = $fname;
+			$new_user->last_name = $lname;
 			$new_user->password = md5($_POST['password']);
 			$new_user->role = 0;
 			$new_user->act_code = md5(microtime());
@@ -146,8 +122,9 @@ if(isset($_POST['email']) && isset($_POST['password'])
 
 			// send confirmation email
 			if(!CMEmail::sendConfirmationEmail($email, $_SESSION['uid'], $new_user->act_code)) {
-				$json_response["other"] = "Email couldn't be sent";
-				$msg = urlencode("Email couldn't be sent");
+				//$json_response["other"] = "Email couldn't be sent";
+				//$msg = urlencode("Email couldn't be sent");
+				$redirect->addQueryParameter('other', 'Email couldn\'t be sent');
 			}
 
 			/*
@@ -157,7 +134,16 @@ if(isset($_POST['email']) && isset($_POST['password'])
 			$json_response["message"] = "Account created successfully!";
 			echo json_encode($json_response);
 			 */
-			header("Location: ".$redirect."?msg={$msg}");
+			//header("Location: ".$redirect."?msg={$msg}");
+
+			// if not coming from network, redirect to profile_edit
+			if (!$redirect->pathContains('network')) {
+				$redirect->setPath('profile_edit.php');
+				// will sooon have to set get parameter here
+			}
+
+			$redirect->addQueryParameter('rerror', 'success');
+			$redirect->execute();
 		}
 		else
 		{
@@ -166,8 +152,10 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		    $json_response["message"] = "Username already exists.";
 		    echo json_encode($json_response);
 			 */
-			$msg = urlencode();
-			header("Location: ".$redirect."?regerror=true&msg={$msg}");
+			//$msg = urlencode();
+			//header("Location: ".$redirect."?regerror=true&msg={$msg}");
+			$redirect->addQueryParameter('rerror', 'Username already exists');
+			$redirect->execute();
 		}  
     }
 }
@@ -178,7 +166,10 @@ else {
 	$json_response["message"] = "Please fill out all of the fields.";
 	echo json_encode($json_response);
 	 */
-	$msg = urlencode("Please fill out all of the fields.");
-	header("Location: ".$err_redirect."?regerror=true&msg={$msg}");
+//	$msg = urlencode("Please fill out all of the fields.");
+	//
+	//header("Location: ".$err_redirect."?regerror=true&msg={$msg}");
+	$redirect->addQueryParameter('rerror', 'Please fill out all of the field');
+	$redirect->execute();
 }
 ?>

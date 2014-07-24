@@ -5,6 +5,10 @@ include("zz341/fxn.php");
 include("data/dal_user.php");
 include("data/dal_user_info.php");
 include("data/dal_user_notification.php");
+include_once('data/dal_post.php');
+include_once('data/dal_query_handler.php');
+include_once('data/dal_network.php');
+include_once('html_builder.php');
 
 session_name("myDiaspora");
 session_start();
@@ -63,7 +67,60 @@ if( isset($_SESSION['uid']))
 			}
 		}
 	}
-	 
+	/**
+	 * MORE POSTS
+	 */
+	if (isset($_POST['more_posts']))
+	{
+		ini_set('display_errors', false);
+
+		$json_response = array(
+			'error' => NULL,
+			'html' => NULL,
+			'continue' => NULL,
+			'lb' => NULL);
+
+		$con = getDBConnection();
+		$uid = $_POST['uid'];
+		$lb = $_POST['lb'];
+		$nid = $_POST['nid'];
+		$test_ub = 11;
+		$ub = 10;
+		$bounds = array($lb, $test_ub);
+		$posts = Post::getPostsByUserId($uid, $bounds, $con);
+
+		$html = '';
+
+		// get post html
+		for ($i = 0; $i < $ub && $i < count($posts); $i++){
+			// check to see if we're in the same network
+			if ($posts[$i]->id_network != $nid) {
+				// swap ids
+				$nid = $posts[$i]->id_network;
+				// get new network
+				$network = Network::getNetworkById($id, $con);	
+				// display new network
+				$html .= HTMLBuilder::displayDashNetworkTitle($network);
+			}
+
+			// get post html
+			$html .= HTMLBuilder::displayDashPost($posts[$i], true);
+		}
+
+		mysqli_close($con);
+		$json_response['html'] = $html;
+		$json_response['error'] = 'success';
+		$json_response['continue'] = 'n';
+
+		// if there are 11+ posts, more can be loaded
+		if (count($posts) >= $test_ub) {
+			$json_response['continue'] = 'y';
+			$json_response['lb'] = $lb + 10;
+		}
+
+		// return the thing
+		echo json_encode($json_response);
+	}
 	/**
 	 * ACCOUNT INFO UPDATE
 	 */

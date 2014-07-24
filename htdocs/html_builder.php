@@ -234,8 +234,9 @@ HTML;
 	// be careful, it's a fucking mess in here
 	//  sorry, just trying to resolve nojs with js
 	//  this is why templates are helpful
-	public static function displayPost($post, $replies)
+	public static function displayPost($post, $replies, $REPLY_MAX)
 	{
+
 		// jsonencode post
 		$jpost = json_encode($post);
 		// jsonencode user
@@ -305,7 +306,7 @@ EHTML;
 		$nid = $post->id_network;
 		$pid = $post->id;
 
-		if ($post->reply_count <= 0 && !in_array($post->id, $rids_ray)) {
+		if (count($replies) < $REPLY_MAX && !in_array($post->id, $rids_ray)) {
 			$display = 'display:none';
 		}
 		
@@ -323,10 +324,10 @@ EHTML;
 </div>
 EHTML;
 
-		$reply_ul = self::displayReplies($replies);
+		$reply_ul = self::displayReplies($replies, NULL, NULL, $REPLY_MAX);
 
 		if(isset($_SESSION['uid']) && $post->id == $_GET['pid']) {
-			$reply_request = self::displayReplyPrompt($post->id, $_SESSION['uid'], $post->id_network);
+			$reply_request = self::displayReplyPrompt($post->id, $_SESSION['uid'], $post->id_network, $REPLY_MAX);
 		}
 
 		// wiped post
@@ -407,14 +408,13 @@ EHTML;
 		return $post;
 	}
 
-	public static function displayReplies($replies, $pid=NULL, $nid=NULL) {
-
+	public static function displayReplies($replies, $pid=NULL, $nid=NULL, $REPLY_MAX=99999) {
 
 		$list = '';
 
 		// construct each reply
-		foreach($replies as $reply) {
-			$list .= HTMLBuilder::constructReply($reply); 
+		for($i = 0; $i < $REPLY_MAX && $i < count($replies); $i++) {
+			$list .= HTMLBuilder::constructReply($replies[$i]); 
 		}
 
 		return $list;
@@ -597,6 +597,11 @@ $modal_1 = <<<EHTML
 				<input type="text" name="city" class="event-text-modal edit-$event->id" placeholder="City" value="$event->city"/>
 				<input type="text" name="region" class="event-text-modal edit-$event->id" placeholder="Region" value="$event->region"/>
 			</div>
+			<div>
+				<p id="ueerror-$event->id"></p>
+				<p id="jeerror-$event->id"></p>
+				<p id="leerror-$event->id"></p>
+			</div>
 				<input type="hidden" name="id_event" class="edit-$event->id" value="$event->id"/>
 				<input type="submit" class="submit edit-$event->id" value="Submit Changes"></input>
 		    </form>
@@ -742,13 +747,13 @@ EHTML;
 				$name .= " ".$post->last_name;
 		}
 
-		echo "
+		return "
 		<li class='network-post dashboard'>
 			<div class='post-img {$i_class}'>
 				<img id='profile-post' src='{$img_link}' class='{$i_class}' width='45' height='45'>
 			</div>
 			<div class='post-info'>
-				<h5 class='h-network'><a href='network.php?id={$post->id_network}#post-{$post->id}'>{$name}</a></h5>
+				<h5 class='h-network'><a href='network.php?id={$post->id_network}&ap=true#post-{$post->id}'>{$name}</a></h5>
 				<p class='network'>{$post->post_text}</p>
 			</div>
 			<div class='clear'></div>
@@ -796,14 +801,14 @@ EHTML;
 		$datetime = strtotime($event->event_date);
 		$datetime = date("m/d/y g:i", $datetime);
 		
-		echo "
+		return "
 		<li class='event dashboard'>
 			<div class='event-host'>
 				<img src='{$img_link}' class='{$i_class}' width='72' height='72'/>
 			</div>
 			<div class='event-text'>
 				<div class='event-title'>
-					<h3 class='h-network'><a href='network.php?id={$event->id_network}#event-modal-{$event->id}'>{$event->title}</a></h3>
+					<h3 class='h-network'><a href='network.php?id={$event->id_network}&elink={$event->id}'>{$event->title}</a></h3>
 				</div>
 				<div class='event-info'>
 					<p id='event-info'>Hosted by {$host} and set for {$datetime}</p>
@@ -821,7 +826,7 @@ EHTML;
 		$title = HTMLBuilder::formatNetworkTitle($network);
 		$date = HTMLBuilder::formatDate($network->join_date);
 
-		echo "
+		return "
 		<div class='net-info dashboard'>
 			<a href='network.php?id={$network->id}'><p class='bottom-text dashboard'>{$title}</p></a>
 			<p class='network-stats'>{$network->member_count} Members | {$network->post_count} Posts</p>
@@ -834,7 +839,7 @@ EHTML;
 	{
 		$title = HTMLBuilder::formatNetworkTitle($network);
 
-		echo "<p>{$title}</p>";
+		return "<p>{$title}</p>";
 	}
 	
 	public static function displayDashConversation($conversation)

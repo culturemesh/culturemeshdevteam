@@ -192,6 +192,8 @@
 						<div id="login-passwords">
 						<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
 						<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
+						<input type="text" name="fname" id="fname" class="modal-text-input" placeholder="First Name" required />
+						<input type="text" name="lname" id="lname" class="modal-text-input" placeholder="Last Name" required />
 						<div class="clear"></div>
 						<span id="password_validation"></span>
 						<span id="server_error"></span>
@@ -233,18 +235,28 @@
 		</div>
 		<script>
 			function toggleLogin() {
-				$("#register_modal").attr('aria-hidden', true)
-					.attr('class', 'modal hide fade').hide()
-				$("#login_modal").attr('aria-hidden', false)
-					.attr('class', 'modal hide fade in').show();
+				$("#register_modal").modal('hide');
+				$("#login_modal").modal('show');
 			}
 			function toggleRegister() {
-				$("#login_modal").attr('aria-hidden', true)
-					.attr('class', 'modal hide fade').hide()
-				$("#register_modal").attr('aria-hidden', false)
-					.attr('class', 'modal hide fade in').show();
+				$("#login_modal").modal('hide');
+				$("#register_modal").modal('show');
 			}
 		</script>
+		<?php if(isset($_GET['lerror']) && $_GET['lerror'] != 'success') : ?>
+		<script>
+			var teddy = new QueryStringParser();
+			$("#login_modal").modal('show');
+			$('#log_validation').text(teddy.qsGet['lerror']);
+		</script>
+		<?php endif; ?>
+		<?php if(isset($_GET['rerror']) && $_GET['rerror'] != 'success') : ?>
+		<script>
+			var teddy = new QueryStringParser();
+			$("#register_modal").modal('show');
+			$('#server_error').text(teddy.qsGet['rerror']);
+		</script>
+		<?php endif; ?>
 	<div class="clear"></div>
 </div>
 <div id="signout_panel" style="display:none">
