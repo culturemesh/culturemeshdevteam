@@ -270,12 +270,15 @@ input[type="submit"].stage-button {
     color:#7F7F7F;
 }
 
+
 .modal-body p
 {
     margin-top:30px;
     margin-bottom:20px;
     font-size:12px;
 }
+
+
 
 #login-div{
     margin:0 auto;
@@ -414,13 +417,13 @@ hr.hr-modal {
 
 .modal-body
 {
-    max-height: 500px;
+    min-height: 397px;
     vertical-align:middle;
 }
 .modal-header .close 
 {
     background-color:grey;
-    width:20px;
+    width:21px;
     border-radius:50%;
     color:white;
 }
@@ -513,6 +516,12 @@ h5.h-network
 	margin-bottom:2px;
 	margin-top:0;
 }
+
+h5.h-network.post
+{
+	float:left;
+}
+
 .net-left
 {
 	float:left;
@@ -627,6 +636,11 @@ textarea.event-text
 
 #eperror {
 	color:red;
+}
+
+p.network.error {
+	font-size:18px;
+	margin-left:5px;
 }
 
 button.network
@@ -812,9 +826,28 @@ li.event
  * maybe someone will figure it out
  *
  */
+.modal.event {
+	height:600px;
+}
+
+.modal-header.event {
+	min-height:0px;
+}
+
 div.modal-body.event {
+	min-height:510px;
 	width:100%;
 	padding: 0;
+}
+
+div.modal-footer.event {
+	height:10px;
+}
+
+.modal-body p.event-error
+{
+	font-size:16px;
+	color:#E34036;
 }
 
 input.event-text-modal
@@ -1002,6 +1035,13 @@ div.reply-button
 	float:left;
 }
 
+div.reply-button.delete
+{
+	height:20px;
+	margin-top:-2px;
+	margin-left: 3px;
+}
+
 input[type="submit"].post.show
 {
 	border:none;
@@ -1052,9 +1092,12 @@ button.delete-button:hover {
 	color:#C33036;
 }
 
+/*
+ * From when the delete button was below post
 button.delete-button.reply {
 	margin-left:60px;
 }
+*/
 
 div.prompt
 {

@@ -181,19 +181,21 @@
 		<div id="register_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
 			<div class="modal-header">
 				Join the</br></br><b>CultureMesh Community!</b>
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
 			</div>
 			<div class="modal-body">
 				<form id="reg_form" method="post" action="r.php">
 					<div id="register-div">
 						<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
 						</br>
+						<input type="text" name="fname" id="fname" class="modal-text-input" placeholder="First Name" required /></br>
+						</br>
+						<input type="text" name="lname" id="lname" class="modal-text-input" placeholder="Last Name" required /></br>
+						</br>
 						<span id="email_dup_txt" style="display:none" class="label label-important"></span>
 						<div id="login-passwords">
 						<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
 						<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
-						<input type="text" name="fname" id="fname" class="modal-text-input" placeholder="First Name" required />
-						<input type="text" name="lname" id="lname" class="modal-text-input" placeholder="Last Name" required />
 						<div class="clear"></div>
 						<span id="password_validation"></span>
 						<span id="server_error"></span>
@@ -214,7 +216,7 @@
 		<div id="login_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
 			<div class="modal-header">
 				<b>Welcome Back!</b>
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
 			</div>
 			<div class="modal-body">
 				<form id="log_form" method="post" action="l.php">

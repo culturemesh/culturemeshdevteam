@@ -268,7 +268,7 @@ HTML;
 
 		if ($post->id_user == $_SESSION['uid']) {
 			$del_button = <<<EHTML
-<div class='reply-button'>
+<div class='reply-button delete'>
 	<form id='post-delete-$post->id' class='personal post_delete' method="POST" action="network_post_delete.php">
 		<noscript>
 		<input type="hidden" name="NOJS" value="NOJS"/>
@@ -306,7 +306,7 @@ EHTML;
 		$nid = $post->id_network;
 		$pid = $post->id;
 
-		if (count($replies) < $REPLY_MAX && !in_array($post->id, $rids_ray)) {
+		if (count($replies) <= $REPLY_MAX && !in_array($post->id, $rids_ray)) {
 			$display = 'display:none';
 		}
 		
@@ -354,10 +354,11 @@ EHTML;
 	<img id='profile-post' src='$img_link' width='45' height='45'>
 </div>
 <div class='post-info'>
-	<h5 class='h-network'>$name</h5>
+	<h5 class='h-network post'>$name</h5> 
+	$del_button
+	<div class="clear"></div>
 	<p class='network'>$post->post_text</p>
 	<p class='network date'><i>$post->post_date</i></p>
-	$del_button
 	$rr_toggle
 	$reply_request
 	<div class="clear"></div>
@@ -443,15 +444,17 @@ EHTML;
 		if ($reply->id_user == $_SESSION['uid']) {
 			$list.=$del_button;
 			$del_button = <<<EHTML
-			<form class='personal delete_reply' method="POST" action="network_reply_delete.php">
-				<noscript>
-				<input type="hidden" name="NOJS" value="NOJS"/>
-				</noscript>
-				<input type="hidden" name="rid" value="$reply->id"/>
-				<input type="hidden" name="nid" value="$reply->id_network"/>
-				<input type="hidden" name="pid" value="$reply->id_parent"/>
-				<button class='post delete-button user reply'>&#10006</button>
-			</form>
+			<div class='reply-button delete'>
+				<form class='personal delete_reply' method="POST" action="network_reply_delete.php">
+					<noscript>
+					<input type="hidden" name="NOJS" value="NOJS"/>
+					</noscript>
+					<input type="hidden" name="rid" value="$reply->id"/>
+					<input type="hidden" name="nid" value="$reply->id_network"/>
+					<input type="hidden" name="pid" value="$reply->id_parent"/>
+					<button class='post delete-button user reply'>&#10006</button>
+				</form>
+			</div>
 EHTML;
 		}
 
@@ -461,12 +464,13 @@ EHTML;
 		<img id='profile-post' src='$img_link' width='45' height='45'>
 	</div>
 	<div class='post-info'>
-		<h5 class='h-network'>$name</h5>
+		<h5 class='h-network post'>$name</h5>
+		$del_button
+		<div class="clear"></div>
 		<p class='network reply'>$reply->reply_text</p>
 		<p class='network reply date'>$reply->reply_date</p>
 	</div>
 	<div class='clear'></div>
-	$del_button
 </li>
 EHTML;
 		return $li_reply;
@@ -565,8 +569,8 @@ $uid = $_SESSION['uid'];
 // template conditional
 
 $modal_1 = <<<EHTML
-<div id="event-modal-$event->id" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
-	<div class="modal-header">
+<div id="event-modal-$event->id" class="modal event hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
+	<div class="modal-header event">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
 	</div>
 	<div class="modal-body event">
@@ -598,13 +602,15 @@ $modal_1 = <<<EHTML
 				<input type="text" name="region" class="event-text-modal edit-$event->id" placeholder="Region" value="$event->region"/>
 			</div>
 			<div>
-				<p id="ueerror-$event->id"></p>
-				<p id="jeerror-$event->id"></p>
-				<p id="leerror-$event->id"></p>
+				<p id="ueerror-$event->id" class='event-error'></p>
+				<p id="jeerror-$event->id" class='event-error'></p>
+				<p id="leerror-$event->id" class='event-error'></p>
 			</div>
 				<input type="hidden" name="id_event" class="edit-$event->id" value="$event->id"/>
 				<input type="submit" class="submit edit-$event->id" value="Submit Changes"></input>
 		    </form>
+
+		$modal_anchor
 		<div id="join-event-form-$event->id">
 		<form id="je-form-$event->id" method="POST" action="network_join-event.php">
 			<input type="hidden" name="nid" value="$nid"/>
@@ -630,11 +636,8 @@ EHTML;
 
 $modal_2 = <<<EHTML
 	</div>
-<!--
-	<div class="modal-footer">
-		<p>Footer</p>
+	<div class="modal-footer event">
 	</div>
--->
 </div>
 <script>
 	// all the variables
@@ -649,7 +652,8 @@ $modal_2 = <<<EHTML
 		var form$event->id = document.getElementsByClassName("edit-$event->id");
 
 		link$event->id.onclick = function() {
-			if (form$event->id[0].style.display == "none") { 
+			if (form$event->id[0].style.display == "none"
+				|| form$event->id[0].style.display == "") { 
 				link$event->id.innerHTML = "Cancel Changes";
 				for (var i = 0; i < form$event->id.length; i++) {
 					form$event->id[i].style.display = "block";

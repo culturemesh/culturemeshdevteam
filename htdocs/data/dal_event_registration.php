@@ -27,7 +27,6 @@ class EventRegistration
 			($uid, $eid)
 SQL;
 
-		echo $query;
 		return QueryHandler::executeQuery($query, $con);
 	}
 	

@@ -271,8 +271,8 @@
 							</div>
 							<div class="clear"></div>
 							<div>
-							<p id="lnerror"></p>
-							<p id="jnerror"></p>
+							<p class="network error" id="lnerror"></p>
+							<p class="network error" id="jnerror"></p>
 							</div>
 						</div>
 						<div class="clear"></div>
@@ -445,6 +445,7 @@
 	<script>
 		///// SHOW REPLY ///////////
 		function primeShowReplies() {
+			$(".show_reply").off("submit");
 			$(".show_reply").on("submit", function(e) {
 				e.preventDefault();
 				// check if replies have already been fetched
@@ -488,6 +489,7 @@
 
 		/////////// REQUEST REPLY /////////
 		function primeRequestReplies() {
+			$(".request_reply").off("submit");
 			$(".request_reply").on("submit", function(e) {
 				e.preventDefault();
 				var postForm = $(this).serialize();
@@ -522,6 +524,7 @@
 
 		////////// SEND REPLY //////////////
 		function primeReplyForms() {
+			$( '.reply_form' ).off('submit');
 			$( '.reply_form' ).on('submit', function(e) {
 				// prevent default behavior
 				e.preventDefault();
@@ -563,7 +566,7 @@
 						primeDeletes();
 
 						// clear out reply thing and change text
-						$( targ ).parents( 'div.prompt' ).siblings();
+						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('div.reply-button').children('form.request_reply').children('button').text('Reply');
 						$( targ ).parents( 'div.prompt' ).hide();
 					}
 				}, function(response, rStatus) {
@@ -578,6 +581,7 @@
 		//
 		function primeDeletes() {
 			// event handler
+			$( '.delete_reply' ).off('submit');
 			$( '.delete_reply' ).on('submit', function(e) {
 				// prevent default behavior
 				e.preventDefault();
@@ -611,23 +615,24 @@
 								$( ul ).parents('li.network-post').remove();
 							}
 							else {
-								var replyCount =  ul.children().length;
-
+								//var children = ul.children();
+								//var replyCount =  children.length;
+								var replyCount = ul.children().length;
 								// update reply counts elsewhere
 								// post info div
 								var div = $( ul ).parents('div.replies').siblings('div.post-info');
 
 								//  1) hidden input on delete post
-								$( div ).children('form.post_delete').children("input[name|='replies']").val(replyCount);
+								$( div ).children('div.reply-button.delete').children('form.post_delete').children("input[name|='replies']").val(replyCount);
 								//  2) reply count
 								$( div ).children('p.reply_count').text(replyCount + ' replies');
 
 								// update 
-								// if ul is now empty...
-								if ( replyCount == 0 ) {
+								// if ul is now less than 4...
+								if ( replyCount <= 4 ) {
 									// hide show replies form
-									$( ul ).parents('div.replies').siblings('div.post-info').children('form.show_reply').children(':submit').val('Show Replies');
-									$( ul ).parents('div.replies').siblings('div.post-info').children('form.show_reply').hide();
+									$( div ).children('div.reply-button').children('form.show_reply').children(':submit').val('Show Replies');
+									$( div ).children('div.reply-button').children('form.show_reply').hide();
 								}	
 							}
 						}
@@ -639,7 +644,6 @@
 		}
 
 		/////// DELETE POST ///////////////////
-		//function primeDeletePosts() {
 		$('.post_delete').on('submit', function(e) {
 			// prevent default behavior 
 			e.preventDefault();
@@ -667,10 +671,7 @@
 
 						if (response.status == 'wiped') {
 							targ.parents('li.network-post').replaceWith(response.html);
-							primeRequestReplies();
-							primeReplyForms();
-							primeDeletes();
-							primeShowReplies();
+							callPrimes();
 						}
 					}
 				}, function(response, rStatus) {
@@ -678,6 +679,46 @@
 				});
 			}
 		});
+
+
+		function primeDeletePosts() {
+			$('.post_delete').off('submit');
+			$('.post_delete').on('submit', function(e) {
+				// prevent default behavior 
+				e.preventDefault();
+
+				if (confirm("Are you sure you want to delete this post?")) {
+					var postForm = $( e.target ).serialize();
+
+					postDelete = new Ajax({
+						requestType: 'POST',
+							requestUrl: 'network_post_delete.php',
+							requestHeaders: ' ',
+							data: postForm,
+							dataType: 'string',
+							sendNow: true
+					}, function(data) {
+						var response = JSON.parse(data);
+
+						if (response.error == 0) {
+							var targ = $( e.target );
+							if (response.status == 'destroyed') {
+								// remove li 
+								targ.parents('li.network-post').remove();
+								// decrement number of posts up top
+							}
+
+							if (response.status == 'wiped') {
+								targ.parents('li.network-post').replaceWith(response.html);
+								callPrimes();
+							}
+						}
+					}, function(response, rStatus) {
+
+					});
+				}
+			});
+		}
 
 		$('.more_posts').on('submit', function(e) {
 			
@@ -709,7 +750,7 @@
 				else {
 					$('#nmp_lb').val(response['lb']);
 				}
-
+				
 			}, function() {
 			});
 		});
@@ -719,11 +760,13 @@
 			primeRequestReplies();
 			primeReplyForms();
 			primeDeletes();
+			primeDeletePosts();
 			primeShowReplies();
 		}
 
-		primeShowReplies();
-		primeRequestReplies();
+//		primeShowReplies();
+//		primeRequestReplies();
+		callPrimes();
 
 		console.log("buttons");
 	</script>
@@ -752,9 +795,11 @@
 		var qs = new QueryStringParser();
 		if (qs.qsGet['lnerror'] != undefined) {
 			$('#lnerror').text(qs.qsGet['lnerror']);
+			$('#lnerror').fadeOut(5000);
 		}
 		if (qs.qsGet['jnerror'] != undefined) {
 			$('#jnerror').text(qs.qsGet['jnerror']);
+			$('#jnerror').fadeOut(5000);
 		}
 		if (qs.qsGet['ueerror']!= undefined) {
 			var mid = qs.qsGet['eid'];
