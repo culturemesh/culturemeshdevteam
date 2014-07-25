@@ -526,9 +526,15 @@ EHTML;
 		}
 
 		$datetime = strtotime($event->event_date);
+		$cur_date = date("m/d/y");
 		$datetime = date("m/d/y g:i", $datetime);
 
-		$datetime = self::formatDateTime($datetime);
+		if ($cur_date > $datetime) {
+			$datetime = "Event is over.";
+		}
+		else {
+			$datetime = self::formatDateTime($datetime);
+		}
 		
 		//echo "
 		$card = <<<EHTML
@@ -563,6 +569,12 @@ $attending_div = null;
 $nid = $_GET['id'];
 $uid = $_SESSION['uid'];
 
+// date information
+$cur_date = date("m/d/y");
+$dt = strtotime($event->event_date);
+$dt = date("m/d/y g:i", $dt);
+
+$datetime = self::formatDateTime($dt);
 // this is split into three parts
 // right now, not exactly pretty,
 // but I need it to make a part of the
@@ -589,7 +601,7 @@ $modal_1 = <<<EHTML
 			<h3 class="h-network">Date</h3>
 				<input type="text" id="datetimepicker" class="event-text-modal edit-$event->id datetimepicker" name="datetime" class="event-text" placeholder="Event Date" value="$event->event_date">
 				<input type="text" class="hidden-field" name="date"></input>
-			<p class="event-modal info-$event->id">$event->event_date</p>
+			<p class="event-modal info-$event->id">$datetime</p>
 			</div>
 			<div class="event-modal-section">
 			<h3 class="h-network">Address</h3>
@@ -680,9 +692,9 @@ EHTML;
 $ad_display = null;
 $jf_display = null;
 
-if ($_SESSION['uid'] == $event->id_host
-	|| $event->attending) {
-		////////////////////////
+if (($_SESSION['uid'] == $event->id_host)
+	|| ($event->attending) || ($cur_date > $dt)) {
+				////////////////////////
 		$jf_display = <<<EHTML
 			<style>
 			#join-event-form-$event->id {
