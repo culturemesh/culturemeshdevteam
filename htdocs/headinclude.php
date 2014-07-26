@@ -20,7 +20,7 @@
 
 <!-- Facebook analytics stuff -->
 <meta name="og:type" content="website" />
-<meta name="og:image" content="images/CM_Logo.png"/>
+<meta name="og:image" content="images/CM_Logo_fb.png"/>
 <meta name="og:title" content="CultureMesh" />
 <meta name="og:description" content="Connecting the World's Diasporas" />
 <meta name="og:url" content="http://culturemesh.com"/>
