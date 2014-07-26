@@ -67,9 +67,10 @@ SQL;
 	public static function getEventRegistrationsByUserId($id, $con=NULL)
 	{
 		$query = <<<SQL
-			SELECT * 
-			FROM event_registration er, events e 
+			SELECT er.*, e.*, u.img_link, u.first_name, u.last_name
+			FROM event_registration er, events e, users u
 			WHERE er.id_event = e.id 
+			AND e.id_host = u.id
 			AND er.id_guest=$id
 SQL;
 		
@@ -90,6 +91,8 @@ SQL;
 		  	$event_dt->id = $row['id'];
 		  	$event_dt->id_network = $row['id_network'];
 		  	$event_dt->id_host = $row['id_host'];
+			$event_dt->first_name = $row['first_name'];
+			$event_dt->last_name = $row['last_name'];
 		  	$event_dt->date_created = $row['date_created'];
 		  	$event_dt->event_date = $row['event_date'];
 		  	$event_dt->title = $row['title'];
@@ -99,6 +102,7 @@ SQL;
 		  	$event_dt->city = $row['city'];
 		  	$event_dt->region = $row['region'];
 		  	$event_dt->description = $row['description'];
+			$event_dt->img_link = $row['img_link'];
 		  	
 		  	array_push($events, $event_dt);
 		}
@@ -158,8 +162,16 @@ SQL;
 	}
 	
 	////////////////////// DELETE OPERATIONS /////////////////////
-	public static function deleteEventRegistration($eventreg_dt)
+	public static function deleteEventRegistration($uid, $eid, $con=NULL)
 	{
+		$query = <<<SQL
+			DELETE FROM event_registration
+			WHERE id_guest=$uid
+			AND id_event=$eid
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+		/*
 		if (func_num_args() == 2)
 		{ $con = func_get_arg(1); }
 		else
@@ -180,6 +192,7 @@ SQL;
 		
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
+		 */
 	}
 	
 	function deleteRegistrationsByEvent($id)

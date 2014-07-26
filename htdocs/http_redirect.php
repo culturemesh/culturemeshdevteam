@@ -76,12 +76,70 @@ class HTTPRedirect {
 		}
 	}
 
+
 	// add assoc_array of key->values to query string
 	public function addQueryParameters($params) {
 
 		// split into 
 		foreach($params as $key => $value) {
 			self::addQueryParameter($key, $value);
+		}
+	}
+
+	// removes a key, value pair from querystring
+	// uses key to figure out which is which
+	public function removeQueryParameter($key) {
+
+		$query = $this->url_query;
+		// if there is nothing to delete,
+		// return false
+		if (strlen($this->url_query) == 0) {
+			return false;
+		}
+		else {
+			$pos = strpos($query, $key);
+
+			if ($pos > -1) {
+				
+				// set counter = to last char of first occurrence
+				$i = $pos + strlen($key);
+
+				// proceed to look for the end
+				//  the end could be an ampersand, or it could be
+				//  the end of the string
+				while ($query[$i] != '&' && $i < strlen($query)) {
+					$i++;
+				}
+
+				// if we're at the end of the string,
+				// return all up until pos
+				if ($i == strlen($query)) {
+					// decrement pos, to delete char beforehand
+					$pos--;
+					// operation
+					$this->url_query = substr_replace($query, '', $pos);
+				}
+				// else return everything up to and including &
+				else {
+					// increment i for correct length
+					$i++;
+					// include length
+					$this->url_query = substr_replace($query, '', $pos, $i - $pos);
+				}
+
+				// done
+				return true;
+			}
+			else  {
+				// done
+				return false;
+			}
+		}
+	}
+
+	public function removeQueryParameters($params) {
+		foreach ($params as $param) {
+			self::removeQueryParameter($param);
 		}
 	}
 
