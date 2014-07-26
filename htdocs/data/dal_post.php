@@ -242,6 +242,7 @@ SQL;
 			FROM post_replies p, users u
 			WHERE p.id_user=u.id
 			AND p.id_parent=$id
+			ORDER BY reply_date DESC
 SQL;
 
 		$result = QueryHandler::executeQuery($query, $con);
