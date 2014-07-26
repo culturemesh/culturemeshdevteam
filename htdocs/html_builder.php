@@ -215,6 +215,47 @@ HTML;
 		</div>
 		";
 	}
+
+	public static function displayShareScript() {
+
+		$html = <<<EHTML
+<script>
+	window.fbAsyncInit = function() {
+		  FB.init({
+		    appId      : '670914089652347',
+		    status     : true,
+		    xfbml      : true,
+		    version    : 'v2.0'
+		  });
+  	}
+
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+<script src="https://apis.google.com/js/plusone.js"></script>
+EHTML;
+
+		return $html;
+	}
+
+	public static function displayShare($nid) {
+		$html = <<<EHTML
+<div id="share">
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.culturemesh.com/network.php?id=$nid" data-count="none">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<div class="fb-like" data-href="www.culturemesh.com/network.php?id=$nid" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+	<g:plus action="share" data-href="www.culturemesh.com/network.php?id=$nid" data-annotation="bubble" data-width="200"></g:plus>
+</div>
+EHTML;
+
+		return $html;
+					
+	}
 	
 	public static function displayLrgNetwork($network)
 	{
@@ -231,14 +272,27 @@ HTML;
 		";
 	}
 	
-	public static function displayPost($post)
+	// be careful, it's a fucking mess in here
+	//  sorry, just trying to resolve nojs with js
+	//  this is why templates are helpful
+	public static function displayPost($post, $replies, $REPLY_MAX)
 	{
+
+		// jsonencode post
+		$jpost = json_encode($post);
+		// jsonencode user
+		$juser = json_encode($user);
+
 		// get image
 		$img_link = NULL;
 		if ($post->img_link == NULL)
 			$img_link = BLANK_IMG;
 		else
 			$img_link = IMG_DIR.$post->img_link;
+
+		// set reply count if null
+		if ($post->reply_count == NULL)
+			$post->reply_count = 0;
 
 		// parse name
 		$name = NULL;
@@ -250,20 +304,216 @@ HTML;
 			if (isset($post->last_name))
 				$name .= " ".$post->last_name;
 		}
-		echo "
-		<li class='network-post' id='post-{$post->id}'>
-			<div class='post-img'>
-				<img id='profile-post' src='{$img_link}' width='45' height='45'>
+
+////////////////////////////////////////////
+
+		if ($post->id_user == $_SESSION['uid']) {
+			$del_button = <<<EHTML
+<div class='reply-button delete'>
+	<form id='post-delete-$post->id' class='personal post_delete' method="POST" action="network_post_delete.php">
+		<noscript>
+		<input type="hidden" name="NOJS" value="NOJS"/>
+		</noscript>
+		<input type="hidden" name="replies" value="$post->reply_count" />
+		<input type="hidden" name="pid" value="$post->id"/>
+		<input type="hidden" name="nid" value="$post->id_network"/>
+		<button class='post delete-button user'>&#10006</button>
+	</form>
+</div>
+EHTML;
+		}
+
+		if (isset($_SESSION['uid'])) {
+			$uid = $_SESSION['uid'];
+			$rr_toggle = <<<EHTML
+<div class='reply-button'>
+	<form class="request_reply" method="POST" action="network_request_reply.php">
+		<noscript>
+		<input type="hidden" name="NOJS" value="NOJS"/>
+		</noscript>
+		<input type="hidden" name="uid" value="$uid"/>
+		<input type="hidden" name="pid" value="$post->id"/>
+		<input type="hidden" name="nid" value="$post->id_network"/>
+		<button class='post'>Reply</button>
+	</form>
+</div>
+EHTML;
+		}
+
+		// GET Replies from get, NOJS
+		$rids = urlencode($_GET['reply']);
+		$rids_ray = explode('+', $rids);
+
+		$nid = $post->id_network;
+		$pid = $post->id;
+
+		if (count($replies) <= $REPLY_MAX && !in_array($post->id, $rids_ray)) {
+			$display = 'display:none';
+		}
+		
+		$sr_toggle = <<<EHTML
+<div class='show_reply_div reply-button'>
+	<form id="" class="show_reply" method="POST" style="$display" action="network_show_reply.php">
+		<input type="hidden" name="rids" value="$rids"/>
+		<input type="hidden" name="pid" value="$pid"/>
+		<input type="hidden" name="nid" value="$nid"/>
+		<noscript>
+		<input type="hidden" name="NOJS" value="NOJS"/>
+		</noscript>
+		<input type="submit" class="post show" value="Show All Replies"/>
+	</form>
+</div>
+EHTML;
+
+		$reply_ul = self::displayReplies($replies, NULL, NULL, $REPLY_MAX);
+
+		if(isset($_SESSION['uid']) && $post->id == $_GET['pid']) {
+			$reply_request = self::displayReplyPrompt($post->id, $_SESSION['uid'], $post->id_network, $REPLY_MAX);
+		}
+
+		// wiped post
+		if ($post->post_text == NULL) {
+			$img_link = BLANK_IMG;
+			$post_info = <<<EHTML
+<div class='post-img'>
+	<img id='profile-post' src='$img_link' width='45' height='45'>
+</div>
+<div class='post-info'>
+	<p class='network'><i>The user has deleted this post</i></p>
+	<p class='network reply_count'>$post->reply_count replies</p>
+	$rr_toggle
+	$reply_request
+	<div class="clear"></div>
+</div>
+EHTML;
+		} 
+		// regular post
+		else {
+			$post_info = <<<EHTML
+<div class='post-img'>
+	<img id='profile-post' src='$img_link' width='45' height='45'>
+</div>
+<div class='post-info'>
+	<h5 class='h-network post'>$name</h5> 
+	$del_button
+	<div class="clear"></div>
+	<p class='network'>$post->post_text</p>
+	<p class='network date'><i>$post->post_date</i></p>
+	$rr_toggle
+	$reply_request
+	<div class="clear"></div>
+</div>
+EHTML;
+		}
+
+/////////////////////////////////////////////
+		$post_html = <<<EHTML
+<li class='network-post' id='post-$post->id'>
+	$post_info
+	<div class='clear'></div>
+	<div class="replies">
+		<ul class="replies">
+			$reply_ul
+		</ul>
+	</div>
+	<div class="prompt"></div>
+	$sr_toggle
+</li>
+EHTML;
+
+
+
+
+///////////////////////////////
+		return $post_html;
+	}
+
+	public static function displayReplyPrompt($pid, $uid, $nid)
+	{
+////////////////////////////////////////
+		$post = <<<EHTML
+<form method="POST" class="member reply_form" action="network_post_reply.php">
+<!--<img id="profile-reply" src="<?php //echo $img_link; ?>" width="45" height="45">-->
+	<textarea class="reply-text" name="reply_text" placeholder="Post reply..."></textarea>
+	<div class="clear"></div>
+	<input type="submit" class="post send" value="Send"></input>
+	<input type="hidden" name="nid" value="$nid"/>
+	<input type="hidden" name="uid" value="$uid"/>
+	<input type="hidden" name="id_parent" value="$pid"/>
+	<noscript>
+		<input type="hidden" name="NOJS" value="NOJS"/>
+	</noscript>
+</form>
+EHTML;
+/////////////////////////////
+		return $post;
+	}
+
+	public static function displayReplies($replies, $pid=NULL, $nid=NULL, $REPLY_MAX=99999) {
+
+		$list = '';
+
+		// construct each reply
+		for($i = 0; $i < $REPLY_MAX && $i < count($replies); $i++) {
+			$list .= HTMLBuilder::constructReply($replies[$i]); 
+		}
+
+		return $list;
+	}
+
+	public static function constructReply($reply) {
+		// get image
+		$img_link = NULL;
+		if ($reply->img_link == NULL)
+			$img_link = BLANK_IMG;
+		else
+			$img_link = IMG_DIR.$reply->img_link;
+
+		// parse name
+		$name = NULL;
+		if ($reply->first_name == '')
+			//$name = $reply->email;
+			$name = "UNNAMED USER";
+		else {
+			$name = $reply->first_name;
+			if (isset($reply->last_name))
+				$name .= " ".$reply->last_name;
+		}
+
+		// stuffs
+		if ($reply->id_user == $_SESSION['uid']) {
+			$list.=$del_button;
+			$del_button = <<<EHTML
+			<div class='reply-button delete'>
+				<form class='personal delete_reply' method="POST" action="network_reply_delete.php">
+					<noscript>
+					<input type="hidden" name="NOJS" value="NOJS"/>
+					</noscript>
+					<input type="hidden" name="rid" value="$reply->id"/>
+					<input type="hidden" name="nid" value="$reply->id_network"/>
+					<input type="hidden" name="pid" value="$reply->id_parent"/>
+					<button class='post delete-button user reply'>&#10006</button>
+				</form>
 			</div>
-			<div class='post-info'>
-				<h5 class='h-network'>{$name}</h5>
-				<p class='network'>{$post->post_text}</p>
-				<!--<a class='network member'>Reply</a>-->
-				<!--<button class='delete-button user'>Delete Post</button>-->
-			</div>
-			<div class='clear'></div>
-		</li>
-		";
+EHTML;
+		}
+
+		$li_reply = <<<EHTML
+<li class='reply'>
+	<div class='post-img'>
+		<img id='profile-post' src='$img_link' width='45' height='45'>
+	</div>
+	<div class='post-info'>
+		<h5 class='h-network post'>$name</h5>
+		$del_button
+		<div class="clear"></div>
+		<p class='network reply'>$reply->reply_text</p>
+		<p class='network reply date'>$reply->reply_date</p>
+	</div>
+	<div class='clear'></div>
+</li>
+EHTML;
+		return $li_reply;
 	}
 	
 	public static function displayEvent($event)
@@ -316,9 +566,15 @@ HTML;
 		}
 
 		$datetime = strtotime($event->event_date);
+		$cur_date = date("m/d/y");
 		$datetime = date("m/d/y g:i", $datetime);
 
-		$datetime = self::formatDateTime($datetime);
+		if ($cur_date > $datetime) {
+			$datetime = "Event is over.";
+		}
+		else {
+			$datetime = self::formatDateTime($datetime);
+		}
 		
 		//echo "
 		$card = <<<EHTML
@@ -353,14 +609,20 @@ $attending_div = null;
 $nid = $_GET['id'];
 $uid = $_SESSION['uid'];
 
+// date information
+$cur_date = date("m/d/y");
+$dt = strtotime($event->event_date);
+$dt = date("m/d/y g:i", $dt);
+
+$datetime = self::formatDateTime($dt);
 // this is split into three parts
 // right now, not exactly pretty,
 // but I need it to make a part of the
 // template conditional
 
 $modal_1 = <<<EHTML
-<div id="event-modal-$event->id" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
-	<div class="modal-header">
+<div id="event-modal-$event->id" class="modal event hide fade" tabindex="-1" role="dialog" aria-labelledby="blogPostLabel" aria-hidden="true">
+	<div class="modal-header event">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
 	</div>
 	<div class="modal-body event">
@@ -379,7 +641,7 @@ $modal_1 = <<<EHTML
 			<h3 class="h-network">Date</h3>
 				<input type="text" id="datetimepicker" class="event-text-modal edit-$event->id datetimepicker" name="datetime" class="event-text" placeholder="Event Date" value="$event->event_date">
 				<input type="text" class="hidden-field" name="date"></input>
-			<p class="event-modal info-$event->id">$event->event_date</p>
+			<p class="event-modal info-$event->id">$datetime</p>
 			</div>
 			<div class="event-modal-section">
 			<h3 class="h-network">Address</h3>
@@ -391,9 +653,16 @@ $modal_1 = <<<EHTML
 				<input type="text" name="city" class="event-text-modal edit-$event->id" placeholder="City" value="$event->city"/>
 				<input type="text" name="region" class="event-text-modal edit-$event->id" placeholder="Region" value="$event->region"/>
 			</div>
+			<div>
+				<p id="ueerror-$event->id" class='event-error'></p>
+				<p id="jeerror-$event->id" class='event-error'></p>
+				<p id="leerror-$event->id" class='event-error'></p>
+			</div>
 				<input type="hidden" name="id_event" class="edit-$event->id" value="$event->id"/>
 				<input type="submit" class="submit edit-$event->id" value="Submit Changes"></input>
 		    </form>
+
+		$modal_anchor
 		<div id="join-event-form-$event->id">
 		<form id="je-form-$event->id" method="POST" action="network_join-event.php">
 			<input type="hidden" name="nid" value="$nid"/>
@@ -404,7 +673,11 @@ $modal_1 = <<<EHTML
 		</div>
 		<div id="attending_div-$event->id">
 			<p>You're attending this event</p>
-			<button class="event-modal">Leave Event</button>
+			<form id="je-form-$event->id" method='POST' action='network_leave-event.php'>
+				<input type="hidden" name="uid" value="$uid"/>
+				<input type="hidden" name="eid" value="$event->id"/>
+				<button class="event-modal">Leave Event</button>
+			</form>
 		</div>
 		</div>
 EHTML;
@@ -419,11 +692,8 @@ EHTML;
 
 $modal_2 = <<<EHTML
 	</div>
-<!--
-	<div class="modal-footer">
-		<p>Footer</p>
+	<div class="modal-footer event">
 	</div>
--->
 </div>
 <script>
 	// all the variables
@@ -438,7 +708,8 @@ $modal_2 = <<<EHTML
 		var form$event->id = document.getElementsByClassName("edit-$event->id");
 
 		link$event->id.onclick = function() {
-			if (form$event->id[0].style.display == "none") { 
+			if (form$event->id[0].style.display == "none"
+				|| form$event->id[0].style.display == "") { 
 				link$event->id.innerHTML = "Cancel Changes";
 				for (var i = 0; i < form$event->id.length; i++) {
 					form$event->id[i].style.display = "block";
@@ -465,9 +736,9 @@ EHTML;
 $ad_display = null;
 $jf_display = null;
 
-if ($_SESSION['uid'] == $event->id_host
-	|| $event->attending) {
-		////////////////////////
+if (($_SESSION['uid'] == $event->id_host)
+	|| ($event->attending) || ($cur_date > $dt)) {
+				////////////////////////
 		$jf_display = <<<EHTML
 			<style>
 			#join-event-form-$event->id {
@@ -536,13 +807,13 @@ EHTML;
 				$name .= " ".$post->last_name;
 		}
 
-		echo "
+		return "
 		<li class='network-post dashboard'>
 			<div class='post-img {$i_class}'>
 				<img id='profile-post' src='{$img_link}' class='{$i_class}' width='45' height='45'>
 			</div>
 			<div class='post-info'>
-				<h5 class='h-network'><a href='network.php?id={$post->id_network}#post-{$post->id}'>{$name}</a></h5>
+				<h5 class='h-network'><a href='network.php?id={$post->id_network}&ap=true#post-{$post->id}'>{$name}</a></h5>
 				<p class='network'>{$post->post_text}</p>
 			</div>
 			<div class='clear'></div>
@@ -590,14 +861,14 @@ EHTML;
 		$datetime = strtotime($event->event_date);
 		$datetime = date("m/d/y g:i", $datetime);
 		
-		echo "
+		return "
 		<li class='event dashboard'>
 			<div class='event-host'>
 				<img src='{$img_link}' class='{$i_class}' width='72' height='72'/>
 			</div>
 			<div class='event-text'>
 				<div class='event-title'>
-					<h3 class='h-network'><a href='network.php?id={$event->id_network}#event-modal-{$event->id}'>{$event->title}</a></h3>
+					<h3 class='h-network'><a href='network.php?id={$event->id_network}&elink={$event->id}'>{$event->title}</a></h3>
 				</div>
 				<div class='event-info'>
 					<p id='event-info'>Hosted by {$host} and set for {$datetime}</p>
@@ -615,7 +886,7 @@ EHTML;
 		$title = HTMLBuilder::formatNetworkTitle($network);
 		$date = HTMLBuilder::formatDate($network->join_date);
 
-		echo "
+		return "
 		<div class='net-info dashboard'>
 			<a href='network.php?id={$network->id}'><p class='bottom-text dashboard'>{$title}</p></a>
 			<p class='network-stats'>{$network->member_count} Members | {$network->post_count} Posts</p>
@@ -628,7 +899,7 @@ EHTML;
 	{
 		$title = HTMLBuilder::formatNetworkTitle($network);
 
-		echo "<p>{$title}</p>";
+		return "<p>{$title}</p>";
 	}
 	
 	public static function displayDashConversation($conversation)

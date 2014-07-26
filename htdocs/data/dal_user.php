@@ -20,6 +20,7 @@
 
 include_once("zz341/fxn.php");
 include_once("dal_user-dt.php");
+include_once("dal_query_handler.php");
 
 include_once("dal_event_registration.php");
 include_once("dal_event.php");
@@ -30,8 +31,9 @@ class User
 {
 	////////////////////// CREATE OPERATIONS //////////////////////////////////////////////
 	
-	public static function createUser($user_dt)
+	public static function createUser($user_dt, $con=NULL)
 	{
+		/*
 		if (func_num_args() == 2)
 		{ $con = func_get_arg(1); }
 		else
@@ -44,6 +46,7 @@ class User
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 		
+
 		if (!mysqli_query($con, "INSERT INTO users (username, password, role, email, register_date, last_login, act_code) 
 			VALUES (NULL, '". $user_dt->password."', {$user_dt->role}, '". $user_dt->email ."', NOW(), NOW(), '{$user_dt->act_code}')"))
 		{
@@ -52,6 +55,20 @@ class User
 		
 		if (func_num_args() < 2)
 		{ mysqli_close($con); }
+		 */
+
+		$query = <<<SQL
+			INSERT INTO users 
+			(username, password, first_name, last_name, role, email,
+			 register_date, last_login, act_code) 
+			VALUES 
+			(NULL, '$user_dt->password',  '$user_dt->first_name', '$user_dt->last_name',
+			$user_dt->role, '$user_dt->email',
+			 NOW(), NOW(), '$user_dt->act_code')
+SQL;
+
+		//echo $query;
+		return QueryHandler::executeQuery($query, $con);
 	}
 	
 	////////////////////// READ OPERATIONS //////////////////////////////////////////////

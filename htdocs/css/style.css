@@ -270,12 +270,15 @@ input[type="submit"].stage-button {
     color:#7F7F7F;
 }
 
+
 .modal-body p
 {
     margin-top:30px;
     margin-bottom:20px;
     font-size:12px;
 }
+
+
 
 #login-div{
     margin:0 auto;
@@ -414,13 +417,13 @@ hr.hr-modal {
 
 .modal-body
 {
-    max-height: 500px;
+    min-height: 397px;
     vertical-align:middle;
 }
 .modal-header .close 
 {
     background-color:grey;
-    width:20px;
+    width:21px;
     border-radius:50%;
     color:white;
 }
@@ -513,6 +516,12 @@ h5.h-network
 	margin-bottom:2px;
 	margin-top:0;
 }
+
+h5.h-network.post
+{
+	float:left;
+}
+
 .net-left
 {
 	float:left;
@@ -543,6 +552,11 @@ div.net-info {
 	border-width:10px;
 	border-color:#E6E6E6;
 	border-radius:5px;
+}
+
+div.network.tab-content
+{
+	overflow:hidden;
 }
 
 input.net-search
@@ -598,7 +612,6 @@ p.search-result {
 
 .event-text
 {
-	width:100%;
 	border-style:none;
 	border-radius:0;
 	margin-bottom:2px;
@@ -607,7 +620,7 @@ p.search-result {
 input.event-text
 {
 	height:35px;
-	width:100%;
+	width:558px;
 	border-style:none;
 	border-radius:0px;
 	margin-bottom:2px;
@@ -617,7 +630,17 @@ input.event-text
 textarea.event-text
 {
 	height:60px;
+	width:558px;
 	resize: none;
+}
+
+#eperror {
+	color:red;
+}
+
+p.network.error {
+	font-size:18px;
+	margin-left:5px;
 }
 
 button.network
@@ -648,11 +671,11 @@ button.network.modal
 input[type="submit"].network
 {
 	font: Lato;
-	font-size:20px;
-	font-weight: bold;
+	font-size:16px;
 	color: #FFFFFF;
 	background-color:#e34036;;
-	border:none;
+	border-width:0px;
+	border-radius:2px;
 	margin-right:3px;
 }
 
@@ -662,10 +685,15 @@ input[type="submit"].network:hover
 
 }
 
+input[type="submit"].network.post
+{
+	width:545px;
+}
+
 div.event-slider
 {
 	height:150px;
-	width:475px;
+	width:450px;
 	float:left;
 	background-color:#EEEEEE;
 	overflow:hidden;
@@ -798,9 +826,28 @@ li.event
  * maybe someone will figure it out
  *
  */
+.modal.event {
+	height:600px;
+}
+
+.modal-header.event {
+	min-height:0px;
+}
+
 div.modal-body.event {
+	min-height:510px;
 	width:100%;
 	padding: 0;
+}
+
+div.modal-footer.event {
+	height:10px;
+}
+
+.modal-body p.event-error
+{
+	font-size:16px;
+	color:#E34036;
 }
 
 input.event-text-modal
@@ -902,10 +949,19 @@ ul.post-wall-ul.child
 	display:none;
 }
 
+textarea.reply-text
+{
+	margin-top:10px;
+	margin-left:0px;
+	height:45px;
+	width:89%;
+	resize:none;
+}
+
 .post-text
 {
 	margin-top:10px;
-	margin-left:20px;
+	margin-left:0px;
 	height:45px;
 	width:88%;
 	resize:none;
@@ -920,10 +976,11 @@ ul.network
 {
 	list-style-type:none;
 }
-.network-post
+
+li.network-post
 {
-	margin-bottom:10px;
 	margin-left:40px;
+	padding:5px 0px;
 	width:100%;
 }
 .post-img
@@ -944,6 +1001,107 @@ p.network
 	color: #404040;
 	margin-bottom:0px;
 	margin-left:0px;
+	max-width:400px;
+}
+
+p.network.reply
+{
+	max-width:375px;
+}
+
+p.network.date
+{
+	color:gray;
+	font-size: 11px;
+}
+
+div.replies
+{
+	margin-left:40px;
+}
+
+ul.replies
+{
+	list-style-type:none;
+}
+
+li.reply
+{
+	margin-bottom: 10px;
+}
+
+div.reply-button
+{
+	float:left;
+}
+
+div.reply-button.delete
+{
+	height:20px;
+	margin-top:-2px;
+	margin-left: 3px;
+}
+
+input[type="submit"].post.show
+{
+	border:none;
+	background-color:#DBDBDB;
+	color:#FBFBFB;
+	width:300px;
+}
+
+input[type="submit"].post.show:hover
+{
+	background-color:white;
+	color:#0088CC;
+}
+
+input[type="submit"].post.send
+{
+	border-width:0px;
+	background-color:#E34036;
+	color:#FFFFFF;
+	border-radius:2px;
+}
+
+button.post {
+	background-color:#CBCBCB;
+	color:#FBFBFB;
+	border-width:0px;
+	border-radius:2px;
+}
+
+button.post:hover {
+	background-color:#8B8B8B;
+	/*color:#0088CC;*/
+}
+
+#mp_button {
+	font-size:16px;
+	width:300px;
+	margin:0 auto;
+	height:30px;
+}
+
+button.delete-button {
+	background:none;
+	color:#E34036;
+}
+
+button.delete-button:hover {
+	color:#C33036;
+}
+
+/*
+ * From when the delete button was below post
+button.delete-button.reply {
+	margin-left:60px;
+}
+*/
+
+div.prompt
+{
+	margin-left:35px;
 }
 
 #event-post

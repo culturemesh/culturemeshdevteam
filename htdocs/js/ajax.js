@@ -55,6 +55,7 @@ function Ajax(arguments, success, failure) {
 		else {
 			//failure (this.responseText, this.status)
 		}
+
 	};
 
 	this.data = arguments.data;

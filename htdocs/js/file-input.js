@@ -133,6 +133,9 @@ uploadForm.onsubmit = function (e) {
 				// additionally: booger
 				//uploadToggle();
 			} 
+			else {
+				successLabel.innerHTML = response['error'];
+			}
 		}, function(response, rStatus) {
 			// failure function
 			successLabel.innerHTML = "There was a problem on our end. Try again later";

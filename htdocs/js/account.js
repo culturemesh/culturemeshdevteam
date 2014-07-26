@@ -23,12 +23,14 @@ function signOut() {
 				{ window.location.assign("index.php?signout=true"); }
 
 			    $("#signout_panel").show();
+			    $("#signout_panel").children('p').text('You have successfully signed out.');
 			    $("#signout_panel").fadeOut(5000);
 		    	    $("#login-link").show();
                             $("#register-link").show();
                             $("#welcome").hide();
                             $("#sign-out").hide();
                             $(".member").hide();
+			    $(".personal").hide();
                             $(".reg-guest").hide();
                             $(".guest").show();
 		  }
