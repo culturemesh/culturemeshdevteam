@@ -249,6 +249,7 @@
 						<div class='net-info'>
 							<h1 class='h-network'><?php echo HTMLBuilder::formatNetworkTitle($network); ?></h1>
 							<div id="share">
+
 							</div>
 
 							<div class="reg-guest">
