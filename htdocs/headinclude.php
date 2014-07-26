@@ -18,6 +18,12 @@
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
 <!--end CDN items-->
 
+<!-- Facebook analytics stuff -->
+<meta name="og:type" content="website" />
+<meta name="og:image" content="images/CM_Logo.png"/>
+<meta name="og:title" content="CultureMesh" />
+<meta name="og:description" content="Connecting the World's Diasporas" />
+<meta name="og:url" content="http://culturemesh.com"/>
 
 <script src="<?php echo HOME_PATH; ?>js/bootstrap.js"></script>
 <script src="<?php echo HOME_PATH; ?>js/validation.js"></script>
