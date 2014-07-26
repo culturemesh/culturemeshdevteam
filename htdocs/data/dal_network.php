@@ -265,12 +265,16 @@ class Network
                                     GROUP BY id_network
                                     ORDER BY member_count DESC) nr  
 			ON n.id = nr.id_network
-                        LEFT JOIN (SELECT id_network, COUNT(id_network) as post_count
-                                   FROM posts 
-                                   GROUP BY id_network) p
+                        LEFT JOIN (SELECT p.id_network, COUNT(p.id_network) + IFNULL(pr.reply_count,0) AS post_count
+				FROM posts p
+				LEFT JOIN (SELECT id_network, COUNT(id_network) AS reply_count
+					FROM post_replies
+					GROUP BY id_network) pr
+				ON p.id_network=pr.id_network
+                                GROUP BY id_network) p
 			ON n.id = p.id_network AND nr.id_network = p.id_network
                         GROUP BY n.id
-			ORDER BY nr.member_count DESC
+			ORDER BY nr.member_count DESC, p.post_count DESC
                         LIMIT 0,4"))
                 {
                 	echo "Error message: " . $con->error;
@@ -304,26 +308,22 @@ class Network
 		return $networks;
 	}
 	
-	public static function getNetworkById($id)
+	public static function getNetworkById($id, $con=NULL)
 	{
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
+		$query = <<<SQL
+			SELECT * 
+			FROM networks 
+			WHERE id=$id
+SQL;
+		  //$result = mysqli_query($con,"SELECT * FROM networks WHERE id={$id}");
 		
-		// Check connection
-		if (mysqli_connect_errno())
-		  {
-		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		  }
-		
-		  $result = mysqli_query($con,"SELECT * FROM networks WHERE id={$id}");
-		
-		  $network_dt = Network::fillNetworkDT($result);
+		/// execute
+		$result = QueryHandler::executeQuery($query, $con);
 
-		if (func_num_args() < 2)
-			mysqli_close($con);
-		
+		// fill dt
+		$network_dt = Network::fillNetworkDT($result);
+
+		// leave
 		return $network_dt;
 	}
 	
@@ -737,6 +737,88 @@ SQL;
 		case 'cc':
 			return static::getNetworksByCC($data, $con);
 		}
+	}
+
+	public static function getNetworksWithUserPost($ids, $con=NULL)
+	{
+		// add ids into friendly mysql variable
+		$inlist = '(';
+		
+		for ($i = 0; $i < count($ids); $i++) {
+			// add item
+			$inlist .= $ids[$i];
+
+			// add comma
+			if (count($ids) - $i > 1) {
+				$inlist .= ', ';
+			}
+		}
+
+		// add end parenthesis
+		$inlist .= ')';
+
+		$query = <<<SQL
+			SELECT *
+			FROM networks
+			WHERE id IN $inlist
+SQL;
+
+		$result = QueryHandler::executeQuery($query, $con);
+
+		$networks = Network::fillNetworkDTs($result);
+		/*
+		while ($row = mysqli_fetch_array($result)) {
+			// create and fill dt
+			$network_dt = new NetworkDT();
+			$network_dt = Network::fillNetworkDT($result);
+
+			// add to array
+			array_push($networks, $network_dt);
+		}
+		 */
+
+		return $networks;
+	}
+
+	public static function getNetworksWithEvents($ids, $con=NULL)
+	{
+		// add ids into friendly mysql variable
+		$inlist = '(';
+		
+		for ($i = 0; $i < count($ids); $i++) {
+			// add item
+			$inlist .= $ids[$i];
+
+			// add comma
+			if (count($ids) - $i > 1) {
+				$inlist .= ', ';
+			}
+		}
+
+		// add end parenthesis
+		$inlist .= ')';
+
+		$query = <<<SQL
+			SELECT *
+			FROM networks
+			WHERE id IN $inlist
+SQL;
+
+		$result = QueryHandler::executeQuery($query, $con);
+
+		$networks = Network::fillNetworkDTs($result);
+		/*
+		while ($row = mysqli_fetch_array($result)) {
+			// create and fill dt
+			$network_dt = new NetworkDT();
+			$network_dt = Network::fillNetworkDT($result);
+
+			// add to array
+			array_push($networks, $network_dt);
+		}
+		 */
+
+		return $networks;
 	}
 
 	public static function networkToQuery($network, $con=NULL)

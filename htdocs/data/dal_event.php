@@ -73,26 +73,21 @@ SQL;
 		*/
 	}
 	
-	public static function getEventsByUserId($id)
+	// used for getting events hosted
+	public static function getEventsByUserId($id, $con=NULL)
 	{
-		// if db connection was passed in to function, get it
-		// if not, get dbconnection yourself
-		if (func_num_args() == 2)
-		{ $con = func_get_arg(1); }
-		else
-		{ $con = getDBConnection();}
+		$query = <<<SQL
+			SELECT e.*, u.first_name, u.last_name, u.img_link
+			FROM events e, users u 
+			WHERE e.id_host=u.id 
+			AND id_host=$id
+			ORDER BY e.id_network
+SQL;
+		//$result = mysqli_query($con,"SELECT * FROM events e, users u WHERE e.id_host=u.id AND id_host={$id}");
 		
-		// Check connection
-		if (mysqli_connect_errno())
-		{
-		  	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		}
-		
-		$result = mysqli_query($con,"SELECT * FROM events e, users u WHERE e.id_host=u.id AND id_host={$id}");
-		
-		if (func_num_args() < 2)
-		{ mysqli_close($con); }
-	
+		// execute
+		$result = QueryHandler::executeQuery($query, $con);
+
 		$events = array();
 		
 		while ($row = mysqli_fetch_array($result))
@@ -171,7 +166,7 @@ SQL;
 		$query = <<<SQL
 			SELECT e.id AS event_id, e.*, u.* 
 			FROM events e, users u 
-			WHERE event_date >= CURDATE() 
+			WHERE event_date >= NOW() - INTERVAL 1 MONTH
 			AND e.id_host=u.id 
 			AND id_network=$id
 			ORDER BY event_date 
@@ -211,7 +206,10 @@ SQL;
 	public static function getEventsYourNetworks($id, $con=NULL)
 	{
 		$query = <<<SQL
-			SELECT *, u.img_link AS usr_image
+			SELECT e.*, n.network_class, 
+			n.city_cur, n.region_cur, n.country_cur,
+			n.city_origin, n.region_origin, n.country_origin,
+			n.language_origin,  u.img_link AS usr_image
 			FROM events e, users u, networks n
 			WHERE id_network IN (
 				SELECT id_network

@@ -6,7 +6,7 @@
     
     include_once("data/dal_user.php");
     // exit if there's no uid, will probably change to something else
-    if ( !isset($_SESSION['uid'])) exit ('Location: index.php?logout=true');
+    if ( !isset($_SESSION['uid'])) header ('Location: index.php?signout=You have been signed out.');
     
     $user_email = User::getMemberEmail($_SESSION['uid']);
     //$ppre = getCurrentFilename(__FILE__);

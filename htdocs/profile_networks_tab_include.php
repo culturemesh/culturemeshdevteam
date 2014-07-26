@@ -7,7 +7,7 @@
 	<?php
 	foreach($yn_networks as $network)
 	{
-		HTMLBuilder::displayDashNetwork($network);
+		echo HTMLBuilder::displayDashNetwork($network);
 	}
 	?>
 </div>

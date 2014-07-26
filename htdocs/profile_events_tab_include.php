@@ -6,20 +6,20 @@
 	<ul class='dashboard item'>
 		<?php
 		// first network
-		$cur_network = findNetwork($yh_events[0]->id_network, $yn_networks);
+		$cur_network = findNetwork($yh_events[0]->id_network, $ye_networks);
 		// get network title
-		HTMLBuilder::displayDashNetworkTitle($cur_network);
+		echo HTMLBuilder::displayDashNetworkTitle($cur_network);
 
 		foreach($yh_events as $event) {
 			if ($cur_network->id !== $event->id_network) {
-				$cur_network = findNetwork($event->id_network, $yn_networks);
+				$cur_network = findNetwork($event->id_network, $ye_networks);
 				// change network title
 				// print
-				HTMLBuilder::displayDashNetworkTitle($cur_network);
+				echo HTMLBuilder::displayDashNetworkTitle($cur_network);
 			}
 
 			// display event
-			HTMLBuilder::displayDashEvent($event, true);
+			echo HTMLBuilder::displayDashEvent($event, true);
 		}
 ?>
 	</ul>
@@ -29,20 +29,20 @@
 	<ul class='dashboard item'>
 		<?php
 		// first network
-		$cur_network = findNetwork($ya_events[0]->id_network, $yn_networks);
+		$cur_network = findNetwork($ya_events[0]->id_network, $ye_networks);
 		// get network title
-		HTMLBuilder::displayDashNetworkTitle($cur_network);
+		echo HTMLBuilder::displayDashNetworkTitle($cur_network);
 
 		foreach($ya_events as $event) {
 			if ($cur_network->id !== $event->id_network) {
-				$cur_network = findNetwork($event->id_network, $yn_networks);
+				$cur_network = findNetwork($event->id_network, $ye_networks);
 				// change network title
 				// print
-				HTMLBuilder::displayDashNetworkTitle($cur_network);
+				echo HTMLBuilder::displayDashNetworkTitle($cur_network);
 			}
 
 			// display event
-			HTMLBuilder::displayDashEvent($event, true);
+			echo HTMLBuilder::displayDashEvent($event, true);
 		}
 ?>
 	</ul>

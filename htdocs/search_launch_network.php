@@ -5,6 +5,10 @@ include_once("data/dal_network.php");
 include_once("data/dal_network-dt.php");
 include_once("data/dal_location.php");
 include_once("data/dal_language.php");
+include_once("http_redirect.php");
+
+session_name("myDiaspora");
+session_start();
 
 // start db connection
 $con = getDBConnection();
@@ -73,7 +77,23 @@ $result = Network::getNetworksAllClasses($test_query, $con);
 $id = NULL;
 //var_dump($network);
 if(mysqli_num_rows($result) == 0)
-  { $id = Network::launchNetwork($network, $con); }
+{ 
+	$id = Network::launchNetwork($network, $con); 
+
+	// add user to launched network
+	if (isset($_SESSION['uid'])) {
+		$netreg = new NetworkRegistrationDT();
+
+		$netreg->id_user = $_SESSION['uid'];
+		$netreg->id_network = $id;
+
+		NetworkRegistration::createNetRegistration($netreg);
+	}
+}
+
+
+
+// result is for que?
 $rows = QueryHandler::getRows($result);
 
 // close connection
@@ -82,13 +102,29 @@ mysqli_close($con);
 // redirect
 // 	success: network page
 // 	failure: search results
+$pages = array('search_results');
+
+$prev_url = $_SERVER['HTTP_REFERER'];
+
+$redirect = new HTTPRedirect($prev_url, $pages);
+
 if (!$id)
 { 
-	if ($id==NULL)
-	  { header("Location: search_results.php?error=Network+exists"); }
-	else
-	  { header("Location: search_results.php?error=Could+not+launch+network"); }
+	if ($id==NULL) {
+		// header("Location: search_results.php?error=Network+exists");
+		$redirect->addQueryParameter('error', 'Network exists');
+       	}
+	else {
+		// header("Location: search_results.php?error=Could+not+launch+network"); 
+		$redirect->addQueryParameter('error', 'Could not launch network');
+	}
 }
-else
-  { header("Location: network.php?id={$id}"); }
+else {
+       	//header("Location: network.php?id={$id}");
+	$redirect->setPath('network.php');
+	$redirect->addQueryParameter('id', $id);
+}
+
+// execute redirect
+$redirect->execute();
 ?>

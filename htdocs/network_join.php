@@ -14,6 +14,6 @@ $netreg->id_network = $_SESSION['cur_network'];
 
 NetworkRegistration::createNetRegistration($netreg);
 
-header("Location: network.php?id={$_SESSION['cur_network']}");
+header("Location: network.php?id={$_SESSION['cur_network']}&jnerror=Welcome to the network!");
 
 ?>

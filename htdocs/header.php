@@ -12,7 +12,8 @@
             	<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
         </ul>
     </div>
-    <div class="clear"></div>
+
+<?php /*
     <?php
         $reg_header = 'Join the</br></br><b>CultureMesh Community!</b>';
         $reg_body = '<form id="reg_form" method="post" action="r.php">
@@ -91,6 +92,7 @@
                 </div>    
                 </form>
                     <script>
+			/*
                     $("#pass_mism_txt").hide();
                     
                     $("#log_submit_btn").click(function(event){
@@ -173,7 +175,91 @@
         
         echo buildModal($reg_header, $reg_body, $reg_footer, "register_modal");
         echo buildModal($log_header, $log_body, $log_footer, "login_modal");
+
+		*/
     ?>
+		<div id="register_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
+			<div class="modal-header">
+				Join the</br></br><b>CultureMesh Community!</b>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
+			</div>
+			<div class="modal-body">
+				<form id="reg_form" method="post" action="r.php">
+					<div id="register-div">
+						<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
+						</br>
+						<input type="text" name="fname" id="fname" class="modal-text-input" placeholder="First Name" required /></br>
+						</br>
+						<input type="text" name="lname" id="lname" class="modal-text-input" placeholder="Last Name" required /></br>
+						</br>
+						<span id="email_dup_txt" style="display:none" class="label label-important"></span>
+						<div id="login-passwords">
+						<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
+						<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
+						<div class="clear"></div>
+						<span id="password_validation"></span>
+						<span id="server_error"></span>
+						</div>
+						</br>
+						</br>
+						<span id="pass_mism_txt" class="label label-important"></span>
+						<div class="clear"></div>
+						<input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
+					</div>
+				</form>
+			</div>
+
+			<div class="modal-footer">
+				Already a member? <a href="#" onclick="toggleLogin()" id="sign_in_mod">Sign in!</a>
+			</div>
+		</div>
+		<div id="login_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
+			<div class="modal-header">
+				<b>Welcome Back!</b>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
+			</div>
+			<div class="modal-body">
+				<form id="log_form" method="post" action="l.php">
+					<div id="login-div">
+						<input type="email" name="email" id="log_email" class="modal-text-input" placeholder="Email" required />
+						<input type="password" name="password" id="log_password" class="modal-text-input" onchange="validateInput(this, document.getElementById(\'log_validation\'))" placeholder="Password" required />
+						</br>
+						<span id="log_validation"></span>
+						</br>
+						</br>
+						<input type="submit" id="log_submit_btn" class="submit" data-loading-text="Checking..." value="Sign In" />
+					</div>    
+				</form>
+			</div>
+			<div class="modal-footer">
+				Not a member yet? <a href="#" id="sign_in_mod" onclick='toggleRegister()'>Join Us!</a>
+			</div>
+		</div>
+		<script>
+			function toggleLogin() {
+				$("#register_modal").modal('hide');
+				$("#login_modal").modal('show');
+			}
+			function toggleRegister() {
+				$("#login_modal").modal('hide');
+				$("#register_modal").modal('show');
+			}
+		</script>
+		<?php if(isset($_GET['lerror']) && $_GET['lerror'] != 'success') : ?>
+		<script>
+			var teddy = new QueryStringParser();
+			$("#login_modal").modal('show');
+			$('#log_validation').text(teddy.qsGet['lerror']);
+		</script>
+		<?php endif; ?>
+		<?php if(isset($_GET['rerror']) && $_GET['rerror'] != 'success') : ?>
+		<script>
+			var teddy = new QueryStringParser();
+			$("#register_modal").modal('show');
+			$('#server_error').text(teddy.qsGet['rerror']);
+		</script>
+		<?php endif; ?>
+	<div class="clear"></div>
 </div>
 <div id="signout_panel" style="display:none">
 	<p>You have successfully signed out.</p>
