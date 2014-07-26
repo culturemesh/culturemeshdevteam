@@ -20,6 +20,7 @@ $prev_url = $_SERVER['HTTP_REFERER'];
 
 // create redirect object
 $redirect = new HTTPRedirect($prev_url, $pages);
+$redirect->removeQueryParameters(array('lerror', 'rerror'));
 
 // make sure that the user has written
 // 	in all the required fields

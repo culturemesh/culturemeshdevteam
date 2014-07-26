@@ -225,7 +225,7 @@
 		
 	</head>
 	<body>
-
+		<?php echo HTMLBuilder::displayShareScript(); ?>
 		<div class="wrapper">
 
 
@@ -248,10 +248,6 @@
 					<div>
 						<div class='net-info'>
 							<h1 class='h-network'><?php echo HTMLBuilder::formatNetworkTitle($network); ?></h1>
-							<div id="share">
-
-							</div>
-
 							<div class="reg-guest">
 								<form method="POST" action="network_join.php">
 									<p class='lrg-network-stats'><?php echo $network->member_count; ?> Members | <?php echo $network->post_count; ?> Posts</p>
@@ -271,6 +267,7 @@
 								</form>
 							</div>
 							<div class="clear"></div>
+							<?php echo HTMLBuilder::displayShare($network->id) ?>
 							<div>
 							<p class="network error" id="lnerror"></p>
 							<p class="network error" id="jnerror"></p>
@@ -450,9 +447,11 @@
 			$(".show_reply").on("submit", function(e) {
 				e.preventDefault();
 				// check if replies have already been fetched
-				var replies_div = $( e.target ).parents('div.post-info').siblings('div.replies');
+				var replies_div = $( e.target ).parent().siblings('div.replies');
 
-				if ( replies_div.children('ul').children().length <= 4 ) {
+				var rd_children = $( replies_div ).children('ul').children();
+
+				if ( rd_children.length <= 4 ) {
 					var postForm = $(this).serialize();
 					var getReply = new Ajax({
 						requestType: 'POST',
@@ -467,7 +466,7 @@
 						if (response.error == 0) {
 							var targ = e.target;
 							$( targ ).children(':submit').val('Hide Replies');
-							$( targ ).parents('div.post-info').siblings('div.replies').children('ul').html(response.html);
+							$( targ ).parent().siblings('div.replies').children('ul').html(response.html);
 							primeDeletes();
 						}
 					}, function(response, rStatus) {
@@ -551,8 +550,12 @@
 						$( targ ).parents( 'li.network-post' ).children('div.replies').children('ul').html(response.html);
 
 						// activate showreplies button, change to hide replies 
-						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('form.show_reply').show();
-						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('form.show_reply').children(':submit').val('Hide Replies');
+						// get ul
+						// if there are over 4 of them
+						if( $( targ ).parents( 'li.network-post' ).children('div.replies').children('ul').children().length > 4) {
+							$( targ ).parents( 'div.prompt' ).siblings( 'div.show_reply_div' ).children('form.show_reply').show();
+							$( targ ).parents( 'div.prompt' ).siblings( 'div.show_reply_div' ).children('form.show_reply').children(':submit').val('Hide Replies');
+						}
 
 						// increment replies
 						//  a) get reply count
@@ -632,8 +635,13 @@
 								// if ul is now less than 4...
 								if ( replyCount <= 4 ) {
 									// hide show replies form
+									$( ul ).parents('div.replies').siblings('div.show_reply_div').children('form.show_reply').children(':submit').val('Show Replies');
+									$( ul ).parents('div.replies').siblings('div.show_reply_div').children('form.show_reply').hide();
+
+									/*
 									$( div ).children('div.reply-button').children('form.show_reply').children(':submit').val('Show Replies');
 									$( div ).children('div.reply-button').children('form.show_reply').hide();
+						 			*/
 								}	
 							}
 						}
@@ -794,6 +802,19 @@
 	<?php endif; ?>
 	<script>
 		var qs = new QueryStringParser();
+		if (qs.qsGet['lerror'] != undefined) {
+			if (qs.qsGet['lerror'] == 'success') {
+				$('#signout_panel').children('p').text('You are now logged in!');
+				$('#signout_panel').show();
+				$('#signout_panel').fadeOut(5000);
+			}
+		}
+		if (qs.qsGet['rerror'] != undefined) {
+			if (qs.qsGet['rerror'] == 'success') {
+				$('#signout_panel').children('p').html('You are now registered! Click <a href="profile_edit.php">here</a> to see your profile page.');
+				$('#signout_panel').show();
+			}
+		}
 		if (qs.qsGet['lnerror'] != undefined) {
 			$('#lnerror').text(qs.qsGet['lnerror']);
 			$('#lnerror').fadeOut(5000);
@@ -820,6 +841,13 @@
 			switchTab();		
 			$('#event-modal-'+ qs.qsGet['elink']).modal('show');
 
+		}
+		if (qs.qsGet['leerror'] != undefined) {
+			var mid = qs.qsGet['eid'];
+			switchTab();
+
+			$('#event-modal-'+mid).modal('show');
+			$('#leerror-'+mid).text(qs.qsGet['leerror']);
 		}
 	</script>
 </html>

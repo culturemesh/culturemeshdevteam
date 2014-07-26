@@ -77,7 +77,7 @@ SQL;
 	public static function getEventsByUserId($id, $con=NULL)
 	{
 		$query = <<<SQL
-			SELECT * 
+			SELECT e.*, u.first_name, u.last_name, u.img_link
 			FROM events e, users u 
 			WHERE e.id_host=u.id 
 			AND id_host=$id
@@ -206,7 +206,10 @@ SQL;
 	public static function getEventsYourNetworks($id, $con=NULL)
 	{
 		$query = <<<SQL
-			SELECT *, u.img_link AS usr_image
+			SELECT e.*, n.network_class, 
+			n.city_cur, n.region_cur, n.country_cur,
+			n.city_origin, n.region_origin, n.country_origin,
+			n.language_origin,  u.img_link AS usr_image
 			FROM events e, users u, networks n
 			WHERE id_network IN (
 				SELECT id_network

@@ -215,6 +215,47 @@ HTML;
 		</div>
 		";
 	}
+
+	public static function displayShareScript() {
+
+		$html = <<<EHTML
+<script>
+	window.fbAsyncInit = function() {
+		  FB.init({
+		    appId      : '670914089652347',
+		    status     : true,
+		    xfbml      : true,
+		    version    : 'v2.0'
+		  });
+  	}
+
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+<script src="https://apis.google.com/js/plusone.js"></script>
+EHTML;
+
+		return $html;
+	}
+
+	public static function displayShare($nid) {
+		$html = <<<EHTML
+<div id="share">
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.culturemesh.com/network.php?id=$nid" data-count="none">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<div class="fb-like" data-href="www.culturemesh.com/network.php?id=$nid" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+	<g:plus action="share" data-href="www.culturemesh.com/network.php?id=$nid" data-annotation="bubble" data-width="200"></g:plus>
+</div>
+EHTML;
+
+		return $html;
+					
+	}
 	
 	public static function displayLrgNetwork($network)
 	{
@@ -311,7 +352,7 @@ EHTML;
 		}
 		
 		$sr_toggle = <<<EHTML
-<div class='reply-button'>
+<div class='show_reply_div reply-button'>
 	<form id="" class="show_reply" method="POST" style="$display" action="network_show_reply.php">
 		<input type="hidden" name="rids" value="$rids"/>
 		<input type="hidden" name="pid" value="$pid"/>
@@ -319,7 +360,7 @@ EHTML;
 		<noscript>
 		<input type="hidden" name="NOJS" value="NOJS"/>
 		</noscript>
-		<input type="submit" class="post show" value="Show Replies"/>
+		<input type="submit" class="post show" value="Show All Replies"/>
 	</form>
 </div>
 EHTML;
@@ -343,7 +384,6 @@ EHTML;
 	$rr_toggle
 	$reply_request
 	<div class="clear"></div>
-	$sr_toggle
 </div>
 EHTML;
 		} 
@@ -362,7 +402,6 @@ EHTML;
 	$rr_toggle
 	$reply_request
 	<div class="clear"></div>
-	$sr_toggle
 </div>
 EHTML;
 		}
@@ -378,6 +417,7 @@ EHTML;
 		</ul>
 	</div>
 	<div class="prompt"></div>
+	$sr_toggle
 </li>
 EHTML;
 
@@ -633,7 +673,11 @@ $modal_1 = <<<EHTML
 		</div>
 		<div id="attending_div-$event->id">
 			<p>You're attending this event</p>
-			<button class="event-modal">Leave Event</button>
+			<form id="je-form-$event->id" method='POST' action='network_leave-event.php'>
+				<input type="hidden" name="uid" value="$uid"/>
+				<input type="hidden" name="eid" value="$event->id"/>
+				<button class="event-modal">Leave Event</button>
+			</form>
 		</div>
 		</div>
 EHTML;

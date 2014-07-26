@@ -28,6 +28,7 @@ $pages = array('index', 'network', 'search_results',
 $prev_url = $_SERVER['HTTP_REFERER'];
 
 $redirect = new HTTPRedirect($prev_url, $pages);
+$redirect->removeQueryParameters(array('lerror', 'rerror', 'jeerror', 'eid', 'ueerror'));
 
 // start working on stuff
 if($_POST['email'] && $_POST['password']){
