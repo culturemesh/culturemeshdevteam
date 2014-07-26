@@ -1,5 +1,6 @@
 name
 Akan
+American Sign Language
 Amharic
 Arabic
 Assamese
@@ -87,6 +88,7 @@ Sylheti
 Tagalog
 Tamil
 Telugu
+Teochew
 Thai
 Turkish
 Ukrainian
