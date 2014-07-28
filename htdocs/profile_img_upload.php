@@ -1,6 +1,4 @@
 <?php
-ini_set("display_errors", true);
-
 // hackish
 //define("UPLOAD_DIR", "/home3/culturp7/user_images/");
 define("UPLOAD_DIR", "../../user_images/");
