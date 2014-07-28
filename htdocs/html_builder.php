@@ -989,7 +989,13 @@ EHTML;
 
 
 		if($network->country_cur != $network->country_origin && $network->class != 'co') {
-			$location .= ", " . $network->country_cur;
+			// check to see if there's anything before
+			if ($location == '') {
+				$location .= $network->country_cur;
+			}
+			else {
+				$location .= ", " . $network->country_cur;
+			}
 		}
 		
 		switch($network->network_class)
