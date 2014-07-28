@@ -17,8 +17,9 @@ else
 {
     define("DB_SERVER", "localhost");
     define("DB_USER", "culturp7");
-    include "../../../abcd123.php";
+    define("DB_PASS", "IanTheMan2014!");
     define("DB_NAME", "culturp7_ktc");
+    include "../../../abcd123.php";
 }
 
 define("IMG_DIR", "../../user_images/");
