@@ -464,8 +464,10 @@ SQL;
 		if ($must_close)
 			mysqli_close($con);
 		
-		if (!$result)
-			echo $con->error;
+		if (!$result) {
+			//echo $con->error;
+			return false;
+		}
 		else
 			return $result;
 	}
@@ -523,7 +525,7 @@ SQL;
 			mysqli_close($con);
 		
 		if (!$result){
-			echo $con->error;
+	//		echo $con->error;
 			return false;
 		}
 		else
@@ -584,7 +586,7 @@ SQL;
 			mysqli_close($con);
 		
 		if (!$result) {
-			echo $con->error;
+	//		echo $con->error;
 			return false;
 		}
 		else
@@ -651,7 +653,7 @@ SQL;
 			mysqli_close($con);
 		
 		if (!$result) {
-			echo $con->error;
+	//		echo $con->error;
 			return false;
 		}
 		else

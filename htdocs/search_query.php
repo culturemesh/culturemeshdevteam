@@ -473,7 +473,6 @@ class SearchQuery
 			$cities = Location::getNearbyCities($query[4], $con);
 			$cities_nm = QueryHandler::getRows($cities);
 			$alt_query = $query;
-			echo '<br><br>';
 
 			// get from two origin cities
 			for ($i = 0; $i < $org_result_count && $i < count($cities_nm); $i++)
