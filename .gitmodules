@@ -1,0 +1,3 @@
+[submodule "mustache.js"]
+	path = htdocs/js/mustache.js
+	url = https://github.com/janl/mustache.js.git
