@@ -10,8 +10,3 @@ htdocs/error_log*
 htdocs/php.ini*
 .DS_Store
 *error_log*
-htdocs/blank.php
-htdocs/composer.json
-htdocs/composer.lock
-htdocs/templates
-htdocs/vendor

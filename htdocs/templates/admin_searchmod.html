@@ -1,0 +1,224 @@
+<!-- admin_dbmod.html -->
+{{% BLOCKS }}
+{{< layout }}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ more_scripts }}
+	<script src='js/spin.js'></script>
+	<script src='admin/js/admin_searchmod.js'></script>
+	{{/ more_scripts }}
+	{{$ content }}
+	<script id='create-single-tmpl' type='x-tmpl-mustache'>
+	<div id='main-op'>
+		<div id='table-div'>
+			<table id='insert-table'>
+				<thead></thead>
+				<tfoot>
+					<tr>
+						<td><input type='submit' id='send' name='submit' value='Submit'/></td>
+					</tr>
+				</tfoot>
+				<tbody>
+					{{ vars.l_brace }}# columns {{ vars.r_brace }}
+					<tr>
+						<td class='db_col'><b>{{ vars.l_brace }}name{{ vars.r_brace }}</b></td>
+						<td class='db_edit {{ vars.l_brace }}colClass{{ vars.r_brace }}'>
+							<input type='text' name='input-{{ vars.l_brace }}name{{ vars.r_brace }}'
+							{{ vars.l_brace }} validation {{ vars.r_brace }}/>
+						</td>
+						<td class='db_find {{ vars.l_brace }}colClass{{ vars.r_brace }}'>
+							<button class='find'>Find</button>
+						</td>
+						</td>
+					{{ vars.l_brace }}/ columns {{ vars.r_brace }}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div id='side-op'>
+		<div id='ssearchbar-extra'>
+		</div>
+		<div id='table-search-div'>
+		</div>
+	</div>
+	<div class='clear'></div>
+	</script>
+
+	<script id='batch-tmpl' type='x-tmpl-mustache'>
+		<div id='insert-batch'>
+			<form id='insert-val' enctype="multipart/form-data" data-parsley-validate>
+				<input id='insert-obj' type='file' name='object' required/>	
+				<input type='hidden' name='op' value='ins-parse' />
+				<input id='batch-parse' type='submit' value='Parse' />
+			</form>
+			<form id='insert-form' enctype="multipart/form-data" data-parsley-validate >
+				<table id='insert-cols'>
+					<thead>
+						<tr>Corresponding Columns</tr>
+					</thead>
+					<tfoot></tfoot>
+					<tbody>
+					</tbody>
+				</table>
+				<input type='hidden' name='op' value='ins-send' />
+				<input id='send' type='submit' value='Send' />
+			</form>
+		</div>
+	</script>
+
+	<script id='batch-tr' type='x-tmpl-mustache'>
+		<tr class='{{ vars.l_brace }} class {{ vars.r_brace }}'>
+			<td class='db_col'><b>{{ vars.l_brace }} col {{ vars.r_brace }}</b></td>
+			<td class='col_match'>
+				<select>
+					<option selected='selected'>-</option>
+					{{ vars.l_brace }}#vals{{ vars.r_brace }}
+					<option>
+					{{ vars.l_brace }}.{{ vars.r_brace }}
+					</option>
+					{{ vars.l_brace }}/vals{{ vars.r_brace }}
+				</select>
+			</td>
+			<td class='update-cb'>
+				<input type="checkbox" value="{{ vars.l_brace }} col {{ vars.r_brace }}">Modify?</input>
+			</td>
+		</tr>
+	</script>
+
+	<script id='create-batch-tmpl' type='x-tmpl-mustache'>
+		<tr class='{{ vars.l_brace }} class {{ vars.r_brace }}'>
+			<td class='db_col'>{{ vars.l_brace }} col {{ vars.r_brace }}</td>
+			<td class='col_match'>
+				<select>
+					<option selected='selected'>-</option>
+					{{ vars.l_brace }}#vals{{ vars.r_brace }}
+					<option>
+					{{ vars.l_brace }}.{{ vars.r_brace }}
+					</option>
+					{{ vars.l_brace }}/vals{{ vars.r_brace }}
+				</select>
+			</td>
+
+		</tr>
+		<div id='insert-batch'>
+			<form id='insert-val' enctype="multipart/form-data" data-parsley-validate>
+				<input id='insert-obj' type='file' name='object' required/>	
+				<input type='hidden' name='op' value='ins-parse' />
+				<input id='insert-parse' type='submit' value='Parse' />
+			</form>
+			<form id='insert-form' enctype="multipart/form-data" data-parsley-validate >
+				<table id='insert-cols'>
+					<thead>
+						<tr>Corresponding Columns</tr>
+					</thead>
+					<tfoot><tr><td><button>Add</button</td></tr></tfoot>
+					<tbody>
+						<tr>
+						</tr>
+					</tbody>
+				</table>
+				<input id='insert-send' type='submit' value='Send' />
+			</form>
+		</div>
+	</script>
+
+	<script id='update-single-tmpl' type='x-tmpl-mustache'>
+	<div id='main-op'>
+		<div id='ssearchbar'>
+		</div>
+		<div id='table-div'>
+		</div>
+		<input id='send' type='submit' value='Send' />
+	</div>
+	<div id='side-op'>
+		<div id='ssearchbar-extra'>
+		</div>
+		<div id='table-search-div'>
+		</div>
+	</div>
+	<div class='clear'></div>
+
+	</script>
+
+	<script id='update-batch-tmpl' type='x-tmpl-mustache'>
+	</script>
+
+	<script id='delete-single-tmpl' type='x-tmpl-mustache'>
+		<div id='ssearchbar'>
+		</div>
+		<div id='table-div'>
+		</div>
+
+	</script>
+
+	<script id='disp-searchable-tmpl' type='x-tmpl-mustache'>
+		<table id='searchable'>
+			<thead>
+			</thead>
+			<tfoot>
+				<tr>
+					<td></td>
+				</tr>
+			</tfoot>
+			<tbody>
+				{{ vars.l_brace }}#columns{{vars.r_brace}}
+				<tr>
+					<td class='db_col'>
+						<b>{{ vars.l_brace }}name{{vars.r_brace}}</b>
+					</td>
+					<td class='td-edit-value'>
+						<span class='on'>{{ vars.l_brace }}value{{vars.r_brace}}</span>
+						<input class='edit-input' type='text' name='{{ vars.l_brace }}name{{vars.r_brace}}'>
+					</td>
+					<td class='td-edit-toggle'>
+						<button class='edit-toggle {{ vars.l_brace }}class{{vars.r_brace}}'>Edit</button>
+					</td>
+					<td class='db_find {{ vars.l_brace }}class{{ vars.r_brace }}'>
+						<button class='find'>Find</button>
+					</td>
+				</tr>
+				{{ vars.l_brace }}/columns{{vars.r_brace}}
+			</tbody>
+		</table>
+	</script>
+
+	<script id='single-search-tmpl' type='x-tmpl-mustache'>
+			<form id ='search-form' autocomplete='off'>
+			<input type='text' id='search-1' class='net-search' name='search-1' autocomplete='off'/>
+				<ul id='s-query' class='network search'></ul>
+				<ul id='s-var' class='network search'></ul>
+				<input type='hidden' id='clik1' name='clik1' value=0></ul>
+			<input type='submit' id='search-submit' class='network search-button' value='Go'>
+			<input type='hidden' id='search-topic' name='search-topic'></input>
+			</form>
+	</script>
+
+	<select id='op-select'>
+		<option>-</option>
+		<option value='create'>Create</option>
+		<option value='update'>Update</option>
+	</select>
+
+	<select id='sibat-select'>
+		<option>-</option>
+		<option value='single'>Single</option>
+		<option value='batch'>Batch</option>
+	</select>
+	<select id='table-select'>
+		<option>-<option>
+		{{# tables }}<option>{{ . }}<option>{{/ tables }}
+	</select>
+
+	<button id='commence'>Commence Operation</button>
+
+	<div id='op-panel'>
+	</div>
+	<div id='spin'></div>
+	{{/ content}}
+
+	{{$ body_scripts }}
+	<script src="admin/js/Operation.js"></script>
+	<script src='js/ssearchbar.js'></script>
+	<script src="admin/js/ModPackage.js"></script>
+	{{/ body_scripts }}
+{{/ layout }}

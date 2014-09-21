@@ -1,0 +1,70 @@
+
+<!-- admin_dbmod.html -->
+{{% BLOCKS }}
+{{< layout }}
+{{! {% extends "base.html" %} }}
+
+{{! {% block content %} }}
+	<script id='test' type='text/html'>
+		Hello {{{text}}}!
+	</script>
+	<script id='table_temp' type='x-tmpl-mustache'>
+		<tr>
+			<td class='db_col'>{{ col }}</td>
+			<td class='col_match'>{{ val }}</td>
+		</tr>
+	</script>
+	<h1>DB MOD</h1>
+	<div>
+		<ol>
+			<li>
+				<h4>Choose a Table</h4>
+				<select id='table-select'>
+					<option> -- </option>
+				{% for row in tables %}
+					<option>{{ row }}</option>
+				{% endfor %}
+				</select>
+			</li>
+
+			<li>
+				<h4>Choose an Operation<h4>
+				<select id='op-select'>
+					<option> -- </option>
+					<option>Insert</option>
+					<option>Update</option>
+				</select>
+			</li>
+		</ol>
+	</div>
+	<div id='Insert'>
+		<h4>Insert</h4>
+		<form id='insert-val' enctype="multipart/form-data" data-parsley-validate>
+			<input type='file' name='object' required/>	
+			<input type='hidden' name='op' value='ins-parse' />
+			<input id='insert-parse' type='submit' value='Parse' />
+		</form>
+		<form id='insert-form' >
+			<input type='file' name='object' required/>
+			<table id='insert-cols'>
+				<thead></thead>
+				<tfoot></tfoot>
+				<tbody>
+				</tbody>
+			</table>
+			<input type='submit' value='Send' />
+		</form>
+	</div>
+	<div id='Update'>
+		<h4>Update</h4>
+		<form id='update-form' enctype="multipart/form-data" data-parsley-validate>
+			<input type='file' name='object' required/>	
+			<input type='hidden' name='op' value='upd-validate' />
+			<input id='update-validate' type='submit' value='Validate' />
+			<input type='submit' value='Send' />
+		</form>
+	</div>
+	<div id='track'></div>
+	<script src='js/admin_dbmod.js'></script>
+{% endblock %}
+{{/ layout }}

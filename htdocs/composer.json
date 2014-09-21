@@ -1,0 +1,9 @@
+{
+	"require": {
+		"twig/twig": "1.*",
+		"codeguy/upload": "*",
+		"respect/validation": "*",
+		"phpunit/phpunit": "3.7.*",
+		"mustache/mustache": "~2.7"
+	}
+}
