@@ -27,9 +27,8 @@ function ListItem() {
 
 function LocList() {
 	this.list = [];
-
-
 }
+
 // Push an object onto the list
 LocList.prototype.push = function(item) {
 	this.list.push(item);
@@ -95,20 +94,31 @@ LocList.prototype.searchLocations = function(term) {
 		match = lower_name.indexOf(term.toLowerCase());
 		if (match >= 0) {
 			// unshift beginning match stuff
-			if (match == 0 && lower_name.indexOf('united states') > -1)
+			if (match == 0)
 			{
 				fcMatches.unshift(this.list[i]);
 				uCount++;
 			}
 			// unshift us stuff
 			else if (lower_name.indexOf('united states') > -1) {
-				cMatches.unshift(this.list[i]);
-				uCount ++;
+				//cMatches.unshift(this.list[i]);
+				//uCount ++;
 			}
 			else
 				results.push(this.list[i]);
 		}
 	}
+	//
+	// sort matches
+	fcMatches = fcMatches.sort(function(a, b) {
+		if (a.name > b.name) {
+			return 1;
+		}
+		else {
+			return -1;
+		}
+		});
+
 	return fcMatches.concat(cMatches,results);
 }
 
@@ -279,7 +289,7 @@ function SearchBar() {
 					break;
 				case 1:
 					// search for language
-					li_languages = languages.searchLocations(value);
+					li_languages = languages.search(value);
 					// fill ul
 					fillUl(varUl, li_languages.slice(0,4), searchOne, clik1);
 					boldifyMatch(varUl, value);
@@ -305,7 +315,7 @@ function SearchBar() {
 				return;
 
 			// get locations
-			li_locations = locations.search(value);
+			li_locations = locations.searchLocations(value);
 			// Rank search results
 			//li_locations = rankLocations(li_locations);
 			// Fill up Ul
@@ -516,3 +526,10 @@ function SearchBar() {
 	}
 }
 
+
+/*
+// create prototype chain for single search bar
+SingleSearch.prototype = Object.create(SearchBar.prototype);
+
+SingleSearch.prototype.constructor = SingleSearch;
+*/

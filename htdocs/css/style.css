@@ -1444,6 +1444,25 @@ a.profile
 }
 /**********************************/
 
+/*******
+ * ADMIN PANEL
+ * ******
+*/
+
+#op-panel {
+	width: 900px;
+}
+
+#main-op {
+	width: 47%;
+	float:left;
+}
+
+#side-op {
+	float:left;
+}
+
+/*************************/
 .team_thumb{
     width: 205px;
     height: 205px;

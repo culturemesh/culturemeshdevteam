@@ -879,6 +879,10 @@ SQL;
 		{ mysqli_close($con); }
 	}
 	
+	public static function updateNetworkNameLoc($con=NULL) {
+
+	}
+
 	////////////////////// DELETE OPERATIONS /////////////////////
 	public static function deleteNetwork($network_dt)
 	{

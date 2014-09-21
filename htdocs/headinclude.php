@@ -19,11 +19,11 @@
 <!--end CDN items-->
 
 <!-- Facebook analytics stuff -->
-<meta name="og:type" content="website" />
-<meta name="og:image" content="http://www.culturemesh.com/culturemesh-live/htdocs/images/CM_Logo_Final_square.jpg"/>
 <meta name="og:title" content="CultureMesh" />
-<meta name="og:description" content="Connecting the World's Diasporas" />
+<meta name="og:site_name" content="CultureMesh" />
 <meta name="og:url" content="http://culturemesh.com"/>
+<meta name="og:description" content="Connecting the World's Diasporas" />
+<meta name="og:image" content="http://www.culturemesh.com/culturemesh-live/htdocs/images/CM_Logo_Final_square.jpg"/>
 
 <script src="<?php echo HOME_PATH; ?>js/bootstrap.js"></script>
 <script src="<?php echo HOME_PATH; ?>js/validation.js"></script>

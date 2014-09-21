@@ -1,7 +1,7 @@
 name
 Akan
-American Sign Language
 Amharic
+Amurican Sign Spunglage
 Arabic
 Assamese
 Awadhi
@@ -10,6 +10,7 @@ Balochi
 Belarusian
 Bengali
 Bhojpuri
+BoggerSpeak
 Burmese
 Cantonese
 Cebuano
@@ -49,6 +50,7 @@ Kirundi
 Konkani
 Korean
 Kurdish
+Lugbara
 Madurese
 Magahi
 Maithili
@@ -68,6 +70,7 @@ Oriya
 Oromo
 Pashto
 Persian
+Pig Latin
 Polish
 Portuguese
 Punjabi

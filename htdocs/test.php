@@ -1,8 +1,9 @@
 <?php
-	ini_set("display_errors", true);
+/*
 	include_once("data/dal_location.php");
 	include_once("data/dal_query_handler.php");
 	include_once("data/dal_network.php");
+ */
 ?>
 <html>
 	<head>
@@ -28,7 +29,24 @@
 	echo "</br></br>";
 	mysqli_close($con);
 */
-	var_dump( filter_var("jumpergm@ail", FILTER_VALIDATE_EMAIL));
+//	var_dump( filter_var("jumpergm@ail", FILTER_VALIDATE_EMAIL));
+$array = array(
+	array('distance' => 4),
+	array('distance' => 10),
+	array('distance' => 17),
+	array('distance' => 3),
+	array('distance' => -15)
+);
+
+usort($array , function($a, $b) {
+	if ($a['distance'] == $b['distance']) {
+		return 0;
+	}
+
+	return ($a['distance'] < $b['distance']) ? -1 : 1;
+});
+
+print_r($array);
 ?>
 	</body>
 </html>

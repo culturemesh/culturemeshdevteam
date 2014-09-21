@@ -13,14 +13,24 @@ if ( file_exists('../localdbconn.php'))
 {
     include  "../localdbconn.php";
 }
+else if ( file_exists('../../localdbconn.php'))
+{
+    include  "../../localdbconn.php";
+}
 else
 {
     define("DB_SERVER", "localhost");
     define("DB_USER", "culturp7");
     define("DB_NAME", "culturp7_ktc");
-    include "../../../abcd123.php";
-}
 
+    if ( file_exists("../../../abcd123.php")) {
+    	include "../../../abcd123.php";
+    }
+    else if ( file_exists("../../../../abcd123.php")) {
+  	include "../../../../abcd123.php";
+    }
+}
+ 
 define("IMG_DIR", "../../user_images/");
 define("BLANK_IMG", 'images/blank_profile.png');
  
