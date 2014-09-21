@@ -59,6 +59,22 @@ function addSqlQuotes($data) {
 }
  */
 
+if ($json_post['op'] == 'login') {
+	
+	$response = array(
+		'error' => NULL
+	);
+
+	if ($json_post['password'] == DB_PASS) {
+		$response['error'] = 0;
+	}
+	else {
+		$response['error'] = 1;
+	}
+
+	echo json_encode($response);
+	exit();
+}
 if ($_POST['op'] == 'getTableStructure') {
 	
 	// get the necessary functions
