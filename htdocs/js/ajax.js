@@ -1,4 +1,19 @@
 
+postStringify = function(obj) {
+	var keys = Object.keys(obj);
+	var postString = '';
+
+	for (var i = 0; i < keys.length; i++) {
+		// add an ampersand
+		if (i > 0) {
+			postString += '&';
+		}
+
+		postString += keys[i] + '=' + obj[keys[i]];
+	}
+
+	return postString;
+}
 
 /*
  * Handles call and return of

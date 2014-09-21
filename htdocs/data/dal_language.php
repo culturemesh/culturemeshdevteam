@@ -18,28 +18,24 @@ class Language
 {
 	public static function getAllLanguages($con=NULL)
 	{
-		$must_close = false;
+		$query = <<<SQL
+			SELECT id, name 
+			FROM languages 
+SQL;
 
-		if ($con == NULL)
-		{ $con = getDBConnection();
-		  $must_close = true;
+		$result = QueryHandler::executeQuery($query, $con);
+		
+		$languages = array();
+
+		while($row = mysqli_fetch_array($result)) {
+			$language = array(
+				'id' => $row['id'],
+			       	'name' => $row['name']);	
+
+			array_push($languages, $language);
 		}
 
-		// Check connection
-		if (mysqli_connect_errno())
-		  {
-		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		  }
-
-		$result = mysqli_query($con,"SELECT * FROM languages");
-			
-		if ($must_close)
-			mysqli_close($con);
-
-		if (!$result)
-			echo $con->error;
-
-		return $result;
+		return $languages;
 	}
 
 	public static function getLanguage($name, $con=NULL)
@@ -86,6 +82,25 @@ SQL;
 		return $language;
 	}
 
+	public static function getLanguageByNameF($name, $con=null)
+	{
+
+		$query = <<<SQL
+			SELECT * 
+			FROM languages 
+			WHERE name='$name'
+SQL;
+
+		$result = QueryHandler::executeQuery($query, $con);
+		
+		while($row = mysqli_fetch_array($result))
+			$language = array(
+				'id' => $row['id'],
+			       	'name' => $row['name']);	
+
+		return $language;
+	}
+
 	////////////////////////////////////////////////////////
 	//		INSERT STATEMENTS
 	//	/////////////////////////////
@@ -99,6 +114,27 @@ SQL;
 			('$language->name', $language->num_speakers, 1)
 SQL;
 ///// ------->
+		return QueryHandler::executeQuery($query, $con);
+	}
+
+	////////////////////////////////////////////////////////
+	//		UPDATE STATEMENTS
+	//	/////////////////////////////
+	public static function updateNetworkNames($id, $name, $con=NULL) { 
+
+		// important names
+		$norg = language.'_origin'; // eg city_origin
+		$iorg = 'id_'.language.'_origin'; // eg id_city_origin
+
+		$query = <<<SQL
+			UPDATE networks
+				SET $norg = CASE
+				WHEN $iorg = $id THEN '$name'
+				ELSE $norg
+				END
+SQL;
+
+
 		return QueryHandler::executeQuery($query, $con);
 	}
 }

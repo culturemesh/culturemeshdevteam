@@ -508,19 +508,19 @@ oranjestad
 babijn
 angochi
 mariehamn
-xankÇndi
+xankǝndi
 ahmadbayli
 shushi
 salyan
 saatli
 neftcala
 nakhchivan
-lÇnkÇran
+lǝnkǝran
 imishli
 fizuli
 dzhalilabad
 pushkino
-beylÉ™qan
+beyləqan
 astara
 sirvan
 agdam
@@ -23275,3 +23275,4 @@ bindura
 beitbridge
 epworth
 chitungwiza
+lil tally

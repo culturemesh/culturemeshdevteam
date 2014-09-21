@@ -48,6 +48,31 @@ class QueryHandler
 		else
 		   { return -1; }
 	}
+	//
+	// return an array of assoc_arrays
+	// , the data table, basically
+	public static function getRows2($result)
+	{	
+		if (!is_string($result)) {
+			$data = array();
+			while($row = $result->fetch_assoc())
+			   { $data = array_push($data, $row); }
+			return $data;
+		}
+		else
+		   { return -1; }
+	}
+	public static function getColumn($result, $column)
+	{
+		if (!is_string($result)) {
+			$data = array();
+			while($row = $result->fetch_assoc())
+			   { array_push($data, $row[$column]); }
+			return $data;
+		}
+		else
+		   { return -1; }
+	}
 
 	public static function getColumnFromDS($ds, $col_name)
 	{

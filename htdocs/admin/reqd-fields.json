@@ -1,0 +1,49 @@
+{
+    "cities": {
+        "conditional": {
+            "country_name": "country_id", 
+            "region_name": "region_id"
+        }, 
+        "optional": [
+            "region_name", 
+            "country_name", 
+            "feature code"
+        ], 
+        "required": [
+            "name", 
+            "population", 
+            "latitude", 
+            "longitude"
+        ]
+    }, 
+    "countries": {
+        "required": [
+            "name", 
+            "population", 
+            "latitude", 
+            "longitude"
+        ]
+    }, 
+    "languages": {
+        "conditional": [], 
+        "optional": [], 
+        "required": [
+            "name"
+        ]
+    }, 
+    "regions": {
+        "conditional": {
+            "country_name": "country_id"
+        }, 
+        "optional": [
+            "country_name", 
+            "feature code"
+        ], 
+        "required": [
+            "name", 
+            "population", 
+            "latitude", 
+            "longitude"
+        ]
+    }
+}
