@@ -193,6 +193,12 @@
 			</form>
 	</script>
 
+	<div id='kwik-login'>
+		<span>What's the password?</span>
+		<input id='pass-input' type='password' name='password'/></br>
+		<button id='login-button'>Login</button>
+	</div>
+	<div id='activated-panel'>
 	<select id='op-select'>
 		<option>-</option>
 		<option value='create'>Create</option>
@@ -208,17 +214,47 @@
 		<option>-<option>
 		{{# tables }}<option>{{ . }}<option>{{/ tables }}
 	</select>
-
+	</br>
 	<button id='commence'>Commence Operation</button>
 
 	<div id='op-panel'>
 	</div>
 	<div id='spin'></div>
+	</div>
 	{{/ content}}
 
 	{{$ body_scripts }}
 	<script src="admin/js/Operation.js"></script>
 	<script src='js/ssearchbar.js'></script>
 	<script src="admin/js/ModPackage.js"></script>
+	<script>
+		$('#activated-panel').hide();
+
+		$('#login-button').on('click', function() {
+			
+			var value = $('#pass-input').val();
+			var post = {
+				op : 'login',
+				password : value
+			}
+
+			var lgin = new Ajax({
+				requestType: 'POST',
+				requestUrl: 'admin/admin_ops.php',
+				requestParameters: ' ',
+				data: post,
+				dataType: 'JSON',
+				sendNow: true
+				}, function(data) { 
+					
+					var result = JSON.parse(data);
+
+					if (result.error == 0) {
+						$('#activated-panel').show();
+						$('#kwik-login').hide();
+					}
+				});
+			});
+	</script>
 	{{/ body_scripts }}
 {{/ layout }}
