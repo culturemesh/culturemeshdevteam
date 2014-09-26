@@ -90,6 +90,12 @@ if ($_POST['op'] == 'getTableStructure') {
 	// get table structure
 	$response['description'] = Meta::describeTable($_POST['table'], $con);
 
+	// handle the error things
+	if ($response['description'] == false)
+		$response['error'] = 1;
+	else
+		$response['error'] = 0;
+
 	echo json_encode($response);
 }
 
@@ -193,6 +199,24 @@ else if ($json_post['op'] == 'searchSearchables') {
 
 	// return
 	echo json_encode($response);
+}
+
+else if ($json_post['op'] == 'rewriteTxt') {
+
+	// create response
+	$response = array(
+		'error' => NULL
+	);
+
+	// rewrite everything
+	TextData::rewrite();
+
+	// update response
+	$response['error'] = 0;
+
+	// send response
+	echo json_encode($response);
+	exit();
 }
 
 else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single') 

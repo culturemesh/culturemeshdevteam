@@ -17,7 +17,8 @@ class TextData {
 		'languages' => array('../data/s_languages.txt', '../data/s_langnames.txt')
 	);
 
-	public static function rewrite($type) {
+	public static function rewrite($type=NULL) {
+
 		switch ($type) {
 		case 'languages':
 			self::rewriteLanguages();
@@ -34,6 +35,10 @@ class TextData {
 			break;
 		case 'countries':
 			self::rewriteLocations();
+			break;
+		default:
+			self::rewriteLocations();
+			self::rewriteLanguages();
 			break;
 		}
 		
