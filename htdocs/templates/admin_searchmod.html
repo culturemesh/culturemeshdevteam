@@ -7,6 +7,107 @@
 	<script src='js/spin.js'></script>
 	{{/ more_scripts }}
 	{{$ content }}
+
+	<script id='single-op-tmpl' type='x-tmpl-mustache'>
+	<div id='main-op'>
+		<div id='ssearchbar'>
+		</div>
+		<div id='table'>
+		</div>
+	</div>
+	<div id='side-op'>
+		<div id='ssearchbar-alt'>
+		</div>
+		<div id='table-search'>
+		</div>
+	</div>
+	</script>
+
+	<script id='re-searchable-tmpl' type='x-tmpl-mustache'>
+		<!--
+		<div id='test'>
+			{{ vars.l_brace }}#george{{vars.r_brace}}
+			{{ vars.l_brace }}#test{{vars.r_brace}}
+			<p>This is a test to see if mustache isn't for dums</p>
+			{{ vars.l_brace }}/test{{vars.r_brace}}
+			{{ vars.l_brace }}/george{{vars.r_brace}}
+		</div>
+		-->
+		<table id='searchable'>
+			<thead>
+			</thead>
+			<tfoot>
+				<tr>
+					{{ vars.l_brace }}#cond.main{{vars.r_brace}}
+					<td class='table-send'><button id='sendBtn' class='send'>Send</button></td>
+					{{ vars.l_brace }}/cond.main{{vars.r_brace}}
+					{{ vars.l_brace }}#cond.alt{{vars.r_brace}}
+					<td class='table-fill'><button class='fill'>Fill</button></td>
+					{{ vars.l_brace }}/cond.alt{{vars.r_brace}}
+				</tr>
+			</tfoot>
+			<tbody>
+				{{ vars.l_brace }}#columns{{vars.r_brace}}
+				<tr>
+					<td class='db_col'>
+						<b>{{ vars.l_brace }}name{{vars.r_brace}}</b>
+					</td>
+	<!--		-->
+	<!-- ROW SECTION -->
+	<!--		-->
+
+	<!--
+					{{ vars.l_brace }}#colCond.fart{{vars.r_brace}}
+					<td class='booger'>
+					<p>fart</p>
+					</td>	
+					{{ vars.l_brace }}/colCond.fart{{vars.r_brace}}
+	-->
+			<!-- 	 -->
+			<!-- UPDATE -->
+			<!-- 	 -->
+					{{ vars.l_brace }}#colCond.update{{vars.r_brace}}
+					<td class='op_val'>
+						<span class='on'>{{ vars.l_brace }}value{{vars.r_brace}}</span>
+					</td>
+					<td class='op_input'>
+						<input class='edinput' type='text' name='{{ vars.l_brace }}name{{vars.r_brace}}'>
+					</td>
+					{{ vars.l_brace }}/colCond.update{{vars.r_brace}}
+			<!-- 	 -->
+			<!-- DISPLAY -->
+			<!-- 	 -->
+					{{ vars.l_brace }}#colCond.display{{vars.r_brace}}
+					<td class='op_val'>
+						<span>{{ vars.l_brace }}value{{vars.r_brace}}</span>
+					</td>
+					{{ vars.l_brace }}/colCond.display{{vars.r_brace}}
+			<!-- 	 -->
+			<!-- CREATE -->
+			<!-- 	 -->
+					{{ vars.l_brace }}#colCond.create{{vars.r_brace}}
+					<td class='op_input'>
+						<input class='edinput' type='text' name='{{ vars.l_brace }}name{{vars.r_brace}}'>
+					</td>
+					{{ vars.l_brace }}/colCond.create{{vars.r_brace}}
+	<!--		-->
+	<!-- END SECTION -->
+	<!--		-->
+					<td class='op_action'>
+						{{ vars.l_brace }}#colCond.update{{vars.r_brace}}
+						<button class='edit-toggle {{ vars.l_brace }}class{{vars.r_brace}}'>Edit</button>
+						<button class='submit-edit'>Change</button>
+						{{ vars.l_brace }}/colCond.update{{vars.r_brace}}
+						{{ vars.l_brace }}#colCond.find{{vars.r_brace}}
+						<button class='find'>Find</button>
+						{{ vars.l_brace }}/colCond.find{{vars.r_brace}}
+					</td>
+				</tr>
+				{{ vars.l_brace }}/columns{{vars.r_brace}}
+			</tbody>
+		</table>
+	</script>
+
 	<script id='create-single-tmpl' type='x-tmpl-mustache'>
 	<div id='main-op'>
 		<div id='table-div'>
@@ -192,6 +293,14 @@
 			</form>
 	</script>
 
+	<div id='template-test'>
+		{{# booger.snatch }}
+		Something
+		{{/ booger.snatch }}
+		{{# booger.grab }}
+		 New
+		{{/ booger.grab }}
+	</div>
 	<div id='kwik-login'>
 		<span>What's the password?</span>
 		<input id='pass-input' type='password' name='password'/></br>

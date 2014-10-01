@@ -147,9 +147,18 @@ else if ($json_post['op'] == 'update' && $json_post['singobatch'] == 'single') {
 else if ($json_post['op'] == 'searchSearchables') {
 
 	// response
+	/*
 	$response = array(
 		'error' => NULL,
 		'cols' => NULL
+	);
+	 */
+
+	$response = array(
+		'error' => NULL,
+		'description' => NULL,
+		'keys' => array('COLUMN_NAME', 'DATA_TYPE', 'IS_NULLABLE', 'COLUMN_DEFAULT', 'CHARACTER_MAXIMUM_LENGTH', 
+			'NUMERIC_PRECISION', 'NUMERIC_SCALE', 'FK')
 	);
 
 	// get location shiz
@@ -177,7 +186,7 @@ else if ($json_post['op'] == 'searchSearchables') {
 	// make right for jscript down below
 	foreach ($srbl as $key => $value) {
 		$col = array(
-			'name' => $key,
+			'COLUMN_NAME' => $key,
 			'value' => $value,
 			'class' => NULL
 		);
@@ -195,7 +204,7 @@ else if ($json_post['op'] == 'searchSearchables') {
 	}
 
 	$response['error'] = 0;
-	$response['cols'] = $cols;
+	$response['description'] = $cols;
 
 	// return
 	echo json_encode($response);
@@ -216,6 +225,16 @@ else if ($json_post['op'] == 'rewriteTxt') {
 
 	// send response
 	echo json_encode($response);
+	exit();
+}
+
+else if ($json_post['op'] == 'MP' && $json_post['operation'] == 'test') {
+
+	echo json_encode(array(
+		'error' => 1,
+		'error_msg' => 'Cause I felt like it'
+	));
+
 	exit();
 }
 
