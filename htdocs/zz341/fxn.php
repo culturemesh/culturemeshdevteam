@@ -21,7 +21,6 @@ else
 {
     define("DB_SERVER", "localhost");
     define("DB_USER", "culturp7");
- //   define("DB_NAME", "culturp7_ktc");
 
     if ( file_exists("../../../abcd123.php")) {
     	include "../../../abcd123.php";
