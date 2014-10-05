@@ -5,7 +5,6 @@
 
 	{{$ more_scripts }}
 	<script src='js/spin.js'></script>
-	<script src='admin/js/admin_searchmod.js'></script>
 	{{/ more_scripts }}
 	{{$ content }}
 	<script id='create-single-tmpl' type='x-tmpl-mustache'>
@@ -199,36 +198,46 @@
 		<button id='login-button'>Login</button>
 	</div>
 	<div id='activated-panel'>
-	<select id='op-select'>
-		<option>-</option>
-		<option value='create'>Create</option>
-		<option value='update'>Update</option>
-	</select>
+		<div id='top-stuff'>
+		<select id='op-select'>
+			<option>-</option>
+			<option value='create'>Create</option>
+			<option value='update'>Update</option>
+		</select>
 
-	<select id='sibat-select'>
-		<option>-</option>
-		<option value='single'>Single</option>
-		<option value='batch'>Batch</option>
-	</select>
-	<select id='table-select'>
-		<option>-<option>
-		{{# tables }}<option>{{ . }}<option>{{/ tables }}
-	</select>
-	</br>
-	<button id='commence'>Commence Operation</button>
+		<select id='sibat-select'>
+			<option>-</option>
+			<option value='single'>Single</option>
+			<option value='batch'>Batch</option>
+		</select>
+		<select id='table-select'>
+			<option>-<option>
+			{{# tables }}<option>{{ . }}<option>{{/ tables }}
+		</select>
+		</br>
+		<button id='commence'>Commence Operation</button>
+		<button id='rewrite-txt'>Rewrite Text Files</button>
+		</div>
 
 	<div id='op-panel'>
+	</div>
+	<div id='error-div'>
+		<p id='error-msg'></p>
 	</div>
 	<div id='spin'></div>
 	</div>
 	{{/ content}}
 
 	{{$ body_scripts }}
+	<script src='admin/js/admin_searchmod.js'></script>
 	<script src="admin/js/Operation.js"></script>
 	<script src='js/ssearchbar.js'></script>
 	<script src="admin/js/ModPackage.js"></script>
 	<script>
-		$('#activated-panel').hide();
+		$('#kwik-login').hide();
+		//$('#activated-panel').hide();
+
+//		$('#error-msg').text('This is text');
 
 		$('#login-button').on('click', function() {
 			
@@ -250,8 +259,48 @@
 					var result = JSON.parse(data);
 
 					if (result.error == 0) {
-						$('#activated-panel').show();
+						$('#activated-panel').show(500);
 						$('#kwik-login').hide();
+					}
+					else {
+						$('#error-msg').text('Sorry, that ain\'t the password');
+					}
+				});
+			});
+
+		$('#rewrite-txt').on('click', function() {
+			
+			var post = {
+				op : 'rewriteTxt',
+			}
+
+			// start the nifty spinner-de-thing
+			var target = document.getElementById('spin');
+			var spinner = new Spinner(opts).spin(target);
+
+
+			var lgin = new Ajax({
+				requestType: 'POST',
+				requestUrl: 'admin/admin_ops.php',
+				requestParameters: ' ',
+				data: post,
+				dataType: 'JSON',
+				sendNow: true
+				}, function(data) { 
+					
+					// stop the spinner
+					spinner.stop();
+
+					var result = JSON.parse(data);
+
+					if (result.error == 0) {
+						$('#error-msg').show();
+						$('#error-msg').text('Files rewritten');					
+						$('#error-msg').delay(1000).hide(500);
+					}
+					else {
+						$('#error-msg').text('Sorry, the files couldn\'t be rewritten');
+						$('#error-msg').delay(1000).hide(500);
 					}
 				});
 			});

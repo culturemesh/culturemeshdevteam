@@ -1462,6 +1462,11 @@ a.profile
 	float:left;
 }
 
+#error-div {
+	color:red;
+	font-size:14px;
+}
+
 /*************************/
 .team_thumb{
     width: 205px;
