@@ -21,24 +21,31 @@ class TextData {
 
 		switch ($type) {
 		case 'languages':
-			self::rewriteLanguages();
+			return self::rewriteLanguages();
 			break;
 		case 'locations':
-			self::rewriteLocations();
+			return self::rewriteLocations();
 			break;
 		// have these in case I wanna optimize
 		case 'cities': // equal to rewriteLocations
-			self::rewriteLocations();
+			return self::rewriteLocations();
 			break;
 		case 'regions':
-			self::rewriteLocations();
+			return self::rewriteLocations();
 			break;
 		case 'countries':
-			self::rewriteLocations();
+			return self::rewriteLocations();
 			break;
 		default:
-			self::rewriteLocations();
-			self::rewriteLanguages();
+			$rw = self::rewriteLocations();
+
+			// in case of error
+			if (!$rw) {
+				return $rw;
+				break;
+			}
+
+			return self::rewriteLanguages();
 			break;
 		}
 		

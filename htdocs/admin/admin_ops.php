@@ -1,8 +1,18 @@
 <?php
+
+/*
+ * @file - admin_ops.php 
+ * @error:
+ * 	- 0, no error
+ * 	- >0 , include error message
+ */
+
 //namespace Respect\Validation\Validator;
 
 require '../vendor/autoload.php';
 include_once '../zz341/fxn.php';
+
+include_once '../error_pool.php';
 
 // data files
 include_once '../data/dal_query_handler.php';
@@ -70,6 +80,7 @@ if ($json_post['op'] == 'login') {
 	}
 	else {
 		$response['error'] = 1;
+		$response['error_msg'] = 'Sorry, that password is incorrect.';
 	}
 
 	echo json_encode($response);
@@ -91,8 +102,10 @@ if ($_POST['op'] == 'getTableStructure') {
 	$response['description'] = Meta::describeTable($_POST['table'], $con);
 
 	// handle the error things
-	if ($response['description'] == false)
+	if ($response['description'] == false) {
 		$response['error'] = 1;
+		$response['error_msg'] = 'Could not get description of table';
+	}
 	else
 		$response['error'] = 0;
 
@@ -149,7 +162,9 @@ else if ($json_post['op'] == 'searchSearchables') {
 	// response
 	$response = array(
 		'error' => NULL,
-		'cols' => NULL
+		'description' => NULL,
+		'keys' => array('COLUMN_NAME', 'DATA_TYPE', 'IS_NULLABLE', 'COLUMN_DEFAULT', 'CHARACTER_MAXIMUM_LENGTH', 
+			'NUMERIC_PRECISION', 'NUMERIC_SCALE', 'FK')
 	);
 
 	// get location shiz
@@ -177,7 +192,7 @@ else if ($json_post['op'] == 'searchSearchables') {
 	// make right for jscript down below
 	foreach ($srbl as $key => $value) {
 		$col = array(
-			'name' => $key,
+			'COLUMN_NAME' => $key,
 			'value' => $value,
 			'class' => NULL
 		);
@@ -195,7 +210,7 @@ else if ($json_post['op'] == 'searchSearchables') {
 	}
 
 	$response['error'] = 0;
-	$response['cols'] = $cols;
+	$response['description'] = $cols;
 
 	// return
 	echo json_encode($response);
@@ -217,6 +232,35 @@ else if ($json_post['op'] == 'rewriteTxt') {
 	// send response
 	echo json_encode($response);
 	exit();
+}
+
+else if ($json_post['op'] == 'MP' && $json_post['operation'] == 'test') {
+
+	// create response
+	$response = array(
+		'error' => NULL,
+		'error_msg' => NULL
+	);
+
+	// ERROR POOL TEST
+	$ep = new ErrorPool();
+	$ep->addError( new CMError(
+		true,
+		'First error',
+		'First error')
+	);
+
+	$ep->checkStop($response);
+
+	$ep->addError( new CMError(
+		false,
+		'2nd error',
+		'2nd error')
+	);
+
+	$ep->checkError($response);
+
+//	exit();
 }
 
 else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single') 
