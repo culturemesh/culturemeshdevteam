@@ -1,0 +1,21 @@
+from lxml import etree
+
+# get whole thing
+print 'Parsing huge file...'
+total = etree.parse('tests/fixtures/cmdata-total.xml')
+print 'Done'
+
+root = total.getroot()
+
+# start new thing
+new_root = root
+
+print root.tag
+print new_root.tag
+
+# get database
+db = root[0]
+
+# now that we have this, we can get all the different tables
+for table in db:
+	name = table.tag

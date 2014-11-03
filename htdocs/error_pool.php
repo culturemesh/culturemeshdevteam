@@ -10,11 +10,13 @@
 class ErrorPool {
 
 	private $stack;
+	private $length;
 
 	// default constructor
 	function __construct() {
 
 		$this->stack = array();
+		$length = 0;
 	}
 
 	public function checkError($response) {
@@ -41,6 +43,9 @@ class ErrorPool {
 
 		// push error
 		array_push($this->stack, $error);
+
+		// add to length
+		$this->length += 1;
 	}
 
 	public function checkStop($response) {
@@ -61,6 +66,12 @@ class ErrorPool {
 			reset($this->stack);
 		}
 	}
+
+	public function checkLength() {
+		
+		// return length
+		return $this->length;
+	}
 }
 
 class CMError {
@@ -70,6 +81,19 @@ class CMError {
 	public $op;
 
 	function __construct($result, $msg, $operation) {
+
+		// a little firm emphasis on stuff
+		if (!is_bool($result)) {
+			throw new Exception('Expected boolean as first parameter');
+		}
+
+		if (!is_string($msg)) {
+			throw new Exception('Expected string as second parameter');
+		}
+
+		if (!is_string($operation)) {
+			throw new Exception('Expected string as third parameter');
+		}
 
 		$this->result = $result;
 		$this->msg = $msg;

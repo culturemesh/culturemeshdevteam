@@ -1,9 +1,15 @@
 {
 	"require": {
-		"twig/twig": "1.*",
 		"codeguy/upload": "*",
 		"respect/validation": "*",
-		"phpunit/phpunit": "3.7.*",
 		"mustache/mustache": "~2.7"
+	},
+
+	"require-dev": {
+		"phpunit/phpunit": "3.7.*",
+		"phpunit/php-invoker": "*",
+		"phpunit/dbunit": ">=1.2",
+		"phpunit/phpunit-selenium": ">=1.2",
+		"phpunit/phpunit-story": "*"
 	}
 }

@@ -1,0 +1,69 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="user_notifications">
+	<row>
+		<field name="id">1</field>
+		<field name="uid">1</field>
+		<field name="events_upcoming">0</field>
+		<field name="events_interested_in">1</field>
+		<field name="company_news">0</field>
+		<field name="network_activity">0</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="uid">2</field>
+		<field name="events_upcoming">0</field>
+		<field name="events_interested_in">0</field>
+		<field name="company_news">0</field>
+		<field name="network_activity">0</field>
+	</row>
+	<row>
+		<field name="id">3</field>
+		<field name="uid">3</field>
+		<field name="events_upcoming">0</field>
+		<field name="events_interested_in">0</field>
+		<field name="company_news">0</field>
+		<field name="network_activity">0</field>
+	</row>
+	<row>
+		<field name="id">4</field>
+		<field name="uid">4</field>
+		<field name="events_upcoming">0</field>
+		<field name="events_interested_in">0</field>
+		<field name="company_news">0</field>
+		<field name="network_activity">0</field>
+	</row>
+	<row>
+		<field name="id">5</field>
+		<field name="uid">5</field>
+		<field name="events_upcoming">0</field>
+		<field name="events_interested_in">0</field>
+		<field name="company_news">0</field>
+		<field name="network_activity">0</field>
+	</row>
+	<row>
+		<field name="id">6</field>
+		<field name="uid">6</field>
+		<field name="events_upcoming">0</field>
+		<field name="events_interested_in">0</field>
+		<field name="company_news">0</field>
+		<field name="network_activity">0</field>
+	</row>
+	<row>
+		<field name="id">7</field>
+		<field name="uid">7</field>
+		<field name="events_upcoming">0</field>
+		<field name="events_interested_in">0</field>
+		<field name="company_news">0</field>
+		<field name="network_activity">0</field>
+	</row>
+	<row>
+		<field name="id">9</field>
+		<field name="uid">9</field>
+		<field name="events_upcoming">0</field>
+		<field name="events_interested_in">0</field>
+		<field name="company_news">0</field>
+		<field name="network_activity">0</field>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>

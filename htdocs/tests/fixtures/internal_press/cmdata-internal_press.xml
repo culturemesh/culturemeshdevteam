@@ -1,0 +1,5 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="internal_press">
+	</table_data>
+	</database>
+</mysqldump>

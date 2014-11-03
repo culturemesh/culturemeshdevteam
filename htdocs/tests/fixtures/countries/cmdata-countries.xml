@@ -1,0 +1,2255 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="countries">
+	<row>
+		<field name="id">44444</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Andorra</field>
+		<field name="latitude">2.4901361</field>
+		<field name="longitude">63.870290</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44456</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">United Arab Emirates</field>
+		<field name="latitude">82.173324</field>
+		<field name="longitude">37.400824</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44468</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Afghanistan</field>
+		<field name="latitude">105.11866</field>
+		<field name="longitude">53.172154</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44480</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Antigua and Barbuda</field>
+		<field name="latitude">-92.62563</field>
+		<field name="longitude">26.227876</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44492</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Anguilla</field>
+		<field name="latitude">-94.55780</field>
+		<field name="longitude">27.366831</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44504</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Albania</field>
+		<field name="latitude">30.715458</field>
+		<field name="longitude">62.489791</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44516</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Armenia</field>
+		<field name="latitude">68.497325</field>
+		<field name="longitude">60.717098</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44528</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Angola</field>
+		<field name="latitude">29.921728</field>
+		<field name="longitude">-13.39786</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44540</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Antarctica</field>
+		<field name="latitude">89.99995</field>
+		<field name="longitude">-105.5154</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44552</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Argentina</field>
+		<field name="latitude">-90.38332</field>
+		<field name="longitude">-49.31193</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44564</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">American Samoa</field>
+		<field name="latitude">-254.9620</field>
+		<field name="longitude">-18.24093</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44576</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Austria</field>
+		<field name="latitude">21.93068</field>
+		<field name="longitude">72.206070</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44588</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Australia</field>
+		<field name="latitude">210.09478</field>
+		<field name="longitude">-31.88479</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44600</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Aruba</field>
+		<field name="latitude">-104.8979</field>
+		<field name="longitude">18.829571</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44612</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">&#195;&#8230;land</field>
+		<field name="latitude">30.670709</field>
+		<field name="longitude">90.442236</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44624</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Azerbaijan</field>
+		<field name="latitude">72.757139</field>
+		<field name="longitude">61.100216</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44636</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Bosnia and Herzegovina</field>
+		<field name="latitude">27.481695</field>
+		<field name="longitude">66.512249</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44648</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Barbados</field>
+		<field name="latitude">-89.24483</field>
+		<field name="longitude">19.847179</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44660</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Bangladesh</field>
+		<field name="latitude">136.68783</field>
+		<field name="longitude">37.003612</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44672</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Belgium</field>
+		<field name="latitude">7.677333</field>
+		<field name="longitude">76.252249</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44684</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Burkina Faso</field>
+		<field name="latitude">-0.354063</field>
+		<field name="longitude">19.783147</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44696</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Bulgaria</field>
+		<field name="latitude">39.79775</field>
+		<field name="longitude">64.838682</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44708</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Bahrain</field>
+		<field name="latitude">75.891541</field>
+		<field name="longitude">39.181014</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44720</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Burundi</field>
+		<field name="latitude">45.344259</field>
+		<field name="longitude">-4.542979</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44732</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Benin</field>
+		<field name="latitude">4.2389885</field>
+		<field name="longitude">15.531221</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44744</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Saint Barth&#195;&#169;lemy</field>
+		<field name="latitude">-94.22593</field>
+		<field name="longitude">26.867900</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44756</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Bermuda</field>
+		<field name="latitude">-97.10001</field>
+		<field name="longitude">48.517152</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44768</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Brunei</field>
+		<field name="latitude">172.39516</field>
+		<field name="longitude">7.0487085</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44780</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Bolivia</field>
+		<field name="latitude">-92.27847</field>
+		<field name="longitude">-21.12863</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44792</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Bonaire</field>
+		<field name="latitude">-102.4005</field>
+		<field name="longitude">18.313109</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44804</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Brazil</field>
+		<field name="latitude">-69.38576</field>
+		<field name="longitude">-11.61047</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44816</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Bahamas</field>
+		<field name="latitude">-113.9218</field>
+		<field name="longitude">38.345614</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44828</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Bhutan</field>
+		<field name="latitude">136.50505</field>
+		<field name="longitude">41.677598</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44840</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Bouvet Island</field>
+		<field name="latitude">5.1557255</field>
+		<field name="longitude">-81.63151</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44852</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Botswana</field>
+		<field name="latitude">39.360548</field>
+		<field name="longitude">-31.23443</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44864</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Belarus</field>
+		<field name="latitude">44.359249</field>
+		<field name="longitude">81.794014</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44876</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Belize</field>
+		<field name="latitude">-132.3893</field>
+		<field name="longitude">26.441207</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44888</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Canada</field>
+		<field name="latitude">-123.6362</field>
+		<field name="longitude">103.94861</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44900</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Cocos [Keeling] Islands</field>
+		<field name="latitude">145.33796</field>
+		<field name="longitude">-18.17682</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44912</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Democratic Republic of the Congo</field>
+		<field name="latitude">37.407984</field>
+		<field name="longitude">-1.341739</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44924</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Central African Republic</field>
+		<field name="latitude">34.673469</field>
+		<field name="longitude">12.117826</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44936</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Republic of the Congo</field>
+		<field name="latitude">24.252343</field>
+		<field name="longitude">1.1894705</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44948</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Switzerland</field>
+		<field name="latitude">13.470208</field>
+		<field name="longitude">70.718179</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44960</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Ivory Coast</field>
+		<field name="latitude">-6.794548</field>
+		<field name="longitude">12.915175</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44972</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Cook Islands</field>
+		<field name="latitude">-237.8589</field>
+		<field name="longitude">-20.99519</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44984</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Chile</field>
+		<field name="latitude">-106.8104</field>
+		<field name="longitude">-45.46572</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">44996</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Cameroon</field>
+		<field name="latitude">20.439497</field>
+		<field name="longitude">13.90433</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45008</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">China</field>
+		<field name="latitude">171.55275</field>
+		<field name="longitude">61.448568</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45020</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Colombia</field>
+		<field name="latitude">-107.7338</field>
+		<field name="longitude">11.267567</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45032</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Costa Rica</field>
+		<field name="latitude">-125.5313</field>
+		<field name="longitude">15.233306</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45044</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Cuba</field>
+		<field name="latitude">-116.6104</field>
+		<field name="longitude">33.140083</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45056</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Cape Verde</field>
+		<field name="latitude">-35.34881</field>
+		<field name="longitude">24.601189</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45068</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Curacao</field>
+		<field name="latitude">-103.3125</field>
+		<field name="longitude">18.402044</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45080</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Christmas Island</field>
+		<field name="latitude">158.47923</field>
+		<field name="longitude">-15.69759</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45092</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Cyprus</field>
+		<field name="latitude">50.734457</field>
+		<field name="longitude">53.018169</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45104</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Czechia</field>
+		<field name="latitude">24.908208</field>
+		<field name="longitude">75.330344</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45116</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Germany</field>
+		<field name="latitude">17.972708</field>
+		<field name="longitude">78.693525</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45128</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Djibouti</field>
+		<field name="latitude">64.303709</field>
+		<field name="longitude">18.161791</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45140</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Denmark</field>
+		<field name="latitude">19.196639</field>
+		<field name="longitude">85.029611</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45152</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Dominica</field>
+		<field name="latitude">-91.98620</field>
+		<field name="longitude">23.232654</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45164</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Dominican Republic</field>
+		<field name="latitude">-104.3217</field>
+		<field name="longitude">28.701438</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45176</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Algeria</field>
+		<field name="latitude">7.642614</field>
+		<field name="longitude">46.573737</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45188</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Ecuador</field>
+		<field name="latitude">-115.7238</field>
+		<field name="longitude">-1.060391</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45200</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Estonia</field>
+		<field name="latitude">39.128764</field>
+		<field name="longitude">88.434320</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45212</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Egypt</field>
+		<field name="latitude">48.143916</field>
+		<field name="longitude">42.530028</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45224</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Western Sahara</field>
+		<field name="latitude">-17.22186</field>
+		<field name="longitude">38.056753</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45236</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Eritrea</field>
+		<field name="latitude">61.354029</field>
+		<field name="longitude">24.182861</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45248</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Spain</field>
+		<field name="latitude">-0.33</field>
+		<field name="longitude">61.791887</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45260</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Ethiopia</field>
+		<field name="latitude">64.486148</field>
+		<field name="longitude">16.594961</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45272</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Finland</field>
+		<field name="latitude">41.859416</field>
+		<field name="longitude">100.00044</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45284</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Fiji</field>
+		<field name="latitude">-89.85977</field>
+		<field name="longitude">-22.81809</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45296</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Falkland Islands</field>
+		<field name="latitude">-88.38508</field>
+		<field name="longitude">-77.42090</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45308</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Micronesia</field>
+		<field name="latitude">231.70541</field>
+		<field name="longitude">10.602185</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45320</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Faroe Islands</field>
+		<field name="latitude">-10.12858</field>
+		<field name="longitude">93.098220</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45332</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">France</field>
+		<field name="latitude">6.990445</field>
+		<field name="longitude">71.778595</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45344</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Gabon</field>
+		<field name="latitude">18.850082</field>
+		<field name="longitude">0.333209</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45356</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">United Kingdom</field>
+		<field name="latitude">-2.552777</field>
+		<field name="longitude">84.313345</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45368</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Grenada</field>
+		<field name="latitude">-92.47794</field>
+		<field name="longitude">18.311730</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45380</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Georgia</field>
+		<field name="latitude">66.731040</field>
+		<field name="longitude">64.113096</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45392</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">French Guiana</field>
+		<field name="latitude">-78.88520</field>
+		<field name="longitude">6.840043</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45404</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Guernsey</field>
+		<field name="latitude">-3.494312</field>
+		<field name="longitude">74.435548</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45416</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Ghana</field>
+		<field name="latitude">-0.435929</field>
+		<field name="longitude">13.541662</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45428</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Gibraltar</field>
+		<field name="latitude">-8.021415</field>
+		<field name="longitude">54.209954</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45440</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Greenland</field>
+		<field name="latitude">-47.83333</field>
+		<field name="longitude">113.51605</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45452</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Gambia</field>
+		<field name="latitude">-22.21033</field>
+		<field name="longitude">20.358697</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45464</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Guinea</field>
+		<field name="latitude">-15.10438</field>
+		<field name="longitude">16.272996</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45476</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Guadeloupe</field>
+		<field name="latitude">-91.77238</field>
+		<field name="longitude">24.450630</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45488</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Equatorial Guinea</field>
+		<field name="latitude">16.009156</field>
+		<field name="longitude">2.807419</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45500</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Greece</field>
+		<field name="latitude">37.933884</field>
+		<field name="longitude">59.149533</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45512</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">South Georgia and the South Sandwich Islands</field>
+		<field name="latitude">-45.23991</field>
+		<field name="longitude">-83.71009</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45524</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Guatemala</field>
+		<field name="latitude">-134.3413</field>
+		<field name="longitude">24.683871</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45536</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Guam</field>
+		<field name="latitude">217.26360</field>
+		<field name="longitude">20.272638</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45548</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Guinea-Bissau</field>
+		<field name="latitude">-21.99528</field>
+		<field name="longitude">18.142921</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45560</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Guyana</field>
+		<field name="latitude">-87.17263</field>
+		<field name="longitude">9.145107</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45572</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Hong Kong</field>
+		<field name="latitude">171.35362</field>
+		<field name="longitude">33.636403</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45584</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Heard Island and McDonald Islands</field>
+		<field name="latitude">110.15741</field>
+		<field name="longitude">-79.50541</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45596</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Honduras</field>
+		<field name="latitude">-127.8307</field>
+		<field name="longitude">23.001461</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45608</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Croatia</field>
+		<field name="latitude">26.174</field>
+		<field name="longitude">67.756695</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45620</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Haiti</field>
+		<field name="latitude">-108.8526</field>
+		<field name="longitude">29.098336</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45632</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Hungary</field>
+		<field name="latitude">30.961944</field>
+		<field name="longitude">71.457472</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45644</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Indonesia</field>
+		<field name="latitude">188.52647</field>
+		<field name="longitude">0.4334865</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45656</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Ireland</field>
+		<field name="latitude">-11.24166</field>
+		<field name="longitude">81.113709</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45668</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Israel</field>
+		<field name="latitude">53.011943</field>
+		<field name="longitude">48.088456</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45680</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Isle of Man</field>
+		<field name="latitude">-6.710861</field>
+		<field name="longitude">81.447682</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45692</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">India</field>
+		<field name="latitude">131.49665</field>
+		<field name="longitude">38.877792</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45704</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">British Indian Ocean Territory</field>
+		<field name="latitude">108.12315</field>
+		<field name="longitude">-8.987347</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45716</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Iraq</field>
+		<field name="latitude">67.973859</field>
+		<field name="longitude">51.912751</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45728</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Iran</field>
+		<field name="latitude">85.341110</field>
+		<field name="longitude">52.309263</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45740</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Iceland</field>
+		<field name="latitude">-25.76907</field>
+		<field name="longitude">98.231256</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45752</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Italy</field>
+		<field name="latitude">21.820889</field>
+		<field name="longitude">65.421585</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45764</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Jersey</field>
+		<field name="latitude">-3.152097</field>
+		<field name="longitude">73.849974</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45776</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Jamaica</field>
+		<field name="latitude">-115.3636</field>
+		<field name="longitude">27.378753</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45788</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Jordan</field>
+		<field name="latitude">56.781166</field>
+		<field name="longitude">47.960612</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45800</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Japan</field>
+		<field name="latitude">207.29015</field>
+		<field name="longitude">57.647876</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45812</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Kenya</field>
+		<field name="latitude">58.853507</field>
+		<field name="longitude">2.6809145</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45824</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Kyrgyzstan</field>
+		<field name="latitude">114.92147</field>
+		<field name="longitude">62.82464</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45836</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Cambodia</field>
+		<field name="latitude">158.79772</field>
+		<field name="longitude">19.890958</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45848</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Kiribati</field>
+		<field name="latitude">-65.43727</field>
+		<field name="longitude">-0.998949</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45860</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Comoros</field>
+		<field name="latitude">66.146118</field>
+		<field name="longitude">-17.55630</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45872</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Saint Kitts and Nevis</field>
+		<field name="latitude">-93.97804</field>
+		<field name="longitude">25.967789</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45884</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">North Korea</field>
+		<field name="latitude">192.83280</field>
+		<field name="longitude">61.84272</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45896</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">South Korea</field>
+		<field name="latitude">192.52822</field>
+		<field name="longitude">55.207918</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45908</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Kuwait</field>
+		<field name="latitude">71.709251</field>
+		<field name="longitude">44.358250</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45920</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Cayman Islands</field>
+		<field name="latitude">-120.4436</field>
+		<field name="longitude">29.393214</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45932</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Kazakhstan</field>
+		<field name="latitude">110.55859</field>
+		<field name="longitude">75.919361</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45944</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Laos</field>
+		<field name="latitude">157.74355</field>
+		<field name="longitude">29.455402</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45956</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Lebanon</field>
+		<field name="latitude">54.196332</field>
+		<field name="longitude">51.218348</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45968</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Saint Lucia</field>
+		<field name="latitude">-91.41127</field>
+		<field name="longitude">20.955634</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45980</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Liechtenstein</field>
+		<field name="latitude">14.371097</field>
+		<field name="longitude">70.80146</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">45992</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Sri Lanka</field>
+		<field name="latitude">121.70773</field>
+		<field name="longitude">12.789777</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46004</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Liberia</field>
+		<field name="latitude">-13.11115</field>
+		<field name="longitude">10.728319</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46016</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Lesotho</field>
+		<field name="latitude">42.980295</field>
+		<field name="longitude">-43.90654</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46028</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Lithuania</field>
+		<field name="latitude">37.342708</field>
+		<field name="longitude">83.397571</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46040</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Luxembourg</field>
+		<field name="latitude">9.39575</field>
+		<field name="longitude">74.908235</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46052</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Latvia</field>
+		<field name="latitude">38.728305</field>
+		<field name="longitude">85.916736</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46064</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Libya</field>
+		<field name="latitude">29.844122</field>
+		<field name="longitude">42.923021</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46076</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Morocco</field>
+		<field name="latitude">-7.576043</field>
+		<field name="longitude">49.753554</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46088</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Monaco</field>
+		<field name="latitude">11.144420</field>
+		<field name="longitude">65.614331</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46100</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Moldova</field>
+		<field name="latitude">43.444917</field>
+		<field name="longitude">71.224609</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46112</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Montenegro</field>
+		<field name="latitude">29.589486</field>
+		<field name="longitude">64.49522</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46124</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Saint Martin</field>
+		<field name="latitude">-94.58937</field>
+		<field name="longitude">27.156469</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46136</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Madagascar</field>
+		<field name="latitude">72.096218</field>
+		<field name="longitude">-24.74990</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46148</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Marshall Islands</field>
+		<field name="latitude">254.69426</field>
+		<field name="longitude">17.413819</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46160</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Macedonia</field>
+		<field name="latitude">33.270486</field>
+		<field name="longitude">62.791902</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46172</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Mali</field>
+		<field name="latitude">-1.876339</field>
+		<field name="longitude">30.079758</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46184</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Myanmar [Burma]</field>
+		<field name="latitude">147.27142</field>
+		<field name="longitude">33.435540</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46196</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Mongolia</field>
+		<field name="latitude">163.79914</field>
+		<field name="longitude">72.93807</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46208</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Macao</field>
+		<field name="latitude">170.33030</field>
+		<field name="longitude">33.312528</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46220</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Northern Mariana Islands</field>
+		<field name="latitude">218.50841</field>
+		<field name="longitude">27.608555</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46232</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Martinique</field>
+		<field name="latitude">-91.43056</field>
+		<field name="longitude">22.07495</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46244</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Mauritania</field>
+		<field name="latitude">-13.36093</field>
+		<field name="longitude">34.655846</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46256</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Montserrat</field>
+		<field name="latitude">-93.26479</field>
+		<field name="longitude">25.161444</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46268</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Malta</field>
+		<field name="latitude">21.669827</field>
+		<field name="longitude">53.984250</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46280</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Mauritius</field>
+		<field name="latitude">91.756538</field>
+		<field name="longitude">-20.58211</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46292</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Maldives</field>
+		<field name="latitude">109.98388</field>
+		<field name="longitude">6.752014</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46304</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Malawi</field>
+		<field name="latitude">52.253796</field>
+		<field name="longitude">-17.93004</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46316</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Mexico</field>
+		<field name="latitude">-145.9303</field>
+		<field name="longitude">39.983192</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46328</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Malaysia</field>
+		<field name="latitude">169.08922</field>
+		<field name="longitude">7.791028</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46340</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Mozambique</field>
+		<field name="latitude">55.951654</field>
+		<field name="longitude">-23.90622</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46352</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Namibia</field>
+		<field name="latitude">31.114516</field>
+		<field name="longitude">-31.44560</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46364</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">New Caledonia</field>
+		<field name="latitude">249.91146</field>
+		<field name="longitude">-30.89877</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46376</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Niger</field>
+		<field name="latitude">16.078768</field>
+		<field name="longitude">29.373513</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46388</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Norfolk Island</field>
+		<field name="latitude">251.95545</field>
+		<field name="longitude">-43.52670</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46400</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Nigeria</field>
+		<field name="latitude">16.014289</field>
+		<field name="longitude">16.030579</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46412</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Nicaragua</field>
+		<field name="latitude">-126.5834</field>
+		<field name="longitude">20.379680</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46424</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Netherlands</field>
+		<field name="latitude">8.909222</field>
+		<field name="longitude">78.889155</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46436</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Norway</field>
+		<field name="latitude">33.403136</field>
+		<field name="longitude">100.17706</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46448</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Nepal</field>
+		<field name="latitude">128.22747</field>
+		<field name="longitude">43.611751</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46460</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Nauru</field>
+		<field name="latitude">250.39479</field>
+		<field name="longitude">-0.780472</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46472</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Niue</field>
+		<field name="latitude">-254.7506</field>
+		<field name="longitude">-28.52716</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46484</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">New Zealand</field>
+		<field name="latitude">-96.64225</field>
+		<field name="longitude">-58.03268</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46496</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Oman</field>
+		<field name="latitude">85.777582</field>
+		<field name="longitude">34.710847</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46508</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Panama</field>
+		<field name="latitude">-118.6998</field>
+		<field name="longitude">13.236467</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46520</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Peru</field>
+		<field name="latitude">-109.3413</field>
+		<field name="longitude">-9.187841</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46532</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">French Polynesia</field>
+		<field name="latitude">-211.3684</field>
+		<field name="longitude">-21.73035</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46544</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Papua New Guinea</field>
+		<field name="latitude">226.38487</field>
+		<field name="longitude">-7.147569</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46556</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Philippines</field>
+		<field name="latitude">185.06730</field>
+		<field name="longitude">23.442264</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46568</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Pakistan</field>
+		<field name="latitude">108.28022</field>
+		<field name="longitude">48.990361</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46580</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Poland</field>
+		<field name="latitude">31.212249</field>
+		<field name="longitude">79.342319</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46592</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Saint Pierre and Miquelon</field>
+		<field name="latitude">-84.46332</field>
+		<field name="longitude">70.539306</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46604</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Pitcairn Islands</field>
+		<field name="latitude">-188.9460</field>
+		<field name="longitude">-36.65214</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46616</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Puerto Rico</field>
+		<field name="latitude">-99.2141</field>
+		<field name="longitude">27.483368</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46628</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Palestine</field>
+		<field name="latitude">52.681625</field>
+		<field name="longitude">48.154657</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46640</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Portugal</field>
+		<field name="latitude">-10.93066</field>
+		<field name="longitude">60.626263</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46652</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Palau</field>
+		<field name="latitude">200.28201</field>
+		<field name="longitude">9.87146</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46664</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Paraguay</field>
+		<field name="latitude">-85.58289</field>
+		<field name="longitude">-33.09841</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46676</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Qatar</field>
+		<field name="latitude">77.015249</field>
+		<field name="longitude">38.396194</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46688</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">R&#195;&#169;union</field>
+		<field name="latitude">83.454582</field>
+		<field name="longitude">-31.54296</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46700</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Romania</field>
+		<field name="latitude">39.826041</field>
+		<field name="longitude">70.080597</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46712</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Serbia</field>
+		<field name="latitude">32.413507</field>
+		<field name="longitude">67.297496</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46724</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Russia</field>
+		<field name="latitude">-159.425</field>
+		<field name="longitude">102.45179</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46736</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Rwanda</field>
+		<field name="latitude">45.324355</field>
+		<field name="longitude">-2.473820</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46748</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Saudi Arabia</field>
+		<field name="latitude">72.914430</field>
+		<field name="longitude">39.965458</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46760</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Solomon Islands</field>
+		<field name="latitude">244.73516</field>
+		<field name="longitude">-12.51488</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46772</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Seychelles</field>
+		<field name="latitude">79.381891</field>
+		<field name="longitude">-9.160650</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46784</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Sudan</field>
+		<field name="latitude">49.521385</field>
+		<field name="longitude">26.574580</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46796</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Sweden</field>
+		<field name="latitude">29.715639</field>
+		<field name="longitude">96.731056</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46808</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Singapore</field>
+		<field name="latitude">155.82660</field>
+		<field name="longitude">2.100556</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46820</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Saint Helena</field>
+		<field name="latitude">-12.84936</field>
+		<field name="longitude">-15.89758</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46832</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Slovenia</field>
+		<field name="latitude">23.257541</field>
+		<field name="longitude">69.584487</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46844</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Svalbard and Jan Mayen</field>
+		<field name="latitude">42.137028</field>
+		<field name="longitude">120.37223</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46856</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Slovakia</field>
+		<field name="latitude">30.994319</field>
+		<field name="longitude">73.467223</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46868</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Sierra Leone</field>
+		<field name="latitude">-16.93805</field>
+		<field name="longitude">13.464805</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46880</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">San Marino</field>
+		<field name="latitude">18.718301</field>
+		<field name="longitude">65.939091</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46892</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Senegal</field>
+		<field name="latitude">-20.12350</field>
+		<field name="longitude">22.845270</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46904</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Somalia</field>
+		<field name="latitude">71.905933</field>
+		<field name="longitude">11.141732</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46916</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Suriname</field>
+		<field name="latitude">-83.02077</field>
+		<field name="longitude">6.9201185</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46928</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">South Sudan</field>
+		<field name="latitude">48.010688</field>
+		<field name="longitude">13.965845</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46940</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">S&#195;&#163;o Tom&#195;&#169; and Pr&#195;&#173;ncipe</field>
+		<field name="latitude">10.701459</field>
+		<field name="longitude">1.713706</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46952</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">El Salvador</field>
+		<field name="latitude">-132.7564</field>
+		<field name="longitude">21.019406</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46964</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Sint Maarten</field>
+		<field name="latitude">-94.58501</field>
+		<field name="longitude">27.076094</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46976</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Syria</field>
+		<field name="latitude">60.24864</field>
+		<field name="longitude">53.474470</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">46988</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Swaziland</field>
+		<field name="latitude">47.534313</field>
+		<field name="longitude">-39.37819</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47000</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Turks and Caicos Islands</field>
+		<field name="latitude">-107.3655</field>
+		<field name="longitude">32.673191</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47012</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Chad</field>
+		<field name="latitude">30.739398</field>
+		<field name="longitude">27.170903</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47024</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">French Southern Territories</field>
+		<field name="latitude">102.68393</field>
+		<field name="longitude">-62.65831</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47036</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Togo</field>
+		<field name="latitude">1.733031</field>
+		<field name="longitude">14.191185</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47048</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Thailand</field>
+		<field name="latitude">154.31221</field>
+		<field name="longitude">23.268194</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47060</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Tajikistan</field>
+		<field name="latitude">108.83079</field>
+		<field name="longitude">59.379320</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47072</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Tokelau</field>
+		<field name="latitude">-257.4615</field>
+		<field name="longitude">-13.24416</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47084</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">East Timor</field>
+		<field name="latitude">189.33164</field>
+		<field name="longitude">-12.86764</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47096</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Turkmenistan</field>
+		<field name="latitude">92.905025</field>
+		<field name="longitude">60.366096</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47108</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Tunisia</field>
+		<field name="latitude">15.360694</field>
+		<field name="longitude">52.664123</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47120</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Tonga</field>
+		<field name="latitude">-261.7487</field>
+		<field name="longitude">-26.29051</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47132</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Turkey</field>
+		<field name="latitude">57.669249</field>
+		<field name="longitude">60.015322</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47144</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Trinidad and Tobago</field>
+		<field name="latitude">-91.47981</field>
+		<field name="longitude">16.356394</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47156</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Tuvalu</field>
+		<field name="latitude">267.89571</field>
+		<field name="longitude">-11.04255</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47168</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Taiwan</field>
+		<field name="latitude">181.76778</field>
+		<field name="longitude">36.249153</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47180</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Tanzania</field>
+		<field name="latitude">55.106806</field>
+		<field name="longitude">-6.863584</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47192</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Ukraine</field>
+		<field name="latitude">51.271834</field>
+		<field name="longitude">74.564569</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47204</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Uganda</field>
+		<field name="latitude">49.822675</field>
+		<field name="longitude">3.472402</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47216</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">U.S. Minor Outlying Islands</field>
+		<field name="latitude">77.958511</field>
+		<field name="longitude">28.025311</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47228</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">United States</field>
+		<field name="latitude">-129.3214</field>
+		<field name="longitude">61.660733</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47240</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Uruguay</field>
+		<field name="latitude">-82.29529</field>
+		<field name="longitude">-47.57263</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47252</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Uzbekistan</field>
+		<field name="latitude">101.13059</field>
+		<field name="longitude">64.167223</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47264</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Vatican City</field>
+		<field name="latitude">18.681228</field>
+		<field name="longitude">62.857578</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47276</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Saint Vincent and the Grenadines</field>
+		<field name="latitude">-91.84433</field>
+		<field name="longitude">19.669826</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47288</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Venezuela</field>
+		<field name="latitude">-96.48081</field>
+		<field name="longitude">12.515058</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47300</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">British Virgin Islands</field>
+		<field name="latitude">-96.62644</field>
+		<field name="longitude">27.952211</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47312</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">U.S. Virgin Islands</field>
+		<field name="latitude">-97.08429</field>
+		<field name="longitude">27.232609</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47324</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Vietnam</field>
+		<field name="latitude">160.53875</field>
+		<field name="longitude">27.668639</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47336</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Vanuatu</field>
+		<field name="latitude">253.16727</field>
+		<field name="longitude">-23.19791</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47348</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Wallis and Futuna</field>
+		<field name="latitude">-265.2541</field>
+		<field name="longitude">-20.37403</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47360</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Samoa</field>
+		<field name="latitude">-257.8150</field>
+		<field name="longitude">-20.45267</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47372</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Kosovo</field>
+		<field name="latitude">31.792091</field>
+		<field name="longitude">64.196434</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47384</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Yemen</field>
+		<field name="latitude">75.796808</field>
+		<field name="longitude">25.055544</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47396</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Mayotte</field>
+		<field name="latitude">67.81193</field>
+		<field name="longitude">-19.14895</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47408</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">South Africa</field>
+		<field name="latitude">41.124983</field>
+		<field name="longitude">-39.54652</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47420</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Zambia</field>
+		<field name="latitude">44.705389</field>
+		<field name="longitude">-17.26409</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">47432</field>
+		<field name="iso_a2" xsi:nil="true"/>
+		<field name="name">Zimbabwe</field>
+		<field name="latitude">45.674819</field>
+		<field name="longitude">-26.81770</field>
+		<field name="population">1</field>
+		<field name="feature_code" xsi:nil="true"/>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>

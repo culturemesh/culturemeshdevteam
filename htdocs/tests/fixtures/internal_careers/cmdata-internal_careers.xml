@@ -1,0 +1,11 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="internal_careers">
+	<row>
+		<field name="id">2</field>
+		<field name="job_title">Marketer</field>
+		<field name="job_description">Help spread CultureMesh around the world!</field>
+		<field name="date_posted">1401892083</field>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>

@@ -1,0 +1,17 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="event_registration">
+	<row>
+		<field name="id_guest">3</field>
+		<field name="id_event">28</field>
+		<field name="date_registered">2014-09-12 18:07:52</field>
+		<field name="job" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id_guest">63</field>
+		<field name="id_event">20</field>
+		<field name="date_registered">2014-08-12 05:04:46</field>
+		<field name="job" xsi:nil="true"/>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>
