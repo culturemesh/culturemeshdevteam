@@ -1,7 +1,7 @@
 <?php
 namespace dal;
 
-class StubStatement extends \mysqli_stmt{
+class StubStatement extends \PDOStatement {//\mysqli_stmt{
 
 	protected $query;
 
@@ -36,6 +36,10 @@ class StubStatement extends \mysqli_stmt{
 		}
 
 		$this->query = $query;
+		return $this->query;
+	}
+
+	public function bindParam() {
 		return $this->query;
 	}
 

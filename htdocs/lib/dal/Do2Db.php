@@ -41,7 +41,8 @@ class Do2Db {
 	private function prepareArgs($scheme) {
 
 		$args = array();
-		array_push($args, $scheme['param_types']);
+		// deprecate for pdo
+		//array_push($args, $scheme['param_types']);
 		$params = $scheme['params'];
 
 		foreach ($params as $param) {
@@ -69,7 +70,7 @@ class Do2Db {
 		if ($scheme['returning_list'] == True)
 			return $this->fillList($scheme, $result);
 		else
-			return $this->fillObj($scheme, $row = $result->fetch_assoc());
+			return $this->fillObj($scheme, $row = $result->fetch(\PDO::FETCH_ASSOC));
 	}
 
 	/**
@@ -89,10 +90,16 @@ class Do2Db {
 		$list = new dobj\DObjList();
 
 		// loop through stuff
+		foreach ($result->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+			$dobj = $this->fillObj($scheme, $row);
+			$list->dInsert($dobj);
+		}
+		/*
 		while ($row = $result->fetch_assoc()) {
 			$dobj = $this->fillObj($scheme, $row);
 			$list->dInsert($dobj);
 		}
+		 */
 
 		return $list;
 	}

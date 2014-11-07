@@ -29,9 +29,11 @@ class User extends DObj {
 
 	}
 
+	/*
 	public static function createFromDataRow($row) {
 
 	}
+	 */
 
 	/*
 	 * Accessors and Mutators

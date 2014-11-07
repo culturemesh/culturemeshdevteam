@@ -93,10 +93,10 @@ final class Environment {
 		}
 
 		include "../localdbconn.php";
-		include "../../localdbconn.php";
+		//include "../../localdbconn.php";
 		
 		var_dump($DB_NAME);
-
+		var_dump($DB_SERVER);
 
 		$this->db_name = $DB_NAME;
 		$this->db_pass = $DB_PASS;
@@ -194,8 +194,7 @@ final class Environment {
 
 		if (self::$connection == NULL) {
 			//self::$connection = new mysqli($this->db_server,$this->db_user,$this->db_pass,$this->db_name);
-			//
-			self::$connection = new PDO("mysql: host={$this->db_server};dbname={$this->db_name};charset=utf-8", $this->db_user, $this->db_pass);
+			self::$connection = new PDO("mysql:host={$this->db_server};dbname={$this->db_name};", $this->db_user, $this->db_pass);
 		}
 
 		return self::$connection;

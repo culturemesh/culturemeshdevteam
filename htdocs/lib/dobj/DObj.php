@@ -10,7 +10,18 @@ abstract class DObj {
 	}
 
 	public abstract static function createFromId($id);
-	public abstract static function createFromDataRow($row);
+	public static function createFromDataRow($row) {
+
+		$keys = array_keys($row);
+		$class = get_called_class();
+		$dobj = new $class();
+
+		foreach ($keys as $key) {
+			$dobj->$key = $row[$key];
+		}
+
+		return $dobj;
+	}
 
 	/*
 	 * JS style accessors and mutators
