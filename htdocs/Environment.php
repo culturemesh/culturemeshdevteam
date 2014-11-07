@@ -85,6 +85,8 @@ final class Environment {
 				return false;
 			}
 
+			include "../../../abcd123.php";
+
 			$this->db_name = $DB_NAME;
 			$this->db_pass = $DB_PASS;
 
