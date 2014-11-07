@@ -90,6 +90,11 @@ class EnvironmentTest extends PHPUnit_Framework_TestCase
 		$foo = new Foo();
 		$this->assertInstanceOf('Foo', $foo);
 	}
+
+	public function testGetEnvironment() {
+
+		$this->assertEquals($this->ev, \Environment::getEnvironment());
+	}
 }
 
 ?>

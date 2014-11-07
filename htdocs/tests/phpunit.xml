@@ -16,5 +16,8 @@
 		<testsuite name='db'>
 			<directory>db</directory>
 		</testsuite>
+		<testsuite name='dal'>
+			<directory>lib/dal</directory>
+		</testsuite>
 	</testsuites>
 </phpunit>

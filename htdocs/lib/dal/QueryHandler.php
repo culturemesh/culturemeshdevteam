@@ -37,7 +37,7 @@ class QueryHandler
 	}
 
 	public static function getTestDBConnection() {
-		return new mysqli("69.195.79.120", "culturp7", 'IanTheMan2014!', 'culturp7_rehearsal');
+//		return new mysqli("69.195.79.120", "culturp7", 'IanTheMan2014!', 'culturp7_rehearsal');
 	}
 
 	// return an array of assoc_arrays

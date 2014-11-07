@@ -41,6 +41,10 @@ abstract class DObj {
 		return $this->$name;
 	}
 
+	public function &getReference($name) {
+		return $this->$name;
+	}
+
 	public function __set($name, $arg) {
 
 		if (method_exists($this, $name)) {

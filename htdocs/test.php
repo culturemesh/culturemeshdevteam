@@ -69,7 +69,9 @@ $storage = new \Upload\Storage\FileSystem('/var/www/');
 var_dump($storage);
  */
 
-echo __DIR__;
+//echo __DIR__;
+//throw new Exception('test');
+echo 'something else';
 ?>
 	</body>
 </html>

@@ -32,6 +32,7 @@ class User extends DObj {
 	public static function createFromDataRow($row) {
 
 	}
+
 	/*
 	 * Accessors and Mutators
 	 *
@@ -291,6 +292,18 @@ class User extends DObj {
 		$this->img_link = $value;
 
 		return true;
+	}
+
+	/**
+	 * DATABASE METHODS
+	 *
+	 */
+	public static function testQuery($id, $dal, $do2db) {
+
+		$user = new User();
+		$user->id = 1;
+
+		return $do2db->execute($dal, $user, 'getUserTest');
 	}
 }
 

@@ -23,29 +23,39 @@ final class Environment {
 	private $db_pass;
 	private $db_name;
 
+	// BIGGUMS
+	private static $environment = NULL;
+	private static $connection = NULL;
+
 	public function __construct() {
 
 		if( !$this::includeEnvFiles() ) {
-			return False;
-			exit;
+			throw new Exception('Could not find environment files');
 		}
 
 		// setup autoload
 		$this::setupAutoload();
 
-		global $DB_NAME, $DB_PASS, $DB_SERVER, $DB_USER;
 
-		$this->db_name = $DB_NAME;
-		$this->db_pass = $DB_PASS;
+		/*
+		if (file_exists('../localdbconn.php')) {
+			var_dump('THING EXISTS');
+		}
+		 */
 
-		if (!isset( $this->db_server))
-			$this->db_server = $DB_SERVER;
-		if (!isset( $this->db_user ))
-			$this->db_user = $DB_USER;
+		/*
+		var_dump($DB_NAME);
+		var_dump($DB_PASS);
+		var_dump($DB_SERVER);
+		var_dump($DB_USER);
+		 */
+
 
 		$this->img_dir;
 		$this->blank_img;
-		$this->template_dir = Environment::$site_root.'templates/';
+		$this->template_dir = Environment::$site_root.DIRECTORY_SEPARATOR.'templates';
+
+		self::$environment = $this;
 	}
 
 	public function __get($name) {
@@ -62,10 +72,46 @@ final class Environment {
 	}
 
 	private function includeEnvFiles() {
+		if (!file_exists('../localdbconn.php')
+			&& !file_exists('../../localdbconn.php'))
+		{
+			$this->db_server = "localhost";
+			$this->db_user = "culturp7";
 
+		    	// other shiz
+			if ( !file_exists("../../../abcd123.php") 
+				&& !file_exists("../../../../abcd123.php"))
+			{
+				return false;
+			}
+
+			$this->db_name = $DB_NAME;
+			$this->db_pass = $DB_PASS;
+
+			// leave
+			return True;
+		}
+
+		include "../localdbconn.php";
+		include "../../localdbconn.php";
+		
+		var_dump($DB_NAME);
+
+
+		$this->db_name = $DB_NAME;
+		$this->db_pass = $DB_PASS;
+		$this->db_server = $DB_SERVER;
+		$this->db_user = $DB_USER;
+
+		return true;
+
+		/*
 		if ( file_exists('../localdbconn.php'))
 		{
 		    include  "../localdbconn.php";
+
+//		global $DB_NAME, $DB_PASS, $DB_SERVER, $DB_USER;
+		    var_dump($DB_NAME);
 		    return true;
 		}
 		else if ( file_exists('../../localdbconn.php'))
@@ -90,6 +136,7 @@ final class Environment {
 
 		// if none of the files are there
 		return false;
+		 */
 	}
 
 	private function setupAutoload() {
@@ -134,7 +181,49 @@ final class Environment {
 		}
 	}
 
+	public static function getEnvironment() {
 
+		if (self::$environment == NULL) {
+			throw new Exception('Environment not initialized');
+		}
+
+		return self::$environment;
+	}
+
+	public function getConnection() {
+
+		if (self::$connection == NULL) {
+			//self::$connection = new mysqli($this->db_server,$this->db_user,$this->db_pass,$this->db_name);
+			//
+			self::$connection = new PDO("mysql: host={$this->db_server};dbname={$this->db_name};charset=utf-8", $this->db_user, $this->db_pass);
+		}
+
+		return self::$connection;
+	}
+
+	public static function getStaticConnection() {
+
+		if (self::$environment == NULL) {
+			throw new Exception('Environment has not been initialized');
+		}
+
+		// initializes connection,
+		// activates self::connection
+		if (self::$connection == NULL) {
+			return self::$environment->getConnection();
+		}
+
+		return self::$connection;
+	}
+
+	public static function closeConnection() {
+		self::$connection = NULL;
+	}
+
+	public static function tearDown() {
+
+		self::$environment = NULL;
+	}
 }
 
 ?>
