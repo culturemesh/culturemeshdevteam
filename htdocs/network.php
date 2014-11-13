@@ -7,6 +7,7 @@
 	include_once "data/dal_network_registration.php";
 	include_once "data/dal_user.php";
 	include_once "html_builder.php";
+	include_once("Environment.php");
 	
 	
 	//session_name("myDiaspora");
@@ -286,7 +287,7 @@
 					<div class="network tab-content">
 					<div id="post-wall" class="tab-pane active">
 						<form method="POST" class="member" action="network_post.php">
-						<img id="profile-post" src="<?php echo $img_link; ?>" width="45" height="45">
+						<img id="profile-post" src="{{ user.img_link }}" width="45" height="45">
 							<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 							<div class="clear"></div>
 							<input type="submit" class="network post" value="Send"></input>

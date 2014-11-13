@@ -1467,7 +1467,27 @@ a.profile
 	font-size:14px;
 }
 
+/**********************************/
+
+/*******
+ * MISCELLANEOUS 
+ * ******
+*/
 /*************************/
+
+.fileupload-button {
+	height:35px;
+	width:36px;
+}
+
+.fileupload-button.picture {
+	background: url('../images/photography-gray.png');
+}
+
+.fileupload-button.picture:hover{
+	opacity:0.5;
+}
+
 .team_thumb{
     width: 205px;
     height: 205px;

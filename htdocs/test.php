@@ -8,6 +8,7 @@ ini_set('display_errors', true);
 ?>
 <html>
 	<head>
+	<script src='js/dropzone.js'></script>
 	</head>
 	<body>
 <?php
@@ -73,5 +74,20 @@ var_dump($storage);
 //throw new Exception('test');
 echo 'something else';
 ?>
+	
+	<form action="/file-upload"
+	      class="dropzone"
+	      id="my-awesome-dropzone"></form>
+	<div id='upload'>Click MEEE!</div>
+	<div class="dropzone-previews"></div>
+	<script>
+var dropzone = new Dropzone("div#upload", {
+	url : 'file/post',
+	maxFilesize : 1,
+	uploadMultiple : true,
+	previewsContainer : 'div.dropzone-previews',
+	acceptedFiles : 'image/*'
+});
+	</script>
 	</body>
 </html>

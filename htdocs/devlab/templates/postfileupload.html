@@ -1,0 +1,51 @@
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ stylesheets }}
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	<script type='text/javascript' src='{{vars.home_path}}/devlab/js/fileupload.js'></script>
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	<script type='text/javascript'> 
+			cm.Autoloader(function() {
+					var psub = new cm.PostSubmit({
+						form: document.getElementById('post-form'), 
+						action: 'files.php'
+						}, 
+						new cm.FileUploader({
+						element: document.getElementById('post-form'),
+						maxFiles: 3,
+						acceptedFileTypes: ['jpg', 'png', 'gif', 'bmp', 'jpeg'],
+						sizeLimit: 2097152
+						}))
+					});
+	</script>
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+	<div id="content">
+		<h1>Post + Image Upload</h1>
+		<div id="post-thing">
+			<form id='post-form' method="POST" class="member fileupload-form" action="" enctype="multipart/form-data">
+				<img id="profile-post" src="{{ user.img_link }}" width="45" height="45">
+				<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
+				<div class="fileupload-error"></div>
+				<div id='post-form-panel' class="fileupload-panel"></div>
+				<div class="clear"></div>
+				<div class="fileupload-button picture"></div>
+				<input type="submit" class="network post fileupload-submit" value="Send"></input>
+				<input type="hidden" name="post_class" value="o"></input>
+				<input type="hidden" name="post_original" value="NULL"></input>
+			</form>
+		</div>
+	</div>
+	{{/ content }}
+
+	{{$ body_scripts }}
+	{{/ body_scripts }}
+
+{{/ layout }}

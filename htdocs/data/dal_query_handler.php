@@ -32,7 +32,8 @@ class QueryHandler
 	}
 
 	public static function getDBConnection() {
-		return new mysqli(DB_SERVER,DB_USER,DB_PASS,DB_NAME);
+		//return new mysqli(DB_SERVER,DB_USER,DB_PASS,DB_NAME);
+		return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
 	}
 
 	// return an array of assoc_arrays

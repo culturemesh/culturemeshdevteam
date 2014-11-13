@@ -14,4 +14,16 @@ class StubResult {
 			'id' => $this->id
 		);
 	}
+
+	public function arrayify() {
+		return get_object_vars($this);
+	}
+
+	public function __get($name) {
+
+		if (!isset($this->$name))
+			throw new \InvalidArgumentException("This object doesn\'t have index : {$name}");
+
+		return $this->$name;
+	}
 }

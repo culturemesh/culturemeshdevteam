@@ -3,7 +3,7 @@
 final class Environment {
 	
 	// COMPILE TIME PROPERTIES //
-	public static $site_root = __DIR__;
+	public static $site_root = __FILE__;
 
 	private static $domain_url = 'http://www.culturemesh.com';
 	private static $short_domain_url = 'culturemesh.com';
@@ -13,6 +13,8 @@ final class Environment {
 	private static $support_email = '';
 	
 	// RUNTIME PROPERTIES //
+	private $host_root;
+	private $ds;
 	private $template_dir;
 	private $env_file;
 	private $img_dir;
@@ -23,11 +25,20 @@ final class Environment {
 	private $db_pass;
 	private $db_name;
 
+
 	// BIGGUMS
 	private static $environment = NULL;
 	private static $connection = NULL;
 
 	public function __construct() {
+
+		// make environment the working directory
+		chdir(dirname(__FILE__));
+		self::$site_root = getcwd();
+
+		$doc_root = $_SERVER['DOCUMENT_ROOT'];
+		$hostname = $_SERVER['HTTP_HOST'];
+		$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
 
 		if( !$this::includeEnvFiles() ) {
 			throw new Exception('Could not find environment files');
@@ -51,9 +62,12 @@ final class Environment {
 		 */
 
 
+
+
 		$this->img_dir;
 		$this->blank_img;
-		$this->template_dir = Environment::$site_root.DIRECTORY_SEPARATOR.'templates';
+		$this->template_dir = self::$site_root.DIRECTORY_SEPARATOR.'templates';
+		$this->ds = DIRECTORY_SEPARATOR;
 
 		self::$environment = $this;
 	}
@@ -94,12 +108,9 @@ final class Environment {
 			return True;
 		}
 
-		include "../localdbconn.php";
+		include  self::$site_root . DIRECTORY_SEPARATOR . "../localdbconn.php";
 		//include "../../localdbconn.php";
 		
-		var_dump($DB_NAME);
-		var_dump($DB_SERVER);
-
 		$this->db_name = $DB_NAME;
 		$this->db_pass = $DB_PASS;
 		$this->db_server = $DB_SERVER;
@@ -139,6 +150,10 @@ final class Environment {
 		// if none of the files are there
 		return false;
 		 */
+	}
+
+	public static function returnOldMysqli() {
+
 	}
 
 	private function setupAutoload() {
@@ -202,6 +217,15 @@ final class Environment {
 		return self::$connection;
 	}
 
+	public function getMysqliConnection() {
+
+		if (self::$connection == NULL) {
+			self::$connection = new mysqli($this->db_server,$this->db_user,$this->db_pass,$this->db_name);
+		}
+
+		return self::$connection;
+	}
+
 	public static function getStaticConnection() {
 
 		if (self::$environment == NULL) {
@@ -224,6 +248,35 @@ final class Environment {
 	public static function tearDown() {
 
 		self::$environment = NULL;
+	}
+
+	public function getVars() {
+		/*
+	$site_root = __FILE__;
+
+	  $domain_url = 'http://www.culturemesh.com';
+	  $short_domain_url = 'culturemesh.com';
+	  $domain_name = 'CultureMesh';
+	  $facebook_url = '';
+	  $twitter_url = '';
+	  $support_email = '';
+	
+	// RUNTIME PROPERTIES //
+	 $ds;
+	 $template_dir;
+	 $env_file;
+	 $img_dir;
+	 $blank_img;
+
+	 $db_server;
+	 $db_user;
+	 $db_pass;
+	 $db_name;
+		 */
+		return array(
+			'home_path' => $this->host_root,
+			'img_path' => $this->img_dir
+		);
 	}
 }
 

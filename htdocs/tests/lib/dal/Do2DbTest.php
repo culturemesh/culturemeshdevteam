@@ -30,7 +30,6 @@ class Do2DbTest extends PHPUnit_Framework_TestCase {
 
 		$object = new dobj\Blank();
 		$object->id = 1;
-//		var_dump($object);
 
 		$result = $do2db->execute($this->dal, $object, 'test');
 

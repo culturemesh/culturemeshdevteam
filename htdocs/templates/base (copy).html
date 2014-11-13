@@ -1,0 +1,41 @@
+{{% BLOCKS }}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{$ title }}CultureMesh - Connecting the World's Diasporas {{/ title }}</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="Welcome to CultureMesh - Connecting the world's diasporas!" />
+
+		<link href="{{ vars.home_path }}css/bootstrap.css" rel="stylesheet">
+		<link href="{{ vars.home_path }}css/style.css#" rel="stylesheet">
+		{{$ stylesheets }}
+		{{/ stylesheets }}
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
+		<script src='js/parsley.min.js'></script>
+
+		<script src="{{ vars.home_path }}js/bootstrap.js"></script>
+		<script src="{{ vars.home_path }}js/validation.js"></script>
+		<script src="{{ vars.home_path }}js/account.js"></script>
+		<script src="{{ vars.home_path }}js/fxn.js"></script>
+		<script src="{{ vars.home_path }}js/ajax.js"></script>
+		<script src="{{ vars.home_path }}js/mustache.js/mustache.js"></script>
+		<script src="{{ vars.home_path }}js/utilities.js"></script>
+
+		{{$ more_scripts }}
+		{{/ more_scripts }}
+	</head>
+	<body>
+		<div id="onload-error">
+			<p>{{$ onload-error }}</p>
+		</div>
+		<div id="wrapper">
+			{{$ content }}
+			<h1> Header </h1>
+			{{/ content }}
+		</div>
+		{{$ body_scripts }}
+		{{/ body_scripts }}
+	</body>
+</html>

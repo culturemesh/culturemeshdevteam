@@ -4,6 +4,7 @@ namespace dal;
 class StubStatement extends \PDOStatement {//\mysqli_stmt{
 
 	protected $query;
+	protected $result;
 
 	public function __construct($query) {
 
@@ -45,7 +46,24 @@ class StubStatement extends \PDOStatement {//\mysqli_stmt{
 
 	public function execute() {
 
-		return new StubResult(1);
+		// stub, nothing happens
+	}
+
+	public function fetch() {
+		
+		$sr = new StubResult(1);
+		return $sr->arrayify();
+	}
+
+	public function fetchAll() {
+
+		// generate 5 stub results
+		$all = array();
+		for ($i = 0; $i < 5; $i++) {
+			array_push($all, new StubResult($i));
+		}
+		return $all;
+
 	}
 }
 
