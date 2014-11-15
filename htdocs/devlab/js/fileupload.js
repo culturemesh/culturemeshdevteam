@@ -168,6 +168,18 @@ cm.FileUploader.prototype = {
 		// tell button to create a new input
 		this._inputList[this._inputList_i] = this._button._createFileInput(this.inputList_i);
 		this._inputList_i++;	// increment current index 
+	},
+	_removeBlankInput: function() {
+		var button = this._button._element;
+		var inputs = button.childNodes;
+		var inputList_i = this.inputList_i;
+		var lastI = inputs.length - 1;
+
+		if (inputs[lastI].value === "")
+			button.removeChild(inputs[lastI]);
+	},
+	_reinstateInput: function() {
+		this._button._createFileInput(this.inputList_i);
 	}
 }
 
@@ -381,7 +393,7 @@ cm.PostSubmit = function(o, FileUpload) {
 	this._onFailure = this._options.onFailure;
 
 	// file uploader
-	this._FileUpload = this._options.FileUpload;
+	this._FileUpload = FileUpload;
 
 	// attach on click event
 	var self = this;
@@ -401,6 +413,10 @@ cm.PostSubmit.prototype = {
 	},
 	_submit: function(e) {
 
+		var self = this;
+		var fup = this._FileUpload;
+		var resetInput = fup._removeBlankInput();
+
 		// get form data
 		var formData = new FormData(this._form);
 
@@ -411,7 +427,14 @@ cm.PostSubmit.prototype = {
 		    data: formData,
 		    dataType: 'FormData',
 		    sendNow: true
-		}, this._onSuccess,
-		this._onFailure);
+		}, function(data) { 
+			fup._reinstateInput();
+			var sf = self._onSuccess.bind(data);
+			sf();
+		}, function(data) {
+			fup._reinstateInput();
+			var ff = self._onFailure.bind(data);
+			ff();
+		});
 	}
 }

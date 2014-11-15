@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Upload' => array($vendorDir . '/codeguy/upload/src'),
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Respect\\Validation' => array($vendorDir . '/respect/validation/library'),
     'Mustache' => array($vendorDir . '/mustache/mustache/src'),

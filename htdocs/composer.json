@@ -1,6 +1,5 @@
 {
 	"require": {
-		"codeguy/upload": "*",
 		"respect/validation": "*",
 		"mustache/mustache": "~2.7"
 	},
@@ -11,5 +10,11 @@
 		"phpunit/dbunit": ">=1.2",
 		"phpunit/phpunit-selenium": ">=1.2",
 		"phpunit/phpunit-story": "*"
+	},
+
+	"autoload": {
+		"psr-4": {
+			"Upload\\": "vendor/codeguy/src/Upload"
+		}
 	}
 }
