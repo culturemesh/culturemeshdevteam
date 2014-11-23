@@ -982,6 +982,7 @@ li.network-post
 	margin-left:40px;
 	padding:5px 0px;
 	width:100%;
+	clear:both;
 }
 .post-img
 {
