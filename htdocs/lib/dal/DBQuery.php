@@ -19,6 +19,7 @@ class DBQuery extends DBOp{
 			$result->bindParam($i+1, $args[$i]);
 		}
 
+//		var_dump($args);
 		// bind params, if they exist
 		/*
 		if (count($args) > 0) {

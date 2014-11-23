@@ -42,8 +42,6 @@ class DALTest extends PHPUnit_Framework_TestCase {
 		$dal->loadFiles();
 		$op = $dal->getMamieVanDoren;
 	}
-
-
 }
 
 ?>

@@ -25,8 +25,12 @@ class User extends DObj {
 	 * Abstract Methods
 	 *
 	 */
-	public static function createFromId($id) {
+	public static function createFromId($id, $dal, $do2db) {
 
+		$user = new User();
+		$user->id = $id;
+
+		return $do2db->execute($dal, $user, 'getUserById');
 	}
 
 	/*

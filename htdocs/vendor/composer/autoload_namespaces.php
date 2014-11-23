@@ -9,4 +9,6 @@ return array(
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Respect\\Validation' => array($vendorDir . '/respect/validation/library'),
     'Mustache' => array($vendorDir . '/mustache/mustache/src'),
+    'Faker\\PHPUnit' => array($vendorDir . '/fzaninotto/faker/test'),
+    'Faker' => array($vendorDir . '/fzaninotto/faker/src'),
 );

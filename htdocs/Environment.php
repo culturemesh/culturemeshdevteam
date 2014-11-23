@@ -37,8 +37,20 @@ final class Environment {
 		self::$site_root = getcwd();
 
 		$doc_root = $_SERVER['DOCUMENT_ROOT'];
-		$hostname = $_SERVER['HTTP_HOST'];
-		$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
+
+		// returns hostname
+		// eg - http://www.culturemesh.com/
+		// eg - localhost
+		// nothing if executing a script
+		//
+		if (isset($_SERVER['HTTP_HOST'])) {
+			$hostname = $_SERVER['HTTP_HOST'];
+			$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
+		}
+		else {
+			$this->host_root = 'unimportant';
+		}
+
 
 		if( !$this::includeEnvFiles() ) {
 			throw new Exception('Could not find environment files');

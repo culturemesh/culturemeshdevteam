@@ -45,17 +45,15 @@ class Do2Db {
 		//array_push($args, $scheme['param_types']);
 		$params = $scheme['params'];
 
+		//var_dump($scheme);
 		foreach ($params as $param) {
-			try {
-				if ($this->dobj->$param == NULL) {
+			if ($this->dobj->$param == NULL &&
+				!in_array($param, $scheme['nullable'])) {
 					throw new \InvalidArgumentException("{$param} is not a parameter in ". get_class($this->dobj));
-				}
-
+			}
+			else {
 				$thing = &$this->dobj->getReference($param);
 				array_push($args, $thing);
-			}
-			catch (Exception $e) {
-
 			}
 		}
 		

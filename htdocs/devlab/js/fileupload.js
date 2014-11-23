@@ -150,6 +150,7 @@ cm.FileUploader.prototype = {
 
 		// create a delete button
 		var button = document.createElement('button');
+		cm.addClass(button, 'upload-img-delete')
 
 		button.innerHTML = '&#10006';
 		button.onclick = function(e) {
@@ -310,6 +311,10 @@ cm.PreviewPanel.prototype = {
 		var div = document.createElement('div');
 		var li = document.createElement('li');
 		
+		deleteButton.ul = ul;
+		deleteButton.div = div;
+		deleteButton.li = li;
+
 		cm.css(li, {
 			width: '100px',
 			'cssFloat': 'left'
@@ -320,7 +325,12 @@ cm.PreviewPanel.prototype = {
 		});
 
 		this._attach(deleteButton, 'click', function() {
-			ul.removeChild(li);
+
+			// redeclare for closure purposes
+
+			$( deleteButton.li ).slideUp('slow', 'easeInQuad', function() {
+				deleteButton.ul.removeChild(deleteButton.li);
+			});
 		});
 
 		// counts how many times event has fired
@@ -349,7 +359,9 @@ cm.PreviewPanel.prototype = {
 				// append stuff
 				div.appendChild(deleteButton);
 				li.appendChild(div);
+				$( li ).hide();
 				ul.appendChild(li);
+				$( li ).slideDown('slow', 'easeInQuad');
 			}
 		}
 
@@ -429,8 +441,7 @@ cm.PostSubmit.prototype = {
 		    sendNow: true
 		}, function(data) { 
 			fup._reinstateInput();
-			var sf = self._onSuccess.bind(data);
-			sf();
+			self._onSuccess(data);
 		}, function(data) {
 			fup._reinstateInput();
 			var ff = self._onFailure.bind(data);

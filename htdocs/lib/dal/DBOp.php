@@ -9,6 +9,7 @@ abstract class DBOp {
 	protected $returning;
 	protected $returning_list;
 	protected $returning_class;
+	protected $nullable;
 	protected $params;
 	protected $param_types;
 	protected $results;
@@ -24,6 +25,7 @@ abstract class DBOp {
 		$this->query = $array['query'];
 		$this->test_query = $array['test_query'];
 		$this->returning = $array['returning'];
+		$this->nullable = $array['nullable'];
 		$this->returning_list = $array['returning_list'];
 		$this->returning_class = $array['returning_class'];
 		$this->returning_cols = $array['returning_cols'];
@@ -36,6 +38,7 @@ abstract class DBOp {
 		return array(
 			'params' => $this->params,
 			'param_types' => $this->param_types,
+			'nullable' => $this->nullable,
 			'returning' => $this->returning,
 			'returning_list' => $this->returning_list,
 			'returning_class' => $this->returning_class,

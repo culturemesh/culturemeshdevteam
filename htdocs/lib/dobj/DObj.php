@@ -9,7 +9,10 @@ abstract class DObj {
 
 	}
 
-	public abstract static function createFromId($id);
+	public static function createFromId($id, $dal, $do2db) {
+
+	}
+
 	public static function createFromDataRow($row) {
 
 		$keys = array_keys($row);
@@ -61,8 +64,9 @@ abstract class DObj {
 		if (method_exists($this, $name)) {
 			$this->$name($arg);	
 		}
-
-		$this->$name = $arg;
+		else{
+			$this->$name = $arg;
+		}
 	}
 }
 

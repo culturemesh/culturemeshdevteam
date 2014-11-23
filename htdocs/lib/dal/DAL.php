@@ -42,6 +42,15 @@ class DAL {
 	{
 		include_once('reg-test.php');
 		\registerTest($this);
+
+		include_once('reg-user.php');
+		\registerUser($this);
+
+		include_once('reg-conversation.php');
+		\registerConversation($this);
+
+		include_once('reg-image.php');
+		\registerImage($this);
 	}
 
 	public function getRegistryCount() {
