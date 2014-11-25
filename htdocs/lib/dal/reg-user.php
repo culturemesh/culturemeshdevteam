@@ -23,6 +23,7 @@ SQL
 		,	'name' => 'getUserById',
 			'params' => array('id'),
 			'param_types' => 's',
+			'nullable' => array(),
 			'returning' => true,
 			'returning_list' => False,
 			'returning_class' => 'dobj\User',

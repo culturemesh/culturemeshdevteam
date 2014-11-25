@@ -262,6 +262,10 @@ final class Environment {
 		self::$environment = NULL;
 	}
 
+	public function getBaseTemplate() {
+		return file_get_contents($this->template_dir . $this->ds . 'base.html');
+	}
+
 	public function getVars() {
 		/*
 	$site_root = __FILE__;
