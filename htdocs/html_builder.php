@@ -979,6 +979,8 @@ EHTML;
 	// 	+ are the same, it doesn't include country
 	public static function formatNetworkTitle($network)
 	{
+		$exceptions = array('Washington, D.C.');
+
 		$title = '';
 		$location = '';
 		
@@ -988,7 +990,7 @@ EHTML;
 			$location .= $network->region_cur;
 
 
-		if($network->country_cur != $network->country_origin && $network->class != 'co') {
+		if($network->country_cur != $network->country_origin && $network->network_class != 'co') {
 			// check to see if there's anything before
 			if ($location == '') {
 				$location .= $network->country_cur;
@@ -1009,6 +1011,11 @@ EHTML;
 				$title .= "From {$network->city_origin}";
 				if ($network->region_origin != null)
 					$title .= ", {$network->region_origin} near {$location}"; 
+			}
+
+			else if ($network->region_origin == null) {
+
+				$title = "From {$network->city_origin}, {$network->country_origin} in {$location}";
 			}
 			else
 			{

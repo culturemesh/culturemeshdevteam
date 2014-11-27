@@ -15,13 +15,22 @@ $con = getDBConnection();
 
 $query = array($_POST['type'], mysqli_real_escape_string($con, $_POST['city_cur']), mysqli_real_escape_string($con, $_POST['region_cur']), mysqli_real_escape_string($con, $_POST['country_cur']), mysqli_real_escape_string($con, $_POST['q_1']), mysqli_real_escape_string($con, $_POST['q_2']), mysqli_real_escape_string($con, $_POST['q_3']));
 
+// process query for db entry
+//
+// > turn empty strings into NULL
+// > add quotes
+for ($i = 1; $i < count($query); $i++) {
+	if ($query[$i] == '')
+	  $query[$i]  = 'NULL';
+}
+
 $loc_data = null;
-if ($query[1] == null && $query[2] == null)
-  { $loc_data = Location::getCOByName($query[3], $con); }
-else if ($query[1] == null)
-  { $loc_data = Location::getRCByName($query[2], $query[3], $con); }
+if ($query[1] == 'NULL' && $query[2] == 'NULL')
+  { $loc_data = Location::getCOByNameR($query[3], $con); }
+else if ($query[1] == 'NULL')
+  { $loc_data = Location::getRCByNameR($query[2], $query[3], $con); }
 else
-  { $loc_data = Location::getCCByName($query[1], $query[2], $query[3], $con); }
+  { $loc_data = Location::getCCByNameR($query[1], $query[2], $query[3], $con); }
 
 //var_dump($query);
 //echo '<br><br>';
@@ -31,15 +40,16 @@ $query_data = null;
 $network = new NetworkDT();
 $network->network_class = $query[0];
 
+// get ids and names of the query variable
 switch ($query[0])
 {
 case "co":
-	$query_data = Location::getCOByName($query[6], $con);
+	$query_data = Location::getCOByNameR($query[6], $con);
 	$network->id_country_origin = $query_data[4];
 	$network->country_origin = $query_data[5];
 	break;
 case "cc":
-	$query_data = Location::getCCByName($query[4], $query[5], $query[6], $con);
+	$query_data = Location::getCCByNameR($query[4], $query[5], $query[6], $con);
 	$network->id_city_origin = $query_data[0];
 	$network->city_origin = $query_data[1];
 	$network->id_region_origin = $query_data[2];
@@ -48,14 +58,14 @@ case "cc":
 	$network->country_origin = $query_data[5];
 	break;
 case "rc":
-	$query_data = Location::getRCByName($query[5], $query[6], $con);
+	$query_data = Location::getRCByNameR($query[5], $query[6], $con);
 	$network->id_region_origin = $query_data[2];
 	$network->region_origin = $query_data[3];
 	$network->id_country_origin = $query_data[4];
 	$network->country_origin = $query_data[5];
 	break;
 case "_l":
-	$query_data = Language::getLanguageByName($query[4], $con);
+	$query_data = Language::getLanguageByNameR($query[4], $con);
 	$network->id_language_origin = $query_data[0];
 	$network->language_origin = $query_data[1];
 	break;
