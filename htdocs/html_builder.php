@@ -46,7 +46,7 @@ class HTMLBuilder
 	{
 		if (is_array($query)) {
 
-			$title = self::formatQuery($query);
+			$title = self::formatQueryTitle($query);
 			echo "
 			<div>
 				<div class='net-info'>
@@ -999,12 +999,15 @@ EHTML;
 
 		for ($i = 1; $i < 4; $i++) {
 			// add query items
-			if($query[$i] != NULL)
+			if($query[$i] != NULL) {
 				$location .= $query[$i];
-			// if we aren't on the last thing
-			// add comma
-			if($i-1 < 3)
-				$location .= ', ';
+
+				// if we aren't on the last thing
+				// add comma
+				if($i < 3) {
+					$location .= ', ';
+				}
+			}
 		}
 
 		// initialize query string
@@ -1023,12 +1026,14 @@ EHTML;
 			$qstring .= 'People from ';
 			for ($i = 4; $i < 7; $i++) {
 				// add query items
-				if($query[$i] != NULL)
+				if($query[$i] != NULL) {
 					$qstring .= $query[$i];
-				// if we aren't on the last thing
-				// add comma
-				if($i-1 < 6)
-					$qstring .= ', ';
+
+					// if we aren't on the last thing
+					// add comma
+					if($i < 6)
+						$qstring .= ', ';
+				}
 			}
 		}
 
