@@ -979,9 +979,11 @@ ul.network
 
 li.network-post
 {
-	margin-left:40px;
 	padding:5px 0px;
+	/*
 	width:100%;
+	margin-left:40px;
+	*/
 	clear:both;
 }
 .post-img
@@ -1007,7 +1009,8 @@ p.network
 
 p.network.reply
 {
-	max-width:375px;
+	max-width:350px;
+	overflow-wrap:break-word;
 }
 
 p.network.date
