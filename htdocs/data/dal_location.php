@@ -452,7 +452,7 @@ SQL;
 
 	public static function getRCByNameR($name, $country_name, $con=NULL)
 	{
-		$country_name = self::checkNullValue($country_name);
+		$country_name = self::checkForNull($country_name);
 
 		$query = <<<SQL
 			SELECT id, name, country_id, country_name

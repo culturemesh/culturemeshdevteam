@@ -65,7 +65,7 @@ case "rc":
 	$network->country_origin = $query_data[5];
 	break;
 case "_l":
-	$query_data = Language::getLanguageByNameR($query[4], $con);
+	$query_data = Language::getLanguageByName($query[4], $con);
 	$network->id_language_origin = $query_data[0];
 	$network->language_origin = $query_data[1];
 	break;

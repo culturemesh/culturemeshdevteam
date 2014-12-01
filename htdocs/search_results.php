@@ -130,14 +130,6 @@
 						<?php if (count($networks) < 2) : ?>
 							<p>No related networks</p>
 						<?php endif; ?>
-						<?php/* else : 
-							for ($i=1; $i < count($networks); $i++)
-							{
-								HTMLBuilder::displayNetwork($networks[$i]);
-							}
-							endif;
-						 */
-						?>
 					</div>
 				</div>
 			</div>
