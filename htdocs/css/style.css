@@ -1010,6 +1010,7 @@ p.network
 p.network.reply
 {
 	max-width:350px;
+	overflow-wrap:break-word;
 }
 
 p.network.date
