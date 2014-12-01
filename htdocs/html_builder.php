@@ -44,6 +44,67 @@ class HTMLBuilder
 
 	public static function displayPossibleNetwork($query)
 	{
+		if (is_array($query)) {
+
+			$title = self::formatQueryTitle($query);
+			echo "
+			<div>
+				<div class='net-info'>
+					<form method='POST' action='search_launch_network.php'> 
+						<p class='bottom-text'>{$title}</p>
+						<input type='submit' class='launch-network' value='Launch Network'></input>
+						<input type='hidden' name=type value='{$query[0]}'/>
+						<input type='hidden' name=city_cur value='{$query[1]}'/>
+						<input type='hidden' name=region_cur value='{$query[2]}'/>
+						<input type='hidden' name=country_cur value='{$query[3]}'/>
+						<input type='hidden' name=q_1 value='{$query[4]}'/>
+						<input type='hidden' name=q_2 value='{$query[5]}'/>
+						<input type='hidden' name=q_3 value='{$query[6]}'/>
+					</form>
+				</div>
+				<div class='clear'></div>
+			</div>
+			";
+		}
+		else {
+			$title = self::formatNetworkTitle($query);
+			$q1 = null;
+			$q2 = null;
+			$q3 = null;
+
+			// write the title
+			if ( $query->network_class == '_l') {
+				$q1 = $query->language_origin;
+			}
+			else {
+				$q1 = $query->city_origin;
+				$q2 = $query->region_origin;
+				$q3 = $query->country_origin;
+			}
+
+			$html = <<<HTML
+			<div>
+				<div class='net-info'>
+					<form method='POST' action='search_launch_network.php'> 
+						<p class='bottom-text'>$title</p>
+						<input type='submit' class='launch-network' value='Launch Network'></input>
+						<input type='hidden' name=type value='$query->network_class'/>
+						<input type='hidden' name=city_cur value='$query->city_cur'/>
+						<input type='hidden' name=region_cur value='$query->region_cur'/>
+						<input type='hidden' name=country_cur value='$query->country_cur'/>
+						<input type='hidden' name=q_1 value='$q1'/>
+						<input type='hidden' name=q_2 value='$q2'/>
+						<input type='hidden' name=q_3 value='$q3'/>
+					</form>
+				</div>
+				<div class='clear'></div>
+			</div>
+
+HTML;
+			echo $html;
+		}
+
+		/*
 		if (is_array($query))
 		{
 			// locations start at 1, have three addresses reserved (may be NULL)
@@ -188,6 +249,7 @@ class HTMLBuilder
 HTML;
 			echo $html;
 		}
+		 */
 	}
 
 	public static function displaySearchBar()
@@ -937,12 +999,15 @@ EHTML;
 
 		for ($i = 1; $i < 4; $i++) {
 			// add query items
-			if($query[$i] != NULL)
+			if($query[$i] != NULL) {
 				$location .= $query[$i];
-			// if we aren't on the last thing
-			// add comma
-			if($i-1 < 3)
-				$location .= ', ';
+
+				// if we aren't on the last thing
+				// add comma
+				if($i < 3) {
+					$location .= ', ';
+				}
+			}
 		}
 
 		// initialize query string
@@ -961,12 +1026,14 @@ EHTML;
 			$qstring .= 'People from ';
 			for ($i = 4; $i < 7; $i++) {
 				// add query items
-				if($query[$i] != NULL)
+				if($query[$i] != NULL) {
 					$qstring .= $query[$i];
-				// if we aren't on the last thing
-				// add comma
-				if($i-1 < 6)
-					$qstring .= ', ';
+
+					// if we aren't on the last thing
+					// add comma
+					if($i < 6)
+						$qstring .= ', ';
+				}
 			}
 		}
 
@@ -979,16 +1046,51 @@ EHTML;
 	// 	+ are the same, it doesn't include country
 	public static function formatNetworkTitle($network)
 	{
+
+		$curloc_arr = array();
+		$origin_arr = array();
+
+		$cur_keys = array('city_cur', 'region_cur', 'country_cur');
+		$origin_keys = array('city_origin', 'region_origin', 'country_origin', 'language_origin');
+
+		// fill current location array
+		foreach ($cur_keys as $key) {
+			if ($network->$key != null && $network->$key != '') {
+				array_push($curloc_arr, $network->$key);
+			}
+		}
+
+		// fill origin array
+		foreach ($origin_keys as $key ) {
+			if ($network->$key != null && $network->$key != '') {
+				array_push($origin_arr, $network->$key);
+			}
+		}
+
+
 		$title = '';
-		$location = '';
+		$origin = self::arrayToNetworkValue($origin_arr);
+		$location = self::arrayToNetworkValue($curloc_arr);
 		
+		if ($network->network_class == '_l') 
+			$title = "{$origin} speakers in {$location}";
+		else {
+			$title = "From {$origin} in {$location}";
+		}
+
+		return $title;
+
+		/*
+	
+		$exceptions = array('Washington, D.C.');
+
 		if ($network->city_cur != null)
 			$location .= $network->city_cur . ", ";
 		if ($network->region_cur != null)
 			$location .= $network->region_cur;
 
 
-		if($network->country_cur != $network->country_origin && $network->class != 'co') {
+		if($network->country_cur != $network->country_origin && $network->network_class != 'co') {
 			// check to see if there's anything before
 			if ($location == '') {
 				$location .= $network->country_cur;
@@ -998,6 +1100,7 @@ EHTML;
 			}
 		}
 		
+
 		switch($network->network_class)
 		{
 		case '_l':	// LANGUAGE
@@ -1009,6 +1112,11 @@ EHTML;
 				$title .= "From {$network->city_origin}";
 				if ($network->region_origin != null)
 					$title .= ", {$network->region_origin} near {$location}"; 
+			}
+
+			else if ($network->region_origin == null) {
+
+				$title = "From {$network->city_origin}, {$network->country_origin} in {$location}";
 			}
 			else
 			{
@@ -1025,8 +1133,25 @@ EHTML;
 			$title = "From {$network->country_origin} in {$location}";
 			break;
 		}
+
+
+		 */
 		
-		return $title;
+	}
+
+	// takes an array, returns stringed out location
+	private static function arrayToNetworkValue($arr) {
+		$value = '';
+		for ($i = 0; $i < count($arr); $i++) {
+
+			// add thing
+			$value .= $arr[$i];
+			// if we're not on the last item, add comma
+			if ($i+1 != count($arr))
+				$value .= ', ';
+		}
+
+		return $value;
 	}
 
 	private static function formatDateTime($date)

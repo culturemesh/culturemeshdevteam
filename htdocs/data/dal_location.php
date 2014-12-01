@@ -351,9 +351,9 @@ SQL;
 		$query = <<<SQL
 			SELECT *
 			FROM cities
-			WHERE name='$name'
-			AND region_name='$region_name'
-			AND country_name='$country_name'
+			WHERE name=$name
+			AND region_name=$region_name
+			AND country_name=$country_name
 SQL;
 ///////////////
 		$result = QueryHandler::executeQuery($query, $con);
@@ -372,6 +372,32 @@ SQL;
 			'latitude' => $row['latitude'],
 			'longitude' => $row['longitude'],
 			'population' => $row['population']);
+
+		return $city;
+	}
+
+	public static function getCCByNameR($name, $region_name, $country_name, $con=NULL)
+	{
+		$region_name = self::checkForNull($region_name);
+		$country_name = self::checkForNull($country_name);
+
+		$query = <<<SQL
+			SELECT *
+			FROM cities
+			WHERE name='$name'
+			AND region_name $region_name
+			AND country_name $country_name
+SQL;
+///////////////
+		$result = QueryHandler::executeQuery($query, $con);
+
+		// fill in results
+		//  this should be done in a function, but laziness
+		$row = mysqli_fetch_array($result);
+		// return first city
+		$city = array($row['id'], $row['name'], 
+			$row['region_id'], $row['region_name'],
+			$row['country_id'], $row['country_name']);
 
 		return $city;
 	}
@@ -424,6 +450,29 @@ SQL;
 		return $region;
 	}
 
+	public static function getRCByNameR($name, $country_name, $con=NULL)
+	{
+		$country_name = self::checkForNull($country_name);
+
+		$query = <<<SQL
+			SELECT id, name, country_id, country_name
+			FROM regions 
+			WHERE name='$name'
+			AND country_name $country_name
+SQL;
+///////////////
+		$result = QueryHandler::executeQuery($query, $con);
+
+		// fill in results
+		//  this should be done in a function, but laziness
+		$row = mysqli_fetch_array($result);
+		// return first city
+		$region = array(NULL, NULL, $row['id'], $row['name'], 
+			$row['country_id'], $row['country_name']);
+
+		return $region;
+	}
+
 	public static function getCOByName($name, $con=NULL)
 	{
 		$query = <<<SQL
@@ -463,6 +512,25 @@ SQL;
 			'latitude' => $row['latitude'],
 			'longitude' => $row['longitude'],
 			'population' => $row['population']);
+
+		return $country;
+	}
+
+	public static function getCOByNameR($name, $con=NULL)
+	{
+		$query = <<<SQL
+			SELECT id, name
+			FROM countries 
+			WHERE name='$name'
+SQL;
+//------------>
+		$result = QueryHandler::executeQuery($query, $con);
+
+		// fill in results
+		//  this should be done in a function, but laziness
+		$row = mysqli_fetch_array($result);
+		// return first city
+		$country = array(NULL, NULL, NULL, NULL, $row['id'], $row['name']);
 
 		return $country;
 	}
@@ -845,6 +913,14 @@ SQL;
 SQL;
 
 		return QueryHandler::executeQuery($query, $con);
+	}
+
+	private static function checkForNull($name) {
+
+		if ($name == 'NULL')
+			return 'IS NULL';
+		else
+			return "='{$name}'";
 	}
 }
 ?>
