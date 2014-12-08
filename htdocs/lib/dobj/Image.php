@@ -8,6 +8,8 @@ class Image extends DisplayDObj {
 	protected $event;
 	protected $profile;
 	protected $date_loaded;
+	protected $real_url;
+	protected $host_url;
 
 	public function display($context) {
 

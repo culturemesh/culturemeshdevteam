@@ -46,6 +46,9 @@ class DAL {
 		include_once('reg-user.php');
 		\registerUser($this);
 
+		include_once('reg-network.php');
+		\registerNetwork($this);
+
 		include_once('reg-conversation.php');
 		\registerConversation($this);
 

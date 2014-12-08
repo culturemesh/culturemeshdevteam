@@ -29,6 +29,14 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue(misc\Util::hasStringKey($str_key));
 		$this->assertTrue(misc\Util::hasStringKey($mixed_key));
 	}
+
+	public function testGetController() {
+
+		$string = 'controller#action';
+		$split = misc\Util::getController($string);
+		$this->assertEquals(array('controller' => 'controller', 
+			'action' => 'action'), $split);
+	}
 }
 
 ?>

@@ -14,6 +14,9 @@ class Do2Db {
 
 		$this->load($dal, $dobj, $query, $op);
 
+		if ($op == NULL) 
+			throw new \Exception('Operation hasn\'t been loaded. Have you forgotten to return it in the registration function? That happens a lot.');
+
 		$scheme = $op->getScheme();
 		$args = $this->prepareArgs($scheme);
 		$result = $op->execute($args);
@@ -62,9 +65,21 @@ class Do2Db {
 
 	private function processResult($scheme, $result) {
 
-		if ($scheme['returning'] == False)
-			return $result;
+		// error handling for pure statements
+		if ($scheme['returning'] == False) {
+			
+			if ($result->errorInfo()[0] == NULL) 
+				return True;
+			else
+				return $result->errorInfo();
+		}
 
+		// if result set is empty
+		if ($result->rowCount() == 0) {
+			return False;
+		}
+
+		// error handling for queries
 		if ($scheme['returning_list'] == True)
 			return $this->fillList($scheme, $result);
 		else

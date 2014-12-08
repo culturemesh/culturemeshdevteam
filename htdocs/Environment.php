@@ -14,6 +14,7 @@ final class Environment {
 	
 	// RUNTIME PROPERTIES //
 	private $host_root;
+	private $f_root;	// needed for AltoRouter
 	private $ds;
 	private $template_dir;
 	private $env_file;
@@ -46,6 +47,8 @@ final class Environment {
 		if (isset($_SERVER['HTTP_HOST'])) {
 			$hostname = $_SERVER['HTTP_HOST'];
 			$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
+			$this->f_root = str_replace($doc_root, '', getcwd());
+
 		}
 		else {
 			$this->host_root = 'unimportant';
@@ -181,8 +184,9 @@ final class Environment {
 
 	public static function autoloadHT($class)
 	{
-		$file = Environment::$site_root."/{$class}.php";
+		$class = str_replace("\\", DIRECTORY_SEPARATOR, $class);
 
+		$file = Environment::$site_root."/{$class}.php";
 		if (file_exists($file)) {
 			include $file;
 		}

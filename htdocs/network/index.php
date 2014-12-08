@@ -2,6 +2,53 @@
 require('../Environment.php');
 $cm = new Environment();
 
+// set up the router
+$al = new AltoRouter();
+$al->setBasePath($cm->f_root . $cm->ds . 'network');
+
+// set up maps
+$al->map('GET', '/', function() { echo 'No network chosen'; }, 'nonet');
+$al->map('GET', '/[i:id]', 'control\Network#match', 'match'); 
+$al->map('GET', '/test', 'control\Network#test', 'test');
+
+$match = $al->match();
+
+$call = misc\Util::getController($match['target']);
+
+// call the controller and the matching action and send params
+$call['controller']::$call['action']($cm, $match['params']);
+
+// index out
+
+//call_user_func_array($match['target'], $match['params']);
+
+/*
+if ($match['name'] == 'match') {
+
+	$id = $match['params']['id'];
+
+	// prepare for db
+	$dal = new dal\DAL($cm->getConnection());
+	$dal->loadFiles();
+	$do2db = new dal\Do2Db();
+
+	// load network
+	$network = dobj\Network::createFromId($id, $dal, $do2db);
+
+	if ($network == False) {
+		echo 'No network found';
+	}
+	
+	else {
+		var_dump($network);
+	}
+
+	// close connection
+	$cm->closeConnection();
+}
+ */
+
+/*
 // base layout
 $base = $cm->getBaseTemplate();
 
@@ -26,4 +73,5 @@ $page_vars = array(
 );
 
 echo $m->render($template, $page_vars);
+ */
 ?>

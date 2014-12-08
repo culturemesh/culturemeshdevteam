@@ -21,6 +21,6 @@ class ImageTest extends PHPUnit_Framework_TestCase {
 
 		global $cm;
 		$img = new dobj\Image($cm);
-		$url = $img->hostUrl();
+		$url = $img->hostUrl;
 	}
 }

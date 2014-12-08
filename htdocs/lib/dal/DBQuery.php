@@ -31,6 +31,7 @@ class DBQuery extends DBOp{
 
 		// execute...beast spirit evolution
 		$result->execute();
+
 		return $result;
 
 	}
