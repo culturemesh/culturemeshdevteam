@@ -19,6 +19,9 @@ class Network extends DisplayDObj {
 	protected $language_origin;	// varchar(50
 	protected $network_class;
 
+	protected $origin;
+	protected $location;
+
 	protected $date_added;		// timestamp
 	protected $img_link;
 	
@@ -32,7 +35,13 @@ class Network extends DisplayDObj {
 		$network = new Network();
 		$network->id = $id;
 
-		return $do2db->execute($dal, $network, 'getNetworkById');
+		$network = $do2db->execute($dal, $network, 'getNetworkById');
+
+		// now process, separate into origin and 
+		$network->origin  = misc\Util::ArrayToSearchable();
+		$network->location = misc\Util::ArrayToSearchable();
+
+		return $network;
 	}
 
 	public function display($context) {
@@ -41,5 +50,25 @@ class Network extends DisplayDObj {
 
 	public function getHTML($context) {
 
+	}
+
+	/*
+	 * Parses values and generates title for display
+	 * on main site
+	 */
+	public function getTitle() {
+
+		$origin_str = '';
+		$location_str = $this->location->toString();
+
+		// figure out type of origin string
+		if (get_class($this->origin) == 'dobj\Language') {
+			$origin_str = $this->origin->toString().' speakers';
+		}
+		else {
+			$origin_str = 'From '.$this->origin->toString();
+		}
+		
+		return $origin_str . ' in ' . $location_str;
 	}
 }

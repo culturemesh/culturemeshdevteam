@@ -37,6 +37,126 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(array('controller' => 'controller', 
 			'action' => 'action'), $split);
 	}
+
+	public function testArrayToSearchableCity1() {
+		
+		$arr = array(
+			'id_city_origin' => 1,
+			'city_origin' => 'City',
+			'id_region_origin' => 1,
+			'region_origin' => 'Region',
+			'id_country_origin' => 1,
+			'country_origin' => 'Country');
+
+		$srch = misc\Util::ArrayToSearchable($arr);
+		$this->assertInstanceOf('dobj\City', $srch);
+	}
+
+	public function testArrayToSearchableCity2() {
+
+		$arr = array(
+			'id_city_cur' => 1,
+			'city_cur' => 'City',
+			'id_region_cur' => 1,
+			'region_cur' => 'Region',
+			'id_country_cur' => 1,
+			'country_cur' => 'Country');
+
+		$srch = misc\Util::ArrayToSearchable($arr);
+		$this->assertInstanceOf('dobj\City', $srch);
+	}
+
+	public function testArrayToSearchableCity3() {
+
+		$arr = array(
+			'id_city_origin' => 1,
+			'city_origin' => 'City',
+			'id_region_origin' => NULL,
+			'region_origin' => NULL,
+			'id_country_origin' => 1,
+			'country_origin' => 'Country');
+
+		$srch = misc\Util::ArrayToSearchable($arr);
+		$this->assertInstanceOf('dobj\City', $srch);
+	}
+
+	public function testArrayToSearchableCity4() {
+
+		$arr = array(
+			'id_city_cur' => 1,
+			'city_cur' => 'City',
+			'id_region_cur' => NULL,
+			'region_cur' => NULL,
+			'id_country_cur' => 1,
+			'country_cur' => 'Country');
+
+		$srch = misc\Util::ArrayToSearchable($arr);
+		$this->assertInstanceOf('dobj\City', $srch);
+	}
+
+	public function testArrayToSearchableRegion1() {
+
+		$arr = array(
+			'id_city_origin' => NULL,
+			'city_origin' => NULL,
+			'id_region_origin' => 1,
+			'region_origin' => 'Region',
+			'id_country_origin' => 1,
+			'country_origin' => 'Country');
+
+		$srch = misc\Util::ArrayToSearchable($arr);
+		$this->assertInstanceOf('dobj\Region', $srch);
+	}
+
+	public function testArrayToSearchableRegion2() {
+
+		$arr = array(
+			'id_city_cur' => NULL,
+			'city_cur' => NULL,
+			'id_region_cur' => 1,
+			'region_cur' => 'Region',
+			'id_country_cur' => 1,
+			'country_cur' => 'Country');
+
+		$srch = misc\Util::ArrayToSearchable($arr);
+		$this->assertInstanceOf('dobj\Region', $srch);
+	}
+
+	public function testArrayToSearchableCountry1() {
+
+		$arr = array(
+			'id_city_origin' => NULL,
+			'city_origin' => NULL,
+			'id_region_origin' => NULL,
+			'region_origin' => NULL,
+			'id_country_origin' => 1,
+			'country_origin' => 'Country');
+
+		$srch = misc\Util::ArrayToSearchable($arr);
+		$this->assertInstanceOf('dobj\Country', $srch);
+	}
+
+	public function testArrayToSearchableCountry2() {
+
+		$arr = array(
+			'id_city_cur' => NULL,
+			'city_cur' => NULL,
+			'id_region_cur' => NULL,
+			'region_cur' => NULL,
+			'id_country_cur' => 1,
+			'country_cur' => 'Country');
+
+		$srch = misc\Util::ArrayToSearchable($arr);
+		$this->assertInstanceOf('dobj\Country', $srch);
+	}
+
+	public function testArrayToSearchableLanguage() {
+
+		$arr = array('id_language_origin' => 1,
+			'language_origin' => 'Language');
+		$srch = misc\Util::ArrayToSearchable($arr);
+		$this->assertInstanceOf('dobj\Language', $srch);
+	}
 }
 
 ?>

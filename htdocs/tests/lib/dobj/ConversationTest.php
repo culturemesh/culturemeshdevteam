@@ -23,12 +23,16 @@ class ConversationTest extends PHPUnit_Framework_TestCase {
 
 	public function testDisplayNetwork() {
 
+		$this->markTestSkipped('Not displaying network in conversation yet');
+
 		$convo = dobj\Conversation::createFromId($id);
 		$convo->fillConversation();
 		$convo->display('network');
 	}
 
 	public function testDisplayProfile() {
+
+		$this->markTestSkipped('Can\'t display profile yet');
 
 		$convo = dobj\Conversation::createFromId($id);
 		$convo->fillConversation();

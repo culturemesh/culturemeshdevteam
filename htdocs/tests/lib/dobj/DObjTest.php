@@ -1,8 +1,8 @@
 <?php
 
+	/*
 class DObjTest extends PHPUnit_Framework_TestCase {
 
-	/*
 	public function testConstruct() {
 		$dobj = new dobj\DObj();
 
@@ -31,7 +31,7 @@ class DObjTest extends PHPUnit_Framework_TestCase {
 		$dobj = new dobj\DObj();
 		$dobj->id('string');
 	}
-	 */
 }
 
+	 */
 ?>
