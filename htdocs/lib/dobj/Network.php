@@ -16,7 +16,7 @@ class Network extends DisplayDObj {
 	protected $id_country_origin;
 	protected $country_origin;		// varchar(50)
 	protected $id_language_origin;
-	protected $language_origin;	// varchar(50
+	protected $language_origin;	// varchar(50)
 	protected $network_class;
 
 	protected $origin;
@@ -37,9 +37,30 @@ class Network extends DisplayDObj {
 
 		$network = $do2db->execute($dal, $network, 'getNetworkById');
 
+		// set up origin array
+		$origin_keys = array('id_city_origin', 'city_origin', 'id_region_origin',
+			'region_origin', 'id_country_origin', 'country_origin',
+			'id_language_origin', 'language_origin');
+		
+		$origin_array = array();
+
+		foreach ($origin_keys as $key) {
+			$origin_array[$key] = $network->$key;
+		}
+
+		// set up location array
+		$location_keys = array('id_city_cur', 'city_cur', 'id_region_cur',
+			'region_cur', 'id_country_cur', 'country_cur');
+
+		$location_array = array();
+
+		foreach ($location_keys as $key) {
+			$location_array[$key] = $network->$key;
+		}
+
 		// now process, separate into origin and 
-		$network->origin  = misc\Util::ArrayToSearchable();
-		$network->location = misc\Util::ArrayToSearchable();
+		$network->origin  = \misc\Util::ArrayToSearchable($origin_array);
+		$network->location = \misc\Util::ArrayToSearchable($location_array);
 
 		return $network;
 	}

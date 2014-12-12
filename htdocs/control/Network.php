@@ -28,7 +28,7 @@ class Network {
 			header('Location: ' . $cm->host_root . $cm->ds . '404.php');
 		}
 		
-		var_dump($network);
+		echo $network->getTitle();
 
 		// close connection
 		$cm->closeConnection();

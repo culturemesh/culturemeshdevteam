@@ -44,18 +44,18 @@ class Util {
 
 			if (isset($arr['language_origin']) && $arr['language_origin'] != NULL) {
 				$lang = new \dobj\Language();
-				$lang->id = $arr['id_language_origin'];
+				$lang->id = (int) $arr['id_language_origin'];
 				$lang->name = $arr['language_origin'];
 				return $lang;
 			}
 			else if ($arr['city_origin'] != NULL) {
 				$city = new \dobj\City();
 
-				$city->id = $arr['id_city_origin'];
+				$city->id = (int) $arr['id_city_origin'];
 				$city->name = $arr['city_origin'];
-				$city->region_id = $arr['id_region_origin'];
+				$city->region_id = (int) $arr['id_region_origin'];
 				$city->region_name = $arr['region_origin'];
-				$city->country_id = $arr['id_country_origin'];
+				$city->country_id = (int) $arr['id_country_origin'];
 				$city->country_name = $arr['country_origin'];
 
 				return $city;
@@ -63,9 +63,9 @@ class Util {
 			else if ($arr['region_origin'] != NULL) {
 				$region = new \dobj\Region();
 
-				$region->id = $arr['id_region_origin'];
+				$region->id = (int) $arr['id_region_origin'];
 				$region->name = $arr['region_origin'];
-				$region->country_id = $arr['id_country_origin'];
+				$region->country_id = (int) $arr['id_country_origin'];
 				$region->country_name = $arr['country_origin'];
 
 				return $region;
@@ -73,7 +73,7 @@ class Util {
 			else if ($arr['country_origin'] != NULL) {
 				$country = new \dobj\Country();
 
-				$country->id = $arr['id_country_origin'];
+				$country->id = (int) $arr['id_country_origin'];
 				$country->name = $arr['country_origin'];
 
 				return $country;
@@ -84,11 +84,11 @@ class Util {
 			if ($arr['city_cur'] != NULL) {
 				$city = new \dobj\City();
 
-				$city->id = $arr['id_city_cur'];
+				$city->id = (int) $arr['id_city_cur'];
 				$city->name = $arr['city_cur'];
-				$city->region_id = $arr['id_region_cur'];
+				$city->region_id = (int) $arr['id_region_cur'];
 				$city->region_name = $arr['region_cur'];
-				$city->country_id = $arr['id_country_cur'];
+				$city->country_id = (int) $arr['id_country_cur'];
 				$city->country_name = $arr['country_cur'];
 
 				return $city;
@@ -96,9 +96,9 @@ class Util {
 			else if ($arr['region_cur'] != NULL) {
 				$region = new \dobj\Region();
 
-				$region->id = $arr['id_region_cur'];
+				$region->id = (int) $arr['id_region_cur'];
 				$region->name = $arr['region_cur'];
-				$region->country_id = $arr['id_country_cur'];
+				$region->country_id = (int) $arr['id_country_cur'];
 				$region->country_name = $arr['country_cur'];
 
 				return $region;
@@ -106,7 +106,7 @@ class Util {
 			else if ($arr['country_cur'] != NULL) {
 				$country = new \dobj\Country();
 
-				$country->id = $arr['id_country_cur'];
+				$country->id = (int) $arr['id_country_cur'];
 				$country->name = $arr['country_cur'];
 
 				return $country;
