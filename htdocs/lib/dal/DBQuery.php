@@ -6,8 +6,8 @@ class DBQuery extends DBOp{
 	/*
 	 * Single query execution function
 	 */
-	public function execute($args) {
-		
+	public function execute($args, $type_string) {
+
 		// the connection
 		$result = $this->connection->
 				prepare($this->query);
@@ -16,7 +16,8 @@ class DBQuery extends DBOp{
 		$class = get_class($result);
 
 		for ($i = 0;$i<count($args);$i++) {
-			$result->bindParam($i+1, $args[$i]);
+			$type = $this->type_dict[$type_string[$i]];
+			$result->bindParam($i+1, $args[$i], $type);
 		}
 
 //		var_dump($args);

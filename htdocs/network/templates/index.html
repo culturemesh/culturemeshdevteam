@@ -16,7 +16,7 @@
 	<div content>
 		<div class="net-left">
 			<div class="leftbar">
-				{{ sections.map_embed }}
+				{{{ sections.map_embed }}}
 				<div class="tags"></div>
 				<div class="suggestions">
 					<h4 class="h-network">People who viewed this network also viewed:</h4>
@@ -24,35 +24,35 @@
 			</div>
 		</div>
 		<div class="net-right">
-			{{ sections.searchbar }}
-			{{ sections.lrgnetwork }}
+			{{{ sections.searchbar }}}
+			{{{ sections.lrgnetwork }}}
 			<div>
 				<div class='net-info'>
 					<h1 class='h-network'>{{ sections.network_title }}</h1>
-					{{ vars.reg-guest }}
+					{{# page_vars.reg-guest }}
 					<div class="reg-guest">
 						<form method="POST" action="network_join.php">
-							<p class='lrg-network-stats'>{{ vars.member_count }} Members | {{ vars.post_count }} Posts</p>
+							<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
 							<button class="network">Join us!</button>
 						</form>
 					</div>
-					{{/ vars.reg-guest }}
-					{{# vars.guest }}
+					{{/ page_vars.reg-guest }}
+					{{# page_vars.guest }}
 					<div class="guest">
-						<p class='lrg-network-stats'>{{ vars.member_count }} Members | {{ vars.post_count }} Posts</p>
+						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
 						<button class="network" onclick="$('#register_modal').modal('show');">Join us!</button>
 					</div>
-					{{/ vars.guest }}
-					{{# vars.member }}
+					{{/ page_vars.guest }}
+					{{# page_vars.member }}
 					<div class="member">
-						<p class='lrg-network-stats'>{{ vars.member_count }} Members | {{ vars.post_count }} Posts</p>
+						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
 						<form method="POST" action="network_leave.php">
 							<button class="network">Leave Network</button>
-							<input type="hidden" name="uid" value="{{ vars.uid }}"/>
-							<input type="hidden" name="nid" value="{{ vars.nid }}"/>
+							<input type="hidden" name="uid" value="{{ page_vars.uid }}"/>
+							<input type="hidden" name="nid" value="{{ page_vars.nid }}"/>
 						</form>
 					</div>
-					{{/ vars.member }}
+					{{/ page_vars.member }}
 					<div class="clear"></div>
 					{{ vars.sharebuttons }}
 					<div>
@@ -81,19 +81,18 @@
 					<input type="hidden" name="post_original" value="NULL"></input>
 				</form>
 				<hr>
-				{{# sections.posts }}
-
+				{{{ sections.posts }}}
 				{{# get.ap }} lambda required
-				{{# vars.post_count_lambda }}
+				{{# page_vars.post_count_lambda }}
 				<div>
 					<form class="more_posts" method="POST" action="network_more_posts.php">
 						<input type="hidden" id="nmp_lb" name="lb" value=10 />
 						<input type="hidden" id="nmp_ub" name="ub" value=10 />
-						<input type="hidden" id="nmp_nid" name="nid" value="{{ vars.nid }}" />
+						<input type="hidden" id="nmp_nid" name="nid" value="{{ page_vars.nid }}" />
 						<button id="mp_button" class="post show">Load Older Posts</button>
 					</form>
 				</div>
-				{{/ vars.post_count_lambda }}
+				{{/ page_vars.post_count_lambda }}
 				{{/ get.ap }}
 				<!--<script src="js/post-wall.js"></script>-->
 				<script>
@@ -123,14 +122,14 @@
 						// add a div for reply
 					}
 
-					loadPostData({{ vars.nid }}, grabData);
+					loadPostData({{ page_vars.nid }}, grabData);
 				 */
 				</script>
 			</div>
 			<div id="event-wall" class="tab-pane">
 				<!--<ul class="network">-->
 				<div>
-				{{ sections.event_slider }}
+					{{{ sections.event_slider }}}
 				</div>
 				<div class="clear"></div>
 				<!--</ul>-->
@@ -171,6 +170,11 @@
 	{{/ content }}
 
 	{{$ body_scripts }}
+	<link rel="stylesheet" type="text/css" href="{{vars.home_path}}/js/jsdatetime/jquery.datetimepicker.css"/ >
+	<script src="{{vars.home_path}}/js/jsdatetime/jquery.datetimepicker.js"></script>
+	<script src="{{vars.home_path}}/js/searchbar.js"></script>
+	<script src="{{vars.home_path}}/js/slider.js"></script>
+	<script src="{{vars.home_path}}/js/event-wall.js"></script>
 	{{/ body_scripts }}
 
 {{/ layout }}

@@ -20,6 +20,7 @@ final class Environment {
 	private $env_file;
 	private $img_dir;
 	private $blank_img;
+	private $g_api_key;
 
 	private $db_server;
 	private $db_user;
@@ -130,6 +131,8 @@ final class Environment {
 		$this->db_pass = $DB_PASS;
 		$this->db_server = $DB_SERVER;
 		$this->db_user = $DB_USER;
+
+		$this->g_api_key = $G_API_KEY;
 
 		return true;
 

@@ -54,6 +54,12 @@ class DAL {
 
 		include_once('reg-image.php');
 		\registerImage($this);
+
+		include_once('reg-post.php');
+		\registerPost($this);
+
+		include_once('reg-event.php');
+		\registerEvent($this);
 	}
 
 	public function getRegistryCount() {

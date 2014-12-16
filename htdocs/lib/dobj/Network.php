@@ -30,6 +30,9 @@ class Network extends DisplayDObj {
 	protected $join_date;
 	protected $existing;		// bool, not in db
 
+	protected $posts;
+	protected $events;
+
 	public static function createFromId($id, $dal, $do2db) {
 
 		$network = new Network();
@@ -63,6 +66,49 @@ class Network extends DisplayDObj {
 		$network->location = \misc\Util::ArrayToSearchable($location_array);
 
 		return $network;
+	}
+
+	public function getPosts($dal, $do2db) {
+
+		if ($this->id == NULL) {
+			throw new Exception('No id is associated with this network object');
+		}
+
+		$args = new Blank();
+		$args->id_network = $this->id;
+		$args->lobound = 0;
+		$args->upbound = 10;
+
+		$this->posts = $do2db->execute($dal, $args, 'getPostsByNetworkId');
+
+		foreach ($this->posts as $post) {
+			$post->getReplies($dal, $do2db);
+		}
+	}
+
+	public function getPostCount($dal, $do2db) {
+
+		if ($this->id == NULL) {
+			throw new Exception('No id is associated with this network object');
+		}
+
+		$this->post_count = $do2db->execute($dal, $this, 'getPostCount');
+	}
+
+	public function getMemberCount($dal, $do2db) {
+
+		if ($this->id == NULL) {
+			throw new Exception('No id is associated with this network object');
+		}
+
+		$this->member_count = $do2db->execute($dal, $this, 'getMemberCount');
+	}
+
+	public function getEvents($dal, $do2db) {
+
+		$this->events = $do2db->execute($dal, $this, 'getEventsByNetworkId');
+
+		// arrange events
 	}
 
 	public function display($context) {

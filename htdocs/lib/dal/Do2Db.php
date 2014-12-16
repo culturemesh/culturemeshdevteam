@@ -14,12 +14,14 @@ class Do2Db {
 
 		$this->load($dal, $dobj, $query, $op);
 
-		if ($op == NULL) 
+		if ($op == NULL) {
+			$this->cleanse();
 			throw new \Exception('Operation hasn\'t been loaded. Have you forgotten to return it in the registration function? That happens a lot.');
+		}
 
 		$scheme = $op->getScheme();
 		$args = $this->prepareArgs($scheme);
-		$result = $op->execute($args);
+		$result = $op->execute($args, $scheme['param_types']);
 
 		$final = $this->processResult($scheme, $result);
 		$this->cleanse();
@@ -48,11 +50,17 @@ class Do2Db {
 		//array_push($args, $scheme['param_types']);
 		$params = $scheme['params'];
 
-		//var_dump($scheme);
+		// check for misplaced array
+		if ( is_array($this->dobj) ) {
+			$this->cleanse();
+			throw \Exception('No array can be used to pass parameters, cast as an object.');
+		}
+
 		foreach ($params as $param) {
-			if ($this->dobj->$param == NULL &&
+			if ($this->dobj->$param === NULL &&
 				!in_array($param, $scheme['nullable'])) {
 					throw new \InvalidArgumentException("{$param} is not a parameter in ". get_class($this->dobj));
+					$this->cleanse();
 			}
 			else {
 				$thing = &$this->dobj->getReference($param);
@@ -76,12 +84,22 @@ class Do2Db {
 
 		// if result set is empty
 		if ($result->rowCount() == 0) {
-			return False;
+			return $result;
 		}
 
 		// error handling for queries
 		if ($scheme['returning_list'] == True)
 			return $this->fillList($scheme, $result);
+		else if ($scheme['returning_assoc'] == True) {
+			return $this->fillAssoc($scheme, $row = $result->fetch(\PDO::FETCH_ASSOC));
+		}
+		else if ($scheme['returning_value'] == True) {
+			$row = $result->fetch(\PDO::FETCH_ASSOC);
+			$cols = $scheme['returning_cols'];
+
+			// return single value
+			return $row[$cols[0]];
+		}
 		else
 			return $this->fillObj($scheme, $row = $result->fetch(\PDO::FETCH_ASSOC));
 	}
@@ -91,8 +109,22 @@ class Do2Db {
 	 */
 	private function fillObj($scheme, $row) {
 
+		// uses base dobj class to create dobj of any type
 		$dobj = $scheme['returning_class']::createFromDataRow($row);
 		return $dobj;
+	}
+
+	private function fillAssoc($scheme, $row) {
+
+		$arr = array();
+
+		// fill assoc array
+		foreach ($scheme['returning_cols'] as $key) {
+			$value = $row[$key];
+			$arr[$key] = $value;
+		}
+
+		return $arr;
 	}
 
 	/**
@@ -100,7 +132,7 @@ class Do2Db {
 	 */
 	private function fillList($scheme, $result) {
 
-		$list = new dobj\DObjList();
+		$list = new \dobj\DObjList();
 
 		// loop through stuff
 		foreach ($result->fetchAll(\PDO::FETCH_ASSOC) as $row) {
