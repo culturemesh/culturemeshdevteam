@@ -1,6 +1,6 @@
 <div id="header">
     <div id="top-logo">
-        <a href="index.php"><img src="<?php echo HOME_PATH; ?>images/logo_header.png"></a>
+        <a href="index.php"><img src="<?php echo \Environment::host_root(); ?>/images/logo_header.png"></a>
     </div>
     <div id="right-top-btns">
         <ul id="top-links">

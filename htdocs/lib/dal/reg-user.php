@@ -25,6 +25,8 @@ SQL
 			'param_types' => 's',
 			'nullable' => array(),
 			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
 			'returning_list' => False,
 			'returning_class' => 'dobj\User',
 			'returning_cols' => array('id')

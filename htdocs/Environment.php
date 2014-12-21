@@ -4,6 +4,7 @@ final class Environment {
 	
 	// COMPILE TIME PROPERTIES //
 	public static $site_root = __FILE__;
+	public static $host_root_s;
 
 	private static $domain_url = 'http://www.culturemesh.com';
 	private static $short_domain_url = 'culturemesh.com';
@@ -49,7 +50,6 @@ final class Environment {
 			$hostname = $_SERVER['HTTP_HOST'];
 			$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
 			$this->f_root = str_replace($doc_root, '', getcwd());
-
 		}
 		else {
 			$this->host_root = 'unimportant';
@@ -94,6 +94,21 @@ final class Environment {
 			return $this->$name;
 		else
 			return false;
+	}
+
+	public static function site_root() {
+		return getcwd();
+	}
+
+	public static function host_root() {
+
+		if (!isset(self::$host_root_s)) {
+			$doc_root = $_SERVER['DOCUMENT_ROOT'];
+			$hostname = $_SERVER['HTTP_HOST'];
+			self::$host_root_s = 'http://'.str_replace($doc_root, $hostname, getcwd());
+		}
+		
+		return self::$host_root_s;
 	}
 
 	public function testMode() {
