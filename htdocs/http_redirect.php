@@ -9,6 +9,9 @@ class HTTPRedirect {
 	private $url_query;
 	private $url_host;
 	private $url_path;
+	private $url_control;
+	private $control;
+	private $value;
 
 	private $redirect_url;
 
@@ -62,6 +65,14 @@ class HTTPRedirect {
 
 	public function getPath() {
 		return $this->url_path;
+	}
+
+	public function setControl($control, $value) {
+
+		$this->control = $control;
+		$this->value = $value;
+
+		$this->url_control = '/'.$this->control.'/'.$this->value.'/';
 	}
 
 	// add a key value to query string
@@ -167,7 +178,7 @@ class HTTPRedirect {
 
 	// return redirect url
 	public function getUrl() {
-		return $this->url_path.$this->url_query.$this->url_fragment;
+		return $this->url_path.$this->url_control.$this->url_query.$this->url_fragment;
 	}
 
 	// if you want, take care of the whole header call right here

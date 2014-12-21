@@ -94,7 +94,8 @@ if($_POST['email'] && $_POST['password']){
 				// if not coming from network, redirect to profile_edit
 				if (!$redirect->pathContains('network')) {
 					
-					$redirect->setPath('profile_edit.php');
+					$redirect->setPath('profile/'.$json_response['uid']);
+					//$redirect->setControl('network', $json_response['uid']);
 					// will sooon have to set get parameter here
 				}
 
