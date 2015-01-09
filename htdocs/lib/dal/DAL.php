@@ -66,6 +66,10 @@ class DAL {
 		return count($this->registry);
 	}
 
+	public function lastInsertId() {
+		return $this->connection->lastInsertId();
+	}
+
 	/*
 	private static $folders = array('meta', 'user', 'network', 'location',
 		'language');

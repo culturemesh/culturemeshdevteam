@@ -10,8 +10,8 @@ class ImageUploadTest extends PHPUnit_Framework_TestCase {
 		$dal = new dal\DAL(new dal\StubConnection());
 	
 		$iu = new misc\ImageUpload(array(
-				'dir' => $dir,
-				'postname' => $postname,
+				'dir' => 'someplace',
+				'postname' => 'something',
 				'validation_type' => array(),
 				'validation_size' => '1M',
 				'thumbnail' => array(

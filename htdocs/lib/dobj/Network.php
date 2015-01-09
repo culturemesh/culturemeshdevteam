@@ -81,6 +81,10 @@ class Network extends DisplayDObj {
 
 		$this->posts = $do2db->execute($dal, $args, 'getPostsByNetworkId');
 
+		if (get_class($this->events) == 'PDOStatement') {
+			$this->events = new DObjList();
+		}
+
 		foreach ($this->posts as $post) {
 			$post->getReplies($dal, $do2db);
 		}
@@ -108,6 +112,10 @@ class Network extends DisplayDObj {
 
 		$this->events = $do2db->execute($dal, $this, 'getEventsByNetworkId');
 
+		if (get_class($this->events) == 'PDOStatement') {
+			$this->events = new DObjList();
+		}
+
 		// arrange events
 	}
 
@@ -115,8 +123,27 @@ class Network extends DisplayDObj {
 
 	}
 
-	public function getHTML($context) {
+	public function getHTML($context, $vars) {
 
+		// get vars
+		$cm = $vars['cm'];
+		$mustache = $vars['mustache'];
+
+		switch($context) {
+
+		case 'dashboard':
+
+			// get template
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-network.html');
+
+			return $mustache->render($template, array(
+				'active' => true,
+				'network' => $this,
+				'title' => $this->getTitle(),
+				)
+			);
+			break;
+		}
 	}
 
 	/*
@@ -124,6 +151,37 @@ class Network extends DisplayDObj {
 	 * on main site
 	 */
 	public function getTitle() {
+
+		if ($this->origin == NULL) {
+
+			// set up origin array
+			$origin_keys = array('id_city_origin', 'city_origin', 'id_region_origin',
+				'region_origin', 'id_country_origin', 'country_origin',
+				'id_language_origin', 'language_origin');
+			
+			$origin_array = array();
+
+			foreach ($origin_keys as $key) {
+				$origin_array[$key] = $this->$key;
+			}
+
+			$this->origin = \misc\Util::ArrayToSearchable($origin_array);
+		}
+
+		if ($this->location == NULL) {
+
+			// set up location array
+			$location_keys = array('id_city_cur', 'city_cur', 'id_region_cur',
+				'region_cur', 'id_country_cur', 'country_cur');
+
+			$location_array = array();
+
+			foreach ($location_keys as $key) {
+				$location_array[$key] = $this->$key;
+			}
+
+			$this->location = \misc\Util::ArrayToSearchable($location_array);
+		}
 
 		$origin_str = '';
 		$location_str = $this->location->toString();

@@ -157,6 +157,44 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 		$srch = misc\Util::ArrayToSearchable($arr);
 		$this->assertInstanceOf('dobj\Language', $srch);
 	}
+
+	public function testIntervalToPostTime() {
+
+		$interval = new DateInterval('PT0S');
+		$time = misc\Util::IntervalToPostTime($interval);
+
+		$this->assertEquals('just now', $time);
+
+		$interval = new DateInterval('PT4S');
+		$time = misc\Util::IntervalToPostTime($interval);
+
+		$this->assertEquals('4 second(s) ago', $time);
+
+		$interval = new DateInterval('PT71S');
+		$time = misc\Util::IntervalToPostTime($interval);
+
+		$this->assertEquals('1 minute(s) ago', $time);
+
+		$interval = new DateInterval('PT121S');
+		$time = misc\Util::IntervalToPostTime($interval);
+
+		$this->assertEquals('2 minute(s) ago', $time);
+
+		$interval = new DateInterval('PT3670S');
+		$time = misc\Util::IntervalToPostTime($interval);
+
+		$this->assertEquals('1 hour(s) ago', $time);
+
+		$interval = new DateInterval('PT3670S');
+		$time = misc\Util::IntervalToPostTime($interval);
+
+		$this->assertEquals('1 hour(s) ago', $time);
+
+		$interval = new DateInterval('PT86570S');
+		$time = misc\Util::IntervalToPostTime($interval);
+
+		$this->assertEquals('1 day(s) ago', $time);
+	}
 }
 
 ?>

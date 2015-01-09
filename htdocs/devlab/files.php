@@ -6,6 +6,55 @@ $cm = new Environment();
 $img_dir = Environment::$site_root.'/devlab/images';
 $img_dir_host = $cm->host_root.'/devlab/images';
 
+$iu = new \misc\ImageUpload($cm, array(
+		'dir' => $cm->img_repo_dir,
+		'postname' => 'fileupload',
+		'validation_type' => array('image/png', 'image/gif', 'image/jpeg'),
+		'validation_size' => '2M',
+		'thumbnail' => array(
+			'thumbnail' => true,
+			'class' => 'post')
+		)
+	);
+
+$result = $iu->upload();
+
+if (!isset($result['files'])) {
+
+}
+
+$files = $result['files'];
+
+// create db connnection
+$dal = new dal\DAL($cm->getConnection());
+$dal->loadFiles();
+$do2db = new dal\Do2Db();
+
+foreach ($files as $file) {
+	$file->insert($dal, $do2db);
+}
+
+$cm->closeConnection();
+/*
+// try and create thumbnails out of 'em
+$file_image = new Imagick($img_dir.'/'.$data['name']);
+$file_image->thumbnailImage(75, 0);
+$file_image->writeImage($img_dir.'/'.'new_name.png');
+ */
+
+/*
+var_dump($file_image);
+$thumb = clone $file_image;
+
+$new_name = $img_dir.'/'.'thumb.'.$data['extension'];
+$new_name_host = $img_dir_host.'/'.'thumb.'.$data['extension'];
+$thumb->setFilename($new_name);
+$thumb->thumbnailImage(75, 0);
+$thumb->writeImage();
+ */
+
+//print_r($result['files']);
+/*
 $storage = new \Upload\Storage\FileSystem(Environment::$site_root.'/devlab/images', true);
 $files = new \Upload\File('fileupload', $storage);
 
@@ -43,6 +92,7 @@ $files->upload();
 $file_image = new Imagick($img_dir.'/'.$data['name']);
 $file_image->thumbnailImage(75, 0);
 $file_image->writeImage($img_dir.'/'.'new_name.png');
+ */
 /*
 var_dump($file_image);
 $thumb = clone $file_image;

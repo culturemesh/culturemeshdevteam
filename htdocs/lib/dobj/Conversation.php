@@ -43,7 +43,7 @@ class Conversation extends DisplayDObj {
 
 	}
 
-	public function getHTML($context) {
+	public function getHTML($context, $vars) {
 
 	}
 }

@@ -24,6 +24,80 @@ class Util {
 		);
 	}
 
+	/*
+	 * Takes a php DateInterval object
+	 * returns a string representing new time
+	 */
+	public static function IntervalToPostTime($interval) {
+
+		// properties for DateInterval
+		$props = array('y', 'm', 'd', 'h', 'i', 's');
+		$jones = array(
+			'year(s) ago',
+			'month(s) ago',
+			'day(s) ago',
+			'hour(s) ago',
+			'minute(s) ago',
+			'second(s) ago'
+		);
+
+		for ($i = 0; $i < count($props); $i++) {
+
+			// if value is empty, move on
+			if ($interval->$props[$i] == 0)
+				// check if we're talking seconds
+				if (count($props) - $i == 1) {
+					return 'just now';
+				}
+
+				else
+				continue;
+			else {
+				// return first property with a nonzero value assigned
+				// attach designation( month, year, etc)
+				$n = $interval->$props[$i];
+				return $n . ' ' . $jones[$i];
+			}
+		}
+
+		/*
+		$incrms = array(
+			60, 60, 24, 30, 12);	// seconds, minutes, hours, days, months	
+
+		$jones = array(
+			'just now',
+			'second(s) ago',
+			'minute(s) ago',
+			'hour(s) ago',
+			'day(s) ago',
+			'month(s) ago',
+			'year(s) ago'
+		);
+
+		$units = $interval->format(''); // units start as seconds, are divided
+
+		for($i = 0; $i < count($incrms); $i++) {
+
+			$incr = $incrms[$i];
+
+			// less than
+			if ($units / $incr <= 0) {
+				if ($i == 0) {
+					return $jones[$i];
+				}
+
+				return $units . ' ' . $jones[$i];
+			}
+			// equal to
+			else if ($units / $incr < 1) {
+				return $units . ' ' . $jones[$i+1];
+			} else {
+				$units = floor( $units / $incr);
+			}
+		}
+		 */
+	}
+
 	// taking an array from network with a certain set of keys,
 	// flipping them into a searchable
 	public static function ArrayToSearchable($arr) {
@@ -112,6 +186,29 @@ class Util {
 				return $country;
 			}
 		}
+	}
+
+	public static function GetUsername($vars) {
+
+		$name = NULL;
+
+		// last resort, email
+		if (isset($event->email))
+			$host = $event->email;
+
+		// make host username
+		if (isset($event->username))
+			$host = $event->username;
+
+		// prioritize names
+		if (isset($event->first_name)) {
+			$host = $event->first_name;
+
+			if (isset($event->last_name))
+				$host .= ' '.$event->last_name;
+		}
+
+		return $name;
 	}
 }
 

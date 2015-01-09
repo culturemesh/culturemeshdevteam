@@ -20,6 +20,7 @@ final class Environment {
 	private $template_dir;
 	private $env_file;
 	private $img_dir;
+	private $img_repo_dir;
 	private $blank_img;
 	private $g_api_key;
 
@@ -81,6 +82,7 @@ final class Environment {
 
 
 		$this->img_dir;
+		$this->img_repo_dir = self::$site_root.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'user_images';
 		$this->blank_img;
 		$this->template_dir = self::$site_root.DIRECTORY_SEPARATOR.'templates';
 		$this->ds = DIRECTORY_SEPARATOR;
@@ -313,6 +315,7 @@ final class Environment {
 		 */
 		return array(
 			'home_path' => $this->host_root,
+			'f_root' => $this->f_root,
 			'img_path' => $this->img_dir
 		);
 	}

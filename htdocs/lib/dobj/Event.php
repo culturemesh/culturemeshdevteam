@@ -15,6 +15,19 @@ class Event extends DisplayDObj {
 	protected $description;
 	protected $region;
 
+	// db stuff
+	protected $network;
+	protected $network_class;
+	protected $city_cur;
+	protected $region_cur;
+	protected $country_cur;
+	protected $city_origin;
+	protected $region_origin;
+	protected $country_origin;
+	protected $language_origin;
+	protected $usr_image;
+
+	protected $host;
 	protected $email;
 	protected $username;
 	protected $first_name;
@@ -30,7 +43,66 @@ class Event extends DisplayDObj {
 
 	}
 
-	public function getHTML($context) {
+	public function getHTML($context, $vars) {
 
+		// get vars
+		$cm = $vars['cm'];
+		$mustache = $vars['mustache'];
+
+		switch($context) {
+
+		case 'card':
+
+			// get template
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-card.html');
+			return $mustache->render($template, array(
+				'event' => $this,
+				'host' => $this->getName()
+				)
+			);
+			break;
+
+		case 'modal':
+
+			// get template
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-modal.html');
+			return $mustache->render($template, array(
+				'event' => $this,
+				'host' => $this->getName()
+				)
+			);
+			break;
+
+		case 'dashboard':
+			// get template
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-event.html');
+			return $mustache->render($template, array(
+				'event' => $this,
+				'host' => $this->getName()
+				)
+			);
+			break;
+
+		}
+	}
+
+	protected function getName() {
+
+			// last resort, email
+			if (isset($this->email))
+				$name = $this->email;
+
+			// make name username
+			if (isset($this->username))
+				$name = $this->username;
+
+			// prioritize names
+			if (isset($this->first_name)) {
+				$name = $this->first_name;
+
+				if (isset($this->last_name))
+					$name .= ' '.$this->last_name;
+			}
+		return $name;
 	}
 }

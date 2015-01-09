@@ -79,4 +79,42 @@ SQL
 		$m->setConnection($con);
 		return $m;
 	};
+
+	$obj->getPostsByUserId = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+SELECT p.*, u.first_name, u.last_name, u.img_link
+FROM posts p, users u 
+WHERE p.id_user=u.id 
+AND p.post_text <> ''
+AND id_user=?
+ORDER BY p.id_network, p.post_date DESC
+LIMIT ?, ?
+SQL
+
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'getPostsByUserId',
+			'params' => array('id_user', 'lbound', 'ubound'),
+			'param_types' => 'iii',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_list' => true,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => 'dobj\Post',
+			'returning_cols' => array('id', 'id_user', 'id_network', 
+				'post_date', 'post_text', 'post_class', 
+				'post_original', 'email', 'username', 
+				'first_name', 'last_name', 'img_link', 
+			)
+		));
+		$m->setConnection($con);
+		return $m;
+	};
 }

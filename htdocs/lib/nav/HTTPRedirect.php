@@ -1,4 +1,5 @@
 <?php
+namespace nav;
 
 $pages = array('network', 'index', 'search_results');
 
@@ -14,11 +15,15 @@ class HTTPRedirect {
 	private $value;
 
 	private $redirect_url;
+	private $cm;
 
 	// takes a url and separates it into component parts
 	// makes path relative
-	function __construct($raw_url, $page_names) {
+	function __construct($cm, $raw_url, $page_names) {
 		
+		// environment
+		$this->cm = $cm;
+
 		// pagenames for right now
 		$this->page_names = $page_names;
 
@@ -29,14 +34,23 @@ class HTTPRedirect {
 		$this->url_host = $parsed_url['host'];
 		$this->url_path = self::extractRelativePath($parsed_url['path']);
 
+		// control stuff
+		$cv = self::parseControl();
+
+		if (isset($cv)) {
+			$this->url_path = '/';
+			$this->url_control = $cv['control'] . '/' . $cv['value'];
+		}
+
 		// add query string
-		if (strlen($parsed_url['query']) > 0)
+		if (isset($parsed_url['query']) && strlen($parsed_url['query']) > 0)
 			$this->url_query = '?'.$parsed_url['query'];
 		else
 			$this->url_query = '';
 
 		// add fragment
-		$this->url_fragment = $parsed_url['fragment'];
+		if (isset($parsed_url['fragment']))
+			$this->url_fragment = $parsed_url['fragment'];
 	}
 
 	// extracts the relative path from the parse_url path
@@ -67,23 +81,47 @@ class HTTPRedirect {
 		return $this->url_path;
 	}
 
-	private function getControl() {
+	private function parseControl() {
 
 		$cv = array(
 			'control' => NULL,
 			'value' => NULL
 		);
 
-		return $cv;
+		$fragments = explode('/', $this->getPath());
+
+		if (count($fragments) == 1)
+			// we could have index, or something else
+		{}
+		else {
+			$this->control = $fragments[0];
+			$this->value = $fragments[1];
+
+			return array(
+				'control' => $this->control,
+				'value' => $this->value
+			);
+		}
 	}
 
 	public function setControl($control, $value) {
 
+		// set url path to /
+		$this->url_path = '/';
+
 		$this->control = $control;
 		$this->value = $value;
 
-		$this->url_control = '/'.$this->control.'/'.$this->value.'/';
+		$this->url_control = $this->control.'/'.$this->value.'/';
 	}
+
+	public function getControl() {
+
+		return array(
+			'control' => $this->control,
+			'value' => $this->value
+		);
+	}		
 
 	// add a key value to query string
 	public function addQueryParameter($key, $value) {
@@ -193,7 +231,7 @@ class HTTPRedirect {
 
 	// if you want, take care of the whole header call right here
 	public function execute() {
-		header('Location: '.self::getUrl());
+		header('Location: '. $this->cm->host_root.self::getUrl());
 	}
 }
 

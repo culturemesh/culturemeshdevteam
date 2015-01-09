@@ -13,6 +13,9 @@
 	{{/ autoload_scripts }}
 
 	{{$ content }}
+		{{# sections.event_modals }}
+		{{{ . }}}
+		{{/ sections.event_modals }}
 	<div content>
 		<div class="net-left">
 			<div class="leftbar">
@@ -31,7 +34,7 @@
 					<h1 class='h-network'>{{ sections.network_title }}</h1>
 					{{# page_vars.reg-guest }}
 					<div class="reg-guest">
-						<form method="POST" action="network_join.php">
+						<form method="POST" action="{{ vars.home_path }}/network_join.php">
 							<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
 							<button class="network">Join us!</button>
 						</form>
@@ -46,7 +49,7 @@
 					{{# page_vars.member }}
 					<div class="member">
 						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
-						<form method="POST" action="network_leave.php">
+						<form method="POST" action="{{ vars.home_path }}/network_leave.php">
 							<button class="network">Leave Network</button>
 							<input type="hidden" name="uid" value="{{ page_vars.uid }}"/>
 							<input type="hidden" name="nid" value="{{ page_vars.nid }}"/>
@@ -72,7 +75,7 @@
 			<!-------------- -->
 			<div class="network tab-content">
 			<div id="post-wall" class="tab-pane active">
-				<form method="POST" class="member" action="network_post.php">
+				<form method="POST" class="member" action="{{ vars.home_path }}/network_post.php">
 				<img id="profile-post" src="{{ user.img_link }}" width="45" height="45">
 					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 					<div class="clear"></div>
@@ -81,7 +84,9 @@
 					<input type="hidden" name="post_original" value="NULL"></input>
 				</form>
 				<hr>
-				{{{ sections.posts }}}
+				{{# sections.posts }}
+				{{{.}}}
+				{{/ sections.posts }}
 				{{# get.ap }} lambda required
 				{{# page_vars.post_count_lambda }}
 				<div>
@@ -129,7 +134,20 @@
 			<div id="event-wall" class="tab-pane">
 				<!--<ul class="network">-->
 				<div>
-					{{{ sections.event_slider }}}
+						<button id="slider-left" class="slider-button"></button>
+						<div id="slider-content" class="event-slider">
+						<table id="slider-table" class="network event">
+							<thead></thead>
+							<tbody>
+							<tr>
+							{{# sections.event_slider }}
+							{{{ . }}}
+							{{/ sections.event_slider }}
+							</tr>
+							</tbody>
+						</table>
+						</div>
+						<button id="slider-right" class="slider-button"></button>
 				</div>
 				<div class="clear"></div>
 				<!--</ul>-->

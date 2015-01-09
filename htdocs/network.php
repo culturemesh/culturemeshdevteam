@@ -385,7 +385,6 @@
 								?>
 							</tr>
 							</tbody>
-							</tr>
 						</table>
 
 						</div>

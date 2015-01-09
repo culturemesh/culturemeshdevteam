@@ -140,5 +140,26 @@ class DObjListTest extends PHPUnit_Framework_TestCase {
 			$this->assertEquals($olist[$i]->id, $this->dlist[$i]->id);
 		}
 	}
+
+	public function testSection() {
+
+		// insert items
+		$dobj_1 = new dobj\Blank();
+		$dobj_1->id = 3;
+		$dobj_2 = new dobj\Blank();
+		$dobj_2->id = 2;
+		$dobj_3 = new dobj\Blank();
+		$dobj_3->id = 1;
+		$dobj_4 = new dobj\Blank();
+		$dobj_4->id = 1;
+	
+		$olist = new dobj\DObjList();
+		$olist->dInsert($dobj_1);
+		$olist->dInsert($dobj_2);
+		$olist->dInsert($dobj_3);
+		$olist->dInsert($dobj_4);
+
+		//$olist.splits('id');
+	}
 }
 ?>

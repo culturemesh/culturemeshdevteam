@@ -13,7 +13,14 @@ class Network {
 	 */
 	public static function match($cm, $params) {
 
+		//echo $cm->host_root;
+//		$stuffs = $cm->getVars();
+//		echo $stuffs['home_path'];
+
 		$nid = $params['id'];
+
+		// set session var
+		$_SESSION['cur_network'] = $nid;
 
 		// prepare for db
 		$dal = new \dal\DAL($cm->getConnection());
@@ -47,13 +54,56 @@ class Network {
 			),
 		));
 
-		if (isset($_SESSION['uid']))
+		if (isset($_SESSION['uid'])) {
 			$logged_in = true;
+
+			// check if user is registered
+			// if so, get user info
+		}
 		else
 			$logged_in = false;
 
-		// make components
+		/////// make components //////////
 		$m_comp = new \misc\MustacheComponent();
+
+		// set network stuff
+		$network->posts->setMustache($m_comp);
+		$p_html = $network->posts->getHTML('network', array(
+			'cm' => $cm,
+			'network' => $network,
+			'mustache' => $m_comp
+			)
+		);
+
+		$network->events->setMustache($m_comp);
+
+		try 
+		{
+			$ec_html = $network->events->getHTML('card', array(
+				'cm' => $cm,
+				'network' => $network,
+				'mustache' => $m_comp
+				)
+			);
+		}
+		catch (\Exception $e)
+		{
+			$ec_html = NULL;
+		}
+
+		try
+		{
+			$em_html = $network->events->getHTML('modal', array(
+				'cm' => $cm,
+				'network' => $network,
+				'mustache' => $m_comp
+				)
+			);
+		}
+		catch (\Exception $e)
+		{
+			$em_html = NULL;
+		}
 
 		$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
 		$map_embed = $m_comp->render($map_embed_template, array(
@@ -71,8 +121,9 @@ class Network {
 				'searchbar' => $searchbar,
 				'lrg_network' => 'Large Network',
 				'network_title' => $network->getTitle(),
-				'posts' => 'Posts',
-				'event_slider' => 'Events'),
+				'posts' => $p_html,
+				'event_slider' => $ec_html,
+				'event_modals' => $em_html),
 			'vars' => $cm->getVars(),
 			'test' => "<b>Something</b>",
 			'page_vars' => array (

@@ -117,18 +117,25 @@
 			<div>
 				<h5><b>EVENTS YOU'RE HOSTING</b></h5>
 				<ul class="dashboard item">
+				{{# sections.yh_events }}
+				{{{ . }}}
+				{{/ sections.yh_events }}
 				</ul>
 			</div>
 			<div>
 				<h5><b>EVENTS IN YOUR NETWORKS</b></h5>
 				<ul class="dashboard item">
-				{{ sections.yn_events }}
+				{{# sections.yn_events }}
+				{{{ . }}}
+				{{/ sections.yn_events }}
 				</ul>
 			</div>
 			<div>
 				<h5><b>YOUR POSTS</b></h5>
 				<ul id='your-posts' class="network">
-				{{ sections.yp_posts }}
+				{{# sections.yp_posts }}
+				{{{ . }}}
+				{{/ sections.yp_posts }}
 				</ul>
 				{{$ page_vars.yp_count }}
 				<form id='more-posts' action='profile_operations.php' method='POST' />
@@ -145,7 +152,11 @@
 		<div class="tab-pane" id="profile_networks_tab">
 			<div>
 				<h5>Your Networks</h5>
-				{{ sections.yn_networks }}
+				<ul class="dashboard item">
+				{{# sections.yn_networks }}
+				{{{ . }}}
+				{{/ sections.yn_networks  }}
+				</ul>
 			</div>
 		</div>
 		<!-- EVENTS TAB -->
@@ -153,13 +164,17 @@
 			<div>
 				<h5>EVENTS YOU'RE HOSTING</h5>
 				<ul class='dashboard item'>
-					{{ sections.yh_events }}
+					{{# sections.yh_events }}
+					{{{ . }}}
+					{{/ sections.yh_events }}
 				</ul>
 			</div>
 			<div>
 				<h5>EVENTS YOU'RE ATTENDING</h5>
 				<ul class='dashboard item'>
-					{{ sections.ya_events }}
+					{{# sections.ya_events }}
+					{{{ . }}}
+					{{/ sections.ya_events }}
 				</ul>
 			</div>
 		</div>

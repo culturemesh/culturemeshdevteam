@@ -9,7 +9,7 @@ function registerImage($obj) {
 		$m->setValues(array(
 			'query' => <<<SQL
 
-			INSERT INTO user_images (hash, post, event, profile)
+			INSERT INTO images (hash, post, event, profile)
 			VALUES (?, ?, ?, ?)
 SQL
 

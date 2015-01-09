@@ -1,0 +1,16 @@
+<td class='event-card card'>
+	<div>
+		<h3 class='h-network'>{{ event.title }}</h3>
+	</div>
+	<div class='card-content'>
+		<div class='card-img'>
+			<img src='{{ event.img_link }}' alt='No image' width='65' height='65'></img>
+		</div>
+		<div class='card-info'>
+			<p id='event-info'>With {{ name }}</p>
+			<p id='event-date'>{{ event_date }}</p>
+			<a data-toggle="modal" href="#event-modal-{{ event.id }}">More Info</a>
+		</div>
+	</div>
+	<div class='clear'></div>
+</td>
