@@ -34,7 +34,7 @@ if ($valid)
 	$post = new \dobj\Post();
 	$post->id_user = $_SESSION['uid'];
 	$post->id_network = $_SESSION['cur_network'];
-	$post->post_text = $_POST['post_text'];
+	$post->post_text = strip_tags($_POST['post_text']);
 	$post->post_class = $_POST['post_class'];
 
 	/*

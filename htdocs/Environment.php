@@ -53,7 +53,6 @@ final class Environment {
 			$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
 			$this->f_root = str_replace($doc_root, '', getcwd());
 			$this->img_host_repo = $this->host_root.'/../../user_images';
-			echo $this->img_host_repo;
 		}
 		else {
 			$this->host_root = 'unimportant';

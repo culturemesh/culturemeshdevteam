@@ -183,10 +183,39 @@ class Post extends DisplayDObj {
 		return $name;
 	}
 
-	private function formatText() {
+	public function formatText() {
 
-		$raw_text = $this->post_text;
-		return $raw_text;
+		$raw_text = $this->post_text; //'Not bold [b] Bold [/b]'; //$this->post_text;
+		//$all_chars = "[\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_space\$\@]*";
+		$all_chars = ".+";
+
+		// find bolded text
+		$match = "#\[b\](".$all_chars.")\[/b\]#";
+		$replacement = '<b>${1}</b>';
+
+		$new_text = preg_replace($match, $replacement, $raw_text);
+
+		// find italicized text
+		$match = "#\[i\](". $all_chars .")\[/i\]#";
+		$replacement = '<i>${1}</i>';
+
+		$new_text = preg_replace($match, $replacement, $new_text);
+
+		// find links
+		$match = "#\[link\](". $all_chars .")\[/link\]#";
+		$replacement = '<a target=\'_blank\' href=\'http://${1}\'>${1}</a>';
+
+		$new_text = preg_replace($match, $replacement, $new_text);
+
+		/*
+		 * OLD HTML REPLACE, LET's keep it around
+		$match = "#((?:http|https|ftp)\:\/\/)*([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
+		$replacement = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
+		// return match
+		$new_text =  preg_replace($match, $replacement, $text);
+
+		 */
+		return $new_text;
 	}
 }
 
