@@ -1,0 +1,70 @@
+<li class='network-post' id='post-{{ post.id }}'>
+	<div class='post-img'>
+		<img id='profile-post' src='{{ post.img_link }}' width='45' height='45'>
+	</div>
+	<div class='post-info'>
+		<h5 class='h-network post'><a href="../profile/{{ post.id_user }}">{{ name }}</a></h5> 
+
+		{{# delete_button }}
+		<div class='reply-button delete'>
+			<form id='post-delete-{{ post.id }}' class='personal post_delete' method="POST" action="network_post_delete.php">
+				<noscript>
+				<input type="hidden" name="NOJS" value="NOJS"/>
+				</noscript>
+				<input type="hidden" name="replies" value="{{ post.reply_count }}" />
+				<input type="hidden" name="pid" value="{{ post.id }}"/>
+				<input type="hidden" name="nid" value="{{ post.id_network }}"/>
+				<button class='post delete-button user'>&#10006</button>
+			</form>
+		</div>
+		{{/ delete_button }}
+		<div class="clear"></div>
+		<p class='network'>{{{ text }}}</p>
+		<div>
+			{{# images }}
+			<img src="{{ vars.img_host_repo }}/{{ . }}"></img>
+			{{/ images }}
+		</div>
+		<p class='network date'><i>{{ relative_date }}</i></p>
+		{{^ active }}
+		<p class='network'><i>The user has deleted this post</i></p>
+		<p class='network reply_count'>{{ post.reply_count }}</p>
+		{{/ active }}
+		{{# reply_request }}
+		<div class='reply-button'>
+			<form class="request_reply" method="POST" action="network_request_reply.php">
+				<noscript>
+				<input type="hidden" name="NOJS" value="NOJS"/>
+				</noscript>
+				<input type="hidden" name="uid" value="{{ post.id_user }}"/>
+				<input type="hidden" name="pid" value="{{ post.id }}"/>
+				<input type="hidden" name="nid" value="{{ post.id_network }}"/>
+				<button class='post'>Reply</button>
+			</form>
+		</div>
+		{{/ reply_request }}
+		<div class="clear"></div>
+	</div>
+	<div class='clear'></div>
+	<div class="replies">
+		<ul class="replies">
+			{{# replies }}	
+			{{{.}}}
+			{{/ replies }}
+		</ul>
+	</div>
+	<div class="prompt"></div>
+	{{# show_replies }}
+	<div class='show_reply_div reply-button'>
+		<form id="" class="show_reply" method="POST" action="network_show_reply.php">
+			<input type="hidden" name="rids" value="{{ rids }}"/>
+			<input type="hidden" name="pid" value="{{ post.id }}"/>
+			<input type="hidden" name="nid" value="{{ post.id_network }}"/>
+			<noscript>
+			<input type="hidden" name="NOJS" value="NOJS"/>
+			</noscript>
+			<input type="submit" class="post show" value="Show All Replies"/>
+		</form>
+	</div>
+	{{/ show_replies }}
+</li>

@@ -34,7 +34,7 @@ class DObjListTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testInsert() {
 
-		$dobj = new dobj\DObj();
+		$dobj = new dobj\User();
 		$this->dlist->dInsert($dobj);
 
 		$this->assertCount(1, $this->dlist);
@@ -47,9 +47,9 @@ class DObjListTest extends PHPUnit_Framework_TestCase {
 	public function testTraverse() {
 
 		// insert items
-		$dobj_1 = new dobj\DObj();
+		$dobj_1 = new dobj\User();
 		$dobj_1->id = 1;
-		$dobj_2 = new dobj\DObj();
+		$dobj_2 = new dobj\User();
 		$dobj_2->id = 2;
 
 		$this->dlist->dInsert($dobj_1);
@@ -67,19 +67,21 @@ class DObjListTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers DObjList::sort
+	 * @covers UserList::sort
 	 *
 	 */
 	public function testSortAsc() {
 
+		$this->markTestSkipped('Not sorting lists atm');
+
 		// insert items
-		$dobj_1 = new dobj\DObj();
+		$dobj_1 = new dobj\User();
 		$dobj_1->id = 1;
-		$dobj_2 = new dobj\DObj();
+		$dobj_2 = new dobj\User();
 		$dobj_2->id = 2;
-		$dobj_3 = new dobj\DObj();
+		$dobj_3 = new dobj\User();
 		$dobj_3->id = 3;
-		$dobj_4 = new dobj\DObj();
+		$dobj_4 = new dobj\User();
 		$dobj_4->id = 3;
 	
 		$olist = new dobj\DObjList();
@@ -107,14 +109,16 @@ class DObjListTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testSortDesc() {
 
+		$this->markTestSkipped('Not sorting list atm');
+
 		// insert items
-		$dobj_1 = new dobj\DObj();
+		$dobj_1 = new dobj\User();
 		$dobj_1->id = 3;
-		$dobj_2 = new dobj\DObj();
+		$dobj_2 = new dobj\User();
 		$dobj_2->id = 2;
-		$dobj_3 = new dobj\DObj();
+		$dobj_3 = new dobj\User();
 		$dobj_3->id = 1;
-		$dobj_4 = new dobj\DObj();
+		$dobj_4 = new dobj\User();
 		$dobj_4->id = 1;
 	
 		$olist = new dobj\DObjList();
@@ -135,6 +139,27 @@ class DObjListTest extends PHPUnit_Framework_TestCase {
 		for ($i = 0; $i < count($olist); $i++) {
 			$this->assertEquals($olist[$i]->id, $this->dlist[$i]->id);
 		}
+	}
+
+	public function testSection() {
+
+		// insert items
+		$dobj_1 = new dobj\Blank();
+		$dobj_1->id = 3;
+		$dobj_2 = new dobj\Blank();
+		$dobj_2->id = 2;
+		$dobj_3 = new dobj\Blank();
+		$dobj_3->id = 1;
+		$dobj_4 = new dobj\Blank();
+		$dobj_4->id = 1;
+	
+		$olist = new dobj\DObjList();
+		$olist->dInsert($dobj_1);
+		$olist->dInsert($dobj_2);
+		$olist->dInsert($dobj_3);
+		$olist->dInsert($dobj_4);
+
+		//$olist.splits('id');
 	}
 }
 ?>

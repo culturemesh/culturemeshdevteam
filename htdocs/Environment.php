@@ -4,6 +4,7 @@ final class Environment {
 	
 	// COMPILE TIME PROPERTIES //
 	public static $site_root = __FILE__;
+	public static $host_root_s;
 
 	private static $domain_url = 'http://www.culturemesh.com';
 	private static $short_domain_url = 'culturemesh.com';
@@ -14,11 +15,15 @@ final class Environment {
 	
 	// RUNTIME PROPERTIES //
 	private $host_root;
+	private $f_root;	// needed for AltoRouter
 	private $ds;
 	private $template_dir;
 	private $env_file;
 	private $img_dir;
+	private $img_repo_dir;
+	private $img_host_repo;
 	private $blank_img;
+	private $g_api_key;
 
 	private $db_server;
 	private $db_user;
@@ -37,8 +42,22 @@ final class Environment {
 		self::$site_root = getcwd();
 
 		$doc_root = $_SERVER['DOCUMENT_ROOT'];
-		$hostname = $_SERVER['HTTP_HOST'];
-		$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
+
+		// returns hostname
+		// eg - http://www.culturemesh.com/
+		// eg - localhost
+		// nothing if executing a script
+		//
+		if (isset($_SERVER['HTTP_HOST'])) {
+			$hostname = $_SERVER['HTTP_HOST'];
+			$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
+			$this->f_root = str_replace($doc_root, '', getcwd());
+			$this->img_host_repo = $this->host_root.'/../../user_images';
+		}
+		else {
+			$this->host_root = 'unimportant';
+		}
+
 
 		if( !$this::includeEnvFiles() ) {
 			throw new Exception('Could not find environment files');
@@ -65,6 +84,7 @@ final class Environment {
 
 
 		$this->img_dir;
+		$this->img_repo_dir = self::$site_root.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'user_images';
 		$this->blank_img;
 		$this->template_dir = self::$site_root.DIRECTORY_SEPARATOR.'templates';
 		$this->ds = DIRECTORY_SEPARATOR;
@@ -78,6 +98,21 @@ final class Environment {
 			return $this->$name;
 		else
 			return false;
+	}
+
+	public static function site_root() {
+		return getcwd();
+	}
+
+	public static function host_root() {
+
+		if (!isset(self::$host_root_s)) {
+			$doc_root = $_SERVER['DOCUMENT_ROOT'];
+			$hostname = $_SERVER['HTTP_HOST'];
+			self::$host_root_s = 'http://'.str_replace($doc_root, $hostname, getcwd());
+		}
+		
+		return self::$host_root_s;
 	}
 
 	public function testMode() {
@@ -115,6 +150,8 @@ final class Environment {
 		$this->db_pass = $DB_PASS;
 		$this->db_server = $DB_SERVER;
 		$this->db_user = $DB_USER;
+
+		$this->g_api_key = $G_API_KEY;
 
 		return true;
 
@@ -169,8 +206,9 @@ final class Environment {
 
 	public static function autoloadHT($class)
 	{
-		$file = Environment::$site_root."/{$class}.php";
+		$class = str_replace("\\", DIRECTORY_SEPARATOR, $class);
 
+		$file = Environment::$site_root."/{$class}.php";
 		if (file_exists($file)) {
 			include $file;
 		}
@@ -250,6 +288,10 @@ final class Environment {
 		self::$environment = NULL;
 	}
 
+	public function getBaseTemplate() {
+		return file_get_contents($this->template_dir . $this->ds . 'base.html');
+	}
+
 	public function getVars() {
 		/*
 	$site_root = __FILE__;
@@ -274,7 +316,9 @@ final class Environment {
 	 $db_name;
 		 */
 		return array(
+			'img_host_repo' => $this->img_host_repo,
 			'home_path' => $this->host_root,
+			'f_root' => $this->f_root,
 			'img_path' => $this->img_dir
 		);
 	}

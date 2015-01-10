@@ -18,7 +18,7 @@ class HTMLBuilder
 		echo "
 		<div id='pn_{$network->id}' class='popnet'>
 			<div class='popnet-info'>
-				<a href='network.php?id={$network->id}'><p class='bottom-text'>{$title}</p></a>
+				<a href='network/{$network->id}'><p class='bottom-text'>{$title}</p></a>
 				<p class='network-stats'>{$member_count} Members | {$post_count} Posts</p>
 			</div>
 			<div class='clear'></div>
@@ -34,7 +34,7 @@ class HTMLBuilder
 		echo "
 		<div>
 			<div class='net-info'>
-				<a href='network.php?id={$network->id}'><p class='bottom-text'>{$title}</p></a>
+				<a href='network/{$network->id}'><p class='bottom-text'>{$title}</p></a>
 				<p class='network-stats'>{$network->member_count} Members | {$network->post_count} Posts</p>
 			</div>
 			<div class='clear'></div>
@@ -888,7 +888,7 @@ EHTML;
 
 		return "
 		<div class='net-info dashboard'>
-			<a href='network.php?id={$network->id}'><p class='bottom-text dashboard'>{$title}</p></a>
+			<a href='network/{$network->id}'><p class='bottom-text dashboard'>{$title}</p></a>
 			<p class='network-stats'>{$network->member_count} Members | {$network->post_count} Posts</p>
 			<p class='network-stats'>Joined {$date}</p>
 		</div>

@@ -8,7 +8,14 @@ abstract class DisplayDObj extends DObj {
 	protected $cur_template;
 
 	abstract public function display($context);
-	abstract public function getHTML($context);
+	abstract public function getHTML($context, $vars);
+
+	/*
+	 * Necessary for mustache
+	 */
+	public function __isset($name) {
+		return isset($this->$name);
+	}
 
 	protected function startMustache($layout) {
 

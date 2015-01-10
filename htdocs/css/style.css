@@ -982,6 +982,7 @@ li.network-post
 	margin-left:40px;
 	padding:5px 0px;
 	width:100%;
+	clear:both;
 }
 .post-img
 {
@@ -1475,6 +1476,9 @@ a.profile
 */
 /*************************/
 
+/********
+ * UPLOAD
+ ********/
 .fileupload-button {
 	height:35px;
 	width:36px;
@@ -1488,10 +1492,40 @@ a.profile
 	opacity:0.5;
 }
 
+button.upload-img-delete {
+	border:none;
+	background-color:#727272;
+	color:white;
+}
+
+/********
+ * HELP AND ERROR
+ ********/
+
+.help-tooltip {
+	background-color:#727272;
+	color:white;
+	border-radius:25px;
+	border-style:none;
+	font-size:20px;
+	font-weight:bold;
+	height:25px;
+}
+
+
+/********
+ * TEAM THUMBNAIL 
+ ********/
+
 .team_thumb{
     width: 205px;
     height: 205px;
 }
+
+/********
+ * HEADER 
+ ********/
+
 #header{
     border-bottom: 3px solid #ccc;
     /*margin-bottom:30px;*/

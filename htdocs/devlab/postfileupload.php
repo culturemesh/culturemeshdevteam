@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors', true);
 include("../Environment.php");
 $cm = new Environment();
 

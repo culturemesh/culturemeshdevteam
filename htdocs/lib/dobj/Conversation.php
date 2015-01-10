@@ -34,11 +34,16 @@ class Conversation extends DisplayDObj {
 	/*
 	 * must implements
 	 */
+	public static function createFromId($id) {
+
+		return new Conversation();
+	}
+
 	public function display($context) {
 
 	}
 
-	public function getHTML($context) {
+	public function getHTML($context, $vars) {
 
 	}
 }

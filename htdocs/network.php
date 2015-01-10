@@ -50,7 +50,7 @@
 	$pc_data = Post::getPostCountAA($id, $con);
 	$network->post_count = $pc_data['total']; 
 	$_SESSION['cur_network'] = $network->id;
-	
+
 	$events = Event::getEventsByNetworkId_D($id, $con);
 
 	if (isset($_SESSION['uid']))
@@ -385,7 +385,6 @@
 								?>
 							</tr>
 							</tbody>
-							</tr>
 						</table>
 
 						</div>

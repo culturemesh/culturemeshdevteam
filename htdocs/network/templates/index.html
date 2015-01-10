@@ -1,0 +1,247 @@
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ stylesheets }}
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	<script type='text/javascript' src='{{vars.home_path}}/js/fileupload.js'></script>
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	<script type='text/javascript'> 
+			cm.Autoloader(function() {
+					var psub = new cm.PostSubmit({
+						form: document.getElementById('post-form'), 
+						action: '{{vars.home_path}}/network_post.php',
+						ajax: true,
+						onSuccess: function(data) {
+								var result = JSON.parse(data);
+					       			img = document.getElementById('result_img');
+								img.src = result.name;
+							}
+						}, 
+						new cm.FileUploader({
+						element: document.getElementById('post-form'),
+						maxFiles: 3,
+						acceptedFileTypes: ['jpg', 'png', 'gif', 'bmp', 'jpeg'],
+						sizeLimit: 2097152
+						}))
+					});
+
+			cm.Autoloader(function() {
+					var text = "You can use bold, italics, or links, "
+					+ "just use the [b], [i], or [link] tags.</br></br>"
+					+ "[b]Example[/b] becomes <b>Example</b>.</br></br>"
+					+ "[i]Example[/i] becomes <i>Example</i>.</br></br>"
+					+ "[link]www.example.com[/link] becomes <a>www.example.com</a>."
+
+					// click for popover
+					$('button.help-tooltip').popover({
+						content: text,
+						html: true
+						});
+					});
+	</script>
+
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+		{{# sections.event_modals }}
+		{{{ . }}}
+		{{/ sections.event_modals }}
+	<div content>
+		<div class="net-left">
+			<div class="leftbar">
+				{{{ sections.map_embed }}}
+				<div class="tags"></div>
+				<div class="suggestions">
+					<h4 class="h-network">People who viewed this network also viewed:</h4>
+				</div>
+			</div>
+		</div>
+		<div class="net-right">
+			{{{ sections.searchbar }}}
+			{{{ sections.lrgnetwork }}}
+			<div>
+				<div class='net-info'>
+					<h1 class='h-network'>{{ sections.network_title }}</h1>
+					{{# page_vars.reg-guest }}
+					<div class="reg-guest">
+						<form method="POST" action="{{ vars.home_path }}/network_join.php">
+							<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
+							<button class="network">Join us!</button>
+						</form>
+					</div>
+					{{/ page_vars.reg-guest }}
+					{{# page_vars.guest }}
+					<div class="guest">
+						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
+						<button class="network" onclick="$('#register_modal').modal('show');">Join us!</button>
+					</div>
+					{{/ page_vars.guest }}
+					{{# page_vars.member }}
+					<div class="member">
+						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
+						<form method="POST" action="{{ vars.home_path }}/network_leave.php">
+							<button class="network">Leave Network</button>
+							<input type="hidden" name="uid" value="{{ page_vars.uid }}"/>
+							<input type="hidden" name="nid" value="{{ page_vars.nid }}"/>
+						</form>
+					</div>
+					{{/ page_vars.member }}
+					<div class="clear"></div>
+					{{ vars.sharebuttons }}
+					<div>
+					<p class="network error" id="lnerror"></p>
+					<p class="network error" id="jnerror"></p>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			</br>
+			<hr width="630">
+			<!-------------- -->
+			<ul class="nav nav-pills dashboard">
+				<li id="post-nav" class="active"><a href="#post-wall" data-toggle="pill">Posts</a></li>
+				<li id="event-nav"><a href="#event-wall" data-toggle="pill">Events</a></li>
+			</ul>
+			<!-------------- -->
+			<div class="network tab-content">
+			<div id="post-wall" class="tab-pane active">
+				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.home_path }}/network_post.php" enctype="multipart/form-data">
+					<img id="profile-post" src="{{ user.img_link }}" width="45" height="45">
+					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
+					<button type="button" class="help-tooltip"  data-toggle="popover" data-placement="left">?</button>
+					<div class="fileupload-error"></div>
+					<div id='post-form-panel' class="fileupload-panel"></div>
+					<div class="clear"></div>
+					<div class="fileupload-button picture"></div>
+					<input type="submit" class="network post fileupload-submit" value="Send"></input>
+					<input type="hidden" name="post_class" value="o"></input>
+					<input type="hidden" name="post_original" value="NULL"></input>
+				</form>
+				<!--
+				<form method="POST" class="member" action="{{ vars.home_path }}/network_post.php">
+				<img id="profile-post" src="{{ user.img_link }}" width="45" height="45">
+					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
+					<div class="clear"></div>
+					<input type="submit" class="network post" value="Send"></input>
+					<input type="hidden" name="post_class" value="o"></input>
+					<input type="hidden" name="post_original" value="NULL"></input>
+				</form>
+				-->
+				<hr>
+				{{# sections.posts }}
+				{{{.}}}
+				{{/ sections.posts }}
+				{{# get.ap }} lambda required
+				{{# page_vars.post_count_lambda }}
+				<div>
+					<form class="more_posts" method="POST" action="network_more_posts.php">
+						<input type="hidden" id="nmp_lb" name="lb" value=10 />
+						<input type="hidden" id="nmp_ub" name="ub" value=10 />
+						<input type="hidden" id="nmp_nid" name="nid" value="{{ page_vars.nid }}" />
+						<button id="mp_button" class="post show">Load Older Posts</button>
+					</form>
+				</div>
+				{{/ page_vars.post_count_lambda }}
+				{{/ get.ap }}
+				<!--<script src="js/post-wall.js"></script>-->
+				<script>
+				/*
+				var wall = document.getElementById("post-wall-ul");
+					var postData;
+					var grabData = function(data) {
+						postData = data;
+						replyPosts = [];
+						for (var i = 0; i < postData.length; i++) {
+							if (postData[i]['post_class'] == 'o')
+							  { wall.appendChild(createParent(postData, i)); }
+						/*
+							else 
+							{ 
+								origId = postData[i]['post_original'];
+								if (replyPosts[origId] == undefined) {
+									replyPosts[origId] = [];
+									replyPosts[origId].push(postData[i];
+								}
+								else
+								  { replyPosts[origId].push(postData); }
+							}
+						 *//*
+						}
+						// do something with replyPostslength data
+						// add a div for reply
+					}
+
+					loadPostData({{ page_vars.nid }}, grabData);
+				 */
+				</script>
+			</div>
+			<div id="event-wall" class="tab-pane">
+				<!--<ul class="network">-->
+				<div>
+						<button id="slider-left" class="slider-button"></button>
+						<div id="slider-content" class="event-slider">
+						<table id="slider-table" class="network event">
+							<thead></thead>
+							<tbody>
+							<tr>
+							{{# sections.event_slider }}
+							{{{ . }}}
+							{{/ sections.event_slider }}
+							</tr>
+							</tbody>
+						</table>
+						</div>
+						<button id="slider-right" class="slider-button"></button>
+				</div>
+				<div class="clear"></div>
+				<!--</ul>-->
+				<div>
+				<button id="event-post" class="network member" onclick="toggleEventForm()">Post Event</button>
+				</div>
+				<div class="clear"></div>
+				{{# get.eperror }}
+				<script>
+				</script>
+				{{/ get.eperror }}
+				<div id="event-maker">
+					<form class="event-form" method="POST" action="network_post-event.php" enctype="multipart/form-data">
+						<div>
+						<input type="text" id="title" name="title" class="event-text" placeholder="Name of Event " required></input></br>
+						<input type="text" id="datetimepicker1" name="datetime" class="event-text datetimepicker" placeholder="Event Date" required>
+						<input type="text" class="hidden-field" name="date"></input>
+						<input type="text" name="address_1" class="event-text" placeholder="Address 1" required/>
+						<input type="text" name="address_2" class="event-text" placeholder="Address 2"/>
+						<textarea id="description" name="description" class="event-text" placeholder="What's happening?" required></textarea>
+						<div id="clear"></div>
+						<input type="text" class="event-text" name="city" placeholder="City" required/></input>
+						<input type="text" class="event-text" name="region" placeholder="Region" required/></input>
+						<input type="submit" class="network" value="Post"></input>
+						<span id="eperror">{{ get.eperror }}</span>
+						</div>
+					</form>
+				</div>
+			</div>
+			</br>
+			</br>
+
+			</div>
+			</br>
+		</div>
+		<div class="clear"></div>
+	</div>
+	{{/ content }}
+
+	{{$ body_scripts }}
+	<link rel="stylesheet" type="text/css" href="{{vars.home_path}}/js/jsdatetime/jquery.datetimepicker.css"/ >
+	<script src="{{vars.home_path}}/js/jsdatetime/jquery.datetimepicker.js"></script>
+	<script src="{{vars.home_path}}/js/searchbar.js"></script>
+	<script src="{{vars.home_path}}/js/slider.js"></script>
+	<script src="{{vars.home_path}}/js/event-wall.js"></script>
+	{{/ body_scripts }}
+
+{{/ layout }}

@@ -1,15 +1,22 @@
 {
 	"require": {
-		"codeguy/upload": "*",
 		"respect/validation": "*",
-		"mustache/mustache": "~2.7"
+		"mustache/mustache": "~2.7",
+	        "altorouter/altorouter": "1.1.0"
 	},
 
 	"require-dev": {
+		"fzaninotto/faker": "1.4.0",
 		"phpunit/phpunit": "3.7.*",
 		"phpunit/php-invoker": "*",
 		"phpunit/dbunit": ">=1.2",
 		"phpunit/phpunit-selenium": ">=1.2",
 		"phpunit/phpunit-story": "*"
+	},
+
+	"autoload": {
+		"psr-4": {
+			"Upload\\": "vendor/codeguy/src/Upload"
+		}
 	}
 }

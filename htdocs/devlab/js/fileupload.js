@@ -150,6 +150,7 @@ cm.FileUploader.prototype = {
 
 		// create a delete button
 		var button = document.createElement('button');
+		cm.addClass(button, 'upload-img-delete')
 
 		button.innerHTML = '&#10006';
 		button.onclick = function(e) {
@@ -168,6 +169,18 @@ cm.FileUploader.prototype = {
 		// tell button to create a new input
 		this._inputList[this._inputList_i] = this._button._createFileInput(this.inputList_i);
 		this._inputList_i++;	// increment current index 
+	},
+	_removeBlankInput: function() {
+		var button = this._button._element;
+		var inputs = button.childNodes;
+		var inputList_i = this.inputList_i;
+		var lastI = inputs.length - 1;
+
+		if (inputs[lastI].value === "")
+			button.removeChild(inputs[lastI]);
+	},
+	_reinstateInput: function() {
+		this._button._createFileInput(this.inputList_i);
 	}
 }
 
@@ -298,6 +311,10 @@ cm.PreviewPanel.prototype = {
 		var div = document.createElement('div');
 		var li = document.createElement('li');
 		
+		deleteButton.ul = ul;
+		deleteButton.div = div;
+		deleteButton.li = li;
+
 		cm.css(li, {
 			width: '100px',
 			'cssFloat': 'left'
@@ -308,7 +325,12 @@ cm.PreviewPanel.prototype = {
 		});
 
 		this._attach(deleteButton, 'click', function() {
-			ul.removeChild(li);
+
+			// redeclare for closure purposes
+
+			$( deleteButton.li ).slideUp('slow', 'easeInQuad', function() {
+				deleteButton.ul.removeChild(deleteButton.li);
+			});
 		});
 
 		// counts how many times event has fired
@@ -337,7 +359,9 @@ cm.PreviewPanel.prototype = {
 				// append stuff
 				div.appendChild(deleteButton);
 				li.appendChild(div);
+				$( li ).hide();
 				ul.appendChild(li);
+				$( li ).slideDown('slow', 'easeInQuad');
 			}
 		}
 
@@ -357,6 +381,7 @@ cm.PostSubmit = function(o, FileUpload) {
 		submit: null,
 		form: null,
 		action: null,
+		ajax: null,
 		submitInsert: function() {},
 		onSuccess: function(data) {},
 		onFailure: function(data) {},
@@ -381,13 +406,17 @@ cm.PostSubmit = function(o, FileUpload) {
 	this._onFailure = this._options.onFailure;
 
 	// file uploader
-	this._FileUpload = this._options.FileUpload;
+	this._FileUpload = FileUpload;
 
 	// attach on click event
 	var self = this;
 	this._attach(self._clickStart, 'click', function(e) {
-		e.preventDefault();
-		self._submit(e);
+
+		// 
+		if (this._options.ajax == true) {
+			e.preventDefault();
+			self._submit(e);
+		}
 	});
 }
 
@@ -401,6 +430,10 @@ cm.PostSubmit.prototype = {
 	},
 	_submit: function(e) {
 
+		var self = this;
+		var fup = this._FileUpload;
+		var resetInput = fup._removeBlankInput();
+
 		// get form data
 		var formData = new FormData(this._form);
 
@@ -411,7 +444,13 @@ cm.PostSubmit.prototype = {
 		    data: formData,
 		    dataType: 'FormData',
 		    sendNow: true
-		}, this._onSuccess,
-		this._onFailure);
+		}, function(data) { 
+			fup._reinstateInput();
+			self._onSuccess(data);
+		}, function(data) {
+			fup._reinstateInput();
+			var ff = self._onFailure.bind(data);
+			ff();
+		});
 	}
 }

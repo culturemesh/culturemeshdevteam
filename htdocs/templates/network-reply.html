@@ -1,0 +1,25 @@
+<li class='reply'>
+	<div class='post-img'>
+		<img id='profile-post' src='{{ reply.img_link }}' width='45' height='45'>
+	</div>
+	<div class='post-info'>
+		<h5 class='h-network post'><a href='../profile/{{ reply.id_user }}'>{{ name }}</a></h5>
+		{{# reply.owner }}
+		<div class='reply-button delete'>
+			<form class='personal delete_reply' method="POST" action="network_reply_delete.php">
+				<noscript>
+				<input type="hidden" name="NOJS" value="NOJS"/>
+				</noscript>
+				<input type="hidden" name="rid" value="{{ reply.id }}"/>
+				<input type="hidden" name="nid" value="{{ reply.id_network }}"/>
+				<input type="hidden" name="pid" value="{{ reply.id_parent }}"/>
+				<button class='post delete-button user reply'>&#10006</button>
+			</form>
+		</div>
+		{{/ reply.owner }}
+		<div class="clear"></div>
+		<p class='network reply'>{{ reply.reply_text }}</p>
+		<p class='network reply date'>{{ relative_date }}</p>
+	</div>
+	<div class='clear'></div>
+</li>

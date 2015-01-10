@@ -1,5 +1,6 @@
 <?php
 
+	/*
 class DObjTest extends PHPUnit_Framework_TestCase {
 
 	public function testConstruct() {
@@ -32,4 +33,5 @@ class DObjTest extends PHPUnit_Framework_TestCase {
 	}
 }
 
+	 */
 ?>
