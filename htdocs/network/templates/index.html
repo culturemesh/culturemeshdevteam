@@ -6,10 +6,45 @@
 	{{/ stylesheets }}
 
 	{{$ more_scripts }}
-	<script type='text/javascript' src='{{vars.home_path}}/devlab/js/fileupload.js'></script>
+	<script type='text/javascript' src='{{vars.home_path}}/js/fileupload.js'></script>
 	{{/ more_scripts }}
 
 	{{$ autoload_scripts }}
+	<script type='text/javascript'> 
+			cm.Autoloader(function() {
+					var psub = new cm.PostSubmit({
+						form: document.getElementById('post-form'), 
+						action: '{{vars.home_path}}/network_post.php',
+						ajax: true,
+						onSuccess: function(data) {
+								var result = JSON.parse(data);
+					       			img = document.getElementById('result_img');
+								img.src = result.name;
+							}
+						}, 
+						new cm.FileUploader({
+						element: document.getElementById('post-form'),
+						maxFiles: 3,
+						acceptedFileTypes: ['jpg', 'png', 'gif', 'bmp', 'jpeg'],
+						sizeLimit: 2097152
+						}))
+					});
+
+			cm.Autoloader(function() {
+					var text = "You can use bold, italics, or links, "
+					+ "just use the [b], [i], or [link] tags.</br></br>"
+					+ "[b]Example[/b] becomes <b>Example</b>.</br></br>"
+					+ "[i]Example[/i] becomes <i>Example</i>.</br></br>"
+					+ "[link]www.example.com[/link] becomes <a>www.example.com</a>."
+
+					// click for popover
+					$('button.help-tooltip').popover({
+						content: text,
+						html: true
+						});
+					});
+	</script>
+
 	{{/ autoload_scripts }}
 
 	{{$ content }}
@@ -75,6 +110,19 @@
 			<!-------------- -->
 			<div class="network tab-content">
 			<div id="post-wall" class="tab-pane active">
+				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.home_path }}/network_post.php" enctype="multipart/form-data">
+					<img id="profile-post" src="{{ user.img_link }}" width="45" height="45">
+					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
+					<button type="button" class="help-tooltip"  data-toggle="popover" data-placement="left">?</button>
+					<div class="fileupload-error"></div>
+					<div id='post-form-panel' class="fileupload-panel"></div>
+					<div class="clear"></div>
+					<div class="fileupload-button picture"></div>
+					<input type="submit" class="network post fileupload-submit" value="Send"></input>
+					<input type="hidden" name="post_class" value="o"></input>
+					<input type="hidden" name="post_original" value="NULL"></input>
+				</form>
+				<!--
 				<form method="POST" class="member" action="{{ vars.home_path }}/network_post.php">
 				<img id="profile-post" src="{{ user.img_link }}" width="45" height="45">
 					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
@@ -83,6 +131,7 @@
 					<input type="hidden" name="post_class" value="o"></input>
 					<input type="hidden" name="post_original" value="NULL"></input>
 				</form>
+				-->
 				<hr>
 				{{# sections.posts }}
 				{{{.}}}

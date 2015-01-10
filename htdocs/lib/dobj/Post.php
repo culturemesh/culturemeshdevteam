@@ -15,6 +15,10 @@ class Post extends DisplayDObj {
 	protected $last_name;
 	protected $img_link;
 	protected $reply_count;
+	protected $hash;
+
+	protected $images;
+	protected $image_ids;
 
 	protected $date;
 
@@ -25,6 +29,38 @@ class Post extends DisplayDObj {
 	public static function createFromId($id, $dal, $do2db) {
 
 		// stub
+	}
+
+	public function insert($dal, $do2db) {
+
+		if (!isset($this->id_user))
+			throw new \Exception('id_user is not set');
+		if (!isset($this->id_network))
+			throw new \Exception('id_network is not set');
+		if (!isset($this->post_text))
+			throw new \Exception('post_text is not set');
+		if (!isset($this->post_class))
+			throw new \Exception('post_class is not set');
+
+		$do2db->execute($dal, $this, 'insertPost');
+	}
+
+	public function registerImages($dal, $do2db) {
+
+		$obj = new \dobj\Blank();
+		$obj->id_post = $this->id;
+
+		var_dump($obj);
+
+		for ($i = 0; $i < 3; $i++) {
+			$varname = 'id_image'.($i+1);
+			if (isset($this->image_ids[$i]))
+				$obj->$varname = $this->image_ids[$i];
+			else
+				$obj->$varname = NULL;
+		}
+
+		$do2db->execute($dal, $obj, 'registerPostImage');
 	}
 
 	public function display($context) {
@@ -68,9 +104,12 @@ class Post extends DisplayDObj {
 			return $mustache->render($template, array(
 				'active' => true,
 				'post' => $this,
+				'text' => $this->formatText(),
 				'relative_date' => $this->getRelativeDate(),
 				'name' => $this->getName(),
-				'replies' => $this->replies_html
+				'replies' => $this->replies_html,
+				'images' => $this->getImagePaths(),
+				'vars' => $cm->getVars()
 				)
 			);
 				
@@ -89,6 +128,28 @@ class Post extends DisplayDObj {
 			);
 			break;
 		}
+	}
+
+	public function getImages() {
+		$hashes = explode(', ', $this->hash);
+		$this->images = array();
+
+		foreach ($hashes as $hash) {
+			$img = new \dobj\Image();
+			$img->hash = $hash;
+			$img->post = 1;
+			array_push($this->images, $img);
+		}
+	}
+
+	public function getImagePaths() {
+
+		$dirs = array();
+
+		foreach ($this->images as $image) 
+			array_push($dirs, $image->getPathAndName('post'));
+
+		return $dirs;
 	}
 
 	public function getReplies($dal, $do2db) {
@@ -120,6 +181,12 @@ class Post extends DisplayDObj {
 		}
 
 		return $name;
+	}
+
+	private function formatText() {
+
+		$raw_text = $this->post_text;
+		return $raw_text;
 	}
 }
 

@@ -86,6 +86,7 @@ class Network extends DisplayDObj {
 		}
 
 		foreach ($this->posts as $post) {
+			$post->getImages();
 			$post->getReplies($dal, $do2db);
 		}
 	}

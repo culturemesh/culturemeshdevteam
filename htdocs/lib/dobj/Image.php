@@ -41,9 +41,30 @@ class Image extends DisplayDObj {
 			throw new \Exception('Must specify an image type before inserting');
 
 		$result = $do2db->execute($dal, $this, 'insertImage');
-		$this->id = $dal->lastInsertId();
+		print_r($result);
 
-		var_dump($this);
+		if ($result != True)
+			print_r($result);
+
+		$this->id = $dal->lastInsertId();
+	}
+
+	public function register($dal, $do2db, $oid, $class) {
+
+		if (!isset($oid))
+			throw new Exception('object id isn\'t set');
+
+		switch ($class) {
+
+		case 'post':
+			$obj = new \dobj\Blank();
+			$obj->id_post = $oid;
+			$obj->id = $this->id;
+
+			$do2db->execute($dal, $obj, 'registerPostImage');
+			break;
+		}
+
 	}
 
 	public function getHTML($context, $vars) {
@@ -76,6 +97,24 @@ class Image extends DisplayDObj {
 		}
 
 		return $filename_dir;
+	}
+
+	public function getPathAndName($class=NULL) {
+		$pn = $this->convertToDir($this->hash);
+
+		switch ($class) {
+		case 'post':
+			$pn .= '_pthumb';
+			break;
+		default:
+			break;
+		}
+
+		// add extension
+		$pn .= '.png';
+
+		// give to the people
+		return $pn;
 	}
 }
 

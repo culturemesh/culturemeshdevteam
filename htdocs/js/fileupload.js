@@ -410,14 +410,16 @@ cm.PostSubmit = function(o, FileUpload) {
 
 	// attach on click event
 	var self = this;
-	this._attach(self._clickStart, 'click', function(e) {
 
-		// 
-		if (this._options.ajax == true) {
+
+	if (this._options.ajax === true) {
+
+		// prevent action
+		this._attach(self._clickStart, 'click', function(e) {
 			e.preventDefault();
 			self._submit(e);
-		}
-	});
+		});
+	}
 }
 
 cm.PostSubmit.prototype = {

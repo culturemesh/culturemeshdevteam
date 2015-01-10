@@ -19,7 +19,12 @@
 		</div>
 		{{/ delete_button }}
 		<div class="clear"></div>
-		<p class='network'>{{ post.post_text }}</p>
+		<p class='network'>{{ text }}</p>
+		<div>
+			{{# images }}
+			<img src="{{ vars.img_host_repo }}/{{ . }}"></img>
+			{{/ images }}
+		</div>
 		<p class='network date'><i>{{ relative_date }}</i></p>
 		{{^ active }}
 		<p class='network'><i>The user has deleted this post</i></p>

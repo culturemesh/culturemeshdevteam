@@ -21,6 +21,7 @@ final class Environment {
 	private $env_file;
 	private $img_dir;
 	private $img_repo_dir;
+	private $img_host_repo;
 	private $blank_img;
 	private $g_api_key;
 
@@ -51,6 +52,8 @@ final class Environment {
 			$hostname = $_SERVER['HTTP_HOST'];
 			$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
 			$this->f_root = str_replace($doc_root, '', getcwd());
+			$this->img_host_repo = $this->host_root.'/../../user_images';
+			echo $this->img_host_repo;
 		}
 		else {
 			$this->host_root = 'unimportant';
@@ -314,6 +317,7 @@ final class Environment {
 	 $db_name;
 		 */
 		return array(
+			'img_host_repo' => $this->img_host_repo,
 			'home_path' => $this->host_root,
 			'f_root' => $this->f_root,
 			'img_path' => $this->img_dir
