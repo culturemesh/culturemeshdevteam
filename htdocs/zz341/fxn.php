@@ -34,11 +34,22 @@ else
  
 define("IMG_DIR", "../../user_images/");
 define("BLANK_IMG", 'images/blank_profile.png');
+
+if ( file_exists("../../../abcd123.php") || 
+	file_exists("../../../../abcd123.php")) {
+	$alt_server = 'localhost';
+}
  
 function getDBConnection(){
     //$conn = new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
     //return $conn;
-	return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+	global $alt_server;
+	if (isset($alt_server)) {
+		return new mysqli($alt_server, 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+	}
+	else {
+		return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+	}
 
 }
 function isAdmin($uid){
