@@ -45,6 +45,26 @@ abstract class DObj {
 		return true;
 	}
 
+	// parse name
+	protected function getName() {
+
+		if (!property_exists($this, 'first_name'))
+			throw new \Exception('This class does not have a first_name property');
+		if (!property_exists($this, 'last_name'))
+			throw new \Exception('This class does not have a first_name property');
+
+		$name = NULL;
+		if ($this->first_name == '')
+			$name = "UNNAMED USER";
+		else {
+			$name = $this->first_name;
+			if (isset($this->last_name))
+				$name .= " ".$this->last_name;
+		}
+
+		return $name;
+	}
+
 	public function fill($result) {
 
 	}

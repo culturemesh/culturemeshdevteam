@@ -41,7 +41,11 @@ class Profile {
 		// check registration
 		$guest = true;
 
-		if (isset($_SESSION['uid']) && $uid == $_SESSION['uid']) {
+		if (isset($_SESSION['uid'])) {
+			$site_user = \dobj\User::createFromId($uid, $dal, $do2db);
+		}
+
+		if ($site_user->id != $_SESSION['uid']) {
 			$guest = false;
 		}
 
@@ -109,6 +113,7 @@ class Profile {
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'profile' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
+			'site_user_name' => $site_user->getName(),
 			'user' => $user,
 			'sections' => array(
 				'searchbar' => $searchbar,

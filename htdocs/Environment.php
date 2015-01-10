@@ -50,7 +50,7 @@ final class Environment {
 		//
 		if (isset($_SERVER['HTTP_HOST'])) {
 			$hostname = $_SERVER['HTTP_HOST'];
-			$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
+			$this->host_root = '//'.str_replace($doc_root, $hostname, getcwd());
 			$this->f_root = str_replace($doc_root, '', getcwd());
 			$this->img_host_repo = $this->host_root.'/../../user_images';
 		}
