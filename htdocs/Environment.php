@@ -50,12 +50,14 @@ final class Environment {
 		//
 		if (isset($_SERVER['HTTP_HOST'])) {
 			$hostname = $_SERVER['HTTP_HOST'];
-
+			$this->host_root = '//'.str_replace($doc_root, $hostname, getcwd());
+/*
 			// check for https host
 			if (isset($_SERVER['HTTPS']))
 				$this->host_root = 'https://'.str_replace($doc_root, $hostname, getcwd());
 			else
 				$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());			
+*/
 
 			$this->f_root = str_replace($doc_root, '', getcwd());
 			$this->img_host_repo = $this->host_root.'/../../user_images';
@@ -116,10 +118,13 @@ final class Environment {
 			$doc_root = $_SERVER['DOCUMENT_ROOT'];
 			$hostname = $_SERVER['HTTP_HOST'];
 
+			self::$host_root_s = '//'.str_replace($doc_root, $hostname, getcwd());
+/*
 			if (isset($_SERVER['HTTPS']))
 				self::$host_root_s = 'https://'.str_replace($doc_root, $hostname, getcwd());
 			else
 				self::$host_root_s = 'http://'.str_replace($doc_root, $hostname, getcwd());
+*/
 		}
 		
 		return self::$host_root_s;
