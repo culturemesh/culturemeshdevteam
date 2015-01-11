@@ -152,14 +152,19 @@ class DObjListTest extends PHPUnit_Framework_TestCase {
 		$dobj_3->id = 1;
 		$dobj_4 = new dobj\Blank();
 		$dobj_4->id = 1;
+		$dobj_5 = new dobj\Blank();
+		$dobj_5->id = 3;
 	
 		$olist = new dobj\DObjList();
 		$olist->dInsert($dobj_1);
 		$olist->dInsert($dobj_2);
 		$olist->dInsert($dobj_3);
 		$olist->dInsert($dobj_4);
+		$olist->dInsert($dobj_5);
 
-		//$olist.splits('id');
+		$solist = $olist->splits('id');
+
+		$this->assertEquals(3, count($solist));
 	}
 }
 ?>

@@ -19,6 +19,10 @@ class Profile {
 		// get profile user
 		$user = \dobj\User::createFromId($uid, $dal, $do2db);
 
+		if ($user == False) {
+			header('Location: ' . $cm->host_root . $cm->ds . '404.php');
+		}
+
 		// get user information
 		// -- events
 		$user->getEventsInYourNetworks($dal, $do2db);
@@ -29,8 +33,8 @@ class Profile {
 		$user->getPosts($dal, $do2db);
 
 		// -- networks
-		$user->getNetworksWithPosts($dal, $do2db);
-		$user->getNetworksWithEvents($dal, $do2db);
+		//$user->getNetworksWithPosts($dal, $do2db);
+		//$user->getNetworksWithEvents($dal, $do2db);
 		$user->getMemberNetworks($dal, $do2db);
 
 		if (get_class($user->yh_events) == 'PDOStatement') {
@@ -84,39 +88,51 @@ class Profile {
 			)
 		);
 
-		if ($user->yn_events)
-		$yn_event_html = $user->yn_events->getHTML('dashboard', array(
-			'cm' => $cm,
-			'mustache' => $m_comp
-			)
-		);
+		if ($user->yn_events) {
+			$tmp = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-eventul.html');
+			$yn_event_html = $user->yn_events->getHTML('dashboard', array(
+				'cm' => $cm,
+				'mustache' => $m_comp,
+				'list_template' => $tmp
+				)
+			);
+		}
 
-		if ($user->yh_events)
-		$yh_event_html = $user->yh_events->getHTML('dashboard', array(
-			'cm' => $cm,
-			'mustache' => $m_comp
-			)
-		);
+		if ($user->yh_events) {
+			$tmp = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-eventul.html');
+			$yh_event_html = $user->yh_events->getHTML('dashboard', array(
+				'cm' => $cm,
+				'mustache' => $m_comp,
+				'list_template' => $tmp
+				)
+			);
+		}
 
-		if ($user->ya_events)
-		$ya_event_html = $user->ya_events->getHTML('dashboard', array(
-			'cm' => $cm,
-			'mustache' => $m_comp
-			)
-		);
+		if ($user->ya_events) {
+			$tmp = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-eventul.html');
+			$ya_event_html = $user->ya_events->getHTML('dashboard', array(
+				'cm' => $cm,
+				'mustache' => $m_comp,
+				'list_template' => $tmp
+				)
+			);
+		}
 
-		if ($user->yp_posts)
-		$yp_post_html = $user->yp_posts->getHTML('dashboard', array(
-			'cm' => $cm,
-			'mustache' => $m_comp
-			)
-		);
+		if ($user->yp_posts) {
+			$tmp = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-postul.html');
+			$yp_post_html = $user->yp_posts->getHTML('dashboard', array(
+				'cm' => $cm,
+				'mustache' => $m_comp,
+				'list_template' => $tmp
+				)
+			);
+		}
 
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'profile' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
-			'site_user' => $site_user,
 			'user' => $user,
+			'site_user' => $site_user,
 			'sections' => array(
 				'searchbar' => $searchbar,
 				'yn_networks' => $yn_net_html,

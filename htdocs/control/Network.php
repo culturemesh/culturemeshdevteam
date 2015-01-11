@@ -77,21 +77,31 @@ class Network {
 
 		// set network stuff
 		$network->posts->setMustache($m_comp);
-		$p_html = $network->posts->getHTML('network', array(
-			'cm' => $cm,
-			'network' => $network,
-			'mustache' => $m_comp
-			)
-		);
+
+		try
+		{
+			$p_html = $network->posts->getHTML('network', array(
+				'cm' => $cm,
+				'network' => $network,
+				'mustache' => $m_comp
+				)
+			);
+		}
+		catch (\Exception $e)
+		{
+			$p_html = NULL;
+		}
 
 		$network->events->setMustache($m_comp);
 
 		try 
 		{
+			$tmp = file_get_contents($cm->template_dir . $cm->ds . 'network-event-cardtable.html');
 			$ec_html = $network->events->getHTML('card', array(
 				'cm' => $cm,
 				'network' => $network,
-				'mustache' => $m_comp
+				'mustache' => $m_comp,
+				'list_template' => $tmp
 				)
 			);
 		}

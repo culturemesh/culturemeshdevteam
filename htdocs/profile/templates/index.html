@@ -40,8 +40,8 @@
 						<td class="dashboard">
 						
 						    <select class="dashboard" name="gender">
-						        <option {{$ user.male }}selected{{/ user.male }}>Male</option>
-							<option {{$ user.female }}selected{{/ user.female }}>Female</option>
+						        <option {{# user.male }}selected{{/ user.male }}>Male</option>
+							<option {{# user.female }}selected{{/ user.female }}>Female</option>
 						    </select>
 						</td>
 					</tr>
@@ -86,12 +86,12 @@
 	    </div>
 	    </br>
 	    <span class="profile_name">
-		<h2 id="profile_name" class="dashboard">{{ user.first_name }} {{ user.last_name }}</h2>
+		    <h2 id="profile_name" class="dashboard">{{ user.first_name }} {{ user.last_name }}</h2>
 		<p id="profile_about" class="profile">{{ user.about_me }}</p>
 	    </span>
 	{{^ page_vars.guest }}
 	    <p class="profile"><a href="#profile_edit_modal" class="profile" id="pro-edit-link" data-toggle="modal">Edit Profile</a></p>
-	    {{$ user.confirmed }}
+	    {{# user.confirmed }}
 	    <p class="profile"><a data-toggle="modal" href="#password_confirm_modal">Change Password</a></p>
 	    {{/ user.confirmed }}
 	    <p class="profile"><a id="pic-upload-toggle" href="#">Upload Picture</a></p>
@@ -124,19 +124,13 @@
 			</div>
 			<div>
 				<h5><b>EVENTS IN YOUR NETWORKS</b></h5>
-				<ul class="dashboard item">
-				{{# sections.yn_events }}
-				{{{ . }}}
-				{{/ sections.yn_events }}
-				</ul>
+				{{{ sections.yn_events }}}
 			</div>
 			<div>
 				<h5><b>YOUR POSTS</b></h5>
-				<ul id='your-posts' class="network">
 				{{# sections.yp_posts }}
 				{{{ . }}}
 				{{/ sections.yp_posts }}
-				</ul>
 				{{$ page_vars.yp_count }}
 				<form id='more-posts' action='profile_operations.php' method='POST' />
 					<input type='hidden' name='more_posts' value='true' />
@@ -188,10 +182,10 @@
 					<label class="label label-success hide" id="account_info_update_success_txt">Information successfully updated!</label>
 					<label class="label label-important hide" id="account_info_update_failure_txt">Update failed. Please try again.</label>
 					<h5>Send me emails when</h5>
-					<label class="checkbox"><input type="checkbox" name="notify_interesting_events" value="1" {{$ user.interesting_events }}checked{{/ user.interesting_events }}>CultureMesh finds events I'd be interested in near me</label>
-					<label class="checkbox"><input type="checkbox" name="notify_company_news" value="1" {{$ user.company_news }}checked{{/ user.company_news }}>CultureMesh has fun company news</label>
-					<label class="checkbox"><input type="checkbox" name="notify_events_upcoming" value="1" {{$ user.events_upcoming }}checked{{/ user.events_upcoming }}>I have an upcoming event</label>
-					<label class="checkbox"><input type="checkbox" name="notify_network_activity" value="1" {{$ user.events_upcoming }}checked{{/ user.events_upcoming }}>I have received comments to a network event I added</label>
+					<label class="checkbox"><input type="checkbox" name="notify_interesting_events" value="1" {{# user.interesting_events }}checked{{/ user.interesting_events }}>CultureMesh finds events I'd be interested in near me</label>
+					<label class="checkbox"><input type="checkbox" name="notify_company_news" value="1" {{# user.company_news }}checked{{/ user.company_news }}>CultureMesh has fun company news</label>
+					<label class="checkbox"><input type="checkbox" name="notify_events_upcoming" value="1" {{# user.events_upcoming }}checked{{/ user.events_upcoming }}>I have an upcoming event</label>
+					<label class="checkbox"><input type="checkbox" name="notify_network_activity" value="1" {{# user.events_upcoming }}checked{{/ user.events_upcoming }}>I have received comments to a network event I added</label>
 					<input type="hidden" name="notification" value="yes"/>
 				</div>
 				{{# user.confirmed }}

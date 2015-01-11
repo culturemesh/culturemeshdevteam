@@ -125,13 +125,13 @@ class Network extends DisplayDObj {
 
 	public function getEvents($dal, $do2db) {
 
-		$this->events = $do2db->execute($dal, $this, 'getEventsByNetworkId');
+		$result = $do2db->execute($dal, $this, 'getEventsByNetworkId');
 
-		if (get_class($this->events) == 'PDOStatement') {
+		if (get_class($result) == 'PDOStatement') {
 			$this->events = new DObjList();
 		}
-
-		// arrange events
+		else 
+	   	  $this->events = $result->splits('month');
 	}
 
 	public function display($context) {

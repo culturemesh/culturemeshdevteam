@@ -7,8 +7,8 @@
 			<img src='{{ event.img_link }}' alt='No image' width='65' height='65'></img>
 		</div>
 		<div class='card-info'>
-			<p id='event-info'>With {{ name }}</p>
-			<p id='event-date'>{{ event_date }}</p>
+			<p id='event-info'>With <a href="{{ vars.home_path }}/profile/{{ event.id_host }}">{{ host }}</a></p>
+			<p id='event-date'>{{ date }}</p>
 			<a data-toggle="modal" href="#event-modal-{{ event.id }}">More Info</a>
 		</div>
 	</div>

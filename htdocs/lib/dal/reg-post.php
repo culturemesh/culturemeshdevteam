@@ -93,9 +93,12 @@ SQL
 		$m->setValues(array(
 			'query' => <<<SQL
 
-SELECT p.*, u.first_name, u.last_name, u.img_link
-FROM posts p, users u 
+SELECT p.*, u.first_name, u.last_name, u.img_link,
+n.network_class, n.city_cur, n.region_cur, n.country_cur,
+n.city_origin, n.region_origin, n.country_origin, n.language_origin
+FROM posts p, users u, networks n
 WHERE p.id_user=u.id 
+AND p.id_network = n.id
 AND p.post_text <> ''
 AND id_user=?
 ORDER BY p.id_network, p.post_date DESC
@@ -119,6 +122,8 @@ SQL
 				'post_date', 'post_text', 'post_class', 
 				'post_original', 'email', 'username', 
 				'first_name', 'last_name', 'img_link', 
+				'network_class', 'city_cur', 'region_cur', 'country_cur',
+				'city_origin', 'region_origin', 'country_origin', 'language_origin',
 			)
 		));
 		$m->setConnection($con);

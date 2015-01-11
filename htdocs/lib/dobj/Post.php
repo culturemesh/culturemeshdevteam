@@ -17,6 +17,20 @@ class Post extends DisplayDObj {
 	protected $reply_count;
 	protected $hash;
 
+	// network
+	protected $network;
+	protected $network_class;
+	protected $city_cur;
+	protected $region_cur;
+	protected $country_cur;
+	protected $city_origin;
+	protected $region_origin;
+	protected $country_origin;
+	protected $language_origin;
+	protected $origin;
+	protected $location;
+
+	// images
 	protected $images;
 	protected $image_ids;
 
@@ -181,6 +195,16 @@ class Post extends DisplayDObj {
 		}
 
 		return $name;
+	}
+
+	public function getSplit($property) {
+
+		switch ($property) {
+		case 'network':
+			return $this->getNetworkTitle();
+		default:
+			return $this->$property;
+		}
 	}
 
 	public function formatText() {

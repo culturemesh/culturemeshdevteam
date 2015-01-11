@@ -29,10 +29,6 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		return true;
 	}
 
-	public function section($property) {
-
-	}
-
 	/////// DISPLAY FUNCTIONS ///////////
 	/// give a mustache engine
 	public function setMustache($m) {
@@ -78,6 +74,54 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 
 			 return $this->li_html;
 		 }
+	}
+
+	/*
+	 * transforms array into sectioned list
+	 */
+	public function splits($property) {
+
+		$splits = array();
+
+		foreach ($this->dlist as $obj) {
+			$p = $obj->getSplit($property);
+
+			// can simplify this section later
+			// split on object
+
+			// blank to string
+			if (is_object($p))
+			  $s = $p->standOut();
+			else
+			  $s = $p;
+
+			// check for existing value
+			$found = false;
+			foreach ($splits as $split) {
+
+				// add to the thing
+				if (isset($split['key']) && $split['key'] == $s) {
+					$found = true;
+					break;
+				}
+			}
+
+			if ($found)
+   			  array_push($split['array'], $obj);
+
+			// make new split
+			else {
+				array_push($splits, array(
+					'array' => array($obj),
+					'section' => $p,
+					'key' => $s)
+				);
+			}
+		}
+
+		$sl = new SectedDObjList();
+		$sl->slist = $splits;
+		return $sl;
 	}
 	
 

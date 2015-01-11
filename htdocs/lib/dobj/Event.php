@@ -25,6 +25,8 @@ class Event extends DisplayDObj {
 	protected $region_origin;
 	protected $country_origin;
 	protected $language_origin;
+	protected $origin;
+	protected $location;
 	protected $usr_image;
 
 	protected $host;
@@ -58,6 +60,7 @@ class Event extends DisplayDObj {
 			return $mustache->render($template, array(
 				'event' => $this,
 				'host' => $this->getName(),
+				'date' => $this->formatDate(),
 				'vars' => $cm->getVars()
 				)
 			);
@@ -107,5 +110,26 @@ class Event extends DisplayDObj {
 					$name .= ' '.$this->last_name;
 			}
 		return $name;
+	}
+
+	public function formatDate() {
+		$date = new \DateTime($this->event_date);
+		return $date->format('D jS @ g:iA'); // thanks, php for easy formatting
+	}
+
+	public function getSplit($property) {
+
+		switch ($property) {
+		case 'month':
+			$date = new \DateTime($this->event_date);
+			$obj = new \dobj\Blank();
+			$obj->month = $date->format('M');
+			$obj->year = $date->format('Y');
+			return $obj;
+		case 'network':
+			return $this->getNetworkTitle();
+		default:
+			return $this->$property;
+		}
 	}
 }

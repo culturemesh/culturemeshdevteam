@@ -49,7 +49,7 @@ SQL
 SELECT e.*, n.network_class, 
 n.city_cur, n.region_cur, n.country_cur,
 n.city_origin, n.region_origin, n.country_origin,
-n.language_origin,  u.img_link AS usr_image
+n.language_origin,  u.img_link AS usr_image, u.first_name, u.last_name
 FROM events e, users u, networks n
 WHERE id_network IN (
 SELECT id_network
@@ -78,13 +78,99 @@ SQL
 				'address_2', 'city', 'country', 'description', 'region',
 				'network_class', 'city_cur', 'region_cur', 'country_cur',
 				'city_origin', 'region_origin', 'country_origin', 'language_origin',
-				'usr_image'
+				'usr_image', 'first_name', 'last_name'
 			)
 		));
 
 		$m->setConnection($con);
 		return $m;
 	};
+
+	$obj->getEventsHosting = function($con=NULL) {
+	
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+SELECT e.*, u.img_link, u.first_name, u.last_name,
+n.network_class, n.city_cur, n.region_cur, n.country_cur,
+n.city_origin, n.region_origin, n.country_origin, n.language_origin
+FROM events e, users u, networks n
+WHERE e.id_host=u.id 
+AND n.id = e.id_network
+AND id_host=?
+ORDER BY e.id_network
+SQL
+
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'getEventsHosting',
+			'params' => array('id_host'),
+			'param_types' => 'i',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_list' => true,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => 'dobj\Event',
+				'returning_cols' => array('id', 'id_network', 'id_host', 
+				'date_created', 'event_date', 'title', 'address_1',
+				'address_2', 'city', 'country', 'description', 'region',
+				'network_class', 'city_cur', 'region_cur', 'country_cur',
+				'city_origin', 'region_origin', 'country_origin', 'language_origin',
+				'usr_image', 'first_name', 'last_name'
+			)
+		));
+
+		$m->setConnection($con);
+		return $m;
+	};
+
+	$obj->getEventsAttending = function($con=NULL) {
+	
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+SELECT e.*, u.first_name, u.last_name, u.img_link,
+n.network_class, n.city_cur, n.region_cur, n.country_cur,
+n.city_origin, n.region_origin, n.country_origin, n.language_origin
+FROM events e, event_registration er, users u, networks n
+WHERE er.id_event = e.id
+AND e.id_host=u.id 
+AND n.id = e.id_network
+AND er.id_guest=?
+ORDER BY e.id_network
+SQL
+
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'getEventsAttending',
+			'params' => array('id_guest'),
+			'param_types' => 'i',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_list' => true,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => 'dobj\Event',
+				'returning_cols' => array('id', 'id_network', 'id_host', 
+				'date_created', 'event_date', 'title', 'address_1',
+				'address_2', 'city', 'country', 'description', 'region',
+				'network_class', 'city_cur', 'region_cur', 'country_cur',
+				'city_origin', 'region_origin', 'country_origin', 'language_origin',
+				'usr_image', 'first_name', 'last_name'
+			)
+		));
+
+		$m->setConnection($con);
+		return $m;
+	};
+
 	$obj->getEventsByUserId = function($con=NULL) {
 	
 		$m = new dal\DBQuery();

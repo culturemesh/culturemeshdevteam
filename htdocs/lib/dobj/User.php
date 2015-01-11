@@ -43,7 +43,13 @@ class User extends DObj {
 		$user = new User();
 		$user->id = $id;
 
-		return $do2db->execute($dal, $user, 'getUserById');
+		$result = $do2db->execute($dal, $user, 'getUserById');
+
+		// if its a Pdo statement, couldn't find that user
+		if (get_class($result) == 'PDOStatement')
+		  return false;
+		else
+		  return $result;
 	}
 
 	/**
@@ -65,13 +71,15 @@ class User extends DObj {
 		$obj->id_user = $this->id;
 
 		// query
-		$this->yn_events = $do2db->execute($dal, $obj, 'getEventsInYourNetworks');
+		$result = $do2db->execute($dal, $obj, 'getEventsInYourNetworks');
 
-		if (get_class($this->yn_events) == 'PDOStatement') {
-			$err = $this->yn_events->errorInfo();
+		if (get_class($result) == 'PDOStatement') {
+			$err = $result->errorInfo();
 			print_r($err);
 			$this->yn_events = NULL;
 		}
+		else
+		  $this->yn_events = $result->splits('network');
 	}
 
 	public function getEventsHosting($dal, $do2db) {
@@ -81,13 +89,15 @@ class User extends DObj {
 		$obj->id_host = $this->id;
 
 		// query
-		$this->yh_events = $do2db->execute($dal, $obj, 'getEventsByUserId');
+		$result = $do2db->execute($dal, $obj, 'getEventsHosting');
 
-		if (get_class($this->yh_events) == 'PDOStatement') {
-			$err = $this->yh_events->errorInfo();
+		if (get_class($result) == 'PDOStatement') {
+			$err = $result->errorInfo();
 			print_r($err);
 			$this->yh_events = NULL;
 		}
+		else
+		  $this->yh_events = $result->splits('network');
 	}
 
 	public function getEventsAttending($dal, $do2db) {
@@ -97,13 +107,15 @@ class User extends DObj {
 		$obj->id_guest = $this->id;
 
 		// query
-		$this->ya_events = $do2db->execute($dal, $obj, 'getEventRegistrationsByUserId');
+		$result = $do2db->execute($dal, $obj, 'getEventsAttending');
 
-		if (get_class($this->ya_events) == 'PDOStatement') {
-			$err = $this->ya_events->errorInfo();
+		if (get_class($result) == 'PDOStatement') {
+			$err = $result->errorInfo();
 			print_r($err);
 			$this->ya_events = NULL;
 		}
+		else
+		  $this->ya_events = $result->splits('network');
 	}
 
 	public function getPosts($dal, $do2db) {
@@ -113,10 +125,22 @@ class User extends DObj {
 		$obj->lbound = 0;
 		$obj->ubound = 10;
 
+		/*
 		$this->yp_posts = $do2db->execute($dal, $obj, 'getPostsByUserId');
 
 		if (get_class($this->yp_posts) == 'PDOStatement')
 			$this->yp_posts = NULL;
+		 */
+
+		$result = $do2db->execute($dal, $obj, 'getPostsByUserId');
+
+		if (get_class($result) == 'PDOStatement') {
+			$err = $result->errorInfo();
+			print_r($err);
+			$this->yp_posts = NULL;
+		}
+		else
+		  $this->yp_posts = $result->splits('network');
 	}
 
 	public function getNetworksWithPosts($dal, $do2db) {
@@ -170,6 +194,13 @@ class User extends DObj {
 		$inlist .= ')';
 
 		return $inlist;
+	}
+
+	/*
+	 * Necessary for mustache
+	 */
+	public function __isset($name) {
+		return isset($this->$name);
 	}
 }
 

@@ -141,7 +141,9 @@
 				</form>
 				-->
 				{{# sections.posts }}
+				<ul id="post-wall-ul" class="network">
 				{{{.}}}
+				</ul>
 				{{/ sections.posts }}
 				{{# get.ap }} lambda required
 				{{# page_vars.post_count_lambda }}
@@ -191,18 +193,9 @@
 				<!--<ul class="network">-->
 				<div>
 						<button id="slider-left" class="slider-button"></button>
-						<div id="slider-content" class="event-slider">
-						<table id="slider-table" class="network event">
-							<thead></thead>
-							<tbody>
-							<tr>
 							{{# sections.event_slider }}
 							{{{ . }}}
 							{{/ sections.event_slider }}
-							</tr>
-							</tbody>
-						</table>
-						</div>
 						<button id="slider-right" class="slider-button"></button>
 				</div>
 				<div class="clear"></div>
