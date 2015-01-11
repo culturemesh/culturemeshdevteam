@@ -23,7 +23,7 @@ LEFT JOIN ( SELECT id_post, GROUP_CONCAT(hash SEPARATOR ', ') AS hash
                 GROUP BY id_post
 		) hh 
 ON p.id = hh.id_post
-AND p.id_network=?
+WHERE p.id_network=?
 ORDER BY post_date DESC
 LIMIT ?, ?
 SQL

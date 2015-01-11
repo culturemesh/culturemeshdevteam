@@ -86,7 +86,7 @@ class Event extends DisplayDObj {
 		}
 	}
 
-	protected function getName() {
+	public function getName() {
 
 			// last resort, email
 			if (isset($this->email))

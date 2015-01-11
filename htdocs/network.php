@@ -12,6 +12,8 @@
 	
 	//session_name("myDiaspora");
 	//session_start();
+//	echo $_GET['id'];
+	header('Location: network/'.$_GET['id']);
 
 ?>
 

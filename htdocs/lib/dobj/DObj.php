@@ -46,7 +46,7 @@ abstract class DObj {
 	}
 
 	// parse name
-	protected function getName() {
+	public function getName() {
 
 		if (!property_exists($this, 'first_name'))
 			throw new \Exception('This class does not have a first_name property');

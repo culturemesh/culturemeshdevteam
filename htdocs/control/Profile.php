@@ -43,10 +43,11 @@ class Profile {
 
 		if (isset($_SESSION['uid'])) {
 			$site_user = \dobj\User::createFromId($uid, $dal, $do2db);
+			$guest = false;
 		}
 
-		if ($site_user->id != $_SESSION['uid']) {
-			$guest = false;
+		if ($site_user->id != $user->id) {
+		//	$guest = false;
 		}
 
 		// END 

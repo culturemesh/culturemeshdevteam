@@ -169,7 +169,7 @@ class Post extends DisplayDObj {
 	}
 
 	// parse name
-	protected function getName() {
+	public function getName() {
 
 		$name = NULL;
 		if ($this->first_name == '')
