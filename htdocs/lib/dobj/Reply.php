@@ -52,7 +52,8 @@ class Reply extends Post {
 				'reply' => $this,
 				'relative_date' => $this->getRelativeDate(),
 				'name' => $this->getName(),
-				'replies' => $this->replies_html
+				'replies' => $this->replies_html,
+				'vars' => $cm->getVars()
 				)
 			);
 				

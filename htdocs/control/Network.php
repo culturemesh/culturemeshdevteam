@@ -54,14 +54,23 @@ class Network {
 			),
 		));
 
+		// check if user is logged in
+		// check registration
+		$site_user = NULL;
+		$logged_in = false;
+
 		if (isset($_SESSION['uid'])) {
 			$logged_in = true;
 
 			// check if user is registered
 			// if so, get user info
+			$site_user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db);
+
+			// see if user is registered
+			// in network
+			$member = $network->checkRegistration($site_user->id, $dal, $do2db);
+			$guest = false;
 		}
-		else
-			$logged_in = false;
 
 		/////// make components //////////
 		$m_comp = new \misc\MustacheComponent();
@@ -127,15 +136,14 @@ class Network {
 			'vars' => $cm->getVars(),
 			'test' => "<b>Something</b>",
 			'page_vars' => array (
-				'reg-guest' => false,
-				'member' => false,
+				'member' => $member,
 				'member_count' => $network->member_count,
 				'post_count' => $network->post_count,
-				'guest' => true,
 				'uid' => null,
 				'nid' => $nid
 				),
-			'logged_in' => $logged_in
+			'logged_in' => $logged_in,
+			'site_user' => $site_user
 		);
 
 		echo $m->render($template, $page_vars);

@@ -43,7 +43,7 @@
 						<li><a id="menu-about" href="{{ vars.home_path }}/about.php">About</a></li>
 						<!--<li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>-->
 						{{# logged_in }}
-						<li><a href="{{ vars.home_path }}/profile_edit.php" id="welcome">Welcome, {{ site_user_name }}</a></li>
+						<li><a href="{{ vars.home_path }}/profile/{{ site_user.id }}" id="welcome">Welcome, {{ site_user.getName }}</a></li>
 						<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
 						{{/ logged_in }}
 						{{^ logged_in }}

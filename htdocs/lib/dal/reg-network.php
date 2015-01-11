@@ -193,6 +193,39 @@ SQL
 
 		return $m;
 	};
+
+	$obj->checkUserRegistration = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+SELECT COUNT(id_user) AS user_count 
+FROM network_registration 
+WHERE id_user=? 
+AND id_network=?
+
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'getNetworksByUserId',
+			'params' => array('id_user', 'id_network'),
+			'param_types' => 'ii',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_list' => False,
+			'returning_class' => 'dobj\Blank',
+			'returning_cols' => array('user_count')
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
 }
 
 ?>

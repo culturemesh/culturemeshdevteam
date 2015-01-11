@@ -67,20 +67,25 @@
 			<div>
 				<div class='net-info'>
 					<h1 class='h-network'>{{ sections.network_title }}</h1>
-					{{# page_vars.reg-guest }}
+					<!-- TOTAL GUEST, NOT LOGGED IN -->
+					{{^ logged_in }}
+					<div class="guest">
+						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
+						<button class="network" onclick="$('#register_modal').modal('show');">Join us!</button>
+					</div>
+					{{/ logged_in }}
+					<!-- LOGGED IN, VISITING THE NETWORK -->
+					{{# logged_in }}
+					{{^ page_vars.member }}
 					<div class="reg-guest">
 						<form method="POST" action="{{ vars.home_path }}/network_join.php">
 							<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
 							<button class="network">Join us!</button>
 						</form>
 					</div>
-					{{/ page_vars.reg-guest }}
-					{{# page_vars.guest }}
-					<div class="guest">
-						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
-						<button class="network" onclick="$('#register_modal').modal('show');">Join us!</button>
-					</div>
-					{{/ page_vars.guest }}
+					{{/ page_vars.member }}
+					{{/ logged_in }}
+					<!-- MEMBER OF THE NETWORK -->
 					{{# page_vars.member }}
 					<div class="member">
 						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
@@ -110,6 +115,7 @@
 			<!-------------- -->
 			<div class="network tab-content">
 			<div id="post-wall" class="tab-pane active">
+				{{# page_vars.member }}
 				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.home_path }}/network_post.php" enctype="multipart/form-data">
 					<img id="profile-post" src="{{ user.img_link }}" width="45" height="45">
 					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
@@ -122,6 +128,8 @@
 					<input type="hidden" name="post_class" value="o"></input>
 					<input type="hidden" name="post_original" value="NULL"></input>
 				</form>
+				<hr>
+				{{/ page_vars.member }}
 				<!--
 				<form method="POST" class="member" action="{{ vars.home_path }}/network_post.php">
 				<img id="profile-post" src="{{ user.img_link }}" width="45" height="45">
@@ -132,7 +140,6 @@
 					<input type="hidden" name="post_original" value="NULL"></input>
 				</form>
 				-->
-				<hr>
 				{{# sections.posts }}
 				{{{.}}}
 				{{/ sections.posts }}
@@ -200,10 +207,12 @@
 				</div>
 				<div class="clear"></div>
 				<!--</ul>-->
+				{{# page_vars.member }}
 				<div>
 				<button id="event-post" class="network member" onclick="toggleEventForm()">Post Event</button>
 				</div>
 				<div class="clear"></div>
+				{{/ page_vars.member }}
 				{{# get.eperror }}
 				<script>
 				</script>

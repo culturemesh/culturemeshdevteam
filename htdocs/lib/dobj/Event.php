@@ -57,7 +57,8 @@ class Event extends DisplayDObj {
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-card.html');
 			return $mustache->render($template, array(
 				'event' => $this,
-				'host' => $this->getName()
+				'host' => $this->getName(),
+				'vars' => $cm->getVars()
 				)
 			);
 			break;
@@ -68,7 +69,8 @@ class Event extends DisplayDObj {
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-modal.html');
 			return $mustache->render($template, array(
 				'event' => $this,
-				'host' => $this->getName()
+				'host' => $this->getName(),
+				'vars' => $cm->getVars()
 				)
 			);
 			break;
@@ -78,7 +80,8 @@ class Event extends DisplayDObj {
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-event.html');
 			return $mustache->render($template, array(
 				'event' => $this,
-				'host' => $this->getName()
+				'host' => $this->getName(),
+				'vars' => $cm->getVars()
 				)
 			);
 			break;

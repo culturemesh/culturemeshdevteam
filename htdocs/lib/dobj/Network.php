@@ -68,6 +68,20 @@ class Network extends DisplayDObj {
 		return $network;
 	}
 
+	public function checkRegistration($uid, $dal, $do2db) {
+
+		$args = new \dobj\Blank();
+		$args->id_user = $uid;
+		$args->id_network = $this->id;
+
+		$result = $do2db->execute($dal, $args, 'checkUserRegistration');
+
+		if (isset($result->user_count) && $result->user_count > 0)
+			return true;
+		else
+			return false;
+	}
+
 	public function getPosts($dal, $do2db) {
 
 		if ($this->id == NULL) {
@@ -141,6 +155,7 @@ class Network extends DisplayDObj {
 				'active' => true,
 				'network' => $this,
 				'title' => $this->getTitle(),
+				'vars' => $cm->getVars()
 				)
 			);
 			break;

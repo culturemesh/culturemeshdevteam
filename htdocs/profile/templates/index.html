@@ -71,7 +71,7 @@
 	<!-- PROFILE LEFT PANEL -->
 	<div class="profile_left_panel">
 	    <span class="profile_image">
-		    <img id="profile_image" class='usr_image' src="{{ user.img_link }}#{{ page_vars.rand }}"/>
+		    <img id="profile_image" class='usr_image' src="{{ vars.img_host_repo }}{{ user.img_link }}#{{ page_vars.rand }}"/>
 	    </span>
 	    <div id="pic-upload-div">
 		    <p id="success-label"></p>
@@ -86,7 +86,7 @@
 	    </div>
 	    </br>
 	    <span class="profile_name">
-		    <h2 id="profile_name" class="dashboard">{{ user.first_name }} {{ user.last_name }}</h2>
+		<h2 id="profile_name" class="dashboard">{{ user.first_name }} {{ user.last_name }}</h2>
 		<p id="profile_about" class="profile">{{ user.about_me }}</p>
 	    </span>
 	{{^ page_vars.guest }}
@@ -194,7 +194,7 @@
 					<label class="checkbox"><input type="checkbox" name="notify_network_activity" value="1" {{$ user.events_upcoming }}checked{{/ user.events_upcoming }}>I have received comments to a network event I added</label>
 					<input type="hidden" name="notification" value="yes"/>
 				</div>
-				{{$ user.confirmed }}
+				{{# user.confirmed }}
 				<div id="account-buttons">
 					<!--<input type="submit" class="btn cm-button btn-gray dash" value="Cancel"\>-->
 					<input type="submit" class="btn cm-button btn-green dash" value="Submit"\>
