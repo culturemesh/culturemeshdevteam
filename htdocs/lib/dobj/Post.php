@@ -37,6 +37,7 @@ class Post extends DisplayDObj {
 	protected $date;
 
 	private static $MAX_IMAGE_COUNT = 3;
+	private static $MAX_REPLIES = 4;
 	protected $replies;
 	protected $replies_html;
 
@@ -65,6 +66,19 @@ class Post extends DisplayDObj {
 			throw new \Exception('post_class is not set');
 
 		$do2db->execute($dal, $this, 'insertPost');
+	}
+
+	public function delete($dal, $do2db) {
+		if (!isset($this->id))
+	  	  throw new \Exception('id is not set');
+
+		$result = $do2db->execute($dal, $this, 'deletePost');
+
+		if (get_class($result) == 'PDOStatement') {
+			var_dump($result->getErrorInfo());
+		}
+		else
+		  return $result;
 	}
 
 	public function registerImages($dal, $do2db) {
@@ -106,8 +120,22 @@ class Post extends DisplayDObj {
 			// activate replies_html
 			$this->replies_html = array();
 
+			$show_replies = false;
+			if (count($this->replies) > self::$MAX_REPLIES) {
+				$show_replies = true;
+			}
+
 			// get html for replies
+			/*
 			foreach ($this->replies as $reply) {
+				$html = $reply->getHTML($context, $vars);
+				array_push($this->replies_html, $html);
+			}
+			 */
+
+			for ($i = 0; $i < count($this->replies) && $i < self::$MAX_REPLIES; $i++) {
+
+				$reply = $this->replies[$i];
 				$html = $reply->getHTML($context, $vars);
 				array_push($this->replies_html, $html);
 			}
@@ -127,12 +155,15 @@ class Post extends DisplayDObj {
 				}
 			}
 
+
+
 			// get template
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-post.html');
 			return $mustache->render($template, array(
 				'active' => true,
 				'delete_button' => $delete_button,
 				'reply_request' => $reply_request,
+				'show_replies' => $show_replies,
 				'post' => $this,
 				'text' => $this->formatText(),
 				'relative_date' => $this->getRelativeDate(),
@@ -157,6 +188,18 @@ class Post extends DisplayDObj {
 				)
 			);
 			break;
+		case 'replies':
+
+			// activate replies_html
+			$this->replies_html = array();
+
+			// get html for replies
+			foreach ($this->replies as $reply) {
+				$html = $reply->getHTML('network', $vars);
+				array_push($this->replies_html, $html);
+			}
+
+			return $this->replies_html;
 		}
 	}
 
@@ -185,9 +228,15 @@ class Post extends DisplayDObj {
 	public function getReplies($dal, $do2db) {
 
 		if ($this->id == NULL)
-			throw \Exception('This post does not have an id, can\'t find replies');
+			throw new \Exception('This post does not have an id, can\'t find replies');
 
-		$this->replies = $do2db->execute($dal, $this, 'getRepliesByParentId');
+		$result = $do2db->execute($dal, $this, 'getRepliesByParentId');
+
+		if (get_class($result) == 'PDOStatement') {
+			$this->replies = NULL;
+		}
+		else 
+		  $this->replies = $result;
 	}
 
 	protected function getRelativeDate() {

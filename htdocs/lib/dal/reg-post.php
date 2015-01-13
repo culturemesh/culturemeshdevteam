@@ -203,24 +203,79 @@ SQL
 		return $m;
 	};
 
-	$obj->createReply = function($con=NULL) {
+	$obj->deletePost = function($con=NULL) {
 
 		$m = new dal\DBQuery();
 		$m->setValues(array(
 			'query' => <<<SQL
-INSERT INTO posts
-(id_user, id_network, post_date, post_text, post_class) 
-VALUES (?, ?, NOW(), ?, ?)
+DELETE FROM posts
+WHERE id=?
 SQL
 
 		/////////////////////////////
 		, 	'test_query' => <<<SQL
 SQL
 		/////////////////////////////
-		,	'name' => 'getPostsByUserId',
-			'params' => array('id_user', 'id_network', 'post_text',
-				'post_class'),
-			'param_types' => 'nnsss',
+		,	'name' => 'deletePost',
+			'params' => array('id'),
+			'param_types' => 'n',
+			'nullable' => array(),
+			'returning' => false,
+			'returning_list' => false,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => null,
+			'returning_cols' => null 
+		));
+		$m->setConnection($con);
+		return $m;
+	};
+
+	$obj->createReply = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+INSERT INTO post_replies
+(id_parent, id_user, id_network, reply_text) 
+VALUES (?, ?, ?, ?)
+SQL
+
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'createReply',
+			'params' => array('id_parent', 'id_user', 'id_network', 'reply_text'),
+			'param_types' => 'nnns',
+			'nullable' => array(),
+			'returning' => false,
+			'returning_list' => false,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => null,
+			'returning_cols' => null 
+		));
+		$m->setConnection($con);
+		return $m;
+	};
+
+	$obj->deleteReply = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+DELETE FROM post_replies
+WHERE id=?
+SQL
+
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'deleteReply',
+			'params' => array('id'),
+			'param_types' => 'n',
 			'nullable' => array(),
 			'returning' => false,
 			'returning_list' => false,

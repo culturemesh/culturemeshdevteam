@@ -4,9 +4,9 @@
 	</div>
 	<div class='post-info'>
 		<h5 class='h-network post'><a href='{{ vars.home_path }}/profile/{{ reply.id_user }}'>{{ name }}</a></h5>
-		{{# reply.owner }}
+		{{# owner }}
 		<div class='reply-button delete'>
-			<form class='personal delete_reply' method="POST" action="network_reply_delete.php">
+			<form class='personal delete_reply' method="POST" action="{{ vars.home_path }}/network_reply_delete.php">
 				<noscript>
 				<input type="hidden" name="NOJS" value="NOJS"/>
 				</noscript>
@@ -16,7 +16,7 @@
 				<button class='post delete-button user reply'>&#10006</button>
 			</form>
 		</div>
-		{{/ reply.owner }}
+		{{/ owner }}
 		<div class="clear"></div>
 		<p class='network reply'>{{ reply.reply_text }}</p>
 		<p class='network reply date'>{{ relative_date }}</p>
