@@ -1,5 +1,6 @@
 <?php
 
+ini_set("display_errors", true);
 // start session for reply thing
 session_name('myDiaspora');
 session_start();
