@@ -21,6 +21,8 @@ class User extends DObj {
 	protected $act_code;
 	protected $img_link;
 
+	protected $events_attending;
+
 	// events
 	protected $yn_events;
 	protected $ya_events;
@@ -48,8 +50,10 @@ class User extends DObj {
 		// if its a Pdo statement, couldn't find that user
 		if (get_class($result) == 'PDOStatement')
 		  return false;
-		else
-		  return $result;
+		else {
+		  	$user->events_attending = explode(', ', $user->events_attending);
+			return $result;
+		}
 	}
 
 	/**
@@ -118,12 +122,12 @@ class User extends DObj {
 		  $this->ya_events = $result->splits('network');
 	}
 
-	public function getPosts($dal, $do2db) {
+	public function getPosts($dal, $do2db, $lbound=0, $ubound=10) {
 
 		$obj = new Blank();
 		$obj->id_user = $this->id;
-		$obj->lbound = 0;
-		$obj->ubound = 10;
+		$obj->lbound = $lbound;
+		$obj->ubound = $ubound;
 
 		/*
 		$this->yp_posts = $do2db->execute($dal, $obj, 'getPostsByUserId');
@@ -139,8 +143,9 @@ class User extends DObj {
 			print_r($err);
 			$this->yp_posts = NULL;
 		}
-		else
+		else {
 		  $this->yp_posts = $result->splits('network');
+		}
 	}
 
 	public function getNetworksWithPosts($dal, $do2db) {
@@ -172,7 +177,12 @@ class User extends DObj {
 		$obj = new Blank();
 		$obj->id_user = $this->id;
 
-		$this->yn_networks = $do2db->execute($dal, $obj, 'getNetworksByUserId');
+		$result = $do2db->execute($dal, $obj, 'getNetworksByUserId');
+
+		if (get_class($result) == 'PDOStatement') 
+		  $this->yn_networks = false;
+		else
+		  $this->yn_networks = $result; 
 	}
 
 	private function getNids($array) {

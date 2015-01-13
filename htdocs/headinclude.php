@@ -5,6 +5,11 @@
 <link rel="image_src" href="<?php echo DOMAIN_URL; ?>/logo.png" title="<?php echo DOMAIN_NAME;?>" id="<?php echo DOMAIN_NAME;?>" />
 <noscript> <meta http-equiv=refresh content="0; URL=/noscript.php" /> </noscript>
 
+<script src="<?php echo \Environment::host_root(); ?>/js/utilities.js"></script>
+<script type="text/javascript">
+	cm.home_path = "<?php echo \Environment::host_root(); ?>";
+</script>
+
 <link href="<?php echo \Environment::host_root(); ?>/css/bootstrap.css" rel="stylesheet">
 <link href="<?php echo \Environment::host_root(); ?>/css/style.css?<?php echo time(); ?>" rel="stylesheet">
 <!--<link href="css/style.css" rel="stylesheet">-->

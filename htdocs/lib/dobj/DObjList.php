@@ -97,17 +97,22 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 
 			// check for existing value
 			$found = false;
-			foreach ($splits as $split) {
+			$index = 0;
+
+			for ($i = 0; $i < count($splits); $i++) {
+				$split = $splits[$i];
 
 				// add to the thing
 				if (isset($split['key']) && $split['key'] == $s) {
 					$found = true;
+					$index = $i;
 					break;
 				}
+
 			}
 
 			if ($found)
-   			  array_push($split['array'], $obj);
+   			  array_push($splits[$index]['array'], $obj);
 
 			// make new split
 			else {

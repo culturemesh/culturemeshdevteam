@@ -75,7 +75,7 @@
 	    </span>
 	    <div id="pic-upload-div">
 		    <p id="success-label"></p>
-		    <form id="profile-pic-upload" method="POST" action="profile_img_upload.php" enctype="multipart/form-data"/>
+		    <form id="profile-pic-upload" method="POST" action="{{ vars.home_path }}/profile_img_upload.php" enctype="multipart/form-data"/>
 			<input type="file" id="upload-input" name="picfile">
 			<input type="hidden" id="upload-id" name="id" value="{{ page_vars.uid }}">
 			<noscript>
@@ -132,7 +132,7 @@
 				{{{ . }}}
 				{{/ sections.yp_posts }}
 				{{$ page_vars.yp_count }}
-				<form id='more-posts' action='profile_operations.php' method='POST' />
+				<form id='more-posts' action='{{ vars.home_path }}/profile_operations.php' method='POST' />
 					<input type='hidden' name='more_posts' value='true' />
 					<input type='hidden' name='uid' value='{{ user.id }}' />
 					<input type='hidden' id='lb' name='lb' value='10' />
@@ -177,7 +177,7 @@
 		<!-- ACCOUNTS TAB -->
 		{{^ page_vars.guest }}
 		<div class="tab-pane" id="profile_accounts_tab">
-			<form id="account_info_form" method="POST" action="update_notifications.php">
+			<form id="account_info_form" method="POST" action="{{ vars.home_path }}/update_notifications.php">
 				<div>
 					<label class="label label-success hide" id="account_info_update_success_txt">Information successfully updated!</label>
 					<label class="label label-important hide" id="account_info_update_failure_txt">Update failed. Please try again.</label>
@@ -208,6 +208,46 @@
 	{{/ content }}
 
 	{{$ body_scripts }}
+	<script src="{{vars.home_path}}/js/searchbar.js"></script>
+
+	<script>
+		// necessary for some reason
+		$('#lb').val(10);
+
+		// more posts form submit event
+		$('#more-posts').on('submit', function(e) {
+			// prevent form submission
+			e.preventDefault();
+		
+			var postForm = $( e.target ).serialize();
+
+			var ajaxRequest = new Ajax({
+					requestType: 'POST',
+					requestUrl: '{{ vars.home_path }}/profile_operations.php',
+					requestHeaders: ' ',
+					data: postForm,
+					dataType: 'string',
+					sendNow: true
+				}, function(data) {
+					var response = JSON.parse(data);
+
+					if (response['error'] == 'success') {
+						// stuff
+						$('#your-posts').append(response['html']);
+
+						if (response['continue'] == 'y') {
+							$('#lb').val(response['lb']);
+						}
+						else {
+							$('#mp_button').hide();
+						}
+					}
+				}, function() {
+				});
+		});
+
+	</script>
+
 	{{/ body_scripts }}
 
 {{/ layout }}

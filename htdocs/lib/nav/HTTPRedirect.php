@@ -38,7 +38,7 @@ class HTTPRedirect {
 		$cv = self::parseControl();
 
 		if (isset($cv)) {
-			$this->url_path = '/';
+			$this->url_path = '';
 			$this->url_control = $cv['control'] . '/' . $cv['value'];
 		}
 
@@ -107,7 +107,7 @@ class HTTPRedirect {
 	public function setControl($control, $value) {
 
 		// set url path to /
-		$this->url_path = '/';
+		$this->url_path = '';
 
 		$this->control = $control;
 		$this->value = $value;
@@ -231,7 +231,7 @@ class HTTPRedirect {
 
 	// if you want, take care of the whole header call right here
 	public function execute() {
-		header('Location: '. $this->cm->host_root.self::getUrl());
+		header('Location: '. $this->cm->host_root. $this->cm->ds . self::getUrl());
 	}
 }
 

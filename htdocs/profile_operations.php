@@ -67,60 +67,7 @@ if( isset($_SESSION['uid']))
 			}
 		}
 	}
-	/**
-	 * MORE POSTS
-	 */
-	if (isset($_POST['more_posts']))
-	{
-		ini_set('display_errors', false);
 
-		$json_response = array(
-			'error' => NULL,
-			'html' => NULL,
-			'continue' => NULL,
-			'lb' => NULL);
-
-		$con = getDBConnection();
-		$uid = $_POST['uid'];
-		$lb = $_POST['lb'];
-		$nid = $_POST['nid'];
-		$test_ub = 11;
-		$ub = 10;
-		$bounds = array($lb, $test_ub);
-		$posts = Post::getPostsByUserId($uid, $bounds, $con);
-
-		$html = '';
-
-		// get post html
-		for ($i = 0; $i < $ub && $i < count($posts); $i++){
-			// check to see if we're in the same network
-			if ($posts[$i]->id_network != $nid) {
-				// swap ids
-				$nid = $posts[$i]->id_network;
-				// get new network
-				$network = Network::getNetworkById($id, $con);	
-				// display new network
-				$html .= HTMLBuilder::displayDashNetworkTitle($network);
-			}
-
-			// get post html
-			$html .= HTMLBuilder::displayDashPost($posts[$i], true);
-		}
-
-		mysqli_close($con);
-		$json_response['html'] = $html;
-		$json_response['error'] = 'success';
-		$json_response['continue'] = 'n';
-
-		// if there are 11+ posts, more can be loaded
-		if (count($posts) >= $test_ub) {
-			$json_response['continue'] = 'y';
-			$json_response['lb'] = $lb + 10;
-		}
-
-		// return the thing
-		echo json_encode($json_response);
-	}
 	/**
 	 * ACCOUNT INFO UPDATE
 	 */
@@ -199,6 +146,100 @@ if( isset($_SESSION['uid']))
 }
 else
 {
-	exit("Nobody's logged in. Access denied.");
+	/**
+	 * MORE POSTS
+	 */
+	if (isset($_POST['more_posts']))
+	{
+//		ini_set('display_errors', false);
+
+		$json_response = array(
+			'error' => NULL,
+			'html' => NULL,
+			'continue' => NULL,
+			'lb' => NULL);
+
+//		$con = getDBConnection();
+		$uid = $_POST['uid'];
+		$lb = $_POST['lb'];
+		$nid = $_POST['nid'];
+		$test_ub = 11;
+		$ub = 10;
+		$bounds = array($lb, $test_ub);
+
+		/*
+		$posts = Post::getPostsByUserId($uid, $bounds, $con);
+
+		$html = '';
+
+		// get post html
+		for ($i = 0; $i < $ub && $i < count($posts); $i++){
+			// check to see if we're in the same network
+			if ($posts[$i]->id_network != $nid) {
+				// swap ids
+				$nid = $posts[$i]->id_network;
+				// get new network
+				$network = Network::getNetworkById($id, $con);	
+				// display new network
+				$html .= HTMLBuilder::displayDashNetworkTitle($network);
+			}
+
+			// get post html
+			$html .= HTMLBuilder::displayDashPost($posts[$i], true);
+		}
+
+		mysqli_close($con);
+		 */
+
+		include('Environment.php');
+		$cm = new \Environment();
+
+		$user = new \dobj\User();
+		$user->id = (int) $uid;
+
+		// db stuff
+		$dal = new \dal\DAL($cm->getConnection());
+		$dal->loadFiles();
+		$do2db = new \dal\Do2Db();
+
+		$user->getPosts($dal, $do2db, (int) $lb, (int) $ub);
+
+		$cm->closeConnection();
+
+		// get thing
+		/////// make components //////////
+		$m_comp = new \misc\MustacheComponent();
+
+		// set network stuff
+
+		if ($user->yp_posts) {
+			$tmp = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-postul.html');
+			$p_html = $user->yp_posts->getHTML('dashboard', array(
+				'cm' => $cm,
+				'mustache' => $m_comp,
+				'list_template' => $tmp
+				)
+			);
+		}
+		else {
+			$p_html = NULL;
+			$json_response['error'] = 'Failure: ' . $e;
+		}
+
+		$json_response['html'] = $p_html;
+		$json_response['error'] = 'success';
+		$json_response['continue'] = 'n';
+
+		// if there are 11+ posts, more can be loaded
+		if ($user->yp_posts->countAll() >= $test_ub) {
+			$json_response['continue'] = 'y';
+			$json_response['lb'] = $lb + 10;
+		}
+
+		// return the thing
+		echo json_encode($json_response);
+	}
+
+//	exit("Nobody's logged in. Access denied.");
 }
 ?>

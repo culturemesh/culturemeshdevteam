@@ -32,6 +32,7 @@ class Network extends DisplayDObj {
 
 	protected $posts;
 	protected $events;
+	protected $events_sect;
 
 	public static function createFromId($id, $dal, $do2db) {
 
@@ -82,7 +83,7 @@ class Network extends DisplayDObj {
 			return false;
 	}
 
-	public function getPosts($dal, $do2db) {
+	public function getPosts($dal, $do2db, $lobound=0, $upbound=10) {
 
 		if ($this->id == NULL) {
 			throw new Exception('No id is associated with this network object');
@@ -90,8 +91,8 @@ class Network extends DisplayDObj {
 
 		$args = new Blank();
 		$args->id_network = $this->id;
-		$args->lobound = 0;
-		$args->upbound = 10;
+		$args->lobound = $lobound;
+		$args->upbound = $upbound;
 
 		$this->posts = $do2db->execute($dal, $args, 'getPostsByNetworkId');
 
@@ -130,8 +131,13 @@ class Network extends DisplayDObj {
 		if (get_class($result) == 'PDOStatement') {
 			$this->events = new DObjList();
 		}
-		else 
-	   	  $this->events = $result->splits('month');
+		else  {
+			$this->events = $result;
+			$sl = $result->splits('month');
+
+			if ($sl != NULL) 
+	   		  $this->events_sect = $sl;
+		}
 	}
 
 	public function display($context) {

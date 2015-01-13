@@ -10,10 +10,18 @@ function registerUser($obj) {
 		$m = new dal\DBQuery();
 
 		$m->setValues(array(
+			/*
 			'query' => <<<SQL
 SELECT *
 FROM users
 WHERE id=?
+SQL
+			 */
+			'query' => <<<SQL
+SELECT u.*, GROUP_CONCAT(er.id_event SEPARATOR ', ') AS events_attending
+FROM users u, event_registration er
+WHERE u.id=?
+AND u.id=er.id_guest
 SQL
 		/////////////////////////////////
 		,	'test_query' => <<<SQL
@@ -29,7 +37,7 @@ SQL
 			'returning_assoc' => False,
 			'returning_list' => False,
 			'returning_class' => 'dobj\User',
-			'returning_cols' => array('id')
+			'returning_cols' => array('id', 'events_attending')
 		));
 
 		$m->setConnection($con);

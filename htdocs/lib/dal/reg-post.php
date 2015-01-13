@@ -2,6 +2,49 @@
 
 function registerPost($obj) {
 
+	$obj->getPostById = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT p.*, u.email, u.username, u.first_name, u.last_name, u.img_link, hash
+FROM posts p
+JOIN (SELECT *
+	FROM users) u ON p.id_user = u.id
+LEFT JOIN ( SELECT id_post, GROUP_CONCAT(hash SEPARATOR ', ') AS hash
+		FROM images i
+		LEFT JOIN post_images pi ON pi.id_image1 = i.id
+					OR pi.id_image2 = i.id
+					OR pi.id_image3 = i.id
+                GROUP BY id_post
+		) hh 
+ON p.id = hh.id_post
+WHERE p.id=?
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'getPostById',
+			'params' => array('id'),
+			'param_types' => 's',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_list' => False,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => 'dobj\Post',
+			'returning_cols' => array('id', 'id_user', 'id_network', 
+				'post_date', 'post_text', 'post_class', 
+				'post_original', 'email', 'username', 
+				'first_name', 'last_name', 'img_link', 
+				'hash')
+
+));
+		$m->setConnection($con);
+		return $m;
+	};
+
 	$obj->getPostsByNetworkId = function($con=NULL) {
 
 		$m = new dal\DBQuery();

@@ -39,7 +39,6 @@ class Profile {
 
 		if (get_class($user->yh_events) == 'PDOStatement') {
 			$err = $user->yh_events->errorInfo();
-			print_r($err);
 		}
 
 		// check registration
@@ -73,7 +72,7 @@ class Profile {
 		$m_comp = new \misc\MustacheComponent();
 
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
-		$searchbar = $m_comp->render($searchbar_template, array());
+		$searchbar = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()));
 
 		$yn_net_html = NULL;
 		$yn_event_html = NULL;

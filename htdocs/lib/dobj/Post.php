@@ -42,7 +42,15 @@ class Post extends DisplayDObj {
 
 	public static function createFromId($id, $dal, $do2db) {
 
-		// stub
+		$obj = new dobj\Blank();
+		$obj->id = $id;
+
+		$result = $do2db->execute($dal, $obj, 'getPostById');
+
+		if (get_class($result) == 'PDOStatement')
+			return false;
+		else
+			return $result;
 	}
 
 	public function insert($dal, $do2db) {
@@ -105,10 +113,13 @@ class Post extends DisplayDObj {
 			}
 
 			// check authentication
+			$delete_button = false;
+
 			if (isset($_SESSION['uid'])) {
 				$active = true;
+				$site_user = $vars['site_user'];
 
-				if ($this->id_user == $_SESSION['uid']) {
+				if ($this->id_user == $site_user->id) {
 					$delete_button = true;
 				}
 			}
@@ -117,6 +128,7 @@ class Post extends DisplayDObj {
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-post.html');
 			return $mustache->render($template, array(
 				'active' => true,
+				'delete_button' => $delete_button,
 				'post' => $this,
 				'text' => $this->formatText(),
 				'relative_date' => $this->getRelativeDate(),
@@ -241,6 +253,8 @@ class Post extends DisplayDObj {
 		 */
 		return $new_text;
 	}
+
+
 }
 
 ?>

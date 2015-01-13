@@ -6,6 +6,18 @@
 		<meta name="keywords" content="" />
 		<meta name="description" content="Welcome to CultureMesh - Connecting the world's diasporas!" />
 
+		<!-- Facebook analytics stuff -->
+		<meta name="og:title" content="CultureMesh" />
+		<meta name="og:site_name" content="CultureMesh" />
+		<meta name="og:url" content="http://culturemesh.com"/>
+		<meta name="og:description" content="Connecting the World's Diasporas" />
+		<meta name="og:image" content="http://www.culturemesh.com/culturemesh-live/htdocs/images/CM_Logo_Final_square.jpg"/>
+
+		<script src="{{ vars.home_path }}/js/utilities.js"></script>
+		<script type="text/javascript">
+			cm.home_path = "{{ vars.home_path }}";
+		</script>
+
 		<link href="{{ vars.home_path }}/css/bootstrap.css" rel="stylesheet">
 		<link href="{{ vars.home_path }}/css/style.css#" rel="stylesheet">
 		{{$ stylesheets }}
@@ -23,7 +35,61 @@
 		<script src="{{ vars.home_path }}/js/fxn.js"></script>
 		<script src="{{ vars.home_path }}/js/ajax.js"></script>
 		<script src="{{ vars.home_path }}/js/mustache.js/mustache.js"></script>
-		<script src="{{ vars.home_path }}/js/utilities.js"></script>
+
+		<script type="text/javascript">
+		/*
+			* Goto function
+		 */
+		(function($) {
+		    $.fn.goTo = function() {
+			$('html, body').animate({
+			    scrollTop: $(this).offset().top + 'px'
+			}, 'fast');
+			return this; // for chaining...
+		    }
+		})(jQuery);
+
+		/*
+			* Query string parser
+		 */
+		function QueryStringParser() {
+
+			this.length = 0;
+			this.qsGet = null;
+
+			// get query string
+			var qs = window.location.search.substring(1).split('?')[0];
+
+			// split into array of key value pairs
+			if (qs.length == 0) {
+				this.length = 0;
+			}
+			else {
+				// initialize qsGET
+				this.qsGet = {};
+
+				// split qs again in case of multiple params
+				qs = qs.split('&');
+
+				// for each  param, 
+				// 	- split into key, value
+				// 	- add to qsGET
+				var param;
+				for (var i = 0; i < qs.length; i++) {
+					// split into two values
+					param = qs[i].split('=');
+
+					// add to object
+					this.qsGet[param[0]] = decodeURIComponent(param[1]);
+				}
+			}
+		}
+
+		QueryStringParser.prototype.getQSObject = function() {
+			return this.qsGet;
+		}
+		</script>
+
 
 		{{$ more_scripts }}
 		{{/ more_scripts }}
@@ -43,8 +109,8 @@
 						<li><a id="menu-about" href="{{ vars.home_path }}/about.php">About</a></li>
 						<!--<li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>-->
 						{{# logged_in }}
-						<li><a href="{{ vars.home_path }}/profile/{{ site_user.id }}" id="welcome">Welcome, {{ site_user.getName }}</a></li>
-						<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
+						<li><a href="{{ vars.home_path }}/profile/{{ site_user.id }}" id="welcome">Welcome, {{ site_user.first_name }}</a></li>
+						<li><a id="sign-out" href="{{ vars.home_path }}/sign_out.php">Sign Out</a></li>
 						{{/ logged_in }}
 						{{^ logged_in }}
 						<li><a id="login-link" href="#login_modal" data-toggle="modal">Log In</a></li>

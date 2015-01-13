@@ -4,7 +4,7 @@
 	</div>
 	<div class="modal-body event">
 		<div id="event-modal-info-{{ event.id }}" class="modal-event info">
-		    <form class="event-modal-form" method="POST" action="network_update-event.php" >
+			<form class="event-modal-form" method="POST" action="{{ vars.home_path }}/network_update-event.php" >
 			<div class="event-modal-section">
 				<h1 class="h-network nomargin info-{{ event.id }}">{{ event.title }}</h1>
 				<input type="text" id="title" name="title" class="event-text-modal edit-{{ event.id }}" placeholder="Name of Event " value="{{ event.title }}"></input>
@@ -38,23 +38,31 @@
 				<input type="hidden" name="id_event" class="edit-{{ event.id }}" value="{{ event.id }}"/>
 				<input type="submit" class="submit edit-{{ event.id }}" value="Submit Changes"></input>
 		    </form>
+		    {{# owner }}
 		    <a id="event-modify-toggle-{{ event.id }}" class="">Edit Event</a> 
-		<div id="join-event-form-{{ event.id }}">
-		<form id="je-form-{{ event.id }}" method="POST" action="network_join-event.php">
-			<input type="hidden" name="nid" value="{{ event.id_network }}"/>
-			<input type="hidden" value="{{ event.id_user }}" name="uid"/>
-			<input type="hidden" name="event_id" value="{{ event.id }}"/>
-			<button class="event-modal">Join Event</button>
-		</form>
-		</div>
+		    {{/ owner }}
+		{{^ owner }}
+		{{# attending }}
 		<div id="attending_div-{{ event.id }}">
 			<p>You're attending this event</p>
-			<form id="je-form-{{ event.id }}" method='POST' action='network_leave-event.php'>
+			<form id="je-form-{{ event.id }}" method='POST' action='{{ vars.home_path }}/network_leave-event.php'>
 				<input type="hidden" name="uid" value="{{ event.id_user }}"/>
 				<input type="hidden" name="eid" value="{{ event.id }}"/>
 				<button class="event-modal">Leave Event</button>
 			</form>
 		</div>
+		{{/ attending }}
+		{{^ attending }}
+		<div id="join-event-form-{{ event.id }}">
+			<form id="je-form-{{ event.id }}" method="POST" action="{{ vars.home_path }}/network_join-event.php">
+			<input type="hidden" name="nid" value="{{ event.id_network }}"/>
+			<input type="hidden" value="{{ event.id_user }}" name="uid"/>
+			<input type="hidden" name="event_id" value="{{ event.id }}"/>
+			<button class="event-modal">Join Event</button>
+			</form>
+		</div>
+		{{/ attending }}
+		{{/ owner }}
 		</div>
 	</div>
 	<div class="modal-footer event">

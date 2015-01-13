@@ -40,19 +40,6 @@ class Network {
 		$network->getPostCount($dal, $do2db);
 		$network->getMemberCount($dal, $do2db);
 
-		// close connection
-		$cm->closeConnection();
-
-		// base layout
-		$base = $cm->getBaseTemplate();
-
-		// get engine
-		$m = new \Mustache_Engine(array(
-			'pragmas' => array(\Mustache_Engine::PRAGMA_BLOCKS),
-			'partials' => array(
-				'layout' => $base
-			),
-		));
 
 		// check if user is logged in
 		// check registration
@@ -72,6 +59,21 @@ class Network {
 			$guest = false;
 		}
 
+		// close connection
+		$cm->closeConnection();
+
+		// base layout
+		$base = $cm->getBaseTemplate();
+
+		// get engine
+		$m = new \Mustache_Engine(array(
+			'pragmas' => array(\Mustache_Engine::PRAGMA_BLOCKS),
+			'partials' => array(
+				'layout' => $base
+			),
+		));
+
+
 		/////// make components //////////
 		$m_comp = new \misc\MustacheComponent();
 
@@ -83,6 +85,7 @@ class Network {
 			$p_html = $network->posts->getHTML('network', array(
 				'cm' => $cm,
 				'network' => $network,
+				'site_user' => $site_user,
 				'mustache' => $m_comp
 				)
 			);
@@ -94,10 +97,13 @@ class Network {
 
 		$network->events->setMustache($m_comp);
 
+		if ($network->events_sect) {
+		  $network->events_sect->setMustache($m_comp);
+
 		try 
 		{
 			$tmp = file_get_contents($cm->template_dir . $cm->ds . 'network-event-cardtable.html');
-			$ec_html = $network->events->getHTML('card', array(
+			$ec_html = $network->events_sect->getHTML('card', array(
 				'cm' => $cm,
 				'network' => $network,
 				'mustache' => $m_comp,
@@ -109,12 +115,14 @@ class Network {
 		{
 			$ec_html = NULL;
 		}
+		}
 
 		try
 		{
 			$em_html = $network->events->getHTML('modal', array(
 				'cm' => $cm,
 				'network' => $network,
+				'site_user' => $site_user,
 				'mustache' => $m_comp
 				)
 			);
@@ -124,13 +132,19 @@ class Network {
 			$em_html = NULL;
 		}
 
+		// check if we need more posts
+		$more_posts = false;
+		if ($network->post_count > 10) {
+			$more_posts = true;
+		}
+
 		$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
 		$map_embed = $m_comp->render($map_embed_template, array(
 			'key' => $cm->g_api_key,
 			'location' => $network->location->toString()));
 
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
-		$searchbar = $m_comp->render($searchbar_template, array());
+		$searchbar = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()));
 
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'network' . $cm->ds . 'templates'.$cm->ds.'index.html');
@@ -148,9 +162,11 @@ class Network {
 			'page_vars' => array (
 				'member' => $member,
 				'member_count' => $network->member_count,
+				'more_posts' => $more_posts,
 				'post_count' => $network->post_count,
 				'uid' => null,
-				'nid' => $nid
+				'nid' => $nid,
+				'get' => $_GET
 				),
 			'logged_in' => $logged_in,
 			'site_user' => $site_user

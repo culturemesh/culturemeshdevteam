@@ -13,13 +13,16 @@ class SectedDObjList extends DObjList {
 	public function countAll() {
 
 		$count = 0;
-		$keys = array_keys($this->slist);
 
 		// get counts for all arrays
-		foreach ($keys as $key) 
-		  $count += count( $this->slist[$key] );
+		foreach ($this->slist as $list) 
+		  $count += count( $list['array'] );
 
 		return $count;
+	}
+
+	public function getList() {
+		return $this->slist;
 	}
 
 	public function getHTML($context, $vars) {
@@ -30,6 +33,8 @@ class SectedDObjList extends DObjList {
 			$displayable = true;
 		}
 
+		$x = count($this);
+
 		if ($displayable) {
 
 			$mustache = $vars['mustache'];
@@ -39,14 +44,19 @@ class SectedDObjList extends DObjList {
 			// get html for individual elements
 			$this->li_html = array();
 
-			for ($i = 0; $i < count($this->slist); $i++) {
+			for ($i = 0; $i < count($this); $i++) {
 
 				$li_html = array();
-				foreach ($this->slist[$i]['array'] as $obj) {
+				$thing = $this->slist[$i];
+				$arr = $this->slist[$i]['array'];
+				foreach ($arr as $obj) {
 				  array_push($li_html, $obj->getHTML($context, $vars));
 				}
 
 				$this->slist[$i]['li_html'] = $li_html;
+
+				if ($i > 15)
+					break;
 			}
 
 			return $mustache->render($template, array(

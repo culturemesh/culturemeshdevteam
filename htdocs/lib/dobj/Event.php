@@ -68,11 +68,28 @@ class Event extends DisplayDObj {
 
 		case 'modal':
 
+			$user = NULL;
+			$owner = false;
+			$attending = false;
+			if (isset($vars['site_user'])) {
+				$user = $vars['site_user'];
+				
+				if ($user->id == $this->id_host) {
+					$owner = true;
+				}
+				if (in_array($user->events_attending, $this->id)) {
+					$attending = true;
+				}
+			}
+
 			// get template
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-modal.html');
 			return $mustache->render($template, array(
 				'event' => $this,
 				'host' => $this->getName(),
+				'user' => $user,
+				'attending' => $attending,
+				'owner' => $owner,
 				'vars' => $cm->getVars()
 				)
 			);

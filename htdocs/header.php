@@ -9,7 +9,7 @@
             <li><a id="login-link" href="#login_modal" data-toggle="modal">Log In</a></li>
             <li><a id="register-link" href="#register_modal" data-toggle="modal">Sign Up</a></li>
 	    <li><a href="profile/<?php echo $user->id; ?>" id="welcome">Welcome, <?php echo $user->first_name; ?></a></li>
-            	<li><a href="#" id="sign-out" onclick="signOut();">Sign Out</a></li>
+            <li><a id="sign-out" href="<?php echo \Environment::host_root(); ?>/sign_out.php">Sign Out</a></li>
         </ul>
     </div>
 
