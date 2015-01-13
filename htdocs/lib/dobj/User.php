@@ -22,6 +22,7 @@ class User extends DObj {
 	protected $img_link;
 
 	protected $events_attending;
+	protected $network_membership;
 
 	// events
 	protected $yn_events;
@@ -51,7 +52,8 @@ class User extends DObj {
 		if (get_class($result) == 'PDOStatement')
 		  return false;
 		else {
-		  	$user->events_attending = explode(', ', $user->events_attending);
+		  	$result->events_attending = explode(', ', $result->events_attending);
+			$result->network_membership = explode(', ', $result->network_membership);
 			return $result;
 		}
 	}
@@ -211,6 +213,10 @@ class User extends DObj {
 	 */
 	public function __isset($name) {
 		return isset($this->$name);
+	}
+
+	public function checkNetworkRegistration($nid) {
+		return in_array($nid, $this->network_membership);
 	}
 }
 

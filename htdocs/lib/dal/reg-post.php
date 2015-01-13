@@ -202,4 +202,34 @@ SQL
 		$m->setConnection($con);
 		return $m;
 	};
+
+	$obj->createReply = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+INSERT INTO posts
+(id_user, id_network, post_date, post_text, post_class) 
+VALUES (?, ?, NOW(), ?, ?)
+SQL
+
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'getPostsByUserId',
+			'params' => array('id_user', 'id_network', 'post_text',
+				'post_class'),
+			'param_types' => 'nnsss',
+			'nullable' => array(),
+			'returning' => false,
+			'returning_list' => false,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => null,
+			'returning_cols' => null 
+		));
+		$m->setConnection($con);
+		return $m;
+	};
 }

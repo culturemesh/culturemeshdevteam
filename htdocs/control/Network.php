@@ -55,7 +55,7 @@ class Network {
 
 			// see if user is registered
 			// in network
-			$member = $network->checkRegistration($site_user->id, $dal, $do2db);
+			$member = $site_user->checkNetworkRegistration($nid);//$network->checkRegistration($site_user->id, $dal, $do2db);
 			$guest = false;
 		}
 

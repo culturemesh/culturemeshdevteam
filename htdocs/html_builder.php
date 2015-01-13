@@ -428,11 +428,11 @@ EHTML;
 		return $post_html;
 	}
 
-	public static function displayReplyPrompt($pid, $uid, $nid)
+	public static function displayReplyPrompt($pid, $uid, $nid, $root)
 	{
 ////////////////////////////////////////
 		$post = <<<EHTML
-<form method="POST" class="member reply_form" action="network_post_reply.php">
+<form method="POST" class="member reply_form" action="$root/network_post_reply.php">
 <!--<img id="profile-reply" src="<?php //echo $img_link; ?>" width="45" height="45">-->
 	<textarea class="reply-text" name="reply_text" placeholder="Post reply..."></textarea>
 	<div class="clear"></div>

@@ -18,10 +18,14 @@ WHERE id=?
 SQL
 			 */
 			'query' => <<<SQL
-SELECT u.*, GROUP_CONCAT(er.id_event SEPARATOR ', ') AS events_attending
-FROM users u, event_registration er
+
+SELECT u.*, 
+GROUP_CONCAT(nr.id_network SEPARATOR ', ') AS network_membership,
+GROUP_CONCAT(DISTINCT er.id_event SEPARATOR ', ') AS events_attending
+FROM users u
+LEFT JOIN ( SELECT id_user, id_network FROM network_registration) nr ON u.id= nr. id_user
+LEFT JOIN ( SELECT id_guest, id_event FROM event_registration) er ON u.id= er. id_guest
 WHERE u.id=?
-AND u.id=er.id_guest
 SQL
 		/////////////////////////////////
 		,	'test_query' => <<<SQL
@@ -37,7 +41,7 @@ SQL
 			'returning_assoc' => False,
 			'returning_list' => False,
 			'returning_class' => 'dobj\User',
-			'returning_cols' => array('id', 'events_attending')
+			'returning_cols' => array('id', 'events_attending', 'network_membership')
 		));
 
 		$m->setConnection($con);

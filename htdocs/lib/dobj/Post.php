@@ -114,10 +114,13 @@ class Post extends DisplayDObj {
 
 			// check authentication
 			$delete_button = false;
+			$reply_request = false;
 
 			if (isset($_SESSION['uid'])) {
 				$active = true;
 				$site_user = $vars['site_user'];
+
+				$reply_request = $site_user->checkNetworkRegistration($network->id);
 
 				if ($this->id_user == $site_user->id) {
 					$delete_button = true;
@@ -129,6 +132,7 @@ class Post extends DisplayDObj {
 			return $mustache->render($template, array(
 				'active' => true,
 				'delete_button' => $delete_button,
+				'reply_request' => $reply_request,
 				'post' => $this,
 				'text' => $this->formatText(),
 				'relative_date' => $this->getRelativeDate(),
