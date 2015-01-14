@@ -190,6 +190,17 @@
 			    </ul>
 			</div>
 		</div>
+
+		<script>
+			function toggleLogin() {
+				$("#register_modal").modal('hide');
+				$("#login_modal").modal('show');
+			}
+			function toggleRegister() {
+				$("#login_modal").modal('hide');
+				$("#register_modal").modal('show');
+			}
+		</script>
 		{{$ body_scripts }}
 		{{/ body_scripts }}
 	</body>

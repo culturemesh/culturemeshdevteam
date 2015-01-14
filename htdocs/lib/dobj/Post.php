@@ -43,7 +43,7 @@ class Post extends DisplayDObj {
 
 	public static function createFromId($id, $dal, $do2db) {
 
-		$obj = new dobj\Blank();
+		$obj = new \dobj\Blank();
 		$obj->id = $id;
 
 		$result = $do2db->execute($dal, $obj, 'getPostById');

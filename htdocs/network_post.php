@@ -155,6 +155,9 @@ if ($valid)
 
 		$cm->closeConnection();
 
+		// push hashes to post
+		$post->images = $files;
+
 		// get post html
 		$json_response['error']  = 0;
 		$json_response['status'] = 'image';

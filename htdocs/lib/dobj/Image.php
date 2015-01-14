@@ -41,7 +41,6 @@ class Image extends DisplayDObj {
 			throw new \Exception('Must specify an image type before inserting');
 
 		$result = $do2db->execute($dal, $this, 'insertImage');
-		print_r($result);
 
 		if ($result != True) {
 			return False;

@@ -147,6 +147,7 @@ class ImageUpload {
 
 	private function createThumbnails($files) {
 
+		$errors = 0;
 		$dir = $this->cm->img_repo_dir . $this->cm->ds;
 		foreach ($files as $file) {
 
@@ -170,13 +171,19 @@ class ImageUpload {
 			// create thumbnail
 			$file_image->thumbnailImage($size, 0);
 			$file_image->setImageFormat ("png");
-			file_put_contents ($new_name, $file_image); // works, or:
+			$success = file_put_contents ($new_name, $file_image); // works, or:
+
+			if ($success === False) {
+				$errors++;
+			}
 			//$im->imageWriteFile (fopen ("test_2.jpg", "wb")); //also works
 
+			/*
 			if (file_put_contents($new_name, $file_image))
 				return true;
 			else
 				return false;
+			 */
 
 			/*
 			if( $file_image->writeImage())
@@ -184,8 +191,12 @@ class ImageUpload {
 			else
 				echo 'FAILURE!!!';
 			 */
-			
 		}
+
+		if ($errors == 0)
+			return true;
+		else
+			return false;
 	}
 }
 

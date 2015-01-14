@@ -39,7 +39,7 @@ if (isset($_POST['pid']) && isset($_POST['nid']) && isset($_POST['replies'])) {
 			mysqli_close($con);
 
 			if (isset($_POST['NOJS'])) {
-				header("Location: network.php?id={$_POST['nid']}&dp=true");
+				header("Location: network/{$_POST['nid']}/?dp=true");
 			}
 			else {
 				$response['error'] = 0;
