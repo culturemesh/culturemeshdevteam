@@ -4,6 +4,8 @@
 *.swm
 localdbconn.php
 htdocs/db_test*
+htdocs/network/.htaccess
+htdocs/profile/.htaccess
 nbproject/
 htdocs/error_log
 htdocs/error_log*

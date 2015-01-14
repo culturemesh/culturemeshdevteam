@@ -4,7 +4,11 @@ $cm = new Environment();
 
 // set up the router
 $al = new AltoRouter();
-$al->setBasePath($cm->f_root . $cm->ds . 'profile');
+
+if (strpos($cm->f_root, 'live') == False)
+  $al->setBasePath($cm->f_root . $cm->ds . 'profile');
+else
+  $al->setBasePath('/profile');
 
 // set up maps
 $al->map('GET', '/', function() { echo 'No profile chosen'; }, 'nonet');
