@@ -36,7 +36,7 @@ class QueryHandler
 		if (!file_exists('../../../../abcd123.php'))
 		  return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
 		else
-		  return new mysqli('localhost', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+		  return new mysqli('localhost', 'culturp7', 'IanTheMan2014!', 'culturp7_ktc');
 	}
 
 	// return an array of assoc_arrays
