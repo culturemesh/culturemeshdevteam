@@ -81,7 +81,7 @@ class User extends DObj {
 
 		if (get_class($result) == 'PDOStatement') {
 			$err = $result->errorInfo();
-			print_r($err);
+			//print_r($err);
 			$this->yn_events = NULL;
 		}
 		else
@@ -99,7 +99,7 @@ class User extends DObj {
 
 		if (get_class($result) == 'PDOStatement') {
 			$err = $result->errorInfo();
-			print_r($err);
+			//print_r($err);
 			$this->yh_events = NULL;
 		}
 		else
@@ -117,7 +117,7 @@ class User extends DObj {
 
 		if (get_class($result) == 'PDOStatement') {
 			$err = $result->errorInfo();
-			print_r($err);
+			//print_r($err);
 			$this->ya_events = NULL;
 		}
 		else
@@ -142,7 +142,7 @@ class User extends DObj {
 
 		if (get_class($result) == 'PDOStatement') {
 			$err = $result->errorInfo();
-			print_r($err);
+			//print_r($err);
 			$this->yp_posts = NULL;
 		}
 		else {

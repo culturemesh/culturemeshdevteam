@@ -154,6 +154,8 @@ final class Environment {
 			$this->db_name = $DB_NAME;
 			$this->db_pass = $DB_PASS;
 
+			$this->g_api_key = $G_API_KEY;
+
 			// leave
 			return True;
 		}
