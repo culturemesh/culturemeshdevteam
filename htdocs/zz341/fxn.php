@@ -45,7 +45,11 @@ function getDBConnection(){
     //return $conn;
 	global $alt_server;
 	if (isset($alt_server)) {
-		return new mysqli($alt_server, 'culturp7', 'IanTheMan2014!', 'culturp7_ktc');
+
+		if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') !== false) 
+		  return new mysqli($alt_server, 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+		else
+		  return new mysqli($alt_server, 'culturp7', 'IanTheMan2014!', 'culturp7_ktc');
 	}
 	else {
 		return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
