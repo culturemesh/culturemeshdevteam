@@ -206,11 +206,16 @@ class Post extends DisplayDObj {
 		$hashes = explode(', ', $this->hash);
 		$this->images = array();
 
-		foreach ($hashes as $hash) {
-			$img = new \dobj\Image();
-			$img->hash = $hash;
-			$img->post = 1;
-			array_push($this->images, $img);
+		if (count($hashes) < 2 && $hashes[0] == '')
+			$hashes = NULL;
+		else {
+			foreach ($hashes as $hash) {
+
+				$img = new \dobj\Image();
+				$img->hash = $hash;
+				$img->post = 1;
+				array_push($this->images, $img);
+			}
 		}
 	}
 

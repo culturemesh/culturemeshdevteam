@@ -23,6 +23,20 @@ $test->id_user = $_SESSION['uid'];
 $test->id_network = $_SESSION['cur_network'];
 $valid = NetworkRegistration::checkRegistration($test);
 */
+$json_response = array(
+	'error' => NULL,
+	'status' => NULL,
+	'html' => NULL
+);
+
+if (!isset($_SESSION['uid'])) {
+
+	$json_response['error'] = 1;
+	$json_response['status'] = 'Not logged in';
+
+	echo json_encode($json_response);
+	exit();
+}
 
 $cm = new Environment();
 
@@ -31,7 +45,7 @@ $dal->loadFiles();
 $do2db = new \dal\Do2Db();
 
 // check registration
-$user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db);
+$user = \dobj\User::createFromId((int) $_SESSION['uid'], $dal, $do2db);
 $valid = $user->checkNetworkRegistration((int) $_SESSION['cur_network']);
 
 /*
@@ -40,12 +54,6 @@ $prev_url = $_SERVER['HTTP_REFERER'];
 $pages = array('network');
 //$redirect = new \nav\HTTPRedirect($cm, $prev_url, $pages);
 //*/
-
-$json_response = array(
-	'error' => NULL,
-	'status' => NULL,
-	'html' => NULL
-);
 
 if ($valid)
 {
