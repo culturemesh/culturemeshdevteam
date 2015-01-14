@@ -148,18 +148,29 @@
 				{{# sections.yh_events }}
 				{{{ . }}}
 				{{/ sections.yh_events }}
+				{{^ sections.yh_events }}
+				<p>You aren't hosting any events</p>
+				{{/ sections.yh_events }}
 				</ul>
 			</div>
 			<div>
 				<h5><b>EVENTS IN YOUR NETWORKS</b></h5>
-				{{{ sections.yn_events }}}
+				{{# sections.yn_events }}
+				{{{ . }}}
+				{{/ sections.yn_events }}
+				{{^ sections.yn_events }}
+				<p>There are no events in your networks</p>
+				{{/ sections.yn_events }}
 			</div>
 			<div>
 				<h5><b>YOUR POSTS</b></h5>
 				{{# sections.yp_posts }}
 				{{{ . }}}
 				{{/ sections.yp_posts }}
-				{{$ page_vars.yp_count }}
+				{{^ sections.yp_posts }}
+				<p> You have no posts</p>
+				{{/ sections.yp_posts }}
+				{{# page_vars.more_posts }}
 				<form id='more-posts' action='{{ vars.home_path }}/profile_operations.php' method='POST' />
 					<input type='hidden' name='more_posts' value='true' />
 					<input type='hidden' name='uid' value='{{ user.id }}' />
@@ -167,7 +178,7 @@
 					<input type='hidden' id='nid' name='nid' value='{{ page_vars.lastpost_nid }}' />
 					<button id="mp_button" class="post show">Load More Posts</button>
 				</form>
-				{{/ page_vars.yp_count }}
+				{{/ page_vars.more_posts }}
 			</div>
 		</div>
 		<!-- NETWORKS TAB -->
@@ -178,6 +189,9 @@
 				{{# sections.yn_networks }}
 				{{{ . }}}
 				{{/ sections.yn_networks  }}
+				{{^ sections.yn_networks }}
+				<p>You haven't joined any networks. Get out there, dawg!</p>
+				{{/ sections.yn_networks }}
 				</ul>
 			</div>
 		</div>
@@ -189,6 +203,9 @@
 					{{# sections.yh_events }}
 					{{{ . }}}
 					{{/ sections.yh_events }}
+					{{^ sections.yh_events }}
+					<p>You are not hosting any events</p>
+					{{/ sections.yh_events }}
 				</ul>
 			</div>
 			<div>
@@ -196,6 +213,9 @@
 				<ul class='dashboard item'>
 					{{# sections.ya_events }}
 					{{{ . }}}
+					{{/ sections.ya_events }}
+					{{^ sections.ya_events }}
+					<p>You are not attending any events</p>
 					{{/ sections.ya_events }}
 				</ul>
 			</div>

@@ -117,12 +117,19 @@ class Profile {
 			);
 		}
 
+		$more_posts = false;
 		if ($user->yp_posts) {
+			$c = $user->yp_posts->countAll();
+			if ($user->yp_posts->countAll() > 10) {
+				$more_posts = true;
+			}
+
 			$tmp = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-postul.html');
 			$yp_post_html = $user->yp_posts->getHTML('dashboard', array(
 				'cm' => $cm,
 				'mustache' => $m_comp,
-				'list_template' => $tmp
+				'list_template' => $tmp,
+				'max' => 10
 				)
 			);
 		}
@@ -145,6 +152,7 @@ class Profile {
 			'page_vars' => array (
 				'guest' => $guest,
 				'uid' => $user->id,
+				'more_posts' => $more_posts
 				),
 		);
 

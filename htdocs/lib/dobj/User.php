@@ -124,7 +124,7 @@ class User extends DObj {
 		  $this->ya_events = $result->splits('network');
 	}
 
-	public function getPosts($dal, $do2db, $lbound=0, $ubound=10) {
+	public function getPosts($dal, $do2db, $lbound=0, $ubound=11) {
 
 		$obj = new Blank();
 		$obj->id_user = $this->id;
