@@ -17,17 +17,35 @@ $pages = array('network');
 $redirect = new \nav\HTTPRedirect($prev_url, $pages);
  */
 
+/*
 $test = new NetworkRegistrationDT();
 $test->id_user = $_SESSION['uid'];
 $test->id_network = $_SESSION['cur_network'];
 $valid = NetworkRegistration::checkRegistration($test);
+*/
 
 $cm = new Environment();
 
+$dal = new \dal\DAL($cm->getConnection());
+$dal->loadFiles();
+$do2db = new \dal\Do2Db();
+
+// check registration
+$user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db);
+$valid = $user->checkNetworkRegistration((int) $_SESSION['cur_network']);
+
+/*
 // create redirect
 $prev_url = $_SERVER['HTTP_REFERER'];
 $pages = array('network');
-$redirect = new \nav\HTTPRedirect($cm, $prev_url, $pages);
+//$redirect = new \nav\HTTPRedirect($cm, $prev_url, $pages);
+//*/
+
+$json_response = array(
+	'error' => NULL,
+	'status' => NULL,
+	'html' => NULL
+);
 
 if ($valid)
 {
@@ -36,6 +54,9 @@ if ($valid)
 	$post->id_network = $_SESSION['cur_network'];
 	$post->post_text = strip_tags($_POST['post_text']);
 	$post->post_class = $_POST['post_class'];
+
+	$network = new \dobj\Network();
+	$network->id = (int) $_SESSION['cur_network'];
 
 	/*
 	$post = new PostDT();
@@ -48,17 +69,39 @@ if ($valid)
 	 */
 	
 	if (strlen($post->post_text) <= 0) {
-		$redirect->addQueryParameter('perror', 'No text in post');
+		$json_response['error'] = 'No text in post';
+		echo json_encode($json_response);
+		exit();
+		//$redirect->addQueryParameter('perror', 'No text in post');
 		//$redirect->execute();
 	}
 	else {
-		$dal = new \dal\DAL($cm->getConnection());
-		$dal->loadFiles();
-		$do2db = new \dal\Do2Db();
+
 
 	//	Post::createPost($post);
+		// create post
 		$post->insert($dal, $do2db);
 		$post->id = (int) $dal->lastInsertId(); 
+
+		if (count($_FILES) == 0) {
+
+			$cm->closeConnection();
+
+			$json_response['error'] = 0;
+			$json_response['status'] = 'noimage';
+			$json_response['html'] = $post->getHTML('network', array(
+					'network' => $network,
+					'site_user' => $user,
+					'mustache' => new \misc\MustacheComponent(),
+					'cm' => $cm
+				)
+			);
+
+			echo json_encode($json_response);
+
+			exit();
+		}
+
 
 		$iu = new \misc\ImageUpload($cm, array(
 				'dir' => $cm->img_repo_dir,
@@ -73,8 +116,11 @@ if ($valid)
 
 		$result = $iu->upload();
 
+		// if upload was unsuccessful
 		if (!isset($result['files'])) {
-			echo $result['error'];
+			$json_response['error'] = $result['error'];
+			echo json_encode($json_response);
+			exit();
 		}
 
 		$files = $result['files'];
@@ -83,8 +129,17 @@ if ($valid)
 
 		foreach ($files as $file) {
 
-			$file->insert($dal, $do2db);
-			array_push($ids, $file->id);
+			$id = $file->insert($dal, $do2db);
+
+			if ($id) {
+				array_push($ids, $file->id);
+			}
+			// image insertion has failed for some reason
+			else {
+			  	$json_response['error'] = 'Could not add image to database';
+			  	echo json_encode($json_response);
+				exit();
+			}
 		}
 
 		$post->image_ids = $ids;
@@ -92,7 +147,20 @@ if ($valid)
 
 		$cm->closeConnection();
 
-		$redirect->setControl('network', $_SESSION['cur_network']);
+		// get post html
+		$json_response['error']  = 0;
+		$json_response['status'] = 'image';
+		$json_response['html'] = $post->getHTML('network', array(
+					'network' => $network,
+					'site_user' => $user,
+					'mustache' => new \misc\MustacheComponent(),
+					'cm' => $cm
+				)
+			);
+
+		echo json_encode($json_response);
+		exit();
+//		$redirect->setControl('network', $_SESSION['cur_network']);
 		//$redirect->execute();
 		//header("Location: network.php?id={$_SESSION['cur_network']}");
 	}

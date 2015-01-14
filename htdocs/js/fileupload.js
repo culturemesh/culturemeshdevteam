@@ -440,7 +440,7 @@ cm.PostSubmit.prototype = {
 		var formData = new FormData(this._form);
 
 		var ajx = new Ajax({
-			requestType: 'POST',
+		    requestType: 'POST',
 		    requestUrl: this._action,
 		    requestParameters: ' ',
 		    data: formData,
@@ -448,11 +448,15 @@ cm.PostSubmit.prototype = {
 		    sendNow: true
 		}, function(data) { 
 			fup._reinstateInput();
+			data = JSON.parse(data);
 			self._onSuccess(data);
 		}, function(data) {
 			fup._reinstateInput();
 			var ff = self._onFailure.bind(data);
 			ff();
 		});
+	},
+	_setOnSuccess: function(f) {
+		this._onSuccess = f;
 	}
 }

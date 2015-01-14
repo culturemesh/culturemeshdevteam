@@ -86,8 +86,6 @@ class Post extends DisplayDObj {
 		$obj = new \dobj\Blank();
 		$obj->id_post = $this->id;
 
-		var_dump($obj);
-
 		for ($i = 0; $i < 3; $i++) {
 			$varname = 'id_image'.($i+1);
 			if (isset($this->image_ids[$i]))
@@ -218,6 +216,10 @@ class Post extends DisplayDObj {
 	public function getImagePaths() {
 
 		$dirs = array();
+
+		if ($this->images == NULL) {
+			$this->getImages();
+		}
 
 		foreach ($this->images as $image) 
 			array_push($dirs, $image->getPathAndName('post'));

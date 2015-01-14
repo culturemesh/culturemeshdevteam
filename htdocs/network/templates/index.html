@@ -3,10 +3,13 @@
 	{{$ title }}{{page.title}}{{/ title }}
 
 	{{$ stylesheets }}
+	<link href="{{ vars.home_path }}/css/lightbox.css" rel="stylesheet" />
 	{{/ stylesheets }}
 
 	{{$ more_scripts }}
+	<script src="{{ vars.home_path }}/js/lightbox.min.js"></script>
 	<script type='text/javascript' src='{{vars.home_path}}/js/fileupload.js'></script>
+	<script type='text/javascript' src='{{vars.home_path}}/js/post-wall.js'></script>
 
 	<script>
 		/*
@@ -33,7 +36,8 @@
 
 	{{$ autoload_scripts }}
 	<script type='text/javascript'> 
-			{{# member }}
+			{{# page_vars.member }}
+			/*
 			cm.Autoloader(function() {
 					var psub = new cm.PostSubmit({
 						form: document.getElementById('post-form'), 
@@ -52,6 +56,25 @@
 						sizeLimit: 2097152
 						}))
 					});
+					*/
+
+			cm.Autoloader(function() {
+					var wall = new cm.PostWall({
+							wallUl : document.getElementById('post-wall-ul'),
+							postSubmit : new cm.PostSubmit({
+								form: document.getElementById('post-form'), 
+								action: '{{vars.home_path}}/network_post.php',
+								ajax: true
+								},
+								new cm.FileUploader({
+								element: document.getElementById('post-form'),
+								maxFiles: 3,
+								acceptedFileTypes: ['jpg', 'png', 'gif', 'bmp', 'jpeg'],
+								sizeLimit: 2097152
+								})
+							)
+						})
+					});
 
 			cm.Autoloader(function() {
 					var text = "You can use bold, italics, or links, "
@@ -66,7 +89,7 @@
 						html: true
 						});
 					});
-			{{/ member }}
+			{{/ page_vars.member }}
 	</script>
 	{{/ autoload_scripts }}
 

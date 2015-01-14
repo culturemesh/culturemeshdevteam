@@ -43,10 +43,13 @@ class Image extends DisplayDObj {
 		$result = $do2db->execute($dal, $this, 'insertImage');
 		print_r($result);
 
-		if ($result != True)
-			print_r($result);
-
-		$this->id = $dal->lastInsertId();
+		if ($result != True) {
+			return False;
+		}
+		else {
+			$this->id = $dal->lastInsertId();
+			return $this->id;
+		}
 	}
 
 	public function register($dal, $do2db, $oid, $class) {
@@ -100,11 +103,13 @@ class Image extends DisplayDObj {
 	}
 
 	public function getPathAndName($class=NULL) {
+
 		$pn = $this->convertToDir($this->hash);
+		$thumb = NULL;
 
 		switch ($class) {
 		case 'post':
-			$pn .= '_pthumb';
+			$thumb = $pn . '_pthumb';
 			break;
 		default:
 			break;
@@ -112,9 +117,13 @@ class Image extends DisplayDObj {
 
 		// add extension
 		$pn .= '.png';
+		$thumb .= '.png';
 
 		// give to the people
-		return $pn;
+		return array(
+			'dir' => $pn,
+			'thumb' => $thumb
+		);
 	}
 }
 

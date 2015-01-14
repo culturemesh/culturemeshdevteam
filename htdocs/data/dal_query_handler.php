@@ -33,7 +33,7 @@ class QueryHandler
 
 	public static function getDBConnection() {
 		//return new mysqli(DB_SERVER,DB_USER,DB_PASS,DB_NAME);
-		if (file_exists('../../../../abcd123.php'))
+		if (!file_exists('../../../../abcd123.php'))
 		  return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
 		else
 		  return new mysqli('localhost', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');

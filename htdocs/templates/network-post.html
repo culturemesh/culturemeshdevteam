@@ -22,7 +22,7 @@
 		<p class='network'>{{{ text }}}</p>
 		<div>
 			{{# images }}
-			<img src="{{ vars.img_host_repo }}/{{ . }}"></img>
+			<a href="{{ vars.img_host_repo }}/{{ dir }}" data-lightbox="post-{{ post.id }}"><img src="{{ vars.img_host_repo }}/{{ thumb }}"></img></a>
 			{{/ images }}
 		</div>
 		<p class='network date'><i>{{ relative_date }}</i></p>
