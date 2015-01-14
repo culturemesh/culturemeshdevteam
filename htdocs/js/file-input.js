@@ -112,7 +112,7 @@ uploadForm.onsubmit = function (e) {
 	// create ajax request
 	var fileUpload = new Ajax({
 		requestType: 'POST',
-		requestUrl: 'profile_img_upload.php',
+		requestUrl: cm.home_path + '/profile_img_upload.php',
 		requestParameters: ' ',
 		data: formData,
 		dataType: 'FormData',

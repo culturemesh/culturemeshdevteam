@@ -1,6 +1,6 @@
 <li class='reply'>
 	<div class='post-img'>
-		<img id='profile-post' src='{{ reply.img_link }}' width='45' height='45'>
+		<img id='profile-post' src='{{ vars.img_host_repo}}/{{ reply.img_link }}' width='45' height='45'>
 	</div>
 	<div class='post-info'>
 		<h5 class='h-network post'><a href='{{ vars.home_path }}/profile/{{ reply.id_user }}'>{{ name }}</a></h5>

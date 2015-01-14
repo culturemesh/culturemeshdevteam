@@ -163,7 +163,7 @@
 			<div id="post-wall" class="tab-pane active">
 				{{# page_vars.member }}
 				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.home_path }}/network_post.php" enctype="multipart/form-data">
-					<img id="profile-post" src="{{ user.img_link }}" width="45" height="45">
+					<img id="profile-post" src="{{ vars.img_host_repo}}/{{ site_user.img_link }}" width="45" height="45">
 					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 					<button type="button" class="help-tooltip"  data-toggle="popover" data-placement="left">?</button>
 					<div class="fileupload-error"></div>
