@@ -1,9 +1,9 @@
 <li class='network-post dashboard'>
 	<div class='post-img {$i_class}'>
-		<img id='profile-post' src='{{ post.img_link }}' class='{$i_class}' width='45' height='45'>
+		<img id='profile-post' src='{{ vars.img_host_repo }}/{{ post.img_link }}' class='{$i_class}' width='45' height='45'>
 	</div>
 	<div class='post-info'>
-		<h5 class='h-network'><a href='network.php?id={{ post.id_network }}&ap=true#post-{{ post.id }}'>{{ post.name }}</a></h5>
+		<h5 class='h-network'><a href='network/{{ post.id_network }}/?ap=true#post-{{ post.id }}'>{{ name }}</a></h5>
 		<p class='network'>{{ post.post_text }}</p>
 	</div>
 	<div class='clear'></div>

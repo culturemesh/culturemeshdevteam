@@ -26,15 +26,14 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 		// get bounds
 		$bounds = array($_POST['lb'], $_POST['ub'] + 1);
 
-		$site_user = new \dobj\User();
-		$site_user->id = (int) $_SESSION['uid'];
-
 		$network = new \dobj\Network();
 		$network->id = (int) $_POST['nid'];
 
 		$dal = new \dal\DAL($cm->getConnection());
 		$dal->loadFiles();
 		$do2db = new \dal\Do2Db();
+
+		$site_user = \dobj\User::createFromId((int) $_SESSION['uid'], $dal, $do2db);
 
 		$network->getPosts($dal, $do2db, (int ) $bounds[0], (int) $bounds[1]);
 		$cm->closeConnection();

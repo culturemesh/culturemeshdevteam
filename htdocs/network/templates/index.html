@@ -137,7 +137,7 @@
 						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
 						<form method="POST" action="{{ vars.home_path }}/network_leave.php">
 							<button class="network">Leave Network</button>
-							<input type="hidden" name="uid" value="{{ page_vars.uid }}"/>
+							<input type="hidden" name="uid" value="{{ site_user.id }}"/>
 							<input type="hidden" name="nid" value="{{ page_vars.nid }}"/>
 						</form>
 					</div>

@@ -183,6 +183,7 @@ class Post extends DisplayDObj {
 				'post' => $this,
 				'relative_date' => $this->getRelativeDate(),
 				'name' => $this->getName(),
+				'vars' => $cm->getVars()
 				)
 			);
 			break;

@@ -60,7 +60,7 @@ class Event extends DisplayDObj {
 			return $mustache->render($template, array(
 				'event' => $this,
 				'host' => $this->getName(),
-				'date' => $this->formatDate(),
+				'date' => $this->formatDate('card'),
 				'vars' => $cm->getVars()
 				)
 			);
@@ -90,6 +90,7 @@ class Event extends DisplayDObj {
 				'user' => $user,
 				'attending' => $attending,
 				'owner' => $owner,
+				'date' => $this->formatDate('modal'),
 				'vars' => $cm->getVars()
 				)
 			);
@@ -129,9 +130,15 @@ class Event extends DisplayDObj {
 		return $name;
 	}
 
-	public function formatDate() {
+	public function formatDate($context) {
 		$date = new \DateTime($this->event_date);
-		return $date->format('D jS @ g:iA'); // thanks, php for easy formatting
+
+		switch ($context) {
+		case 'card':
+			return $date->format('D jS @ g:iA'); // thanks, php for easy formatting
+		case 'modal':
+			return $date->format('l, F jS Y @ g:iA'); // thanks, php for easy formatting
+		}
 	}
 
 	public function getSplit($property) {

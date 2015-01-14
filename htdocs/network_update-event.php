@@ -33,10 +33,10 @@ $event->description = mysqli_real_escape_string($con, $_POST['description']);
 $event->city = mysqli_real_escape_string($con, $_POST['city']);
 $event->region = mysqli_real_escape_string($con, $_POST['region']);
 
-Event::updateEvent($event, $con);
+$result = Event::updateEvent($event, $con);
 
 mysqli_close($con);
-header("Location: network.php?id=".$_SESSION['cur_network']."&ueerror=Event updated successfully&eid={$event->id}");
+header("Location: network/".$_SESSION['cur_network']."/?ueerror=Event updated successfully&eid={$event->id}");
 }
 ?>
 

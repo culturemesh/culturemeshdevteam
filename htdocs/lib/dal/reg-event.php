@@ -8,7 +8,9 @@ function registerEvent($obj) {
 		$m->setValues(array(
 			'query' => <<<SQL
 
-SELECT e.*, u.id AS id_host, u.* 
+SELECT e.*, 
+u.email, u.username, u.first_name, 
+u.last_name, u.img_link
 FROM events e, users u 
 WHERE event_date >= CURDATE() 
 AND e.id_host=u.id 
