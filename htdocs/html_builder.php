@@ -18,7 +18,7 @@ class HTMLBuilder
 		echo "
 		<div id='pn_{$network->id}' class='popnet'>
 			<div class='popnet-info'>
-				<a href='network.php?id={$network->id}'><p class='bottom-text'>{$title}</p></a>
+				<a href='network/{$network->id}'><p class='bottom-text'>{$title}</p></a>
 				<p class='network-stats'>{$member_count} Members | {$post_count} Posts</p>
 			</div>
 			<div class='clear'></div>
@@ -34,7 +34,7 @@ class HTMLBuilder
 		echo "
 		<div>
 			<div class='net-info'>
-				<a href='network.php?id={$network->id}'><p class='bottom-text'>{$title}</p></a>
+				<a href='network/{$network->id}'><p class='bottom-text'>{$title}</p></a>
 				<p class='network-stats'>{$network->member_count} Members | {$network->post_count} Posts</p>
 			</div>
 			<div class='clear'></div>
@@ -490,11 +490,11 @@ EHTML;
 		return $post_html;
 	}
 
-	public static function displayReplyPrompt($pid, $uid, $nid)
+	public static function displayReplyPrompt($pid, $uid, $nid, $root)
 	{
 ////////////////////////////////////////
 		$post = <<<EHTML
-<form method="POST" class="member reply_form" action="network_post_reply.php">
+<form method="POST" class="member reply_form" action="$root/network_post_reply.php">
 <!--<img id="profile-reply" src="<?php //echo $img_link; ?>" width="45" height="45">-->
 	<textarea class="reply-text" name="reply_text" placeholder="Post reply..."></textarea>
 	<div class="clear"></div>
@@ -950,7 +950,7 @@ EHTML;
 
 		return "
 		<div class='net-info dashboard'>
-			<a href='network.php?id={$network->id}'><p class='bottom-text dashboard'>{$title}</p></a>
+			<a href='network/{$network->id}'><p class='bottom-text dashboard'>{$title}</p></a>
 			<p class='network-stats'>{$network->member_count} Members | {$network->post_count} Posts</p>
 			<p class='network-stats'>Joined {$date}</p>
 		</div>

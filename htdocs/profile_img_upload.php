@@ -9,6 +9,11 @@ if (!empty($_FILES['picfile'])) {
 	include_once 'data/dal_user.php';
 	include_once 'zz341/fxn.php';
 
+	session_name("myDiaspora");
+	session_start();
+
+	$uid = $_SESSION['uid'];
+
 	$file = $_FILES['picfile'];
 
 	if ($file['error'] !== UPLOAD_ERR_OK) {
@@ -43,7 +48,7 @@ if (!empty($_FILES['picfile'])) {
 			// check for existing user folder
 			// if it don't exist, make it exist
 			$cur_link = User::getImgLink($_POST['id'], $con);
-			
+
 			// user doesn't have directory
 			if ($cur_link < 0) {
 				// get timestamp
@@ -53,6 +58,8 @@ if (!empty($_FILES['picfile'])) {
 				$inc = 0;
 				$rel_dir = $sec.'_';
 				$dir = UPLOAD_DIR . $rel_dir.$inc.'/';
+
+				echo $dir;
 
 				//echo '</br>'.$dir;
 
@@ -65,7 +72,7 @@ if (!empty($_FILES['picfile'])) {
 				}
 
 				// make directory
-				mkdir( $dir );
+				mkdir( $dir, 0777, true );
 				//echo "directory made";
 
 				// set permissions
@@ -90,16 +97,30 @@ if (!empty($_FILES['picfile'])) {
 			}
 			else 
 			{
-				// unlink previous file
-				if (file_exists(UPLOAD_DIR . $cur_link))
-					unlink(UPLOAD_DIR . $cur_link);
 
-				// move to real home
-				$success = move_uploaded_file($file['tmp_name'],
-					UPLOAD_DIR . $cur_link);
+				// mkdir in case we're on a different server
+				if (!file_exists( UPLOAD_DIR . $cur_link )) {
 
-				// update last modified
-				touch(UPLOAD_DIR . $cur_link);
+					$path_no_ext = str_replace('pp.png', '', $cur_link);
+					mkdir( UPLOAD_DIR . $path_no_ext);
+
+					// move to real home
+					$success = move_uploaded_file($file['tmp_name'],
+						UPLOAD_DIR . $cur_link);
+				}
+				else {
+
+					// unlink previous file
+					if (file_exists(UPLOAD_DIR . $cur_link))
+						unlink(UPLOAD_DIR . $cur_link);
+
+					// move to real home
+					$success = move_uploaded_file($file['tmp_name'],
+						UPLOAD_DIR . $cur_link);
+
+					// update last modified
+					touch(UPLOAD_DIR . $cur_link);
+				}
 			}
 
 			// set permissions on file
@@ -125,9 +146,9 @@ if (!empty($_FILES['picfile'])) {
 			// NOJS
 			else {
 				if (!$success)
-					header("Location: profile_edit.php?upload=fail");
+					header("Location: profile/$uid/?upload=fail");
 				else
-					header("Location: profile_edit.php");
+					header("Location: profile/$uid/");
 			}
 		}
 	}

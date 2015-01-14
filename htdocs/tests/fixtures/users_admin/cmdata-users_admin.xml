@@ -1,0 +1,15 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="users_admin">
+	<row>
+		<field name="id">1</field>
+		<field name="username">cm_ken</field>
+		<field name="password">52061fdee98260931cb18cda98244e3a</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="username">cm_ian</field>
+		<field name="password">03bb3c7d2804f4fca902c06d0f2cdb85</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

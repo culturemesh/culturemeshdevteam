@@ -1,0 +1,18 @@
+<div id="slider-content" class="event-slider">
+<table id="slider-table" class="network event">
+	<thead></thead>
+	<tbody>
+	<tr>
+		{{# list }}
+		<td class='event-card month'>
+			<p>{{ section.month }}</p>
+			<p>{{ section.year }}</p>
+		</td>
+		{{# li_html }}
+		{{{ . }}}
+		{{/ li_html }}
+		{{/ list }}
+	</tr>
+	</tbody>
+</table>
+</div>

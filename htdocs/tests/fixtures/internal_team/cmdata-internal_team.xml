@@ -1,0 +1,37 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="internal_team">
+	<row>
+		<field name="id">3</field>
+		<field name="name">Andrew Krussel</field>
+		<field name="job_title">Co-Founder</field>
+		<field name="bio">co founder</field>
+		<field name="team_member_since">1391924538</field>
+		<field name="thumb_url">http://www.culturemesh.com/internal/team/Andrew_Krussel.jpeg</field>
+	</row>
+	<row>
+		<field name="id">4</field>
+		<field name="name">Cindy Chang</field>
+		<field name="job_title">?</field>
+		<field name="bio">bio..</field>
+		<field name="team_member_since">1391925294</field>
+		<field name="thumb_url">http://www.culturemesh.com/internal/team/Cindy_Chang.jpg</field>
+	</row>
+	<row>
+		<field name="id">5</field>
+		<field name="name">Ken Chester</field>
+		<field name="job_title">Founder</field>
+		<field name="bio">Ken bio</field>
+		<field name="team_member_since">1391928776</field>
+		<field name="thumb_url">http://www.culturemesh.com/internal/team/Ken_Chester.jpg</field>
+	</row>
+	<row>
+		<field name="id">6</field>
+		<field name="name">Ian Nottage</field>
+		<field name="job_title">Lead Developer</field>
+		<field name="bio">awesome coder</field>
+		<field name="team_member_since">1401663425</field>
+		<field name="thumb_url">http://www.culturemesh.com/internal/team/Ian_Nottage.jpg</field>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>

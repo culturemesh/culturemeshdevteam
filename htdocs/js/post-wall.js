@@ -1,3 +1,40 @@
+var cm = cm || {};
+
+cm.PostWall = function(o) {
+
+	this._options = {
+
+		postSubmit : null,
+		wallUl : null
+		// need wall ul
+	};
+
+	cm.extend(this._options, o);
+	cm.extend(this, cm.DisposeSupport);
+
+	this._wallUl = this._options.wallUl;
+	this._postSubmit = this._options.postSubmit;
+
+	if (this._postSubmit != null) {
+		this._postSubmit._wallUl = this._wallUl;
+		this._postSubmit._setOnSuccess( this._addPost );
+	}
+};
+
+cm.PostWall.prototype = {
+
+	// adds created post html to beginning of ul
+	_addPost: function(data) {
+
+		if (data.error != 0) {
+		  alert(data.error);
+		}
+		else {
+		  $( this._wallUl ).prepend(data.html);
+		}
+	}
+};
+
 /*
  * <li class='network-post'>
  * 	<div class='post-img'>
@@ -43,6 +80,7 @@ function addElement() {
 }
 */
 
+/*
 function createPost(data) {
 	// create li
 	var post = document.createElement('li');
@@ -244,3 +282,4 @@ function loadPostData(id, callback) {
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("id="+id);
 }
+*/

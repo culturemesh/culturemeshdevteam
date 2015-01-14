@@ -10,15 +10,15 @@ else {
 
 		if(EventRegistration::createEventRegistration($_POST['uid'], $_POST['event_id']))
 		{
-			header("Location: network.php?id={$_POST['nid']}&eid={$_POST['event_id']}&jeerror=You joined the event");
+			header("Location: network/{$_POST['nid']}/?eid={$_POST['event_id']}&jeerror=You joined the event");
 		}
 		else
 		{
-			header("Location: network.php?id={$_POST['nid']}&eid={$_POST['event_id']}&jeerror=Server error. Try again later");
+			header("Location: network/{$_POST['nid']}/?eid={$_POST['event_id']}&jeerror=Server error. Try again later");
 		}
 	}
 	else {
-		header("Location: network.php?id={$_POST['nid']}&eid={$_POST['event_id']}&jeerror=You are not logged in.");
+		header("Location: network/{$_POST['nid']}/?eid={$_POST['event_id']}&jeerror=You are not logged in.");
 	}
 }
 ?>

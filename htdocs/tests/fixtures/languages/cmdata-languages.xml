@@ -1,0 +1,641 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="languages">
+	<row>
+		<field name="id">1</field>
+		<field name="name">Mandarin</field>
+		<field name="num_speakers">935</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="name">Spanish</field>
+		<field name="num_speakers">387</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">3</field>
+		<field name="name">English</field>
+		<field name="num_speakers">365</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">4</field>
+		<field name="name">Hindi</field>
+		<field name="num_speakers">295</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">5</field>
+		<field name="name">Arabic</field>
+		<field name="num_speakers">280</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">6</field>
+		<field name="name">Portuguese</field>
+		<field name="num_speakers">204</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">7</field>
+		<field name="name">Bengali</field>
+		<field name="num_speakers">202</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">8</field>
+		<field name="name">Russian</field>
+		<field name="num_speakers">160</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">9</field>
+		<field name="name">Japanese</field>
+		<field name="num_speakers">127</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">10</field>
+		<field name="name">Punjabi</field>
+		<field name="num_speakers">96</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">11</field>
+		<field name="name">German</field>
+		<field name="num_speakers">92</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">12</field>
+		<field name="name">Javanese</field>
+		<field name="num_speakers">82</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">13</field>
+		<field name="name">Wu</field>
+		<field name="num_speakers">80</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">14</field>
+		<field name="name">Malay/Indonesian</field>
+		<field name="num_speakers">77</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">15</field>
+		<field name="name">Telugu</field>
+		<field name="num_speakers">76</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">16</field>
+		<field name="name">Vietnamese</field>
+		<field name="num_speakers">76</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">17</field>
+		<field name="name">Korean</field>
+		<field name="num_speakers">76</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">18</field>
+		<field name="name">French</field>
+		<field name="num_speakers">74</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">19</field>
+		<field name="name">Marathi</field>
+		<field name="num_speakers">73</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">20</field>
+		<field name="name">Tamil</field>
+		<field name="num_speakers">70</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">21</field>
+		<field name="name">Urdu</field>
+		<field name="num_speakers">66</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">22</field>
+		<field name="name">Persian</field>
+		<field name="num_speakers">65</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">23</field>
+		<field name="name">Turkish</field>
+		<field name="num_speakers">63</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">24</field>
+		<field name="name">Italian</field>
+		<field name="num_speakers">59</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">25</field>
+		<field name="name">Cantonese</field>
+		<field name="num_speakers">59</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">26</field>
+		<field name="name">Thai</field>
+		<field name="num_speakers">56</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">27</field>
+		<field name="name">Gujarati</field>
+		<field name="num_speakers">49</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">28</field>
+		<field name="name">Jin</field>
+		<field name="num_speakers">48</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">29</field>
+		<field name="name">Min Nan</field>
+		<field name="num_speakers">47</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">30</field>
+		<field name="name">Polish</field>
+		<field name="num_speakers">40</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">31</field>
+		<field name="name">Pashto</field>
+		<field name="num_speakers">39</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">32</field>
+		<field name="name">Kannada</field>
+		<field name="num_speakers">38</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">33</field>
+		<field name="name">Xiang</field>
+		<field name="num_speakers">38</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">34</field>
+		<field name="name">Malayalam</field>
+		<field name="num_speakers">38</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">35</field>
+		<field name="name">Sundanese</field>
+		<field name="num_speakers">38</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">36</field>
+		<field name="name">Hausa</field>
+		<field name="num_speakers">34</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">37</field>
+		<field name="name">Oriya</field>
+		<field name="num_speakers">33</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">38</field>
+		<field name="name">Burmese</field>
+		<field name="num_speakers">33</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">39</field>
+		<field name="name">Hakka</field>
+		<field name="num_speakers">31</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">40</field>
+		<field name="name">Ukrainian</field>
+		<field name="num_speakers">30</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">41</field>
+		<field name="name">Bhojpuri</field>
+		<field name="num_speakers">29</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">42</field>
+		<field name="name">Tagalog</field>
+		<field name="num_speakers">28</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">43</field>
+		<field name="name">Yoruba</field>
+		<field name="num_speakers">28</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">44</field>
+		<field name="name">Maithili</field>
+		<field name="num_speakers">27</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">45</field>
+		<field name="name">Swahili</field>
+		<field name="num_speakers">26</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">46</field>
+		<field name="name">Uzbek</field>
+		<field name="num_speakers">26</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">47</field>
+		<field name="name">Sindhi</field>
+		<field name="num_speakers">26</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">48</field>
+		<field name="name">Amharic</field>
+		<field name="num_speakers">25</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">49</field>
+		<field name="name">Fula</field>
+		<field name="num_speakers">24</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">50</field>
+		<field name="name">Romanian</field>
+		<field name="num_speakers">24</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">51</field>
+		<field name="name">Oromo</field>
+		<field name="num_speakers">24</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">52</field>
+		<field name="name">Igbo</field>
+		<field name="num_speakers">24</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">53</field>
+		<field name="name">Azerbaijani</field>
+		<field name="num_speakers">23</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">54</field>
+		<field name="name">Awadhi</field>
+		<field name="num_speakers">22</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">55</field>
+		<field name="name">Gan</field>
+		<field name="num_speakers">22</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">56</field>
+		<field name="name">Cebuano</field>
+		<field name="num_speakers">21</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">57</field>
+		<field name="name">Dutch</field>
+		<field name="num_speakers">21</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">58</field>
+		<field name="name">Kurdish</field>
+		<field name="num_speakers">21</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">59</field>
+		<field name="name">Serbo-Croatian</field>
+		<field name="num_speakers">19</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">60</field>
+		<field name="name">Malagasy</field>
+		<field name="num_speakers">18</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">61</field>
+		<field name="name">Saraiki</field>
+		<field name="num_speakers">17</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">62</field>
+		<field name="name">Nepali</field>
+		<field name="num_speakers">17</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">63</field>
+		<field name="name">Sinhalese</field>
+		<field name="num_speakers">16</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">64</field>
+		<field name="name">Chittagonian</field>
+		<field name="num_speakers">16</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">65</field>
+		<field name="name">Zhuang</field>
+		<field name="num_speakers">16</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">66</field>
+		<field name="name">Khmer</field>
+		<field name="num_speakers">16</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">67</field>
+		<field name="name">Assamese</field>
+		<field name="num_speakers">15</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">68</field>
+		<field name="name">Madurese</field>
+		<field name="num_speakers">15</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">69</field>
+		<field name="name">Somali</field>
+		<field name="num_speakers">15</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">70</field>
+		<field name="name">Marwari</field>
+		<field name="num_speakers">14</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">71</field>
+		<field name="name">Magahi</field>
+		<field name="num_speakers">14</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">72</field>
+		<field name="name">Haryanvi</field>
+		<field name="num_speakers">14</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">73</field>
+		<field name="name">Hungarian</field>
+		<field name="num_speakers">13</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">74</field>
+		<field name="name">Chhattisgarhi</field>
+		<field name="num_speakers">12</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">75</field>
+		<field name="name">Greek</field>
+		<field name="num_speakers">12</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">76</field>
+		<field name="name">Chewa</field>
+		<field name="num_speakers">12</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">77</field>
+		<field name="name">Deccan</field>
+		<field name="num_speakers">11</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">78</field>
+		<field name="name">Akan</field>
+		<field name="num_speakers">11</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">79</field>
+		<field name="name">Kazakh</field>
+		<field name="num_speakers">11</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">80</field>
+		<field name="name">Min Bei</field>
+		<field name="num_speakers">11</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">81</field>
+		<field name="name">Sylheti</field>
+		<field name="num_speakers">11</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">82</field>
+		<field name="name">Zulu</field>
+		<field name="num_speakers">10</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">83</field>
+		<field name="name">Czech</field>
+		<field name="num_speakers">10</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">84</field>
+		<field name="name">Kinyarwanda</field>
+		<field name="num_speakers">10</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">85</field>
+		<field name="name">Dhundhari</field>
+		<field name="num_speakers">10</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">86</field>
+		<field name="name">Haitian Creole</field>
+		<field name="num_speakers">10</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">87</field>
+		<field name="name">Min Dong</field>
+		<field name="num_speakers">10</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">88</field>
+		<field name="name">Ilokano</field>
+		<field name="num_speakers">9</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">89</field>
+		<field name="name">Quechua</field>
+		<field name="num_speakers">9</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">90</field>
+		<field name="name">Kirundi</field>
+		<field name="num_speakers">9</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">91</field>
+		<field name="name">Swedish</field>
+		<field name="num_speakers">9</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">92</field>
+		<field name="name">Hmong</field>
+		<field name="num_speakers">8</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">93</field>
+		<field name="name">Shona</field>
+		<field name="num_speakers">8</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">94</field>
+		<field name="name">Uyghur</field>
+		<field name="num_speakers">8</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">95</field>
+		<field name="name">Hiligaynon</field>
+		<field name="num_speakers">8</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">96</field>
+		<field name="name">Mossi</field>
+		<field name="num_speakers">8</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">97</field>
+		<field name="name">Xhosa</field>
+		<field name="num_speakers">8</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">98</field>
+		<field name="name">Belarusian</field>
+		<field name="num_speakers">8</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">99</field>
+		<field name="name">Balochi</field>
+		<field name="num_speakers">8</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">100</field>
+		<field name="name">Konkani</field>
+		<field name="num_speakers">7</field>
+		<field name="added">0</field>
+	</row>
+	<row>
+		<field name="id">102</field>
+		<field name="name">Ojibwe</field>
+		<field name="num_speakers">0</field>
+		<field name="added">1</field>
+	</row>
+	<row>
+		<field name="id">103</field>
+		<field name="name">Teochew</field>
+		<field name="num_speakers">0</field>
+		<field name="added">1</field>
+	</row>
+	<row>
+		<field name="id">104</field>
+		<field name="name">Amurican Sign Spanglish</field>
+		<field name="num_speakers">0</field>
+		<field name="added">1</field>
+	</row>
+	<row>
+		<field name="id">105</field>
+		<field name="name">Lugbara</field>
+		<field name="num_speakers">0</field>
+		<field name="added">1</field>
+	</row>
+	<row>
+		<field name="id">106</field>
+		<field name="name">BoggerSpeak</field>
+		<field name="num_speakers">123</field>
+		<field name="added">1</field>
+	</row>
+	<row>
+		<field name="id">107</field>
+		<field name="name">Pig Latin</field>
+		<field name="num_speakers">123</field>
+		<field name="added">1</field>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>

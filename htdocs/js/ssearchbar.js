@@ -228,8 +228,10 @@ function SSearchBar(divName, operation, type, tables) {
 		showUl(varUl);
 	}
 
+	// submit search for create s-ble
 	submtBtn.onclick = function(e) {
 		
+		/*
 		var tableDiv = getTableDiv();
 		// prevent default event behavior.
 		e.preventDefault();
@@ -283,6 +285,7 @@ function SSearchBar(divName, operation, type, tables) {
 			col = stringParse(col);
 			callSearchBar(col);
 		});
+		*/
 	}
 
 	// position uls
@@ -443,7 +446,6 @@ function SSearchBar(divName, operation, type, tables) {
 	}
 
 	function rankLocations(list) {
-		// in this rudimentary list, we just
 		// want to push items with United States
 		// to the top
 		var rankedList = [];

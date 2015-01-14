@@ -1,0 +1,293 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="post_replies">
+	<row>
+		<field name="id">202</field>
+		<field name="id_parent">89</field>
+		<field name="id_user">42</field>
+		<field name="id_network">88</field>
+		<field name="reply_date">2014-07-28 00:21:22</field>
+		<field name="reply_text">&#228;&#189;&#160;&#229;&#165;&#189;&#239;&#188;&#129;Nice to meet you :)</field>
+	</row>
+	<row>
+		<field name="id">203</field>
+		<field name="id_parent">89</field>
+		<field name="id_user">43</field>
+		<field name="id_network">88</field>
+		<field name="reply_date">2014-07-28 00:28:17</field>
+		<field name="reply_text">&#228;&#189;&#160;&#228;&#189;&#143;&#229;&#339;&#168;Palo Alto&#229;&#8220;&#170;&#232;&#163;&#143;?</field>
+	</row>
+	<row>
+		<field name="id">204</field>
+		<field name="id_parent">90</field>
+		<field name="id_user">3</field>
+		<field name="id_network">116</field>
+		<field name="reply_date">2014-07-29 02:38:37</field>
+		<field name="reply_text">replying to myself lol</field>
+	</row>
+	<row>
+		<field name="id">207</field>
+		<field name="id_parent">88</field>
+		<field name="id_user">6</field>
+		<field name="id_network">1</field>
+		<field name="reply_date">2014-07-29 03:12:51</field>
+		<field name="reply_text">Hey Ken, how is Palo Alto?</field>
+	</row>
+	<row>
+		<field name="id">208</field>
+		<field name="id_parent">88</field>
+		<field name="id_user">3</field>
+		<field name="id_network">1</field>
+		<field name="reply_date">2014-07-31 01:43:20</field>
+		<field name="reply_text">@Andrew, it's not too bad at all ;)</field>
+	</row>
+	<row>
+		<field name="id">209</field>
+		<field name="id_parent">88</field>
+		<field name="id_user">3</field>
+		<field name="id_network">1</field>
+		<field name="reply_date">2014-07-31 01:50:29</field>
+		<field name="reply_text">This would be a good page to get together &amp; coordinate outings for when Michigan-based sports teams are in the area (e.g. Pistons, Tigers, Red Wings, Lions, Spartans, Wolverines).</field>
+	</row>
+	<row>
+		<field name="id">214</field>
+		<field name="id_parent">98</field>
+		<field name="id_user">3</field>
+		<field name="id_network">99</field>
+		<field name="reply_date">2014-08-02 10:06:23</field>
+		<field name="reply_text">Chat it up here, post some events, or perhaps check out some nearby networks...</field>
+	</row>
+	<row>
+		<field name="id">215</field>
+		<field name="id_parent">102</field>
+		<field name="id_user">3</field>
+		<field name="id_network">153</field>
+		<field name="reply_date">2014-08-05 22:29:14</field>
+		<field name="reply_text">Join up, chat it up, post events, and have a good time!</field>
+	</row>
+	<row>
+		<field name="id">216</field>
+		<field name="id_parent">102</field>
+		<field name="id_user">3</field>
+		<field name="id_network">153</field>
+		<field name="reply_date">2014-08-05 22:30:29</field>
+		<field name="reply_text">We've just launched CultureMesh, so please get in touch on the "Contact" bar below if you encounter bugs or have suggestions!</field>
+	</row>
+	<row>
+		<field name="id">217</field>
+		<field name="id_parent">133</field>
+		<field name="id_user">66</field>
+		<field name="id_network">254</field>
+		<field name="reply_date">2014-08-17 05:45:14</field>
+		<field name="reply_text">&#230;&#710;&#8216;&#231;&#381;&#176;&#229;&#339;&#168;&#229;&#339;&#168;honolulu&#227;&#8364;&#8218;&#228;&#189;&#160;&#229;&#8216;&#162;&#239;&#188;&#376;</field>
+	</row>
+	<row>
+		<field name="id">218</field>
+		<field name="id_parent">132</field>
+		<field name="id_user">66</field>
+		<field name="id_network">224</field>
+		<field name="reply_date">2014-08-17 05:53:23</field>
+		<field name="reply_text">Thank you!</field>
+	</row>
+	<row>
+		<field name="id">236</field>
+		<field name="id_parent">150</field>
+		<field name="id_user">3</field>
+		<field name="id_network">273</field>
+		<field name="reply_date">2014-08-20 01:26:19</field>
+		<field name="reply_text">Welcome to Michiganders in Milpitas :)</field>
+	</row>
+	<row>
+		<field name="id">237</field>
+		<field name="id_parent">151</field>
+		<field name="id_user">3</field>
+		<field name="id_network">274</field>
+		<field name="reply_date">2014-08-20 03:39:59</field>
+		<field name="reply_text">...and hello Amanda :)</field>
+	</row>
+	<row>
+		<field name="id">238</field>
+		<field name="id_parent">88</field>
+		<field name="id_user">71</field>
+		<field name="id_network">1</field>
+		<field name="reply_date">2014-08-20 19:21:35</field>
+		<field name="reply_text">Harro :) </field>
+	</row>
+	<row>
+		<field name="id">239</field>
+		<field name="id_parent">152</field>
+		<field name="id_user">71</field>
+		<field name="id_network">276</field>
+		<field name="reply_date">2014-08-20 19:23:34</field>
+		<field name="reply_text">&#228;&#189;&#160;&#229;&#165;&#189;:) Founder!</field>
+	</row>
+	<row>
+		<field name="id">240</field>
+		<field name="id_parent">152</field>
+		<field name="id_user">3</field>
+		<field name="id_network">276</field>
+		<field name="reply_date">2014-08-20 19:31:58</field>
+		<field name="reply_text">@Eloise: Nice to see ya!</field>
+	</row>
+	<row>
+		<field name="id">241</field>
+		<field name="id_parent">103</field>
+		<field name="id_user">3</field>
+		<field name="id_network">1</field>
+		<field name="reply_date">2014-08-20 21:12:14</field>
+		<field name="reply_text">Hey Khaliku - let me know when you're planning your trip out here! Otherwise, I'll be back in Michigan for the holidays, so we can hang out then too...</field>
+	</row>
+	<row>
+		<field name="id">242</field>
+		<field name="id_parent">153</field>
+		<field name="id_user">3</field>
+		<field name="id_network">280</field>
+		<field name="reply_date">2014-08-21 04:38:31</field>
+		<field name="reply_text">Thanks for signing up as our inaugural Michigander in Shanghai &amp; hope to see you there when I'm in town!</field>
+	</row>
+	<row>
+		<field name="id">243</field>
+		<field name="id_parent">156</field>
+		<field name="id_user">3</field>
+		<field name="id_network">1</field>
+		<field name="reply_date">2014-08-27 20:17:57</field>
+		<field name="reply_text">Thanks for checking us out Timothy! Check out the events section, as I'm hosting an informational session to engage Michiganders in the area next month.</field>
+	</row>
+	<row>
+		<field name="id">244</field>
+		<field name="id_parent">158</field>
+		<field name="id_user">3</field>
+		<field name="id_network">298</field>
+		<field name="reply_date">2014-09-04 03:38:38</field>
+		<field name="reply_text">We're a new site, and still building some features, but I hope you all find it useful :)</field>
+	</row>
+	<row>
+		<field name="id">247</field>
+		<field name="id_parent">160</field>
+		<field name="id_user">60</field>
+		<field name="id_network">184</field>
+		<field name="reply_date">2014-09-05 20:05:59</field>
+		<field name="reply_text">&#228;&#189;&#160;&#229;&#339;&#168;&#231;&#186;&#189;&#231;&#186;&#166;&#229;&#8220;&#170;&#233;&#8225;&#338;&#239;&#188;&#376;&#230;&#402;&#179;&#228;&#184;&#141;&#230;&#402;&#179;&#229;&#143;&#8218;&#229;&#352;&#160;&#228;&#184;&#8364;&#228;&#186;&#8250;&#232;&#129;&#353;&#228;&#188;&#353;&#239;&#188;&#376;</field>
+	</row>
+	<row>
+		<field name="id">248</field>
+		<field name="id_parent">155</field>
+		<field name="id_user">79</field>
+		<field name="id_network">255</field>
+		<field name="reply_date">2014-09-05 20:12:07</field>
+		<field name="reply_text">Thank you!</field>
+	</row>
+	<row>
+		<field name="id">249</field>
+		<field name="id_parent">157</field>
+		<field name="id_user">6</field>
+		<field name="id_network">6</field>
+		<field name="reply_date">2014-09-08 03:40:13</field>
+		<field name="reply_text">Hey dad, things are going well.  Thanks for the comments.</field>
+	</row>
+	<row>
+		<field name="id">250</field>
+		<field name="id_parent">160</field>
+		<field name="id_user">60</field>
+		<field name="id_network">184</field>
+		<field name="reply_date">2014-09-09 22:07:40</field>
+		<field name="reply_text">&#228;&#189;&#160;&#230;&#339;&#8240;&#229;&#190;&#174;&#228;&#191;&#161;&#229;&#144;&#8212;&#239;&#188;&#376;&#229;&#8217;&#177;&#231;&#187;&#8222;&#231;&#187;&#8225;&#231;&#187;&#8482;&#232;&#129;&#353;&#228;&#188;&#353;&#229;&#144;&#167;&#227;&#8364;&#8218;&#230;&#710;&#8216;&#232;&#174;&#164;&#232;&#175;&#8224;&#229;&#190;&#710;&#229;&#164;&#353;&#229;&#338;&#8212;&#228;&#186;&#172;&#228;&#186;&#186;&#239;&#188;&#338;&#229;&#143;&#175;&#228;&#187;&#165;&#228;&#187;&#8249;&#231;&#187;&#141;&#231;&#187;&#8482;&#228;&#189;&#160;&#227;&#8364;&#8218;&#227;&#8364;&#8364;</field>
+	</row>
+	<row>
+		<field name="id">251</field>
+		<field name="id_parent">173</field>
+		<field name="id_user">84</field>
+		<field name="id_network">184</field>
+		<field name="reply_date">2014-09-10 00:39:52</field>
+		<field name="reply_text">5121 8th Ave, Brooklyn &#228;&#186;&#8216;&#229;&#141;&#8212;&#233;&#163;&#381;&#229;&#8216;&#179;&#239;&#188;&#338;&#228;&#184;&#8364;&#229;&#175;&#185;&#228;&#186;&#8216;&#229;&#141;&#8212;&#229;&#164;&#171;&#229;&#166;&#187;&#229;&#188;&#8364;&#231;&#353;&#8222;&#229;&#186;&#8212;,&#232;&#191;&#8225;&#230;&#161;&#165;&#231;&#177;&#179;&#231;&#186;&#191;&#231;&#8250;&#184;&#229;&#189;&#8220;&#230;&#173;&#163;&#229;&#174;&#8212;!!! </field>
+	</row>
+	<row>
+		<field name="id">252</field>
+		<field name="id_parent">169</field>
+		<field name="id_user">84</field>
+		<field name="id_network">184</field>
+		<field name="reply_date">2014-09-10 00:41:09</field>
+		<field name="reply_text">&#233;&#169;&#172;&#228;&#186;&#8216;&#231;&#353;&#8222;&#232;&#8249;&#177;&#232;&#175;&#173;&#232;&#175;&#180;&#231;&#353;&#8222;&#232;&#191;&#732;&#230;&#338;&#186;&#228;&#184;&#141;&#233;&#8221;&#8482;&#231;&#353;&#8222;&#227;&#8364;&#8218;</field>
+	</row>
+	<row>
+		<field name="id">253</field>
+		<field name="id_parent">169</field>
+		<field name="id_user">84</field>
+		<field name="id_network">184</field>
+		<field name="reply_date">2014-09-10 00:42:02</field>
+		<field name="reply_text">15&#229;&#185;&#180;&#231;&#353;&#8222;&#229;&#157;&#353;&#230;&#338;&#129;&#230;&#338;&#186;&#228;&#184;&#141;&#229;&#174;&#185;&#230;&#732;&#8220;&#231;&#353;&#8222;&#227;&#8364;&#8218;</field>
+	</row>
+	<row>
+		<field name="id">254</field>
+		<field name="id_parent">160</field>
+		<field name="id_user">84</field>
+		<field name="id_network">184</field>
+		<field name="reply_date">2014-09-10 00:43:22</field>
+		<field name="reply_text">@linda &#232;&#161;&#338;&#227;&#8364;&#8218;&#230;&#339;&#8240;&#230;&#339;&#186;&#228;&#188;&#353;&#228;&#184;&#8364;&#232;&#181;&#183;&#229;&#8225;&#186;&#230;&#157;&#165;&#231;&#381;&#169;&#229;&#144;&#167;&#227;&#8364;&#8218;&#228;&#189;&#160;&#229;&#8230;&#183;&#228;&#189;&#8220;&#229;&#339;&#168;&#229;&#8220;&#170;&#239;&#188;&#376;</field>
+	</row>
+	<row>
+		<field name="id">255</field>
+		<field name="id_parent">173</field>
+		<field name="id_user">85</field>
+		<field name="id_network">184</field>
+		<field name="reply_date">2014-09-10 00:52:26</field>
+		<field name="reply_text">Brooklyn&#233;&#8218;&#163;&#229;&#174;&#182;&#228;&#186;&#8216;&#229;&#141;&#8212;&#229;&#176;&#143;&#229;&#144;&#402;&#228;&#185;&#376;&#229;&#129;&#353;&#229;&#190;&#8212;&#229;&#339;&#176;&#233;&#129;&#8220;&#227;&#8364;&#8218;</field>
+	</row>
+	<row>
+		<field name="id">256</field>
+		<field name="id_parent">169</field>
+		<field name="id_user">85</field>
+		<field name="id_network">184</field>
+		<field name="reply_date">2014-09-10 00:56:00</field>
+		<field name="reply_text">&#229;&#352;&#177;&#229;&#191;&#8212;&#230;&#8226;&#8230;&#228;&#186;&#8249;</field>
+	</row>
+	<row>
+		<field name="id">257</field>
+		<field name="id_parent">173</field>
+		<field name="id_user">86</field>
+		<field name="id_network">184</field>
+		<field name="reply_date">2014-09-10 01:03:37</field>
+		<field name="reply_text">&#230;&#8211;&#176;&#228;&#184;&#8211;&#231;&#8226;&#338;&#229;&#186;&#8226;&#228;&#184;&#8249;&#228;&#185;&#376;&#232;&#191;&#732;&#229;&#143;&#175;&#228;&#187;&#165;&#227;&#8364;&#8218;</field>
+	</row>
+	<row>
+		<field name="id">258</field>
+		<field name="id_parent">160</field>
+		<field name="id_user">86</field>
+		<field name="id_network">184</field>
+		<field name="reply_date">2014-09-10 01:07:08</field>
+		<field name="reply_text">&#229;&#143;&#175;&#228;&#187;&#165;&#229;&#8230;&#710;&#228;&#186;&#8217;&#231;&#8250;&#184;&#229;&#352;&#160;&#229;&#190;&#174;&#228;&#191;&#161;</field>
+	</row>
+	<row>
+		<field name="id">259</field>
+		<field name="id_parent">173</field>
+		<field name="id_user">60</field>
+		<field name="id_network">184</field>
+		<field name="reply_date">2014-09-10 01:38:52</field>
+		<field name="reply_text">&#228;&#186;&#8216;&#229;&#141;&#8212;&#233;&#163;&#381;&#229;&#8216;&#179;&#233;&#8218;&#163;&#229;&#174;&#182;&#230;&#732;&#175;&#228;&#184;&#141;&#233;&#8221;&#8482;&#239;&#188;&#129;</field>
+	</row>
+	<row>
+		<field name="id">263</field>
+		<field name="id_parent">289</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="reply_date">2014-10-06 01:23:52</field>
+		<field name="reply_text">http://xn--ggblala6cyf.xn--wgbh1c/</field>
+	</row>
+	<row>
+		<field name="id">265</field>
+		<field name="id_parent">290</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="reply_date">2014-10-06 01:30:14</field>
+		<field name="reply_text">http://ko.wikipedia.org/wiki/&#237;&#381;&#732;&#236;&#157;&#180;&#236;&#352;&#164;&#235;&#182;&#129;</field>
+	</row>
+	<row>
+		<field name="id">266</field>
+		<field name="id_parent">302</field>
+		<field name="id_user">1</field>
+		<field name="id_network">352</field>
+		<field name="reply_date">2014-10-07 06:34:39</field>
+		<field name="reply_text">&amp;lt;b&amp;gt;Evil user html&amp;lt;/b&amp;gt;&amp;lt;div class=''&amp;gt;Foiled&amp;lt;/div&amp;gt;</field>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>

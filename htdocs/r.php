@@ -139,7 +139,7 @@ if(isset($_POST['email']) && isset($_POST['password'])
 
 			// if not coming from network, redirect to profile_edit
 			if (!$redirect->pathContains('network')) {
-				$redirect->setPath('profile_edit.php');
+				$redirect->setPath('profile/'.$_SESSION['uid']);
 				// will sooon have to set get parameter here
 			}
 

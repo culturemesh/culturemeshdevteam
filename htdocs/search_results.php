@@ -5,6 +5,7 @@
 	include "search_query.php";
 	include "html_builder.php";
 	include_once "data/dal_user.php";
+	include "Environment.php";
 	
 	session_name("myDiaspora");
 	session_start();

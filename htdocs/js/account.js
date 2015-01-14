@@ -1,6 +1,7 @@
 
 // An ajax call to sign_out.php
 // no big deal
+/*
 function signOut() {
 	var xmlhttp;
 	if (window.XMLHttpRequest)
@@ -19,8 +20,8 @@ function signOut() {
 			// will probably change this soon,
 			// 	USERS WILL BE ABLE TO SEE EACH OTHER's
 			// 	PROFILES, SO NO REDIRECT AT LOGOFF
-			    if (document.URL.indexOf("profile_edit") != -1)
-				{ window.location.assign("index.php?signout=true"); }
+			    if (document.URL.indexOf("profile") != -1)
+				{ window.location.assign(cm.home_path + "/index.php?signout=true"); }
 
 			    $("#signout_panel").show();
 			    $("#signout_panel").children('p').text('You have successfully signed out.');
@@ -36,11 +37,7 @@ function signOut() {
 		  }
 	  }
 	  
-	  xmlhttp.open("GET", "sign_out.php", true);
+	  xmlhttp.open("GET", cm.home_path + "/sign_out.php", true);
 	  xmlhttp.send();
 }
-
-(".ajax").activate = function()
-{
-	
-}
+*/

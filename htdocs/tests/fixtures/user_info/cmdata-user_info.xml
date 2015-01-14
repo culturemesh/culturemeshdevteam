@@ -1,0 +1,69 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="user_info">
+	<row>
+		<field name="id">1</field>
+		<field name="uid">1</field>
+		<field name="first_name">Jakben</field>
+		<field name="last_name">Crinklecum</field>
+		<field name="gender">M</field>
+		<field name="about_me">How many marshmallows can I mash in my mammaries?</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="uid">2</field>
+		<field name="first_name" xsi:nil="true"/>
+		<field name="last_name" xsi:nil="true"/>
+		<field name="gender" xsi:nil="true"/>
+		<field name="about_me" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">3</field>
+		<field name="uid">3</field>
+		<field name="first_name" xsi:nil="true"/>
+		<field name="last_name" xsi:nil="true"/>
+		<field name="gender" xsi:nil="true"/>
+		<field name="about_me" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">4</field>
+		<field name="uid">4</field>
+		<field name="first_name" xsi:nil="true"/>
+		<field name="last_name" xsi:nil="true"/>
+		<field name="gender" xsi:nil="true"/>
+		<field name="about_me" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">5</field>
+		<field name="uid">5</field>
+		<field name="first_name" xsi:nil="true"/>
+		<field name="last_name" xsi:nil="true"/>
+		<field name="gender" xsi:nil="true"/>
+		<field name="about_me" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">6</field>
+		<field name="uid">6</field>
+		<field name="first_name" xsi:nil="true"/>
+		<field name="last_name" xsi:nil="true"/>
+		<field name="gender" xsi:nil="true"/>
+		<field name="about_me" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">7</field>
+		<field name="uid">7</field>
+		<field name="first_name" xsi:nil="true"/>
+		<field name="last_name" xsi:nil="true"/>
+		<field name="gender" xsi:nil="true"/>
+		<field name="about_me" xsi:nil="true"/>
+	</row>
+	<row>
+		<field name="id">9</field>
+		<field name="uid">9</field>
+		<field name="first_name" xsi:nil="true"/>
+		<field name="last_name" xsi:nil="true"/>
+		<field name="gender" xsi:nil="true"/>
+		<field name="about_me" xsi:nil="true"/>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>

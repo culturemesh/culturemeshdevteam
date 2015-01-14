@@ -13,12 +13,12 @@ if (isset($_POST['uid']) && isset($_POST['nid']))
 	if(NetworkRegistration::deleteNetRegistration($_POST['uid'], $_POST['nid']))
 	{
 		// success path!
-		header("Location: network.php?id={$_POST['nid']}&lnerror=Sorry to see you go.");
+		header("Location: network/{$_POST['nid']}/?lnerror=Sorry to see you go.");
 	}
 	else
 	{
 		// fail path
-		header("Location: network.php?id={$_POST['nid']}&lnerror=Server error. Try later.");
+		header("Location: network/{$_POST['nid']}/?lnerror=Server error. Try later.");
 	}
 }
 else

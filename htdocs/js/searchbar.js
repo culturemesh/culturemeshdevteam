@@ -172,7 +172,7 @@ function loadInitialData() {
 	// load countries
 	var countryRequest = new Ajax({
 		requestType: 'GET',
-		requestUrl: 'data/s_countries.txt',
+		requestUrl: cm.home_path + '/data/s_countries.txt',
 		requestParameters: ' ',
 		sendNow: true
 		}, function(data) {
@@ -182,7 +182,7 @@ function loadInitialData() {
 	// load languages
 	var langRequest = new Ajax({
 		requestType: 'GET',
-		requestUrl: 'data/s_languages.txt',
+		requestUrl: cm.home_path + '/data/s_languages.txt',
 		requestParameters: ' ',
 		sendNow: true
 		}, function(data) {
@@ -192,7 +192,7 @@ function loadInitialData() {
 	// load regions
 	var regionRequest = new Ajax({
 		requestType: 'GET',
-		requestUrl: 'data/s_regions.txt',
+		requestUrl: cm.home_path + '/data/s_regions.txt',
 		requestParameters: ' ',
 		sendNow: true
 		}, function(data) {
@@ -202,7 +202,7 @@ function loadInitialData() {
 	// load cities
 	var cityRequest = new Ajax({
 		requestType: 'GET',
-		requestUrl: 'data/s_cities.txt',
+		requestUrl: cm.home_path + '/data/s_cities.txt',
 		requestParameters: ' ',
 		sendNow: true
 		}, function(data) { 

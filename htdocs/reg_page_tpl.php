@@ -1,8 +1,14 @@
-<?php //include_once('log.php'); ?>
+<?php 
+	include_once('log.php'); 
+	include_once('Environment.php');
+	include_once('data/dal_user.php');
+	$con = getDBConnection();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <?php
+
     include 'headinclude.php';
     include $ppre.'_head.php';
     ?>

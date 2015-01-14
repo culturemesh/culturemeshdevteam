@@ -1,4 +1,5 @@
 <?php
+	include "Environment.php";
 	include_once 'zz341/fxn.php';
 
 	// we're here, real deal to change password

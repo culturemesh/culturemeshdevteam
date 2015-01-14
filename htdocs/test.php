@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', true);
 /*
 	include_once("data/dal_location.php");
 	include_once("data/dal_query_handler.php");
@@ -7,6 +8,7 @@
 ?>
 <html>
 	<head>
+	<script src='js/dropzone.js'></script>
 	</head>
 	<body>
 <?php
@@ -29,7 +31,9 @@
 	echo "</br></br>";
 	mysqli_close($con);
 */
+
 //	var_dump( filter_var("jumpergm@ail", FILTER_VALIDATE_EMAIL));
+/*
 $array = array(
 	array('distance' => 4),
 	array('distance' => 10),
@@ -47,6 +51,43 @@ usort($array , function($a, $b) {
 });
 
 print_r($array);
+ */
+
+/*
+include 'autoload.php';
+include 'vendor/autoload.php';
+
+use Respect\Validation\Validator as v;
+
+echo $_SERVER['DOCUMENT_ROOT'];
+echo '</br>';
+echo Foo::success();
+
+$number = 123;
+echo v::numeric()->validate($number); //true
+
+$storage = new \Upload\Storage\FileSystem('/var/www/');
+var_dump($storage);
+ */
+
+//echo __DIR__;
+//throw new Exception('test');
+echo 'something else';
 ?>
+	
+	<form action="/file-upload"
+	      class="dropzone"
+	      id="my-awesome-dropzone"></form>
+	<div id='upload'>Click MEEE!</div>
+	<div class="dropzone-previews"></div>
+	<script>
+var dropzone = new Dropzone("div#upload", {
+	url : 'file/post',
+	maxFilesize : 1,
+	uploadMultiple : true,
+	previewsContainer : 'div.dropzone-previews',
+	acceptedFiles : 'image/*'
+});
+	</script>
 	</body>
 </html>

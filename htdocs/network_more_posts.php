@@ -1,5 +1,5 @@
 <?php
-//ini_set('display_errors', true);
+ini_set('display_errors', false);
 //error_reporting(E_ALL ^ E_NOTICE);
 
 session_name('myDiaspora');
@@ -18,6 +18,63 @@ $json_response = array(
 if (isset($_POST['lb']) && isset($_POST['ub'])
 	&& isset($_POST['nid'])) {
 	
+
+		include 'Environment.php';
+
+		$cm = new \Environment();
+
+		// get bounds
+		$bounds = array($_POST['lb'], $_POST['ub'] + 1);
+
+		$network = new \dobj\Network();
+		$network->id = (int) $_POST['nid'];
+
+		$dal = new \dal\DAL($cm->getConnection());
+		$dal->loadFiles();
+		$do2db = new \dal\Do2Db();
+
+		$site_user = \dobj\User::createFromId((int) $_SESSION['uid'], $dal, $do2db);
+
+		$network->getPosts($dal, $do2db, (int ) $bounds[0], (int) $bounds[1]);
+		$cm->closeConnection();
+
+		/////// make components //////////
+		$m_comp = new \misc\MustacheComponent();
+
+		// set network stuff
+		$network->posts->setMustache($m_comp);
+
+		try
+		{
+			$p_html = $network->posts->getHTML('network', array(
+				'cm' => $cm,
+				'network' => $network,
+				'site_user' => $site_user,
+				'mustache' => $m_comp
+				)
+			);
+		}
+		catch (\Exception $e)
+		{
+			$p_html = NULL;
+			$json_response['error'] = 'Failure: ' . $e;
+		}
+
+		// successful
+		$json_response['error'] = 'Success';
+		$json_response['html'] = $p_html;
+		$json_response['continue'] = 'n';
+
+		if (count($network->posts) > $POST_INCREMENT) {
+			$json_response['continue'] = 'y';
+			$json_response['lb'] = $bounds[0] + $POST_INCREMENT;
+			$json_response['ub'] = 10;
+		}
+
+		// return stuff
+		echo json_encode($json_response);
+
+	/*
 	// let's move on
 	include_once('data/dal_post.php');
 	include_once('data/dal_query_handler.php');
@@ -63,9 +120,9 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 		$json_response['lb'] = $bounds[0] + $POST_INCREMENT;
 		$json_response['ub'] = 10;
 	}
+	 */
 
-	// return stuff
-	echo json_encode($json_response);
+
 }
 else {
 	$json_response['error'] = 'Necessary data not included';
