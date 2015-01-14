@@ -228,7 +228,10 @@
 						</br>
 						</br>
 						<input type="submit" id="log_submit_btn" class="submit" data-loading-text="Checking..." value="Sign In" />
-					</div>    
+						</br>
+						</br>
+						<a href="forgotpass.php">Forgot your password?</a>
+					</div>
 				</form>
 			</div>
 			<div class="modal-footer">

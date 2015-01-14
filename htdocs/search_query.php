@@ -12,6 +12,10 @@ include_once("data/dal_language.php");
 /* Could perhaps be a query object, constructed with three parameters*/
 class SearchQuery
 {
+	private static $exceptions = array(
+		'Washington, D.C., United States' => array('Washington, D.C.', 'NULL', 'United States')
+	);
+
 	private static function minimumCandidate($candidates) {
 		// stop if no candidates can be found
 		if (count($candidates) == 0)
@@ -133,7 +137,13 @@ class SearchQuery
 			return array('_l', $input);
 
 		// else it's a location
-		$raw_values = explode(', ', $input);
+		if (array_key_exists($input, self::$exceptions)) {
+			$raw_values = self::$exceptions[$input];
+		}
+		else {
+			$raw_values = explode(', ', $input);
+		}
+
 		return self::figureLocationType($raw_values);
 	}
 
@@ -175,6 +185,13 @@ class SearchQuery
 
 	private static function fillQuery($query, $data, $type)
 	{
+		// check for null values
+		for ($i = 0; $i < count($data); $i++) {
+			if ($data[$i] == 'NULL') {
+				$data[$i] = '';
+			}
+		}
+
 		// add types n shit
 		if ($type == 'query') {
 			$query[0] = $data[0];

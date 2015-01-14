@@ -2,6 +2,10 @@ var LIST_SIZE = 4;
 //var queries = ["speak", "are from"]
 var queryList = [];
 
+var exceptions = [
+	'Washington, D.C.'
+];
+
 var q_results, locations, origins, 
     li_origins, li_locations,
     languages, li_languages;
@@ -145,7 +149,8 @@ function fillACArray(acArray, data, type) {
 		if (iSplit.length > 1) {
 			var j = 0;
 			for (; j < iSplit.length - 1; j++) {
-				if (iSplit[j] != 'NULL')
+				if (iSplit[j] != 'NULL' &&
+						iSplit[j] != '')
 					item.name += iSplit[j] + ', ';
 			}
 

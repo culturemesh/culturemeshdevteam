@@ -54,7 +54,7 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		$redirect->addQueryParameter('rerror', 'Password confirmation does not match');
 		$redirect->execute();
 	}
-	else if(strlen($_POST['email']) > 30)
+	else if(strlen($_POST['email']) > 50)
 	{
 		/*
 		$json_response["message"] = "Email too long. Must be less than 30 characters";
@@ -63,7 +63,7 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		 */
 		//$msg = urlencode("Email too long. Must be less than 30 characters");
 		//header("Location: ".$redirect."?regerror=true&msg={$msg}");
-		$redirect->addQueryParameter('rerror', 'Email too long. Must be less than 30 characters');
+		$redirect->addQueryParameter('rerror', 'Email too long. Must be less than 50 characters');
 		$redirect->execute();
 	}
 	else if(strlen($_POST['fname']) > 30) {

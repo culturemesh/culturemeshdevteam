@@ -2,7 +2,6 @@
 //	ini_set('display_errors', true);
 //	error_reporting(E_ALL ^ E_NOTICE);
 //	include "log.php";
-	error_reporting(0);
 	include "search_query.php";
 	include "html_builder.php";
 	include_once "data/dal_user.php";
@@ -132,14 +131,6 @@
 						<?php if (count($networks) < 2) : ?>
 							<p>No related networks</p>
 						<?php endif; ?>
-						<?php/* else : 
-							for ($i=1; $i < count($networks); $i++)
-							{
-								HTMLBuilder::displayNetwork($networks[$i]);
-							}
-							endif;
-						 */
-						?>
 					</div>
 				</div>
 			</div>
