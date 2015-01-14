@@ -146,10 +146,16 @@ class Network {
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
 		$searchbar = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()));
 
+		$sharebutton_template = file_get_contents($cm->template_dir . $cm->ds . 'sharebutton.html');
+		$sharebuttons= $m_comp->render($sharebutton_template, array(
+			'vars' => $cm->getVars(),
+			'network' => $network));
+
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'network' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
 			'sections' => array(
+				'sharebuttons' => $sharebuttons,
 				'map_embed' => $map_embed,
 				'searchbar' => $searchbar,
 				'lrg_network' => 'Large Network',
