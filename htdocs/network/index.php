@@ -66,6 +66,7 @@ session_start();
 // set up the router
 $al = new AltoRouter();
 $al->setBasePath($cm->f_root . $cm->ds . 'network');
+//$al->setBasePath('/network');
 
 // set up maps
 $al->map('GET', '/', function() { echo 'No network chosen'; }, 'nonet');
