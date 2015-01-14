@@ -1,0 +1,1282 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="posts">
+	<row>
+		<field name="id">88</field>
+		<field name="id_user">3</field>
+		<field name="id_network">1</field>
+		<field name="post_date">2014-07-27 19:15:02</field>
+		<field name="post_text">Hey Michiganders in Palo Alto!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">89</field>
+		<field name="id_user">4</field>
+		<field name="id_network">88</field>
+		<field name="post_date">2014-07-28 00:14:55</field>
+		<field name="post_text">Hello everyone!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">90</field>
+		<field name="id_user">3</field>
+		<field name="id_network">116</field>
+		<field name="post_date">2014-07-29 02:35:27</field>
+		<field name="post_text">&#228;&#189;&#160;&#229;&#165;&#189;&#228;&#184;&#173;&#229;&#8250;&#189;&#228;&#186;&#186;@&#229;&#175;&#8224;&#230;&#173;&#8225;&#230;&#160;&#185;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">92</field>
+		<field name="id_user">49</field>
+		<field name="id_network">121</field>
+		<field name="post_date">2014-07-29 07:15:47</field>
+		<field name="post_text">Hello friends.. :)</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">93</field>
+		<field name="id_user">52</field>
+		<field name="id_network">136</field>
+		<field name="post_date">2014-07-30 06:38:58</field>
+		<field name="post_text">Hola Boricuas!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">95</field>
+		<field name="id_user">3</field>
+		<field name="id_network">36</field>
+		<field name="post_date">2014-07-31 05:08:19</field>
+		<field name="post_text">Where in the city can you find Turon/ Banana-cue? :|</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">97</field>
+		<field name="id_user">3</field>
+		<field name="id_network">99</field>
+		<field name="post_date">2014-08-02 09:59:05</field>
+		<field name="post_text">Thanks for checking out CultureMesh!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">98</field>
+		<field name="id_user">3</field>
+		<field name="id_network">99</field>
+		<field name="post_date">2014-08-02 09:59:13</field>
+		<field name="post_text">&#228;&#189;&#160;&#229;&#165;&#189;&#239;&#188;&#129;What's up Michiganders in Beijing?</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">99</field>
+		<field name="id_user">54</field>
+		<field name="id_network">149</field>
+		<field name="post_date">2014-08-03 07:56:17</field>
+		<field name="post_text">How special it feels for one to be the first to handle a new born baby .....Its ultureMesh.com, Its social media to stick to!!! Now that greatness!!! Cheers......</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">100</field>
+		<field name="id_user">54</field>
+		<field name="id_network">149</field>
+		<field name="post_date">2014-08-03 07:58:07</field>
+		<field name="post_text">How special it feels for one to be the first to handle a new born baby .....Its cultureMesh.com, Its social media to stick to!!! Now that greatness!!! Cheers.</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">101</field>
+		<field name="id_user">3</field>
+		<field name="id_network">153</field>
+		<field name="post_date">2014-08-05 22:23:29</field>
+		<field name="post_text">First post! Thanks for checking us out :)</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">102</field>
+		<field name="id_user">3</field>
+		<field name="id_network">153</field>
+		<field name="post_date">2014-08-05 22:28:36</field>
+		<field name="post_text">Welcome to the Indonesian diaspora group for the greater Madison, WI region!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">103</field>
+		<field name="id_user">50</field>
+		<field name="id_network">1</field>
+		<field name="post_date">2014-08-07 18:01:05</field>
+		<field name="post_text">Hello Palo Alto
+</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">104</field>
+		<field name="id_user">60</field>
+		<field name="id_network">168</field>
+		<field name="post_date">2014-08-11 19:30:54</field>
+		<field name="post_text">&#230;&#339;&#8240;&#228;&#186;&#186;&#229;&#143;&#8218;&#229;&#352;&#160;&#229;&#338;&#8212;&#231;&#190;&#381;&#231;&#166;&#143;&#229;&#187;&#186;&#229;&#144;&#338;&#228;&#185;&#161;&#232;&#129;&#8221;&#232;&#176;&#352;&#228;&#188;&#353;&#239;&#188;&#376;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">105</field>
+		<field name="id_user">60</field>
+		<field name="id_network">217</field>
+		<field name="post_date">2014-08-12 06:23:09</field>
+		<field name="post_text">&#231;&#186;&#189;&#231;&#186;&#166;&#229;&#339;&#176;&#229;&#338;&#186;&#231;&#353;&#8222;&#229;&#338;&#8212;&#228;&#186;&#172;&#228;&#186;&#186;&#232;&#129;&#8221;&#232;&#176;&#352;&#228;&#188;&#353;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">106</field>
+		<field name="id_user">60</field>
+		<field name="id_network">218</field>
+		<field name="post_date">2014-08-12 06:26:17</field>
+		<field name="post_text">&#233;&#187;&#8216;&#233;&#190;&#8482;&#230;&#177;&#376;&#231;&#339;&#129;&#229;&#339;&#168;LA&#231;&#353;&#8222;&#229;&#144;&#338;&#228;&#185;&#161;&#228;&#188;&#353;&#239;&#188;&#129;&#230;&#172;&#162;&#232;&#191;&#381;&#229;&#164;&#167;&#229;&#174;&#182;&#229;&#352;&#160;&#229;&#8230;&#165;&#239;&#188;&#129;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">107</field>
+		<field name="id_user">60</field>
+		<field name="id_network">219</field>
+		<field name="post_date">2014-08-12 06:28:54</field>
+		<field name="post_text">&#229;&#144;&#8240;&#230;&#382;&#8212;&#231;&#339;&#129;&#229;&#339;&#168;LA&#231;&#353;&#8222;&#229;&#144;&#338;&#228;&#185;&#161;&#228;&#188;&#353;&#239;&#188;&#129; &#230;&#172;&#162;&#232;&#191;&#381;&#229;&#164;&#167;&#229;&#174;&#182;&#229;&#352;&#160;&#229;&#8230;&#165;&#239;&#188;&#129;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">108</field>
+		<field name="id_user">3</field>
+		<field name="id_network">221</field>
+		<field name="post_date">2014-08-13 06:09:54</field>
+		<field name="post_text">Welcome South Sudanese in LA!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">114</field>
+		<field name="id_user">60</field>
+		<field name="id_network">225</field>
+		<field name="post_date">2014-08-14 13:13:07</field>
+		<field name="post_text">Hi all! Welcome to East Lansing! Welcome, Spartans!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">115</field>
+		<field name="id_user">60</field>
+		<field name="id_network">57</field>
+		<field name="post_date">2014-08-14 13:13:26</field>
+		<field name="post_text">&#229;&#144;&#338;&#229;&#173;&#166;&#228;&#187;&#172;&#229;&#165;&#189;&#239;&#188;&#129;&#230;&#172;&#162;&#232;&#191;&#381;&#230;&#157;&#165;&#229;&#710;&#176;&#231;&#190;&#381;&#228;&#184;&#189;&#231;&#353;&#8222;East Lansing&#239;&#188;&#338;&#229;&#352;&#160;&#229;&#8230;&#165;&#229;&#175;&#8224;&#230;&#173;&#8225;&#230;&#160;&#185;&#229;&#183;&#382;&#231;&#171;&#8249;&#229;&#164;&#167;&#229;&#173;&#166;&#232;&#191;&#8482;&#228;&#184;&#170;&#229;&#164;&#167;&#229;&#174;&#182;&#229;&#186;&#173;&#239;&#188;&#129; Hi all! Welcome to East Lansing! Welcome, Spartans!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">116</field>
+		<field name="id_user">60</field>
+		<field name="id_network">57</field>
+		<field name="post_date">2014-08-14 13:13:41</field>
+		<field name="post_text">2014 &#230;&#339;&#8364;&#230;&#8211;&#176;&#231;&#8240;&#710;&#227;&#8364;&#352;&#230;&#8211;&#176;&#231;&#8221;&#376;&#230;&#8240;&#8249;&#229;&#8224;&#338;&#227;&#8364;&#8249;&#232;&#175;&#183;&#231;&#8218;&#185;&#229;&#8225;&#187;&#232;&#191;&#8482;&#233;&#8225;&#338;&#239;&#188;&#353;http://www.cssamsu.com/wp-content/uploads/2014/08/2014-Handbook.pdf</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">117</field>
+		<field name="id_user">60</field>
+		<field name="id_network">226</field>
+		<field name="post_date">2014-08-14 13:31:58</field>
+		<field name="post_text">Volunteers recruiting for airport ride is now open! &#230;&#8211;&#176;&#231;&#8221;&#376;&#230;&#381;&#165;&#230;&#339;&#186;&#229;&#191;&#8212;&#230;&#8222;&#191;&#232;&#8364;&#8230;&#229;&#188;&#8364;&#229;&#167;&#8249;&#230;&#8249;&#8250;&#229;&#8249;&#376;&#228;&#186;&#8224;&#239;&#188;&#129;&#229;&#191;&#8212;&#230;&#8222;&#191;&#232;&#8364;&#8230;&#229;&#143;&#175;&#228;&#187;&#165;&#233;&#8364;&#353;&#232;&#191;&#8225;&#228;&#187;&#165;&#228;&#184;&#8249;&#233;&#8220;&#190;&#230;&#381;&#165;&#230;&#352;&#165;&#229;&#144;&#141; http://rrurl.cn/83MX6Q</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">118</field>
+		<field name="id_user">60</field>
+		<field name="id_network">175</field>
+		<field name="post_date">2014-08-14 13:38:38</field>
+		<field name="post_text">&#228;&#184;&#352;&#230;&#181;&#183;&#229;&#339;&#168;LA&#231;&#353;&#8222;&#229;&#144;&#338;&#228;&#185;&#161;&#228;&#188;&#353;!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">119</field>
+		<field name="id_user">60</field>
+		<field name="id_network">228</field>
+		<field name="post_date">2014-08-14 13:48:29</field>
+		<field name="post_text">&#230;&#180;&#8250;&#230;&#157;&#8240;&#231;&#376;&#182;&#229;&#338;&#8212;&#228;&#186;&#172;&#228;&#186;&#186;&#229;&#144;&#338;&#228;&#185;&#161;&#228;&#188;&#353;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">120</field>
+		<field name="id_user">60</field>
+		<field name="id_network">229</field>
+		<field name="post_date">2014-08-14 13:58:12</field>
+		<field name="post_text">&#229;&#143;&#170;&#232;&#166;&#129;&#228;&#189;&#160;&#230;&#732;&#175;&#229;&#338;&#8212;&#228;&#186;&#172;&#228;&#186;&#186;, &#229;&#339;&#168;&#229;&#338;&#8212;&#228;&#186;&#172;&#229;&#8225;&#186;&#231;&#8221;&#376;, &#229;&#339;&#168;&#229;&#338;&#8212;&#228;&#186;&#172;&#233;&#8226;&#191;&#229;&#164;&#167;, &#229;&#185;&#182;&#228;&#184;&#8221;&#229;&#339;&#168;&#229;&#352;&#160;&#229;&#183;&#382;&#227;&#8364;&#8218; &#232;&#175;&#183;&#231;&#129;&#171;&#233;&#8364;&#376;&#229;&#352;&#160;&#229;&#8230;&#165;!!!! </field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">122</field>
+		<field name="id_user">60</field>
+		<field name="id_network">190</field>
+		<field name="post_date">2014-08-14 14:09:15</field>
+		<field name="post_text">&#229;&#352;&#160;&#229;&#183;&#382;&#231;&#166;&#143;&#229;&#187;&#186;&#229;&#144;&#338;&#228;&#185;&#161;&#228;&#188;&#353;&#230;&#710;&#144;&#231;&#171;&#8249;&#229;&#8226;&#166;&#239;&#188;&#129; &#229;&#143;&#170;&#232;&#166;&#129;&#228;&#189;&#160;&#229;&#339;&#168;&#229;&#352;&#160;&#229;&#183;&#382;, &#229;&#185;&#182;&#228;&#184;&#8221;&#230;&#732;&#175;&#231;&#166;&#143;&#229;&#187;&#186;&#228;&#186;&#186;. &#230;&#172;&#162;&#232;&#191;&#381;&#228;&#189;&#160;&#229;&#352;&#160;&#229;&#8230;&#165;!!! &#232;&#8364;&#129;&#228;&#185;&#161;&#232;&#167;&#129;&#232;&#8364;&#129;&#228;&#185;&#161;, &#228;&#184;&#164;&#231;&#339;&#188;&#230;&#179;&#170;&#230;&#177;&#170;&#230;&#177;&#170;~~~ &#229;&#176;&#177;&#231;&#173;&#8240;&#228;&#189;&#160;&#229;&#8226;&#166;!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">125</field>
+		<field name="id_user">60</field>
+		<field name="id_network">190</field>
+		<field name="post_date">2014-08-14 14:15:01</field>
+		<field name="post_text">8&#230;&#339;&#710;31&#229;&#143;&#183; @ 12:00 AM &#230;&#339;&#8240;&#229;&#338;&#8212;&#231;&#190;&#381;&#231;&#166;&#143;&#229;&#187;&#186;&#229;&#144;&#338;&#228;&#185;&#161;&#232;&#129;&#8221;&#232;&#176;&#352;&#228;&#188;&#353;(&#229;&#164;&#143;&#229;&#173;&#163;&#231;&#402;&#167;&#231;&#402;&#164;&#232;&#129;&#353;&#228;&#188;&#353;)&#239;&#188;&#338;&#229;&#339;&#168;&#229;&#352;&#160;&#229;&#183;&#382;&#231;&#353;&#8222;&#232;&#8364;&#129;&#228;&#185;&#161;&#228;&#187;&#172;&#239;&#188;&#338;&#228;&#184;&#141;&#232;&#166;&#129;&#233;&#8221;&#8482;&#232;&#191;&#8225;&#229;&#8220;&#166;&#239;&#188;&#129; &#229;&#8230;&#183;&#228;&#189;&#8220;&#229;&#339;&#176;&#231;&#8218;&#185;&#229;&#8217;&#338;&#232;&#129;&#8221;&#231;&#179;&#187;&#228;&#186;&#186;&#232;&#175;&#183;&#231;&#339;&#8249;&#232;&#175;&#165;&#233;&#161;&#181;&#231;&#353;&#8222;Events&#230;&#710;&#8211;&#229;&#190;&#174;&#232;&#8211;&#8222;(@CultureMesh&#229;&#144;&#338;&#228;&#185;&#161;&#228;&#188;&#353;)&#239;&#188;&#129;&#227;&#8364;&#8364;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">126</field>
+		<field name="id_user">21</field>
+		<field name="id_network">6</field>
+		<field name="post_date">2014-08-14 14:57:05</field>
+		<field name="post_text">Andrew, It looks good</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">127</field>
+		<field name="id_user">60</field>
+		<field name="id_network">232</field>
+		<field name="post_date">2014-08-14 18:48:52</field>
+		<field name="post_text">&#229;&#143;&#176;&#231;&#129;&#163;&#231;&#164;&#190;&#229;&#339;&#732;/&#230;&#169;&#376;&#230;&#167;&#8249; in Canada</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">128</field>
+		<field name="id_user">60</field>
+		<field name="id_network">224</field>
+		<field name="post_date">2014-08-14 19:07:02</field>
+		<field name="post_text">&#230;&#8211;&#175;&#229;&#157;&#166;&#231;&#166;&#143;&#229;&#164;&#167;&#229;&#173;&#166;&#230;&#8211;&#176;&#231;&#8221;&#376;&#230;&#8240;&#8249;&#229;&#8224;&#338;: http://stanford.io/VnBlY2  &#229;&#184;&#338;&#230;&#339;&#8250;&#232;&#191;&#8482;&#228;&#184;&#170;&#229;&#175;&#185;&#229;&#710;&#353;&#230;&#157;&#165;&#229;&#173;&#166;&#230;&#160;&#161;&#231;&#353;&#8222;Stanford &#229;&#173;&#166;&#231;&#8221;&#376;&#230;&#339;&#8240;&#231;&#8221;&#168;&#229;&#164;&#8222;&#227;&#8364;&#8218;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">129</field>
+		<field name="id_user">60</field>
+		<field name="id_network">242</field>
+		<field name="post_date">2014-08-14 21:55:21</field>
+		<field name="post_text">&#229;&#338;&#8212;&#228;&#186;&#172;&#228;&#186;&#186;&#229;&#339;&#168;&#231;&#186;&#189;&#231;&#186;&#166;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">131</field>
+		<field name="id_user">60</field>
+		<field name="id_network">245</field>
+		<field name="post_date">2014-08-15 17:02:10</field>
+		<field name="post_text">The Group of Americans in Beijing. &#232;&#8364;&#129;&#229;&#164;&#8211;&#229;&#339;&#168;&#228;&#184;&#173;&#229;&#8250;&#189;&#227;&#8364;&#8218; Please come and chat :)</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">132</field>
+		<field name="id_user">60</field>
+		<field name="id_network">224</field>
+		<field name="post_date">2014-08-17 05:28:24</field>
+		<field name="post_text">&#230;&#8211;&#175;&#229;&#157;&#166;&#231;&#166;&#143;&#229;&#164;&#167;&#229;&#173;&#166;&#230;&#8211;&#176;&#231;&#8221;&#376;&#230;&#381;&#165;&#230;&#339;&#186;&#229;&#191;&#8212;&#230;&#8222;&#191;&#232;&#8364;&#8230;&#230;&#352;&#165;&#229;&#144;&#141;&#239;&#188;&#353;
+
+&#229;&#143;&#710;&#230;&#732;&#175;&#228;&#184;&#8364;&#229;&#185;&#180;&#230;&#8211;&#176;&#231;&#8221;&#376;&#229;&#173;&#163;&#227;&#8364;&#8218;&#233;&#157;&#382;&#229;&#184;&#184;&#230;&#8222;&#376;&#232;&#176;&#162;&#229;&#190;&#8364;&#229;&#177;&#352;&#231;&#402;&#173;&#230;&#402;&#8230;&#230;&#381;&#165;&#230;&#339;&#186;&#231;&#353;&#8222;&#229;&#173;&#166;&#233;&#8226;&#191;&#229;&#173;&#166;&#229;&#167;&#144;&#228;&#187;&#165;&#229;&#143;&#352;&#229;&#173;&#166;&#232;&#8364;&#8230;&#230;&#339;&#8249;&#229;&#143;&#8249;&#228;&#187;&#172;&#239;&#188;&#338;&#228;&#185;&#376;&#231;&#402;&#173;&#231;&#402;&#710;&#230;&#172;&#162;&#232;&#191;&#381;&#230;&#339;&#172;&#229;&#177;&#352;&#229;&#352;&#160;&#229;&#8230;&#165;&#230;&#381;&#165;&#230;&#339;&#186;&#232;&#161;&#338;&#229;&#710;&#8212;&#231;&#353;&#8222;&#229;&#144;&#8222;&#228;&#189;&#141;&#239;&#188;&#129;&#229;&#184;&#338;&#230;&#339;&#8250;&#233;&#8364;&#353;&#232;&#191;&#8225;&#229;&#164;&#167;&#229;&#174;&#182;&#231;&#353;&#8222;&#229;&#8230;&#177;&#229;&#144;&#338;&#229;&#352;&#170;&#229;&#352;&#8250;&#239;&#188;&#338;&#229;&#143;&#175;&#228;&#187;&#165;&#231;&#187;&#8482;2014&#229;&#177;&#352;&#231;&#353;&#8222;&#229;&#173;&#166;&#229;&#188;&#376;&#229;&#173;&#166;&#229;&#166;&#185;&#228;&#187;&#165;&#229;&#143;&#352;&#229;&#173;&#166;&#232;&#8364;&#8230;&#230;&#339;&#8249;&#229;&#143;&#8249;&#229;&#184;&#166;&#230;&#157;&#165;&#229;&#339;&#168;&#230;&#8211;&#175;&#229;&#157;&#166;&#231;&#166;&#143;&#230;&#177;&#8218;&#229;&#173;&#166;&#232;&#183;&#175;&#228;&#184;&#352;&#231;&#353;&#8222;&#231;&#172;&#172;&#228;&#184;&#8364;&#228;&#187;&#189;&#230;&#184;&#169;&#230;&#353;&#8211;&#239;&#188;&#129;
+
+&#230;&#339;&#8240;&#229;&#8230;&#180;&#232;&#182;&#163;&#229;&#352;&#160;&#229;&#8230;&#165;&#230;&#381;&#165;&#230;&#339;&#186;&#229;&#191;&#8212;&#230;&#8222;&#191;&#232;&#8364;&#8230;&#229;&#8250;&#162;&#233;&#732;&#376;&#231;&#353;&#8222;&#230;&#339;&#8249;&#229;&#143;&#8249;&#232;&#175;&#183;&#229;&#161;&#171;&#229;&#8224;&#8482;&#228;&#184;&#8249;&#232;&#161;&#168;&#239;&#188;&#710;https://docs.google.com/forms/d/1NfzCb-c1WdFhe9aY_Ytmxoi2AxGSPK6YnMXj0mnILyA/viewform?usp=send_form&#239;&#188;&#8240;&#239;&#188;&#338;&#232;&#176;&#162;&#232;&#176;&#162;&#230;&#8221;&#175;&#230;&#338;&#129;&#239;&#188;&#129;
+
+&#229;&#166;&#8218;&#230;&#382;&#339;&#230;&#339;&#8240;&#228;&#187;&#187;&#228;&#189;&#8226;&#231;&#8211;&#8216;&#233;&#8212;&#174;&#229;&#143;&#175;&#228;&#187;&#165;&#232;&#129;&#8221;&#231;&#179;&#187;&#231;&#8221;&#376;&#230;&#180;&#187;&#233;&#402;&#168;&#233;&#8482;&#710;&#232;&#8249;&#143;&#230;&#8230;&#167;(suhui@stanford.edu)</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">133</field>
+		<field name="id_user">60</field>
+		<field name="id_network">254</field>
+		<field name="post_date">2014-08-17 05:35:59</field>
+		<field name="post_text">&#230;&#339;&#8240;&#230;&#178;&#161;&#230;&#339;&#8240;&#229;&#339;&#168;&#229;&#164;&#143;&#229;&#168;&#129;&#229;&#164;&#183;&#228;&#189;&#143;&#231;&#353;&#8222;&#228;&#184;&#173;&#229;&#8250;&#189;&#228;&#186;&#186;&#239;&#188;&#376;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">134</field>
+		<field name="id_user">66</field>
+		<field name="id_network">255</field>
+		<field name="post_date">2014-08-17 05:57:42</field>
+		<field name="post_text">&#229;&#164;&#167;&#229;&#174;&#182;&#229;&#165;&#189;&#239;&#188;&#129;&#230;&#157;&#165;&#230;&#8240;&#190;&#231;&#187;&#8222;&#231;&#187;&#8225;&#228;&#186;&#8224;&#239;&#188;&#129;&#239;&#188;&#129;&#239;&#188;&#129;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">135</field>
+		<field name="id_user">66</field>
+		<field name="id_network">256</field>
+		<field name="post_date">2014-08-17 06:00:38</field>
+		<field name="post_text">&#231;&#190;&#381;&#229;&#8250;&#189;&#228;&#184;&#173;&#229;&#8250;&#189;&#228;&#186;&#186;&#229;&#164;&#167;&#232;&#129;&#8221;&#231;&#8250;&#376;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">136</field>
+		<field name="id_user">66</field>
+		<field name="id_network">256</field>
+		<field name="post_date">2014-08-17 06:05:10</field>
+		<field name="post_text">&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#231;&#353;&#8222;&#229;&#141;&#381;&#228;&#186;&#186;&#232;&#129;&#8221;&#232;&#176;&#352;&#228;&#188;&#353;&#239;&#188;&#129;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">137</field>
+		<field name="id_user">66</field>
+		<field name="id_network">257</field>
+		<field name="post_date">2014-08-17 06:07:31</field>
+		<field name="post_text">&#230;&#185;&#8211;&#229;&#338;&#8212;&#228;&#186;&#186;&#229;&#339;&#168;&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#231;&#353;&#8222;&#232;&#129;&#8221;&#232;&#176;&#352;&#228;&#188;&#353;&#227;&#8364;&#8218;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">138</field>
+		<field name="id_user">60</field>
+		<field name="id_network">168</field>
+		<field name="post_date">2014-08-17 06:14:25</field>
+		<field name="post_text">&#230;&#178;&#161;&#228;&#186;&#186;&#229;&#143;&#8218;&#229;&#352;&#160;&#229;&#144;&#8212;&#239;&#188;&#376;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">147</field>
+		<field name="id_user">60</field>
+		<field name="id_network">255</field>
+		<field name="post_date">2014-08-17 23:54:37</field>
+		<field name="post_text">&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#231;&#353;&#8222;&#229;&#141;&#381;&#228;&#186;&#186;&#228;&#187;&#172;&#239;&#188;&#338;&#229;&#164;&#167;&#229;&#174;&#182;&#232;&#166;&#129;&#228;&#184;&#141;&#232;&#166;&#129;&#230;&#157;&#165;&#228;&#184;&#170;&#232;&#129;&#353;&#228;&#188;&#353;&#229;&#8226;&#352;&#239;&#188;&#376;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">150</field>
+		<field name="id_user">3</field>
+		<field name="id_network">273</field>
+		<field name="post_date">2014-08-20 01:25:39</field>
+		<field name="post_text">Hello there!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">151</field>
+		<field name="id_user">3</field>
+		<field name="id_network">274</field>
+		<field name="post_date">2014-08-20 03:35:48</field>
+		<field name="post_text">Welcome to Michiganders in Minot! Invite your friends!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">152</field>
+		<field name="id_user">3</field>
+		<field name="id_network">276</field>
+		<field name="post_date">2014-08-20 19:21:20</field>
+		<field name="post_text">&#228;&#189;&#160;&#229;&#165;&#189;&#239;&#188;&#129;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">153</field>
+		<field name="id_user">72</field>
+		<field name="id_network">280</field>
+		<field name="post_date">2014-08-21 04:02:36</field>
+		<field name="post_text">I've been in China a total of six years. Shanghai has been two of those. Always looking to meet new people and learn about their experiences #h2h </field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">154</field>
+		<field name="id_user">60</field>
+		<field name="id_network">94</field>
+		<field name="post_date">2014-08-22 00:15:53</field>
+		<field name="post_text">Hey Michiganders in San Francisco!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">155</field>
+		<field name="id_user">60</field>
+		<field name="id_network">255</field>
+		<field name="post_date">2014-08-26 07:55:50</field>
+		<field name="post_text">&#227;&#8364;&#144;&#228;&#184;&#173;&#229;&#8250;&#189;&#233;&#169;&#187;&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#230;&#8364;&#187;&#233;&#162;&#8224;&#228;&#186;&#8249;&#233;&#166;&#8224;&#230;&#8226;&#8482;&#232;&#8218;&#178;&#231;&#187;&#8222;&#231;&#180;&#167;&#230;&#8364;&#165;&#233;&#8364;&#353;&#229;&#8216;&#352;&#227;&#8364;&#8216;8&#230;&#339;&#710;24&#230;&#8212;&#165;&#229;&#8225;&#338;&#230;&#8482;&#168;3&#231;&#8218;&#185;20&#229;&#710;&#8224;&#239;&#188;&#338;&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#228;&#187;&#165;&#229;&#338;&#8212;35&#232;&#8249;&#177;&#233;&#8225;&#338;&#229;&#164;&#8222;&#229;&#143;&#8216;&#231;&#8221;&#376;6.0&#231;&#186;&#167;&#229;&#339;&#176;&#233;&#339;&#8225;&#227;&#8364;&#8218;&#230;&#141;&#174;&#229;&#339;&#176;&#232;&#180;&#168;&#232;&#176;&#402;&#230;&#376;&#165;&#229;&#177;&#8364;&#229;&#143;&#8216;&#229;&#184;&#402;&#231;&#353;&#8222;&#230;&#182;&#710;&#230;&#129;&#175;&#239;&#188;&#338;&#229;&#339;&#176;&#233;&#339;&#8225;&#229;&#143;&#8216;&#231;&#8221;&#376;&#229;&#339;&#168;&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#228;&#187;&#165;&#229;&#338;&#8212;&#231;&#186;&#179;&#229;&#184;&#8226;&#229;&#381;&#191;&#231;&#353;&#8222;&#231;&#190;&#381;&#229;&#8250;&#189;&#229;&#179;&#161;&#232;&#176;&#183;&#229;&#184;&#8218;&#239;&#188;&#338;&#233;&#339;&#8225;&#230;&#8222;&#376;&#229;&#188;&#186;&#231;&#402;&#710;&#227;&#8364;&#8218;&#232;&#191;&#8482;&#230;&#732;&#175;&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#230;&#185;&#190;&#229;&#338;&#186;25&#229;&#185;&#180;&#228;&#187;&#165;&#230;&#157;&#165;&#233;&#129;&#173;&#233;&#129;&#8225;&#231;&#353;&#8222;&#230;&#339;&#8364;&#229;&#188;&#186;&#229;&#339;&#176;&#233;&#339;&#8225;&#227;&#8364;&#8218;&#230;&#141;&#174;&#229;&#170;&#8217;&#228;&#189;&#8220;&#230;&#352;&#165;&#233;&#129;&#8220;&#239;&#188;&#338;&#229;&#183;&#178;&#230;&#339;&#8240;&#230;&#8226;&#176;&#229;&#141;&#129;&#228;&#186;&#186;&#229;&#143;&#8212;&#228;&#188;&#164;&#227;&#8364;&#8218;&#231;&#190;&#381;&#229;&#8250;&#189;&#229;&#339;&#176;&#232;&#180;&#168;&#232;&#176;&#402;&#230;&#376;&#165;&#229;&#177;&#8364;&#228;&#184;&#8220;&#229;&#174;&#182;&#232;&#174;&#164;&#228;&#184;&#186;&#239;&#188;&#338;&#230;&#339;&#170;&#230;&#157;&#165;&#228;&#184;&#8364;&#229;&#8216;&#168;&#228;&#184;&#141;&#230;&#381;&#8217;&#233;&#8482;&#164;&#229;&#8224;&#141;&#230;&#172;&#161;&#229;&#143;&#8216;&#231;&#8221;&#376;&#231;&#177;&#187;&#228;&#188;&#188;&#229;&#188;&#186;&#229;&#186;&#166;&#230;&#710;&#8211;&#230;&#8250;&#180;&#233;&#162;&#8216;&#231;&#185;&#129;&#227;&#8364;&#129;&#230;&#8250;&#180;&#228;&#189;&#381;&#229;&#188;&#186;&#229;&#186;&#166;&#229;&#339;&#176;&#233;&#339;&#8225;&#231;&#353;&#8222;&#229;&#143;&#175;&#232;&#402;&#189;&#230;&#8364;&#167;&#227;&#8364;&#8218;
+&#228;&#184;&#173;&#229;&#8250;&#189;&#233;&#169;&#187;&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#230;&#8364;&#187;&#233;&#162;&#8224;&#228;&#186;&#8249;&#233;&#166;&#8224;&#230;&#8226;&#8482;&#232;&#8218;&#178;&#231;&#187;&#8222;&#231;&#180;&#167;&#230;&#8364;&#165;&#233;&#8364;&#353;&#229;&#8216;&#352;&#239;&#188;&#353;&#232;&#175;&#183;&#229;&#164;&#167;&#229;&#174;&#182;&#229;&#352;&#161;&#229;&#191;&#8230;&#230;&#179;&#168;&#230;&#8222;&#143;&#233;&#732;&#178;&#233;&#339;&#8225;&#239;&#188;&#338;&#230;&#338;&#8240;&#229;&#189;&#8220;&#229;&#339;&#176;&#233;&#732;&#178;&#233;&#339;&#8225;&#232;&#167;&#8222;&#232;&#338;&#402;&#229;&#143;&#352;&#229;&#173;&#166;&#230;&#160;&#161;&#231;&#187;&#376;&#228;&#184;&#8364;&#229;&#174;&#8240;&#230;&#381;&#8217;&#229;&#129;&#353;&#229;&#165;&#189;&#233;&#732;&#178;&#233;&#339;&#8225;&#230;&#381;&#170;&#230;&#8211;&#189;&#227;&#8364;&#8218;&#232;&#175;&#183;&#229;&#144;&#338;&#229;&#173;&#166;&#228;&#187;&#172;&#229;&#129;&#353;&#229;&#165;&#189;&#229;&#174;&#8240;&#229;&#8230;&#168;&#233;&#162;&#8222;&#232;&#173;&#166;&#239;&#188;&#338;&#229;&#185;&#182;&#228;&#186;&#8217;&#231;&#8250;&#184;&#229;&#184;&#174;&#229;&#352;&#169;&#227;&#8364;&#8218;&#229;&#144;&#338;&#230;&#8212;&#182;&#239;&#188;&#338;&#232;&#175;&#183;&#229;&#164;&#167;&#229;&#174;&#182;&#233;&#353;&#143;&#230;&#8212;&#182;&#229;&#8230;&#179;&#230;&#179;&#168;&#229;&#170;&#8217;&#228;&#189;&#8220;&#227;&#8364;&#129;&#229;&#189;&#8220;&#229;&#339;&#176;&#231;&#164;&#190;&#229;&#338;&#186;&#229;&#8217;&#338;&#230;&#160;&#161;&#230;&#8211;&#185;&#231;&#353;&#8222;&#229;&#144;&#8222;&#231;&#167;&#141;&#230;&#339;&#8364;&#230;&#8211;&#176;&#230;&#182;&#710;&#230;&#129;&#175;&#229;&#8217;&#338;&#233;&#732;&#178;&#233;&#339;&#8225;&#233;&#8364;&#353;&#231;&#376;&#165;&#239;&#188;&#338;&#233;&#8226;&#8225;&#233;&#157;&#8482;&#231;&#144;&#8224;&#230;&#8364;&#167;&#239;&#188;&#338;&#229;&#129;&#353;&#229;&#165;&#189;&#229;&#174;&#8240;&#229;&#8230;&#168;&#233;&#732;&#178;&#230;&#352;&#164;&#227;&#8364;&#8218;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">156</field>
+		<field name="id_user">75</field>
+		<field name="id_network">1</field>
+		<field name="post_date">2014-08-27 20:04:50</field>
+		<field name="post_text">I just came across your site via Comeback Michigan. Very interesting concept about diaspora crowdfunding in the future (and a "Michigan embassy" in Silicon Valley!)</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">157</field>
+		<field name="id_user">21</field>
+		<field name="id_network">6</field>
+		<field name="post_date">2014-09-01 15:50:36</field>
+		<field name="post_text">Andrew how's it doing</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">158</field>
+		<field name="id_user">3</field>
+		<field name="id_network">298</field>
+		<field name="post_date">2014-09-04 03:31:50</field>
+		<field name="post_text">Welcome to CultureMesh for Bhutanese in Atlanta!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">159</field>
+		<field name="id_user">3</field>
+		<field name="id_network">299</field>
+		<field name="post_date">2014-09-04 03:43:40</field>
+		<field name="post_text">Hi everyone, welcome to CultureMesh!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">160</field>
+		<field name="id_user">66</field>
+		<field name="id_network">184</field>
+		<field name="post_date">2014-09-05 19:51:15</field>
+		<field name="post_text">&#229;&#338;&#8212;&#228;&#186;&#172;&#228;&#186;&#186;&#229;&#339;&#168;&#231;&#186;&#189;&#231;&#186;&#166;:)</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">161</field>
+		<field name="id_user">80</field>
+		<field name="id_network">304</field>
+		<field name="post_date">2014-09-05 20:17:46</field>
+		<field name="post_text">Hi everyone! </field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">164</field>
+		<field name="id_user">60</field>
+		<field name="id_network">224</field>
+		<field name="post_date">2014-09-05 21:02:50</field>
+		<field name="post_text">8&#230;&#339;&#710;24&#230;&#8212;&#165;&#229;&#8225;&#338;&#230;&#8482;&#168;3&#231;&#8218;&#185;20&#229;&#710;&#8224;&#239;&#188;&#338;&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#228;&#187;&#165;&#229;&#338;&#8212;35&#232;&#8249;&#177;&#233;&#8225;&#338;&#229;&#164;&#8222;&#229;&#143;&#8216;&#231;&#8221;&#376;6.0&#231;&#186;&#167;&#229;&#339;&#176;&#233;&#339;&#8225;&#227;&#8364;&#8218;&#230;&#141;&#174;&#229;&#339;&#176;&#232;&#180;&#168;&#232;&#176;&#402;&#230;&#376;&#165;&#229;&#177;&#8364;&#229;&#143;&#8216;&#229;&#184;&#402;&#231;&#353;&#8222;&#230;&#182;&#710;&#230;&#129;&#175;&#239;&#188;&#338;&#229;&#339;&#176;&#233;&#339;&#8225;&#229;&#143;&#8216;&#231;&#8221;&#376;&#229;&#339;&#168;&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#228;&#187;&#165;&#229;&#338;&#8212;&#231;&#186;&#179;&#229;&#184;&#8226;&#229;&#381;&#191;&#231;&#353;&#8222;&#231;&#190;&#381;&#229;&#8250;&#189;&#229;&#179;&#161;&#232;&#176;&#183;&#229;&#184;&#8218;&#239;&#188;&#338;&#233;&#339;&#8225;&#230;&#8222;&#376;&#229;&#188;&#186;&#231;&#402;&#710;&#227;&#8364;&#8218;&#232;&#191;&#8482;&#230;&#732;&#175;&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#230;&#185;&#190;&#229;&#338;&#186;25&#229;&#185;&#180;&#228;&#187;&#165;&#230;&#157;&#165;&#233;&#129;&#173;&#233;&#129;&#8225;&#231;&#353;&#8222;&#230;&#339;&#8364;&#229;&#188;&#186;&#229;&#339;&#176;&#233;&#339;&#8225;&#227;&#8364;&#8218;&#230;&#141;&#174;&#229;&#170;&#8217;&#228;&#189;&#8220;&#230;&#352;&#165;&#233;&#129;&#8220;&#239;&#188;&#338;&#229;&#183;&#178;&#230;&#339;&#8240;&#230;&#8226;&#176;&#229;&#141;&#129;&#228;&#186;&#186;&#229;&#143;&#8212;&#228;&#188;&#164;&#227;&#8364;&#8218;&#231;&#190;&#381;&#229;&#8250;&#189;&#229;&#339;&#176;&#232;&#180;&#168;&#232;&#176;&#402;&#230;&#376;&#165;&#229;&#177;&#8364;&#228;&#184;&#8220;&#229;&#174;&#182;&#232;&#174;&#164;&#228;&#184;&#186;&#239;&#188;&#338;&#230;&#339;&#170;&#230;&#157;&#165;&#228;&#184;&#8364;&#229;&#8216;&#168;&#228;&#184;&#141;&#230;&#381;&#8217;&#233;&#8482;&#164;&#229;&#8224;&#141;&#230;&#172;&#161;&#229;&#143;&#8216;&#231;&#8221;&#376;&#231;&#177;&#187;&#228;&#188;&#188;&#229;&#188;&#186;&#229;&#186;&#166;&#230;&#710;&#8211;&#230;&#8250;&#180;&#233;&#162;&#8216;&#231;&#185;&#129;&#227;&#8364;&#129;&#230;&#8250;&#180;&#228;&#189;&#381;&#229;&#188;&#186;&#229;&#186;&#166;&#229;&#339;&#176;&#233;&#339;&#8225;&#231;&#353;&#8222;&#229;&#143;&#175;&#232;&#402;&#189;&#230;&#8364;&#167;&#227;&#8364;&#8218;
+&#228;&#184;&#173;&#229;&#8250;&#189;&#233;&#169;&#187;&#230;&#8212;&#167;&#233;&#8225;&#8216;&#229;&#177;&#177;&#230;&#8364;&#187;&#233;&#162;&#8224;&#228;&#186;&#8249;&#233;&#166;&#8224;&#230;&#8226;&#8482;&#232;&#8218;&#178;&#231;&#187;&#8222;&#231;&#180;&#167;&#230;&#8364;&#165;&#233;&#8364;&#353;&#229;&#8216;&#352;&#239;&#188;&#353;&#232;&#175;&#183;&#229;&#164;&#167;&#229;&#174;&#182;&#229;&#352;&#161;&#229;&#191;&#8230;&#230;&#179;&#168;&#230;&#8222;&#143;&#233;&#732;&#178;&#233;&#339;&#8225;&#239;&#188;&#338;&#230;&#338;&#8240;&#229;&#189;&#8220;&#229;&#339;&#176;&#233;&#732;&#178;&#233;&#339;&#8225;&#232;&#167;&#8222;&#232;&#338;&#402;&#229;&#143;&#352;&#229;&#173;&#166;&#230;&#160;&#161;&#231;&#187;&#376;&#228;&#184;&#8364;&#229;&#174;&#8240;&#230;&#381;&#8217;&#229;&#129;&#353;&#229;&#165;&#189;&#233;&#732;&#178;&#233;&#339;&#8225;&#230;&#381;&#170;&#230;&#8211;&#189;&#227;&#8364;&#8218;&#232;&#175;&#183;&#229;&#144;&#338;&#229;&#173;&#166;&#228;&#187;&#172;&#229;&#129;&#353;&#229;&#165;&#189;&#229;&#174;&#8240;&#229;&#8230;&#168;&#233;&#162;&#8222;&#232;&#173;&#166;&#239;&#188;&#338;&#229;&#185;&#182;&#228;&#186;&#8217;&#231;&#8250;&#184;&#229;&#184;&#174;&#229;&#352;&#169;&#227;&#8364;&#8218;&#229;&#144;&#338;&#230;&#8212;&#182;&#239;&#188;&#338;&#232;&#175;&#183;&#229;&#164;&#167;&#229;&#174;&#182;&#233;&#353;&#143;&#230;&#8212;&#182;&#229;&#8230;&#179;&#230;&#179;&#168;&#229;&#170;&#8217;&#228;&#189;&#8220;&#227;&#8364;&#129;&#229;&#189;&#8220;&#229;&#339;&#176;&#231;&#164;&#190;&#229;&#338;&#186;&#229;&#8217;&#338;&#230;&#160;&#161;&#230;&#8211;&#185;&#231;&#353;&#8222;&#229;&#144;&#8222;&#231;&#167;&#141;&#230;&#339;&#8364;&#230;&#8211;&#176;&#230;&#182;&#710;&#230;&#129;&#175;&#229;&#8217;&#338;&#233;&#732;&#178;&#233;&#339;&#8225;&#233;&#8364;&#353;&#231;&#376;&#165;&#239;&#188;&#338;&#233;&#8226;&#8225;&#233;&#157;&#8482;&#231;&#144;&#8224;&#230;&#8364;&#167;&#239;&#188;&#338;&#229;&#129;&#353;&#229;&#165;&#189;&#229;&#174;&#8240;&#229;&#8230;&#168;&#233;&#732;&#178;&#230;&#352;&#164;&#227;&#8364;&#8218;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">165</field>
+		<field name="id_user">66</field>
+		<field name="id_network">243</field>
+		<field name="post_date">2014-09-05 21:05:10</field>
+		<field name="post_text">&#229;&#338;&#8212;&#231;&#190;&#381;&#229;&#174;&#339;&#230;&#732;&#338;&#229;&#144;&#338;&#228;&#185;&#161;&#228;&#188;&#353;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">167</field>
+		<field name="id_user">6</field>
+		<field name="id_network">312</field>
+		<field name="post_date">2014-09-06 17:46:15</field>
+		<field name="post_text">#FireUpChips!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">169</field>
+		<field name="id_user">82</field>
+		<field name="id_network">184</field>
+		<field name="post_date">2014-09-09 23:25:44</field>
+		<field name="post_text">&#233;&#169;&#172;&#228;&#186;&#8216;&#228;&#187;&#352;&#229;&#164;&#169;&#229;&#339;&#168;&#231;&#186;&#189;&#231;&#186;&#166;&#229;&#141;&#381;&#229;&#176;&#8221;&#233;&#129;&#8220;&#229;&#164;&#171;&#233;&#165;&#173;&#229;&#186;&#8212;&#228;&#184;&#190;&#232;&#161;&#338;IPO&#232;&#183;&#175;&#230;&#188;&#8221;&#230;&#180;&#187;&#229;&#352;&#168;&#230;&#8212;&#182;&#232;&#175;&#180;&#229;&#710;&#176;&#239;&#188;&#353;&#226;&#8364;&#339;15&#229;&#185;&#180;&#229;&#8240;&#141;&#230;&#157;&#165;&#231;&#190;&#381;&#229;&#8250;&#189;&#232;&#166;&#129;&#232;&#382;&#141;&#232;&#181;&#8222;200&#228;&#184;&#8225;&#231;&#190;&#381;&#229;&#8230;&#402;&#239;&#188;&#338;&#232;&#162;&#171;30&#229;&#174;&#182;VC&#230;&#8249;&#8217;&#228;&#186;&#8224;&#227;&#8364;&#8218;&#230;&#710;&#8216;&#228;&#187;&#352;&#229;&#164;&#169;&#229;&#143;&#710;&#230;&#157;&#165;&#228;&#186;&#8224;&#239;&#188;&#338;&#229;&#164;&#353;&#232;&#166;&#129;&#231;&#8218;&#185;&#226;&#8364;&#157;&#227;&#8364;&#8218;&#229;&#141;&#381;&#229;&#176;&#8221;&#233;&#129;&#8220;&#229;&#164;&#171;&#233;&#8230;&#8217;&#229;&#186;&#8212;&#230;&#381;&#8217;&#233;&#732;&#376;&#230;&#8249;&#144;&#228;&#186;&#8224;18&#228;&#184;&#170;&#229;&#188;&#175;&#239;&#188;&#338;&#229;&#176;&#8224;&#232;&#191;&#8216;1000&#228;&#186;&#186;&#230;&#157;&#165;&#231;&#339;&#8249;&#232;&#8364;&#129;&#233;&#169;&#172;&#239;&#188;&#338;&#231;&#8221;&#181;&#230;&#162;&#175;&#231;&#173;&#8240;&#228;&#186;&#8224;40&#229;&#710;&#8224;&#227;&#8364;&#8218;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">171</field>
+		<field name="id_user">82</field>
+		<field name="id_network">184</field>
+		<field name="post_date">2014-09-09 23:54:56</field>
+		<field name="post_text">&#229;&#8220;&#165;&#229;&#164;&#167;2014&#230;&#8211;&#176;&#231;&#8221;&#376;&#228;&#191;&#161;&#230;&#129;&#175;&#229;&#710;&#8224;&#228;&#186;&#171;&#231;&#190;&#164;. QQ: 227630357&#239;&#188;&#338; &#230;&#172;&#162;&#232;&#191;&#381;&#230;&#8211;&#176;&#231;&#8221;&#376;&#229;&#144;&#338;&#229;&#173;&#166;&#228;&#187;&#172;&#229;&#352;&#160;&#232;&#191;&#8225;&#230;&#157;&#165;&#227;&#8364;&#8218;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">173</field>
+		<field name="id_user">83</field>
+		<field name="id_network">184</field>
+		<field name="post_date">2014-09-10 00:29:32</field>
+		<field name="post_text">&#231;&#186;&#189;&#231;&#186;&#166;&#229;&#8220;&#170;&#233;&#8225;&#338;&#230;&#339;&#8240;&#229;&#165;&#189;&#229;&#144;&#402;&#231;&#353;&#8222;&#232;&#191;&#8225;&#230;&#161;&#165;&#231;&#177;&#179;&#231;&#186;&#191;&#239;&#188;&#376;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">174</field>
+		<field name="id_user">87</field>
+		<field name="id_network">184</field>
+		<field name="post_date">2014-09-10 01:18:25</field>
+		<field name="post_text">Hi everyone~</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">175</field>
+		<field name="id_user">60</field>
+		<field name="id_network">184</field>
+		<field name="post_date">2014-09-10 05:22:38</field>
+		<field name="post_text">&#228;&#184;&#8364;&#229;&#185;&#180;&#228;&#184;&#8364;&#229;&#186;&#166;&#231;&#353;&#8222;Atlantic City&#230;&#181;&#183;&#233;&#178;&#339;&#231;&#190;&#381;&#233;&#163;&#376;&#232;&#352;&#8218;&#229;&#176;&#8224;&#228;&#186;&#381;&#230;&#339;&#172;&#229;&#8216;&#168;&#230;&#339;&#171;&#228;&#184;&#190;&#232;&#161;&#338;&#227;&#8364;&#8218;&#228;&#187;&#352;&#229;&#185;&#180;&#231;&#353;&#8222;&#230;&#181;&#183;&#233;&#178;&#339;&#231;&#190;&#381;&#233;&#163;&#376;&#232;&#352;&#8218;&#229;&#176;&#8224;&#233;&#8218;&#8364;&#232;&#175;&#183;50&#229;&#164;&#353;&#229;&#174;&#182;&#229;&#189;&#8220;&#229;&#339;&#176;&#228;&#186;&#186;&#230;&#176;&#8221;&#233;&#157;&#382;&#229;&#184;&#184;&#233;&#171;&#732;&#231;&#353;&#8222;&#233;&#164;&#144;&#229;&#381;&#8230;&#229;&#8217;&#338;&#228;&#188;&#732;&#231;&#167;&#8364;&#229;&#164;&#167;&#229;&#381;&#168;&#229;&#175;&#185;&#230;&#8211;&#176;&#233;&#178;&#339;&#231;&#353;&#8222;&#233;&#163;&#376;&#230;&#157;&#144;&#232;&#191;&#8250;&#232;&#161;&#338;&#231;&#178;&#190;&#229;&#191;&#402;&#231;&#402;&#185;&#233;&#165;&#170;&#227;&#8364;&#8218;&#230;&#180;&#187;&#229;&#352;&#168;&#230;&#8212;&#182;&#233;&#8212;&#180;&#239;&#188;&#353;9&#230;&#339;&#710;13&#230;&#8212;&#165; &#230;&#8212;&#169;&#228;&#184;&#352;11&#231;&#8218;&#185;&#232;&#8225;&#179;&#230;&#8482;&#353;&#228;&#184;&#352;7&#231;&#8218;&#185;-- 9&#230;&#339;&#710;14&#230;&#8212;&#165; &#230;&#8212;&#169;&#228;&#184;&#352;11&#231;&#8218;&#185;&#232;&#8225;&#179;&#228;&#184;&#8249;&#229;&#141;&#710;6&#231;&#8218;&#185;&#227;&#8364;&#8218;
+&#230;&#180;&#187;&#229;&#352;&#168;&#229;&#339;&#176;&#231;&#8218;&#185;&#239;&#188;&#353;Bader Field 600 Albany Ave,Atlantic City,New Jersey 08401&#227;&#8364;&#8218; http://www.acseafoodfest.com/  &#230;&#339;&#8240;&#232;&#176;&#129;&#232;&#166;&#129;&#228;&#184;&#8364;&#232;&#181;&#183;&#229;&#381;&#187;&#231;&#353;&#8222;&#229;&#144;&#8212;&#239;&#188;&#376;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">176</field>
+		<field name="id_user">60</field>
+		<field name="id_network">224</field>
+		<field name="post_date">2014-09-15 14:56:09</field>
+		<field name="post_text">2014&#229;&#185;&#180;10&#230;&#339;&#710;11&#230;&#8212;&#165;&#239;&#188;&#338;Stanford ACSSS&#232;&#129;&#8221;&#229;&#144;&#710;36&#230;&#176;&#170;&#228;&#187;&#165;&#229;&#143;&#352;&#232;&#181;&#382;&#229;&#352;&#169;&#229;&#8226;&#8224;-- &#228;&#184;&#185;&#229;&#141;&#381;&#232;&#181;&#8222;&#230;&#339;&#172;&#239;&#188;&#338;&#229;&#8230;&#177;&#229;&#144;&#338;&#228;&#184;&#190;&#229;&#352;&#382;36&#230;&#176;&#170;&#229;&#188;&#8364;&#230;&#8221;&#190;&#230;&#8212;&#165;&#194;&#183;&#231;&#161;&#8230;&#232;&#176;&#183;&#230;&#8211;&#175;&#229;&#157;&#166;&#231;&#166;&#143;&#231;&#171;&#8482;&#227;&#8364;&#8218;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">177</field>
+		<field name="id_user">60</field>
+		<field name="id_network">94</field>
+		<field name="post_date">2014-09-15 15:06:40</field>
+		<field name="post_text">What a great day to be a Spartan in the Bay Area!</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">179</field>
+		<field name="id_user">60</field>
+		<field name="id_network">354</field>
+		<field name="post_date">2014-09-16 11:36:07</field>
+		<field name="post_text">It's almost that time of year again when you get to treat your taste buds to a night out, at San Diego Restaurant Week! From September 21-26, foodies will eat their way through more than 180 participating restaurants throughout San Diego. </field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">180</field>
+		<field name="id_user">60</field>
+		<field name="id_network">355</field>
+		<field name="post_date">2014-09-16 11:36:37</field>
+		<field name="post_text">It's almost that time of year again when you get to treat your taste buds to a night out, at San Diego Restaurant Week! From September 21-26, foodies will eat their way through more than 180 participating restaurants throughout San Diego. </field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">182</field>
+		<field name="id_user">60</field>
+		<field name="id_network">357</field>
+		<field name="post_date">2014-09-16 11:38:34</field>
+		<field name="post_text">It's almost that time of year again when you get to treat your taste buds to a night out, at San Diego Restaurant Week! From September 21-26, foodies will eat their way through more than 180 participating restaurants throughout San Diego. &#228;&#184;&#8364;&#229;&#185;&#180;&#228;&#184;&#8364;&#229;&#186;&#166;&#231;&#353;&#8222;&#229;&#339;&#163;&#229;&#339;&#176;&#228;&#186;&#353;&#229;&#8220;&#165;&#233;&#164;&#144;&#233;&#166;&#8224;&#229;&#8216;&#168;&#228;&#184;&#8249;&#230;&#732;&#376;&#230;&#339;&#376;&#229;&#176;&#177;&#232;&#166;&#129;&#229;&#188;&#8364;&#229;&#167;&#8249;&#228;&#186;&#8224;&#239;&#188;&#338;&#229;&#176;&#143;&#228;&#188;&#8482;&#228;&#188;&#180;&#228;&#187;&#172;&#229;&#191;&#171;&#230;&#157;&#165;&#229;&#143;&#8218;&#229;&#352;&#160; &#239;&#188;&#129;(9&#230;&#339;&#710;21-26&#239;&#188;&#8240;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">183</field>
+		<field name="id_user">60</field>
+		<field name="id_network">356</field>
+		<field name="post_date">2014-09-16 11:39:27</field>
+		<field name="post_text">It's almost that time of year again when you get to treat your taste buds to a night out, at San Diego Restaurant Week! From September 21-26, foodies will eat their way through more than 180 participating restaurants throughout San Diego. &#228;&#184;&#8364;&#229;&#185;&#180;&#228;&#184;&#8364;&#229;&#186;&#166;&#231;&#353;&#8222;&#229;&#339;&#163;&#229;&#339;&#176;&#228;&#186;&#353;&#229;&#8220;&#165;&#233;&#164;&#144;&#233;&#166;&#8224;&#229;&#8216;&#168;&#228;&#184;&#8249;&#230;&#732;&#376;&#230;&#339;&#376;&#229;&#176;&#177;&#232;&#166;&#129;&#229;&#188;&#8364;&#229;&#167;&#8249;&#228;&#186;&#8224;&#239;&#188;&#338;&#229;&#176;&#143;&#228;&#188;&#8482;&#228;&#188;&#180;&#228;&#187;&#172;&#229;&#191;&#171;&#230;&#157;&#165;&#229;&#143;&#8218;&#229;&#352;&#160; &#239;&#188;&#129;(9&#230;&#339;&#710;21-26&#239;&#188;&#8240;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">184</field>
+		<field name="id_user">60</field>
+		<field name="id_network">358</field>
+		<field name="post_date">2014-09-16 11:39:54</field>
+		<field name="post_text">It's almost that time of year again when you get to treat your taste buds to a night out, at San Diego Restaurant Week! From September 21-26, foodies will eat their way through more than 180 participating restaurants throughout San Diego. &#228;&#184;&#8364;&#229;&#185;&#180;&#228;&#184;&#8364;&#229;&#186;&#166;&#231;&#353;&#8222;&#229;&#339;&#163;&#229;&#339;&#176;&#228;&#186;&#353;&#229;&#8220;&#165;&#233;&#164;&#144;&#233;&#166;&#8224;&#229;&#8216;&#168;&#228;&#184;&#8249;&#230;&#732;&#376;&#230;&#339;&#376;&#229;&#176;&#177;&#232;&#166;&#129;&#229;&#188;&#8364;&#229;&#167;&#8249;&#228;&#186;&#8224;&#239;&#188;&#338;&#229;&#176;&#143;&#228;&#188;&#8482;&#228;&#188;&#180;&#228;&#187;&#172;&#229;&#191;&#171;&#230;&#157;&#165;&#229;&#143;&#8218;&#229;&#352;&#160; &#239;&#188;&#129;(9&#230;&#339;&#710;21-26&#239;&#188;&#8240;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">185</field>
+		<field name="id_user">60</field>
+		<field name="id_network">359</field>
+		<field name="post_date">2014-09-16 11:40:17</field>
+		<field name="post_text">It's almost that time of year again when you get to treat your taste buds to a night out, at San Diego Restaurant Week! From September 21-26, foodies will eat their way through more than 180 participating restaurants throughout San Diego. </field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">186</field>
+		<field name="id_user">60</field>
+		<field name="id_network">227</field>
+		<field name="post_date">2014-09-16 11:41:13</field>
+		<field name="post_text">It's almost that time of year again when you get to treat your taste buds to a night out, at San Diego Restaurant Week! From September 21-26, foodies will eat their way through more than 180 participating restaurants throughout San Diego. </field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">188</field>
+		<field name="id_user">60</field>
+		<field name="id_network">360</field>
+		<field name="post_date">2014-09-16 11:41:41</field>
+		<field name="post_text">It's almost that time of year again when you get to treat your taste buds to a night out, at San Diego Restaurant Week! From September 21-26, foodies will eat their way through more than 180 participating restaurants throughout San Diego. </field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">196</field>
+		<field name="id_user">82</field>
+		<field name="id_network">184</field>
+		<field name="post_date">2014-09-18 18:54:41</field>
+		<field name="post_text">&#227;&#8364;&#144;2014&#226;&#8364;&#339;&#229;&#188;&#8364;&#228;&#187;&#8364;&#228;&#185;&#710;&#229;&#8250;&#189;&#233;&#8482;&#8230;&#231;&#381;&#169;&#231;&#172;&#8216;&#226;&#8364;&#157;&#233;&#187;&#8222;&#232;&#165;&#191;&#229;&#338;&#8212;&#231;&#190;&#381;&#232;&#8222;&#177;&#229;&#143;&#163;&#231;&#167;&#8364;&#229;&#183;&#161;&#229;&#8250;&#382;&#230;&#188;&#8221;&#229;&#8225;&#186;&#239;&#188;&#141;&#231;&#186;&#189;&#231;&#186;&#166;&#231;&#171;&#8482;&#227;&#8364;&#8216; &#230;&#8212;&#182;&#233;&#8212;&#180;&#239;&#188;&#353;2014&#229;&#185;&#180;9&#230;&#339;&#710;20&#230;&#8212;&#165; &#230;&#8482;&#353;&#228;&#184;&#352;6:30-8:30 &#229;&#339;&#176;&#231;&#8218;&#185;&#239;&#188;&#353;Mason Hall - 17 Lexington Ave, NY 10010 (The entrance is located on East 23rd Street) &#229;&#339;&#176;&#233;&#8220;&#129;&#229;&#8217;&#338;&#229;&#8230;&#172;&#228;&#186;&#164;&#228;&#191;&#161;&#230;&#129;&#175;&#227;&#8364;&#8218;&#231;&#165;&#168;&#228;&#187;&#183;&#239;&#188;&#353;$128/$98/$58/48/$38/$28</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">197</field>
+		<field name="id_user">82</field>
+		<field name="id_network">184</field>
+		<field name="post_date">2014-09-18 18:55:52</field>
+		<field name="post_text">&#227;&#8364;&#144;2014&#231;&#186;&#189;&#231;&#186;&#166;&#230;&#8216;&#169;&#231;&#8482;&#187;&#229;&#164;&#169;&#231;&#169;&#186;&#233;&#376;&#179;&#228;&#185;&#144;&#232;&#352;&#8218;&#227;&#8364;&#8216;AmeriChina Consultancy&#232;&#129;&#8221;&#230;&#8240;&#8249;&#230;&#8216;&#169;&#231;&#8482;&#187;&#229;&#164;&#169;&#231;&#169;&#186;&#239;&#188;&#338;&#230;&#381;&#168;&#229;&#8225;&#186;&#230;&#8216;&#169;&#231;&#8482;&#187;&#229;&#164;&#169;&#231;&#169;&#186;&#233;&#376;&#179;&#228;&#185;&#144;&#232;&#352;&#8218;&#229;&#141;&#8226;&#230;&#8212;&#165;&#233;&#8212;&#168;&#231;&#165;&#168;&#229;&#8230;&#171;&#230;&#352;&#732;&#228;&#188;&#732;&#230;&#402;&#160;&#227;&#8364;&#129;&#229;&#143;&#338;&#230;&#8212;&#165;&#233;&#8212;&#168;&#231;&#165;&#168;&#228;&#185;&#157;&#230;&#352;&#732;&#228;&#188;&#732;&#230;&#402;&#160;&#227;&#8364;&#8218;&#231;&#8218;&#185;&#229;&#8225;&#187;&#232;&#180;&#173;&#231;&#165;&#168;&#233;&#8220;&#190;&#230;&#381;&#165;&#232;&#190;&#8220;&#229;&#8230;&#165;promo code: AMERICHINA&#232;&#180;&#173;&#228;&#185;&#176;&#229;&#141;&#8226;&#230;&#8212;&#165;&#233;&#8212;&#168;&#231;&#165;&#168;&#239;&#188;&#338;&#230;&#710;&#8211;&#232;&#190;&#8220;&#229;&#8230;&#165;promo code: AMERICHINA2&#232;&#180;&#173;&#228;&#185;&#176;&#229;&#143;&#338;&#230;&#8212;&#165;&#233;&#8212;&#168;&#231;&#165;&#168;&#239;&#188;&#338;&#229;&#141;&#179;&#229;&#143;&#175;&#232;&#381;&#183;&#229;&#190;&#8212;&#228;&#188;&#732;&#230;&#402;&#160;&#239;&#188;&#710;&#232;&#175;&#183;&#230;&#179;&#168;&#230;&#8222;&#143;&#228;&#184;&#164;&#228;&#184;&#170;promo code&#230;&#339;&#8240;&#229;&#338;&#186;&#229;&#710;&#171;&#239;&#188;&#8240;&#227;&#8364;&#8218; 2014&#231;&#186;&#189;&#231;&#186;&#166;&#230;&#8216;&#169;&#231;&#8482;&#187;&#229;&#164;&#169;&#231;&#169;&#186;&#233;&#376;&#179;&#228;&#185;&#144;&#232;&#352;&#8218;&#233;&#8218;&#8364;&#232;&#175;&#183;&#228;&#186;&#8224;&#228;&#188;&#8212;&#229;&#164;&#353;&#229;&#8250;&#189;&#233;&#8482;&#8230;&#228;&#185;&#144;&#233;&#732;&#376;&#229;&#8217;&#338;&#232;&#8240;&#186;&#228;&#186;&#186;&#239;&#188;&#338;&#229;&#166;&#8218;Cats Power, Stars, Liars, The BloodBrothers (reuniting after 8 years!), The Both (Aimee Mann &amp; Ted Leo), Lenk&#227;&#8364;&#8218;&#230;&#173;&#164;&#229;&#164;&#8211;&#239;&#188;&#338;&#230;&#157;&#165;&#232;&#8225;&#170;&#228;&#184;&#173;&#229;&#8250;&#189;&#231;&#353;&#8222;&#231;&#376;&#165;&#229;&#144;&#141;&#228;&#185;&#144;&#233;&#732;&#376;&#232;&#8240;&#186;&#228;&#186;&#186;&#229;&#166;&#8218;&#229;&#188;&#160;&#230;&#8218;&#172;&#239;&#188;&#338;&#228;&#184;&#8225;&#233;&#157;&#8217;&#239;&#188;&#338;&#233;&#8225;&#141;&#229;&#161;&#8216;&#228;&#185;&#376;&#229;&#176;&#8224;&#229;&#143;&#8212;&#233;&#8218;&#8364;&#229;&#143;&#8218;&#230;&#188;&#8221;&#227;&#8364;&#8218; &#232;&#180;&#173;&#231;&#165;&#168;&#233;&#8220;&#190;&#230;&#381;&#165;:www.modernskyfestivalnyc.com</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">198</field>
+		<field name="id_user">82</field>
+		<field name="id_network">184</field>
+		<field name="post_date">2014-09-18 18:56:20</field>
+		<field name="post_text">&#227;&#8364;&#144;&#226;&#8364;&#339;&#231;&#186;&#189;&#231;&#186;&#166;&#226;&#8364;&#162;&#229;&#176;&#143;&#229;&#8250;&#162;&#229;&#339;&#8224;&#226;&#8364;&#157; &#232;&#177;&#170;&#229;&#141;&#381;&#233;&#8218;&#174;&#232;&#189;&#174;&#230;&#180;&#190;&#229;&#175;&#185;&#227;&#8364;&#8216;&#230;&#184;&#169;&#230;&#353;&#8211;&#228;&#184;&#8364;&#231;&#167;&#8249;&#231;&#353;&#8222;&#230;&#184;&#184;&#230;&#178;&#179;&#239;&#188;&#338; &#230;&#8222;&#376;&#229;&#352;&#168;&#228;&#184;&#8364;&#229;&#164;&#339;&#231;&#353;&#8222;&#230;&#402;&#8230;&#230;&#8364;&#8364;&#239;&#188;&#338; &#231;&#8218;&#174;&#231;&#402;&#8482;&#228;&#184;&#8364;&#231;&#8221;&#376;&#231;&#353;&#8222;&#232;&#174;&#176;&#229;&#191;&#8224;&#239;&#188;&#338; &#229;&#129;&#182;&#233;&#129;&#8225;&#228;&#184;&#8364;&#228;&#184;&#8211;&#231;&#353;&#8222;&#229;&#166;&#8482;&#231;&#188;&#732;&#239;&#188;&#338; &#231;&#8250;&#184;&#231;&#186;&#166;&#228;&#184;&#8364;&#231;&#167;&#8217;high&#231;&#191;&#187;&#231;&#353;&#8222;&#231;&#402;&#173;&#232;&#710;&#382;&#231;&#8249;&#8218;&#230;&#172;&#162;&#229;&#164;&#339;&#227;&#8364;&#8218; &#226;&#8364;&#339;&#231;&#186;&#189;&#231;&#186;&#166;&#231;&#8226;&#8482;&#229;&#173;&#166;&#231;&#8221;&#376;&#231;&#189;&#8216;&#226;&#8364;&#157;&#230;&#144;&#186;&#230;&#8240;&#8249;&#226;&#8364;&#339;&#229;&#164;&#167;&#231;&#186;&#189;&#231;&#186;&#166;&#229;&#339;&#176;&#229;&#338;&#186;&#229;&#173;&#166;&#232;&#129;&#8221;&#230;&#8364;&#187;&#228;&#188;&#353;&#226;&#8364;&#157;&#233;&#8218;&#8364;&#230;&#8218;&#168;&#229;&#143;&#8218;&#229;&#352;&#160;&#228;&#184;&#8364;&#229;&#185;&#180;&#228;&#184;&#8364;&#229;&#186;&#166;&#231;&#353;&#8222;&#226;&#8364;&#339;&#231;&#186;&#189;&#231;&#186;&#166;&#226;&#8364;&#162;&#229;&#176;&#143;&#229;&#8250;&#162;&#229;&#339;&#8224;&#226;&#8364;&#157; &#232;&#177;&#170;&#229;&#141;&#381;&#233;&#8218;&#174;&#232;&#189;&#174;&#230;&#180;&#190;&#229;&#175;&#185;&#227;&#8364;&#8218;&#231;&#381;&#176;&#229;&#339;&#186;&#230;&#352;&#189;&#229;&#165;&#8211;&#231;&#164;&#188;&#229;&#8220;&#129;&#229;&#164;&#353;&#229;&#164;&#353;&#239;&#188;&#338;&#230;&#8250;&#180;&#230;&#339;&#8240;&#228;&#184;&#164;&#233;&#402;&#168;iPhone6&#231;&#8240;&#185;&#231;&#173;&#8240;&#229;&#164;&#167;&#229;&#165;&#8211;&#233;&#162;&#129;&#229;&#143;&#8216;&#231;&#187;&#8482;&#229;&#185;&#184;&#232;&#191;&#144;&#231;&#353;&#8222;&#231;&#186;&#189;&#231;&#186;&#166;&#229;&#174;&#162;&#228;&#187;&#172;&#239;&#188;&#129;&#230;&#180;&#187;&#229;&#352;&#168;&#232;&#175;&#166;&#230;&#402;&#8230;&#239;&#188;&#353; &#230;&#8212;&#182;&#233;&#8212;&#180;&#239;&#188;&#353;2014&#229;&#185;&#180;10&#230;&#339;&#710;3&#230;&#8212;&#165;&#239;&#188;&#710;&#229;&#8216;&#168;&#228;&#186;&#8221;&#239;&#188;&#8240;&#230;&#8482;&#353; 7&#239;&#188;&#353;30PM &#226;&#8364;&#8220; 10PM (7&#231;&#8218;&#185;30&#229;&#710;&#8224;&#229;&#8225;&#8224;&#230;&#8212;&#182;&#231;&#8482;&#187;&#232;&#710;&#185;) &#231;&#8482;&#187;&#232;&#710;&#185;&#229;&#339;&#176;&#231;&#8218;&#185;&#239;&#188;&#353; Pier 40, 353 West Street&#239;&#188;&#338; Manhattan, New York&#239;&#188;&#338;10014</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">199</field>
+		<field name="id_user">82</field>
+		<field name="id_network">386</field>
+		<field name="post_date">2014-09-18 18:56:58</field>
+		<field name="post_text">&#227;&#8364;&#144;2014&#226;&#8364;&#339;&#229;&#188;&#8364;&#228;&#187;&#8364;&#228;&#185;&#710;&#229;&#8250;&#189;&#233;&#8482;&#8230;&#231;&#381;&#169;&#231;&#172;&#8216;&#226;&#8364;&#157;&#233;&#187;&#8222;&#232;&#165;&#191;&#229;&#338;&#8212;&#231;&#190;&#381;&#232;&#8222;&#177;&#229;&#143;&#163;&#231;&#167;&#8364;&#229;&#183;&#161;&#229;&#8250;&#382;&#230;&#188;&#8221;&#229;&#8225;&#186;&#239;&#188;&#141;&#231;&#186;&#189;&#231;&#186;&#166;&#231;&#171;&#8482;&#227;&#8364;&#8216; &#230;&#8212;&#182;&#233;&#8212;&#180;&#239;&#188;&#353;2014&#229;&#185;&#180;9&#230;&#339;&#710;20&#230;&#8212;&#165; &#230;&#8482;&#353;&#228;&#184;&#352;6:30-8:30 &#229;&#339;&#176;&#231;&#8218;&#185;&#239;&#188;&#353;Mason Hall - 17 Lexington Ave, NY 10010 (The entrance is located on East 23rd Street) &#229;&#339;&#176;&#233;&#8220;&#129;&#229;&#8217;&#338;&#229;&#8230;&#172;&#228;&#186;&#164;&#228;&#191;&#161;&#230;&#129;&#175;&#227;&#8364;&#8218;&#231;&#165;&#168;&#228;&#187;&#183;&#239;&#188;&#353;$128/$98/$58/48/$38/$28</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">200</field>
+		<field name="id_user">82</field>
+		<field name="id_network">386</field>
+		<field name="post_date">2014-09-18 18:57:06</field>
+		<field name="post_text">&#227;&#8364;&#144;2014&#231;&#186;&#189;&#231;&#186;&#166;&#230;&#8216;&#169;&#231;&#8482;&#187;&#229;&#164;&#169;&#231;&#169;&#186;&#233;&#376;&#179;&#228;&#185;&#144;&#232;&#352;&#8218;&#227;&#8364;&#8216;AmeriChina Consultancy&#232;&#129;&#8221;&#230;&#8240;&#8249;&#230;&#8216;&#169;&#231;&#8482;&#187;&#229;&#164;&#169;&#231;&#169;&#186;&#239;&#188;&#338;&#230;&#381;&#168;&#229;&#8225;&#186;&#230;&#8216;&#169;&#231;&#8482;&#187;&#229;&#164;&#169;&#231;&#169;&#186;&#233;&#376;&#179;&#228;&#185;&#144;&#232;&#352;&#8218;&#229;&#141;&#8226;&#230;&#8212;&#165;&#233;&#8212;&#168;&#231;&#165;&#168;&#229;&#8230;&#171;&#230;&#352;&#732;&#228;&#188;&#732;&#230;&#402;&#160;&#227;&#8364;&#129;&#229;&#143;&#338;&#230;&#8212;&#165;&#233;&#8212;&#168;&#231;&#165;&#168;&#228;&#185;&#157;&#230;&#352;&#732;&#228;&#188;&#732;&#230;&#402;&#160;&#227;&#8364;&#8218;&#231;&#8218;&#185;&#229;&#8225;&#187;&#232;&#180;&#173;&#231;&#165;&#168;&#233;&#8220;&#190;&#230;&#381;&#165;&#232;&#190;&#8220;&#229;&#8230;&#165;promo code: AMERICHINA&#232;&#180;&#173;&#228;&#185;&#176;&#229;&#141;&#8226;&#230;&#8212;&#165;&#233;&#8212;&#168;&#231;&#165;&#168;&#239;&#188;&#338;&#230;&#710;&#8211;&#232;&#190;&#8220;&#229;&#8230;&#165;promo code: AMERICHINA2&#232;&#180;&#173;&#228;&#185;&#176;&#229;&#143;&#338;&#230;&#8212;&#165;&#233;&#8212;&#168;&#231;&#165;&#168;&#239;&#188;&#338;&#229;&#141;&#179;&#229;&#143;&#175;&#232;&#381;&#183;&#229;&#190;&#8212;&#228;&#188;&#732;&#230;&#402;&#160;&#239;&#188;&#710;&#232;&#175;&#183;&#230;&#179;&#168;&#230;&#8222;&#143;&#228;&#184;&#164;&#228;&#184;&#170;promo code&#230;&#339;&#8240;&#229;&#338;&#186;&#229;&#710;&#171;&#239;&#188;&#8240;&#227;&#8364;&#8218; 2014&#231;&#186;&#189;&#231;&#186;&#166;&#230;&#8216;&#169;&#231;&#8482;&#187;&#229;&#164;&#169;&#231;&#169;&#186;&#233;&#376;&#179;&#228;&#185;&#144;&#232;&#352;&#8218;&#233;&#8218;&#8364;&#232;&#175;&#183;&#228;&#186;&#8224;&#228;&#188;&#8212;&#229;&#164;&#353;&#229;&#8250;&#189;&#233;&#8482;&#8230;&#228;&#185;&#144;&#233;&#732;&#376;&#229;&#8217;&#338;&#232;&#8240;&#186;&#228;&#186;&#186;&#239;&#188;&#338;&#229;&#166;&#8218;Cats Power, Stars, Liars, The BloodBrothers (reuniting after 8 years!), The Both (Aimee Mann &amp; Ted Leo), Lenk&#227;&#8364;&#8218;&#230;&#173;&#164;&#229;&#164;&#8211;&#239;&#188;&#338;&#230;&#157;&#165;&#232;&#8225;&#170;&#228;&#184;&#173;&#229;&#8250;&#189;&#231;&#353;&#8222;&#231;&#376;&#165;&#229;&#144;&#141;&#228;&#185;&#144;&#233;&#732;&#376;&#232;&#8240;&#186;&#228;&#186;&#186;&#229;&#166;&#8218;&#229;&#188;&#160;&#230;&#8218;&#172;&#239;&#188;&#338;&#228;&#184;&#8225;&#233;&#157;&#8217;&#239;&#188;&#338;&#233;&#8225;&#141;&#229;&#161;&#8216;&#228;&#185;&#376;&#229;&#176;&#8224;&#229;&#143;&#8212;&#233;&#8218;&#8364;&#229;&#143;&#8218;&#230;&#188;&#8221;&#227;&#8364;&#8218; &#232;&#180;&#173;&#231;&#165;&#168;&#233;&#8220;&#190;&#230;&#381;&#165;:www.modernskyfestivalnyc.com</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">201</field>
+		<field name="id_user">82</field>
+		<field name="id_network">386</field>
+		<field name="post_date">2014-09-18 18:57:14</field>
+		<field name="post_text">&#227;&#8364;&#144;&#226;&#8364;&#339;&#231;&#186;&#189;&#231;&#186;&#166;&#226;&#8364;&#162;&#229;&#176;&#143;&#229;&#8250;&#162;&#229;&#339;&#8224;&#226;&#8364;&#157; &#232;&#177;&#170;&#229;&#141;&#381;&#233;&#8218;&#174;&#232;&#189;&#174;&#230;&#180;&#190;&#229;&#175;&#185;&#227;&#8364;&#8216;&#230;&#184;&#169;&#230;&#353;&#8211;&#228;&#184;&#8364;&#231;&#167;&#8249;&#231;&#353;&#8222;&#230;&#184;&#184;&#230;&#178;&#179;&#239;&#188;&#338; &#230;&#8222;&#376;&#229;&#352;&#168;&#228;&#184;&#8364;&#229;&#164;&#339;&#231;&#353;&#8222;&#230;&#402;&#8230;&#230;&#8364;&#8364;&#239;&#188;&#338; &#231;&#8218;&#174;&#231;&#402;&#8482;&#228;&#184;&#8364;&#231;&#8221;&#376;&#231;&#353;&#8222;&#232;&#174;&#176;&#229;&#191;&#8224;&#239;&#188;&#338; &#229;&#129;&#182;&#233;&#129;&#8225;&#228;&#184;&#8364;&#228;&#184;&#8211;&#231;&#353;&#8222;&#229;&#166;&#8482;&#231;&#188;&#732;&#239;&#188;&#338; &#231;&#8250;&#184;&#231;&#186;&#166;&#228;&#184;&#8364;&#231;&#167;&#8217;high&#231;&#191;&#187;&#231;&#353;&#8222;&#231;&#402;&#173;&#232;&#710;&#382;&#231;&#8249;&#8218;&#230;&#172;&#162;&#229;&#164;&#339;&#227;&#8364;&#8218; &#226;&#8364;&#339;&#231;&#186;&#189;&#231;&#186;&#166;&#231;&#8226;&#8482;&#229;&#173;&#166;&#231;&#8221;&#376;&#231;&#189;&#8216;&#226;&#8364;&#157;&#230;&#144;&#186;&#230;&#8240;&#8249;&#226;&#8364;&#339;&#229;&#164;&#167;&#231;&#186;&#189;&#231;&#186;&#166;&#229;&#339;&#176;&#229;&#338;&#186;&#229;&#173;&#166;&#232;&#129;&#8221;&#230;&#8364;&#187;&#228;&#188;&#353;&#226;&#8364;&#157;&#233;&#8218;&#8364;&#230;&#8218;&#168;&#229;&#143;&#8218;&#229;&#352;&#160;&#228;&#184;&#8364;&#229;&#185;&#180;&#228;&#184;&#8364;&#229;&#186;&#166;&#231;&#353;&#8222;&#226;&#8364;&#339;&#231;&#186;&#189;&#231;&#186;&#166;&#226;&#8364;&#162;&#229;&#176;&#143;&#229;&#8250;&#162;&#229;&#339;&#8224;&#226;&#8364;&#157; &#232;&#177;&#170;&#229;&#141;&#381;&#233;&#8218;&#174;&#232;&#189;&#174;&#230;&#180;&#190;&#229;&#175;&#185;&#227;&#8364;&#8218;&#231;&#381;&#176;&#229;&#339;&#186;&#230;&#352;&#189;&#229;&#165;&#8211;&#231;&#164;&#188;&#229;&#8220;&#129;&#229;&#164;&#353;&#229;&#164;&#353;&#239;&#188;&#338;&#230;&#8250;&#180;&#230;&#339;&#8240;&#228;&#184;&#164;&#233;&#402;&#168;iPhone6&#231;&#8240;&#185;&#231;&#173;&#8240;&#229;&#164;&#167;&#229;&#165;&#8211;&#233;&#162;&#129;&#229;&#143;&#8216;&#231;&#187;&#8482;&#229;&#185;&#184;&#232;&#191;&#144;&#231;&#353;&#8222;&#231;&#186;&#189;&#231;&#186;&#166;&#229;&#174;&#162;&#228;&#187;&#172;&#239;&#188;&#129;&#230;&#180;&#187;&#229;&#352;&#168;&#232;&#175;&#166;&#230;&#402;&#8230;&#239;&#188;&#353; &#230;&#8212;&#182;&#233;&#8212;&#180;&#239;&#188;&#353;2014&#229;&#185;&#180;10&#230;&#339;&#710;3&#230;&#8212;&#165;&#239;&#188;&#710;&#229;&#8216;&#168;&#228;&#186;&#8221;&#239;&#188;&#8240;&#230;&#8482;&#353; 7&#239;&#188;&#353;30PM &#226;&#8364;&#8220; 10PM (7&#231;&#8218;&#185;30&#229;&#710;&#8224;&#229;&#8225;&#8224;&#230;&#8212;&#182;&#231;&#8482;&#187;&#232;&#710;&#185;) &#231;&#8482;&#187;&#232;&#710;&#185;&#229;&#339;&#176;&#231;&#8218;&#185;&#239;&#188;&#353; Pier 40, 353 West Street&#239;&#188;&#338; Manhattan, New York&#239;&#188;&#338;10014</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">202</field>
+		<field name="id_user">93</field>
+		<field name="id_network">387</field>
+		<field name="post_date">2014-09-19 20:32:30</field>
+		<field name="post_text">Hi:)</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">203</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 14:12:55</field>
+		<field name="post_text">testing link posting:
+www.culturemesh.com</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">204</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 14:13:30</field>
+		<field name="post_text">cultureme.sh</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">205</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 14:16:03</field>
+		<field name="post_text">https://culturemesh.com/culturemeshdevteam/htdocs</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">206</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 14:17:35</field>
+		<field name="post_text">http://bit.ly/1oIGjad</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">208</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 14:19:20</field>
+		<field name="post_text">http://t.co/1U9Y95sxlA</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">209</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 14:20:32</field>
+		<field name="post_text">https://www.facebook.com/search/104022926303756/residents/present/109706309047793/home-residents/intersect</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">210</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 14:22:07</field>
+		<field name="post_text">culturemesh.com/search_results.php?verb=arefrom&amp;search-1=Equatorial+Guinea&amp;clik1=1&amp;search-2=New+York+City%2C+New+York%2C+United+States&amp;clik2=1&amp;search-topic=co</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">211</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 14:45:49</field>
+		<field name="post_text">http://stackoverflow.com/questions/880087/is-there-an-attribute-i-can-put-on-the-a-tag-to-get-links-to-open-in-new-tabs-in?rq=1</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">213</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 22:43:25</field>
+		<field name="post_text">muse.jhu.edu/journals/american_literature/</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">217</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 22:51:01</field>
+		<field name="post_text">&lt;iframe width="560" height="315" src="//www.youtube.com/embed/cVuoTOlfxtM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">221</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 23:07:56</field>
+		<field name="post_text">&lt;a class="embedly-card" href="http://i.imgur.com/qmc1Lh8.jpg"&gt;null&lt;/a&gt;
+&lt;script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"&gt;&lt;/script&gt;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">222</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 23:14:24</field>
+		<field name="post_text">&lt;iframe src="http://i.imgur.com/qmc1Lh8.jpg" height="100" width="200"&lt;/iframe&gt;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">223</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 23:15:18</field>
+		<field name="post_text">&lt;iframe src="http://i.imgur.com/qmc1Lh8.jpg" height="100" width="200"&gt;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">224</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 23:15:34</field>
+		<field name="post_text">&lt;iframe src="http://i.imgur.com/qmc1Lh8.jpg" height="100" width="200"&gt;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">233</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 23:25:27</field>
+		<field name="post_text">http://firstsearch.oclc.org/dbname=WorldCat;done=referer;FSIP</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">234</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-05 23:25:51</field>
+		<field name="post_text">http://firstsearch.oclc.org/WebZ/FSPrefs?entityjsdetect=:javascript=true:screensize=large:sessionid=fsapp3-36672-f5pysd37-7ipve9:entitypagenum=1:0</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">241</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:45:24</field>
+		<field name="post_text">post 1</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">242</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:45:28</field>
+		<field name="post_text">2</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">243</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:45:35</field>
+		<field name="post_text">3</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">244</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:45:40</field>
+		<field name="post_text">4</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">245</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:45:46</field>
+		<field name="post_text">5</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">246</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:45:51</field>
+		<field name="post_text">6</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">247</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:45:58</field>
+		<field name="post_text">7</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">248</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:46:05</field>
+		<field name="post_text">8</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">249</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:46:11</field>
+		<field name="post_text">9</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">250</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:46:19</field>
+		<field name="post_text">10</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">251</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:46:25</field>
+		<field name="post_text">11</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">252</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:46:32</field>
+		<field name="post_text">12</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">253</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:46:39</field>
+		<field name="post_text">13</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">254</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:46:44</field>
+		<field name="post_text">14</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">255</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-05 23:46:48</field>
+		<field name="post_text">15</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">289</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-06 01:23:12</field>
+		<field name="post_text">&#216;&#167;&#216;&#179;&#216;&#170;&#217;&#129;&#216;&#170;&#216;&#167;&#216;&#161;.&#217;&#8230;&#216;&#181;&#216;&#177;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">290</field>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-06 01:28:07</field>
+		<field name="post_text">I think they call it "facebook.com" (http://en.wikipedia.org/wiki/Facebook)</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">298</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-06 01:45:38</field>
+		<field name="post_text">&lt;iframe src="http://i.imgur.com/qmc1Lh8.jpg" height="100" width="200"&lt;/iframe&gt;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">299</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-06 01:45:44</field>
+		<field name="post_text">test</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">300</field>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="post_date">2014-10-06 01:45:57</field>
+		<field name="post_text">&lt;iframe src="http://i.imgur.com/qmc1Lh8.jpg" height="100" width="200"&lt;/iframe&gt;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">301</field>
+		<field name="id_user">1</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-07 06:30:32</field>
+		<field name="post_text">&amp;lt;iframe height=&amp;quot;100&amp;quot; width=&amp;quot;200&amp;quot; src=&amp;quot;http://i.imgur.com/qmc1Lh8.jpg&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	<row>
+		<field name="id">302</field>
+		<field name="id_user">1</field>
+		<field name="id_network">352</field>
+		<field name="post_date">2014-10-07 06:31:50</field>
+		<field name="post_text">&lt;iframe height="100" width="200" src="http://i.imgur.com/qmc1Lh8.jpg"&gt;&lt;/iframe&gt;</field>
+		<field name="post_class">o</field>
+		<field name="post_original" xsi:nil="true"/>
+		<field name="vid_link"/>
+		<field name="img_link"/>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>

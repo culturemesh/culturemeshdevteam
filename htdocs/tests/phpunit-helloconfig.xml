@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit>
+	<testsuites>
+		<testsuite name='hello'>
+		        <directory>hello</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>

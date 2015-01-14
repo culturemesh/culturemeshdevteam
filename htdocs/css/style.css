@@ -17,7 +17,9 @@ h4{
     font-family: 'Lato';
 }
 h5{
-    font: 16px 'Lato';
+    font: 'Lato' sans-serif;
+    font-size:16px;
+    color: #ef4350;
     font-weight: 300;
     text-transform: uppercase;
 }
@@ -430,7 +432,7 @@ hr.hr-modal {
 
 .popnet
 {
-     height:75px;
+	margin-bottom:28px;
 }
 /*
 .popnet-img
@@ -1260,7 +1262,7 @@ div.event-host
 }
 div.event-text
 {
-	width:auto;
+	width:400px;
 	float:left;
 	margin-left:15px;
 	margin-top:-15px;
@@ -1471,11 +1473,69 @@ a.profile
 	font-size:14px;
 }
 
+/**********************************/
+
+/*******
+ * MISCELLANEOUS 
+ * ******
+*/
 /*************************/
+
+/********
+ * UPLOAD
+ ********/
+.fileupload-button {
+	height:35px;
+	width:36px;
+}
+
+.fileupload-button.picture {
+	background: url('../images/photography-gray.png');
+	float:left;
+	margin-right: 15px;
+	margin-bottom: 10px;
+	margin-top: -4px;
+}
+
+.fileupload-button.picture:hover{
+	opacity:0.5;
+}
+
+button.upload-img-delete {
+	border:none;
+	background-color:#727272;
+	color:white;
+}
+
+/********
+ * HELP AND ERROR
+ ********/
+
+.help-tooltip {
+	background-color:#727272;
+	color:white;
+	border-radius:25px;
+	border-style:none;
+	font-size:20px;
+	font-weight:bold;
+	height:25px;
+	float:left;
+}
+
+
+/********
+ * TEAM THUMBNAIL 
+ ********/
+
 .team_thumb{
     width: 205px;
     height: 205px;
 }
+
+/********
+ * HEADER 
+ ********/
+
 #header{
     border-bottom: 3px solid #ccc;
     /*margin-bottom:30px;*/

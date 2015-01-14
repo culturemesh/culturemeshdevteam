@@ -30,7 +30,7 @@ else
 	$not_dt->network_activity = 0;
 	
 if (UserNotification::updateNotification($not_dt))
-	header("Location: profile_edit.php?un=success");
+	header("Location: profile/$not_dt->uid/?un=success");
 else
-	header("Location: profile_edit.php?un=failure")
+	header("Location: profile/$not_dt->uid/?un=failure")
 ?>

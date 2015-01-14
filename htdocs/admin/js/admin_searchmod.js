@@ -454,7 +454,16 @@ document.getElementById('send').onclick = function() {
 }
 */
 
-function getRowsAndCols(colName, tableId, valClass, childElem) {
+function getRowsAndCols(colName, type, valClass, childElem) {
+
+	var tableSelector = null;
+
+	if (type == 'main') {
+		tableSelector = '#table table';
+	}
+	else if (type == 'alt') {
+		tableSelector = '#table-search table';
+	}
 
 	// check variables
 	if (valClass == undefined)
@@ -466,14 +475,12 @@ function getRowsAndCols(colName, tableId, valClass, childElem) {
 	var data = {};
 
 	// get all the rows and columns in the body
-	$( '#' + tableId + ' tbody tr').each(function() {
+	$( tableSelector + ' tbody tr').each(function() {
 		var tabCol = $( this ).children('td.db_col').text();
 		var tabVal = $( this ).children('td.' + valClass).children( childElem ).text();
 
-		// get rid of SUPER-ANNOYING newlines
-		tabCol = tabCol.replace('\n', '');
-		tabCol = tabCol.replace('\n', '');
-		tabCol = tabCol.trim();
+		// get rid of bad stuff
+		tabCol = stringParse(tabCol);
 
 		// get rid of annoying suffix
 		var colNameFix = colName.replace('_id', '');

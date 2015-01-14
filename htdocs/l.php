@@ -18,8 +18,12 @@
  * 	b) NOT SO MUCH
  * 		i) index
  */
+include('Environment.php');
 
 include_once('http_redirect.php');
+include_once('lib/nav/HTTPRedirect.php');
+
+$cm = new Environment();
 
 // possible pages that we could be logging in from
 $pages = array('index', 'network', 'search_results', 
@@ -27,7 +31,7 @@ $pages = array('index', 'network', 'search_results',
 
 $prev_url = $_SERVER['HTTP_REFERER'];
 
-$redirect = new HTTPRedirect($prev_url, $pages);
+$redirect = new \nav\HTTPRedirect($cm, $prev_url, $pages);
 $redirect->removeQueryParameters(array('lerror', 'rerror', 'jeerror', 'eid', 'ueerror'));
 
 // start working on stuff
@@ -91,11 +95,15 @@ if($_POST['email'] && $_POST['password']){
                 		$_SESSION['uid'] = getMemberUID($email, $con);
 				$json_response['uid'] = $_SESSION['uid'];
 
+				$cv = $redirect->getControl();
+
 				// if not coming from network, redirect to profile_edit
-				if (!$redirect->pathContains('network')) {
-					
-					$redirect->setPath('profile_edit.php');
-					// will sooon have to set get parameter here
+				if (isset($cv) && $cv['control'] == 'network') {
+					$redirect->setControl('network', $cv['value']);
+				}
+				else {
+					// get network
+					$redirect->setControl('profile', $json_response['uid']);
 				}
 
 				// return successful

@@ -68,10 +68,6 @@ ModPackage.prototype.setPackage = function(cols, values) {
 	}
 }
 
-ModPackage.prototype.retrieveData = function() {
-
-}
-
 ModPackage.prototype.parseTable = function(tableId) {
 
 	// name => db_col : first thing
@@ -81,12 +77,9 @@ ModPackage.prototype.parseTable = function(tableId) {
 	//	   col_match
 	var data = {};
 
-	var tdClasses = ['td.td-edit-value span.on',
-	    'td.td-edit-value input',
-	    'td.db_edit',
-	    'td.db_edit input',
-	    'td.col_match select option:selected',
-	    'td.td-edit.autofill'
+	var tdClasses = ['td.op_val.filled span',
+	    'td.op_val span',
+	    'td.op_input input'
 	];
 
 	var modCols = this.modCols;
@@ -119,10 +112,10 @@ ModPackage.prototype.parseTable = function(tableId) {
 		}
 
 		// add to modified columns
-		if (count == 2 ||
-			count == 4 || count == 6) {
-
-			if (modCols != undefined)
+		//
+		if (modCols != undefined)
+		{
+			if (count == 1) 
 				modCols.push(key);
 		}
 
@@ -155,8 +148,6 @@ ModPackage.prototype.submitPackage = function() {
 
 			// get result
 			var result = JSON.parse(data);
-
-
 		});
 
 }

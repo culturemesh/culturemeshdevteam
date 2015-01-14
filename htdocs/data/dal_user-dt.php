@@ -19,6 +19,7 @@ class UserDT
 	public $network_activity;
 	public $confirmed;
 	public $act_code;
+	public $img_link;
 }
 
 ?>

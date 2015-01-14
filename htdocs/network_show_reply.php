@@ -16,15 +16,15 @@ if (isset($_POST['NOJS'])) {
 			$rids .= '+'.$pid;
 	}
 
-	header("Location: network.php?id={$nid}&reply={$rids}#post-{$pid}");
+	header("Location: network/{$nid}?reply={$rids}#post-{$pid}");
 }
 else {
 	// begin session
 	session_name("myDiaspora");
 	session_start();
 
-	include_once('html_builder.php');
-	include_once('data/dal_post.php');
+//	include_once('html_builder.php');
+//	include_once('data/dal_post.php');
 
 	$response = array(
 		'error' => NULL,
@@ -36,10 +36,46 @@ else {
 	}
 
 	else {
+
+		include ('Environment.php');
+		$cm = new \Environment();
+
+		// get connection
+		$dal = new \dal\DAL($cm->getConnection());
+		$dal->loadFiles();
+		$do2db = new \dal\Do2Db();
+
+		// create network
+		$network = new \dobj\Network();
+		$network->id = (int) $_POST['nid'];
+
+		// get reply by stuff
+		//$replies = Post::getRepliesByParentId($id_parent, $con);
+		$post = new \dobj\Post();
+		$post->id = (int) $_POST['pid'];
+		$post->getReplies($dal, $do2db);
+
+		// close connection
+		$cm->closeConnection();
+		//mysqli_close($con);
+
+		$html = $post->getHTML('replies', array(
+				'cm' => $cm,
+				'mustache' => new \misc\MustacheComponent(),
+				'network' => $network
+			)
+		);
+
+		$response['error'] = 0;
+		$response['html'] = $html;
+		echo json_encode($response);
+
+		/*
 		$replies = Post::getRepliesByParentId($_POST['pid']);
 		$response['error'] = 0;
 		$response['html'] = HTMLBuilder::displayReplies($replies);
 		echo json_encode($response);
+		 */
 	}
 }
 ?>

@@ -16,8 +16,10 @@ function Slider() {
 	var interval = 15;
 	var MOVE_SPEED = 30;
 
-	layEmOut();
-	content.cmMaxScroll = content.scrollLeftMax | content.scrollWidth; 
+	if (content != null) {
+		layEmOut();
+		content.cmMaxScroll = content.scrollLeftMax | content.scrollWidth; 
+	}
 
 	leftButton.onclick = function () {
 		//moveRight();

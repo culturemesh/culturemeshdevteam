@@ -9,6 +9,7 @@ define("WEBSITE_BY_URL", "http://www.kostocoastdev.com");
 
 define("JS_HOLDER_64x64", "http://www.kostocoastdev.com/clients/hosted/js/holder.js/64x64");
 
+/*
 if ( file_exists('../localdbconn.php'))
 {
     include  "../localdbconn.php";
@@ -29,13 +30,27 @@ else
   	include "../../../../abcd123.php";
     }
 }
+ */
  
 define("IMG_DIR", "../../user_images/");
 define("BLANK_IMG", 'images/blank_profile.png');
+
+if ( file_exists("../../../abcd123.php") || 
+	file_exists("../../../../abcd123.php")) {
+	$alt_server = 'localhost';
+}
  
 function getDBConnection(){
-    $conn = new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
-    return $conn;
+    //$conn = new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
+    //return $conn;
+	global $alt_server;
+	if (isset($alt_server)) {
+		return new mysqli($alt_server, 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+	}
+	else {
+		return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+	}
+
 }
 function isAdmin($uid){
     $d = getRowQuery("SELECT role FROM users WHERE id={$uid}");

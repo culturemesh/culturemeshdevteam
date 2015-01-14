@@ -1,0 +1,40 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="suggested_networks">
+	<row>
+		<field name="id">1</field>
+		<field name="city" xsi:nil="true"/>
+		<field name="region" xsi:nil="true"/>
+		<field name="language">Spanish</field>
+		<field name="date_suggested">2014-03-13 07:32:20</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="city">Detroit</field>
+		<field name="region">MI</field>
+		<field name="language" xsi:nil="true"/>
+		<field name="date_suggested">2014-03-13 07:32:20</field>
+	</row>
+	<row>
+		<field name="id">3</field>
+		<field name="city" xsi:nil="true"/>
+		<field name="region">Indonesia</field>
+		<field name="language" xsi:nil="true"/>
+		<field name="date_suggested">2014-03-13 07:32:20</field>
+	</row>
+	<row>
+		<field name="id">4</field>
+		<field name="city" xsi:nil="true"/>
+		<field name="region" xsi:nil="true"/>
+		<field name="language">Japanese</field>
+		<field name="date_suggested">2014-03-13 07:32:20</field>
+	</row>
+	<row>
+		<field name="id">5</field>
+		<field name="city" xsi:nil="true"/>
+		<field name="region" xsi:nil="true"/>
+		<field name="language">Hausa</field>
+		<field name="date_suggested">2014-03-13 07:32:20</field>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>

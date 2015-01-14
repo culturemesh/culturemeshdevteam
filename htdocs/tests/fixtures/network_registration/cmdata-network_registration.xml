@@ -1,0 +1,1195 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="network_registration">
+	<row>
+		<field name="id_user">1</field>
+		<field name="id_network">32</field>
+		<field name="join_date">2014-07-24 21:28:22</field>
+	</row>
+	<row>
+		<field name="id_user">1</field>
+		<field name="id_network">72</field>
+		<field name="join_date">2014-07-26 21:32:24</field>
+	</row>
+	<row>
+		<field name="id_user">1</field>
+		<field name="id_network">352</field>
+		<field name="join_date">2014-10-07 06:19:39</field>
+	</row>
+	<row>
+		<field name="id_user">2</field>
+		<field name="id_network">1</field>
+		<field name="join_date">2014-06-01 19:58:44</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">1</field>
+		<field name="join_date">2014-08-11 19:22:37</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">4</field>
+		<field name="join_date">2014-07-25 07:43:24</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">15</field>
+		<field name="join_date">2014-06-07 22:51:24</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">36</field>
+		<field name="join_date">2014-07-03 20:19:17</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">49</field>
+		<field name="join_date">2014-07-18 02:07:36</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">56</field>
+		<field name="join_date">2014-07-20 20:42:28</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">57</field>
+		<field name="join_date">2014-08-13 21:25:01</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">71</field>
+		<field name="join_date">2014-07-26 17:05:53</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">75</field>
+		<field name="join_date">2014-07-27 01:02:07</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">99</field>
+		<field name="join_date">2014-08-02 09:52:07</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">116</field>
+		<field name="join_date">2014-07-29 02:33:42</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">153</field>
+		<field name="join_date">2014-08-05 22:22:37</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">161</field>
+		<field name="join_date">2014-08-11 16:48:12</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">162</field>
+		<field name="join_date">2014-08-11 16:48:36</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">163</field>
+		<field name="join_date">2014-08-11 16:48:54</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">165</field>
+		<field name="join_date">2014-08-11 16:50:20</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">167</field>
+		<field name="join_date">2014-08-11 16:52:20</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">221</field>
+		<field name="join_date">2014-08-13 06:09:34</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">224</field>
+		<field name="join_date">2014-08-17 18:22:08</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">251</field>
+		<field name="join_date">2014-08-19 07:08:05</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">255</field>
+		<field name="join_date">2014-08-17 18:22:26</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">273</field>
+		<field name="join_date">2014-08-20 01:25:21</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">274</field>
+		<field name="join_date">2014-08-20 03:26:53</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">276</field>
+		<field name="join_date">2014-08-20 19:20:44</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">280</field>
+		<field name="join_date">2014-08-21 04:31:54</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">298</field>
+		<field name="join_date">2014-09-04 03:31:15</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">299</field>
+		<field name="join_date">2014-09-04 03:43:15</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">352</field>
+		<field name="join_date">2014-09-11 17:34:36</field>
+	</row>
+	<row>
+		<field name="id_user">3</field>
+		<field name="id_network">388</field>
+		<field name="join_date">2014-10-05 23:44:59</field>
+	</row>
+	<row>
+		<field name="id_user">4</field>
+		<field name="id_network">1</field>
+		<field name="join_date">2014-06-01 20:39:28</field>
+	</row>
+	<row>
+		<field name="id_user">4</field>
+		<field name="id_network">4</field>
+		<field name="join_date">2014-06-01 20:37:07</field>
+	</row>
+	<row>
+		<field name="id_user">4</field>
+		<field name="id_network">88</field>
+		<field name="join_date">2014-07-28 00:14:34</field>
+	</row>
+	<row>
+		<field name="id_user">6</field>
+		<field name="id_network">1</field>
+		<field name="join_date">2014-06-09 13:00:41</field>
+	</row>
+	<row>
+		<field name="id_user">6</field>
+		<field name="id_network">6</field>
+		<field name="join_date">2014-07-29 03:08:56</field>
+	</row>
+	<row>
+		<field name="id_user">6</field>
+		<field name="id_network">33</field>
+		<field name="join_date">2014-07-02 13:16:50</field>
+	</row>
+	<row>
+		<field name="id_user">6</field>
+		<field name="id_network">57</field>
+		<field name="join_date">2014-08-17 17:50:13</field>
+	</row>
+	<row>
+		<field name="id_user">6</field>
+		<field name="id_network">63</field>
+		<field name="join_date">2014-07-26 04:17:57</field>
+	</row>
+	<row>
+		<field name="id_user">6</field>
+		<field name="id_network">67</field>
+		<field name="join_date">2014-07-26 15:53:46</field>
+	</row>
+	<row>
+		<field name="id_user">6</field>
+		<field name="id_network">76</field>
+		<field name="join_date">2014-07-27 18:55:14</field>
+	</row>
+	<row>
+		<field name="id_user">6</field>
+		<field name="id_network">224</field>
+		<field name="join_date">2014-08-17 17:49:36</field>
+	</row>
+	<row>
+		<field name="id_user">6</field>
+		<field name="id_network">312</field>
+		<field name="join_date">2014-09-06 17:45:41</field>
+	</row>
+	<row>
+		<field name="id_user">21</field>
+		<field name="id_network">6</field>
+		<field name="join_date">2014-09-07 17:51:22</field>
+	</row>
+	<row>
+		<field name="id_user">21</field>
+		<field name="id_network">92</field>
+		<field name="join_date">2014-07-28 18:05:05</field>
+	</row>
+	<row>
+		<field name="id_user">21</field>
+		<field name="id_network">230</field>
+		<field name="join_date">2014-08-14 14:55:49</field>
+	</row>
+	<row>
+		<field name="id_user">34</field>
+		<field name="id_network">73</field>
+		<field name="join_date">2014-07-26 22:14:42</field>
+	</row>
+	<row>
+		<field name="id_user">34</field>
+		<field name="id_network">74</field>
+		<field name="join_date">2014-07-26 22:28:59</field>
+	</row>
+	<row>
+		<field name="id_user">42</field>
+		<field name="id_network">88</field>
+		<field name="join_date">2014-07-28 00:19:10</field>
+	</row>
+	<row>
+		<field name="id_user">43</field>
+		<field name="id_network">88</field>
+		<field name="join_date">2014-07-28 00:25:37</field>
+	</row>
+	<row>
+		<field name="id_user">46</field>
+		<field name="id_network">102</field>
+		<field name="join_date">2014-07-29 00:31:40</field>
+	</row>
+	<row>
+		<field name="id_user">47</field>
+		<field name="id_network">1</field>
+		<field name="join_date">2014-07-30 02:47:14</field>
+	</row>
+	<row>
+		<field name="id_user">47</field>
+		<field name="id_network">112</field>
+		<field name="join_date">2014-07-29 01:56:17</field>
+	</row>
+	<row>
+		<field name="id_user">47</field>
+		<field name="id_network">129</field>
+		<field name="join_date">2014-07-30 00:25:26</field>
+	</row>
+	<row>
+		<field name="id_user">48</field>
+		<field name="id_network">115</field>
+		<field name="join_date">2014-07-29 02:22:47</field>
+	</row>
+	<row>
+		<field name="id_user">49</field>
+		<field name="id_network">121</field>
+		<field name="join_date">2014-07-29 06:57:54</field>
+	</row>
+	<row>
+		<field name="id_user">50</field>
+		<field name="id_network">1</field>
+		<field name="join_date">2014-08-07 17:58:21</field>
+	</row>
+	<row>
+		<field name="id_user">50</field>
+		<field name="id_network">125</field>
+		<field name="join_date">2014-07-29 17:56:51</field>
+	</row>
+	<row>
+		<field name="id_user">50</field>
+		<field name="id_network">138</field>
+		<field name="join_date">2014-07-30 10:48:41</field>
+	</row>
+	<row>
+		<field name="id_user">50</field>
+		<field name="id_network">139</field>
+		<field name="join_date">2014-07-30 10:49:35</field>
+	</row>
+	<row>
+		<field name="id_user">52</field>
+		<field name="id_network">136</field>
+		<field name="join_date">2014-07-30 06:38:44</field>
+	</row>
+	<row>
+		<field name="id_user">54</field>
+		<field name="id_network">149</field>
+		<field name="join_date">2014-08-03 07:43:19</field>
+	</row>
+	<row>
+		<field name="id_user">58</field>
+		<field name="id_network">148</field>
+		<field name="join_date">2014-08-01 20:01:37</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">1</field>
+		<field name="join_date">2014-09-05 21:04:05</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">26</field>
+		<field name="join_date">2014-08-14 19:37:16</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">57</field>
+		<field name="join_date">2014-08-14 13:11:10</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">88</field>
+		<field name="join_date">2014-09-05 21:04:27</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">94</field>
+		<field name="join_date">2014-08-22 00:13:40</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">168</field>
+		<field name="join_date">2014-08-11 19:14:23</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">175</field>
+		<field name="join_date">2014-08-14 13:38:31</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">184</field>
+		<field name="join_date">2014-09-05 19:50:17</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">190</field>
+		<field name="join_date">2014-08-14 12:53:25</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">217</field>
+		<field name="join_date">2014-08-12 06:22:37</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">218</field>
+		<field name="join_date">2014-08-12 06:25:46</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">219</field>
+		<field name="join_date">2014-08-12 06:28:33</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">224</field>
+		<field name="join_date">2014-08-14 13:02:46</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">225</field>
+		<field name="join_date">2014-08-14 13:12:48</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">226</field>
+		<field name="join_date">2014-08-14 13:31:37</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">227</field>
+		<field name="join_date">2014-08-14 13:42:20</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">228</field>
+		<field name="join_date">2014-08-14 13:48:20</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">229</field>
+		<field name="join_date">2014-08-14 13:55:27</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">232</field>
+		<field name="join_date">2014-08-14 18:41:25</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">233</field>
+		<field name="join_date">2014-08-14 19:36:34</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">234</field>
+		<field name="join_date">2014-08-14 19:37:47</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">235</field>
+		<field name="join_date">2014-08-14 19:38:52</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">236</field>
+		<field name="join_date">2014-08-14 19:39:48</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">237</field>
+		<field name="join_date">2014-08-14 21:01:40</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">238</field>
+		<field name="join_date">2014-08-14 21:06:32</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">239</field>
+		<field name="join_date">2014-08-14 21:07:58</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">240</field>
+		<field name="join_date">2014-08-14 21:10:47</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">241</field>
+		<field name="join_date">2014-08-14 21:17:36</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">242</field>
+		<field name="join_date">2014-08-14 21:55:07</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">243</field>
+		<field name="join_date">2014-08-15 15:13:45</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">244</field>
+		<field name="join_date">2014-08-15 16:47:18</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">245</field>
+		<field name="join_date">2014-08-15 16:51:37</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">254</field>
+		<field name="join_date">2014-08-17 05:30:15</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">255</field>
+		<field name="join_date">2014-08-17 06:09:31</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">256</field>
+		<field name="join_date">2014-08-17 06:09:19</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">257</field>
+		<field name="join_date">2014-08-17 06:07:41</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">281</field>
+		<field name="join_date">2014-08-21 23:31:39</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">282</field>
+		<field name="join_date">2014-08-21 23:48:12</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">302</field>
+		<field name="join_date">2014-09-05 18:29:55</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">354</field>
+		<field name="join_date">2014-09-16 11:34:42</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">355</field>
+		<field name="join_date">2014-09-16 11:36:27</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">356</field>
+		<field name="join_date">2014-09-16 11:37:12</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">357</field>
+		<field name="join_date">2014-09-16 11:37:47</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">358</field>
+		<field name="join_date">2014-09-16 11:39:50</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">359</field>
+		<field name="join_date">2014-09-16 11:40:12</field>
+	</row>
+	<row>
+		<field name="id_user">60</field>
+		<field name="id_network">360</field>
+		<field name="join_date">2014-09-16 11:41:29</field>
+	</row>
+	<row>
+		<field name="id_user">65</field>
+		<field name="id_network">6</field>
+		<field name="join_date">2014-08-16 05:32:12</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">184</field>
+		<field name="join_date">2014-09-05 19:51:02</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">190</field>
+		<field name="join_date">2014-09-05 21:06:24</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">217</field>
+		<field name="join_date">2014-09-05 21:05:32</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">224</field>
+		<field name="join_date">2014-08-17 05:53:12</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">228</field>
+		<field name="join_date">2014-09-05 21:06:18</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">229</field>
+		<field name="join_date">2014-09-05 21:05:24</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">243</field>
+		<field name="join_date">2014-09-05 21:04:55</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">245</field>
+		<field name="join_date">2014-09-05 21:05:42</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">254</field>
+		<field name="join_date">2014-08-17 05:44:57</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">255</field>
+		<field name="join_date">2014-08-17 05:56:18</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">256</field>
+		<field name="join_date">2014-08-17 06:00:12</field>
+	</row>
+	<row>
+		<field name="id_user">66</field>
+		<field name="id_network">257</field>
+		<field name="join_date">2014-08-17 06:07:15</field>
+	</row>
+	<row>
+		<field name="id_user">67</field>
+		<field name="id_network">260</field>
+		<field name="join_date">2014-08-17 20:58:20</field>
+	</row>
+	<row>
+		<field name="id_user">71</field>
+		<field name="id_network">1</field>
+		<field name="join_date">2014-08-20 19:21:17</field>
+	</row>
+	<row>
+		<field name="id_user">71</field>
+		<field name="id_network">276</field>
+		<field name="join_date">2014-08-20 19:22:50</field>
+	</row>
+	<row>
+		<field name="id_user">72</field>
+		<field name="id_network">280</field>
+		<field name="join_date">2014-08-21 04:01:24</field>
+	</row>
+	<row>
+		<field name="id_user">75</field>
+		<field name="id_network">1</field>
+		<field name="join_date">2014-08-27 20:00:01</field>
+	</row>
+	<row>
+		<field name="id_user">77</field>
+		<field name="id_network">298</field>
+		<field name="join_date">2014-09-04 15:08:08</field>
+	</row>
+	<row>
+		<field name="id_user">77</field>
+		<field name="id_network">300</field>
+		<field name="join_date">2014-09-04 15:10:08</field>
+	</row>
+	<row>
+		<field name="id_user">79</field>
+		<field name="id_network">88</field>
+		<field name="join_date">2014-09-05 20:14:48</field>
+	</row>
+	<row>
+		<field name="id_user">79</field>
+		<field name="id_network">184</field>
+		<field name="join_date">2014-09-05 20:11:34</field>
+	</row>
+	<row>
+		<field name="id_user">79</field>
+		<field name="id_network">224</field>
+		<field name="join_date">2014-09-05 20:14:16</field>
+	</row>
+	<row>
+		<field name="id_user">79</field>
+		<field name="id_network">228</field>
+		<field name="join_date">2014-09-10 01:36:08</field>
+	</row>
+	<row>
+		<field name="id_user">79</field>
+		<field name="id_network">255</field>
+		<field name="join_date">2014-09-05 20:11:53</field>
+	</row>
+	<row>
+		<field name="id_user">79</field>
+		<field name="id_network">284</field>
+		<field name="join_date">2014-09-10 01:35:07</field>
+	</row>
+	<row>
+		<field name="id_user">79</field>
+		<field name="id_network">336</field>
+		<field name="join_date">2014-09-10 01:35:17</field>
+	</row>
+	<row>
+		<field name="id_user">79</field>
+		<field name="id_network">350</field>
+		<field name="join_date">2014-09-10 01:35:39</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">88</field>
+		<field name="join_date">2014-09-05 20:22:26</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">175</field>
+		<field name="join_date">2014-09-05 20:19:26</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">184</field>
+		<field name="join_date">2014-09-05 20:17:07</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">228</field>
+		<field name="join_date">2014-09-05 20:19:06</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">242</field>
+		<field name="join_date">2014-09-05 20:20:16</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">255</field>
+		<field name="join_date">2014-09-05 20:18:05</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">304</field>
+		<field name="join_date">2014-09-05 20:17:34</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">305</field>
+		<field name="join_date">2014-09-05 20:18:28</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">306</field>
+		<field name="join_date">2014-09-05 20:18:50</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">307</field>
+		<field name="join_date">2014-09-05 20:19:42</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">308</field>
+		<field name="join_date">2014-09-05 20:21:30</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">309</field>
+		<field name="join_date">2014-09-05 20:21:41</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">310</field>
+		<field name="join_date">2014-09-05 20:21:52</field>
+	</row>
+	<row>
+		<field name="id_user">80</field>
+		<field name="id_network">311</field>
+		<field name="join_date">2014-09-05 20:22:03</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">26</field>
+		<field name="join_date">2014-09-10 00:19:30</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">88</field>
+		<field name="join_date">2014-09-10 00:19:15</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">175</field>
+		<field name="join_date">2014-09-10 00:22:31</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">184</field>
+		<field name="join_date">2014-09-09 23:19:43</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">225</field>
+		<field name="join_date">2014-09-10 00:20:13</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">228</field>
+		<field name="join_date">2014-09-10 00:20:00</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">302</field>
+		<field name="join_date">2014-09-10 00:19:40</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">317</field>
+		<field name="join_date">2014-09-10 00:20:28</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">318</field>
+		<field name="join_date">2014-09-10 00:20:40</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">319</field>
+		<field name="join_date">2014-09-10 00:20:55</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">320</field>
+		<field name="join_date">2014-09-10 00:21:05</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">321</field>
+		<field name="join_date">2014-09-10 00:21:15</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">322</field>
+		<field name="join_date">2014-09-10 00:21:58</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">323</field>
+		<field name="join_date">2014-09-10 00:22:17</field>
+	</row>
+	<row>
+		<field name="id_user">82</field>
+		<field name="id_network">386</field>
+		<field name="join_date">2014-09-18 18:41:18</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">4</field>
+		<field name="join_date">2014-09-10 00:26:16</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">26</field>
+		<field name="join_date">2014-09-10 00:26:25</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">184</field>
+		<field name="join_date">2014-09-10 00:24:53</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">190</field>
+		<field name="join_date">2014-09-10 00:26:48</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">224</field>
+		<field name="join_date">2014-09-10 00:25:03</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">228</field>
+		<field name="join_date">2014-09-10 00:26:04</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">302</field>
+		<field name="join_date">2014-09-10 00:27:33</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">317</field>
+		<field name="join_date">2014-09-10 00:27:48</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">324</field>
+		<field name="join_date">2014-09-10 00:25:53</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">325</field>
+		<field name="join_date">2014-09-10 00:26:33</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">326</field>
+		<field name="join_date">2014-09-10 00:27:17</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">327</field>
+		<field name="join_date">2014-09-10 00:27:58</field>
+	</row>
+	<row>
+		<field name="id_user">83</field>
+		<field name="id_network">328</field>
+		<field name="join_date">2014-09-10 00:28:08</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">184</field>
+		<field name="join_date">2014-09-10 00:31:26</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">228</field>
+		<field name="join_date">2014-09-10 00:35:41</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">284</field>
+		<field name="join_date">2014-09-10 00:38:02</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">302</field>
+		<field name="join_date">2014-09-10 00:37:32</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">326</field>
+		<field name="join_date">2014-09-10 00:37:42</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">327</field>
+		<field name="join_date">2014-09-10 00:38:39</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">329</field>
+		<field name="join_date">2014-09-10 00:37:09</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">330</field>
+		<field name="join_date">2014-09-10 00:37:19</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">331</field>
+		<field name="join_date">2014-09-10 00:38:13</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">332</field>
+		<field name="join_date">2014-09-10 00:38:26</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">336</field>
+		<field name="join_date">2014-09-10 01:26:28</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">349</field>
+		<field name="join_date">2014-09-10 01:25:10</field>
+	</row>
+	<row>
+		<field name="id_user">84</field>
+		<field name="id_network">350</field>
+		<field name="join_date">2014-09-10 01:26:16</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">1</field>
+		<field name="join_date">2014-09-10 01:23:10</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">184</field>
+		<field name="join_date">2014-09-10 00:47:07</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">284</field>
+		<field name="join_date">2014-09-10 00:47:29</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">302</field>
+		<field name="join_date">2014-09-10 00:49:28</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">320</field>
+		<field name="join_date">2014-09-10 00:49:48</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">325</field>
+		<field name="join_date">2014-09-10 00:54:50</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">329</field>
+		<field name="join_date">2014-09-10 00:47:18</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">333</field>
+		<field name="join_date">2014-09-10 00:48:11</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">334</field>
+		<field name="join_date">2014-09-10 00:49:16</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">335</field>
+		<field name="join_date">2014-09-10 00:49:36</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">336</field>
+		<field name="join_date">2014-09-10 00:50:05</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">337</field>
+		<field name="join_date">2014-09-10 00:50:19</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">338</field>
+		<field name="join_date">2014-09-10 00:54:36</field>
+	</row>
+	<row>
+		<field name="id_user">85</field>
+		<field name="id_network">339</field>
+		<field name="join_date">2014-09-10 00:54:59</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">4</field>
+		<field name="join_date">2014-09-10 00:59:36</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">88</field>
+		<field name="join_date">2014-09-10 01:00:02</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">175</field>
+		<field name="join_date">2014-09-10 01:05:31</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">184</field>
+		<field name="join_date">2014-09-10 00:59:07</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">228</field>
+		<field name="join_date">2014-09-10 01:05:21</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">284</field>
+		<field name="join_date">2014-09-10 00:59:25</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">309</field>
+		<field name="join_date">2014-09-10 01:05:57</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">327</field>
+		<field name="join_date">2014-09-10 01:06:10</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">338</field>
+		<field name="join_date">2014-09-10 01:00:40</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">340</field>
+		<field name="join_date">2014-09-10 00:59:49</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">342</field>
+		<field name="join_date">2014-09-10 01:00:26</field>
+	</row>
+	<row>
+		<field name="id_user">86</field>
+		<field name="id_network">343</field>
+		<field name="join_date">2014-09-10 01:05:46</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">4</field>
+		<field name="join_date">2014-09-10 01:19:10</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">26</field>
+		<field name="join_date">2014-09-10 01:20:19</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">88</field>
+		<field name="join_date">2014-09-10 01:21:52</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">184</field>
+		<field name="join_date">2014-09-10 01:18:09</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">236</field>
+		<field name="join_date">2014-09-10 01:20:09</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">254</field>
+		<field name="join_date">2014-09-10 01:19:30</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">325</field>
+		<field name="join_date">2014-09-10 01:20:29</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">327</field>
+		<field name="join_date">2014-09-10 01:19:01</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">328</field>
+		<field name="join_date">2014-09-10 01:18:48</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">333</field>
+		<field name="join_date">2014-09-10 01:19:48</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">338</field>
+		<field name="join_date">2014-09-10 01:21:24</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">344</field>
+		<field name="join_date">2014-09-10 01:19:57</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">345</field>
+		<field name="join_date">2014-09-10 01:20:39</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">346</field>
+		<field name="join_date">2014-09-10 01:20:50</field>
+	</row>
+	<row>
+		<field name="id_user">87</field>
+		<field name="id_network">348</field>
+		<field name="join_date">2014-09-10 01:21:35</field>
+	</row>
+	<row>
+		<field name="id_user">90</field>
+		<field name="id_network">374</field>
+		<field name="join_date">2014-09-18 03:23:44</field>
+	</row>
+	<row>
+		<field name="id_user">90</field>
+		<field name="id_network">375</field>
+		<field name="join_date">2014-09-18 03:25:44</field>
+	</row>
+	<row>
+		<field name="id_user">93</field>
+		<field name="id_network">387</field>
+		<field name="join_date">2014-09-19 20:32:00</field>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>

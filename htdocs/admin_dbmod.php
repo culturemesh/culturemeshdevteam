@@ -80,5 +80,8 @@
 	// render
 	echo $m->render($template, array(
 					'vars' => $variable,
-					'tables' => $tables));
+					'tables' => $tables,
+					'booger' => array(
+						'snatch' => true,
+						'grab' => false)));
 ?>

@@ -5,8 +5,13 @@
 <link rel="image_src" href="<?php echo DOMAIN_URL; ?>/logo.png" title="<?php echo DOMAIN_NAME;?>" id="<?php echo DOMAIN_NAME;?>" />
 <noscript> <meta http-equiv=refresh content="0; URL=/noscript.php" /> </noscript>
 
-<link href="<?php echo HOME_PATH; ?>css/bootstrap.css" rel="stylesheet">
-<link href="<?php echo HOME_PATH; ?>css/style.css?<?php echo time(); ?>" rel="stylesheet">
+<script src="<?php echo \Environment::host_root(); ?>/js/utilities.js"></script>
+<script type="text/javascript">
+	cm.home_path = "<?php echo \Environment::host_root(); ?>";
+</script>
+
+<link href="<?php echo \Environment::host_root(); ?>/css/bootstrap.css" rel="stylesheet">
+<link href="<?php echo \Environment::host_root(); ?>/css/style.css?<?php echo time(); ?>" rel="stylesheet">
 <!--<link href="css/style.css" rel="stylesheet">-->
 <!--[if lt IE 9]>
   <script src="js/html5shiv.js"></script>
@@ -25,11 +30,11 @@
 <meta name="og:description" content="Connecting the World's Diasporas" />
 <meta name="og:image" content="http://www.culturemesh.com/culturemesh-live/htdocs/images/CM_Logo_Final_square.jpg"/>
 
-<script src="<?php echo HOME_PATH; ?>js/bootstrap.js"></script>
-<script src="<?php echo HOME_PATH; ?>js/validation.js"></script>
-<script src="<?php echo HOME_PATH; ?>js/account.js"></script>
-<script src="<?php echo HOME_PATH; ?>js/fxn.js"></script>
-<script src="<?php echo HOME_PATH; ?>js/ajax.js"></script>
+<script src="<?php echo \Environment::host_root(); ?>/js/bootstrap.js"></script>
+<script src="<?php echo \Environment::host_root(); ?>/js/validation.js"></script>
+<script src="<?php echo \Environment::host_root(); ?>/js/account.js"></script>
+<script src="<?php echo \Environment::host_root(); ?>/js/fxn.js"></script>
+<script src="<?php echo \Environment::host_root(); ?>/js/ajax.js"></script>
 
 <script type="text/javascript">
 // register validation

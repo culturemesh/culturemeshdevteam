@@ -1,0 +1,15 @@
+<li class='event dashboard'>
+	<div class='event-host'>
+		<img src='{{ vars.img_host_repo }}/{{ event.img_link }}' class='{$i_class}' width='72' height='72'/>
+	</div>
+	<div class='event-text'>
+		<div class='event-title'>
+			<h3 class='h-network'><a href='{{ vars.home_path }}/network/{{ event.id_network }}?elink={{ event.id }}'>{{ event.title }}</a></h3>
+		</div>
+		<div class='event-info'>
+			<p id='event-info'>Hosted by <a href='{{ vars.home_path}}/profile/{{ event.id_host }}'>{{ host }}</a> and set for {{ event.event_date }}</p>
+			<p id='event-desc'>{{ event.description }}</p>
+		</div>
+	</div>
+	<div class='clear'></div>
+</li>

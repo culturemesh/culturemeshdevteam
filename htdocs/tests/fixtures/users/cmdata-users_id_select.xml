@@ -1,0 +1,26 @@
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <database name="culturp7_rehearsal"><table_data name="users">
+	<row>
+		<field name="id">1</field>
+		<field name="username" xsi:nil="true"/>
+		<field name="first_name">Ian</field>
+		<field name="last_name">Nottage</field>
+		<field name="email">inottage@yahoo.com</field>
+		<field name="password">1970eab368ff839bbb4e74a5f12f0619</field>
+		<field name="role">0</field>
+		<field name="register_date">2014-06-27 00:52:57</field>
+		<field name="last_login">2014-06-01 06:47:26</field>
+		<field name="gender">M</field>
+		<field name="about_me">I'm just a bill. Yes I'm only a bill.</field>
+		<field name="events_upcoming" xsi:nil="true"/>
+		<field name="events_interested_in" xsi:nil="true"/>
+		<field name="company_news" xsi:nil="true"/>
+		<field name="network_activity" xsi:nil="true"/>
+		<field name="confirmed">1</field>
+		<field name="act_code">c3f31f549661fbd5e1a368e0e0975160</field>
+		<field name="img_link">1401605407_0/pp.png</field>
+		<field name="fp_code">8442144a0eff9ef237583fc1a7de32d2</field>
+	</row>
+	</table_data>
+	</database>
+</mysqldump>
