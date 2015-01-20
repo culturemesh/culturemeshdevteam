@@ -1,6 +1,7 @@
 <?php
 
-ini_set('display_errors', true);
+ini_set("display_errors", false);
+
 include("zz341/fxn.php");
 include("data/dal_user.php");
 include("data/dal_user_info.php");

@@ -41,6 +41,8 @@ class Util {
 			'second(s) ago'
 		);
 
+		var_dump($interval);
+
 		for ($i = 0; $i < count($props); $i++) {
 
 			// if value is empty, move on
@@ -62,43 +64,6 @@ class Util {
 				return $n . ' ' . $jones[$i];
 			}
 		}
-
-		/*
-		$incrms = array(
-			60, 60, 24, 30, 12);	// seconds, minutes, hours, days, months	
-
-		$jones = array(
-			'just now',
-			'second(s) ago',
-			'minute(s) ago',
-			'hour(s) ago',
-			'day(s) ago',
-			'month(s) ago',
-			'year(s) ago'
-		);
-
-		$units = $interval->format(''); // units start as seconds, are divided
-
-		for($i = 0; $i < count($incrms); $i++) {
-
-			$incr = $incrms[$i];
-
-			// less than
-			if ($units / $incr <= 0) {
-				if ($i == 0) {
-					return $jones[$i];
-				}
-
-				return $units . ' ' . $jones[$i];
-			}
-			// equal to
-			else if ($units / $incr < 1) {
-				return $units . ' ' . $jones[$i+1];
-			} else {
-				$units = floor( $units / $incr);
-			}
-		}
-		 */
 	}
 
 	// taking an array from network with a certain set of keys,

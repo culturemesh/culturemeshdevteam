@@ -124,19 +124,15 @@ class Post extends DisplayDObj {
 			}
 
 			// get html for replies
-			/*
-			foreach ($this->replies as $reply) {
-				$html = $reply->getHTML($context, $vars);
-				array_push($this->replies_html, $html);
-			}
-			 */
-
 			for ($i = 0; $i < count($this->replies) && $i < self::$MAX_REPLIES; $i++) {
 
 				$reply = $this->replies[$i];
 				$html = $reply->getHTML($context, $vars);
 				array_push($this->replies_html, $html);
 			}
+
+			// get name
+			$name = $this->getName();
 
 			// check authentication
 			$delete_button = false;
@@ -145,6 +141,10 @@ class Post extends DisplayDObj {
 			if (isset($_SESSION['uid'])) {
 				$active = true;
 				$site_user = $vars['site_user'];
+
+				// if we're making a new post
+				if ($name == 'UNNAMED USER')
+				   $name = $site_user->getName();
 
 				$reply_request = $site_user->checkNetworkRegistration($network->id);
 
@@ -165,7 +165,7 @@ class Post extends DisplayDObj {
 				'post' => $this,
 				'text' => $this->formatText(),
 				'relative_date' => $this->getRelativeDate(),
-				'name' => $this->getName(),
+				'name' => $name,
 				'replies' => $this->replies_html,
 				'images' => $this->getImagePaths(),
 				'vars' => $cm->getVars()

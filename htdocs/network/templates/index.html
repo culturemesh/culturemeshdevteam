@@ -36,33 +36,14 @@
 
 	{{$ autoload_scripts }}
 	<script type='text/javascript'> 
-			{{# page_vars.member }}
-			/*
-			cm.Autoloader(function() {
-					var psub = new cm.PostSubmit({
-						form: document.getElementById('post-form'), 
-						action: '{{vars.hostname}}/network_post.php',
-						ajax: true,
-						onSuccess: function(data) {
-								var result = JSON.parse(data);
-					       			img = document.getElementById('result_img');
-								img.src = result.name;
-							}
-						}, 
-						new cm.FileUploader({
-						element: document.getElementById('post-form'),
-						maxFiles: 3,
-						acceptedFileTypes: ['jpg', 'png', 'gif', 'bmp', 'jpeg'],
-						sizeLimit: 2097152
-						}))
-					});
-					*/
 
 			cm.Autoloader(function() {
 					var wall = new cm.PostWall({
-							wallUl : document.getElementById('post-wall-ul'),
-							postSubmit : new cm.PostSubmit({
-								form: document.getElementById('post-form'), 
+							wallDiv : document.getElementById('post-wall'),
+							wallUl : document.getElementById('post-wall-ul')
+							{{# page_vars.member }}
+							,
+							postSubmit : new cm.PostSubmit({ form: document.getElementById('post-form'), 
 								action: '{{vars.hostname}}/network_post.php',
 								ajax: true
 								},
@@ -73,6 +54,7 @@
 								sizeLimit: 2097152
 								})
 							)
+							{{/ page_vars.member }}
 						})
 					});
 
@@ -89,7 +71,6 @@
 						html: true
 						});
 					});
-			{{/ page_vars.member }}
 	</script>
 	{{/ autoload_scripts }}
 
@@ -205,38 +186,10 @@
 				{{/ page_vars.more_posts }}
 				{{# get.ap }} lambda required
 				{{/ get.ap }}
-				<!--<script src="js/post-wall.js"></script>-->
-				<script>
-				/*
-				var wall = document.getElementById("post-wall-ul");
-					var postData;
-					var grabData = function(data) {
-						postData = data;
-						replyPosts = [];
-						for (var i = 0; i < postData.length; i++) {
-							if (postData[i]['post_class'] == 'o')
-							  { wall.appendChild(createParent(postData, i)); }
-						/*
-							else 
-							{ 
-								origId = postData[i]['post_original'];
-								if (replyPosts[origId] == undefined) {
-									replyPosts[origId] = [];
-									replyPosts[origId].push(postData[i];
-								}
-								else
-								  { replyPosts[origId].push(postData); }
-							}
-						 *//*
-						}
-						// do something with replyPostslength data
-						// add a div for reply
-					}
-
-					loadPostData({{ page_vars.nid }}, grabData);
-				 */
-				</script>
 			</div>
+			<script>
+				$("#post-wall").hide();
+			</script>
 			<div id="event-wall" class="tab-pane">
 				<!--<ul class="network">-->
 				<div>
@@ -295,346 +248,6 @@
 	<script>
 		$(".datetimepicker").datetimepicker();
 	</script>	
-	</script>
-	<script>
-		///// SHOW REPLY ///////////
-		function primeShowReplies() {
-			$(".show_reply").off("submit");
-			$(".show_reply").on("submit", function(e) {
-				e.preventDefault();
-				// check if replies have already been fetched
-				var replies_div = $( e.target ).parent().siblings('div.replies');
-
-				var rd_children = $( replies_div ).children('ul').children();
-
-				if ( rd_children.length <= 4 ) {
-					var postForm = $(this).serialize();
-					var getReply = new Ajax({
-						requestType: 'POST',
-						requestUrl: '{{ vars.hostname }}/network_show_reply.php',
-							requestParameters: ' ',
-							data: postForm,
-							dataType: 'string',
-							sendNow: true
-					}, function(data) {
-						// success function
-						var response = JSON.parse(data);
-						if (response.error == 0) {
-							var targ = e.target;
-							$( targ ).children(':submit').val('Hide Replies');
-							$( targ ).parent().siblings('div.replies').children('ul').html(response.html);
-							primeDeletes();
-						}
-					}, function(response, rStatus) {
-
-					});
-				}
-				else {
-					if ($( e.target ).children(':submit').val() == 'Hide Replies') {
-						$( replies_div ).hide();
-						$( e.target ).children(':submit').val('Show Replies');
-					}
-					else {
-						$( replies_div ).show();
-						$( e.target ).children(':submit').val('Hide Replies');
-						primeDeletes();
-					}
-				}
-			});
-		}
-
-		/////////// REQUEST REPLY /////////
-		function primeRequestReplies() {
-			$(".request_reply").off("submit");
-			$(".request_reply").on("submit", function(e) {
-				e.preventDefault();
-				var postForm = $(this).serialize();
-				if( $( e.target ).children('button').text() == 'Reply') {
-					var requestReply = new Ajax({
-						requestType: 'POST',
-						requestUrl: '{{ vars.hostname }}/network_request_reply.php',
-							requestParameters: ' ',
-							data: postForm,
-							dataType: 'string',
-							sendNow: true
-					}, function(data) {
-						// success function
-						var response = JSON.parse(data);
-						if (response.error == 0) {
-							var targ = e.target;
-							$( e.target ).parents('li.network-post').children('div.prompt').show();
-							$( targ ).children('button').text('Cancel');
-							$( targ ).parents('li.network-post').children('div.prompt').html(response.html);
-							primeReplyForms();
-						}
-					}, function(response, rStatus) {
-
-					});
-				}
-				else {
-					$( e.target ).parents('li.network-post').children('div.prompt').hide();
-					$( e.target ).children('button').text('Reply');
-				}
-			});
-		}
-
-		////////// SEND REPLY //////////////
-		function primeReplyForms() {
-			$( '.reply_form' ).off('submit');
-			$( '.reply_form' ).on('submit', function(e) {
-				// prevent default behavior
-				e.preventDefault();
-				// get target
-				var targ = e.target;
-				var postForm = $( targ ).serialize();
-
-				var sendReply = new Ajax({
-					requestType: 'POST',
-					requestUrl: '{{ vars.hostname }}/network_post_reply.php',
-						requestParameters: ' ',
-						data: postForm,
-						dataType: 'string',
-						sendNow: true
-				}, function(data) {
-					// success function
-					var response = JSON.parse(data);
-					if (response.error == 0) {
-						// get div
-						var targ = e.target;
-
-						// put all lis out on display
-						$( targ ).parents( 'li.network-post' ).children('div.replies').children('ul').html(response.html);
-
-						// activate showreplies button, change to hide replies 
-						// get ul
-						// if there are over 4 of them
-						if( $( targ ).parents( 'li.network-post' ).children('div.replies').children('ul').children().length > 4) {
-							$( targ ).parents( 'div.prompt' ).siblings( 'div.show_reply_div' ).children('form.show_reply').show();
-							$( targ ).parents( 'div.prompt' ).siblings( 'div.show_reply_div' ).children('form.show_reply').children(':submit').val('Hide Replies');
-						}
-
-						// increment replies
-						//  a) get reply count
-						var replyCount = $( targ ).parents( 'div.prompt' ).siblings('div.replies').children('ul.replies').children().length;
-						//  b) increment in obvious place
-						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('p.reply_count').text(replyCount + ' replies');
-						//  c) increment in hidden submit
-						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('form.post_delete').children("input[name='replies']").val(replyCount)
-						//  d) increment at top of page
-
-						// activate delete buttons
-						primeDeletes();
-
-						// clear out reply thing and change text
-						$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('div.reply-button').children('form.request_reply').children('button').text('Reply');
-						$( targ ).parents( 'div.prompt' ).hide();
-					}
-				}, function(response, rStatus) {
-
-				});
-			});
-		}
-
-
-		////////// DELETE REPLY /////////////
-		//
-		//
-		function primeDeletes() {
-			// event handler
-			$( '.delete_reply' ).off('submit');
-			$( '.delete_reply' ).on('submit', function(e) {
-				// prevent default behavior
-				e.preventDefault();
-				// get target
-
-				if (confirm("Are you sure you want to delete this reply?")) {
-					var targ = e.target;
-					var postForm = $( targ ).serialize();
-
-					var sendReply = new Ajax({
-						requestType: 'POST',
-						requestUrl: '{{ vars.hostname }}/network_reply_delete.php',
-							requestParameters: ' ',
-							data: postForm,
-							dataType: 'string',
-							sendNow: true
-					}, function(data) {
-						// success function
-						var response = JSON.parse(data);
-						
-						if (response.error == 0) {
-							// delete parent li
-							// get form
-							var targ = e.target;
-							var ul = $( targ ).parents('ul.replies');
-
-							$( targ ).parents('li.reply').remove();
-
-							// delete whole post
-							if (response.status == 'postdelete') {
-								$( ul ).parents('li.network-post').remove();
-							}
-							else {
-								//var children = ul.children();
-								//var replyCount =  children.length;
-								var replyCount = ul.children().length;
-								// update reply counts elsewhere
-								// post info div
-								var div = $( ul ).parents('div.replies').siblings('div.post-info');
-
-								//  1) hidden input on delete post
-								$( div ).children('div.reply-button.delete').children('form.post_delete').children("input[name|='replies']").val(replyCount);
-								//  2) reply count
-								$( div ).children('p.reply_count').text(replyCount + ' replies');
-
-								// update 
-								// if ul is now less than 4...
-								if ( replyCount <= 4 ) {
-									// hide show replies form
-									$( ul ).parents('div.replies').siblings('div.show_reply_div').children('form.show_reply').children(':submit').val('Show Replies');
-									$( ul ).parents('div.replies').siblings('div.show_reply_div').children('form.show_reply').hide();
-
-									/*
-									$( div ).children('div.reply-button').children('form.show_reply').children(':submit').val('Show Replies');
-									$( div ).children('div.reply-button').children('form.show_reply').hide();
-						 			*/
-								}	
-							}
-						}
-					}, function(response, rStatus) {
-
-					});
-				}
-			});
-		}
-
-		/////// DELETE POST ///////////////////
-		$('.post_delete').on('submit', function(e) {
-			// prevent default behavior 
-			e.preventDefault();
-
-			if (confirm("Are you sure you want to delete this post?")) {
-				var postForm = $( e.target ).serialize();
-
-				postDelete = new Ajax({
-					requestType: 'POST',
-					requestUrl: '{{ vars.hostname }}/network_post_delete.php',
-						requestHeaders: ' ',
-						data: postForm,
-						dataType: 'string',
-						sendNow: true
-				}, function(data) {
-					var response = JSON.parse(data);
-
-					if (response.error == 0) {
-						var targ = $( e.target );
-						if (response.status == 'destroyed') {
-							// remove li 
-							targ.parents('li.network-post').remove();
-							// decrement number of posts up top
-						}
-
-						if (response.status == 'wiped') {
-							targ.parents('li.network-post').replaceWith(response.html);
-							callPrimes();
-						}
-					}
-				}, function(response, rStatus) {
-
-				});
-			}
-		});
-
-
-		function primeDeletePosts() {
-			$('.post_delete').off('submit');
-			$('.post_delete').on('submit', function(e) {
-				// prevent default behavior 
-				e.preventDefault();
-
-				if (confirm("Are you sure you want to delete this post?")) {
-					var postForm = $( e.target ).serialize();
-
-					postDelete = new Ajax({
-						requestType: 'POST',
-						requestUrl: '{{ vars.hostname }}/network_post_delete.php',
-							requestHeaders: ' ',
-							data: postForm,
-							dataType: 'string',
-							sendNow: true
-					}, function(data) {
-						var response = JSON.parse(data);
-
-						if (response.error == 0) {
-							var targ = $( e.target );
-							if (response.status == 'destroyed') {
-								// remove li 
-								targ.parents('li.network-post').remove();
-								// decrement number of posts up top
-							}
-
-							if (response.status == 'wiped') {
-								targ.parents('li.network-post').replaceWith(response.html);
-								callPrimes();
-							}
-						}
-					}, function(response, rStatus) {
-
-					});
-				}
-			});
-		}
-
-		$('.more_posts').on('submit', function(e) {
-			
-			// prevent default
-			e.preventDefault();
-
-			// get form
-			var targ = $(e.target);
-			var postForm = $( targ ).serialize();
-			
-			var requestPosts = new Ajax({
-					requestType: 'POST',
-					requestUrl: '{{ vars.hostname }}/network_more_posts.php',
-					requestHeaders: ' ',
-					data: postForm,
-					dataType: 'string',
-					sendNow: true
-			}, function(data) {
-				var response = JSON.parse(data);
-				// add stuff to post wall
-				$("#post-wall-ul").append(response.html);
-
-				// with new stuff, call primes
-				callPrimes();
-
-				if(response['continue'] == 'n') {
-					$( targ ).hide();
-				}
-				else {
-					$('#nmp_lb').val(response['lb']);
-				}
-				
-			}, function() {
-			});
-		});
-
-		function callPrimes() {
-			primeShowReplies();
-			primeRequestReplies();
-			primeReplyForms();
-			primeDeletes();
-			primeDeletePosts();
-			primeShowReplies();
-		}
-
-//		primeShowReplies();
-//		primeRequestReplies();
-		callPrimes();
-
-		console.log("buttons");
-	</script>
 	<script>
 		function switchTab() {
 			// remove post active status

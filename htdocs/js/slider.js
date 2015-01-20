@@ -48,7 +48,7 @@ function Slider() {
 		var totalX = 0;
 		for (var i = 0, col; col = table.rows[0].cells[i]; i++)
 		{
-			col.style.left = totalX;
+			col.style.left = totalX + 'px';
 			// increment totalX
 			if (col.className == "event-card card")
 				totalX += cardLength + interval;

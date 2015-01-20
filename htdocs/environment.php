@@ -5,6 +5,7 @@ final class Environment {
 	// COMPILE TIME PROPERTIES //
 	public static $site_root = __FILE__;
 	public static $host_root_s;
+	public static $hostname_s;
 	private static $domain_url = 'http://www.culturemesh.com';
 	private static $short_domain_url = 'culturemesh.com';
 	private static $domain_name = 'CultureMesh';
@@ -48,13 +49,6 @@ final class Environment {
 
 			$hostname = $_SERVER['HTTP_HOST'];
 			$this->host_root = '//'.str_replace($doc_root, $hostname, getcwd());
-/*
-// check for https host
-if (isset($_SERVER['HTTPS']))
-$this->host_root = 'https://'.str_replace($doc_root, $hostname, getcwd());
-else
-$this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
- */
 			$this->f_root = str_replace($doc_root, '', getcwd());
 			$this->img_host_repo = $this->host_root.'/../../user_images';
 		}
@@ -66,17 +60,6 @@ $this->host_root = 'http://'.str_replace($doc_root, $hostname, getcwd());
 		}
 		// setup autoload
 		$this::setupAutoload();
-/*
-if (file_exists('../localdbconn.php')) {
-var_dump('THING EXISTS');
-}
- */
-/*
-var_dump($DB_NAME);
-var_dump($DB_PASS);
-var_dump($DB_SERVER);
-var_dump($DB_USER);
- */
 		$this->img_dir;
 		$this->img_repo_dir = self::$site_root.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'user_images';
 		$this->blank_img;
@@ -96,23 +79,21 @@ var_dump($DB_USER);
 		return getcwd();
 	}
 
+	public static function hostname() {
+		if (!isset(self::$hostname_s))
+			self::$hostname_s = $_SERVER['HTTP_HOST'];
+
+		// return
+		return self::$hostname_s;
+	}
+
 	public static function host_root() {
 		if (!isset(self::$host_root_s)) {
 			$doc_root = $_SERVER['DOCUMENT_ROOT'];
 			$hostname = $_SERVER['HTTP_HOST'];
 			self::$host_root_s = '//'.str_replace($doc_root, $hostname, getcwd());
-/*
-if (isset($_SERVER['HTTPS']))
-self::$host_root_s = 'https://'.str_replace($doc_root, $hostname, getcwd());
-else
-self::$host_root_s = 'http://'.str_replace($doc_root, $hostname, getcwd());
- */
 		}
 		return self::$host_root_s;
-	}
-
-	public function testMode() {
-		echo 'Decided I may not need this';
 	}
 
 	private function includeEnvFiles() {
@@ -153,35 +134,6 @@ self::$host_root_s = 'http://'.str_replace($doc_root, $hostname, getcwd());
 		$this->db_user = $DB_USER;
 		$this->g_api_key = $G_API_KEY;
 		return true;
-/*
-if ( file_exists('../localdbconn.php'))
-{
-include "../localdbconn.php";
-// global $DB_NAME, $DB_PASS, $DB_SERVER, $DB_USER;
-var_dump($DB_NAME);
-return true;
-}
-else if ( file_exists('../../localdbconn.php'))
-{
-include "../../localdbconn.php";
-return true;
-}
-else
-{
-$this->db_server = "localhost";
-$this->db_user = "culturp7";
-if ( file_exists("../../../abcd123.php")) {
-include "../../../abcd123.php";
-return true;
-}
-else if ( file_exists("../../../../abcd123.php")) {
-include "../../../../abcd123.php";
-return true;
-}
-}
-// if none of the files are there
-return false;
- */
 	}
 
 	public static function returnOldMysqli() {

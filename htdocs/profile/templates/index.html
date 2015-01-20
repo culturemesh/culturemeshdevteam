@@ -322,6 +322,12 @@
 		    var results = JSON.parse(data);
 		    $("#password_mismatch_txt").text(results['msg']);
 		    $("#password_mismatch_txt").show();
+
+		    // clear password fields
+		    $("#password").val('');
+		    $("#password_cur").val('');
+		    $("#password_conf").val('');
+		    
 		})
 		.fail(function(data) {
 			$("#password_mismatch_txt").text("We're having technical problems on our end. Try again later.");
