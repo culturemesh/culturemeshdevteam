@@ -13,28 +13,28 @@
 		<meta name="og:description" content="Connecting the World's Diasporas" />
 		<meta name="og:image" content="http://www.culturemesh.com/culturemesh-live/htdocs/images/CM_Logo_Final_square.jpg"/>
 
-		<script src="{{ vars.home_path }}/js/utilities.js"></script>
+		<script src="{{ vars.hostname }}/js/utilities.js"></script>
 		<script type="text/javascript">
-			cm.home_path = "{{ vars.home_path }}";
+			cm.home_path = "{{ vars.hostname }}";
 		</script>
 
-		<link href="{{ vars.home_path }}/css/bootstrap.css" rel="stylesheet">
-		<link href="{{ vars.home_path }}/css/style.css#" rel="stylesheet">
+		<link href="{{ vars.hostname }}/css/bootstrap.css" rel="stylesheet">
+		<link href="{{ vars.hostname }}/css/style.css#" rel="stylesheet">
 		{{$ stylesheets }}
 		{{/ stylesheets }}
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<!--<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>-->
-		<script src="{{ vars.home_path }}/js/parsley.min.js"></script>
+		<script src="{{ vars.hostname }}/js/parsley.min.js"></script>
 
-		<script src="{{ vars.home_path }}/js/jquery-ui.js"></script>
-		<script src="{{ vars.home_path }}/js/bootstrap.js"></script>
-		<script src="{{ vars.home_path }}/js/validation.js"></script>
-		<script src="{{ vars.home_path }}/js/account.js"></script>
-		<script src="{{ vars.home_path }}/js/autoloader.js"></script>
-		<script src="{{ vars.home_path }}/js/fxn.js"></script>
-		<script src="{{ vars.home_path }}/js/ajax.js"></script>
-		<script src="{{ vars.home_path }}/js/mustache.js/mustache.js"></script>
+		<script src="{{ vars.hostname }}/js/jquery-ui.js"></script>
+		<script src="{{ vars.hostname }}/js/bootstrap.js"></script>
+		<script src="{{ vars.hostname }}/js/validation.js"></script>
+		<script src="{{ vars.hostname }}/js/account.js"></script>
+		<script src="{{ vars.hostname }}/js/autoloader.js"></script>
+		<script src="{{ vars.hostname }}/js/fxn.js"></script>
+		<script src="{{ vars.hostname }}/js/ajax.js"></script>
+		<script src="{{ vars.hostname }}/js/mustache.js/mustache.js"></script>
 
 		<script>
 			window.fbAsyncInit = function() {
@@ -122,15 +122,15 @@
 		<div class="wrapper">
 			<div id="header">
 				<div id="top-logo">
-					<a href="{{ vars.home_path }}/index.php"><img src="{{ vars.home_path }}/images/logo_header.png"></a>
+					<a href="{{ vars.hostname }}/index.php"><img src="{{ vars.hostname }}/images/logo_header.png"></a>
 				</div>
 				<div id="right-top-btns">
 					<ul id="top-links">
-						<li><a id="menu-about" href="{{ vars.home_path }}/about.php">About</a></li>
+						<li><a id="menu-about" href="{{ vars.hostname }}/about.php">About</a></li>
 						<!--<li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>-->
 						{{# logged_in }}
-						<li><a href="{{ vars.home_path }}/profile/{{ site_user.id }}" id="welcome">Welcome, {{ site_user.first_name }}</a></li>
-						<li><a id="sign-out" href="{{ vars.home_path }}/sign_out.php">Sign Out</a></li>
+						<li><a href="{{ vars.hostname }}/profile/{{ site_user.id }}" id="welcome">Welcome, {{ site_user.first_name }}</a></li>
+						<li><a id="sign-out" href="{{ vars.hostname }}/sign_out.php">Sign Out</a></li>
 						{{/ logged_in }}
 						{{^ logged_in }}
 						<li><a id="login-link" href="#login_modal" data-toggle="modal">Log In</a></li>
@@ -144,7 +144,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
 					</div>
 					<div class="modal-body">
-						<form id="reg_form" method="post" action="{{ vars.home_path }}/r.php">
+						<form id="reg_form" method="post" action="{{ vars.hostname }}/r.php">
 							<div id="register-div">
 								<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
 								</br>
@@ -178,7 +178,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
 					</div>
 					<div class="modal-body">
-						<form id="log_form" method="post" action="{{ vars.home_path }}/l.php">
+						<form id="log_form" method="post" action="{{ vars.hostname }}/l.php">
 							<div id="login-div">
 								<input type="email" name="email" id="log_email" class="modal-text-input" placeholder="Email" required />
 								<input type="password" name="password" id="log_password" class="modal-text-input" onchange="validateInput(this, document.getElementById(\'log_validation\'))" placeholder="Password" required />
@@ -189,7 +189,7 @@
 								<input type="submit" id="log_submit_btn" class="submit" data-loading-text="Checking..." value="Sign In" />
 								</br>
 								</br>
-								<a href="{{ vars.home_path }}/forgotpass.php">Forgot your password?</a>
+								<a href="{{ vars.hostname }}/forgotpass.php">Forgot your password?</a>
 							</div>    
 						</form>
 					</div>
@@ -206,10 +206,10 @@
 			{{/ content }}
 			<div class="footer">
 			    <ul id="bottom-links" class="text-center">
-				    <li><a href="{{ vars.home_path }}/careers.php">Careers</a></li>
-				    <li><a href="{{ vars.home_path }}/about.php#team">Team</a></li>
-				    <li><a href="{{ vars.home_path }}/press.php">Press</a></li>
-				    <li><a href="{{ vars.home_path }}/about.php#contact">Contact</a></li>
+				    <li><a href="{{ vars.hostname }}/careers.php">Careers</a></li>
+				    <li><a href="{{ vars.hostname }}/about.php#team">Team</a></li>
+				    <li><a href="{{ vars.hostname }}/press.php">Press</a></li>
+				    <li><a href="{{ vars.hostname }}/about.php#contact">Contact</a></li>
 			    </ul>
 			</div>
 		</div>

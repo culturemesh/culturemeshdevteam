@@ -18,5 +18,4 @@ $redirect = new \nav\HTTPRedirect($cm, $prev_url, $pages);
 $redirect->removeQueryParameters(array('lerror', 'rerror', 'jeerror', 'eid', 'ueerror'));
 
 $redirect->execute();
-//return 1;
 ?>

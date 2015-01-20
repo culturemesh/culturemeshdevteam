@@ -41,6 +41,7 @@ class Network {
 		// check registration
 		$site_user = NULL;
 		$logged_in = false;
+		$member = false;
 
 		if (isset($_SESSION['uid'])) {
 

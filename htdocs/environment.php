@@ -14,6 +14,7 @@ final class Environment {
 
 	// RUNTIME PROPERTIES //
 	private $host_root;
+	private $hostname;
 	private $f_root; // needed for AltoRouter
 	private $ds;
 	private $template_dir;
@@ -43,6 +44,8 @@ final class Environment {
 		// nothing if executing a script
 		//
 		if (isset($_SERVER['HTTP_HOST'])) {
+			$this->hostname = $_SERVER['HTTP_HOST'];
+
 			$hostname = $_SERVER['HTTP_HOST'];
 			$this->host_root = '//'.str_replace($doc_root, $hostname, getcwd());
 /*
@@ -116,18 +119,29 @@ self::$host_root_s = 'http://'.str_replace($doc_root, $hostname, getcwd());
 		if (!file_exists('../localdbconn.php')
 			&& !file_exists('../../localdbconn.php'))
 		{
-			$this->db_server = "localhost";
 			$this->db_user = "culturp7";
+
 			// other shiz
 			if ( !file_exists("../../../abcd123.php")
 				&& !file_exists("../../../../abcd123.php"))
 			{
 				return false;
 			}
-			include "../../../abcd123.php";
+
+			if ( file_exists("../../abcd123.php"))
+				include "../../abcd123.php";
+
+			if ( file_exists("../../../abcd123.php"))
+				include "../../../abcd123.php";
+
+
+			if ( file_exists("../../../../abcd123.php"))
+				include "../../../../abcd123.php";
+
+			$this->db_server = $DB_SERVER;
 			$this->db_name = $DB_NAME;
 			$this->db_pass = $DB_PASS;
-			$this->g_api_key = $G_API_KEY;
+			$this->g_api_key = $GLOBALS['G_API_KEY'];
 			// leave
 			return True;
 		}
@@ -266,7 +280,8 @@ return false;
 			'img_host_repo' => $this->img_host_repo,
 			'home_path' => $this->host_root,
 			'f_root' => $this->f_root,
-			'img_path' => $this->img_dir
+			'img_path' => $this->img_dir,
+			'hostname' => '//' . $this->hostname
 		);
 	}
 }

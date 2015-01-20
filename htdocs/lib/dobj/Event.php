@@ -77,7 +77,7 @@ class Event extends DisplayDObj {
 				if ($user->id == $this->id_host) {
 					$owner = true;
 				}
-				if (in_array($user->events_attending, $this->id)) {
+				if (in_array($this->id, $user->events_attending)) {
 					$attending = true;
 				}
 			}

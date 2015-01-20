@@ -38,8 +38,13 @@ class QueryHandler
 		else {
 			if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') !== false) 
 			  return new mysqli('localhost', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
-			else
-			  return new mysqli('localhost', 'culturp7', 'IanTheMan2014!', 'culturp7_ktc');
+
+			else {
+			   if ($_SERVER['HTTP_HOST'] == 'www.culturemesh.build')
+				return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+			   else
+				return new mysqli($alt_server, 'culturp7', 'IanTheMan2014!', 'culturp7_ktc');
+			}
 		}
 	}
 

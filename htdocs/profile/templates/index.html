@@ -103,7 +103,7 @@
 	    </span>
 	    <div id="pic-upload-div">
 		    <p id="success-label"></p>
-		    <form id="profile-pic-upload" method="POST" action="{{ vars.home_path }}/profile_img_upload.php" enctype="multipart/form-data"/>
+		    <form id="profile-pic-upload" method="POST" action="{{ vars.hostname }}/profile_img_upload.php" enctype="multipart/form-data"/>
 			<input type="file" id="upload-input" name="picfile">
 			<input type="hidden" id="upload-id" name="id" value="{{ page_vars.uid }}">
 			<noscript>
@@ -171,7 +171,7 @@
 				<p> You have no posts</p>
 				{{/ sections.yp_posts }}
 				{{# page_vars.more_posts }}
-				<form id='more-posts' action='{{ vars.home_path }}/profile_operations.php' method='POST' />
+				<form id='more-posts' action='{{ vars.hostname }}/profile_operations.php' method='POST' />
 					<input type='hidden' name='more_posts' value='true' />
 					<input type='hidden' name='uid' value='{{ user.id }}' />
 					<input type='hidden' id='lb' name='lb' value='10' />
@@ -225,7 +225,7 @@
 		<!-- ACCOUNTS TAB -->
 		{{^ page_vars.guest }}
 		<div class="tab-pane" id="profile_accounts_tab">
-			<form id="account_info_form" method="POST" action="{{ vars.home_path }}/update_notifications.php">
+			<form id="account_info_form" method="POST" action="{{ vars.hostname }}/update_notifications.php">
 				<div>
 					<label class="label label-success hide" id="account_info_update_success_txt">Information successfully updated!</label>
 					<label class="label label-important hide" id="account_info_update_failure_txt">Update failed. Please try again.</label>
@@ -256,8 +256,8 @@
 	{{/ content }}
 
 	{{$ body_scripts }}
-	<script src="{{vars.home_path}}/js/searchbar.js"></script>
-	<script src="{{vars.home_path}}/js/file-input.js"></script>
+	<script src="{{vars.hostname}}/js/searchbar.js"></script>
+	<script src="{{vars.hostname}}/js/file-input.js"></script>
 
 	{{^ user.confirmed }}
 	<script>
@@ -271,7 +271,7 @@
 					confirmTxt.style.display = "block";
 				}
 			}
-			xmlhttp.open("POST", "{{ vars.home_path }}/confirmation_resend.php", true);
+			xmlhttp.open("POST", "{{ vars.hostname }}/confirmation_resend.php", true);
 			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xmlhttp.send(query);
 		}
@@ -280,7 +280,7 @@
 
 	<script>
 	    $("#basic_info_update_btn").click(function(){
-		    $.post("{{ vars.home_path }}/profile_operations.php", $("#basic_info_form").serialize())
+		    $.post("{{ vars.hostname }}/profile_operations.php", $("#basic_info_form").serialize())
 			.done(function(data){
 			    results = JSON.parse(data);
 			    if(results['error'] == 0){
@@ -317,7 +317,7 @@
 	    $("#cp_submit_btn").click(function(e){
 		e.preventDefault();
 		$("#c_pw").val($("#current_password").val());
-		$.post("{{ vars.home_path }}/profile_operations.php", $("#password_change_form").serialize())
+		$.post("{{ vars.hostname }}/profile_operations.php", $("#password_change_form").serialize())
 		.done(function(data){
 		    var results = JSON.parse(data);
 		    $("#password_mismatch_txt").text(results['msg']);
@@ -342,7 +342,7 @@
 
 			var ajaxRequest = new Ajax({
 					requestType: 'POST',
-					requestUrl: '{{ vars.home_path }}/profile_operations.php',
+					requestUrl: '{{ vars.hostname }}/profile_operations.php',
 					requestHeaders: ' ',
 					data: postForm,
 					dataType: 'string',

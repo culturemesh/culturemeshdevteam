@@ -3,10 +3,10 @@
 		<img id='profile-post' src='{{ vars.img_host_repo}}/{{ reply.img_link }}' width='45' height='45'>
 	</div>
 	<div class='post-info'>
-		<h5 class='h-network post'><a href='{{ vars.home_path }}/profile/{{ reply.id_user }}'>{{ name }}</a></h5>
+		<h5 class='h-network post'><a href='{{ vars.hostname }}/profile/{{ reply.id_user }}'>{{ name }}</a></h5>
 		{{# owner }}
 		<div class='reply-button delete'>
-			<form class='personal delete_reply' method="POST" action="{{ vars.home_path }}/network_reply_delete.php">
+			<form class='personal delete_reply' method="POST" action="{{ vars.hostname }}/network_reply_delete.php">
 				<noscript>
 				<input type="hidden" name="NOJS" value="NOJS"/>
 				</noscript>

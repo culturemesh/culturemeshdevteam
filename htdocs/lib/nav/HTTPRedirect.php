@@ -229,9 +229,13 @@ class HTTPRedirect {
 		return $this->url_path.$this->url_control.$this->url_query.$this->url_fragment;
 	}
 
+	public function getExecute() {
+		return '//'. $this->cm->hostname. $this->cm->ds . self::getUrl();
+	}
+
 	// if you want, take care of the whole header call right here
 	public function execute() {
-		header('Location: '. $this->cm->host_root. $this->cm->ds . self::getUrl());
+		header('Location: //'. $this->cm->hostname. $this->cm->ds . self::getUrl());
 	}
 }
 

@@ -3,13 +3,13 @@
 	{{$ title }}{{page.title}}{{/ title }}
 
 	{{$ stylesheets }}
-	<link href="{{ vars.home_path }}/css/lightbox.css" rel="stylesheet" />
+	<link href="{{ vars.hostname }}/css/lightbox.css" rel="stylesheet" />
 	{{/ stylesheets }}
 
 	{{$ more_scripts }}
-	<script src="{{ vars.home_path }}/js/lightbox.min.js"></script>
-	<script type='text/javascript' src='{{vars.home_path}}/js/fileupload.js'></script>
-	<script type='text/javascript' src='{{vars.home_path}}/js/post-wall.js'></script>
+	<script src="{{ vars.hostname }}/js/lightbox.min.js"></script>
+	<script type='text/javascript' src='{{vars.hostname}}/js/fileupload.js'></script>
+	<script type='text/javascript' src='{{vars.hostname}}/js/post-wall.js'></script>
 
 	<script>
 		/*
@@ -41,7 +41,7 @@
 			cm.Autoloader(function() {
 					var psub = new cm.PostSubmit({
 						form: document.getElementById('post-form'), 
-						action: '{{vars.home_path}}/network_post.php',
+						action: '{{vars.hostname}}/network_post.php',
 						ajax: true,
 						onSuccess: function(data) {
 								var result = JSON.parse(data);
@@ -63,7 +63,7 @@
 							wallUl : document.getElementById('post-wall-ul'),
 							postSubmit : new cm.PostSubmit({
 								form: document.getElementById('post-form'), 
-								action: '{{vars.home_path}}/network_post.php',
+								action: '{{vars.hostname}}/network_post.php',
 								ajax: true
 								},
 								new cm.FileUploader({
@@ -126,7 +126,7 @@
 					{{# logged_in }}
 					{{^ page_vars.member }}
 					<div class="reg-guest">
-						<form method="POST" action="{{ vars.home_path }}/network_join.php">
+						<form method="POST" action="{{ vars.hostname }}/network_join.php">
 							<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
 							<button class="network">Join us!</button>
 						</form>
@@ -137,7 +137,7 @@
 					{{# page_vars.member }}
 					<div class="member">
 						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
-						<form method="POST" action="{{ vars.home_path }}/network_leave.php">
+						<form method="POST" action="{{ vars.hostname }}/network_leave.php">
 							<button class="network">Leave Network</button>
 							<input type="hidden" name="uid" value="{{ site_user.id }}"/>
 							<input type="hidden" name="nid" value="{{ page_vars.nid }}"/>
@@ -164,7 +164,7 @@
 			<div class="network tab-content">
 			<div id="post-wall" class="tab-pane active">
 				{{# page_vars.member }}
-				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.home_path }}/network_post.php" enctype="multipart/form-data">
+				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.hostname }}/network_post.php" enctype="multipart/form-data">
 					<img id="profile-post" src="{{ vars.img_host_repo}}/{{ site_user.img_link }}" width="45" height="45">
 					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 					<div class="fileupload-error"></div>
@@ -179,7 +179,7 @@
 				<hr>
 				{{/ page_vars.member }}
 				<!--
-				<form method="POST" class="member" action="{{ vars.home_path }}/network_post.php">
+				<form method="POST" class="member" action="{{ vars.hostname }}/network_post.php">
 				<img id="profile-post" src="{{ user.img_link }}" width="45" height="45">
 					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 					<div class="clear"></div>
@@ -195,7 +195,7 @@
 				</ul>
 				{{# page_vars.more_posts }}
 				<div>
-					<form class="more_posts" method="POST" action="{{ vars.home_path }}/network_more_posts.php">
+					<form class="more_posts" method="POST" action="{{ vars.hostname }}/network_more_posts.php">
 						<input type="hidden" id="nmp_lb" name="lb" value=11 />
 						<input type="hidden" id="nmp_ub" name="ub" value=10 />
 						<input type="hidden" id="nmp_nid" name="nid" value="{{ page_vars.nid }}" />
@@ -259,7 +259,7 @@
 				</script>
 				{{/ get.eperror }}
 				<div id="event-maker">
-					<form class="event-form" method="POST" action="{{ vars.home_path }}/network_post-event.php" enctype="multipart/form-data">
+					<form class="event-form" method="POST" action="{{ vars.hostname }}/network_post-event.php" enctype="multipart/form-data">
 						<div>
 						<input type="text" id="title" name="title" class="event-text" placeholder="Name of Event " required></input></br>
 						<input type="text" id="datetimepicker1" name="datetime" class="event-text datetimepicker" placeholder="Event Date" required>
@@ -287,10 +287,10 @@
 	{{/ content }}
 
 	{{$ body_scripts }}
-	<link rel="stylesheet" type="text/css" href="{{vars.home_path}}/js/jsdatetime/jquery.datetimepicker.css"/ >
-	<script src="{{vars.home_path}}/js/jsdatetime/jquery.datetimepicker.js"></script>
-	<script src="{{vars.home_path}}/js/searchbar.js"></script>
-	<script src="{{vars.home_path}}/js/slider.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{vars.hostname}}/js/jsdatetime/jquery.datetimepicker.css"/ >
+	<script src="{{vars.hostname}}/js/jsdatetime/jquery.datetimepicker.js"></script>
+	<script src="{{vars.hostname}}/js/searchbar.js"></script>
+	<script src="{{vars.hostname}}/js/slider.js"></script>
 
 	<script>
 		$(".datetimepicker").datetimepicker();
@@ -311,7 +311,7 @@
 					var postForm = $(this).serialize();
 					var getReply = new Ajax({
 						requestType: 'POST',
-						requestUrl: '{{ vars.home_path }}/network_show_reply.php',
+						requestUrl: '{{ vars.hostname }}/network_show_reply.php',
 							requestParameters: ' ',
 							data: postForm,
 							dataType: 'string',
@@ -352,7 +352,7 @@
 				if( $( e.target ).children('button').text() == 'Reply') {
 					var requestReply = new Ajax({
 						requestType: 'POST',
-						requestUrl: '{{ vars.home_path }}/network_request_reply.php',
+						requestUrl: '{{ vars.hostname }}/network_request_reply.php',
 							requestParameters: ' ',
 							data: postForm,
 							dataType: 'string',
@@ -390,7 +390,7 @@
 
 				var sendReply = new Ajax({
 					requestType: 'POST',
-					requestUrl: '{{ vars.home_path }}/network_post_reply.php',
+					requestUrl: '{{ vars.hostname }}/network_post_reply.php',
 						requestParameters: ' ',
 						data: postForm,
 						dataType: 'string',
@@ -453,7 +453,7 @@
 
 					var sendReply = new Ajax({
 						requestType: 'POST',
-						requestUrl: '{{ vars.home_path }}/network_reply_delete.php',
+						requestUrl: '{{ vars.hostname }}/network_reply_delete.php',
 							requestParameters: ' ',
 							data: postForm,
 							dataType: 'string',
@@ -518,7 +518,7 @@
 
 				postDelete = new Ajax({
 					requestType: 'POST',
-					requestUrl: '{{ vars.home_path }}/network_post_delete.php',
+					requestUrl: '{{ vars.hostname }}/network_post_delete.php',
 						requestHeaders: ' ',
 						data: postForm,
 						dataType: 'string',
@@ -557,7 +557,7 @@
 
 					postDelete = new Ajax({
 						requestType: 'POST',
-						requestUrl: '{{ vars.home_path }}/network_post_delete.php',
+						requestUrl: '{{ vars.hostname }}/network_post_delete.php',
 							requestHeaders: ' ',
 							data: postForm,
 							dataType: 'string',
@@ -596,7 +596,7 @@
 			
 			var requestPosts = new Ajax({
 					requestType: 'POST',
-					requestUrl: '{{ vars.home_path }}/network_more_posts.php',
+					requestUrl: '{{ vars.hostname }}/network_more_posts.php',
 					requestHeaders: ' ',
 					data: postForm,
 					dataType: 'string',
@@ -669,7 +669,7 @@
 			}
 			if (qs.qsGet['rerror'] != undefined) {
 				if (qs.qsGet['rerror'] == 'success') {
-					$('#signout_panel').children('p').html('You are now registered! Click <a href="{{ vars.home_path }}/profile_edit.php">here</a> to see your profile page.');
+					$('#signout_panel').children('p').html('You are now registered! Click <a href="{{ vars.hostname }}/profile_edit.php">here</a> to see your profile page.');
 					$('#signout_panel').show();
 				}
 			}
