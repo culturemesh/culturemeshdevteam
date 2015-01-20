@@ -82,7 +82,7 @@ class Post extends DisplayDObj {
 	}
 
 	public function registerImages($dal, $do2db) {
-		echo 'here';
+
 		$obj = new \dobj\Blank();
 		$obj->id_post = $this->id;
 
