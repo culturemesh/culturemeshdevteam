@@ -138,12 +138,13 @@
 			<hr width="630">
 			<!-------------- -->
 			<ul class="nav nav-pills dashboard">
-				<li id="post-nav" class="active"><a href="#post-wall" data-toggle="pill">Posts</a></li>
+				<li id="post-nav" class="active"><a href="#post-wall-container" data-toggle="pill">Posts</a></li>
 				<li id="event-nav"><a href="#event-wall" data-toggle="pill">Events</a></li>
 			</ul>
 			<!-------------- -->
 			<div class="network tab-content">
-			<div id="post-wall" class="tab-pane active">
+			<div id="post-wall-container" class="tab-pane active">
+			<div id="post-wall">
 				{{# page_vars.member }}
 				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.hostname }}/network_post.php" enctype="multipart/form-data">
 					<img id="profile-post" src="{{ vars.img_host_repo}}/{{ site_user.img_link }}" width="45" height="45">
@@ -186,6 +187,7 @@
 				{{/ page_vars.more_posts }}
 				{{# get.ap }} lambda required
 				{{/ get.ap }}
+			</div>
 			</div>
 			<script>
 				$("#post-wall").hide();
@@ -252,7 +254,7 @@
 		function switchTab() {
 			// remove post active status
 			$('#post-nav').removeClass('active');
-			$('#post-wall').removeClass('active');
+			$('#post-wall-container').removeClass('active');
 
 			// add event active status
 			$('#event-nav').addClass('active');
