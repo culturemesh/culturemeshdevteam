@@ -41,8 +41,6 @@ class Util {
 			'second(s) ago'
 		);
 
-		var_dump($interval);
-
 		for ($i = 0; $i < count($props); $i++) {
 
 			// if value is empty, move on

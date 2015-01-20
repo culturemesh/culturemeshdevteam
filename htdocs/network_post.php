@@ -79,7 +79,6 @@ if ($valid)
 			exit();
 		}
 
-
 		$iu = new \misc\ImageUpload($cm, array(
 				'dir' => $cm->img_repo_dir,
 				'postname' => 'fileupload',
@@ -93,6 +92,8 @@ if ($valid)
 
 		$result = $iu->upload();
 
+		echo 'here';
+		/*
 		// if upload was unsuccessful
 		if (!isset($result['files'])) {
 			$json_response['error'] = $result['error'];
@@ -140,6 +141,7 @@ if ($valid)
 
 		echo json_encode($json_response);
 		exit();
+		 */
 	}
 }
 else

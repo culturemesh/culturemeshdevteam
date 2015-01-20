@@ -82,7 +82,7 @@ class Post extends DisplayDObj {
 	}
 
 	public function registerImages($dal, $do2db) {
-
+		echo 'here';
 		$obj = new \dobj\Blank();
 		$obj->id_post = $this->id;
 
@@ -143,8 +143,11 @@ class Post extends DisplayDObj {
 				$site_user = $vars['site_user'];
 
 				// if we're making a new post
-				if ($name == 'UNNAMED USER')
-				   $name = $site_user->getName();
+				// --- give own switch statement later
+				if ($name == 'UNNAMED USER') {
+					$name = $site_user->getName();
+					$this->img_link = $site_user->img_link;
+				}
 
 				$reply_request = $site_user->checkNetworkRegistration($network->id);
 

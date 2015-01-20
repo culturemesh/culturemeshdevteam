@@ -61,7 +61,8 @@ final class Environment {
 		// setup autoload
 		$this::setupAutoload();
 		$this->img_dir;
-		$this->img_repo_dir = self::$site_root.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'user_images';
+//		$this->img_repo_dir = self::$site_root.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'user_images';
+		$this->img_repo_dir = '/home3/culturp7/public_html/user_images';
 		$this->blank_img;
 		$this->template_dir = self::$site_root.DIRECTORY_SEPARATOR.'templates';
 		$this->ds = DIRECTORY_SEPARATOR;
