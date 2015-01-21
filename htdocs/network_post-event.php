@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 'On');
 error_reporting(E_ALL ^ E_NOTICE);
 
 include_once("data/dal_query_handler.php");
