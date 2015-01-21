@@ -230,7 +230,7 @@
 						<input type="submit" id="log_submit_btn" class="submit" data-loading-text="Checking..." value="Sign In" />
 						</br>
 						</br>
-						<a href="//<?php //echo \Environment::hostname(); ?>/forgotpass.php">Forgot your password?</a>
+						<a href="//<?php echo \Environment::hostname(); ?>/forgotpass.php">Forgot your password?</a>
 					</div>
 				</form>
 			</div>
