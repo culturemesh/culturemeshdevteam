@@ -18,7 +18,7 @@
  * 	b) NOT SO MUCH
  * 		i) index
  */
-include('Environment.php');
+include('environment.php');
 
 include_once('http_redirect.php');
 include_once('lib/nav/HTTPRedirect.php');

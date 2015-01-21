@@ -1,6 +1,6 @@
 <?php
 
-include 'Environment.php';
+include 'environment.php';
 $cm = new Environment();
 
 if (!$cm) {

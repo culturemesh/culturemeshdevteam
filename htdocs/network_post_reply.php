@@ -1,12 +1,6 @@
 <?php
-	ini_set('display_errors', true);
-//	error_reporting(E_ALL ^ E_NOTICE);
-/*
-include_once("data/dal_post.php");
-include_once("data/dal_query_handler.php");
-include_once('html_builder.php');
- */
-include('Environment.php');
+
+include('environment.php');
 $cm = new \Environment();
 
 session_name('myDiaspora');

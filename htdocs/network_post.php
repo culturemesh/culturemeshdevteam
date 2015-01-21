@@ -1,10 +1,7 @@
 <?php
-ini_set('display_errors', true);
-error_reporting(E_ALL ^ E_NOTICE);
-
 include_once "data/dal_post.php";
 include_once "data/dal_network_registration.php";
-include_once "Environment.php";
+include_once "environment.php";
 
 session_name("myDiaspora");
 session_start();

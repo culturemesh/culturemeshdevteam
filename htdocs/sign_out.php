@@ -5,7 +5,7 @@ session_start();
 
 unset($_SESSION['uid']);
 
-include 'Environment.php';
+include 'environment.php';
 $cm = new Environment();
 
 // possible pages that we could be logging out from

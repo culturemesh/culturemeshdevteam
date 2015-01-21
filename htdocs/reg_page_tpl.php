@@ -1,6 +1,6 @@
 <?php 
 	include_once('log.php'); 
-	include_once('Environment.php');
+	include_once('environment.php');
 	include_once('data/dal_user.php');
 	$con = getDBConnection();
 ?>

@@ -206,7 +206,7 @@ if (isset($_POST['more_posts']))
 	mysqli_close($con);
 	 */
 
-	include('Environment.php');
+	include('environment.php');
 	$cm = new \Environment();
 
 	$user = new \dobj\User();
