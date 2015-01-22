@@ -19,7 +19,7 @@ cm.PostWall = function(o) {
 
 	if (this._postSubmit != null) {
 		var self = this;
-		this._postSubmit._shoutOrders = self._shoutOrders;
+		this._postSubmit._boss = self;
 		this._postSubmit._wallUl = this._wallUl;
 		this._postSubmit._setOnSuccess( this._addPost );
 	}
@@ -34,7 +34,7 @@ cm.PostWall = function(o) {
 cm.PostWall.prototype = {
 
 	// adds created post html to beginning of ul
-	_addPost: function(data) {
+	_addPost: function(data, f) {
 
 		if (data.error != 0) {
 		  alert(data.error);
@@ -42,8 +42,8 @@ cm.PostWall.prototype = {
 		else {
 		  $( this._wallUl ).prepend(data.html);
 
-		  // orders
-		  this._shoutOrders();
+		  // function from a parent
+		  this._boss._shoutOrders();
 		}
 	},
 	_shoutOrders: function() {

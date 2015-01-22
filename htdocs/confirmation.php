@@ -60,7 +60,7 @@
 			<?php if($act_success) : ?>
 			<h3>Your confirmation was successful!</h3>
 			<p>You now have full access to CultureMesh!</p>
-			<a href="profile_edit.php?confirm=true">Go to profile</a>
+			<a href="profile/<?php echo $_GET['uid']; ?>/?confirm=true">Go to profile</a>
 			<?php else : ?>
 			<h3>Your confirmation was unsuccessful.</h3>
 			<a href="#" onclick="resendEmail(<?php echo $_GET['uid']; ?>)">Click here to send another confirmation</a>
