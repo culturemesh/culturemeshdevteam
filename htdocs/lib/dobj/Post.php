@@ -138,6 +138,7 @@ class Post extends DisplayDObj {
 			$delete_button = false;
 			$reply_request = false;
 
+			$site_user = NULL;
 			if (isset($_SESSION['uid'])) {
 				$active = true;
 				$site_user = $vars['site_user'];
@@ -169,6 +170,7 @@ class Post extends DisplayDObj {
 				'text' => $this->formatText(),
 				'relative_date' => $this->getRelativeDate(),
 				'name' => $name,
+				'site_user' => $site_user,
 				'replies' => $this->replies_html,
 				'images' => $this->getImagePaths(),
 				'vars' => $cm->getVars()
