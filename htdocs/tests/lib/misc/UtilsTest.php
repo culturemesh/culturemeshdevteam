@@ -195,6 +195,31 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('1 day(s) ago', $time);
 	}
+
+	public function testStrExtract() {
+
+		$string = '[tag]Stuff[/tag][tag][/tag][tag]Empty[/tag] Nothing of [junk][ta note [tag]Incomplete[tag][tag]Things[/tag]';
+		$arr = misc\Util::StrExtract($string, 'tag');
+
+		// stuff between tag is removed
+		$this->assertEquals('[tag][/tag][tag][/tag][tag][/tag] Nothing of [junk][ta note [tag]Incomplete[tag][tag][/tag]',
+			$arr['replacement']);
+
+		// proper amount of replacements made
+		$this->assertCount(2, $arr['extractions']);
+
+		// check extraction contents
+		$this-assertEquals(array('Stuff', 'Things'), $arr['extractions']);
+	}
+
+	public function testStrReform() {
+
+		$string = '[link][/link][link][/link]';
+
+		$new_string = misc\Util::StrReform($string, 'link', array('First', 'Last'));
+
+		$this->assertEquals('[link]First[/link][link]Last[/link]', $new_string);
+	}
 }
 
 ?>

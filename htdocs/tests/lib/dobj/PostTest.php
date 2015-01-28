@@ -30,6 +30,26 @@ class PostTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('<a target=\'_blank\' href=\'http://Link\'>Link</a>', $new_text);
 	}
+
+	public function testFormatTextAutoLink() {
+
+		$post = new dobj\Post();
+		$post->post_text = 'www.culturemesh.com [link]www.culturemesh.com[/link]';
+
+		$formatted = $post->formatText();
+
+		$this->assertEquals("<a target='blank' href='http://www.culturemesh.com'>www.culturemesh.com</a>", $formatted);
+	}
+
+	public function testFormatTextMultipleLinks() {
+
+		$post = new dobj\Post();
+		$post->post_text = 'www.culturemesh.com [link]www.culturemesh.com[/link]';
+
+		$formatted = $post->formatText();
+
+		$this->assertEquals("<a target='blank' href='http://www.culturemesh.com'>www.culturemesh.com</a> <a target='_blank' href='http://www.culturemesh.com'>www.culturemesh.com</a>", $formatted);
+	}
 }
 
 ?>
