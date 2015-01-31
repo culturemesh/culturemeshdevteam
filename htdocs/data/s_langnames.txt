@@ -1,6 +1,10 @@
+afrikaans
 akan
+aleut/unangan
+american sign language (asl)
 amharic
-amurican sign spanglish
+amis formosan
+apache
 arabic
 assamese
 awadhi
@@ -8,47 +12,68 @@ azerbaijani
 balochi
 belarusian
 bengali
+berber
 bhojpuri
-boggerspeak
+british sign language (bsl)
 burmese
 cantonese
 cebuano
+cherokee
 chewa
+cheyenne
 chhattisgarhi
+chinese sign language
 chittagonian
+choctaw
+crow
 czech
+dakota
 deccan
 dhundhari
 dutch
+dzongkha
 english
 french
 fula
-gan
+fuzhounese/hokchiu/min dong
 german
 greek
 gujarati
+hainanese/qiong wen
 haitian creole
 hakka
 haryanvi
 hausa
+hawaiian
+henghua/pu-xian min
 hiligaynon
 hindi
 hmong
+hopi
+hunanese/xiang
 hungarian
 igbo
 ilokano
+inuit/inuktitut/greenlandic
 italian
+iu mien
 japanese
 javanese
+jiangxinese/gan
 jin
 kannada
 kazakh
+keres
 khmer
 kinyarwanda
 kirundi
 konkani
 korean
 kurdish
+kutchi
+lakota
+leizhounese/leizhou min
+lenape/delaware
 lugbara
 madurese
 magahi
@@ -56,29 +81,37 @@ maithili
 malagasy
 malay/indonesian
 malayalam
-mandarin
+mandarin chinese/putonghua
 marathi
 marwari
+maya
 min bei
-min dong
-min nan
+mixtec
 mossi
+muscogee/creek
+nahuatl
+navajo
 nepali
-ojibwe
+ohlone/costanoan
+ojibwe/chippewa
+oodham/papago-pima
 oriya
 oromo
 pashto
 persian
-pig latin
 polish
 portuguese
 punjabi
 quechua
+romani
 romanian
 russian
+sami
 saraiki
 serbo-croatian
+shanghainese/wu
 shona
+shoshone/goshute
 sindhi
 sinhalese
 somali
@@ -87,20 +120,29 @@ sundanese
 swahili
 swedish
 sylheti
-tagalog
+tagalog/filipino
+taiwanese sign language
+taiwanese/hokkien/min nan
 tamil
 telugu
 teochew
+tewa
 thai
+tibetan
+tiwa
+tlingit
 turkish
 ukrainian
 urdu
 uyghur
 uzbek
 vietnamese
-wu
+welsh
+wenzhounese/oujiang
 xhosa
-xiang
 yoruba
+yupik
+zapotec
 zhuang
 zulu
+zuni
