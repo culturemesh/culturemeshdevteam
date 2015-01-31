@@ -53,6 +53,11 @@ final class Environment {
 			$this->host_root = '//'.str_replace($doc_root, $hostname, getcwd());
 			$this->f_root = str_replace($doc_root, '', getcwd());
 			$this->img_host_repo = $this->host_root.'/../../user_images';
+
+
+			// doing this until I can test to make sure I can get rid of host_root
+			if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') !== False)
+				$this->img_host_repo = '//'.$_SERVER['HTTP_HOST'].'/../../user_images';
 		}
 		else {
 			$this->host_root = 'unimportant';
