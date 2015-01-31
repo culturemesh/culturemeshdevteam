@@ -45,6 +45,7 @@ class TextData {
 				break;
 			}
 
+
 			return self::rewriteLanguages();
 			break;
 		}
@@ -72,8 +73,8 @@ class TextData {
 
 		fputs($f0, $f0_string);
 		fputs($f1, $f1_string);
-		fwrite($f0, $f0_string);
-		fwrite($f1, $f1_string);
+//		fwrite($f0, $f0_string);
+//		fwrite($f1, $f1_string);
 
 		fclose($f0);
 		fclose($f1);
@@ -154,6 +155,8 @@ class TextData {
 				fclose($file);
 			}
 		}
+
+		return true;
 	}
 }
 ?>
