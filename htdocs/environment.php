@@ -46,8 +46,10 @@ final class Environment {
 		//
 		if (isset($_SERVER['HTTP_HOST'])) {
 			$this->hostname = $_SERVER['HTTP_HOST'];
+			if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') != 0)
+				$this->hostname .= '/culturemeshdevteam/htdocs';
 
-			$hostname = $_SERVER['HTTP_HOST'];
+			$hostname = $this->hostname;
 			$this->host_root = '//'.str_replace($doc_root, $hostname, getcwd());
 			$this->f_root = str_replace($doc_root, '', getcwd());
 			$this->img_host_repo = $this->host_root.'/../../user_images';

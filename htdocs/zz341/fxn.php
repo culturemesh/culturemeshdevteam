@@ -9,56 +9,20 @@ define("WEBSITE_BY_URL", "http://www.kostocoastdev.com");
 
 define("JS_HOLDER_64x64", "http://www.kostocoastdev.com/clients/hosted/js/holder.js/64x64");
 
-/*
-if ( file_exists('../localdbconn.php'))
-{
-    include  "../localdbconn.php";
-}
-else if ( file_exists('../../localdbconn.php'))
-{
-    include  "../../localdbconn.php";
-}
-else
-{
-    define("DB_SERVER", "localhost");
-    define("DB_USER", "culturp7");
-
-    if ( file_exists("../../../abcd123.php")) {
-    	include "../../../abcd123.php";
-    }
-    else if ( file_exists("../../../../abcd123.php")) {
-  	include "../../../../abcd123.php";
-    }
-}
- */
- 
 define("IMG_DIR", "../../user_images/");
 define("BLANK_IMG", 'images/blank_profile.png');
 
-if ( file_exists("../../../abcd123.php") || 
-	file_exists("../../../../abcd123.php")) {
-	$alt_server = 'localhost';
-}
- 
 function getDBConnection(){
-    //$conn = new mysqli(DB_SERVER,DB_USER,DB_PASS, DB_NAME);
-    //return $conn;
-	global $alt_server;
-	if (isset($alt_server)) {
 
+	if ($_SERVER['HTTP_HOST'] == 'www.culturemesh.com') {
 		if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') !== false) 
 		  return new mysqli($alt_server, 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
-		else {
-		   if ($_SERVER['HTTP_HOST'] == 'www.culturemesh.build')
-			return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
-		   else
-		  	return new mysqli($alt_server, 'culturp7', 'IanTheMan2014!', 'culturp7_ktc');
-		}
+		else
+		  return new mysqli($alt_server, 'culturp7', 'IanTheMan2014!', 'culturp7_ktc');
 	}
 	else {
 		return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
 	}
-
 }
 function isAdmin($uid){
     $d = getRowQuery("SELECT role FROM users WHERE id={$uid}");
