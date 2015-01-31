@@ -46,7 +46,7 @@ final class Environment {
 		//
 		if (isset($_SERVER['HTTP_HOST'])) {
 			$this->hostname = $_SERVER['HTTP_HOST'];
-			if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') != 0)
+			if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') !== False)
 				$this->hostname .= '/culturemeshdevteam/htdocs';
 
 			$hostname = $this->hostname;
