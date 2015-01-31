@@ -285,7 +285,7 @@
 			}
 			if (qs.qsGet['rerror'] != undefined) {
 				if (qs.qsGet['rerror'] == 'success') {
-					$('#signout_panel').children('p').html('You are now registered! Click <a href="{{ vars.hostname }}/profile_edit.php">here</a> to see your profile page.');
+					$('#signout_panel').children('p').html('You are now registered! Click <a href="{{ vars.hostname }}/profile/{{ site_user.id }}">here</a> to see your profile page.');
 					$('#signout_panel').show();
 				}
 			}
