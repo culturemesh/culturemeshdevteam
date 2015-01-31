@@ -7,3 +7,4 @@ class Foo {
 		return "Success";
 	}
 }
+?>
