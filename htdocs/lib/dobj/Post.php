@@ -285,14 +285,19 @@ class Post extends DisplayDObj {
 		}
 	}
 
+	protected function getText() {
+		return $this->post_text;
+	}
+
 	public function formatText() {
 
+		
 		// I need to get the locations of all the links
 		// I need to get the locations of all the
 		//
 
 		// split on links
-		$raw_text = $this->post_text;
+		$raw_text = $this->getText();
 		$all_chars = ".+";
 
 		// remove link tags

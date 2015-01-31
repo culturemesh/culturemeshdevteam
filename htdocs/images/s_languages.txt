@@ -1,11 +1,7 @@
 name
-Afrikaans
 Akan
-Aleut/Unangan
-American Sign Language (ASL)
 Amharic
-Amis Formosan
-Apache
+Amurican Sign Spunglage
 Arabic
 Assamese
 Awadhi
@@ -13,68 +9,47 @@ Azerbaijani
 Balochi
 Belarusian
 Bengali
-Berber
 Bhojpuri
-British Sign Language (BSL)
+BoggerSpeak
 Burmese
 Cantonese
 Cebuano
-Cherokee
 Chewa
-Cheyenne
 Chhattisgarhi
-Chinese Sign Language
 Chittagonian
-Choctaw
-Crow
 Czech
-Dakota
 Deccan
 Dhundhari
 Dutch
-Dzongkha
 English
 French
 Fula
-Fuzhounese/Hokchiu/Min Dong
+Gan
 German
 Greek
 Gujarati
-Hainanese/Qiong Wen
 Haitian Creole
 Hakka
 Haryanvi
 Hausa
-Hawaiian
-Henghua/Pu-Xian Min
 Hiligaynon
 Hindi
 Hmong
-Hopi
-Hunanese/Xiang
 Hungarian
 Igbo
 Ilokano
-Inuit/Inuktitut/Greenlandic
 Italian
-Iu Mien
 Japanese
 Javanese
-Jiangxinese/Gan
 Jin
 Kannada
 Kazakh
-Keres
 Khmer
 Kinyarwanda
 Kirundi
 Konkani
 Korean
 Kurdish
-Kutchi
-Lakota
-Leizhounese/Leizhou Min
-Lenape/Delaware
 Lugbara
 Madurese
 Magahi
@@ -82,37 +57,29 @@ Maithili
 Malagasy
 Malay/Indonesian
 Malayalam
-Mandarin Chinese/Putonghua
+Mandarin
 Marathi
 Marwari
-Maya
 Min Bei
-Mixtec
+Min Dong
+Min Nan
 Mossi
-Muscogee/Creek
-Nahuatl
-Navajo
 Nepali
-Ohlone/Costanoan
-Ojibwe/Chippewa
-Oodham/Papago-Pima
+Ojibwe
 Oriya
 Oromo
 Pashto
 Persian
+Pig Latin
 Polish
 Portuguese
 Punjabi
 Quechua
-Romani
 Romanian
 Russian
-Sami
 Saraiki
 Serbo-Croatian
-Shanghainese/Wu
 Shona
-Shoshone/Goshute
 Sindhi
 Sinhalese
 Somali
@@ -121,29 +88,20 @@ Sundanese
 Swahili
 Swedish
 Sylheti
-Tagalog/Filipino
-Taiwanese Sign Language
-Taiwanese/Hokkien/Min Nan
+Tagalog
 Tamil
 Telugu
 Teochew
-Tewa
 Thai
-Tibetan
-Tiwa
-Tlingit
 Turkish
 Ukrainian
 Urdu
 Uyghur
 Uzbek
 Vietnamese
-Welsh
-Wenzhounese/Oujiang
+Wu
 Xhosa
+Xiang
 Yoruba
-Yupik
-Zapotec
 Zhuang
 Zulu
-Zuni

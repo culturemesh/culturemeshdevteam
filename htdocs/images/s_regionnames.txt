@@ -1,0 +1,3903 @@
+canillo
+parròquia d'andorra la vella
+parròquia d'encamp
+parròquia d'escaldes-engordany
+parròquia d'ordino
+parròquia de sant julià de lòria
+parròquia de la massana
+abu dhabi
+ajman
+al fujayrah
+ash sh?riqah
+dubai
+ra’s al khaymah
+umm al qaywayn
+badakhshan
+badghis
+balkh
+farah
+faryab
+ghowr
+helmand
+herat
+kabul
+kandah?r
+kunduz
+nangarh?r
+or?zg?n
+paktia
+panjshir
+parw?n
+samang?n
+sar-e pul
+vel?yat-e khowst
+vel?yat-e n?rest?n
+wardak
+wil?yat-e baghl?n
+wil?yat-e b?my?n
+wil?yat-e d?ykund?
+wil?yat-e ghazn?
+wil?yat-e jowzj?n
+wil?yat-e kuna?
+wil?yat-e k?p?s?
+wil?yat-e laghm?n
+wil?yat-e l?gar
+wil?yat-e n?mr?z
+wil?yat-e pakt?k?
+wil?yat-e takh?r
+zabul
+barbuda
+parish of saint george
+parish of saint john
+parish of saint mary
+parish of saint paul
+parish of saint peter
+parish of saint philip
+redonda
+qarku i beratit
+qarku i dibrës
+qarku i durrësit
+qarku i elbasanit
+qarku i fierit
+qarku i gjirokastrës
+qarku i korçës
+qarku i kukësit
+qarku i lezhës
+qarku i shkodrës
+qarku i tiranës
+qarku i vlorës
+aragatsotni marz
+ararati marz
+armaviri marz
+geghark’unik’i marz
+kotayk’i marz
+lorru marz
+shiraki marz
+syunik’i marz
+tavushi marz
+vayots’ dzori marz
+yerevan
+bengo province
+benguela
+cabinda
+cuanza norte province
+cunene province
+huambo
+huila province
+kuando kubango
+kwanza sul
+luanda province
+lunda norte province
+lunda sul
+malanje province
+moxico
+namibe province
+província do bié
+província do uíge
+zaire
+buenos aires f.d.
+provincia de buenos aires
+provincia de catamarca
+provincia de corrientes
+provincia de córdoba
+provincia de entre ríos
+provincia de formosa
+provincia de jujuy
+provincia de la pampa
+provincia de la rioja
+provincia de mendoza
+provincia de misiones
+provincia de río negro
+provincia de san juan
+provincia de san luis
+provincia de santa cruz
+provincia de santa fe
+provincia de santiago del estero
+provincia de tierra del fuego, antártida e islas d
+provincia de tucumán
+provincia del chaco
+provincia del chubut
+provincia del neuquén
+salta
+burgenland
+carinthia
+lower austria
+salzburg
+styria
+tyrol
+upper austria
+vienna
+vorarlberg
+australian capital territory
+new south wales
+northern territory
+queensland
+south australia
+tasmania
+victoria
+western australia
+brändö
+eckerö
+finström
+föglö
+geta
+hammarland
+jomala
+kumlinge
+kökar
+lemland
+lumparland
+mariehamn
+saltvik
+sottunga
+sund
+vårdö
+absheron rayon
+aghdam rayon
+aghdash rayon
+aghjabadi rayon
+aghstafa rayon
+aghsu rayon
+ali bajramly
+astara rayon
+baku city
+balakan rayon
+barda rayon
+beylagan rayon
+bilasuvar rayon
+c?bray?l rayonu
+dashkasan rayon
+davachi rayon
+fizuli rayon
+gadabay rayon
+ganja city
+gobustan rayon
+goranboy rayon
+goychay rayon
+goygol rayon
+hajigabul rayon
+imishli rayon
+ismayilli rayon
+jalilabad rayon
+khachmaz rayon
+khizi rayon
+kurdamir rayon
+k?lb?c?r rayonu
+lankaran rayon
+laç?n rayonu
+lerik rayon
+l?nk?ran ??h?ri
+masally rayon
+mingacevir city
+naftalan city
+nakhichevan
+naxç?van ??h?ri
+neftchala rayon
+oghuz rayon
+qabala rayon
+qakh rayon
+qazakh rayon
+quba rayon
+qubadli rayon
+qusar rayon
+saatly rayon
+sabirabad rayon
+salyan rayon
+samukh rayon
+shaki city
+shaki rayon
+shamakhi rayon
+shamkir rayon
+siazan rayon
+sumqayit city
+tartar rayon
+tovuz rayon
+ujar rayon
+xank?ndi ??h?ri
+xocal? rayonu
+xocav?nd rayonu
+yardymli rayon
+yevlakh rayon
+yevlax city
+zangilan rayon
+zaqatala rayon
+zardab rayon
+?u?a rayonu
+?u?a ??h?ri
+br?ko
+federation of bosnia and herzegovina
+republika srpska
+christ church
+saint andrew
+saint george
+saint james
+saint john
+saint joseph
+saint lucy
+saint michael
+saint peter
+saint philip
+saint thomas
+borishal
+chittagong
+dhaka division
+khulna division
+rangpur division
+r?jsh?hi division
+sylhet division
+brussels capital
+flemish region
+walloon region
+boucle du mouhoun
+cascades region
+centre
+centre-est
+centre-nord
+centre-ouest
+centre-sud
+est
+high-basins region
+nord
+plateau-central
+sahel
+southwest region
+blagoevgrad
+burgas
+gabrovo
+lovech
+oblast dobrich
+oblast khaskovo
+oblast kyustendil
+oblast k?rdzhali
+oblast montana
+oblast pleven
+oblast razgrad
+oblast ruse
+oblast shumen
+oblast silistra
+oblast sliven
+oblast smolyan
+oblast stara zagora
+oblast t?rgovishte
+oblast veliko t?rnovo
+oblast vidin
+oblast vratsa
+oblast yambol
+pazardzhik
+pernik
+plovdiv
+sofia-capital
+sofiya
+varna
+central governorate
+manama
+muharraq
+northern
+southern governorate
+bubanza province
+bujumbura mairie province
+bujumbura rural province
+bururi province
+cankuzo province
+cibitoke province
+gitega province
+karuzi province
+kayanza province
+kirundo province
+makamba province
+muramvya province
+muyinga province
+ngozi province
+province de mwaro
+rutana province
+ruyigi province
+alibori
+atakora department
+atlantique department
+borgou department
+collines department
+donga
+département de l’ ouémé
+kouffo department
+littoral
+mono
+plateau department
+zou department
+devonshire parish
+hamilton parish
+hamilton city
+paget
+pembroke parish
+saint george
+saint george’s parish
+sandys parish
+smith’s parish
+southampton parish
+warwick parish
+belait district
+brunei and muara district
+temburong district
+tutong district
+departamento de chuquisaca
+departamento de cochabamba
+departamento de la paz
+departamento de pando
+departamento de potosí
+departamento de santa cruz
+departamento de tarija
+el beni
+oruro
+bonaire
+saba
+sint eustatius
+amazonas
+bahia
+estado da paraíba
+estado de alagoas
+estado de goiás
+estado de mato grosso
+estado de minas gerais
+estado de pernambuco
+estado de rondônia
+estado de roraima
+estado de santa catarina
+estado de sergipe
+estado de são paulo
+estado de tocantins
+estado do acre
+estado do amapá
+estado do ceará
+estado do espírito santo
+estado do maranhão
+estado do paraná
+estado do pará
+estado do piauí
+estado do rio grande do norte
+estado do rio grande do sul
+federal
+mato grosso do sul
+rio de janeiro
+acklins island district
+berry islands district
+bimini
+black point district
+cat island district
+central abaco district
+central andros district
+central eleuthera district
+city of freeport district
+crooked island and long cay district
+east grand bahama district
+exuma district
+fresh creek district
+grand cay district
+green turtle cay district
+harbour island
+high rock district
+hope town district
+inagua district
+kemps bay district
+long island district
+mangrove cay district
+marsh harbour district
+mayaguana district
+moore’s island district
+new providence district
+north abaco district
+north andros district
+north eleuthera
+ragged island district
+rum cay district
+san salvador district
+sandy point district
+south abaco district
+south andros district
+south eleuthera district
+spanish wells district
+west grand bahama district
+bumthang dzongkhag
+chhukha dzongkhag
+dagana dzongkhag
+gasa
+haa dzongkhag
+lhuentse dzongkhag
+mongar dzongkhag
+paro
+pemagatshel dzongkhag
+punakha dzongkhag
+samdrup jongkhar
+samtse dzongkhag
+sarpang dzongkhag
+thimphu dzongkhag
+trashi yangste
+trashigang dzongkhag
+trongsa dzongkhag
+tsirang dzongkhag
+wangdue phodrang dzongkhag
+zhemgang dzongkhag
+central district
+ghanzi district
+kgalagadi district
+kgatleng district
+kweneng district
+north east district
+north west district
+south east district
+southern district
+brestskaya oblast’
+gomel region
+grodnenskaya oblast’
+minsk
+minskaja voblasts’
+mogilëvskaya oblast’
+vitebskaya oblast’
+belize district
+cayo district
+corozal district
+orange walk district
+stann creek district
+toledo district
+alberta
+british columbia
+manitoba
+new brunswick
+newfoundland and labrador
+northwest territories
+nova scotia
+nunavut
+ontario
+prince edward island
+quebec
+saskatchewan
+yukon
+bandundu province
+eastern province
+katanga province
+kinshasa city
+nord kivu
+province de l’ Équateur
+province du bas-congo
+province du kasaï-occidental
+province du kasaï-oriental
+province du maniema
+south kivu
+bamingui-bangoran
+basse-kotto
+commune de bangui
+haut-mbomou
+haute-kotto
+lobaye
+mambéré-kadéï
+mbomou
+ombella-mpoko
+ouaka
+ouham
+préfecture de la kémo
+préfecture de la nana-grébizi
+préfecture de la nana-mambéré
+préfecture de la sangha-mbaéré
+préfecture de l’ ouham-pendé
+vakaga
+commune de brazzaville
+cuvette
+cuvette-ouest
+likouala
+plateaux
+pointe-noire
+pool
+région de la bouenza
+région de la lékoumou
+région du kouilou
+région du niari
+sangha
+aargau
+appenzell ausserrhoden
+appenzell innerrhoden
+basel-city
+basel-landschaft
+bern
+fribourg
+geneva
+glarus
+grisons
+jura
+lucerne
+neuchâtel
+nidwalden
+obwalden
+saint gallen
+schaffhausen
+schwyz
+solothurn
+thurgau
+ticino
+uri
+valais
+vaud
+zug
+zurich
+agnéby
+bafing
+bas-sassandra
+denguélé
+district des montagnes
+fromager
+haut-sassandra
+lacs
+lagunes
+marahoué
+moyen-cavally
+moyen-comoé
+n’zi-comoé
+région du sud-comoé
+savanes
+sud-bandama
+vallée du bandama
+worodougou
+zanzan
+antofagasta
+atacama
+aysén
+coquimbo
+los lagos
+maule
+región de arica y parinacota
+región de los ríos
+región de magallanes y de la antártica chilena
+región de valparaíso
+región de la araucanía
+región del biobío
+región del libertador general bernardo o’higgins
+santiago metropolitan
+tarapacá
+adamaoua
+centre
+east
+far north
+littoral
+north province
+north-west province
+south region
+south-west region
+west
+anhui sheng
+beijing shi
+chongqing shi
+fujian
+gansu sheng
+guangdong
+guangxi zhuangzu zizhiqu
+guizhou sheng
+hainan
+hebei
+heilongjiang sheng
+henan sheng
+hubei
+hunan
+inner mongolia
+jiangsu sheng
+jiangxi sheng
+jilin sheng
+liaoning
+ningxia huizu zizhiqu
+qinghai sheng
+shaanxi
+shandong sheng
+shanghai shi
+shanxi sheng
+sichuan sheng
+tianjin shi
+tibet autonomous region
+xinjiang uygur zizhiqu
+yunnan
+zhejiang sheng
+antioquia
+atlántico
+bogota d.c.
+cundinamarca
+departamento de arauca
+departamento de bolívar
+departamento de boyacá
+departamento de caldas
+departamento de casanare
+departamento de córdoba
+departamento de la guajira
+departamento de nariño
+departamento de norte de santander
+departamento de risaralda
+departamento de santander
+departamento de sucre
+departamento de tolima
+departamento del amazonas
+departamento del caquetá
+departamento del cauca
+departamento del cesar
+departamento del chocó
+departamento del guainía
+departamento del guaviare
+departamento del huila
+departamento del magdalena
+departamento del meta
+departamento del putumayo
+departamento del valle del cauca
+departamento del vaupés
+departamento del vichada
+providencia y santa catalina, departamento de arch
+quindío department
+provincia de alajuela
+provincia de cartago
+provincia de guanacaste
+provincia de heredia
+provincia de limón
+provincia de puntarenas
+provincia de san josé
+artemisa province
+las tunas
+mayabeque
+municipio especial isla de la juventud
+provincia granma
+provincia de camagüey
+provincia de ciego de Ávila
+provincia de cienfuegos
+provincia de guantánamo
+provincia de holguín
+provincia de la habana
+provincia de matanzas
+provincia de pinar del río
+provincia de sancti spíritus
+provincia de santiago de cuba
+provincia de villa clara
+concelho da boa vista
+concelho da brava
+concelho da praia
+concelho da ribeira brava
+concelho da ribeira grande
+concelho de ribeira grande de santiago
+concelho de santa catarina
+concelho de santa catarina do fogo
+concelho de santa cruz
+concelho de são domingos
+concelho de são lourenço dos Órgãos
+concelho de são miguel
+concelho de são salvador do mundo
+concelho de são vicente
+concelho do maio
+concelho do paul
+concelho do porto novo
+concelho do são filipe
+concelho do tarrafal
+concelho do tarrafal de são nicolau
+concelho dos mosteiros
+sal
+ammochostos
+keryneia
+larnaka
+lefkosia
+limassol
+pafos
+central bohemia
+hlavní m?sto praha
+jiho?eský kraj
+karlovarský kraj
+kraj vyso?ina
+královéhradecký kraj
+liberecký kraj
+moravskoslezský kraj
+olomoucký kraj
+pardubický kraj
+plze?ský kraj
+south moravian
+zlín region
+Ústecký kraj
+baden-württemberg
+bavaria
+brandenburg
+bremen
+hamburg
+hesse
+land berlin
+lower saxony
+mecklenburg-vorpommern
+north rhine-westphalia
+rheinland-pfalz
+saarland
+saxony
+saxony-anhalt
+schleswig-holstein
+thuringia
+ali sabieh region
+arta region
+dikhil
+djibouti region
+obock
+tadjourah
+capital region
+central jutland
+north denmark
+south denmark
+zealand
+saint andrew
+saint david
+saint george
+saint john
+saint joseph
+saint luke
+saint mark
+saint patrick
+saint paul
+saint peter
+distrito nacional
+provincia duarte
+provincia espaillat
+provincia maría trinidad sánchez
+provincia sánchez ramírez
+provincia de azua
+provincia de baoruco
+provincia de barahona
+provincia de dajabón
+provincia de el seibo
+provincia de elías piña
+provincia de hato mayor
+provincia de hermanas mirabal
+provincia de independencia
+provincia de la altagracia
+provincia de la romana
+provincia de la vega
+provincia de monseñor nouel
+provincia de monte cristi
+provincia de monte plata
+provincia de pedernales
+provincia de peravia
+provincia de san cristóbal
+provincia de san josé de ocoa
+provincia de san juan
+provincia de san pedro de macorís
+provincia de santiago
+provincia de santiago rodríguez
+provincia de santo domingo
+provincia de valverde
+puerto plata
+samaná
+adrar
+annaba
+el bayadh
+el oued
+el tarf
+illizi
+oran
+oum el bouaghi
+wilaya de aïn defla
+wilaya de aïn temouchent
+wilaya de batna
+wilaya de bejaïa
+wilaya de biskra
+wilaya de blida
+wilaya de bordj bou arréridj
+wilaya de bouira
+wilaya de boumerdes
+wilaya de béchar
+wilaya de chlef
+wilaya de constantine
+wilaya de djelfa
+wilaya de ghardaïa
+wilaya de guelma
+wilaya de jijel
+wilaya de khenchela
+wilaya de laghouat
+wilaya de mascara
+wilaya de mila
+wilaya de mostaganem
+wilaya de médéa
+wilaya de m’sila
+wilaya de naama
+wilaya de ouargla
+wilaya de relizane
+wilaya de saïda
+wilaya de sidi bel abbès
+wilaya de skikda
+wilaya de souk ahras
+wilaya de sétif
+wilaya de tamanghasset
+wilaya de tiaret
+wilaya de tindouf
+wilaya de tipaza
+wilaya de tissemsilt
+wilaya de tizi ouzou
+wilaya de tlemcen
+wilaya de tébessa
+wilaya d’ alger
+provincia de bolívar
+provincia de cotopaxi
+provincia de el oro
+provincia de esmeraldas
+provincia de francisco de orellana
+provincia de galápagos
+provincia de imbabura
+provincia de loja
+provincia de los ríos
+provincia de manabí
+provincia de morona-santiago
+provincia de napo
+provincia de pichincha
+provincia de santa elena
+provincia de santo domingo de los tsáchilas
+provincia de sucumbíos
+provincia de zamora-chinchipe
+provincia del azuay
+provincia del carchi
+provincia del cañar
+provincia del chimborazo
+provincia del guayas
+provincia del pastaza
+provincia del tungurahua
+harju
+hiiumaa
+ida-virumaa
+järvamaa
+jõgevamaa
+lääne
+lääne-virumaa
+pärnumaa
+põlvamaa
+raplamaa
+saare
+tartu
+valgamaa
+viljandimaa
+võrumaa
+alexandria
+as suways
+beheira governorate
+eastern province
+ismailia governorate
+kafr ash shaykh
+mu??faz?at asw?n
+mu??faz?at asy??
+mu??faz?at ban? suwayf
+mu??faz?at b?r sa‘?d
+mu??faz?at dumy??
+mu??faz?at ma?r??
+mu??faz?at qin?
+mu??faz?at sham?l s?n?’
+mu??faz?at s?h?j
+mu??faz?at ad daqahl?yah
+mu??faz?at al fayy?m
+mu??faz?at al gharb?yah
+mu??faz?at al j?zah
+mu??faz?at al miny?
+mu??faz?at al min?f?yah
+mu??faz?at al qaly?b?yah
+mu??faz?at al q?hirah
+mu??faz?at al uq?ur
+mu??faz?at al w?d? al jad?d
+red sea governorate
+south sinai governorate
+anseba region
+debub region
+gash-barka region
+maekel region
+northern red sea region
+southern red sea region
+andalusia
+aragon
+asturias
+balearic islands
+basque country
+canary islands
+cantabria
+castille and león
+castille-la mancha
+catalonia
+ceuta
+extremadura
+galicia
+la rioja
+madrid
+melilla
+murcia
+navarre
+valencia
+amhara
+b?nshangul gumuz
+dire dawa
+gambela
+harari
+oromiya
+somali
+southern nations, nationalities, and people's regi
+tigray
+?d?s ?beba ?stedader
+?far
+brändö
+eastern finland
+eckerö
+finström
+föglö
+geta
+hammarland
+jomala
+kumlinge
+kökar
+lapland
+lemland
+lumparland
+mariehamn
+oulu
+saltvik
+sottunga
+southern finland
+sund
+vårdö
+western finland
+central
+eastern
+kadavu
+northern
+rotuma
+western
+state of chuuk
+state of kosrae
+state of pohnpei
+state of yap
+eysturoy
+norðoyar
+sandoy
+streymoy
+suðuroy
+vágar
+alsace
+aquitaine
+auvergne
+bourgogne
+brittany
+centre
+champagne-ardenne
+corsica
+franche-comté
+guadeloupe
+guyane
+languedoc-roussillon
+limousin
+lorraine
+lower normandy
+martinique
+midi-pyrénées
+nord-pas-de-calais
+pays de la loire
+picardie
+poitou-charentes
+provence-alpes-côte d'azur
+rhône-alpes
+réunion
+upper normandy
+Île-de-france
+estuaire
+province de la ngounié
+province de la nyanga
+province de l’ ogooué-ivindo
+province de l’ ogooué-lolo
+province de l’ ogooué-maritime
+province du haut-ogooué
+province du moyen-ogooué
+province du woleu-ntem
+castel
+england
+forest
+grouville
+n ireland
+saint andrew
+saint brelade
+saint helier
+saint john
+saint lawrence
+saint martin
+saint martin
+saint mary
+saint ouen
+saint peter
+saint peter port
+saint pierre du bois
+saint sampson
+saint saviour
+saint saviour
+scotland
+st clement
+torteval
+trinity
+vale
+wales
+carriacou and petite martinique
+saint andrew
+saint david
+saint george
+saint john
+saint mark
+saint patrick
+abkhazia
+ajaria
+guria
+imereti
+k'alak'i t'bilisi
+kakheti
+kvemo kartli
+mtskheta-mtianeti
+racha-lechkhumi and kvemo svaneti
+samegrelo and zemo svaneti
+samtskhe-javakheti
+shida kartli
+guyane
+ashanti region
+brong-ahafo
+central region
+eastern region
+greater accra region
+northern region
+upper east region
+upper west region
+volta region
+western region
+kujalleq
+qaasuitsup
+qeqqata
+sermersooq
+central river division
+city of banjul
+lower river division
+north bank division
+upper river
+western division
+boke region
+conakry region
+faranah
+kankan region
+kindia
+labé region
+mamou region
+nzerekore region
+guadeloupe
+provincia de annobón
+provincia de bioko norte
+provincia de bioko sur
+provincia de centro sur
+provincia de kié-ntem
+provincia de litoral
+provincia de wele-nzas
+attica
+central greece
+central macedonia
+crete
+east macedonia and thrace
+epirus
+ionian islands
+mount athos
+north aegean
+peloponnese
+south aegean
+thessaly
+west greece
+west macedonia
+departamento de alta verapaz
+departamento de baja verapaz
+departamento de chimaltenango
+departamento de chiquimula
+departamento de el progreso
+departamento de escuintla
+departamento de guatemala
+departamento de huehuetenango
+departamento de izabal
+departamento de jalapa
+departamento de jutiapa
+departamento de quetzaltenango
+departamento de retalhuleu
+departamento de sacatepéquez
+departamento de san marcos
+departamento de santa rosa
+departamento de sololá
+departamento de suchitepéquez
+departamento de totonicapán
+departamento de zacapa
+departamento del petén
+departamento del quiché
+agana heights
+agat
+asan
+barrigada
+chalan pago-ordot
+dededo
+hagatna
+inarajan
+mangilao
+merizo municipality
+mongmong-toto-maite municipality
+piti municipality
+santa rita municipality
+sinajana municipality
+talofofo municipality
+tamuning
+umatac
+yigo
+yona
+bafatá
+biombo
+bissau autonomous region
+bolama and bijagos
+cacheu region
+gabú
+oio region
+quinara
+tombali
+barima-waini region
+cuyuni-mazaruni region
+demerara-mahaica region
+east berbice-corentyne region
+essequibo islands-west demerara region
+mahaica-berbice region
+pomeroon-supenaam region
+potaro-siparuni region
+upper demerara-berbice region
+upper takutu-upper essequibo region
+central and western district
+eastern
+islands district
+kowloon city
+kwai tsing
+kwon tong
+north
+sai kung district
+sha tin
+sham shui po
+southern
+tai po district
+tsuen wan district
+tuen mun
+wanchai
+wong tai sin
+yau tsim mong
+yuen long district
+bay islands
+departamento de atlántida
+departamento de choluteca
+departamento de colón
+departamento de comayagua
+departamento de copán
+departamento de cortés
+departamento de el paraíso
+departamento de francisco morazán
+departamento de gracias a dios
+departamento de intibucá
+departamento de la paz
+departamento de lempira
+departamento de ocotepeque
+departamento de olancho
+departamento de santa bárbara
+departamento de valle
+departamento de yoro
+bjelovarsko-bilogorska Županija
+brodsko-posavska Županija
+dubrova?ko-neretvanska Županija
+grad zagreb
+istarska Županija
+karlova?ka Županija
+koprivni?ko-križeva?ka Županija
+krapinsko-zagorska Županija
+li?ko-senjska Županija
+me?imurska Županija
+osje?ko-baranjska Županija
+požeško-slavonska Županija
+primorsko-goranska Županija
+sisa?ko-moslava?ka Županija
+splitsko-dalmatinska Županija
+varaždinska Županija
+viroviti?ko-podravska Županija
+vukovarsko-srijemska Županija
+zadarska Županija
+zagreb county
+Šibensko-kninska Županija
+centre
+département de nippes
+département de l'artibonite
+département de l'ouest
+département de la grand’anse
+département du nord-est
+nord
+nord-ouest
+sud
+sud-est
+baranya
+bekes
+borsod-abaúj-zemplén
+budapest f?város
+bács-kiskun
+csongrád megye
+fejér
+gy?r-moson-sopron
+hajdú-bihar
+heves megye
+jász-nagykun-szolnok
+komárom-esztergom
+nógrád megye
+pest megye
+somogy megye
+szabolcs-szatmár-bereg
+tolna megye
+vas
+veszprém megye
+zala
+bali
+bangka-belitung
+banten
+central java
+central sulawesi
+daerah istimewa yogyakarta
+daerah khusus ibukota jakarta
+east java
+east kalimantan
+east nusa tenggara
+nanggroe aceh darussalam province
+north kalimantan
+north sulawesi
+north sumatra
+propinsi bengkulu
+provinsi gorontalo
+provinsi jambi
+provinsi kalimantan tengah
+provinsi lampung
+provinsi maluku
+provinsi maluku utara
+provinsi papua
+provinsi riau
+provinsi sulawesi barat
+riau islands
+south kalimantan
+south sulawesi
+south sumatra
+sulawesi tenggara
+west java
+west kalimantan
+west nusa tenggara
+west papua
+west sumatra
+connaught
+leinster
+munster
+ulster
+central district
+haifa district
+jerusalem district
+northern district
+southern district
+tel aviv
+arunachal pradesh
+bengal
+bihar
+chandigarh
+daman and diu
+goa
+haryana
+jammu and kashmir
+karnataka
+kerala
+laccadives
+maharashtra
+meghalaya
+nct
+nagaland
+rajasthan
+state of andhra pradesh
+state of assam
+state of chhatt?sgarh
+state of gujar?t
+state of him?chal pradesh
+state of jharkhand
+state of madhya pradesh
+state of manipur
+state of mizoram
+state of odisha
+state of punjab
+state of sikkim
+state of tripura
+tamil nadu
+union territory of andaman and nicobar islands
+union territory of d?dra and nagar haveli
+union territory of puducherry
+uttar pradesh
+uttarakhand
+an najaf
+anbar
+dhi qar
+dihok
+diyala province
+mayorality of baghdad
+maysan
+muhafazat salah ad din
+muhafazat wasit
+mu??faz?at arb?l
+mu??faz?at b?bil
+mu??faz?at karbal?’
+mu??faz?at kirk?k
+mu??faz?at n?nawá
+mu??faz?at al ba?rah
+mu??faz?at al muthanná
+mu??faz?at al q?dis?yah
+mu??faz?at as sulaym?n?yah
+alborz
+bushehr
+east azarbaijan
+f?rs
+hormozg?n
+markazi
+m?zandar?n
+ost?n-e ardab?l
+ost?n-e chah?r ma??l va bakht??r?
+ost?n-e e?fah?n
+ost?n-e golest?n
+ost?n-e g?l?n
+ost?n-e hamad?n
+ost?n-e kerm?n
+ost?n-e kerm?nsh?h
+ost?n-e khor?s?n-e jon?b?
+ost?n-e khor?s?n-e shom?l?
+ost?n-e kh?zest?n
+ost?n-e kohg?l?yeh va bowyer a?mad
+ost?n-e kordest?n
+ost?n-e lorest?n
+ost?n-e qazv?n
+ost?n-e s?st?n va bal?chest?n
+ost?n-e tehr?n
+ost?n-e ?z?arb?yj?n-e gharb?
+ost?n-e ?l?m
+qom
+razavi khorasan
+semn?n
+yazd
+zanjan
+capital region
+east
+northeast
+northwest
+south
+southern peninsula
+west
+westfjords
+abruzzo
+aosta valley
+apulia
+basilicate
+calabria
+campania
+emilia-romagna
+friuli venezia giulia
+latium
+liguria
+lombardy
+molise
+piedmont
+sardinia
+sicily
+the marches
+trentino-alto adige
+tuscany
+umbria
+veneto
+hanover parish
+kingston
+parish of clarendon
+parish of manchester
+parish of portland
+parish of saint andrew
+parish of saint ann
+parish of saint catherine
+parish of saint james
+parish of saint mary
+parish of saint thomas
+parish of trelawny
+parish of westmoreland
+st. elizabeth
+ajlun
+amman
+aqaba
+balqa
+irbid
+jerash
+karak
+madaba
+mafraq
+ma’an
+tafielah
+zarqa
+aichi
+akita
+aomori
+chiba
+ehime
+fukui
+fukuoka
+fukushima
+gifu
+gunma
+hiroshima
+hokkaid?
+hy?go
+ibaraki
+ishikawa
+iwate
+kagawa
+kagoshima
+kanagawa
+kumamoto
+ky?to
+k?chi-ken
+mie
+miyagi
+miyazaki
+nagano
+nagasaki
+nara
+niigata
+okayama
+okinawa
+saga-ken
+saitama
+shiga-ken
+shimane
+shizuoka
+tochigi
+tokushima
+tottori
+toyama
+t?ky?
+wakayama
+yamagata
+yamaguchi
+yamanashi
+?ita
+?saka
+baringo
+bomet
+bungoma
+busia
+elegeyo-marakwet
+embu
+garissa
+homa bay
+isiolo
+kajiado
+kakamega
+keiyo
+kericho
+kiambu
+kilifi
+kirinyaga
+kisii
+kitui
+kwale
+laikipia
+lamu
+machakos
+makueni
+mandera
+marsabit
+meru
+migori
+mombasa
+murang'a
+nairobi
+nakuru
+nandi
+narok
+nyamira
+nyandarua
+nyeri
+samburu
+siaya
+taita taveta
+tana river
+tharaka - nithi
+trans nzoia
+turkana
+vihiga
+wajir
+west pokot
+batken
+chuyskaya oblast’
+gorod bishkek
+issyk-kul’skaya oblast’
+jalal-abad
+naryn
+osh oblasty
+talas
+banteay meanchey
+battambang
+kampong cham
+kampong chhnang
+kampong speu
+kampong thom
+kampot
+kandal
+kep
+koh kong
+kratie
+mondolkiri
+pailin
+phnom penh
+preah sihanouk
+preah vihear
+prey veng
+pursat
+ratanakiri
+siem reap
+stung treng
+svay rieng
+takeo
+?târ méanchey
+gilbert islands
+line islands
+phoenix islands
+grande comore
+mwali
+ndzuwani
+christ church nichola town
+saint anne sandy point
+saint george basseterre
+saint george gingerland
+saint james windward
+saint john capesterre
+saint john figtree
+saint mary cayon
+saint paul capesterre
+saint paul charlestown
+saint peter basseterre
+saint thomas lowland
+saint thomas middle island
+trinity palmetto point
+chagang-do
+hambuk
+hamnam
+hwanghae-bukto
+hwanghae-namdo
+kangw?n-do
+pyongyang
+p’y?ngan-bukto
+p’y?ngan-namdo
+rason
+yanggang-do
+busan
+chungcheongbuk-do
+chungcheongnam-do
+daegu
+daejeon
+gangwon-do
+gwangju
+gyeonggi-do
+gyeongsangbuk-do
+gyeongsangnam-do
+incheon
+jeju-do
+jeollabuk-do
+jeollanam-do
+sejong
+seoul
+ulsan
+al ahmadi governorate
+al asimah
+al farwaniyah
+mu??faz?at mub?rak al kab?r
+mu??faz?at al jahr?’
+mu??faz?at ?awall?
+aktyubinskaya oblast’
+almaty oblysy
+almaty qalasy
+aqmola oblysy
+astana qalasy
+atyra? oblysy
+batys qazaqstan oblysy
+bayqongyr qalasy
+east kazakhstan
+mangistauskaya oblast’
+pavlodar oblysy
+qaraghandy oblysy
+qostanay oblysy
+qyzylorda oblysy
+severo-kazakhstanskaya oblast’
+yuzhno-kazakhstanskaya oblast’
+zhambyl oblysy
+attapu
+bolikhamxai
+champasak
+houaphan
+khammouan
+khouèng bokèo
+khouèng oudômxai
+khouèng phôngsali
+khouèng savannakhét
+khouèng xékong
+louangnamtha
+luang prabang province
+salavan
+vientiane
+vientiane
+xaignabouli
+xiangkhouang
+beyrouth
+mohafazat aakkâr
+mohafazat baalbek-hermel
+mohafazat béqaa
+mohafazat liban-nord
+mohafazat liban-sud
+mohafazat mont-liban
+mohafazat nabatîyé
+quarter of anse-la-raye
+quarter of castries
+quarter of choiseul
+quarter of dauphin
+quarter of dennery
+quarter of gros-islet
+quarter of laborie
+quarter of micoud
+quarter of praslin
+quarter of soufrière
+quarter of vieux-fort
+balzers
+eschen
+gemeinde gamprin
+mauren
+planken
+ruggell
+schaan
+schellenberg
+triesen
+triesenberg
+vaduz
+central province
+eastern province
+north central province
+north western province
+northern province
+province of sabaragamuwa
+province of uva
+southern province
+western province
+bomi county
+bong county
+gbarpolu county
+grand bassa county
+grand cape mount county
+grand gedeh county
+grand kru county
+lofa county
+margibi county
+maryland county
+montserrado county
+nimba county
+river cess county
+river gee county
+sinoe county
+berea
+butha-buthe
+leribe
+mafeteng district
+maseru
+mohale’s hoek district
+mokhotlong
+qacha’s nek
+quthing
+thaba-tseka
+alytaus apskritis
+kauno apskritis
+klaip?dos apskritis
+marijampol?s apskritis
+panev?žys county
+taurag?s apskritis
+telši? apskritis
+utenos apskritis
+vilniaus apskritis
+Šiauli? apskritis
+district de diekirch
+district de grevenmacher
+district de luxembourg
+aglona
+aizkraukles rajons
+aizpute
+akn?stes novads
+alojas novads
+alsungas novads
+al?ksnes rajons
+amatas novads
+apes novads
+auces novads
+bab?tes novads
+baldones novads
+baltinavas novads
+balvu rajons
+bauskas rajons
+bever?nas novads
+broc?nu novads
+burtnieku novads
+carnikavas novads
+cesvaines novads
+ciblas novads
+c?su rajons
+dagdas novads
+daugavpils
+daugavpils
+dobeles rajons
+dundagas novads
+durbes novads
+engures novads
+garkalne
+grobi?a
+gulbenes rajons
+ikš?ile
+il?kstes novads
+in?ukalns
+jaunjelgava
+jaunpiebalga
+jaunpils
+jelgava
+jelgavas rajons
+j?kabpils
+j?kabpils municipality
+j?rmala
+kandava
+karsava
+koc?nu novads
+koknese
+krimulda
+krustpils
+kr?slavas rajons
+kuld?gas rajons
+lecava
+lielv?rde
+liep?ja
+limbažu rajons
+lub?na
+ludzas rajons
+l?gatne
+l?v?ni
+madona municipality
+mazsalaca
+m?lpils
+m?rupe
+m?rsraga novads
+naukš?ni
+nereta
+n?ca
+ogre
+olaine
+ozolnieku novads
+prei?i municipality
+priekule
+prieku?i municipality
+p?rgaujas novads
+p?vilostas novads
+p?avi?u novads
+raunas novads
+riebi?u novads
+rojas novads
+ropažu novads
+rucavas novads
+rug?ju novads
+rund?les novads
+r?zekne
+r?zeknes rajons
+r?ga
+r?jienas novads
+salacgr?vas novads
+salas novads
+salaspils novads
+saldus municipality
+saulkrastu novads
+siguldas novads
+skrundas novads
+skr?veru novads
+smiltenes novads
+stopi?u novads
+stren?u novads
+s?jas novads
+talsi municipality
+tukuma rajons
+t?rvetes novads
+vai?odes novads
+valka municipality
+valmiera district
+varak??nu novads
+vecpiebalgas novads
+vecumnieku novads
+ventspils
+ventspils municipality
+vies?tes novads
+vi?akas novads
+vi??nu novads
+v?rkavas novads
+zilupes novads
+?daži
+?rg?i
+?egums
+?ekava
+al jufrah
+al kufrah
+al marj
+al marqab
+darnah
+murzuq
+sha‘b?yat bangh?z?
+sha‘b?yat gh?t
+sha‘b?yat mi?r?tah
+sha‘b?yat n?l?t
+sha‘b?yat sabh?
+sha‘b?yat w?d? al ?ay?t
+sha‘b?yat w?d? ash sh??i’
+sha‘b?yat al bu?n?n
+sha‘b?yat al jabal al akh?ar
+sha‘b?yat al jabal al gharb?
+sha‘b?yat al jaf?rah
+sha‘b?yat al w???t
+sha‘b?yat an nuq?? al khams
+sha‘b?yat az z?wiyah
+surt
+tripoli district
+chaouia-ouardigha
+doukkala-abda
+gharb-chrarda-beni hssen
+guelmim-es semara
+laâyoune-boujdour-sakia el hamra
+marrakech-tensift-al haouz
+oriental
+oued ed dahab-lagouira
+région de fès-boulemane
+région de meknès-tafilalet
+région de rabat-salé-zemmour-zaër
+région de souss-massa-drâa
+région de tanger-tétouan
+région du grand casablanca
+tadla-azilal
+taza-al hoceima-taounate
+commune de monaco
+cahul
+drochia
+g?g?uzia
+municipiul bender
+municipiul b?l?i
+municipiul chi?in?u
+raionul anenii noi
+raionul basarabeasca
+raionul briceni
+raionul cantemir
+raionul cimi?lia
+raionul criuleni
+raionul c?l?ra?i
+raionul c?u?eni
+raionul dondu?eni
+raionul dub?sari
+raionul edine?
+raionul flore?ti
+raionul f?le?ti
+raionul glodeni
+raionul hînce?ti
+raionul ialoveni
+raionul leova
+raionul nisporeni
+raionul ocni?a
+raionul orhei
+raionul rezina
+raionul rî?cani
+raionul soroca
+raionul sîngerei
+raionul taraclia
+raionul telene?ti
+raionul ?old?ne?ti
+raionul ?tefan vod?
+str??eni
+ungheni
+unitatea teritorial? din stînga nistrului
+andrijevica
+bar
+berane
+bijelo polje
+budva
+cetinje
+danilovgrad
+herceg novi
+kotor
+mojkovac
+opština kolašin
+opština nikši?
+opština plav
+opština plužine
+opština rožaje
+opština Šavnik
+opština Žabljak
+pljevlja
+podgorica
+tivat
+ulcinj
+alaotra mangoro region
+amoron'i mania region
+analamanga region
+analanjirofo region
+androy region
+anosy region
+atsimo-andrefana region
+atsimo-atsinanana
+atsinanana region
+betsiboka region
+boeny region
+bongolava region
+diana region
+ihorombe region
+itasy region
+melaky region
+menabe region
+sava region
+sofia region
+upper matsiatra
+vakinankaratra region
+vatovavy fitovinany region
+ailinginae atoll
+ailinglaplap atoll
+ailuk atoll
+arno atoll
+aur atoll
+bikar atoll
+bikini atoll
+bokak atoll
+ebon atoll
+enewetak atoll
+erikub atoll
+jabat island
+jaluit atoll
+jemo island
+kili island
+kwajalein atoll
+lae atoll
+lib island
+likiep atoll
+majuro atoll
+maloelap atoll
+mejit island
+mili atoll
+namdrik atoll
+namu atoll
+rongelap atoll
+rongrik atoll
+taka atoll
+ujae atoll
+ujelang atoll
+utrik atoll
+wotho atoll
+wotje atoll
+aerodrom
+berovo
+bitola
+bogdanci
+bogovinje
+bosilovo
+brvenica
+butel
+debar
+debarca
+demir hisar
+demir kapija
+dolneni
+drugovo
+gazi baba
+gevgelija
+gostivar
+gradsko
+ilinden
+jegunovce
+karbinci
+kavadarci
+kisela voda
+kratovo
+kriva palanka
+kumanovo
+lozovo
+makedonska kamenica
+makedonski brod
+mogila
+negotino
+novaci
+novo selo
+ohrid
+opstina gjorce petrov
+opstina lipkovo
+opstina rankovce
+opština ara?inovo
+opština centar
+opština centar Župa
+opština del?evo
+opština dojran
+opština karpoš
+opština ki?evo
+opština kon?e
+opština ko?ani
+opština krivogaštani
+opština kruševo
+opština mavrovo i rostuša
+opština peh?evo
+opština probištip
+opština radoviš
+opština sopište
+opština staro nagori?ane
+opština studeni?ani
+opština vev?ani
+opština vraneštica
+opština vrap?ište
+opština ?air
+opština ?aška
+opština ?ešinovo-obleševo
+opština ?u?er-sandevo
+opština Štip
+opština Šuto orizari
+opština Želino
+oslomej
+petrovec
+plasnica
+prilep
+resen
+rosoman
+saraj
+struga
+strumica
+sveti nikole
+tearce
+tetovo
+valandovo
+vasilevo
+veles
+vinica
+zajas
+zelenikovo
+zrnovci
+bamako region
+gao
+kayes
+kidal
+koulikoro
+mopti
+sikasso
+ségou
+tombouctou
+ayeyawady region
+bago region
+chin state
+kachin state
+kayah state
+kayin state
+magway region
+mandalay region
+mon state
+rakhine state
+sagaing region
+shan state
+taninthayi region
+yangon region
+arhangay aymag
+bayan-Ölgiy aymag
+bayanhongor aymag
+bulgan province
+central
+darhan-uul aymag
+dzavhan aymag
+east gov?
+eastern aymag
+gov?-altay aymag
+gov?-sumber
+hentiy aymag
+hovd province
+hövsgöl aymag
+middle gov?
+orhon aymag
+selenge aymag
+sühbaatar aymag
+ulaanbaatar hot
+uvs aymag
+Ömnögov?
+Övörhangay
+municipality of macau
+municipality of the islands
+northern islands
+rota
+saipan
+tinian
+martinique
+adrar
+assaba
+brakna
+dakhlet nouadhibou
+district de nouakchott
+gorgol
+guidimaka
+hodh ech chargui
+hodh el gharbi
+inchiri
+tagant
+tiris zemmour
+wilaya du trarza
+parish of saint anthony
+parish of saint georges
+parish of saint peter
+attard
+balzan
+birkirkara
+bir?ebbu?a
+bormla
+dingli
+g?ajnsielem
+il-belt valletta
+il-birgu
+il-fgura
+il-fontana
+il-furjana
+il-gudja
+il-g?ira
+il-kalkara
+il-marsa
+il-mellie?a
+il-mosta
+il-munxar
+il-qala
+il-qrendi
+il-?amrun
+in-nadur
+in-naxxar
+ir-rabat
+is-si??iewi
+is-swieqi
+ix-xag?ra
+ix-xewkija
+ix-xg?ajra
+i?-?ebbu?
+i?-?ejtun
+i?-?urrieq
+kirkop
+l-g?arb
+l-g?asri
+l-iklin
+l-imdina
+l-imqabba
+l-imsida
+l-imtarfa
+l-im?arr
+l-isla
+lija
+luqa
+marsaskala
+marsaxlokk
+paola
+pembroke
+qormi
+safi
+saint john
+saint julian
+saint lawrence
+saint lucia
+saint paul’s bay
+saint venera
+sannat
+tal-pietà
+tarxien
+tas-sliema
+ta’ ker?em
+ta’ xbiex
+?al g?arg?ur
+?al g?axaq
+?a?-?abbar
+?a?-?ebbu?
+agalega islands
+black river district
+cargados carajos
+flacq district
+grand port district
+moka district
+pamplemousses district
+plaines wilhems district
+port louis district
+rivière du rempart district
+rodrigues
+savanne district
+baa atholhu
+central province
+dhaalu atholhu
+faafu atholhu
+gaafu alifu atholhu
+gaafu dhaalu atholhu
+gnyaviyani atoll
+haa alifu atholhu
+haa dhaalu atholhu
+kaafu atoll
+laamu atholhu
+lhaviyani atholhu
+maale
+meemu atholhu
+noonu atoll
+north central province
+north province
+northern ari atoll
+raa atoll
+seenu atholhu
+shaviyani atholhu
+south central province
+south province
+thaa atholhu
+upper north province
+upper south province
+vaavu atholhu
+central region
+northern region
+southern region
+aguascalientes
+baja california sur
+campeche
+chiapas
+chihuahua
+coahuila
+colima
+durango
+estado de baja california
+estado de méxico
+estado de veracruz-llave
+guanajuato
+guerrero
+hidalgo
+jalisco
+michoacán
+morelos
+nayarit
+nuevo león
+oaxaca
+puebla
+querétaro
+quintana roo
+san luis potosí
+sinaloa
+sonora
+tabasco
+tamaulipas
+the federal district
+tlaxcala
+yucatán
+zacatecas
+johor
+kedah
+kelantan
+kuala lumpur
+labuan
+melaka
+negeri sembilan
+pahang
+perak
+perlis
+pulau pinang
+putrajaya
+sabah
+sarawak
+selangor
+terengganu
+cabo delgado province
+cidade de maputo
+gaza province
+inhambane province
+manica province
+maputo
+nampula
+niassa province
+província de zambézia
+sofala province
+tete
+//karas
+erongo
+hardap
+kavango east region
+kavango west region
+khomas
+kunene
+ohangwena
+okavango
+omaheke
+omusati
+oshana
+oshikoto
+otjozondjupa
+zambezi region
+loyalty islands
+north province
+south province
+agadez
+diffa
+dosso region
+maradi
+niamey
+tahoua
+tillaberi region
+zinder
+abia state
+adamawa
+akwa ibom state
+anambra
+bauchi
+bayelsa state
+benue state
+borno state
+cross river state
+delta
+ebonyi state
+edo
+ekiti state
+enugu state
+federal capital territory
+gombe state
+imo state
+jigawa state
+kaduna state
+kano state
+katsina state
+kebbi state
+kogi state
+kwara state
+lagos
+nasarawa state
+niger state
+ogun state
+ondo state
+osun state
+oyo state
+plateau state
+rivers state
+sokoto state
+taraba state
+yobe state
+zamfara state
+departamento de boaco
+departamento de carazo
+departamento de chinandega
+departamento de chontales
+departamento de estelí
+departamento de granada
+departamento de jinotega
+departamento de león
+departamento de madriz
+departamento de managua
+departamento de masaya
+departamento de matagalpa
+departamento de nueva segovia
+departamento de rivas
+departamento de río san juan
+región autónoma atlántico norte
+región autónoma atlántico sur
+friesland
+groningen
+north brabant
+north holland
+provincie drenthe
+provincie flevoland
+provincie gelderland
+provincie limburg
+provincie overijssel
+provincie utrecht
+provincie zeeland
+south holland
+akershus
+aust-agder
+buskerud
+finnmark fylke
+hedmark
+hordaland fylke
+møre og romsdal fylke
+nord-trøndelag fylke
+nordland fylke
+oppland
+oslo county
+rogaland fylke
+sogn og fjordane fylke
+sør-trøndelag fylke
+telemark
+troms fylke
+vest-agder fylke
+vestfold
+Østfold
+central region
+eastern region
+far western
+mid western
+western region
+aiwo
+anabar
+anetan
+anibare
+baiti
+boe
+buada
+denigomodu
+ewa
+ijuw
+meneng
+nibok
+uaboe
+yaren
+auckland
+bay of plenty
+canterbury
+chatham islands
+gisborne
+hawke's bay
+manawatu-wanganui
+marlborough
+nelson
+northland
+otago
+southland
+taranaki
+tasman
+waikato
+wellington
+west coast
+ash sharqiyah south
+az? z??hirah
+musandam
+mu??faz?at jan?b al b??inah
+mu??faz?at masqa?
+mu??faz?at sham?l al b??inah
+mu??faz?at sham?l ash sharq?yah
+mu??faz?at z?uf?r
+mu??faz?at ad d?khil?yah
+mu??faz?at al buraym?
+mu??faz?at al wus?á
+emberá-wounaan
+guna yala
+ngöbe-buglé
+provincia de bocas del toro
+provincia de chiriquí
+provincia de coclé
+provincia de colón
+provincia de herrera
+provincia de los santos
+provincia de panamá
+provincia de veraguas
+provincia del darién
+amazonas
+ancash
+apurimac
+arequipa
+ayacucho
+cajamarca
+callao
+cusco
+departamento de moquegua
+huancavelica
+ica
+junín
+la libertad
+lambayeque
+lima
+loreto
+madre de dios
+pasco
+piura
+provincia de lima
+puno
+región de huánuco
+región de san martín
+tacna
+tumbes
+ucayali
+Îles australes
+Îles marquises
+Îles sous-le-vent
+Îles tuamotu-gambier
+Îles du vent
+bougainville
+central province
+chimbu province
+east new britain province
+east sepik province
+eastern highlands province
+enga province
+gulf province
+hela
+jiwaka
+madang province
+manus province
+milne bay province
+morobe province
+national capital district
+new ireland
+northern province
+southern highlands province
+west new britain province
+west sepik province
+western highlands province
+western province
+autonomous region in muslim mindanao
+bicol
+cagayan valley
+calabarzon
+caraga
+central luzon
+central visayas
+cordillera administrative region
+davao
+eastern visayas
+ilocos
+mimaropa
+national capital region
+northern mindanao
+soccsksargen
+western visayas
+zamboanga peninsula
+azad kashmir
+balochist?n
+federally administered tribal areas
+gilgit-baltistan
+isl?m?b?d capital territory
+khyber pakhtunkhwa
+punjab
+sindh
+greater poland voivodeship
+kujawsko-pomorskie
+lesser poland voivodeship
+lower silesian voivodeship
+lublin voivodeship
+lubusz
+masovian voivodeship
+opole voivodeship
+podlasie
+pomeranian voivodeship
+silesian voivodeship
+subcarpathian voivodeship
+warmian-masurian voivodeship
+west pomeranian voivodeship
+?ód? voivodeship
+?wi?tokrzyskie
+commune de miquelon-langlade
+commune de saint-pierre
+adjuntas
+aguada
+aguadilla
+aguas buenas
+aibonito
+arecibo
+arroyo
+añasco
+barceloneta
+barranquitas
+bayamón municipio
+cabo rojo municipio
+caguas municipio
+camuy municipio
+canóvanas municipio
+carolina municipio
+cataño municipio
+cayey municipio
+ceiba municipio
+ciales municipio
+cidra municipio
+coamo municipio
+comerío municipio
+corozal municipio
+culebra municipio
+dorado municipio
+fajardo municipio
+florida municipio
+guayama municipio
+guayanilla municipio
+guaynabo municipio
+gurabo municipio
+guánica municipio
+hatillo municipio
+hormigueros municipio
+humacao municipio
+juana díaz municipio
+lajas municipio
+lares municipio
+las marías municipio
+las piedras municipio
+loíza municipio
+luquillo municipio
+manatí municipio
+maricao municipio
+maunabo municipio
+mayagüez municipio
+moca municipio
+morovis municipio
+municipio de isabela
+municipio de jayuya
+municipio de juncos
+naguabo municipio
+naranjito municipio
+orocovis municipio
+patillas municipio
+peñuelas municipio
+ponce municipio
+quebradillas municipio
+rincón municipio
+río grande municipio
+sabana grande municipio
+salinas municipio
+san germán municipio
+san juan
+san lorenzo municipio
+san sebastián municipio
+santa isabel municipio
+toa alta municipio
+toa baja municipio
+trujillo alto municipio
+utuado municipio
+vega alta municipio
+vega baja municipio
+vieques municipio
+villalba municipio
+yabucoa municipio
+yauco municipio
+gaza strip
+west bank
+autonomous region of the azores
+aveiro
+bragança
+distrito da guarda
+distrito de beja
+distrito de braga
+distrito de castelo branco
+distrito de coimbra
+distrito de faro
+distrito de leiria
+distrito de portalegre
+distrito de santarém
+distrito de setúbal
+distrito de viana do castelo
+distrito de vila real
+distrito de viseu
+distrito de Évora
+distrito do porto
+lisbon
+madeira
+hatohobei
+state of aimeliik
+state of airai
+state of angaur
+state of kayangel
+state of koror
+state of melekeok
+state of ngaraard
+state of ngarchelong
+state of ngardmau
+state of ngatpang
+state of ngchesar
+state of ngeremlengui
+state of ngiwal
+state of peleliu
+state of sonsorol
+asunción
+departamento central
+departamento de alto paraguay
+departamento de boquerón
+departamento de caaguazú
+departamento de caazapá
+departamento de canindeyú
+departamento de concepción
+departamento de itapúa
+departamento de misiones
+departamento de paraguarí
+departamento de presidente hayes
+departamento de san pedro
+departamento de la cordillera
+departamento de Ñeembucú
+departamento del alto paraná
+departamento del amambay
+departamento del guairá
+al wakrah
+balad?yat jaray?n al b??inah
+balad?yat umm sa‘?d
+balad?yat umm ?al?l
+balad?yat ad daw?ah
+balad?yat al ghuwayr?yah
+balad?yat al jumayl?yah
+balad?yat al khawr wa adh dhakh?rah
+balad?yat ar rayy?n
+balad?yat ash sham?l
+balad?yat az? z?a‘?yin
+réunion
+arad
+bihor
+bucure?ti
+constan?a
+covasna
+dolj
+giurgiu
+gorj
+harghita
+hunedoara
+ilfov
+jude?ul alba
+jude?ul arge?
+jude?ul bac?u
+jude?ul bistri?a-n?s?ud
+jude?ul boto?ani
+jude?ul bra?ov
+jude?ul br?ila
+jude?ul buz?u
+jude?ul cara?-severin
+jude?ul cluj
+jude?ul c?l?ra?i
+jude?ul dâmbovi?a
+jude?ul gala?i
+jude?ul ialomi?a
+jude?ul ia?i
+jude?ul mehedin?i
+jude?ul mure?
+jude?ul neam?
+jude?ul sibiu
+jude?ul s?laj
+jude?ul timi?
+jude?ul vâlcea
+maramure?
+olt
+prahova
+satu mare
+suceava
+teleorman
+tulcea
+vaslui
+vrancea
+autonomna pokrajina vojvodina
+central serbia
+altayskiy kray
+amurskaya oblast’
+arkhangelskaya
+astrakhanskaya oblast’
+bashkortostan
+belgorodskaya oblast’
+bryanskaya oblast’
+chechnya
+chelyabinsk
+chukotskiy avtonomnyy okrug
+chuvashia
+dagestan
+irkutskaya oblast’
+ivanovskaya oblast’
+jewish autonomous oblast
+kabardino-balkarskaya respublika
+kaliningradskaya oblast’
+kalmykiya
+kaluzhskaya oblast’
+kamtchatski kray
+karachayevo-cherkesiya
+kemerovskaya oblast’
+khabarovsk krai
+khanty-mansiyskiy avtonomnyy okrug
+kirovskaya oblast’
+komi republic
+kostromskaya oblast’
+krasnodarskiy kray
+krasnoyarskiy kray
+kurganskaya oblast’
+kurskaya oblast’
+leningrad
+lipetskaya oblast’
+magadanskaya oblast’
+moscow
+moskovskaya
+murmansk
+nenetskiy avtonomnyy okrug
+nizhegorodskaya oblast’
+north ossetia
+novgorodskaya oblast’
+novosibirskaya oblast’
+omskaya oblast’
+orenburgskaya oblast’
+orlovskaya oblast’
+penzenskaya oblast’
+perm krai
+primorskiy kray
+pskovskaya oblast’
+respublika adygeya
+respublika altay
+respublika buryatiya
+respublika ingushetiya
+respublika kareliya
+respublika khakasiya
+respublika mariy-el
+respublika mordoviya
+respublika sakha (yakutiya)
+respublika tyva
+rostovskaya oblast’
+ryazanskaya oblast’
+sakhalinskaya oblast’
+samarskaya oblast’
+saratovskaya oblast’
+smolenskaya oblast’
+st.-petersburg
+stavropol’skiy kray
+sverdlovskaya oblast’
+tambovskaya oblast’
+tatarstan
+tomskaya oblast’
+tul’skaya oblast'
+tverskaya oblast’
+tyumenskaya oblast’
+udmurtskaya respublika
+ulyanovsk oblast
+vladimirskaya oblast’
+volgogradskaya oblast’
+vologodskaya oblast’
+voronezhskaya oblast’
+yamalo-nenetskiy avtonomnyy okrug
+yaroslavskaya oblast’
+zabaykal’skiy kray
+eastern province
+kigali
+northern province
+southern province
+western province
+al jawf
+al-qassim
+eastern province
+jizan region
+makkah province
+min?aqat najr?n
+min?aqat tab?k
+min?aqat al b??ah
+min?aqat al mad?nah
+min?aqat ??’il
+min?aqat ‘as?r
+northern borders
+riyadh province
+central province
+choiseul
+guadalcanal province
+isabel province
+makira-ulawa province
+malaita province
+rennell and bellona
+temotu province
+western province
+anse boileau
+anse etoile
+anse royale
+anse aux pins
+au cap
+baie lazare
+baie sainte anne
+beau vallon
+bel air
+bel ombre
+cascade
+english river
+glacis
+grand anse mahe
+grand anse praslin
+inner islands
+les mamelles
+mont buxton
+mont fleuri
+plaisance
+pointe larue
+port glaud
+roche caiman
+saint louis
+takamaka
+al jaz?rah
+al qa??rif
+blue nile state
+central darfur
+eastern darfur
+kassala
+khartoum state
+northern darfur
+northern state
+red sea state
+river nile state
+sham?l kurduf?n
+sinn?r
+southern darfur
+southern kordofan
+western darfur
+white nile
+blekinge
+dalarna
+gotland
+gävleborg
+halland
+jämtland
+jönköping
+kalmar
+kronoberg
+norrbotten
+skåne
+stockholm
+södermanland
+uppsala
+värmland
+västerbotten
+västernorrland
+västmanland
+västra götaland
+Örebro
+Östergötland
+central singapore community development council
+north east community development region
+north west community development council
+south east community development council
+south west community development council
+ascension
+saint helena
+tristan da cunha
+beltinci
+benedikt
+bistrica ob sotli
+bloke
+bohinj
+borovnica
+brda
+brezovica
+cankova
+celje
+cerklje na gorenjskem
+cerknica
+cerkno
+cerkvenjak
+cirkulane
+destrnik
+dobje
+dobrepolje
+dobrna
+dobrova-polhov gradec
+dobrovnik
+dol pri ljubljani
+dolenjske toplice
+dornava
+dravograd
+duplek
+gorenja vas-poljane
+gornja radgona
+gornji grad
+gornji petrovci
+grad
+grosuplje
+hajdina
+hodos
+horjul
+hrastnik
+hrpelje-kozina
+idrija
+ig
+ilirska bistrica
+izola
+jesenice
+jezersko
+kamnik
+kanal
+kobilje
+komen
+komenda
+koper
+kostanjevica na krki
+kostel
+kozje
+kranj
+kranjska gora
+kungota
+kuzma
+lenart
+lendava
+litija
+ljubno
+ljutomer
+log-dragomer
+logatec
+lovrenc na pohorju
+lukovica
+makole
+maribor
+markovci
+medvode
+mestna ob?ina novo mesto
+metlika
+miren-kostanjevica
+mislinja
+mokronog-trebelno
+moravske toplice
+mozirje
+murska sobota
+muta
+naklo
+nazarje
+nova gorica
+ob?ina ajdovš?ina
+ob?ina apa?e
+ob?ina bled
+ob?ina bovec
+ob?ina braslov?e
+ob?ina brežice
+ob?ina diva?a
+ob?ina domžale
+ob?ina gorišnica
+ob?ina ho?e-slivnica
+ob?ina ivan?na gorica
+ob?ina kidri?evo
+ob?ina kobarid
+ob?ina ko?evje
+ob?ina križevci
+ob?ina krško
+ob?ina laško
+ob?ina loška dolina
+ob?ina loški potok
+ob?ina lu?e
+ob?ina majšperk
+ob?ina mengeš
+ob?ina mežica
+ob?ina miklavž na dravskem polju
+ob?ina mirna pe?
+ob?ina morav?e
+ob?ina ormož
+ob?ina pod?etrtek
+ob?ina polj?ane
+ob?ina rade?e
+ob?ina ravne na koroškem
+ob?ina razkrižje
+ob?ina ra?e-fram
+ob?ina ren?e-vogrsko
+ob?ina re?ica ob savinji
+ob?ina rogaška slatina
+ob?ina ruše
+ob?ina semi?
+ob?ina sežana
+ob?ina sodražica
+ob?ina sol?ava
+ob?ina središ?e ob dravi
+ob?ina starše
+ob?ina straža
+ob?ina sveti andraž v slovenskih goricah
+ob?ina sveti jurij ob Š?avnici
+ob?ina sveti tomaž
+ob?ina tišina
+ob?ina tolmin
+ob?ina trži?
+ob?ina velike laš?e
+ob?ina veržej
+ob?ina zre?e
+ob?ina ?rna na koroškem
+ob?ina ?rnomelj
+ob?ina Šalovci
+ob?ina Šentilj
+ob?ina Šentjernej
+ob?ina Šentjur
+ob?ina Šentrupert
+ob?ina Šen?ur
+ob?ina Škocjan
+ob?ina Škofja loka
+ob?ina Škofljica
+ob?ina Šmarje pri jelšah
+ob?ina Šmarješke toplice
+ob?ina Šmartno ob paki
+ob?ina Šmartno pri litiji
+ob?ina Šoštanj
+ob?ina Štore
+ob?ina Žalec
+ob?ina Železniki
+ob?ina Žetale
+ob?ina Žiri
+ob?ina Žirovnica
+odranci
+oplotnica
+osilnica
+pesnica
+piran
+pivka
+podlehnik
+podvelka
+polzela
+postojna
+prebold
+preddvor
+prevalje
+ptuj
+puconci
+radenci
+radlje ob dravi
+radovljica
+ribnica
+ribnica na pohorju
+rogatec
+selnica ob dravi
+sevnica
+slovenj gradec
+slovenska bistrica
+slovenske konjice
+sveta ana
+sveta trojica v slovenskih goricah
+sveti jurij v slovenskih goricah
+tabor
+trbovlje
+trebnje
+trzin
+velenje
+velika polana
+videm
+vipava
+vitanje
+vodice
+vojnik
+vransko
+vrhnika
+vuzenica
+zagorje ob savi
+banskobystrický kraj
+bratislavský kraj
+košický kraj
+nitriansky kraj
+prešovský kraj
+tren?iansky kraj
+trnavský kraj
+Žilinský kraj
+eastern province
+northern province
+southern province
+western area
+castello di acquaviva
+castello di borgo maggiore
+castello di domagnano
+castello di faetano
+castello di fiorentino
+castello di montegiardino
+castello di san marino città
+chiesanuova
+serravalle
+dakar
+diourbel
+fatick
+kaolack
+kolda
+louga
+matam
+région de kaffrine
+région de kédougou
+région de sédhiou
+région de thiès
+saint-louis
+tambacounda
+ziguinchor
+awdal
+bakool
+banaadir
+bari
+bay
+galguduud
+gedo
+hiiraan
+lower jubba
+lower shabeelle
+middle jubba
+middle shabeelle
+mudug
+nugaal
+sanaag
+sool
+togdheer
+woqooyi galbeed
+distrikt brokopondo
+distrikt commewijne
+distrikt coronie
+distrikt marowijne
+distrikt nickerie
+distrikt para
+distrikt paramaribo
+distrikt saramacca
+distrikt sipaliwini
+distrikt wanica
+central equatoria
+eastern equatoria
+el buhayrat
+jonglei
+northern bahr al ghazal
+unity
+upper nile state
+warrap
+western bahr al ghazal
+western equatoria
+príncipe
+são tomé island
+departamento de ahuachapán
+departamento de cabañas
+departamento de chalatenango
+departamento de cuscatlán
+departamento de la libertad
+departamento de la paz
+departamento de la unión
+departamento de morazán
+departamento de san miguel
+departamento de san salvador
+departamento de san vicente
+departamento de santa ana
+departamento de sonsonate
+departamento de usulután
+al-hasakah
+aleppo
+ar-raqqah
+as-suwayda
+damascus governorate
+daraa
+deir ez-zor
+hama
+homs
+idlib
+latakia
+quneitra
+rif-dimashq
+tartus
+hhohho district
+lubombo district
+manzini district
+shiselweni district
+barh el gazel
+batha region
+borkou region
+chari-baguirmi region
+ennedi region
+ennedi-est
+ennedi-ouest
+guera region
+hadjer-lamis
+kanem region
+lac region
+logone occidental region
+logone oriental region
+mandoul
+mayo-kebbi est
+mayo-kebbi west region
+moyen-chari region
+ouaddai region
+salamat region
+sila
+tandjile region
+tibesti region
+ville de n'djaména
+wadi fira region
+archipel des crozet
+archipel des kerguelen
+la terre-adélie
+Îles saint-paul et nouvelle-amsterdam
+Îles Éparses de l'océan indien
+centrale
+kara
+maritime
+plateaux
+savanes
+bangkok
+changwat amnat charoen
+changwat ang thong
+changwat bueng kan
+changwat buriram
+changwat chachoengsao
+changwat chai nat
+changwat chaiyaphum
+changwat chanthaburi
+changwat chiang rai
+changwat chon buri
+changwat chumphon
+changwat kalasin
+changwat kamphaeng phet
+changwat kanchanaburi
+changwat khon kaen
+changwat krabi
+changwat lampang
+changwat lamphun
+changwat loei
+changwat lop buri
+changwat mae hong son
+changwat maha sarakham
+changwat mukdahan
+changwat nakhon nayok
+changwat nakhon pathom
+changwat nakhon phanom
+changwat nakhon ratchasima
+changwat nakhon sawan
+changwat nakhon si thammarat
+changwat nan
+changwat narathiwat
+changwat nong bua lamphu
+changwat nong khai
+changwat nonthaburi
+changwat pathum thani
+changwat pattani
+changwat phangnga
+changwat phatthalung
+changwat phayao
+changwat phetchabun
+changwat phetchaburi
+changwat phichit
+changwat phitsanulok
+changwat phra nakhon si ayutthaya
+changwat phrae
+changwat prachin buri
+changwat prachuap khiri khan
+changwat ranong
+changwat ratchaburi
+changwat rayong
+changwat roi et
+changwat sa kaeo
+changwat sakon nakhon
+changwat samut prakan
+changwat samut sakhon
+changwat samut songkhram
+changwat sara buri
+changwat satun
+changwat sing buri
+changwat sisaket
+changwat songkhla
+changwat sukhothai
+changwat suphan buri
+changwat surat thani
+changwat surin
+changwat tak
+changwat trang
+changwat trat
+changwat ubon ratchathani
+changwat udon thani
+changwat uthai thani
+changwat uttaradit
+changwat yala
+changwat yasothon
+chiang mai province
+phuket
+dushanbe
+gorno-badakhshan
+region of republican subordination
+viloyati khatlon
+viloyati sughd
+atafu
+fakaofo
+nukunonu
+aileu
+ainaro
+baucau
+bobonaro
+cova lima
+díli
+ermera
+lautém
+liquiçá
+manatuto
+manufahi
+oecusse
+viqueque
+ahal
+balkan
+da?oguz welaýaty
+lebap
+mary
+gafsa governorate
+gouvernorat de ben arous
+gouvernorat de bizerte
+gouvernorat de béja
+gouvernorat de gabès
+gouvernorat de jendouba
+gouvernorat de kairouan
+gouvernorat de kasserine
+gouvernorat de kef
+gouvernorat de kébili
+gouvernorat de mahdia
+gouvernorat de monastir
+gouvernorat de médenine
+gouvernorat de nabeul
+gouvernorat de sfax
+gouvernorat de sidi bouzid
+gouvernorat de siliana
+gouvernorat de sousse
+gouvernorat de tozeur
+gouvernorat de tunis
+gouvernorat de zaghouan
+gouvernorat de l’ ariana
+manouba
+tataouine
+eua
+ha‘apai
+niuas
+tongatapu
+vava‘u
+adana
+ad?yaman
+afyonkarahisar
+aksaray
+amasya
+ankara
+antalya
+ardahan
+artvin
+ayd?n
+a?r?
+bal?kesir
+bart?n
+batman
+bayburt
+bilecik
+bingöl
+bitlis
+bolu
+burdur
+bursa
+denizli
+diyarbak?r
+düzce
+edirne
+elaz??
+erzincan
+erzurum
+eski?ehir
+gaziantep
+giresun
+gümü?hane
+hakkâri
+hatay
+isparta
+istanbul
+i?d?r
+kahramanmara?
+karabük
+karaman
+kars
+kastamonu
+kayseri
+kilis
+kocaeli
+konya
+kütahya
+k?rklareli
+k?r?kkale
+k?r?ehir
+malatya
+manisa
+mardin
+mersin
+mu?la
+mu?
+nev?ehir
+ni?de
+ordu
+osmaniye
+rize
+sakarya
+samsun
+siirt
+sinop
+sivas
+tekirda?
+tokat
+trabzon
+tunceli
+u?ak
+van
+yalova
+yozgat
+zonguldak
+Çanakkale
+Çank?r?
+Çorum
+?zmir
+?anl?urfa
+??rnak
+borough of arima
+chaguanas
+city of port of spain
+city of san fernando
+couva-tabaquite-talparo
+diego martin
+eastern tobago
+mayaro
+penal/debe
+point fortin
+princes town
+san juan/laventille
+sangre grande
+siparia
+tobago
+tunapuna/piarco
+funafuti
+nanumanga
+nanumea
+niutao
+nui
+nukufetau
+nukulaelae
+vaitupu
+fukien
+kaohsiung
+taipei
+taiwan
+arusha
+dar es salaam region
+dodoma
+geita
+iringa
+kagera
+katavi
+kigoma
+kilimanjaro
+lindi
+manyara
+mara
+mbeya
+morogoro
+mtwara
+mwanza
+njombe
+pemba north
+pemba south
+pwani
+rukwa
+ruvuma
+shinyanga
+simiyu
+singida
+tabora
+tanga
+zanzibar central/south
+zanzibar north
+zanzibar urban/west
+avtonomna respublika krym
+cherkas’ka oblast’
+chernihivs’ka oblast’
+chernivets'ka oblast'
+dnipropetrovska oblast'
+donets’ka oblast’
+ivano-frankivs’ka oblast’
+kharkivs’ka oblast’
+khersons’ka oblast’
+khmel’nyts’ka oblast’
+kirovohrads’ka oblast’
+kyiv city
+kyiv oblast
+luhans’ka oblast’
+l’vivs’ka oblast’
+misto sevastopol’
+mykolayivs’ka oblast’
+odessa
+poltavs’ka oblast’
+rivnens’ka oblast’
+sums’ka oblast’
+ternopil’s’ka oblast’
+vinnyts’ka oblast’
+volyns’ka oblast’
+zakarpattia oblast
+zaporiz’ka oblast’
+zhytomyrs’ka oblast’
+central region
+eastern region
+northern region
+western region
+baker island
+howland island
+jarvis island
+johnston atoll
+kingman reef
+midway islands
+navassa island
+palmyra atoll
+wake island
+alabama
+alaska
+arizona
+arkansas
+california
+colorado
+connecticut
+delaware
+florida
+georgia
+hawaii
+idaho
+illinois
+indiana
+iowa
+kansas
+kentucky
+louisiana
+maine
+maryland
+massachusetts
+michigan
+minnesota
+mississippi
+missouri
+montana
+nebraska
+nevada
+new hampshire
+new jersey
+new mexico
+new york
+north carolina
+north dakota
+ohio
+oklahoma
+oregon
+pennsylvania
+rhode island
+south carolina
+south dakota
+tennessee
+texas
+utah
+vermont
+virginia
+washington
+west virginia
+wisconsin
+wyoming
+artigas
+canelones
+cerro largo
+colonia
+departamento de durazno
+departamento de flores
+departamento de montevideo
+departamento de paysandú
+departamento de rivera
+departamento de rocha
+departamento de río negro
+departamento de salto
+departamento de san josé
+departamento de tacuarembó
+departamento de treinta y tres
+florida
+lavalleja
+maldonado
+soriano
+andijan
+bukhara
+fergana
+jizzakh province
+karakalpakstan
+namangan
+navoiy province
+qashqadaryo
+samarqand viloyati
+sirdaryo
+surxondaryo viloyati
+toshkent shahri
+toshkent viloyati
+xorazm viloyati
+grenadines
+parish of charlotte
+parish of saint andrew
+parish of saint david
+parish of saint george
+parish of saint patrick
+amazonas
+anzoátegui
+apure
+aragua
+barinas
+bolívar
+carabobo
+cojedes
+delta amacuro
+dependencias federales
+distrito federal
+estado yaracuy
+falcón
+guárico
+lara
+miranda
+monagas
+mérida
+nueva esparta
+portuguesa
+sucre
+trujillo
+táchira
+vargas
+zulia
+saint croix island
+saint john island
+saint thomas island
+an giang
+gia lai
+hau giang
+huy?n Ði?n biên
+kon tum
+long an
+saigon
+thành ph? c?n th?
+thành ph? hà n?i
+thành ph? h?i phòng
+thành ph? ?à n?ng
+t?nh bà r?a-v?ng tàu
+t?nh bình d??ng
+t?nh bình ph??c
+t?nh bình thu?n
+t?nh bình ??nh
+t?nh b?c liêu
+t?nh b?c giang
+t?nh b?c k?n
+t?nh b?c ninh
+t?nh b?n tre
+t?nh cao b?ng
+t?nh cà mau
+t?nh hà giang
+t?nh hà nam
+t?nh hà t?nh
+t?nh hòa bình
+t?nh h?ng yên
+t?nh h?i d??ng
+t?nh khánh hòa
+t?nh ki?n giang
+t?nh lai châu
+t?nh lào cai
+t?nh lâm ??ng
+t?nh l?ng s?n
+t?nh nam ??nh
+t?nh ngh? an
+t?nh ninh bình
+t?nh ninh thu?n
+t?nh phú th?
+t?nh phú yên
+t?nh qu?ng bình
+t?nh qu?ng nam
+t?nh qu?ng ngãi
+t?nh qu?ng ninh
+t?nh qu?ng tr?
+t?nh sóc tr?ng
+t?nh s?n la
+t?nh thanh hóa
+t?nh thái bình
+t?nh thái nguyên
+t?nh th?a thiên-hu?
+t?nh ti?n giang
+t?nh trà vinh
+t?nh tuyên quang
+t?nh tây ninh
+t?nh v?nh long
+t?nh v?nh phúc
+t?nh yên bái
+t?nh ??k l?k
+t?nh ??ng nai
+t?nh ??ng tháp
+Ð?k nông
+malampa province
+penama province
+sanma province
+shefa province
+tafea province
+torba province
+circonscription d'alo
+circonscription d'uvéa
+circonscription de sigavé
+a'ana
+aiga-i-le-tai
+atua
+fa‘asaleleaga
+gagaifomauga
+gaga‘emauga
+palauli
+satupa‘itea
+tuamasaga
+vaisigano
+va‘a-o-fonoti
+hani i elezit
+kamenica
+komuna e deçanit
+komuna e dragashit
+komuna e drenasit
+komuna e ferizajt
+komuna e gjakovës
+komuna e gjilanit
+komuna e graçanicës
+komuna e istogut
+komuna e junikut
+komuna e kaçanikut
+komuna e klines
+komuna e kllokotit
+komuna e leposaviqit
+komuna e malisheves
+komuna e mamushës
+komuna e mitrovicës
+komuna e obiliqit
+komuna e parteshit
+komuna e pejës
+komuna e prishtinës
+komuna e ranillugut
+komuna e shtimes
+komuna e skenderajt
+komuna e thërandës
+komuna e vitisë
+komuna e zubin potokut
+kosovo polje
+lipjan
+novo brdo
+opština zve?an
+opština Štrpce
+orahovac
+podujevo
+prizren
+vushtrri
+aden
+al mahrah
+al ma?w?t
+amanat al asimah
+ibb
+mu??faz?at abyan
+mu??faz?at dham?r
+mu??faz?at la?ij
+mu??faz?at ma’rib
+mu??faz?at raymah
+mu??faz?at ta‘izz
+mu??faz?at al bay??’
+mu??faz?at al jawf
+mu??faz?at al ?udaydah
+mu??faz?at a? ??li‘
+mu??faz?at ?a‘dah
+mu??faz?at ?ajjah
+mu??faz?at ?a?ramawt
+omran
+sanaa
+shabwah
+acoua
+bandraboua
+bandrele
+bouéni
+chiconi
+chirongui
+dembeni
+dzaoudzi
+kani-kéli
+koungou
+m'tsangamouji
+mamoudzou
+mtsamboro
+ouangani
+pamandzi
+sada
+tsingoni
+gauteng
+kwazulu-natal
+limpopo
+mpumalanga
+northern cape
+orange free state
+province of eastern cape
+province of north west
+province of the western cape
+central province
+copperbelt
+eastern province
+luapula province
+lusaka province
+north-western province
+northern province
+southern province
+western province
+bulawayo
+harare
+manicaland
+mashonaland central
+mashonaland east province
+mashonaland west
+masvingo province
+matabeleland north
+matabeleland south province
+midlands province
+buugaaf
+ilp
+fragham

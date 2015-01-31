@@ -52,6 +52,7 @@ class Reply extends Post {
 			return $mustache->render($template, array(
 				'active' => $active,
 				'reply' => $this,
+				'text' => $this->formatText(),
 				'owner' => $owner,
 				'relative_date' => $this->getRelativeDate(),
 				'name' => $this->getName(),
@@ -62,6 +63,10 @@ class Reply extends Post {
 				
 			break;
 		}
+	}
+
+	protected function getText() {
+		return $this->reply_text;
 	}
 
 	protected function getRelativeDate() {
