@@ -124,13 +124,6 @@ class Post extends DisplayDObj {
 			}
 
 			// get html for replies
-			/*
-			foreach ($this->replies as $reply) {
-				$html = $reply->getHTML($context, $vars);
-				array_push($this->replies_html, $html);
-			}
-			 */
-
 			for ($i = 0; $i < count($this->replies) && $i < self::$MAX_REPLIES; $i++) {
 
 				$reply = $this->replies[$i];
@@ -138,13 +131,24 @@ class Post extends DisplayDObj {
 				array_push($this->replies_html, $html);
 			}
 
+			// get name
+			$name = $this->getName();
+
 			// check authentication
 			$delete_button = false;
 			$reply_request = false;
 
+			$site_user = NULL;
 			if (isset($_SESSION['uid'])) {
 				$active = true;
 				$site_user = $vars['site_user'];
+
+				// if we're making a new post
+				// --- give own switch statement later
+				if ($name == 'UNNAMED USER') {
+					$name = $site_user->getName();
+					$this->img_link = $site_user->img_link;
+				}
 
 				$reply_request = $site_user->checkNetworkRegistration($network->id);
 
@@ -165,7 +169,8 @@ class Post extends DisplayDObj {
 				'post' => $this,
 				'text' => $this->formatText(),
 				'relative_date' => $this->getRelativeDate(),
-				'name' => $this->getName(),
+				'name' => $name,
+				'site_user' => $site_user,
 				'replies' => $this->replies_html,
 				'images' => $this->getImagePaths(),
 				'vars' => $cm->getVars()
@@ -280,30 +285,50 @@ class Post extends DisplayDObj {
 		}
 	}
 
+	protected function getText() {
+		return $this->post_text;
+	}
+
 	public function formatText() {
 
-		$raw_text = $this->post_text; //'Not bold [b] Bold [/b]'; //$this->post_text;
-		//$all_chars = "[\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_space\$\@]*";
+		
+		// I need to get the locations of all the links
+		// I need to get the locations of all the
+		//
+
+		// split on links
+		$raw_text = $this->getText();
 		$all_chars = ".+";
 
-		// find bolded text
-		$match = "#\[b\](".$all_chars.")\[/b\]#";
-		$replacement = '<b>${1}</b>';
+		// remove link tags
+		$no_ltag = \misc\Util::StrExtract($raw_text, 'link');
 
-		$new_text = preg_replace($match, $replacement, $raw_text);
+		// autodetect links w/o tags
+		$al_match = "#((?:http|https|ftp)\:\/\/)*([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
+		$al_replace = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
+		$new_text = preg_replace($al_match, $al_replace, $no_ltag['replacement']);
 
-		// find italicized text
-		$match = "#\[i\](". $all_chars .")\[/i\]#";
-		$replacement = '<i>${1}</i>';
+		// replace link tags
+		$new_text = \misc\Util::StrReform($new_text, 'link', $no_ltag['extractions']);
 
-		$new_text = preg_replace($match, $replacement, $new_text);
 
-		// find links
-		$match = "#\[link\](". $all_chars .")\[/link\]#";
-		$replacement = '<a target=\'_blank\' href=\'http://${1}\'>${1}</a>';
+		// so i need to mark bare links
+	//	$match = "#\[link\](". $all_chars .")\[/link\]#";
 
-		$new_text = preg_replace($match, $replacement, $new_text);
+		/*
+		// autolink match
+		$al_match = "#((?:http|https|ftp)\:\/\/)*([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
+		$al_replace = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
 
+		// tag match
+		$tl_match =  "#\[link\](". $all_chars .")\[/link\]#";
+		$tl_replace = '<a target=\'_blank\' href=\'http://${1}\'>${1}</a>'; 
+		
+
+		$new_text = preg_replace(array($al_match, $tl_match), array($al_replace, $tl_replace),
+			$raw_text);
+
+		 */
 		/*
 		 * OLD HTML REPLACE, LET's keep it around
 		$match = "#((?:http|https|ftp)\:\/\/)*([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
@@ -312,6 +337,28 @@ class Post extends DisplayDObj {
 		$new_text =  preg_replace($match, $replacement, $text);
 
 		 */
+
+//		$raw_text = $this->post_text; //'Not bold [b] Bold [/b]'; //$this->post_text;
+		//$all_chars = "[\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_space\$\@]*";
+
+		// find bolded text
+		$match = "#\[b\](".$all_chars.")\[/b\]#";
+		$replacement = '<b>${1}</b>';
+
+		$new_text = preg_replace($match, $replacement, $new_text);
+
+		// find italicized text
+		$match = "#\[i\](". $all_chars .")\[/i\]#";
+		$replacement = '<i>${1}</i>';
+
+		$new_text = preg_replace($match, $replacement, $new_text);
+
+		// find links
+		$match = "#\[link\]((?:http|https|ftp)\:\/\/)*(". $all_chars .")\[/link\]#";
+		$replacement = '<a target=\'_blank\' href=\'http://${2}\'>${2}</a>';
+
+		$new_text = preg_replace($match, $replacement, $new_text);
+
 		return $new_text;
 	}
 

@@ -11,6 +11,7 @@
 
 require '../vendor/autoload.php';
 include_once '../zz341/fxn.php';
+include '../Environment.php';
 
 include_once '../error_pool.php';
 
@@ -75,7 +76,7 @@ if ($json_post['op'] == 'login') {
 		'error' => NULL
 	);
 
-	if ($json_post['password'] == DB_PASS) {
+	if ($json_post['password'] == "password") {
 		$response['error'] = 0;
 	}
 	else {

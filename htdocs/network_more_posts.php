@@ -19,7 +19,7 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 	&& isset($_POST['nid'])) {
 	
 
-		include 'Environment.php';
+		include 'environment.php';
 
 		$cm = new \Environment();
 

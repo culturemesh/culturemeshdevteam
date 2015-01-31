@@ -9,7 +9,7 @@ else {
 	ini_set('display_errors', false);
 	include_once('html_builder.php');
 	
-	include_once 'Environment.php';
+	include_once 'environment.php';
 	// get user and post
 	$uid = $_POST['uid'];
 	$pid = $_POST['pid'];

@@ -5,6 +5,7 @@ cm.PostWall = function(o) {
 	this._options = {
 
 		postSubmit : null,
+		wallDiv : null,
 		wallUl : null
 		// need wall ul
 	};
@@ -12,274 +13,334 @@ cm.PostWall = function(o) {
 	cm.extend(this._options, o);
 	cm.extend(this, cm.DisposeSupport);
 
+	this._wallDiv = this._options.wallDiv;
 	this._wallUl = this._options.wallUl;
 	this._postSubmit = this._options.postSubmit;
 
 	if (this._postSubmit != null) {
+		var self = this;
+		this._postSubmit._boss = self;
 		this._postSubmit._wallUl = this._wallUl;
 		this._postSubmit._setOnSuccess( this._addPost );
 	}
+
+	// make everything work
+	this._shoutOrders();
+
+	// make wallDiv appear
+	$( this._wallDiv ).show('slow');
 };
 
 cm.PostWall.prototype = {
 
 	// adds created post html to beginning of ul
-	_addPost: function(data) {
+	_addPost: function(data, f) {
 
 		if (data.error != 0) {
 		  alert(data.error);
 		}
 		else {
 		  $( this._wallUl ).prepend(data.html);
+
+		  // function from a parent
+		  this._boss._shoutOrders();
 		}
+	},
+	_shoutOrders: function() {
+
+		this._primeShowReplies();
+		this._primeRequestReplies();
+		this._primeReplyForms();
+		this._primeDeletes();
+		this._primeDeletePosts();
+		this._primeShowReplies();
+		this._primeMorePosts();
+	},
+	_primeShowReplies: function() {
+
+		var self = this;
+
+		$(".show_reply").off("submit");
+		$(".show_reply").on("submit", function(e) {
+			e.preventDefault();
+			// check if replies have already been fetched
+			var replies_div = $( e.target ).parent().siblings('div.replies');
+
+			var rd_children = $( replies_div ).children('ul').children();
+
+			if ( rd_children.length <= 4 ) {
+				var postForm = $(this).serialize();
+				var getReply = new Ajax({
+					requestType: 'POST',
+					requestUrl: cm.home_path + '/network_show_reply.php',
+						requestParameters: ' ',
+						data: postForm,
+						dataType: 'string',
+						sendNow: true
+				}, function(data) {
+					// success function
+					var response = JSON.parse(data);
+					if (response.error == 0) {
+						var targ = e.target;
+						$( targ ).children(':submit').val('Hide Replies');
+						$( targ ).parent().siblings('div.replies').children('ul').html(response.html);
+						self._primeDeletes();
+					}
+				}, function(response, rStatus) {
+
+				});
+			}
+			else {
+				if ($( e.target ).children(':submit').val() == 'Hide Replies') {
+					$( replies_div ).hide();
+					$( e.target ).children(':submit').val('Show Replies');
+				}
+				else {
+					$( replies_div ).show();
+					$( e.target ).children(':submit').val('Hide Replies');
+					self._primeDeletes();
+				}
+			}
+		});
+	},
+	_primeRequestReplies: function() {
+
+		var self = this;
+
+		$(".request_reply").off("submit");
+		$(".request_reply").on("submit", function(e) {
+			e.preventDefault();
+			var postForm = $(this).serialize();
+			if( $( e.target ).children('button').text() == 'Reply') {
+				var requestReply = new Ajax({
+					requestType: 'POST',
+					requestUrl: cm.home_path + '/network_request_reply.php',
+						requestParameters: ' ',
+						data: postForm,
+						dataType: 'string',
+						sendNow: true
+				}, function(data) {
+					// success function
+					var response = JSON.parse(data);
+					if (response.error == 0) {
+						var targ = e.target;
+						$( e.target ).parents('li.network-post').children('div.prompt').show();
+						$( targ ).children('button').text('Cancel');
+						$( targ ).parents('li.network-post').children('div.prompt').html(response.html);
+						self._primeReplyForms();
+					}
+				}, function(response, rStatus) {
+
+				});
+			}
+			else {
+				$( e.target ).parents('li.network-post').children('div.prompt').hide();
+				$( e.target ).children('button').text('Reply');
+			}
+		});
+	},
+	_primeReplyForms: function() {
+		var self = this;
+
+		$( '.reply_form' ).off('submit');
+		$( '.reply_form' ).on('submit', function(e) {
+			// prevent default behavior
+			e.preventDefault();
+			// get target
+			var targ = e.target;
+			var postForm = $( targ ).serialize();
+
+			var sendReply = new Ajax({
+				requestType: 'POST',
+				requestUrl: cm.home_path + '/network_post_reply.php',
+					requestParameters: ' ',
+					data: postForm,
+					dataType: 'string',
+					sendNow: true
+			}, function(data) {
+				// success function
+				var response = JSON.parse(data);
+				if (response.error == 0) {
+					// get div
+					var targ = e.target;
+
+					// put all lis out on display
+					$( targ ).parents( 'li.network-post' ).children('div.replies').children('ul').html(response.html);
+
+					// activate showreplies button, change to hide replies 
+					// get ul
+					// if there are over 4 of them
+					if( $( targ ).parents( 'li.network-post' ).children('div.replies').children('ul').children().length > 4) {
+						$( targ ).parents( 'div.prompt' ).siblings( 'div.show_reply_div' ).children('form.show_reply').show();
+						$( targ ).parents( 'div.prompt' ).siblings( 'div.show_reply_div' ).children('form.show_reply').children(':submit').val('Hide Replies');
+					}
+
+					// increment replies
+					//  a) get reply count
+					var replyCount = $( targ ).parents( 'div.prompt' ).siblings('div.replies').children('ul.replies').children().length;
+					//  b) increment in obvious place
+					$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('p.reply_count').text(replyCount + ' replies');
+					//  c) increment in hidden submit
+					$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('form.post_delete').children("input[name='replies']").val(replyCount)
+					//  d) increment at top of page
+
+					// activate delete buttons
+					self._primeDeletes();
+
+					// clear out reply thing and change text
+					$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('div.reply-button').children('form.request_reply').children('button').text('Reply');
+					$( targ ).parents( 'div.prompt' ).hide();
+				}
+			}, function(response, rStatus) {
+
+			});
+		});
+	},
+	_primeDeletes: function() {
+
+		// event handler
+		$( '.delete_reply' ).off('submit');
+		$( '.delete_reply' ).on('submit', function(e) {
+			// prevent default behavior
+			e.preventDefault();
+			// get target
+
+			if (confirm("Are you sure you want to delete this reply?")) {
+				var targ = e.target;
+				var postForm = $( targ ).serialize();
+
+				var sendReply = new Ajax({
+					requestType: 'POST',
+					requestUrl: cm.home_path + '/network_reply_delete.php',
+						requestParameters: ' ',
+						data: postForm,
+						dataType: 'string',
+						sendNow: true
+				}, function(data) {
+					// success function
+					var response = JSON.parse(data);
+					
+					if (response.error == 0) {
+						// delete parent li
+						// get form
+						var targ = e.target;
+						var ul = $( targ ).parents('ul.replies');
+
+						$( targ ).parents('li.reply').remove();
+
+						// delete whole post
+						if (response.status == 'postdelete') {
+							$( ul ).parents('li.network-post').remove();
+						}
+						else {
+							//var children = ul.children();
+							//var replyCount =  children.length;
+							var replyCount = ul.children().length;
+							// update reply counts elsewhere
+							// post info div
+							var div = $( ul ).parents('div.replies').siblings('div.post-info');
+
+							//  1) hidden input on delete post
+							$( div ).children('div.reply-button.delete').children('form.post_delete').children("input[name|='replies']").val(replyCount);
+							//  2) reply count
+							$( div ).children('p.reply_count').text(replyCount + ' replies');
+
+							// update 
+							// if ul is now less than 4...
+							if ( replyCount <= 4 ) {
+								// hide show replies form
+								$( ul ).parents('div.replies').siblings('div.show_reply_div').children('form.show_reply').children(':submit').val('Show Replies');
+								$( ul ).parents('div.replies').siblings('div.show_reply_div').children('form.show_reply').hide();
+
+								/*
+								$( div ).children('div.reply-button').children('form.show_reply').children(':submit').val('Show Replies');
+								$( div ).children('div.reply-button').children('form.show_reply').hide();
+								*/
+							}	
+						}
+					}
+				}, function(response, rStatus) {
+
+				});
+			}
+		});
+	},
+	_primeDeletePosts: function() {
+		var self = this;
+
+		$('.post_delete').off('submit');
+		$('.post_delete').on('submit', function(e) {
+			// prevent default behavior 
+			e.preventDefault();
+
+			if (confirm("Are you sure you want to delete this post?")) {
+				var postForm = $( e.target ).serialize();
+
+				postDelete = new Ajax({
+					requestType: 'POST',
+					requestUrl: cm.home_path + '/network_post_delete.php',
+						requestHeaders: ' ',
+						data: postForm,
+						dataType: 'string',
+						sendNow: true
+				}, function(data) {
+					var response = JSON.parse(data);
+
+					if (response.error == 0) {
+						var targ = $( e.target );
+						if (response.status == 'destroyed') {
+							// remove li 
+							targ.parents('li.network-post').remove();
+							// decrement number of posts up top
+						}
+
+						if (response.status == 'wiped') {
+							targ.parents('li.network-post').replaceWith(response.html);
+							self._shoutOrders();
+						}
+					}
+				}, function(response, rStatus) {
+
+				});
+			}
+		});
+	},
+	_primeMorePosts: function() {
+		var self = this;
+
+		$('.more_posts').on('submit', function(e) {
+			
+			// prevent default
+			e.preventDefault();
+
+			// get form
+			var targ = $(e.target);
+			var postForm = $( targ ).serialize();
+			
+			var requestPosts = new Ajax({
+					requestType: 'POST',
+					requestUrl: cm.home_path + '/network_more_posts.php',
+					requestHeaders: ' ',
+					data: postForm,
+					dataType: 'string',
+					sendNow: true
+			}, function(data) {
+				var response = JSON.parse(data);
+				// add stuff to post wall
+				$("#post-wall-ul").append(response.html);
+
+				// with new stuff, call primes
+				self._shoutOrders();
+
+				if(response['continue'] == 'n') {
+					$( targ ).hide();
+				}
+				else {
+					$('#nmp_lb').val(response['lb']);
+				}
+				
+			}, function() {
+			});
+		});
 	}
 };
-
-/*
- * <li class='network-post'>
- * 	<div class='post-img'>
- * 		<img id='profile-post' src='images/blank_profile.png' width= 
- * 	</div>
- * 	<div class='post-info'>
- * 		<h5 class='h-network'>
- * 		<p class='network'>
- * 		<a class'network member'>
- * 	</div>
- * 	<div class='post-replies'>
- * 	</div>
- * 	<div class='clear'></div>
- * </li>
-*/
-/*
-	<form method="POST" class="member" action="network_post.php">
-		<img id="profile-post" src="images/blank_profile.png" width="45" height="45">
-		<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
-		<div class="clear"></div>
-		<input type="submit" class="network" value="Send"></input>
-	</form>
-*/
-/*
-var wallDiv = document.getElementById("post-wall-ul");
-wallDiv.appendChild();
-
-// Top of event wall
-
-// People post
-var post = "<li></li>";
-
-function addElement() {
-  var ni = document.getElementById('myDiv');
-  var numi = document.getElementById('theValue');
-  var num = (document.getElementById('theValue').value -1)+ 2;
-  numi.value = num;
-  var newdiv = document.createElement('div');
-  var divIdName = 'my'+num+'Div';
-  newdiv.setAttribute('id',divIdName);
-  newdiv.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
-  ni.appendChild(newdiv);
-}
-*/
-
-/*
-function createPost(data) {
-	// create li
-	var post = document.createElement('li');
-	var postClass = 'network-post ' + data["post_class"];
-	
-	post.setAttribute('class', postClass);
-
-	// create divs (image, post, clear)
-	var imgDiv = document.createElement('div');
-	imgDiv.setAttribute('class', 'post-img');
-	post.appendChild(imgDiv);
-
-	var postDiv = document.createElement('div');
-	postDiv.setAttribute('class', 'post-info');
-	post.appendChild(postDiv);
-
-	var replyDiv = document.createElement('div');
-	replyDiv.setAttribute('class', 'post-replies');
-	post.appendChild(replyDiv);
-
-	var clearDiv = document.createElement('div');
-	clearDiv.setAttribute('class', 'clear');
-	post.appendChild(clearDiv);
-
-	// set up image div
-	var imgTag = document.createElement('img');
-	imgTag.setAttribute('class', 'profile-post');
-	imgTag.src = 'images/blank_profile.png';
-	imgTag.width = '45';
-	imgTag.height = '45';
-	imgDiv.appendChild(imgTag);
-
-	// set up post div
-	var postHeader = document.createElement('h5');
-	postHeader.setAttribute('class', 'h-network');
-	postHeader.innerHTML = data['email'];
-	var postText = document.createElement('p');
-	postText.setAttribute('class', 'network');
-	postText.innerHTML = data['post_text'];
-	postDiv.appendChild(postHeader);
-	postDiv.appendChild(postText);
-
-	return post;
-}
-
-function createParent(data, index) {
-	// create li
-	var post = document.createElement('li');
-	var postClass = 'network-post ' + data[index]["post_class"];
-	
-	post.setAttribute('class', postClass);
-
-	// create divs (image, post, reply, clear)
-	var imgDiv = document.createElement('div');
-	imgDiv.setAttribute('class', 'post-img');
-	post.appendChild(imgDiv);
-
-	var postDiv = document.createElement('div');
-	postDiv.setAttribute('class', 'post-info');
-	post.appendChild(postDiv);
-
-	var replyDiv = document.createElement('div');
-	replyDiv.setAttribute('class', 'post-replies');
-	post.appendChild(replyDiv);
-
-	var clearDiv = document.createElement('div');
-	clearDiv.setAttribute('class', 'clear');
-	post.appendChild(clearDiv);
-
-	// set up image div
-	var imgTag = document.createElement('img');
-	imgTag.setAttribute('class', 'profile-post');
-	imgTag.src = 'images/blank_profile.png';
-	imgTag.width = '45';
-	imgTag.height = '45';
-	imgDiv.appendChild(imgTag);
-
-	// set up post div
-	var postHeader = document.createElement('h5');
-	postHeader.setAttribute('class', 'h-network');
-	postHeader.innerHTML = data[index]['email'];
-	var postText = document.createElement('p');
-	postText.setAttribute('class', 'network');
-	postText.innerHTML = data[index]['post_text'];
-	postDiv.appendChild(postHeader);
-	postDiv.appendChild(postText);
-
-	// set up reply div
-	var replyButton = document.createElement('button');
-	var replyViewer = document.createElement('div');
-	var replyBox = document.createElement('div');
-	
-	// get lis for replies
-	var replyUl = document.createElement('ul');
-	var replyCount = 0;
-	for (var i = 0; i < data.length; i++)
-	{
-		if (i == index)
-		  { continue; }
-		if ( data[i]['post_original'] == data[index]['id'])
-		  {
-			var newPost = createPost(data[i]);
-			replyUl.appendChild(newPost);
-			replyCount++;
-		  }
-	}
-
-	replyUl.setAttribute('class', 'post-wall-ul child');
-	// create a little div to tell how many replies you have
-	replyButton.innerHTML = "Reply to this post";
-	replyViewer.innerHTML += "See all " + replyCount + " replies";
-	replyViewer.onclick = function() {
-		if (replyUl.style.display == "none")
-		  { replyUl.style.display = "block"; }
-		else
-		  { replyUl.style.display = "none"; }
-	}
-
-	// set up reply box
-	var replyForm = document.createElement('form');
-	var replyTxtArea = document.createElement('textarea');
-	var replySbmt = document.createElement('button');
-	var parentId = document.createElement('input');
-	var classInput = document.createElement('input');
-
-	replySbmt.onclick = function() {
-		
-	}
-
-	// toggle the appearance of the reply box
-	replyButton.onclick = function() {
-		if (replyBox.style.display == "none")
-		  { replyBox.style.display = "block"; }
-		else
-		  { replyBox.style.display = "none"; }
-	}
-	replyBox.style.display = "none";
-
-	// add attributes
-	replyTxtArea.name = 'post_text';
-
-	// add a hidden input
-	parentId.type = 'hidden';
-	parentId.value = data[index]['id'];
-	parentId.name = 'post_original';
-	classInput.type =  'hidden';
-	classInput.value = 'r';
-	classInput.name = 'post_class';
-
-	// add all the reply box children
-	replyForm.appendChild(replyTxtArea);
-	replyForm.appendChild(replySbmt);
-	replyForm.appendChild(parentId);
-	replyForm.appendChild(classInput);
-	replyForm.setAttribute('action', "network_post.php");
-	replyForm.setAttribute('method', "POST");
-	replyBox.appendChild(replyForm);
-
-	replyDiv.appendChild(replyViewer);
-	replyDiv.appendChild(replyButton);
-	replyDiv.appendChild(replyBox);
-	replyDiv.appendChild(replyUl);
-	return post;
-}
-
-function submitPost() {
-	var xmlhttp = new XMLHttpRequest();
-
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status)
-		{
-
-		}
-	}
-
-	xmlhttp.open("POST", "network_post.php", true);
-	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("id="+id);
-}
-//loadPostData();
-function loadPostData(id, callback) {
-	// Create ajax request
-	var xmlhttp = new XMLHttpRequest();
-
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status)
-		{
-			// grab all the posts
-			//
-			var posts = JSON.parse(xmlhttp.responseText);
-			callback.apply(this, [posts]);
-		}
-		else {}
-	};
-
-	// grab all the relevant data
-	//var text = document.getElementById();
-	xmlhttp.open("POST", "network-post-data.php", true);
-	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("id="+id);
-}
-*/

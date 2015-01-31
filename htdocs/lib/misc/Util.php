@@ -62,43 +62,6 @@ class Util {
 				return $n . ' ' . $jones[$i];
 			}
 		}
-
-		/*
-		$incrms = array(
-			60, 60, 24, 30, 12);	// seconds, minutes, hours, days, months	
-
-		$jones = array(
-			'just now',
-			'second(s) ago',
-			'minute(s) ago',
-			'hour(s) ago',
-			'day(s) ago',
-			'month(s) ago',
-			'year(s) ago'
-		);
-
-		$units = $interval->format(''); // units start as seconds, are divided
-
-		for($i = 0; $i < count($incrms); $i++) {
-
-			$incr = $incrms[$i];
-
-			// less than
-			if ($units / $incr <= 0) {
-				if ($i == 0) {
-					return $jones[$i];
-				}
-
-				return $units . ' ' . $jones[$i];
-			}
-			// equal to
-			else if ($units / $incr < 1) {
-				return $units . ' ' . $jones[$i+1];
-			} else {
-				$units = floor( $units / $incr);
-			}
-		}
-		 */
 	}
 
 	// taking an array from network with a certain set of keys,
@@ -212,6 +175,139 @@ class Util {
 		}
 
 		return $name;
+	}
+
+	/*
+	 * Pulls out a string based on surrounding tags
+	 *
+	 * @returns - array(replacement string, extractions)
+	 * @expects - tag name, tags enclosed by square brackets, html style [tag]content[/tag]
+	 * ** may change that if the function turns popular
+	 *
+	 */
+	public static function StrExtract($subject, $tag) {
+
+		$result = array(
+			'replacement' => $subject, 
+			'extractions' => array()
+		);
+
+		$stag = '[' . $tag . ']';
+		$etag = '[/' . $tag . ']';
+		$tag_len = strlen($tag); // important for substring
+		$stag_len = strlen($stag);
+		$etag_len = strlen($etag);
+
+		// loop through string, looking for tags
+		$offset = 0;
+
+		$str = $subject;
+		$count = 0;
+
+		while (($open = strpos($str, $stag, $offset)) !== false) {
+
+			if ($count > 10)
+				break;
+
+			// found a tag, look for the end
+			if (($close = strpos($str, $etag, $open+1)) !== false) {
+
+				// get substring 
+				$start = $open + $stag_len;
+				$length = $close - $start;
+
+				/*
+				if ($length == 0) {
+					echo 'breaking';
+					break;
+				}
+				 */
+
+				$target = substr($str, $start, $length);
+
+				array_push($result['extractions'], $target);
+
+				// rip out the thing
+				$str = substr_replace($str, '', $start, $length);
+
+				// replace str
+				$result['replacement'] = $str;
+
+				// increment offset
+				$offset = $start + $etag_len;
+				$count++;
+
+			}
+			else {
+				// increment offset
+				$offset++;
+				$count++;
+			}
+		}
+
+		// string length must not change
+		return $result;
+	}
+
+
+			/*
+				echo 'OFFSET: ' . $offset . ' ';
+				echo 'STRLEN: ' . strlen($str) . ' ';
+			echo 'OPEN: '. $open . ' ';
+			 */
+
+				//echo 'CLOSE: '. $close . ' '; 
+
+				/*
+				echo 'START: ' . $start . ' ';
+				echo 'LENGTH: ' . $length . ' ';
+				echo 'TARGET: ' . $target . ' ';
+				 */
+
+//				echo 'RESULT: ' . $str . ' ';
+	//
+				/*
+				echo 'OFFSET: ' . $offset . ' ';
+				echo 'STRLEN: ' . strlen($str) . ' ';
+				 */
+
+	public static function StrReform($subject, $tag, $elements) {
+
+		$stag = '[' . $tag . ']';
+		$etag = '[/' . $tag . ']';
+		$tag_len = strlen($tag); // important for substring
+		$stag_len = strlen($stag);
+		$etag_len = strlen($etag);
+
+		// loop through string, looking for tags
+		$offset = 0;
+		$i = 0;
+
+		$str = $subject;
+
+		// if we have open
+		while (($open = strpos($str, $stag, $offset)) !== false) {
+
+			// and closed tags
+			if (($close = strpos($str, $etag, $open+1)) !== false) {
+				
+				// get substring start position 
+				$start = $open + $stag_len;
+
+				// insert element
+				$str = substr_replace($str, $elements[$i], $start, 0);
+
+				// increment i, offset
+				$i++;
+				$offset = $start;
+			}
+			else {  // skip this tag
+
+				$offset++;
+			}
+		}
+
+		return $str;
 	}
 }
 

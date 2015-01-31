@@ -1,23 +1,15 @@
 <?php
+
 	include_once("data/dal_user.php");
 	
-	ini_set('display_errors', true);
-	error_reporting(E_ALL ^ E_NOTICE);
 	include "log.php";
 	
 	include_once("data/dal_network.php");
 	include_once("html_builder.php");
-	include_once("Environment.php");
+	include_once("environment.php");
 	
 	session_name("myDiaspora");
 	session_start();
-
-/*
-	if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "") {
-		$redirect = "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-		header("Location: {$redirect}");
-	}
-*/
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

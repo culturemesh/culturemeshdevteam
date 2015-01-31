@@ -1,28 +1,11 @@
 <?php
-ini_set('display_errors', true);
-error_reporting(E_ALL ^ E_NOTICE);
-
 include_once "data/dal_post.php";
 include_once "data/dal_network_registration.php";
-include_once "http_redirect.php";
-include_once "Environment.php";
+include_once "environment.php";
 
 session_name("myDiaspora");
 session_start();
 
-// create redirect
-/*
-$prev_url = $_SERVER['HTTP_REFERER'];
-$pages = array('network');
-$redirect = new \nav\HTTPRedirect($prev_url, $pages);
- */
-
-/*
-$test = new NetworkRegistrationDT();
-$test->id_user = $_SESSION['uid'];
-$test->id_network = $_SESSION['cur_network'];
-$valid = NetworkRegistration::checkRegistration($test);
-*/
 $json_response = array(
 	'error' => NULL,
 	'status' => NULL,
@@ -48,13 +31,6 @@ $do2db = new \dal\Do2Db();
 $user = \dobj\User::createFromId((int) $_SESSION['uid'], $dal, $do2db);
 $valid = $user->checkNetworkRegistration((int) $_SESSION['cur_network']);
 
-/*
-// create redirect
-$prev_url = $_SERVER['HTTP_REFERER'];
-$pages = array('network');
-//$redirect = new \nav\HTTPRedirect($cm, $prev_url, $pages);
-//*/
-
 if ($valid)
 {
 	$post = new \dobj\Post();
@@ -66,16 +42,6 @@ if ($valid)
 	$network = new \dobj\Network();
 	$network->id = (int) $_SESSION['cur_network'];
 
-	/*
-	$post = new PostDT();
-	
-	$post->id_user = $_SESSION['uid'];
-	$post->id_network = $_SESSION['cur_network'];
-	$post->post_text = mysql_escape_string($_POST['post_text']);
-	$post->post_class = mysql_escape_string($_POST['post_class']);
-	$post->post_original = mysql_escape_string($_POST['post_original']);
-	 */
-	
 	if (strlen($post->post_text) <= 0) {
 		$json_response['error'] = 'No text in post';
 		echo json_encode($json_response);
@@ -109,7 +75,6 @@ if ($valid)
 
 			exit();
 		}
-
 
 		$iu = new \misc\ImageUpload($cm, array(
 				'dir' => $cm->img_repo_dir,
@@ -171,9 +136,6 @@ if ($valid)
 
 		echo json_encode($json_response);
 		exit();
-//		$redirect->setControl('network', $_SESSION['cur_network']);
-		//$redirect->execute();
-		//header("Location: network.php?id={$_SESSION['cur_network']}");
 	}
 }
 else

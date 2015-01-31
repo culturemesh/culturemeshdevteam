@@ -6,7 +6,7 @@ $response = array(
 // if pid is set, we can continue
 if (isset($_POST['rid']) && isset($_POST['nid']) && isset($_POST['pid'])) {
 
-	include('Environment.php');
+	include('environment.php');
 	$cm = new \Environment();
 
 

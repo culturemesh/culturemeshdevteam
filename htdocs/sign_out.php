@@ -5,7 +5,7 @@ session_start();
 
 unset($_SESSION['uid']);
 
-include 'Environment.php';
+include 'environment.php';
 $cm = new Environment();
 
 // possible pages that we could be logging out from
@@ -18,5 +18,4 @@ $redirect = new \nav\HTTPRedirect($cm, $prev_url, $pages);
 $redirect->removeQueryParameters(array('lerror', 'rerror', 'jeerror', 'eid', 'ueerror'));
 
 $redirect->execute();
-//return 1;
 ?>

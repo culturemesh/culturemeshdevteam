@@ -37,7 +37,7 @@ else {
 
 	else {
 
-		include ('Environment.php');
+		include ('environment.php');
 		$cm = new \Environment();
 
 		// get connection

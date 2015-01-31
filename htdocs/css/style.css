@@ -23,6 +23,10 @@ h5{
     font-weight: 300;
     text-transform: uppercase;
 }
+
+.cmhide {
+    display:none;
+}
 /******
 INDEX PAGE
 */

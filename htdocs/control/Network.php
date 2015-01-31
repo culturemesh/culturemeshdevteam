@@ -1,6 +1,5 @@
 <?php
 namespace control;
-
 class Network {
 
 	public static function test($cm, $params) {
@@ -14,9 +13,8 @@ class Network {
 	public static function match($cm, $params) {
 
 		//echo $cm->host_root;
-//		$stuffs = $cm->getVars();
-//		echo $stuffs['home_path'];
-
+		// $stuffs = $cm->getVars();
+		// echo $stuffs['home_path'];
 		$nid = $params['id'];
 
 		// set session var
@@ -26,7 +24,6 @@ class Network {
 		$dal = new \dal\DAL($cm->getConnection());
 		$dal->loadFiles();
 		$do2db = new \dal\Do2Db();
-
 		// load network
 		$network = \dobj\Network::createFromId($nid, $dal, $do2db);
 
@@ -40,13 +37,14 @@ class Network {
 		$network->getPostCount($dal, $do2db);
 		$network->getMemberCount($dal, $do2db);
 
-
 		// check if user is logged in
 		// check registration
 		$site_user = NULL;
 		$logged_in = false;
+		$member = false;
 
 		if (isset($_SESSION['uid'])) {
+
 			$logged_in = true;
 
 			// check if user is registered
@@ -73,7 +71,6 @@ class Network {
 			),
 		));
 
-
 		/////// make components //////////
 		$m_comp = new \misc\MustacheComponent();
 
@@ -98,23 +95,24 @@ class Network {
 		$network->events->setMustache($m_comp);
 
 		if ($network->events_sect) {
-		  $network->events_sect->setMustache($m_comp);
 
-		try 
-		{
-			$tmp = file_get_contents($cm->template_dir . $cm->ds . 'network-event-cardtable.html');
-			$ec_html = $network->events_sect->getHTML('card', array(
-				'cm' => $cm,
-				'network' => $network,
-				'mustache' => $m_comp,
-				'list_template' => $tmp
-				)
-			);
-		}
-		catch (\Exception $e)
-		{
-			$ec_html = NULL;
-		}
+			$network->events_sect->setMustache($m_comp);
+
+			try
+			{
+				$tmp = file_get_contents($cm->template_dir . $cm->ds . 'network-event-cardtable.html');
+				$ec_html = $network->events_sect->getHTML('card', array(
+					'cm' => $cm,
+					'network' => $network,
+					'mustache' => $m_comp,
+					'list_template' => $tmp
+					)
+				);
+			}
+			catch (\Exception $e)
+			{
+				$ec_html = NULL;
+			}
 		}
 
 		try
@@ -134,18 +132,22 @@ class Network {
 
 		// check if we need more posts
 		$more_posts = false;
+
 		if ($network->post_count > 10) {
 			$more_posts = true;
 		}
 
+		// map embed
 		$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
 		$map_embed = $m_comp->render($map_embed_template, array(
 			'key' => $cm->g_api_key,
 			'location' => $network->location->toString()));
 
+		// searchbar
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
 		$searchbar = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()));
 
+		// social network buttons
 		$sharebutton_template = file_get_contents($cm->template_dir . $cm->ds . 'sharebutton.html');
 		$sharebuttons= $m_comp->render($sharebutton_template, array(
 			'vars' => $cm->getVars(),
@@ -173,7 +175,7 @@ class Network {
 				'uid' => null,
 				'nid' => $nid,
 				'get' => $_GET
-				),
+			),
 			'logged_in' => $logged_in,
 			'site_user' => $site_user
 		);
@@ -181,5 +183,4 @@ class Network {
 		echo $m->render($template, $page_vars);
 	}
 }
-
 ?>

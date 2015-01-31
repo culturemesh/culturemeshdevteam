@@ -7,7 +7,7 @@
 	include_once "data/dal_network_registration.php";
 	include_once "data/dal_user.php";
 	include_once "html_builder.php";
-	include_once("Environment.php");
+	include_once("environment.php");
 	
 	
 	//session_name("myDiaspora");

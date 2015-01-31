@@ -1,0 +1,3904 @@
+name	country_name
+Canillo	Andorra
+Parròquia d'Andorra la Vella	Andorra
+Parròquia d'Encamp	Andorra
+Parròquia d'Escaldes-Engordany	Andorra
+Parròquia d'Ordino	Andorra
+Parròquia de Sant Julià de Lòria	Andorra
+Parròquia de la Massana	Andorra
+Abu Dhabi	United Arab Emirates
+Ajman	United Arab Emirates
+Al Fujayrah	United Arab Emirates
+Ash Sh?riqah	United Arab Emirates
+Dubai	United Arab Emirates
+Ra’s al Khaymah	United Arab Emirates
+Umm al Qaywayn	United Arab Emirates
+Badakhshan	Afghanistan
+Badghis	Afghanistan
+Balkh	Afghanistan
+Farah	Afghanistan
+Faryab	Afghanistan
+Ghowr	Afghanistan
+Helmand	Afghanistan
+Herat	Afghanistan
+Kabul	Afghanistan
+Kandah?r	Afghanistan
+Kunduz	Afghanistan
+Nangarh?r	Afghanistan
+Or?zg?n	Afghanistan
+Paktia	Afghanistan
+Panjshir	Afghanistan
+Parw?n	Afghanistan
+Samang?n	Afghanistan
+Sar-e Pul	Afghanistan
+Vel?yat-e Khowst	Afghanistan
+Vel?yat-e N?rest?n	Afghanistan
+Wardak	Afghanistan
+Wil?yat-e Baghl?n	Afghanistan
+Wil?yat-e B?my?n	Afghanistan
+Wil?yat-e D?ykund?	Afghanistan
+Wil?yat-e Ghazn?	Afghanistan
+Wil?yat-e Jowzj?n	Afghanistan
+Wil?yat-e Kuna?	Afghanistan
+Wil?yat-e K?p?s?	Afghanistan
+Wil?yat-e Laghm?n	Afghanistan
+Wil?yat-e L?gar	Afghanistan
+Wil?yat-e N?mr?z	Afghanistan
+Wil?yat-e Pakt?k?	Afghanistan
+Wil?yat-e Takh?r	Afghanistan
+Zabul	Afghanistan
+Barbuda	Antigua and Barbuda
+Parish of Saint George	Antigua and Barbuda
+Parish of Saint John	Antigua and Barbuda
+Parish of Saint Mary	Antigua and Barbuda
+Parish of Saint Paul	Antigua and Barbuda
+Parish of Saint Peter	Antigua and Barbuda
+Parish of Saint Philip	Antigua and Barbuda
+Redonda	Antigua and Barbuda
+Qarku i Beratit	Albania
+Qarku i Dibrës	Albania
+Qarku i Durrësit	Albania
+Qarku i Elbasanit	Albania
+Qarku i Fierit	Albania
+Qarku i Gjirokastrës	Albania
+Qarku i Korçës	Albania
+Qarku i Kukësit	Albania
+Qarku i Lezhës	Albania
+Qarku i Shkodrës	Albania
+Qarku i Tiranës	Albania
+Qarku i Vlorës	Albania
+Aragatsotni Marz	Armenia
+Ararati Marz	Armenia
+Armaviri Marz	Armenia
+Geghark’unik’i Marz	Armenia
+Kotayk’i Marz	Armenia
+Lorru Marz	Armenia
+Shiraki Marz	Armenia
+Syunik’i Marz	Armenia
+Tavushi Marz	Armenia
+Vayots’ Dzori Marz	Armenia
+Yerevan	Armenia
+Bengo Province	Angola
+Benguela	Angola
+Cabinda	Angola
+Cuanza Norte Province	Angola
+Cunene Province	Angola
+Huambo	Angola
+Huila Province	Angola
+Kuando Kubango	Angola
+Kwanza Sul	Angola
+Luanda Province	Angola
+Lunda Norte Province	Angola
+Lunda Sul	Angola
+Malanje Province	Angola
+Moxico	Angola
+Namibe Province	Angola
+Província do Bié	Angola
+Província do Uíge	Angola
+Zaire	Angola
+Buenos Aires F.D.	Argentina
+Provincia de Buenos Aires	Argentina
+Provincia de Catamarca	Argentina
+Provincia de Corrientes	Argentina
+Provincia de Córdoba	Argentina
+Provincia de Entre Ríos	Argentina
+Provincia de Formosa	Argentina
+Provincia de Jujuy	Argentina
+Provincia de La Pampa	Argentina
+Provincia de La Rioja	Argentina
+Provincia de Mendoza	Argentina
+Provincia de Misiones	Argentina
+Provincia de Río Negro	Argentina
+Provincia de San Juan	Argentina
+Provincia de San Luis	Argentina
+Provincia de Santa Cruz	Argentina
+Provincia de Santa Fe	Argentina
+Provincia de Santiago del Estero	Argentina
+Provincia de Tierra del Fuego, Antártida e Islas d	Argentina
+Provincia de Tucumán	Argentina
+Provincia del Chaco	Argentina
+Provincia del Chubut	Argentina
+Provincia del Neuquén	Argentina
+Salta	Argentina
+Burgenland	Austria
+Carinthia	Austria
+Lower Austria	Austria
+Salzburg	Austria
+Styria	Austria
+Tyrol	Austria
+Upper Austria	Austria
+Vienna	Austria
+Vorarlberg	Austria
+Australian Capital Territory	Australia
+New South Wales	Australia
+Northern Territory	Australia
+Queensland	Australia
+South Australia	Australia
+Tasmania	Australia
+Victoria	Australia
+Western Australia	Australia
+Brändö	Ã…land
+Eckerö	Ã…land
+Finström	Ã…land
+Föglö	Ã…land
+Geta	Ã…land
+Hammarland	Ã…land
+Jomala	Ã…land
+Kumlinge	Ã…land
+Kökar	Ã…land
+Lemland	Ã…land
+Lumparland	Ã…land
+Mariehamn	Ã…land
+Saltvik	Ã…land
+Sottunga	Ã…land
+Sund	Ã…land
+Vårdö	Ã…land
+Absheron Rayon	Azerbaijan
+Aghdam Rayon	Azerbaijan
+Aghdash Rayon	Azerbaijan
+Aghjabadi Rayon	Azerbaijan
+Aghstafa Rayon	Azerbaijan
+Aghsu Rayon	Azerbaijan
+Ali Bajramly	Azerbaijan
+Astara Rayon	Azerbaijan
+Baku City	Azerbaijan
+Balakan Rayon	Azerbaijan
+Barda Rayon	Azerbaijan
+Beylagan Rayon	Azerbaijan
+Bilasuvar Rayon	Azerbaijan
+C?bray?l Rayonu	Azerbaijan
+Dashkasan Rayon	Azerbaijan
+Davachi Rayon	Azerbaijan
+Fizuli Rayon	Azerbaijan
+Gadabay Rayon	Azerbaijan
+Ganja City	Azerbaijan
+Gobustan Rayon	Azerbaijan
+Goranboy Rayon	Azerbaijan
+Goychay Rayon	Azerbaijan
+Goygol Rayon	Azerbaijan
+Hajigabul Rayon	Azerbaijan
+Imishli Rayon	Azerbaijan
+Ismayilli Rayon	Azerbaijan
+Jalilabad Rayon	Azerbaijan
+Khachmaz Rayon	Azerbaijan
+Khizi Rayon	Azerbaijan
+Kurdamir Rayon	Azerbaijan
+K?lb?c?r Rayonu	Azerbaijan
+Lankaran Rayon	Azerbaijan
+Laç?n Rayonu	Azerbaijan
+Lerik Rayon	Azerbaijan
+L?nk?ran ??h?ri	Azerbaijan
+Masally Rayon	Azerbaijan
+Mingacevir City	Azerbaijan
+Naftalan City	Azerbaijan
+Nakhichevan	Azerbaijan
+Naxç?van ??h?ri	Azerbaijan
+Neftchala Rayon	Azerbaijan
+Oghuz Rayon	Azerbaijan
+Qabala Rayon	Azerbaijan
+Qakh Rayon	Azerbaijan
+Qazakh Rayon	Azerbaijan
+Quba Rayon	Azerbaijan
+Qubadli Rayon	Azerbaijan
+Qusar Rayon	Azerbaijan
+Saatly Rayon	Azerbaijan
+Sabirabad Rayon	Azerbaijan
+Salyan Rayon	Azerbaijan
+Samukh Rayon	Azerbaijan
+Shaki City	Azerbaijan
+Shaki Rayon	Azerbaijan
+Shamakhi Rayon	Azerbaijan
+Shamkir Rayon	Azerbaijan
+Siazan Rayon	Azerbaijan
+Sumqayit City	Azerbaijan
+Tartar Rayon	Azerbaijan
+Tovuz Rayon	Azerbaijan
+Ujar Rayon	Azerbaijan
+Xank?ndi ??h?ri	Azerbaijan
+Xocal? Rayonu	Azerbaijan
+Xocav?nd Rayonu	Azerbaijan
+Yardymli Rayon	Azerbaijan
+Yevlakh Rayon	Azerbaijan
+Yevlax City	Azerbaijan
+Zangilan Rayon	Azerbaijan
+Zaqatala Rayon	Azerbaijan
+Zardab Rayon	Azerbaijan
+?u?a Rayonu	Azerbaijan
+?u?a ??h?ri	Azerbaijan
+Br?ko	Bosnia and Herzegovina
+Federation of Bosnia and Herzegovina	Bosnia and Herzegovina
+Republika Srpska	Bosnia and Herzegovina
+Christ Church	Barbados
+Saint Andrew	Barbados
+Saint George	Barbados
+Saint James	Barbados
+Saint John	Barbados
+Saint Joseph	Barbados
+Saint Lucy	Barbados
+Saint Michael	Barbados
+Saint Peter	Barbados
+Saint Philip	Barbados
+Saint Thomas	Barbados
+Borishal	Bangladesh
+Chittagong	Bangladesh
+Dhaka Division	Bangladesh
+Khulna Division	Bangladesh
+Rangpur Division	Bangladesh
+R?jsh?hi Division	Bangladesh
+Sylhet Division	Bangladesh
+Brussels Capital	Belgium
+Flemish Region	Belgium
+Walloon Region	Belgium
+Boucle du Mouhoun	Burkina Faso
+Cascades Region	Burkina Faso
+Centre	Burkina Faso
+Centre-Est	Burkina Faso
+Centre-Nord	Burkina Faso
+Centre-Ouest	Burkina Faso
+Centre-Sud	Burkina Faso
+Est	Burkina Faso
+High-Basins Region	Burkina Faso
+Nord	Burkina Faso
+Plateau-Central	Burkina Faso
+Sahel	Burkina Faso
+Southwest Region	Burkina Faso
+Blagoevgrad	Bulgaria
+Burgas	Bulgaria
+Gabrovo	Bulgaria
+Lovech	Bulgaria
+Oblast Dobrich	Bulgaria
+Oblast Khaskovo	Bulgaria
+Oblast Kyustendil	Bulgaria
+Oblast K?rdzhali	Bulgaria
+Oblast Montana	Bulgaria
+Oblast Pleven	Bulgaria
+Oblast Razgrad	Bulgaria
+Oblast Ruse	Bulgaria
+Oblast Shumen	Bulgaria
+Oblast Silistra	Bulgaria
+Oblast Sliven	Bulgaria
+Oblast Smolyan	Bulgaria
+Oblast Stara Zagora	Bulgaria
+Oblast T?rgovishte	Bulgaria
+Oblast Veliko T?rnovo	Bulgaria
+Oblast Vidin	Bulgaria
+Oblast Vratsa	Bulgaria
+Oblast Yambol	Bulgaria
+Pazardzhik	Bulgaria
+Pernik	Bulgaria
+Plovdiv	Bulgaria
+Sofia-Capital	Bulgaria
+Sofiya	Bulgaria
+Varna	Bulgaria
+Central Governorate	Bahrain
+Manama	Bahrain
+Muharraq	Bahrain
+Northern	Bahrain
+Southern Governorate	Bahrain
+Bubanza Province	Burundi
+Bujumbura Mairie Province	Burundi
+Bujumbura Rural Province	Burundi
+Bururi Province	Burundi
+Cankuzo Province	Burundi
+Cibitoke Province	Burundi
+Gitega Province	Burundi
+Karuzi Province	Burundi
+Kayanza Province	Burundi
+Kirundo Province	Burundi
+Makamba Province	Burundi
+Muramvya Province	Burundi
+Muyinga Province	Burundi
+Ngozi Province	Burundi
+Province de Mwaro	Burundi
+Rutana Province	Burundi
+Ruyigi Province	Burundi
+Alibori	Benin
+Atakora Department	Benin
+Atlantique Department	Benin
+Borgou Department	Benin
+Collines Department	Benin
+Donga	Benin
+Département de l’ Ouémé	Benin
+Kouffo Department	Benin
+Littoral	Benin
+Mono	Benin
+Plateau Department	Benin
+Zou Department	Benin
+Devonshire Parish	Bermuda
+Hamilton Parish	Bermuda
+Hamilton city	Bermuda
+Paget	Bermuda
+Pembroke Parish	Bermuda
+Saint George	Bermuda
+Saint George’s Parish	Bermuda
+Sandys Parish	Bermuda
+Smith’s Parish	Bermuda
+Southampton Parish	Bermuda
+Warwick Parish	Bermuda
+Belait District	Brunei
+Brunei and Muara District	Brunei
+Temburong District	Brunei
+Tutong District	Brunei
+Departamento de Chuquisaca	Bolivia
+Departamento de Cochabamba	Bolivia
+Departamento de La Paz	Bolivia
+Departamento de Pando	Bolivia
+Departamento de Potosí	Bolivia
+Departamento de Santa Cruz	Bolivia
+Departamento de Tarija	Bolivia
+El Beni	Bolivia
+Oruro	Bolivia
+Bonaire	Bonaire
+Saba	Bonaire
+Sint Eustatius	Bonaire
+Amazonas	Brazil
+Bahia	Brazil
+Estado da Paraíba	Brazil
+Estado de Alagoas	Brazil
+Estado de Goiás	Brazil
+Estado de Mato Grosso	Brazil
+Estado de Minas Gerais	Brazil
+Estado de Pernambuco	Brazil
+Estado de Rondônia	Brazil
+Estado de Roraima	Brazil
+Estado de Santa Catarina	Brazil
+Estado de Sergipe	Brazil
+Estado de São Paulo	Brazil
+Estado de Tocantins	Brazil
+Estado do Acre	Brazil
+Estado do Amapá	Brazil
+Estado do Ceará	Brazil
+Estado do Espírito Santo	Brazil
+Estado do Maranhão	Brazil
+Estado do Paraná	Brazil
+Estado do Pará	Brazil
+Estado do Piauí	Brazil
+Estado do Rio Grande do Norte	Brazil
+Estado do Rio Grande do Sul	Brazil
+Federal	Brazil
+Mato Grosso do Sul	Brazil
+Rio de Janeiro	Brazil
+Acklins Island District	Bahamas
+Berry Islands District	Bahamas
+Bimini	Bahamas
+Black Point District	Bahamas
+Cat Island District	Bahamas
+Central Abaco District	Bahamas
+Central Andros District	Bahamas
+Central Eleuthera District	Bahamas
+City of Freeport District	Bahamas
+Crooked Island and Long Cay District	Bahamas
+East Grand Bahama District	Bahamas
+Exuma District	Bahamas
+Fresh Creek District	Bahamas
+Grand Cay District	Bahamas
+Green Turtle Cay District	Bahamas
+Harbour Island	Bahamas
+High Rock District	Bahamas
+Hope Town District	Bahamas
+Inagua District	Bahamas
+Kemps Bay District	Bahamas
+Long Island District	Bahamas
+Mangrove Cay District	Bahamas
+Marsh Harbour District	Bahamas
+Mayaguana District	Bahamas
+Moore’s Island District	Bahamas
+New Providence District	Bahamas
+North Abaco District	Bahamas
+North Andros District	Bahamas
+North Eleuthera	Bahamas
+Ragged Island District	Bahamas
+Rum Cay District	Bahamas
+San Salvador District	Bahamas
+Sandy Point District	Bahamas
+South Abaco District	Bahamas
+South Andros District	Bahamas
+South Eleuthera District	Bahamas
+Spanish Wells District	Bahamas
+West Grand Bahama District	Bahamas
+Bumthang Dzongkhag	Bhutan
+Chhukha Dzongkhag	Bhutan
+Dagana Dzongkhag	Bhutan
+Gasa	Bhutan
+Haa Dzongkhag	Bhutan
+Lhuentse Dzongkhag	Bhutan
+Mongar Dzongkhag	Bhutan
+Paro	Bhutan
+Pemagatshel Dzongkhag	Bhutan
+Punakha Dzongkhag	Bhutan
+Samdrup Jongkhar	Bhutan
+Samtse Dzongkhag	Bhutan
+Sarpang Dzongkhag	Bhutan
+Thimphu Dzongkhag	Bhutan
+Trashi Yangste	Bhutan
+Trashigang Dzongkhag	Bhutan
+Trongsa Dzongkhag	Bhutan
+Tsirang Dzongkhag	Bhutan
+Wangdue Phodrang Dzongkhag	Bhutan
+Zhemgang Dzongkhag	Bhutan
+Central District	Botswana
+Ghanzi District	Botswana
+Kgalagadi District	Botswana
+Kgatleng District	Botswana
+Kweneng District	Botswana
+North East District	Botswana
+North West District	Botswana
+South East District	Botswana
+Southern District	Botswana
+Brestskaya Oblast’	Belarus
+Gomel Region	Belarus
+Grodnenskaya Oblast’	Belarus
+Minsk	Belarus
+Minskaja Voblasts’	Belarus
+Mogilëvskaya Oblast’	Belarus
+Vitebskaya Oblast’	Belarus
+Belize District	Belize
+Cayo District	Belize
+Corozal District	Belize
+Orange Walk District	Belize
+Stann Creek District	Belize
+Toledo District	Belize
+Alberta	Canada
+British Columbia	Canada
+Manitoba	Canada
+New Brunswick	Canada
+Newfoundland and Labrador	Canada
+Northwest Territories	Canada
+Nova Scotia	Canada
+Nunavut	Canada
+Ontario	Canada
+Prince Edward Island	Canada
+Quebec	Canada
+Saskatchewan	Canada
+Yukon	Canada
+Bandundu Province	Democratic Republic of the Congo
+Eastern Province	Democratic Republic of the Congo
+Katanga Province	Democratic Republic of the Congo
+Kinshasa City	Democratic Republic of the Congo
+Nord Kivu	Democratic Republic of the Congo
+Province de l’ Équateur	Democratic Republic of the Congo
+Province du Bas-Congo	Democratic Republic of the Congo
+Province du Kasaï-Occidental	Democratic Republic of the Congo
+Province du Kasaï-Oriental	Democratic Republic of the Congo
+Province du Maniema	Democratic Republic of the Congo
+South Kivu	Democratic Republic of the Congo
+Bamingui-Bangoran	Central African Republic
+Basse-Kotto	Central African Republic
+Commune de Bangui	Central African Republic
+Haut-Mbomou	Central African Republic
+Haute-Kotto	Central African Republic
+Lobaye	Central African Republic
+Mambéré-Kadéï	Central African Republic
+Mbomou	Central African Republic
+Ombella-Mpoko	Central African Republic
+Ouaka	Central African Republic
+Ouham	Central African Republic
+Préfecture de la Kémo	Central African Republic
+Préfecture de la Nana-Grébizi	Central African Republic
+Préfecture de la Nana-Mambéré	Central African Republic
+Préfecture de la Sangha-Mbaéré	Central African Republic
+Préfecture de l’ Ouham-Pendé	Central African Republic
+Vakaga	Central African Republic
+Commune de Brazzaville	Republic of the Congo
+Cuvette	Republic of the Congo
+Cuvette-Ouest	Republic of the Congo
+Likouala	Republic of the Congo
+Plateaux	Republic of the Congo
+Pointe-Noire	Republic of the Congo
+Pool	Republic of the Congo
+Région de la Bouenza	Republic of the Congo
+Région de la Lékoumou	Republic of the Congo
+Région du Kouilou	Republic of the Congo
+Région du Niari	Republic of the Congo
+Sangha	Republic of the Congo
+Aargau	Switzerland
+Appenzell Ausserrhoden	Switzerland
+Appenzell Innerrhoden	Switzerland
+Basel-City	Switzerland
+Basel-Landschaft	Switzerland
+Bern	Switzerland
+Fribourg	Switzerland
+Geneva	Switzerland
+Glarus	Switzerland
+Grisons	Switzerland
+Jura	Switzerland
+Lucerne	Switzerland
+Neuchâtel	Switzerland
+Nidwalden	Switzerland
+Obwalden	Switzerland
+Saint Gallen	Switzerland
+Schaffhausen	Switzerland
+Schwyz	Switzerland
+Solothurn	Switzerland
+Thurgau	Switzerland
+Ticino	Switzerland
+Uri	Switzerland
+Valais	Switzerland
+Vaud	Switzerland
+Zug	Switzerland
+Zurich	Switzerland
+Agnéby	Ivory Coast
+Bafing	Ivory Coast
+Bas-Sassandra	Ivory Coast
+Denguélé	Ivory Coast
+District des Montagnes	Ivory Coast
+Fromager	Ivory Coast
+Haut-Sassandra	Ivory Coast
+Lacs	Ivory Coast
+Lagunes	Ivory Coast
+Marahoué	Ivory Coast
+Moyen-Cavally	Ivory Coast
+Moyen-Comoé	Ivory Coast
+N’zi-Comoé	Ivory Coast
+Région du Sud-Comoé	Ivory Coast
+Savanes	Ivory Coast
+Sud-Bandama	Ivory Coast
+Vallée du Bandama	Ivory Coast
+Worodougou	Ivory Coast
+Zanzan	Ivory Coast
+Antofagasta	Chile
+Atacama	Chile
+Aysén	Chile
+Coquimbo	Chile
+Los Lagos	Chile
+Maule	Chile
+Región de Arica y Parinacota	Chile
+Región de Los Ríos	Chile
+Región de Magallanes y de la Antártica Chilena	Chile
+Región de Valparaíso	Chile
+Región de la Araucanía	Chile
+Región del Biobío	Chile
+Región del Libertador General Bernardo O’Higgins	Chile
+Santiago Metropolitan	Chile
+Tarapacá	Chile
+Adamaoua	Cameroon
+Centre	Cameroon
+East	Cameroon
+Far North	Cameroon
+Littoral	Cameroon
+North Province	Cameroon
+North-West Province	Cameroon
+South Region	Cameroon
+South-West Region	Cameroon
+West	Cameroon
+Anhui Sheng	China
+Beijing Shi	China
+Chongqing Shi	China
+Fujian	China
+Gansu Sheng	China
+Guangdong	China
+Guangxi Zhuangzu Zizhiqu	China
+Guizhou Sheng	China
+Hainan	China
+Hebei	China
+Heilongjiang Sheng	China
+Henan Sheng	China
+Hubei	China
+Hunan	China
+Inner Mongolia	China
+Jiangsu Sheng	China
+Jiangxi Sheng	China
+Jilin Sheng	China
+Liaoning	China
+Ningxia Huizu Zizhiqu	China
+Qinghai Sheng	China
+Shaanxi	China
+Shandong Sheng	China
+Shanghai Shi	China
+Shanxi Sheng	China
+Sichuan Sheng	China
+Tianjin Shi	China
+Tibet Autonomous Region	China
+Xinjiang Uygur Zizhiqu	China
+Yunnan	China
+Zhejiang Sheng	China
+Antioquia	Colombia
+Atlántico	Colombia
+Bogota D.C.	Colombia
+Cundinamarca	Colombia
+Departamento de Arauca	Colombia
+Departamento de Bolívar	Colombia
+Departamento de Boyacá	Colombia
+Departamento de Caldas	Colombia
+Departamento de Casanare	Colombia
+Departamento de Córdoba	Colombia
+Departamento de La Guajira	Colombia
+Departamento de Nariño	Colombia
+Departamento de Norte de Santander	Colombia
+Departamento de Risaralda	Colombia
+Departamento de Santander	Colombia
+Departamento de Sucre	Colombia
+Departamento de Tolima	Colombia
+Departamento del Amazonas	Colombia
+Departamento del Caquetá	Colombia
+Departamento del Cauca	Colombia
+Departamento del Cesar	Colombia
+Departamento del Chocó	Colombia
+Departamento del Guainía	Colombia
+Departamento del Guaviare	Colombia
+Departamento del Huila	Colombia
+Departamento del Magdalena	Colombia
+Departamento del Meta	Colombia
+Departamento del Putumayo	Colombia
+Departamento del Valle del Cauca	Colombia
+Departamento del Vaupés	Colombia
+Departamento del Vichada	Colombia
+Providencia y Santa Catalina, Departamento de Arch	Colombia
+Quindío Department	Colombia
+Provincia de Alajuela	Costa Rica
+Provincia de Cartago	Costa Rica
+Provincia de Guanacaste	Costa Rica
+Provincia de Heredia	Costa Rica
+Provincia de Limón	Costa Rica
+Provincia de Puntarenas	Costa Rica
+Provincia de San José	Costa Rica
+Artemisa Province	Cuba
+Las Tunas	Cuba
+Mayabeque	Cuba
+Municipio Especial Isla de la Juventud	Cuba
+Provincia Granma	Cuba
+Provincia de Camagüey	Cuba
+Provincia de Ciego de Ávila	Cuba
+Provincia de Cienfuegos	Cuba
+Provincia de Guantánamo	Cuba
+Provincia de Holguín	Cuba
+Provincia de La Habana	Cuba
+Provincia de Matanzas	Cuba
+Provincia de Pinar del Río	Cuba
+Provincia de Sancti Spíritus	Cuba
+Provincia de Santiago de Cuba	Cuba
+Provincia de Villa Clara	Cuba
+Concelho da Boa Vista	Cape Verde
+Concelho da Brava	Cape Verde
+Concelho da Praia	Cape Verde
+Concelho da Ribeira Brava	Cape Verde
+Concelho da Ribeira Grande	Cape Verde
+Concelho de Ribeira Grande de Santiago	Cape Verde
+Concelho de Santa Catarina	Cape Verde
+Concelho de Santa Catarina do Fogo	Cape Verde
+Concelho de Santa Cruz	Cape Verde
+Concelho de São Domingos	Cape Verde
+Concelho de São Lourenço dos Órgãos	Cape Verde
+Concelho de São Miguel	Cape Verde
+Concelho de São Salvador do Mundo	Cape Verde
+Concelho de São Vicente	Cape Verde
+Concelho do Maio	Cape Verde
+Concelho do Paul	Cape Verde
+Concelho do Porto Novo	Cape Verde
+Concelho do São Filipe	Cape Verde
+Concelho do Tarrafal	Cape Verde
+Concelho do Tarrafal de São Nicolau	Cape Verde
+Concelho dos Mosteiros	Cape Verde
+Sal	Cape Verde
+Ammochostos	Cyprus
+Keryneia	Cyprus
+Larnaka	Cyprus
+Lefkosia	Cyprus
+Limassol	Cyprus
+Pafos	Cyprus
+Central Bohemia	Czechia
+Hlavní m?sto Praha	Czechia
+Jiho?eský kraj	Czechia
+Karlovarský kraj	Czechia
+Kraj Vyso?ina	Czechia
+Královéhradecký kraj	Czechia
+Liberecký kraj	Czechia
+Moravskoslezský kraj	Czechia
+Olomoucký kraj	Czechia
+Pardubický kraj	Czechia
+Plze?ský kraj	Czechia
+South Moravian	Czechia
+Zlín Region	Czechia
+Ústecký kraj	Czechia
+Baden-Württemberg	Germany
+Bavaria	Germany
+Brandenburg	Germany
+Bremen	Germany
+Hamburg	Germany
+Hesse	Germany
+Land Berlin	Germany
+Lower Saxony	Germany
+Mecklenburg-Vorpommern	Germany
+North Rhine-Westphalia	Germany
+Rheinland-Pfalz	Germany
+Saarland	Germany
+Saxony	Germany
+Saxony-Anhalt	Germany
+Schleswig-Holstein	Germany
+Thuringia	Germany
+Ali Sabieh Region	Djibouti
+Arta Region	Djibouti
+Dikhil	Djibouti
+Djibouti Region	Djibouti
+Obock	Djibouti
+Tadjourah	Djibouti
+Capital Region	Denmark
+Central Jutland	Denmark
+North Denmark	Denmark
+South Denmark	Denmark
+Zealand	Denmark
+Saint Andrew	Dominica
+Saint David	Dominica
+Saint George	Dominica
+Saint John	Dominica
+Saint Joseph	Dominica
+Saint Luke	Dominica
+Saint Mark	Dominica
+Saint Patrick	Dominica
+Saint Paul	Dominica
+Saint Peter	Dominica
+Distrito Nacional	Dominican Republic
+Provincia Duarte	Dominican Republic
+Provincia Espaillat	Dominican Republic
+Provincia María Trinidad Sánchez	Dominican Republic
+Provincia Sánchez Ramírez	Dominican Republic
+Provincia de Azua	Dominican Republic
+Provincia de Baoruco	Dominican Republic
+Provincia de Barahona	Dominican Republic
+Provincia de Dajabón	Dominican Republic
+Provincia de El Seibo	Dominican Republic
+Provincia de Elías Piña	Dominican Republic
+Provincia de Hato Mayor	Dominican Republic
+Provincia de Hermanas Mirabal	Dominican Republic
+Provincia de Independencia	Dominican Republic
+Provincia de La Altagracia	Dominican Republic
+Provincia de La Romana	Dominican Republic
+Provincia de La Vega	Dominican Republic
+Provincia de Monseñor Nouel	Dominican Republic
+Provincia de Monte Cristi	Dominican Republic
+Provincia de Monte Plata	Dominican Republic
+Provincia de Pedernales	Dominican Republic
+Provincia de Peravia	Dominican Republic
+Provincia de San Cristóbal	Dominican Republic
+Provincia de San José de Ocoa	Dominican Republic
+Provincia de San Juan	Dominican Republic
+Provincia de San Pedro de Macorís	Dominican Republic
+Provincia de Santiago	Dominican Republic
+Provincia de Santiago Rodríguez	Dominican Republic
+Provincia de Santo Domingo	Dominican Republic
+Provincia de Valverde	Dominican Republic
+Puerto Plata	Dominican Republic
+Samaná	Dominican Republic
+Adrar	Algeria
+Annaba	Algeria
+El Bayadh	Algeria
+El Oued	Algeria
+El Tarf	Algeria
+Illizi	Algeria
+Oran	Algeria
+Oum el Bouaghi	Algeria
+Wilaya de Aïn Defla	Algeria
+Wilaya de Aïn Temouchent	Algeria
+Wilaya de Batna	Algeria
+Wilaya de Bejaïa	Algeria
+Wilaya de Biskra	Algeria
+Wilaya de Blida	Algeria
+Wilaya de Bordj Bou Arréridj	Algeria
+Wilaya de Bouira	Algeria
+Wilaya de Boumerdes	Algeria
+Wilaya de Béchar	Algeria
+Wilaya de Chlef	Algeria
+Wilaya de Constantine	Algeria
+Wilaya de Djelfa	Algeria
+Wilaya de Ghardaïa	Algeria
+Wilaya de Guelma	Algeria
+Wilaya de Jijel	Algeria
+Wilaya de Khenchela	Algeria
+Wilaya de Laghouat	Algeria
+Wilaya de Mascara	Algeria
+Wilaya de Mila	Algeria
+Wilaya de Mostaganem	Algeria
+Wilaya de Médéa	Algeria
+Wilaya de M’Sila	Algeria
+Wilaya de Naama	Algeria
+Wilaya de Ouargla	Algeria
+Wilaya de Relizane	Algeria
+Wilaya de Saïda	Algeria
+Wilaya de Sidi Bel Abbès	Algeria
+Wilaya de Skikda	Algeria
+Wilaya de Souk Ahras	Algeria
+Wilaya de Sétif	Algeria
+Wilaya de Tamanghasset	Algeria
+Wilaya de Tiaret	Algeria
+Wilaya de Tindouf	Algeria
+Wilaya de Tipaza	Algeria
+Wilaya de Tissemsilt	Algeria
+Wilaya de Tizi Ouzou	Algeria
+Wilaya de Tlemcen	Algeria
+Wilaya de Tébessa	Algeria
+Wilaya d’ Alger	Algeria
+Provincia de Bolívar	Ecuador
+Provincia de Cotopaxi	Ecuador
+Provincia de El Oro	Ecuador
+Provincia de Esmeraldas	Ecuador
+Provincia de Francisco de Orellana	Ecuador
+Provincia de Galápagos	Ecuador
+Provincia de Imbabura	Ecuador
+Provincia de Loja	Ecuador
+Provincia de Los Ríos	Ecuador
+Provincia de Manabí	Ecuador
+Provincia de Morona-Santiago	Ecuador
+Provincia de Napo	Ecuador
+Provincia de Pichincha	Ecuador
+Provincia de Santa Elena	Ecuador
+Provincia de Santo Domingo de los Tsáchilas	Ecuador
+Provincia de Sucumbíos	Ecuador
+Provincia de Zamora-Chinchipe	Ecuador
+Provincia del Azuay	Ecuador
+Provincia del Carchi	Ecuador
+Provincia del Cañar	Ecuador
+Provincia del Chimborazo	Ecuador
+Provincia del Guayas	Ecuador
+Provincia del Pastaza	Ecuador
+Provincia del Tungurahua	Ecuador
+Harju	Estonia
+Hiiumaa	Estonia
+Ida-Virumaa	Estonia
+Järvamaa	Estonia
+Jõgevamaa	Estonia
+Lääne	Estonia
+Lääne-Virumaa	Estonia
+Pärnumaa	Estonia
+Põlvamaa	Estonia
+Raplamaa	Estonia
+Saare	Estonia
+Tartu	Estonia
+Valgamaa	Estonia
+Viljandimaa	Estonia
+Võrumaa	Estonia
+Alexandria	Egypt
+As Suways	Egypt
+Beheira Governorate	Egypt
+Eastern Province	Egypt
+Ismailia Governorate	Egypt
+Kafr ash Shaykh	Egypt
+Mu??faz?at Asw?n	Egypt
+Mu??faz?at Asy??	Egypt
+Mu??faz?at Ban? Suwayf	Egypt
+Mu??faz?at B?r Sa‘?d	Egypt
+Mu??faz?at Dumy??	Egypt
+Mu??faz?at Ma?r??	Egypt
+Mu??faz?at Qin?	Egypt
+Mu??faz?at Sham?l S?n?’	Egypt
+Mu??faz?at S?h?j	Egypt
+Mu??faz?at ad Daqahl?yah	Egypt
+Mu??faz?at al Fayy?m	Egypt
+Mu??faz?at al Gharb?yah	Egypt
+Mu??faz?at al J?zah	Egypt
+Mu??faz?at al Miny?	Egypt
+Mu??faz?at al Min?f?yah	Egypt
+Mu??faz?at al Qaly?b?yah	Egypt
+Mu??faz?at al Q?hirah	Egypt
+Mu??faz?at al Uq?ur	Egypt
+Mu??faz?at al W?d? al Jad?d	Egypt
+Red Sea Governorate	Egypt
+South Sinai Governorate	Egypt
+Anseba Region	Eritrea
+Debub Region	Eritrea
+Gash-Barka Region	Eritrea
+Maekel Region	Eritrea
+Northern Red Sea Region	Eritrea
+Southern Red Sea Region	Eritrea
+Andalusia	Spain
+Aragon	Spain
+Asturias	Spain
+Balearic Islands	Spain
+Basque Country	Spain
+Canary Islands	Spain
+Cantabria	Spain
+Castille and León	Spain
+Castille-La Mancha	Spain
+Catalonia	Spain
+Ceuta	Spain
+Extremadura	Spain
+Galicia	Spain
+La Rioja	Spain
+Madrid	Spain
+Melilla	Spain
+Murcia	Spain
+Navarre	Spain
+Valencia	Spain
+Amhara	Ethiopia
+B?nshangul Gumuz	Ethiopia
+Dire Dawa	Ethiopia
+Gambela	Ethiopia
+Harari	Ethiopia
+Oromiya	Ethiopia
+Somali	Ethiopia
+Southern Nations, Nationalities, and People's Regi	Ethiopia
+Tigray	Ethiopia
+?d?s ?beba ?stedader	Ethiopia
+?far	Ethiopia
+Brändö	Ã…land
+Eastern Finland	Finland
+Eckerö	Ã…land
+Finström	Ã…land
+Föglö	Ã…land
+Geta	Ã…land
+Hammarland	Ã…land
+Jomala	Ã…land
+Kumlinge	Ã…land
+Kökar	Ã…land
+Lapland	Finland
+Lemland	Ã…land
+Lumparland	Ã…land
+Mariehamn	Ã…land
+Oulu	Finland
+Saltvik	Ã…land
+Sottunga	Ã…land
+Southern Finland	Finland
+Sund	Ã…land
+Vårdö	Ã…land
+Western Finland	Finland
+Central	Fiji
+Eastern	Fiji
+Kadavu	Fiji
+Northern	Fiji
+Rotuma	Fiji
+Western	Fiji
+State of Chuuk	Micronesia
+State of Kosrae	Micronesia
+State of Pohnpei	Micronesia
+State of Yap	Micronesia
+Eysturoy	Faroe Islands
+Norðoyar	Faroe Islands
+Sandoy	Faroe Islands
+Streymoy	Faroe Islands
+Suðuroy	Faroe Islands
+Vágar	Faroe Islands
+Alsace	France
+Aquitaine	France
+Auvergne	France
+Bourgogne	France
+Brittany	France
+Centre	France
+Champagne-Ardenne	France
+Corsica	France
+Franche-Comté	France
+Guadeloupe	Guadeloupe
+Guyane	French Guiana
+Languedoc-Roussillon	France
+Limousin	France
+Lorraine	France
+Lower Normandy	France
+Martinique	Martinique
+Midi-Pyrénées	France
+Nord-Pas-de-Calais	France
+Pays de la Loire	France
+Picardie	France
+Poitou-Charentes	France
+Provence-Alpes-Côte d'Azur	France
+Rhône-Alpes	France
+Réunion	RÃ©union
+Upper Normandy	France
+Île-de-France	France
+Estuaire	Gabon
+Province de la Ngounié	Gabon
+Province de la Nyanga	Gabon
+Province de l’ Ogooué-Ivindo	Gabon
+Province de l’ Ogooué-Lolo	Gabon
+Province de l’ Ogooué-Maritime	Gabon
+Province du Haut-Ogooué	Gabon
+Province du Moyen-Ogooué	Gabon
+Province du Woleu-Ntem	Gabon
+Castel	Guernsey
+England	United Kingdom
+Forest	Guernsey
+Grouville	Jersey
+N Ireland	United Kingdom
+Saint Andrew	Guernsey
+Saint Brelade	Jersey
+Saint Helier	Jersey
+Saint John	Jersey
+Saint Lawrence	Jersey
+Saint Martin	Jersey
+Saint Martin	Guernsey
+Saint Mary	Jersey
+Saint Ouen	Jersey
+Saint Peter	Jersey
+Saint Peter Port	Guernsey
+Saint Pierre du Bois	Guernsey
+Saint Sampson	Guernsey
+Saint Saviour	Jersey
+Saint Saviour	Guernsey
+Scotland	United Kingdom
+St Clement	Jersey
+Torteval	Guernsey
+Trinity	Jersey
+Vale	Guernsey
+Wales	United Kingdom
+Carriacou and Petite Martinique	Grenada
+Saint Andrew	Grenada
+Saint David	Grenada
+Saint George	Grenada
+Saint John	Grenada
+Saint Mark	Grenada
+Saint Patrick	Grenada
+Abkhazia	Georgia
+Ajaria	Georgia
+Guria	Georgia
+Imereti	Georgia
+K'alak'i T'bilisi	Georgia
+Kakheti	Georgia
+Kvemo Kartli	Georgia
+Mtskheta-Mtianeti	Georgia
+Racha-Lechkhumi and Kvemo Svaneti	Georgia
+Samegrelo and Zemo Svaneti	Georgia
+Samtskhe-Javakheti	Georgia
+Shida Kartli	Georgia
+Guyane	French Guiana
+Ashanti Region	Ghana
+Brong-Ahafo	Ghana
+Central Region	Ghana
+Eastern Region	Ghana
+Greater Accra Region	Ghana
+Northern Region	Ghana
+Upper East Region	Ghana
+Upper West Region	Ghana
+Volta Region	Ghana
+Western Region	Ghana
+Kujalleq	Greenland
+Qaasuitsup	Greenland
+Qeqqata	Greenland
+Sermersooq	Greenland
+Central River Division	Gambia
+City of Banjul	Gambia
+Lower River Division	Gambia
+North Bank Division	Gambia
+Upper River	Gambia
+Western Division	Gambia
+Boke Region	Guinea
+Conakry Region	Guinea
+Faranah	Guinea
+Kankan Region	Guinea
+Kindia	Guinea
+Labé Region	Guinea
+Mamou Region	Guinea
+Nzerekore Region	Guinea
+Guadeloupe	Guadeloupe
+Provincia de Annobón	Equatorial Guinea
+Provincia de Bioko Norte	Equatorial Guinea
+Provincia de Bioko Sur	Equatorial Guinea
+Provincia de Centro Sur	Equatorial Guinea
+Provincia de Kié-Ntem	Equatorial Guinea
+Provincia de Litoral	Equatorial Guinea
+Provincia de Wele-Nzas	Equatorial Guinea
+Attica	Greece
+Central Greece	Greece
+Central Macedonia	Greece
+Crete	Greece
+East Macedonia and Thrace	Greece
+Epirus	Greece
+Ionian Islands	Greece
+Mount Athos	Greece
+North Aegean	Greece
+Peloponnese	Greece
+South Aegean	Greece
+Thessaly	Greece
+West Greece	Greece
+West Macedonia	Greece
+Departamento de Alta Verapaz	Guatemala
+Departamento de Baja Verapaz	Guatemala
+Departamento de Chimaltenango	Guatemala
+Departamento de Chiquimula	Guatemala
+Departamento de El Progreso	Guatemala
+Departamento de Escuintla	Guatemala
+Departamento de Guatemala	Guatemala
+Departamento de Huehuetenango	Guatemala
+Departamento de Izabal	Guatemala
+Departamento de Jalapa	Guatemala
+Departamento de Jutiapa	Guatemala
+Departamento de Quetzaltenango	Guatemala
+Departamento de Retalhuleu	Guatemala
+Departamento de Sacatepéquez	Guatemala
+Departamento de San Marcos	Guatemala
+Departamento de Santa Rosa	Guatemala
+Departamento de Sololá	Guatemala
+Departamento de Suchitepéquez	Guatemala
+Departamento de Totonicapán	Guatemala
+Departamento de Zacapa	Guatemala
+Departamento del Petén	Guatemala
+Departamento del Quiché	Guatemala
+Agana Heights	Guam
+Agat	Guam
+Asan	Guam
+Barrigada	Guam
+Chalan Pago-Ordot	Guam
+Dededo	Guam
+Hagatna	Guam
+Inarajan	Guam
+Mangilao	Guam
+Merizo Municipality	Guam
+Mongmong-Toto-Maite Municipality	Guam
+Piti Municipality	Guam
+Santa Rita Municipality	Guam
+Sinajana Municipality	Guam
+Talofofo Municipality	Guam
+Tamuning	Guam
+Umatac	Guam
+Yigo	Guam
+Yona	Guam
+Bafatá	Guinea-Bissau
+Biombo	Guinea-Bissau
+Bissau Autonomous Region	Guinea-Bissau
+Bolama and Bijagos	Guinea-Bissau
+Cacheu Region	Guinea-Bissau
+Gabú	Guinea-Bissau
+Oio Region	Guinea-Bissau
+Quinara	Guinea-Bissau
+Tombali	Guinea-Bissau
+Barima-Waini Region	Guyana
+Cuyuni-Mazaruni Region	Guyana
+Demerara-Mahaica Region	Guyana
+East Berbice-Corentyne Region	Guyana
+Essequibo Islands-West Demerara Region	Guyana
+Mahaica-Berbice Region	Guyana
+Pomeroon-Supenaam Region	Guyana
+Potaro-Siparuni Region	Guyana
+Upper Demerara-Berbice Region	Guyana
+Upper Takutu-Upper Essequibo Region	Guyana
+Central and Western District	Hong Kong
+Eastern	Hong Kong
+Islands District	Hong Kong
+Kowloon City	Hong Kong
+Kwai Tsing	Hong Kong
+Kwon Tong	Hong Kong
+North	Hong Kong
+Sai Kung District	Hong Kong
+Sha Tin	Hong Kong
+Sham Shui Po	Hong Kong
+Southern	Hong Kong
+Tai Po District	Hong Kong
+Tsuen Wan District	Hong Kong
+Tuen Mun	Hong Kong
+Wanchai	Hong Kong
+Wong Tai Sin	Hong Kong
+Yau Tsim Mong	Hong Kong
+Yuen Long District	Hong Kong
+Bay Islands	Honduras
+Departamento de Atlántida	Honduras
+Departamento de Choluteca	Honduras
+Departamento de Colón	Honduras
+Departamento de Comayagua	Honduras
+Departamento de Copán	Honduras
+Departamento de Cortés	Honduras
+Departamento de El Paraíso	Honduras
+Departamento de Francisco Morazán	Honduras
+Departamento de Gracias a Dios	Honduras
+Departamento de Intibucá	Honduras
+Departamento de La Paz	Honduras
+Departamento de Lempira	Honduras
+Departamento de Ocotepeque	Honduras
+Departamento de Olancho	Honduras
+Departamento de Santa Bárbara	Honduras
+Departamento de Valle	Honduras
+Departamento de Yoro	Honduras
+Bjelovarsko-Bilogorska Županija	Croatia
+Brodsko-Posavska Županija	Croatia
+Dubrova?ko-Neretvanska Županija	Croatia
+Grad Zagreb	Croatia
+Istarska Županija	Croatia
+Karlova?ka Županija	Croatia
+Koprivni?ko-Križeva?ka Županija	Croatia
+Krapinsko-Zagorska Županija	Croatia
+Li?ko-Senjska Županija	Croatia
+Me?imurska Županija	Croatia
+Osje?ko-Baranjska Županija	Croatia
+Požeško-Slavonska Županija	Croatia
+Primorsko-Goranska Županija	Croatia
+Sisa?ko-Moslava?ka Županija	Croatia
+Splitsko-Dalmatinska Županija	Croatia
+Varaždinska Županija	Croatia
+Viroviti?ko-Podravska Županija	Croatia
+Vukovarsko-Srijemska Županija	Croatia
+Zadarska Županija	Croatia
+Zagreb County	Croatia
+Šibensko-Kninska Županija	Croatia
+Centre	Haiti
+Département de Nippes	Haiti
+Département de l'Artibonite	Haiti
+Département de l'Ouest	Haiti
+Département de la Grand’Anse	Haiti
+Département du Nord-Est	Haiti
+Nord	Haiti
+Nord-Ouest	Haiti
+Sud	Haiti
+Sud-Est	Haiti
+Baranya	Hungary
+Bekes	Hungary
+Borsod-Abaúj-Zemplén	Hungary
+Budapest f?város	Hungary
+Bács-Kiskun	Hungary
+Csongrád megye	Hungary
+Fejér	Hungary
+Gy?r-Moson-Sopron	Hungary
+Hajdú-Bihar	Hungary
+Heves megye	Hungary
+Jász-Nagykun-Szolnok	Hungary
+Komárom-Esztergom	Hungary
+Nógrád megye	Hungary
+Pest megye	Hungary
+Somogy megye	Hungary
+Szabolcs-Szatmár-Bereg	Hungary
+Tolna megye	Hungary
+Vas	Hungary
+Veszprém megye	Hungary
+Zala	Hungary
+Bali	Indonesia
+Bangka-Belitung	Indonesia
+Banten	Indonesia
+Central Java	Indonesia
+Central Sulawesi	Indonesia
+Daerah Istimewa Yogyakarta	Indonesia
+Daerah Khusus Ibukota Jakarta	Indonesia
+East Java	Indonesia
+East Kalimantan	Indonesia
+East Nusa Tenggara	Indonesia
+Nanggroe Aceh Darussalam Province	Indonesia
+North Kalimantan	Indonesia
+North Sulawesi	Indonesia
+North Sumatra	Indonesia
+Propinsi Bengkulu	Indonesia
+Provinsi Gorontalo	Indonesia
+Provinsi Jambi	Indonesia
+Provinsi Kalimantan Tengah	Indonesia
+Provinsi Lampung	Indonesia
+Provinsi Maluku	Indonesia
+Provinsi Maluku Utara	Indonesia
+Provinsi Papua	Indonesia
+Provinsi Riau	Indonesia
+Provinsi Sulawesi Barat	Indonesia
+Riau Islands	Indonesia
+South Kalimantan	Indonesia
+South Sulawesi	Indonesia
+South Sumatra	Indonesia
+Sulawesi Tenggara	Indonesia
+West Java	Indonesia
+West Kalimantan	Indonesia
+West Nusa Tenggara	Indonesia
+West Papua	Indonesia
+West Sumatra	Indonesia
+Connaught	Ireland
+Leinster	Ireland
+Munster	Ireland
+Ulster	Ireland
+Central District	Israel
+Haifa District	Israel
+Jerusalem District	Israel
+Northern District	Israel
+Southern District	Israel
+Tel Aviv	Israel
+Arunachal Pradesh	India
+Bengal	India
+Bihar	India
+Chandigarh	India
+Daman and Diu	India
+Goa	India
+Haryana	India
+Jammu and Kashmir	India
+Karnataka	India
+Kerala	India
+Laccadives	India
+Maharashtra	India
+Meghalaya	India
+NCT	India
+Nagaland	India
+Rajasthan	India
+State of Andhra Pradesh	India
+State of Assam	India
+State of Chhatt?sgarh	India
+State of Gujar?t	India
+State of Him?chal Pradesh	India
+State of Jharkhand	India
+State of Madhya Pradesh	India
+State of Manipur	India
+State of Mizoram	India
+State of Odisha	India
+State of Punjab	India
+State of Sikkim	India
+State of Tripura	India
+Tamil Nadu	India
+Union Territory of Andaman and Nicobar Islands	India
+Union Territory of D?dra and Nagar Haveli	India
+Union Territory of Puducherry	India
+Uttar Pradesh	India
+Uttarakhand	India
+An Najaf	Iraq
+Anbar	Iraq
+Dhi Qar	Iraq
+Dihok	Iraq
+Diyala Province	Iraq
+Mayorality of Baghdad	Iraq
+Maysan	Iraq
+Muhafazat Salah ad Din	Iraq
+Muhafazat Wasit	Iraq
+Mu??faz?at Arb?l	Iraq
+Mu??faz?at B?bil	Iraq
+Mu??faz?at Karbal?’	Iraq
+Mu??faz?at Kirk?k	Iraq
+Mu??faz?at N?nawá	Iraq
+Mu??faz?at al Ba?rah	Iraq
+Mu??faz?at al Muthanná	Iraq
+Mu??faz?at al Q?dis?yah	Iraq
+Mu??faz?at as Sulaym?n?yah	Iraq
+Alborz	Iran
+Bushehr	Iran
+East Azarbaijan	Iran
+F?rs	Iran
+Hormozg?n	Iran
+Markazi	Iran
+M?zandar?n	Iran
+Ost?n-e Ardab?l	Iran
+Ost?n-e Chah?r Ma??l va Bakht??r?	Iran
+Ost?n-e E?fah?n	Iran
+Ost?n-e Golest?n	Iran
+Ost?n-e G?l?n	Iran
+Ost?n-e Hamad?n	Iran
+Ost?n-e Kerm?n	Iran
+Ost?n-e Kerm?nsh?h	Iran
+Ost?n-e Khor?s?n-e Jon?b?	Iran
+Ost?n-e Khor?s?n-e Shom?l?	Iran
+Ost?n-e Kh?zest?n	Iran
+Ost?n-e Kohg?l?yeh va Bowyer A?mad	Iran
+Ost?n-e Kordest?n	Iran
+Ost?n-e Lorest?n	Iran
+Ost?n-e Qazv?n	Iran
+Ost?n-e S?st?n va Bal?chest?n	Iran
+Ost?n-e Tehr?n	Iran
+Ost?n-e ?z?arb?yj?n-e Gharb?	Iran
+Ost?n-e ?l?m	Iran
+Qom	Iran
+Razavi Khorasan	Iran
+Semn?n	Iran
+Yazd	Iran
+Zanjan	Iran
+Capital Region	Iceland
+East	Iceland
+Northeast	Iceland
+Northwest	Iceland
+South	Iceland
+Southern Peninsula	Iceland
+West	Iceland
+Westfjords	Iceland
+Abruzzo	Italy
+Aosta Valley	Italy
+Apulia	Italy
+Basilicate	Italy
+Calabria	Italy
+Campania	Italy
+Emilia-Romagna	Italy
+Friuli Venezia Giulia	Italy
+Latium	Italy
+Liguria	Italy
+Lombardy	Italy
+Molise	Italy
+Piedmont	Italy
+Sardinia	Italy
+Sicily	Italy
+The Marches	Italy
+Trentino-Alto Adige	Italy
+Tuscany	Italy
+Umbria	Italy
+Veneto	Italy
+Hanover Parish	Jamaica
+Kingston	Jamaica
+Parish of Clarendon	Jamaica
+Parish of Manchester	Jamaica
+Parish of Portland	Jamaica
+Parish of Saint Andrew	Jamaica
+Parish of Saint Ann	Jamaica
+Parish of Saint Catherine	Jamaica
+Parish of Saint James	Jamaica
+Parish of Saint Mary	Jamaica
+Parish of Saint Thomas	Jamaica
+Parish of Trelawny	Jamaica
+Parish of Westmoreland	Jamaica
+St. Elizabeth	Jamaica
+Ajlun	Jordan
+Amman	Jordan
+Aqaba	Jordan
+Balqa	Jordan
+Irbid	Jordan
+Jerash	Jordan
+Karak	Jordan
+Madaba	Jordan
+Mafraq	Jordan
+Ma’an	Jordan
+Tafielah	Jordan
+Zarqa	Jordan
+Aichi	Japan
+Akita	Japan
+Aomori	Japan
+Chiba	Japan
+Ehime	Japan
+Fukui	Japan
+Fukuoka	Japan
+Fukushima	Japan
+Gifu	Japan
+Gunma	Japan
+Hiroshima	Japan
+Hokkaid?	Japan
+Hy?go	Japan
+Ibaraki	Japan
+Ishikawa	Japan
+Iwate	Japan
+Kagawa	Japan
+Kagoshima	Japan
+Kanagawa	Japan
+Kumamoto	Japan
+Ky?to	Japan
+K?chi-ken	Japan
+Mie	Japan
+Miyagi	Japan
+Miyazaki	Japan
+Nagano	Japan
+Nagasaki	Japan
+Nara	Japan
+Niigata	Japan
+Okayama	Japan
+Okinawa	Japan
+Saga-ken	Japan
+Saitama	Japan
+Shiga-ken	Japan
+Shimane	Japan
+Shizuoka	Japan
+Tochigi	Japan
+Tokushima	Japan
+Tottori	Japan
+Toyama	Japan
+T?ky?	Japan
+Wakayama	Japan
+Yamagata	Japan
+Yamaguchi	Japan
+Yamanashi	Japan
+?ita	Japan
+?saka	Japan
+Baringo	Kenya
+Bomet	Kenya
+Bungoma	Kenya
+Busia	Kenya
+Elegeyo-Marakwet	Kenya
+Embu	Kenya
+Garissa	Kenya
+Homa Bay	Kenya
+Isiolo	Kenya
+Kajiado	Kenya
+Kakamega	Kenya
+Keiyo	Kenya
+Kericho	Kenya
+Kiambu	Kenya
+Kilifi	Kenya
+Kirinyaga	Kenya
+Kisii	Kenya
+Kitui	Kenya
+Kwale	Kenya
+Laikipia	Kenya
+Lamu	Kenya
+Machakos	Kenya
+Makueni	Kenya
+Mandera	Kenya
+Marsabit	Kenya
+Meru	Kenya
+Migori	Kenya
+Mombasa	Kenya
+Murang'A	Kenya
+Nairobi	Kenya
+Nakuru	Kenya
+Nandi	Kenya
+Narok	Kenya
+Nyamira	Kenya
+Nyandarua	Kenya
+Nyeri	Kenya
+Samburu	Kenya
+Siaya	Kenya
+Taita Taveta	Kenya
+Tana River	Kenya
+Tharaka - Nithi	Kenya
+Trans Nzoia	Kenya
+Turkana	Kenya
+Vihiga	Kenya
+Wajir	Kenya
+West Pokot	Kenya
+Batken	Kyrgyzstan
+Chuyskaya Oblast’	Kyrgyzstan
+Gorod Bishkek	Kyrgyzstan
+Issyk-Kul’skaya Oblast’	Kyrgyzstan
+Jalal-Abad	Kyrgyzstan
+Naryn	Kyrgyzstan
+Osh Oblasty	Kyrgyzstan
+Talas	Kyrgyzstan
+Banteay Meanchey	Cambodia
+Battambang	Cambodia
+Kampong Cham	Cambodia
+Kampong Chhnang	Cambodia
+Kampong Speu	Cambodia
+Kampong Thom	Cambodia
+Kampot	Cambodia
+Kandal	Cambodia
+Kep	Cambodia
+Koh Kong	Cambodia
+Kratie	Cambodia
+Mondolkiri	Cambodia
+Pailin	Cambodia
+Phnom Penh	Cambodia
+Preah Sihanouk	Cambodia
+Preah Vihear	Cambodia
+Prey Veng	Cambodia
+Pursat	Cambodia
+Ratanakiri	Cambodia
+Siem Reap	Cambodia
+Stung Treng	Cambodia
+Svay Rieng	Cambodia
+Takeo	Cambodia
+?târ Méanchey	Cambodia
+Gilbert Islands	Kiribati
+Line Islands	Kiribati
+Phoenix Islands	Kiribati
+Grande Comore	Comoros
+Mwali	Comoros
+Ndzuwani	Comoros
+Christ Church Nichola Town	Saint Kitts and Nevis
+Saint Anne Sandy Point	Saint Kitts and Nevis
+Saint George Basseterre	Saint Kitts and Nevis
+Saint George Gingerland	Saint Kitts and Nevis
+Saint James Windward	Saint Kitts and Nevis
+Saint John Capesterre	Saint Kitts and Nevis
+Saint John Figtree	Saint Kitts and Nevis
+Saint Mary Cayon	Saint Kitts and Nevis
+Saint Paul Capesterre	Saint Kitts and Nevis
+Saint Paul Charlestown	Saint Kitts and Nevis
+Saint Peter Basseterre	Saint Kitts and Nevis
+Saint Thomas Lowland	Saint Kitts and Nevis
+Saint Thomas Middle Island	Saint Kitts and Nevis
+Trinity Palmetto Point	Saint Kitts and Nevis
+Chagang-do	North Korea
+Hambuk	North Korea
+Hamnam	North Korea
+Hwanghae-bukto	North Korea
+Hwanghae-namdo	North Korea
+Kangw?n-do	North Korea
+Pyongyang	North Korea
+P’y?ngan-bukto	North Korea
+P’y?ngan-namdo	North Korea
+Rason	North Korea
+Yanggang-do	North Korea
+Busan	South Korea
+Chungcheongbuk-do	South Korea
+Chungcheongnam-do	South Korea
+Daegu	South Korea
+Daejeon	South Korea
+Gangwon-do	South Korea
+Gwangju	South Korea
+Gyeonggi-do	South Korea
+Gyeongsangbuk-do	South Korea
+Gyeongsangnam-do	South Korea
+Incheon	South Korea
+Jeju-do	South Korea
+Jeollabuk-do	South Korea
+Jeollanam-do	South Korea
+Sejong	South Korea
+Seoul	South Korea
+Ulsan	South Korea
+Al Ahmadi Governorate	Kuwait
+Al Asimah	Kuwait
+Al Farwaniyah	Kuwait
+Mu??faz?at Mub?rak al Kab?r	Kuwait
+Mu??faz?at al Jahr?’	Kuwait
+Mu??faz?at ?awall?	Kuwait
+Aktyubinskaya Oblast’	Kazakhstan
+Almaty Oblysy	Kazakhstan
+Almaty Qalasy	Kazakhstan
+Aqmola Oblysy	Kazakhstan
+Astana Qalasy	Kazakhstan
+Atyra? Oblysy	Kazakhstan
+Batys Qazaqstan Oblysy	Kazakhstan
+Bayqongyr Qalasy	Kazakhstan
+East Kazakhstan	Kazakhstan
+Mangistauskaya Oblast’	Kazakhstan
+Pavlodar Oblysy	Kazakhstan
+Qaraghandy Oblysy	Kazakhstan
+Qostanay Oblysy	Kazakhstan
+Qyzylorda Oblysy	Kazakhstan
+Severo-Kazakhstanskaya Oblast’	Kazakhstan
+Yuzhno-Kazakhstanskaya Oblast’	Kazakhstan
+Zhambyl Oblysy	Kazakhstan
+Attapu	Laos
+Bolikhamxai	Laos
+Champasak	Laos
+Houaphan	Laos
+Khammouan	Laos
+Khouèng Bokèo	Laos
+Khouèng Oudômxai	Laos
+Khouèng Phôngsali	Laos
+Khouèng Savannakhét	Laos
+Khouèng Xékong	Laos
+Louangnamtha	Laos
+Luang Prabang Province	Laos
+Salavan	Laos
+Vientiane	Laos
+Vientiane	Laos
+Xaignabouli	Laos
+Xiangkhouang	Laos
+Beyrouth	Lebanon
+Mohafazat Aakkâr	Lebanon
+Mohafazat Baalbek-Hermel	Lebanon
+Mohafazat Béqaa	Lebanon
+Mohafazat Liban-Nord	Lebanon
+Mohafazat Liban-Sud	Lebanon
+Mohafazat Mont-Liban	Lebanon
+Mohafazat Nabatîyé	Lebanon
+Quarter of Anse-la-Raye	Saint Lucia
+Quarter of Castries	Saint Lucia
+Quarter of Choiseul	Saint Lucia
+Quarter of Dauphin	Saint Lucia
+Quarter of Dennery	Saint Lucia
+Quarter of Gros-Islet	Saint Lucia
+Quarter of Laborie	Saint Lucia
+Quarter of Micoud	Saint Lucia
+Quarter of Praslin	Saint Lucia
+Quarter of Soufrière	Saint Lucia
+Quarter of Vieux-Fort	Saint Lucia
+Balzers	Liechtenstein
+Eschen	Liechtenstein
+Gemeinde Gamprin	Liechtenstein
+Mauren	Liechtenstein
+Planken	Liechtenstein
+Ruggell	Liechtenstein
+Schaan	Liechtenstein
+Schellenberg	Liechtenstein
+Triesen	Liechtenstein
+Triesenberg	Liechtenstein
+Vaduz	Liechtenstein
+Central Province	Sri Lanka
+Eastern Province	Sri Lanka
+North Central Province	Sri Lanka
+North Western Province	Sri Lanka
+Northern Province	Sri Lanka
+Province of Sabaragamuwa	Sri Lanka
+Province of Uva	Sri Lanka
+Southern Province	Sri Lanka
+Western Province	Sri Lanka
+Bomi County	Liberia
+Bong County	Liberia
+Gbarpolu County	Liberia
+Grand Bassa County	Liberia
+Grand Cape Mount County	Liberia
+Grand Gedeh County	Liberia
+Grand Kru County	Liberia
+Lofa County	Liberia
+Margibi County	Liberia
+Maryland County	Liberia
+Montserrado County	Liberia
+Nimba County	Liberia
+River Cess County	Liberia
+River Gee County	Liberia
+Sinoe County	Liberia
+Berea	Lesotho
+Butha-Buthe	Lesotho
+Leribe	Lesotho
+Mafeteng District	Lesotho
+Maseru	Lesotho
+Mohale’s Hoek District	Lesotho
+Mokhotlong	Lesotho
+Qacha’s Nek	Lesotho
+Quthing	Lesotho
+Thaba-Tseka	Lesotho
+Alytaus Apskritis	Lithuania
+Kauno Apskritis	Lithuania
+Klaip?dos Apskritis	Lithuania
+Marijampol?s Apskritis	Lithuania
+Panev?žys County	Lithuania
+Taurag?s Apskritis	Lithuania
+Telši? Apskritis	Lithuania
+Utenos Apskritis	Lithuania
+Vilniaus Apskritis	Lithuania
+Šiauli? Apskritis	Lithuania
+District de Diekirch	Luxembourg
+District de Grevenmacher	Luxembourg
+District de Luxembourg	Luxembourg
+Aglona	Latvia
+Aizkraukles Rajons	Latvia
+Aizpute	Latvia
+Akn?stes Novads	Latvia
+Alojas Novads	Latvia
+Alsungas Novads	Latvia
+Al?ksnes Rajons	Latvia
+Amatas Novads	Latvia
+Apes Novads	Latvia
+Auces Novads	Latvia
+Bab?tes Novads	Latvia
+Baldones Novads	Latvia
+Baltinavas Novads	Latvia
+Balvu Rajons	Latvia
+Bauskas Rajons	Latvia
+Bever?nas Novads	Latvia
+Broc?nu Novads	Latvia
+Burtnieku Novads	Latvia
+Carnikavas Novads	Latvia
+Cesvaines Novads	Latvia
+Ciblas Novads	Latvia
+C?su Rajons	Latvia
+Dagdas Novads	Latvia
+Daugavpils	Latvia
+Daugavpils	Latvia
+Dobeles Rajons	Latvia
+Dundagas Novads	Latvia
+Durbes Novads	Latvia
+Engures Novads	Latvia
+Garkalne	Latvia
+Grobi?a	Latvia
+Gulbenes Rajons	Latvia
+Ikš?ile	Latvia
+Il?kstes Novads	Latvia
+In?ukalns	Latvia
+Jaunjelgava	Latvia
+Jaunpiebalga	Latvia
+Jaunpils	Latvia
+Jelgava	Latvia
+Jelgavas Rajons	Latvia
+J?kabpils	Latvia
+J?kabpils Municipality	Latvia
+J?rmala	Latvia
+Kandava	Latvia
+Karsava	Latvia
+Koc?nu Novads	Latvia
+Koknese	Latvia
+Krimulda	Latvia
+Krustpils	Latvia
+Kr?slavas Rajons	Latvia
+Kuld?gas Rajons	Latvia
+Lecava	Latvia
+Lielv?rde	Latvia
+Liep?ja	Latvia
+Limbažu Rajons	Latvia
+Lub?na	Latvia
+Ludzas Rajons	Latvia
+L?gatne	Latvia
+L?v?ni	Latvia
+Madona Municipality	Latvia
+Mazsalaca	Latvia
+M?lpils	Latvia
+M?rupe	Latvia
+M?rsraga Novads	Latvia
+Naukš?ni	Latvia
+Nereta	Latvia
+N?ca	Latvia
+Ogre	Latvia
+Olaine	Latvia
+Ozolnieku Novads	Latvia
+Prei?i Municipality	Latvia
+Priekule	Latvia
+Prieku?i Municipality	Latvia
+P?rgaujas Novads	Latvia
+P?vilostas Novads	Latvia
+P?avi?u Novads	Latvia
+Raunas Novads	Latvia
+Riebi?u Novads	Latvia
+Rojas Novads	Latvia
+Ropažu Novads	Latvia
+Rucavas Novads	Latvia
+Rug?ju Novads	Latvia
+Rund?les Novads	Latvia
+R?zekne	Latvia
+R?zeknes Rajons	Latvia
+R?ga	Latvia
+R?jienas Novads	Latvia
+Salacgr?vas Novads	Latvia
+Salas Novads	Latvia
+Salaspils Novads	Latvia
+Saldus Municipality	Latvia
+Saulkrastu Novads	Latvia
+Siguldas Novads	Latvia
+Skrundas Novads	Latvia
+Skr?veru Novads	Latvia
+Smiltenes Novads	Latvia
+Stopi?u Novads	Latvia
+Stren?u Novads	Latvia
+S?jas Novads	Latvia
+Talsi Municipality	Latvia
+Tukuma Rajons	Latvia
+T?rvetes Novads	Latvia
+Vai?odes Novads	Latvia
+Valka Municipality	Latvia
+Valmiera District	Latvia
+Varak??nu Novads	Latvia
+Vecpiebalgas Novads	Latvia
+Vecumnieku Novads	Latvia
+Ventspils	Latvia
+Ventspils Municipality	Latvia
+Vies?tes Novads	Latvia
+Vi?akas Novads	Latvia
+Vi??nu Novads	Latvia
+V?rkavas Novads	Latvia
+Zilupes Novads	Latvia
+?daži	Latvia
+?rg?i	Latvia
+?egums	Latvia
+?ekava	Latvia
+Al Jufrah	Libya
+Al Kufrah	Libya
+Al Marj	Libya
+Al Marqab	Libya
+Darnah	Libya
+Murzuq	Libya
+Sha‘b?yat Bangh?z?	Libya
+Sha‘b?yat Gh?t	Libya
+Sha‘b?yat Mi?r?tah	Libya
+Sha‘b?yat N?l?t	Libya
+Sha‘b?yat Sabh?	Libya
+Sha‘b?yat W?d? al ?ay?t	Libya
+Sha‘b?yat W?d? ash Sh??i’	Libya
+Sha‘b?yat al Bu?n?n	Libya
+Sha‘b?yat al Jabal al Akh?ar	Libya
+Sha‘b?yat al Jabal al Gharb?	Libya
+Sha‘b?yat al Jaf?rah	Libya
+Sha‘b?yat al W???t	Libya
+Sha‘b?yat an Nuq?? al Khams	Libya
+Sha‘b?yat az Z?wiyah	Libya
+Surt	Libya
+Tripoli District	Libya
+Chaouia-Ouardigha	Morocco
+Doukkala-Abda	Morocco
+Gharb-Chrarda-Beni Hssen	Morocco
+Guelmim-Es Semara	Morocco
+Laâyoune-Boujdour-Sakia El Hamra	Morocco
+Marrakech-Tensift-Al Haouz	Morocco
+Oriental	Morocco
+Oued ed Dahab-Lagouira	Morocco
+Région de Fès-Boulemane	Morocco
+Région de Meknès-Tafilalet	Morocco
+Région de Rabat-Salé-Zemmour-Zaër	Morocco
+Région de Souss-Massa-Drâa	Morocco
+Région de Tanger-Tétouan	Morocco
+Région du Grand Casablanca	Morocco
+Tadla-Azilal	Morocco
+Taza-Al Hoceima-Taounate	Morocco
+Commune de Monaco	Monaco
+Cahul	Moldova
+Drochia	Moldova
+G?g?uzia	Moldova
+Municipiul Bender	Moldova
+Municipiul B?l?i	Moldova
+Municipiul Chi?in?u	Moldova
+Raionul Anenii Noi	Moldova
+Raionul Basarabeasca	Moldova
+Raionul Briceni	Moldova
+Raionul Cantemir	Moldova
+Raionul Cimi?lia	Moldova
+Raionul Criuleni	Moldova
+Raionul C?l?ra?i	Moldova
+Raionul C?u?eni	Moldova
+Raionul Dondu?eni	Moldova
+Raionul Dub?sari	Moldova
+Raionul Edine?	Moldova
+Raionul Flore?ti	Moldova
+Raionul F?le?ti	Moldova
+Raionul Glodeni	Moldova
+Raionul Hînce?ti	Moldova
+Raionul Ialoveni	Moldova
+Raionul Leova	Moldova
+Raionul Nisporeni	Moldova
+Raionul Ocni?a	Moldova
+Raionul Orhei	Moldova
+Raionul Rezina	Moldova
+Raionul Rî?cani	Moldova
+Raionul Soroca	Moldova
+Raionul Sîngerei	Moldova
+Raionul Taraclia	Moldova
+Raionul Telene?ti	Moldova
+Raionul ?old?ne?ti	Moldova
+Raionul ?tefan Vod?	Moldova
+Str??eni	Moldova
+Ungheni	Moldova
+Unitatea Teritorial? din Stînga Nistrului	Moldova
+Andrijevica	Montenegro
+Bar	Montenegro
+Berane	Montenegro
+Bijelo Polje	Montenegro
+Budva	Montenegro
+Cetinje	Montenegro
+Danilovgrad	Montenegro
+Herceg Novi	Montenegro
+Kotor	Montenegro
+Mojkovac	Montenegro
+Opština Kolašin	Montenegro
+Opština Nikši?	Montenegro
+Opština Plav	Montenegro
+Opština Plužine	Montenegro
+Opština Rožaje	Montenegro
+Opština Šavnik	Montenegro
+Opština Žabljak	Montenegro
+Pljevlja	Montenegro
+Podgorica	Montenegro
+Tivat	Montenegro
+Ulcinj	Montenegro
+Alaotra Mangoro Region	Madagascar
+Amoron'i Mania Region	Madagascar
+Analamanga Region	Madagascar
+Analanjirofo Region	Madagascar
+Androy Region	Madagascar
+Anosy Region	Madagascar
+Atsimo-Andrefana Region	Madagascar
+Atsimo-Atsinanana	Madagascar
+Atsinanana Region	Madagascar
+Betsiboka Region	Madagascar
+Boeny Region	Madagascar
+Bongolava Region	Madagascar
+Diana Region	Madagascar
+Ihorombe Region	Madagascar
+Itasy Region	Madagascar
+Melaky Region	Madagascar
+Menabe Region	Madagascar
+Sava Region	Madagascar
+Sofia Region	Madagascar
+Upper Matsiatra	Madagascar
+Vakinankaratra Region	Madagascar
+Vatovavy Fitovinany Region	Madagascar
+Ailinginae Atoll	Marshall Islands
+Ailinglaplap Atoll	Marshall Islands
+Ailuk Atoll	Marshall Islands
+Arno Atoll	Marshall Islands
+Aur Atoll	Marshall Islands
+Bikar Atoll	Marshall Islands
+Bikini Atoll	Marshall Islands
+Bokak Atoll	Marshall Islands
+Ebon Atoll	Marshall Islands
+Enewetak Atoll	Marshall Islands
+Erikub Atoll	Marshall Islands
+Jabat Island	Marshall Islands
+Jaluit Atoll	Marshall Islands
+Jemo Island	Marshall Islands
+Kili Island	Marshall Islands
+Kwajalein Atoll	Marshall Islands
+Lae Atoll	Marshall Islands
+Lib Island	Marshall Islands
+Likiep Atoll	Marshall Islands
+Majuro Atoll	Marshall Islands
+Maloelap Atoll	Marshall Islands
+Mejit Island	Marshall Islands
+Mili Atoll	Marshall Islands
+Namdrik Atoll	Marshall Islands
+Namu Atoll	Marshall Islands
+Rongelap Atoll	Marshall Islands
+Rongrik Atoll	Marshall Islands
+Taka Atoll	Marshall Islands
+Ujae Atoll	Marshall Islands
+Ujelang Atoll	Marshall Islands
+Utrik Atoll	Marshall Islands
+Wotho Atoll	Marshall Islands
+Wotje Atoll	Marshall Islands
+Aerodrom	Macedonia
+Berovo	Macedonia
+Bitola	Macedonia
+Bogdanci	Macedonia
+Bogovinje	Macedonia
+Bosilovo	Macedonia
+Brvenica	Macedonia
+Butel	Macedonia
+Debar	Macedonia
+Debarca	Macedonia
+Demir Hisar	Macedonia
+Demir Kapija	Macedonia
+Dolneni	Macedonia
+Drugovo	Macedonia
+Gazi Baba	Macedonia
+Gevgelija	Macedonia
+Gostivar	Macedonia
+Gradsko	Macedonia
+Ilinden	Macedonia
+Jegunovce	Macedonia
+Karbinci	Macedonia
+Kavadarci	Macedonia
+Kisela Voda	Macedonia
+Kratovo	Macedonia
+Kriva Palanka	Macedonia
+Kumanovo	Macedonia
+Lozovo	Macedonia
+Makedonska Kamenica	Macedonia
+Makedonski Brod	Macedonia
+Mogila	Macedonia
+Negotino	Macedonia
+Novaci	Macedonia
+Novo Selo	Macedonia
+Ohrid	Macedonia
+Opstina Gjorce Petrov	Macedonia
+Opstina Lipkovo	Macedonia
+Opstina Rankovce	Macedonia
+Opština Ara?inovo	Macedonia
+Opština Centar	Macedonia
+Opština Centar Župa	Macedonia
+Opština Del?evo	Macedonia
+Opština Dojran	Macedonia
+Opština Karpoš	Macedonia
+Opština Ki?evo	Macedonia
+Opština Kon?e	Macedonia
+Opština Ko?ani	Macedonia
+Opština Krivogaštani	Macedonia
+Opština Kruševo	Macedonia
+Opština Mavrovo i Rostuša	Macedonia
+Opština Peh?evo	Macedonia
+Opština Probištip	Macedonia
+Opština Radoviš	Macedonia
+Opština Sopište	Macedonia
+Opština Staro Nagori?ane	Macedonia
+Opština Studeni?ani	Macedonia
+Opština Vev?ani	Macedonia
+Opština Vraneštica	Macedonia
+Opština Vrap?ište	Macedonia
+Opština ?air	Macedonia
+Opština ?aška	Macedonia
+Opština ?ešinovo-Obleševo	Macedonia
+Opština ?u?er-Sandevo	Macedonia
+Opština Štip	Macedonia
+Opština Šuto Orizari	Macedonia
+Opština Želino	Macedonia
+Oslomej	Macedonia
+Petrovec	Macedonia
+Plasnica	Macedonia
+Prilep	Macedonia
+Resen	Macedonia
+Rosoman	Macedonia
+Saraj	Macedonia
+Struga	Macedonia
+Strumica	Macedonia
+Sveti Nikole	Macedonia
+Tearce	Macedonia
+Tetovo	Macedonia
+Valandovo	Macedonia
+Vasilevo	Macedonia
+Veles	Macedonia
+Vinica	Macedonia
+Zajas	Macedonia
+Zelenikovo	Macedonia
+Zrnovci	Macedonia
+Bamako Region	Mali
+Gao	Mali
+Kayes	Mali
+Kidal	Mali
+Koulikoro	Mali
+Mopti	Mali
+Sikasso	Mali
+Ségou	Mali
+Tombouctou	Mali
+Ayeyawady Region	Myanmar [Burma]
+Bago Region	Myanmar [Burma]
+Chin State	Myanmar [Burma]
+Kachin State	Myanmar [Burma]
+Kayah State	Myanmar [Burma]
+Kayin State	Myanmar [Burma]
+Magway Region	Myanmar [Burma]
+Mandalay Region	Myanmar [Burma]
+Mon State	Myanmar [Burma]
+Rakhine State	Myanmar [Burma]
+Sagaing Region	Myanmar [Burma]
+Shan State	Myanmar [Burma]
+Taninthayi Region	Myanmar [Burma]
+Yangon Region	Myanmar [Burma]
+Arhangay Aymag	Mongolia
+Bayan-Ölgiy Aymag	Mongolia
+Bayanhongor Aymag	Mongolia
+Bulgan Province	Mongolia
+Central	Mongolia
+Darhan-Uul Aymag	Mongolia
+Dzavhan Aymag	Mongolia
+East Gov?	Mongolia
+Eastern Aymag	Mongolia
+Gov?-Altay Aymag	Mongolia
+Gov?-Sumber	Mongolia
+Hentiy Aymag	Mongolia
+Hovd Province	Mongolia
+Hövsgöl Aymag	Mongolia
+Middle Gov?	Mongolia
+Orhon Aymag	Mongolia
+Selenge Aymag	Mongolia
+Sühbaatar Aymag	Mongolia
+Ulaanbaatar Hot	Mongolia
+Uvs Aymag	Mongolia
+Ömnögov?	Mongolia
+Övörhangay	Mongolia
+Municipality of Macau	Macao
+Municipality of the Islands	Macao
+Northern Islands	Northern Mariana Islands
+Rota	Northern Mariana Islands
+Saipan	Northern Mariana Islands
+Tinian	Northern Mariana Islands
+Martinique	Martinique
+Adrar	Mauritania
+Assaba	Mauritania
+Brakna	Mauritania
+Dakhlet Nouadhibou	Mauritania
+District de Nouakchott	Mauritania
+Gorgol	Mauritania
+Guidimaka	Mauritania
+Hodh ech Chargui	Mauritania
+Hodh el Gharbi	Mauritania
+Inchiri	Mauritania
+Tagant	Mauritania
+Tiris Zemmour	Mauritania
+Wilaya du Trarza	Mauritania
+Parish of Saint Anthony	Montserrat
+Parish of Saint Georges	Montserrat
+Parish of Saint Peter	Montserrat
+Attard	Malta
+Balzan	Malta
+Birkirkara	Malta
+Bir?ebbu?a	Malta
+Bormla	Malta
+Dingli	Malta
+G?ajnsielem	Malta
+Il-Belt Valletta	Malta
+Il-Birgu	Malta
+Il-Fgura	Malta
+Il-Fontana	Malta
+Il-Furjana	Malta
+Il-Gudja	Malta
+Il-G?ira	Malta
+Il-Kalkara	Malta
+Il-Marsa	Malta
+Il-Mellie?a	Malta
+Il-Mosta	Malta
+Il-Munxar	Malta
+Il-Qala	Malta
+Il-Qrendi	Malta
+Il-?amrun	Malta
+In-Nadur	Malta
+In-Naxxar	Malta
+Ir-Rabat	Malta
+Is-Si??iewi	Malta
+Is-Swieqi	Malta
+Ix-Xag?ra	Malta
+Ix-Xewkija	Malta
+Ix-Xg?ajra	Malta
+I?-?ebbu?	Malta
+I?-?ejtun	Malta
+I?-?urrieq	Malta
+Kirkop	Malta
+L-G?arb	Malta
+L-G?asri	Malta
+L-Iklin	Malta
+L-Imdina	Malta
+L-Imqabba	Malta
+L-Imsida	Malta
+L-Imtarfa	Malta
+L-Im?arr	Malta
+L-Isla	Malta
+Lija	Malta
+Luqa	Malta
+Marsaskala	Malta
+Marsaxlokk	Malta
+Paola	Malta
+Pembroke	Malta
+Qormi	Malta
+Safi	Malta
+Saint John	Malta
+Saint Julian	Malta
+Saint Lawrence	Malta
+Saint Lucia	Malta
+Saint Paul’s Bay	Malta
+Saint Venera	Malta
+Sannat	Malta
+Tal-Pietà	Malta
+Tarxien	Malta
+Tas-Sliema	Malta
+Ta’ Ker?em	Malta
+Ta’ Xbiex	Malta
+?al G?arg?ur	Malta
+?al G?axaq	Malta
+?a?-?abbar	Malta
+?a?-?ebbu?	Malta
+Agalega Islands	Mauritius
+Black River District	Mauritius
+Cargados Carajos	Mauritius
+Flacq District	Mauritius
+Grand Port District	Mauritius
+Moka District	Mauritius
+Pamplemousses District	Mauritius
+Plaines Wilhems District	Mauritius
+Port Louis District	Mauritius
+Rivière du Rempart District	Mauritius
+Rodrigues	Mauritius
+Savanne District	Mauritius
+Baa Atholhu	Maldives
+Central Province	Maldives
+Dhaalu Atholhu	Maldives
+Faafu Atholhu	Maldives
+Gaafu Alifu Atholhu	Maldives
+Gaafu Dhaalu Atholhu	Maldives
+Gnyaviyani Atoll	Maldives
+Haa Alifu Atholhu	Maldives
+Haa Dhaalu Atholhu	Maldives
+Kaafu Atoll	Maldives
+Laamu Atholhu	Maldives
+Lhaviyani Atholhu	Maldives
+Maale	Maldives
+Meemu Atholhu	Maldives
+Noonu Atoll	Maldives
+North Central Province	Maldives
+North Province	Maldives
+Northern Ari Atoll	Maldives
+Raa Atoll	Maldives
+Seenu Atholhu	Maldives
+Shaviyani Atholhu	Maldives
+South Central Province	Maldives
+South Province	Maldives
+Thaa Atholhu	Maldives
+Upper North Province	Maldives
+Upper South Province	Maldives
+Vaavu Atholhu	Maldives
+Central Region	Malawi
+Northern Region	Malawi
+Southern Region	Malawi
+Aguascalientes	Mexico
+Baja California Sur	Mexico
+Campeche	Mexico
+Chiapas	Mexico
+Chihuahua	Mexico
+Coahuila	Mexico
+Colima	Mexico
+Durango	Mexico
+Estado de Baja California	Mexico
+Estado de México	Mexico
+Estado de Veracruz-Llave	Mexico
+Guanajuato	Mexico
+Guerrero	Mexico
+Hidalgo	Mexico
+Jalisco	Mexico
+Michoacán	Mexico
+Morelos	Mexico
+Nayarit	Mexico
+Nuevo León	Mexico
+Oaxaca	Mexico
+Puebla	Mexico
+Querétaro	Mexico
+Quintana Roo	Mexico
+San Luis Potosí	Mexico
+Sinaloa	Mexico
+Sonora	Mexico
+Tabasco	Mexico
+Tamaulipas	Mexico
+The Federal District	Mexico
+Tlaxcala	Mexico
+Yucatán	Mexico
+Zacatecas	Mexico
+Johor	Malaysia
+Kedah	Malaysia
+Kelantan	Malaysia
+Kuala Lumpur	Malaysia
+Labuan	Malaysia
+Melaka	Malaysia
+Negeri Sembilan	Malaysia
+Pahang	Malaysia
+Perak	Malaysia
+Perlis	Malaysia
+Pulau Pinang	Malaysia
+Putrajaya	Malaysia
+Sabah	Malaysia
+Sarawak	Malaysia
+Selangor	Malaysia
+Terengganu	Malaysia
+Cabo Delgado Province	Mozambique
+Cidade de Maputo	Mozambique
+Gaza Province	Mozambique
+Inhambane Province	Mozambique
+Manica Province	Mozambique
+Maputo	Mozambique
+Nampula	Mozambique
+Niassa Province	Mozambique
+Província de Zambézia	Mozambique
+Sofala Province	Mozambique
+Tete	Mozambique
+//Karas	Namibia
+Erongo	Namibia
+Hardap	Namibia
+Kavango East Region	Namibia
+Kavango West Region	Namibia
+Khomas	Namibia
+Kunene	Namibia
+Ohangwena	Namibia
+Okavango	Namibia
+Omaheke	Namibia
+Omusati	Namibia
+Oshana	Namibia
+Oshikoto	Namibia
+Otjozondjupa	Namibia
+Zambezi Region	Namibia
+Loyalty Islands	New Caledonia
+North Province	New Caledonia
+South Province	New Caledonia
+Agadez	Niger
+Diffa	Niger
+Dosso Region	Niger
+Maradi	Niger
+Niamey	Niger
+Tahoua	Niger
+Tillaberi Region	Niger
+Zinder	Niger
+Abia State	Nigeria
+Adamawa	Nigeria
+Akwa Ibom State	Nigeria
+Anambra	Nigeria
+Bauchi	Nigeria
+Bayelsa State	Nigeria
+Benue State	Nigeria
+Borno State	Nigeria
+Cross River State	Nigeria
+Delta	Nigeria
+Ebonyi State	Nigeria
+Edo	Nigeria
+Ekiti State	Nigeria
+Enugu State	Nigeria
+Federal Capital Territory	Nigeria
+Gombe State	Nigeria
+Imo State	Nigeria
+Jigawa State	Nigeria
+Kaduna State	Nigeria
+Kano State	Nigeria
+Katsina State	Nigeria
+Kebbi State	Nigeria
+Kogi State	Nigeria
+Kwara State	Nigeria
+Lagos	Nigeria
+Nasarawa State	Nigeria
+Niger State	Nigeria
+Ogun State	Nigeria
+Ondo State	Nigeria
+Osun State	Nigeria
+Oyo State	Nigeria
+Plateau State	Nigeria
+Rivers State	Nigeria
+Sokoto State	Nigeria
+Taraba State	Nigeria
+Yobe State	Nigeria
+Zamfara State	Nigeria
+Departamento de Boaco	Nicaragua
+Departamento de Carazo	Nicaragua
+Departamento de Chinandega	Nicaragua
+Departamento de Chontales	Nicaragua
+Departamento de Estelí	Nicaragua
+Departamento de Granada	Nicaragua
+Departamento de Jinotega	Nicaragua
+Departamento de León	Nicaragua
+Departamento de Madriz	Nicaragua
+Departamento de Managua	Nicaragua
+Departamento de Masaya	Nicaragua
+Departamento de Matagalpa	Nicaragua
+Departamento de Nueva Segovia	Nicaragua
+Departamento de Rivas	Nicaragua
+Departamento de Río San Juan	Nicaragua
+Región Autónoma Atlántico Norte	Nicaragua
+Región Autónoma Atlántico Sur	Nicaragua
+Friesland	Netherlands
+Groningen	Netherlands
+North Brabant	Netherlands
+North Holland	Netherlands
+Provincie Drenthe	Netherlands
+Provincie Flevoland	Netherlands
+Provincie Gelderland	Netherlands
+Provincie Limburg	Netherlands
+Provincie Overijssel	Netherlands
+Provincie Utrecht	Netherlands
+Provincie Zeeland	Netherlands
+South Holland	Netherlands
+Akershus	Norway
+Aust-Agder	Norway
+Buskerud	Norway
+Finnmark Fylke	Norway
+Hedmark	Norway
+Hordaland Fylke	Norway
+Møre og Romsdal fylke	Norway
+Nord-Trøndelag Fylke	Norway
+Nordland Fylke	Norway
+Oppland	Norway
+Oslo County	Norway
+Rogaland Fylke	Norway
+Sogn og Fjordane Fylke	Norway
+Sør-Trøndelag Fylke	Norway
+Telemark	Norway
+Troms Fylke	Norway
+Vest-Agder Fylke	Norway
+Vestfold	Norway
+Østfold	Norway
+Central Region	Nepal
+Eastern Region	Nepal
+Far Western	Nepal
+Mid Western	Nepal
+Western Region	Nepal
+Aiwo	Nauru
+Anabar	Nauru
+Anetan	Nauru
+Anibare	Nauru
+Baiti	Nauru
+Boe	Nauru
+Buada	Nauru
+Denigomodu	Nauru
+Ewa	Nauru
+Ijuw	Nauru
+Meneng	Nauru
+Nibok	Nauru
+Uaboe	Nauru
+Yaren	Nauru
+Auckland	New Zealand
+Bay of Plenty	New Zealand
+Canterbury	New Zealand
+Chatham Islands	New Zealand
+Gisborne	New Zealand
+Hawke's Bay	New Zealand
+Manawatu-Wanganui	New Zealand
+Marlborough	New Zealand
+Nelson	New Zealand
+Northland	New Zealand
+Otago	New Zealand
+Southland	New Zealand
+Taranaki	New Zealand
+Tasman	New Zealand
+Waikato	New Zealand
+Wellington	New Zealand
+West Coast	New Zealand
+Ash Sharqiyah South	Oman
+Az? Z??hirah	Oman
+Musandam	Oman
+Mu??faz?at Jan?b al B??inah	Oman
+Mu??faz?at Masqa?	Oman
+Mu??faz?at Sham?l al B??inah	Oman
+Mu??faz?at Sham?l ash Sharq?yah	Oman
+Mu??faz?at Z?uf?r	Oman
+Mu??faz?at ad D?khil?yah	Oman
+Mu??faz?at al Buraym?	Oman
+Mu??faz?at al Wus?á	Oman
+Emberá-Wounaan	Panama
+Guna Yala	Panama
+Ngöbe-Buglé	Panama
+Provincia de Bocas del Toro	Panama
+Provincia de Chiriquí	Panama
+Provincia de Coclé	Panama
+Provincia de Colón	Panama
+Provincia de Herrera	Panama
+Provincia de Los Santos	Panama
+Provincia de Panamá	Panama
+Provincia de Veraguas	Panama
+Provincia del Darién	Panama
+Amazonas	Peru
+Ancash	Peru
+Apurimac	Peru
+Arequipa	Peru
+Ayacucho	Peru
+Cajamarca	Peru
+Callao	Peru
+Cusco	Peru
+Departamento de Moquegua	Peru
+Huancavelica	Peru
+Ica	Peru
+Junín	Peru
+La Libertad	Peru
+Lambayeque	Peru
+Lima	Peru
+Loreto	Peru
+Madre de Dios	Peru
+Pasco	Peru
+Piura	Peru
+Provincia de Lima	Peru
+Puno	Peru
+Región de Huánuco	Peru
+Región de San Martín	Peru
+Tacna	Peru
+Tumbes	Peru
+Ucayali	Peru
+Îles Australes	French Polynesia
+Îles Marquises	French Polynesia
+Îles Sous-le-Vent	French Polynesia
+Îles Tuamotu-Gambier	French Polynesia
+Îles du Vent	French Polynesia
+Bougainville	Papua New Guinea
+Central Province	Papua New Guinea
+Chimbu Province	Papua New Guinea
+East New Britain Province	Papua New Guinea
+East Sepik Province	Papua New Guinea
+Eastern Highlands Province	Papua New Guinea
+Enga Province	Papua New Guinea
+Gulf Province	Papua New Guinea
+Hela	Papua New Guinea
+Jiwaka	Papua New Guinea
+Madang Province	Papua New Guinea
+Manus Province	Papua New Guinea
+Milne Bay Province	Papua New Guinea
+Morobe Province	Papua New Guinea
+National Capital District	Papua New Guinea
+New Ireland	Papua New Guinea
+Northern Province	Papua New Guinea
+Southern Highlands Province	Papua New Guinea
+West New Britain Province	Papua New Guinea
+West Sepik Province	Papua New Guinea
+Western Highlands Province	Papua New Guinea
+Western Province	Papua New Guinea
+Autonomous Region in Muslim Mindanao	Philippines
+Bicol	Philippines
+Cagayan Valley	Philippines
+Calabarzon	Philippines
+Caraga	Philippines
+Central Luzon	Philippines
+Central Visayas	Philippines
+Cordillera Administrative Region	Philippines
+Davao	Philippines
+Eastern Visayas	Philippines
+Ilocos	Philippines
+Mimaropa	Philippines
+National Capital Region	Philippines
+Northern Mindanao	Philippines
+Soccsksargen	Philippines
+Western Visayas	Philippines
+Zamboanga Peninsula	Philippines
+Azad Kashmir	Pakistan
+Balochist?n	Pakistan
+Federally Administered Tribal Areas	Pakistan
+Gilgit-Baltistan	Pakistan
+Isl?m?b?d Capital Territory	Pakistan
+Khyber Pakhtunkhwa	Pakistan
+Punjab	Pakistan
+Sindh	Pakistan
+Greater Poland Voivodeship	Poland
+Kujawsko-Pomorskie	Poland
+Lesser Poland Voivodeship	Poland
+Lower Silesian Voivodeship	Poland
+Lublin Voivodeship	Poland
+Lubusz	Poland
+Masovian Voivodeship	Poland
+Opole Voivodeship	Poland
+Podlasie	Poland
+Pomeranian Voivodeship	Poland
+Silesian Voivodeship	Poland
+Subcarpathian Voivodeship	Poland
+Warmian-Masurian Voivodeship	Poland
+West Pomeranian Voivodeship	Poland
+?ód? Voivodeship	Poland
+?wi?tokrzyskie	Poland
+Commune de Miquelon-Langlade	Saint Pierre and Miquelon
+Commune de Saint-Pierre	Saint Pierre and Miquelon
+Adjuntas	Puerto Rico
+Aguada	Puerto Rico
+Aguadilla	Puerto Rico
+Aguas Buenas	Puerto Rico
+Aibonito	Puerto Rico
+Arecibo	Puerto Rico
+Arroyo	Puerto Rico
+Añasco	Puerto Rico
+Barceloneta	Puerto Rico
+Barranquitas	Puerto Rico
+Bayamón Municipio	Puerto Rico
+Cabo Rojo Municipio	Puerto Rico
+Caguas Municipio	Puerto Rico
+Camuy Municipio	Puerto Rico
+Canóvanas Municipio	Puerto Rico
+Carolina Municipio	Puerto Rico
+Cataño Municipio	Puerto Rico
+Cayey Municipio	Puerto Rico
+Ceiba Municipio	Puerto Rico
+Ciales Municipio	Puerto Rico
+Cidra Municipio	Puerto Rico
+Coamo Municipio	Puerto Rico
+Comerío Municipio	Puerto Rico
+Corozal Municipio	Puerto Rico
+Culebra Municipio	Puerto Rico
+Dorado Municipio	Puerto Rico
+Fajardo Municipio	Puerto Rico
+Florida Municipio	Puerto Rico
+Guayama Municipio	Puerto Rico
+Guayanilla Municipio	Puerto Rico
+Guaynabo Municipio	Puerto Rico
+Gurabo Municipio	Puerto Rico
+Guánica Municipio	Puerto Rico
+Hatillo Municipio	Puerto Rico
+Hormigueros Municipio	Puerto Rico
+Humacao Municipio	Puerto Rico
+Juana Díaz Municipio	Puerto Rico
+Lajas Municipio	Puerto Rico
+Lares Municipio	Puerto Rico
+Las Marías Municipio	Puerto Rico
+Las Piedras Municipio	Puerto Rico
+Loíza Municipio	Puerto Rico
+Luquillo Municipio	Puerto Rico
+Manatí Municipio	Puerto Rico
+Maricao Municipio	Puerto Rico
+Maunabo Municipio	Puerto Rico
+Mayagüez Municipio	Puerto Rico
+Moca Municipio	Puerto Rico
+Morovis Municipio	Puerto Rico
+Municipio de Isabela	Puerto Rico
+Municipio de Jayuya	Puerto Rico
+Municipio de Juncos	Puerto Rico
+Naguabo Municipio	Puerto Rico
+Naranjito Municipio	Puerto Rico
+Orocovis Municipio	Puerto Rico
+Patillas Municipio	Puerto Rico
+Peñuelas Municipio	Puerto Rico
+Ponce Municipio	Puerto Rico
+Quebradillas Municipio	Puerto Rico
+Rincón Municipio	Puerto Rico
+Río Grande Municipio	Puerto Rico
+Sabana Grande Municipio	Puerto Rico
+Salinas Municipio	Puerto Rico
+San Germán Municipio	Puerto Rico
+San Juan	Puerto Rico
+San Lorenzo Municipio	Puerto Rico
+San Sebastián Municipio	Puerto Rico
+Santa Isabel Municipio	Puerto Rico
+Toa Alta Municipio	Puerto Rico
+Toa Baja Municipio	Puerto Rico
+Trujillo Alto Municipio	Puerto Rico
+Utuado Municipio	Puerto Rico
+Vega Alta Municipio	Puerto Rico
+Vega Baja Municipio	Puerto Rico
+Vieques Municipio	Puerto Rico
+Villalba Municipio	Puerto Rico
+Yabucoa Municipio	Puerto Rico
+Yauco Municipio	Puerto Rico
+Gaza Strip	Palestine
+West Bank	Palestine
+Autonomous Region of the Azores	Portugal
+Aveiro	Portugal
+Bragança	Portugal
+Distrito da Guarda	Portugal
+Distrito de Beja	Portugal
+Distrito de Braga	Portugal
+Distrito de Castelo Branco	Portugal
+Distrito de Coimbra	Portugal
+Distrito de Faro	Portugal
+Distrito de Leiria	Portugal
+Distrito de Portalegre	Portugal
+Distrito de Santarém	Portugal
+Distrito de Setúbal	Portugal
+Distrito de Viana do Castelo	Portugal
+Distrito de Vila Real	Portugal
+Distrito de Viseu	Portugal
+Distrito de Évora	Portugal
+Distrito do Porto	Portugal
+Lisbon	Portugal
+Madeira	Portugal
+Hatohobei	Palau
+State of Aimeliik	Palau
+State of Airai	Palau
+State of Angaur	Palau
+State of Kayangel	Palau
+State of Koror	Palau
+State of Melekeok	Palau
+State of Ngaraard	Palau
+State of Ngarchelong	Palau
+State of Ngardmau	Palau
+State of Ngatpang	Palau
+State of Ngchesar	Palau
+State of Ngeremlengui	Palau
+State of Ngiwal	Palau
+State of Peleliu	Palau
+State of Sonsorol	Palau
+Asunción	Paraguay
+Departamento Central	Paraguay
+Departamento de Alto Paraguay	Paraguay
+Departamento de Boquerón	Paraguay
+Departamento de Caaguazú	Paraguay
+Departamento de Caazapá	Paraguay
+Departamento de Canindeyú	Paraguay
+Departamento de Concepción	Paraguay
+Departamento de Itapúa	Paraguay
+Departamento de Misiones	Paraguay
+Departamento de Paraguarí	Paraguay
+Departamento de Presidente Hayes	Paraguay
+Departamento de San Pedro	Paraguay
+Departamento de la Cordillera	Paraguay
+Departamento de Ñeembucú	Paraguay
+Departamento del Alto Paraná	Paraguay
+Departamento del Amambay	Paraguay
+Departamento del Guairá	Paraguay
+Al Wakrah	Qatar
+Balad?yat Jaray?n al B??inah	Qatar
+Balad?yat Umm Sa‘?d	Qatar
+Balad?yat Umm ?al?l	Qatar
+Balad?yat ad Daw?ah	Qatar
+Balad?yat al Ghuwayr?yah	Qatar
+Balad?yat al Jumayl?yah	Qatar
+Balad?yat al Khawr wa adh Dhakh?rah	Qatar
+Balad?yat ar Rayy?n	Qatar
+Balad?yat ash Sham?l	Qatar
+Balad?yat az? Z?a‘?yin	Qatar
+Réunion	RÃ©union
+Arad	Romania
+Bihor	Romania
+Bucure?ti	Romania
+Constan?a	Romania
+Covasna	Romania
+Dolj	Romania
+Giurgiu	Romania
+Gorj	Romania
+Harghita	Romania
+Hunedoara	Romania
+Ilfov	Romania
+Jude?ul Alba	Romania
+Jude?ul Arge?	Romania
+Jude?ul Bac?u	Romania
+Jude?ul Bistri?a-N?s?ud	Romania
+Jude?ul Boto?ani	Romania
+Jude?ul Bra?ov	Romania
+Jude?ul Br?ila	Romania
+Jude?ul Buz?u	Romania
+Jude?ul Cara?-Severin	Romania
+Jude?ul Cluj	Romania
+Jude?ul C?l?ra?i	Romania
+Jude?ul Dâmbovi?a	Romania
+Jude?ul Gala?i	Romania
+Jude?ul Ialomi?a	Romania
+Jude?ul Ia?i	Romania
+Jude?ul Mehedin?i	Romania
+Jude?ul Mure?	Romania
+Jude?ul Neam?	Romania
+Jude?ul Sibiu	Romania
+Jude?ul S?laj	Romania
+Jude?ul Timi?	Romania
+Jude?ul Vâlcea	Romania
+Maramure?	Romania
+Olt	Romania
+Prahova	Romania
+Satu Mare	Romania
+Suceava	Romania
+Teleorman	Romania
+Tulcea	Romania
+Vaslui	Romania
+Vrancea	Romania
+Autonomna Pokrajina Vojvodina	Serbia
+Central Serbia	Serbia
+Altayskiy Kray	Russia
+Amurskaya Oblast’	Russia
+Arkhangelskaya	Russia
+Astrakhanskaya Oblast’	Russia
+Bashkortostan	Russia
+Belgorodskaya Oblast’	Russia
+Bryanskaya Oblast’	Russia
+Chechnya	Russia
+Chelyabinsk	Russia
+Chukotskiy Avtonomnyy Okrug	Russia
+Chuvashia	Russia
+Dagestan	Russia
+Irkutskaya Oblast’	Russia
+Ivanovskaya Oblast’	Russia
+Jewish Autonomous Oblast	Russia
+Kabardino-Balkarskaya Respublika	Russia
+Kaliningradskaya Oblast’	Russia
+Kalmykiya	Russia
+Kaluzhskaya Oblast’	Russia
+Kamtchatski Kray	Russia
+Karachayevo-Cherkesiya	Russia
+Kemerovskaya Oblast’	Russia
+Khabarovsk Krai	Russia
+Khanty-Mansiyskiy Avtonomnyy Okrug	Russia
+Kirovskaya Oblast’	Russia
+Komi Republic	Russia
+Kostromskaya Oblast’	Russia
+Krasnodarskiy Kray	Russia
+Krasnoyarskiy Kray	Russia
+Kurganskaya Oblast’	Russia
+Kurskaya Oblast’	Russia
+Leningrad	Russia
+Lipetskaya Oblast’	Russia
+Magadanskaya Oblast’	Russia
+Moscow	Russia
+Moskovskaya	Russia
+Murmansk	Russia
+Nenetskiy Avtonomnyy Okrug	Russia
+Nizhegorodskaya Oblast’	Russia
+North Ossetia	Russia
+Novgorodskaya Oblast’	Russia
+Novosibirskaya Oblast’	Russia
+Omskaya Oblast’	Russia
+Orenburgskaya Oblast’	Russia
+Orlovskaya Oblast’	Russia
+Penzenskaya Oblast’	Russia
+Perm Krai	Russia
+Primorskiy Kray	Russia
+Pskovskaya Oblast’	Russia
+Respublika Adygeya	Russia
+Respublika Altay	Russia
+Respublika Buryatiya	Russia
+Respublika Ingushetiya	Russia
+Respublika Kareliya	Russia
+Respublika Khakasiya	Russia
+Respublika Mariy-El	Russia
+Respublika Mordoviya	Russia
+Respublika Sakha (Yakutiya)	Russia
+Respublika Tyva	Russia
+Rostovskaya Oblast’	Russia
+Ryazanskaya Oblast’	Russia
+Sakhalinskaya Oblast’	Russia
+Samarskaya Oblast’	Russia
+Saratovskaya Oblast’	Russia
+Smolenskaya Oblast’	Russia
+St.-Petersburg	Russia
+Stavropol’skiy Kray	Russia
+Sverdlovskaya Oblast’	Russia
+Tambovskaya Oblast’	Russia
+Tatarstan	Russia
+Tomskaya Oblast’	Russia
+Tul’skaya Oblast'	Russia
+Tverskaya Oblast’	Russia
+Tyumenskaya Oblast’	Russia
+Udmurtskaya Respublika	Russia
+Ulyanovsk Oblast	Russia
+Vladimirskaya Oblast’	Russia
+Volgogradskaya Oblast’	Russia
+Vologodskaya Oblast’	Russia
+Voronezhskaya Oblast’	Russia
+Yamalo-Nenetskiy Avtonomnyy Okrug	Russia
+Yaroslavskaya Oblast’	Russia
+Zabaykal’skiy Kray	Russia
+Eastern Province	Rwanda
+Kigali	Rwanda
+Northern Province	Rwanda
+Southern Province	Rwanda
+Western Province	Rwanda
+Al Jawf	Saudi Arabia
+Al-Qassim	Saudi Arabia
+Eastern Province	Saudi Arabia
+Jizan Region	Saudi Arabia
+Makkah Province	Saudi Arabia
+Min?aqat Najr?n	Saudi Arabia
+Min?aqat Tab?k	Saudi Arabia
+Min?aqat al B??ah	Saudi Arabia
+Min?aqat al Mad?nah	Saudi Arabia
+Min?aqat ??’il	Saudi Arabia
+Min?aqat ‘As?r	Saudi Arabia
+Northern Borders	Saudi Arabia
+Riyadh Province	Saudi Arabia
+Central Province	Solomon Islands
+Choiseul	Solomon Islands
+Guadalcanal Province	Solomon Islands
+Isabel Province	Solomon Islands
+Makira-Ulawa Province	Solomon Islands
+Malaita Province	Solomon Islands
+Rennell and Bellona	Solomon Islands
+Temotu Province	Solomon Islands
+Western Province	Solomon Islands
+Anse Boileau	Seychelles
+Anse Etoile	Seychelles
+Anse Royale	Seychelles
+Anse aux Pins	Seychelles
+Au Cap	Seychelles
+Baie Lazare	Seychelles
+Baie Sainte Anne	Seychelles
+Beau Vallon	Seychelles
+Bel Air	Seychelles
+Bel Ombre	Seychelles
+Cascade	Seychelles
+English River	Seychelles
+Glacis	Seychelles
+Grand Anse Mahe	Seychelles
+Grand Anse Praslin	Seychelles
+Inner Islands	Seychelles
+Les Mamelles	Seychelles
+Mont Buxton	Seychelles
+Mont Fleuri	Seychelles
+Plaisance	Seychelles
+Pointe Larue	Seychelles
+Port Glaud	Seychelles
+Roche Caiman	Seychelles
+Saint Louis	Seychelles
+Takamaka	Seychelles
+Al Jaz?rah	Sudan
+Al Qa??rif	Sudan
+Blue Nile State	Sudan
+Central Darfur	Sudan
+Eastern Darfur	Sudan
+Kassala	Sudan
+Khartoum State	Sudan
+Northern Darfur	Sudan
+Northern State	Sudan
+Red Sea State	Sudan
+River Nile State	Sudan
+Sham?l Kurduf?n	Sudan
+Sinn?r	Sudan
+Southern Darfur	Sudan
+Southern Kordofan	Sudan
+Western Darfur	Sudan
+White Nile	Sudan
+Blekinge	Sweden
+Dalarna	Sweden
+Gotland	Sweden
+Gävleborg	Sweden
+Halland	Sweden
+Jämtland	Sweden
+Jönköping	Sweden
+Kalmar	Sweden
+Kronoberg	Sweden
+Norrbotten	Sweden
+Skåne	Sweden
+Stockholm	Sweden
+Södermanland	Sweden
+Uppsala	Sweden
+Värmland	Sweden
+Västerbotten	Sweden
+Västernorrland	Sweden
+Västmanland	Sweden
+Västra Götaland	Sweden
+Örebro	Sweden
+Östergötland	Sweden
+Central Singapore Community Development Council	Singapore
+North East Community Development Region	Singapore
+North West Community Development Council	Singapore
+South East Community Development Council	Singapore
+South West Community Development Council	Singapore
+Ascension	Saint Helena
+Saint Helena	Saint Helena
+Tristan da Cunha	Saint Helena
+Beltinci	Slovenia
+Benedikt	Slovenia
+Bistrica ob Sotli	Slovenia
+Bloke	Slovenia
+Bohinj	Slovenia
+Borovnica	Slovenia
+Brda	Slovenia
+Brezovica	Slovenia
+Cankova	Slovenia
+Celje	Slovenia
+Cerklje na Gorenjskem	Slovenia
+Cerknica	Slovenia
+Cerkno	Slovenia
+Cerkvenjak	Slovenia
+Cirkulane	Slovenia
+Destrnik	Slovenia
+Dobje	Slovenia
+Dobrepolje	Slovenia
+Dobrna	Slovenia
+Dobrova-Polhov Gradec	Slovenia
+Dobrovnik	Slovenia
+Dol pri Ljubljani	Slovenia
+Dolenjske Toplice	Slovenia
+Dornava	Slovenia
+Dravograd	Slovenia
+Duplek	Slovenia
+Gorenja Vas-Poljane	Slovenia
+Gornja Radgona	Slovenia
+Gornji Grad	Slovenia
+Gornji Petrovci	Slovenia
+Grad	Slovenia
+Grosuplje	Slovenia
+Hajdina	Slovenia
+Hodos	Slovenia
+Horjul	Slovenia
+Hrastnik	Slovenia
+Hrpelje-Kozina	Slovenia
+Idrija	Slovenia
+Ig	Slovenia
+Ilirska Bistrica	Slovenia
+Izola	Slovenia
+Jesenice	Slovenia
+Jezersko	Slovenia
+Kamnik	Slovenia
+Kanal	Slovenia
+Kobilje	Slovenia
+Komen	Slovenia
+Komenda	Slovenia
+Koper	Slovenia
+Kostanjevica na Krki	Slovenia
+Kostel	Slovenia
+Kozje	Slovenia
+Kranj	Slovenia
+Kranjska Gora	Slovenia
+Kungota	Slovenia
+Kuzma	Slovenia
+Lenart	Slovenia
+Lendava	Slovenia
+Litija	Slovenia
+Ljubno	Slovenia
+Ljutomer	Slovenia
+Log-Dragomer	Slovenia
+Logatec	Slovenia
+Lovrenc na Pohorju	Slovenia
+Lukovica	Slovenia
+Makole	Slovenia
+Maribor	Slovenia
+Markovci	Slovenia
+Medvode	Slovenia
+Mestna Ob?ina Novo mesto	Slovenia
+Metlika	Slovenia
+Miren-Kostanjevica	Slovenia
+Mislinja	Slovenia
+Mokronog-Trebelno	Slovenia
+Moravske Toplice	Slovenia
+Mozirje	Slovenia
+Murska Sobota	Slovenia
+Muta	Slovenia
+Naklo	Slovenia
+Nazarje	Slovenia
+Nova Gorica	Slovenia
+Ob?ina Ajdovš?ina	Slovenia
+Ob?ina Apa?e	Slovenia
+Ob?ina Bled	Slovenia
+Ob?ina Bovec	Slovenia
+Ob?ina Braslov?e	Slovenia
+Ob?ina Brežice	Slovenia
+Ob?ina Diva?a	Slovenia
+Ob?ina Domžale	Slovenia
+Ob?ina Gorišnica	Slovenia
+Ob?ina Ho?e-Slivnica	Slovenia
+Ob?ina Ivan?na Gorica	Slovenia
+Ob?ina Kidri?evo	Slovenia
+Ob?ina Kobarid	Slovenia
+Ob?ina Ko?evje	Slovenia
+Ob?ina Križevci	Slovenia
+Ob?ina Krško	Slovenia
+Ob?ina Laško	Slovenia
+Ob?ina Loška Dolina	Slovenia
+Ob?ina Loški Potok	Slovenia
+Ob?ina Lu?e	Slovenia
+Ob?ina Majšperk	Slovenia
+Ob?ina Mengeš	Slovenia
+Ob?ina Mežica	Slovenia
+Ob?ina Miklavž na Dravskem Polju	Slovenia
+Ob?ina Mirna Pe?	Slovenia
+Ob?ina Morav?e	Slovenia
+Ob?ina Ormož	Slovenia
+Ob?ina Pod?etrtek	Slovenia
+Ob?ina Polj?ane	Slovenia
+Ob?ina Rade?e	Slovenia
+Ob?ina Ravne na Koroškem	Slovenia
+Ob?ina Razkrižje	Slovenia
+Ob?ina Ra?e-Fram	Slovenia
+Ob?ina Ren?e-Vogrsko	Slovenia
+Ob?ina Re?ica ob Savinji	Slovenia
+Ob?ina Rogaška Slatina	Slovenia
+Ob?ina Ruše	Slovenia
+Ob?ina Semi?	Slovenia
+Ob?ina Sežana	Slovenia
+Ob?ina Sodražica	Slovenia
+Ob?ina Sol?ava	Slovenia
+Ob?ina Središ?e ob Dravi	Slovenia
+Ob?ina Starše	Slovenia
+Ob?ina Straža	Slovenia
+Ob?ina Sveti Andraž v Slovenskih Goricah	Slovenia
+Ob?ina Sveti Jurij ob Š?avnici	Slovenia
+Ob?ina Sveti Tomaž	Slovenia
+Ob?ina Tišina	Slovenia
+Ob?ina Tolmin	Slovenia
+Ob?ina Trži?	Slovenia
+Ob?ina Velike Laš?e	Slovenia
+Ob?ina Veržej	Slovenia
+Ob?ina Zre?e	Slovenia
+Ob?ina ?rna na Koroškem	Slovenia
+Ob?ina ?rnomelj	Slovenia
+Ob?ina Šalovci	Slovenia
+Ob?ina Šentilj	Slovenia
+Ob?ina Šentjernej	Slovenia
+Ob?ina Šentjur	Slovenia
+Ob?ina Šentrupert	Slovenia
+Ob?ina Šen?ur	Slovenia
+Ob?ina Škocjan	Slovenia
+Ob?ina Škofja Loka	Slovenia
+Ob?ina Škofljica	Slovenia
+Ob?ina Šmarje pri Jelšah	Slovenia
+Ob?ina Šmarješke Toplice	Slovenia
+Ob?ina Šmartno ob Paki	Slovenia
+Ob?ina Šmartno pri Litiji	Slovenia
+Ob?ina Šoštanj	Slovenia
+Ob?ina Štore	Slovenia
+Ob?ina Žalec	Slovenia
+Ob?ina Železniki	Slovenia
+Ob?ina Žetale	Slovenia
+Ob?ina Žiri	Slovenia
+Ob?ina Žirovnica	Slovenia
+Odranci	Slovenia
+Oplotnica	Slovenia
+Osilnica	Slovenia
+Pesnica	Slovenia
+Piran	Slovenia
+Pivka	Slovenia
+Podlehnik	Slovenia
+Podvelka	Slovenia
+Polzela	Slovenia
+Postojna	Slovenia
+Prebold	Slovenia
+Preddvor	Slovenia
+Prevalje	Slovenia
+Ptuj	Slovenia
+Puconci	Slovenia
+Radenci	Slovenia
+Radlje ob Dravi	Slovenia
+Radovljica	Slovenia
+Ribnica	Slovenia
+Ribnica na Pohorju	Slovenia
+Rogatec	Slovenia
+Selnica ob Dravi	Slovenia
+Sevnica	Slovenia
+Slovenj Gradec	Slovenia
+Slovenska Bistrica	Slovenia
+Slovenske Konjice	Slovenia
+Sveta Ana	Slovenia
+Sveta Trojica v Slovenskih Goricah	Slovenia
+Sveti Jurij v Slovenskih Goricah	Slovenia
+Tabor	Slovenia
+Trbovlje	Slovenia
+Trebnje	Slovenia
+Trzin	Slovenia
+Velenje	Slovenia
+Velika Polana	Slovenia
+Videm	Slovenia
+Vipava	Slovenia
+Vitanje	Slovenia
+Vodice	Slovenia
+Vojnik	Slovenia
+Vransko	Slovenia
+Vrhnika	Slovenia
+Vuzenica	Slovenia
+Zagorje ob Savi	Slovenia
+Banskobystrický kraj	Slovakia
+Bratislavský kraj	Slovakia
+Košický kraj	Slovakia
+Nitriansky kraj	Slovakia
+Prešovský kraj	Slovakia
+Tren?iansky kraj	Slovakia
+Trnavský kraj	Slovakia
+Žilinský kraj	Slovakia
+Eastern Province	Sierra Leone
+Northern Province	Sierra Leone
+Southern Province	Sierra Leone
+Western Area	Sierra Leone
+Castello di Acquaviva	San Marino
+Castello di Borgo Maggiore	San Marino
+Castello di Domagnano	San Marino
+Castello di Faetano	San Marino
+Castello di Fiorentino	San Marino
+Castello di Montegiardino	San Marino
+Castello di San Marino Città	San Marino
+Chiesanuova	San Marino
+Serravalle	San Marino
+Dakar	Senegal
+Diourbel	Senegal
+Fatick	Senegal
+Kaolack	Senegal
+Kolda	Senegal
+Louga	Senegal
+Matam	Senegal
+Région de Kaffrine	Senegal
+Région de Kédougou	Senegal
+Région de Sédhiou	Senegal
+Région de Thiès	Senegal
+Saint-Louis	Senegal
+Tambacounda	Senegal
+Ziguinchor	Senegal
+Awdal	Somalia
+Bakool	Somalia
+Banaadir	Somalia
+Bari	Somalia
+Bay	Somalia
+Galguduud	Somalia
+Gedo	Somalia
+Hiiraan	Somalia
+Lower Jubba	Somalia
+Lower Shabeelle	Somalia
+Middle Jubba	Somalia
+Middle Shabeelle	Somalia
+Mudug	Somalia
+Nugaal	Somalia
+Sanaag	Somalia
+Sool	Somalia
+Togdheer	Somalia
+Woqooyi Galbeed	Somalia
+Distrikt Brokopondo	Suriname
+Distrikt Commewijne	Suriname
+Distrikt Coronie	Suriname
+Distrikt Marowijne	Suriname
+Distrikt Nickerie	Suriname
+Distrikt Para	Suriname
+Distrikt Paramaribo	Suriname
+Distrikt Saramacca	Suriname
+Distrikt Sipaliwini	Suriname
+Distrikt Wanica	Suriname
+Central Equatoria	South Sudan
+Eastern Equatoria	South Sudan
+El Buhayrat	South Sudan
+Jonglei	South Sudan
+Northern Bahr al Ghazal	South Sudan
+Unity	South Sudan
+Upper Nile State	South Sudan
+Warrap	South Sudan
+Western Bahr al Ghazal	South Sudan
+Western Equatoria	South Sudan
+Príncipe	SÃ£o TomÃ© and PrÃ­ncipe
+São Tomé Island	SÃ£o TomÃ© and PrÃ­ncipe
+Departamento de Ahuachapán	El Salvador
+Departamento de Cabañas	El Salvador
+Departamento de Chalatenango	El Salvador
+Departamento de Cuscatlán	El Salvador
+Departamento de La Libertad	El Salvador
+Departamento de La Paz	El Salvador
+Departamento de La Unión	El Salvador
+Departamento de Morazán	El Salvador
+Departamento de San Miguel	El Salvador
+Departamento de San Salvador	El Salvador
+Departamento de San Vicente	El Salvador
+Departamento de Santa Ana	El Salvador
+Departamento de Sonsonate	El Salvador
+Departamento de Usulután	El Salvador
+Al-Hasakah	Syria
+Aleppo	Syria
+Ar-Raqqah	Syria
+As-Suwayda	Syria
+Damascus Governorate	Syria
+Daraa	Syria
+Deir ez-Zor	Syria
+Hama	Syria
+Homs	Syria
+Idlib	Syria
+Latakia	Syria
+Quneitra	Syria
+Rif-dimashq	Syria
+Tartus	Syria
+Hhohho District	Swaziland
+Lubombo District	Swaziland
+Manzini District	Swaziland
+Shiselweni District	Swaziland
+Barh el Gazel	Chad
+Batha Region	Chad
+Borkou Region	Chad
+Chari-Baguirmi Region	Chad
+Ennedi Region	Chad
+Ennedi-Est	Chad
+Ennedi-Ouest	Chad
+Guera Region	Chad
+Hadjer-Lamis	Chad
+Kanem Region	Chad
+Lac Region	Chad
+Logone Occidental Region	Chad
+Logone Oriental Region	Chad
+Mandoul	Chad
+Mayo-Kebbi Est	Chad
+Mayo-Kebbi West Region	Chad
+Moyen-Chari Region	Chad
+Ouaddai Region	Chad
+Salamat Region	Chad
+Sila	Chad
+Tandjile Region	Chad
+Tibesti Region	Chad
+Ville de N'Djaména	Chad
+Wadi Fira Region	Chad
+Archipel des Crozet	French Southern Territories
+Archipel des Kerguelen	French Southern Territories
+La Terre-Adélie	French Southern Territories
+Îles Saint-Paul et Nouvelle-Amsterdam	French Southern Territories
+Îles Éparses de l'océan Indien	French Southern Territories
+Centrale	Togo
+Kara	Togo
+Maritime	Togo
+Plateaux	Togo
+Savanes	Togo
+Bangkok	Thailand
+Changwat Amnat Charoen	Thailand
+Changwat Ang Thong	Thailand
+Changwat Bueng Kan	Thailand
+Changwat Buriram	Thailand
+Changwat Chachoengsao	Thailand
+Changwat Chai Nat	Thailand
+Changwat Chaiyaphum	Thailand
+Changwat Chanthaburi	Thailand
+Changwat Chiang Rai	Thailand
+Changwat Chon Buri	Thailand
+Changwat Chumphon	Thailand
+Changwat Kalasin	Thailand
+Changwat Kamphaeng Phet	Thailand
+Changwat Kanchanaburi	Thailand
+Changwat Khon Kaen	Thailand
+Changwat Krabi	Thailand
+Changwat Lampang	Thailand
+Changwat Lamphun	Thailand
+Changwat Loei	Thailand
+Changwat Lop Buri	Thailand
+Changwat Mae Hong Son	Thailand
+Changwat Maha Sarakham	Thailand
+Changwat Mukdahan	Thailand
+Changwat Nakhon Nayok	Thailand
+Changwat Nakhon Pathom	Thailand
+Changwat Nakhon Phanom	Thailand
+Changwat Nakhon Ratchasima	Thailand
+Changwat Nakhon Sawan	Thailand
+Changwat Nakhon Si Thammarat	Thailand
+Changwat Nan	Thailand
+Changwat Narathiwat	Thailand
+Changwat Nong Bua Lamphu	Thailand
+Changwat Nong Khai	Thailand
+Changwat Nonthaburi	Thailand
+Changwat Pathum Thani	Thailand
+Changwat Pattani	Thailand
+Changwat Phangnga	Thailand
+Changwat Phatthalung	Thailand
+Changwat Phayao	Thailand
+Changwat Phetchabun	Thailand
+Changwat Phetchaburi	Thailand
+Changwat Phichit	Thailand
+Changwat Phitsanulok	Thailand
+Changwat Phra Nakhon Si Ayutthaya	Thailand
+Changwat Phrae	Thailand
+Changwat Prachin Buri	Thailand
+Changwat Prachuap Khiri Khan	Thailand
+Changwat Ranong	Thailand
+Changwat Ratchaburi	Thailand
+Changwat Rayong	Thailand
+Changwat Roi Et	Thailand
+Changwat Sa Kaeo	Thailand
+Changwat Sakon Nakhon	Thailand
+Changwat Samut Prakan	Thailand
+Changwat Samut Sakhon	Thailand
+Changwat Samut Songkhram	Thailand
+Changwat Sara Buri	Thailand
+Changwat Satun	Thailand
+Changwat Sing Buri	Thailand
+Changwat Sisaket	Thailand
+Changwat Songkhla	Thailand
+Changwat Sukhothai	Thailand
+Changwat Suphan Buri	Thailand
+Changwat Surat Thani	Thailand
+Changwat Surin	Thailand
+Changwat Tak	Thailand
+Changwat Trang	Thailand
+Changwat Trat	Thailand
+Changwat Ubon Ratchathani	Thailand
+Changwat Udon Thani	Thailand
+Changwat Uthai Thani	Thailand
+Changwat Uttaradit	Thailand
+Changwat Yala	Thailand
+Changwat Yasothon	Thailand
+Chiang Mai Province	Thailand
+Phuket	Thailand
+Dushanbe	Tajikistan
+Gorno-Badakhshan	Tajikistan
+Region of Republican Subordination	Tajikistan
+Viloyati Khatlon	Tajikistan
+Viloyati Sughd	Tajikistan
+Atafu	Tokelau
+Fakaofo	Tokelau
+Nukunonu	Tokelau
+Aileu	East Timor
+Ainaro	East Timor
+Baucau	East Timor
+Bobonaro	East Timor
+Cova Lima	East Timor
+Díli	East Timor
+Ermera	East Timor
+Lautém	East Timor
+Liquiçá	East Timor
+Manatuto	East Timor
+Manufahi	East Timor
+Oecusse	East Timor
+Viqueque	East Timor
+Ahal	Turkmenistan
+Balkan	Turkmenistan
+Da?oguz Welaýaty	Turkmenistan
+Lebap	Turkmenistan
+Mary	Turkmenistan
+Gafsa Governorate	Tunisia
+Gouvernorat de Ben Arous	Tunisia
+Gouvernorat de Bizerte	Tunisia
+Gouvernorat de Béja	Tunisia
+Gouvernorat de Gabès	Tunisia
+Gouvernorat de Jendouba	Tunisia
+Gouvernorat de Kairouan	Tunisia
+Gouvernorat de Kasserine	Tunisia
+Gouvernorat de Kef	Tunisia
+Gouvernorat de Kébili	Tunisia
+Gouvernorat de Mahdia	Tunisia
+Gouvernorat de Monastir	Tunisia
+Gouvernorat de Médenine	Tunisia
+Gouvernorat de Nabeul	Tunisia
+Gouvernorat de Sfax	Tunisia
+Gouvernorat de Sidi Bouzid	Tunisia
+Gouvernorat de Siliana	Tunisia
+Gouvernorat de Sousse	Tunisia
+Gouvernorat de Tozeur	Tunisia
+Gouvernorat de Tunis	Tunisia
+Gouvernorat de Zaghouan	Tunisia
+Gouvernorat de l’ Ariana	Tunisia
+Manouba	Tunisia
+Tataouine	Tunisia
+Eua	Tonga
+Ha‘apai	Tonga
+Niuas	Tonga
+Tongatapu	Tonga
+Vava‘u	Tonga
+Adana	Turkey
+Ad?yaman	Turkey
+Afyonkarahisar	Turkey
+Aksaray	Turkey
+Amasya	Turkey
+Ankara	Turkey
+Antalya	Turkey
+Ardahan	Turkey
+Artvin	Turkey
+Ayd?n	Turkey
+A?r?	Turkey
+Bal?kesir	Turkey
+Bart?n	Turkey
+Batman	Turkey
+Bayburt	Turkey
+Bilecik	Turkey
+Bingöl	Turkey
+Bitlis	Turkey
+Bolu	Turkey
+Burdur	Turkey
+Bursa	Turkey
+Denizli	Turkey
+Diyarbak?r	Turkey
+Düzce	Turkey
+Edirne	Turkey
+Elaz??	Turkey
+Erzincan	Turkey
+Erzurum	Turkey
+Eski?ehir	Turkey
+Gaziantep	Turkey
+Giresun	Turkey
+Gümü?hane	Turkey
+Hakkâri	Turkey
+Hatay	Turkey
+Isparta	Turkey
+Istanbul	Turkey
+I?d?r	Turkey
+Kahramanmara?	Turkey
+Karabük	Turkey
+Karaman	Turkey
+Kars	Turkey
+Kastamonu	Turkey
+Kayseri	Turkey
+Kilis	Turkey
+Kocaeli	Turkey
+Konya	Turkey
+Kütahya	Turkey
+K?rklareli	Turkey
+K?r?kkale	Turkey
+K?r?ehir	Turkey
+Malatya	Turkey
+Manisa	Turkey
+Mardin	Turkey
+Mersin	Turkey
+Mu?la	Turkey
+Mu?	Turkey
+Nev?ehir	Turkey
+Ni?de	Turkey
+Ordu	Turkey
+Osmaniye	Turkey
+Rize	Turkey
+Sakarya	Turkey
+Samsun	Turkey
+Siirt	Turkey
+Sinop	Turkey
+Sivas	Turkey
+Tekirda?	Turkey
+Tokat	Turkey
+Trabzon	Turkey
+Tunceli	Turkey
+U?ak	Turkey
+Van	Turkey
+Yalova	Turkey
+Yozgat	Turkey
+Zonguldak	Turkey
+Çanakkale	Turkey
+Çank?r?	Turkey
+Çorum	Turkey
+?zmir	Turkey
+?anl?urfa	Turkey
+??rnak	Turkey
+Borough of Arima	Trinidad and Tobago
+Chaguanas	Trinidad and Tobago
+City of Port of Spain	Trinidad and Tobago
+City of San Fernando	Trinidad and Tobago
+Couva-Tabaquite-Talparo	Trinidad and Tobago
+Diego Martin	Trinidad and Tobago
+Eastern Tobago	Trinidad and Tobago
+Mayaro	Trinidad and Tobago
+Penal/Debe	Trinidad and Tobago
+Point Fortin	Trinidad and Tobago
+Princes Town	Trinidad and Tobago
+San Juan/Laventille	Trinidad and Tobago
+Sangre Grande	Trinidad and Tobago
+Siparia	Trinidad and Tobago
+Tobago	Trinidad and Tobago
+Tunapuna/Piarco	Trinidad and Tobago
+Funafuti	Tuvalu
+Nanumanga	Tuvalu
+Nanumea	Tuvalu
+Niutao	Tuvalu
+Nui	Tuvalu
+Nukufetau	Tuvalu
+Nukulaelae	Tuvalu
+Vaitupu	Tuvalu
+Fukien	Taiwan
+Kaohsiung	Taiwan
+Taipei	Taiwan
+Taiwan	Taiwan
+Arusha	Tanzania
+Dar es Salaam Region	Tanzania
+Dodoma	Tanzania
+Geita	Tanzania
+Iringa	Tanzania
+Kagera	Tanzania
+Katavi	Tanzania
+Kigoma	Tanzania
+Kilimanjaro	Tanzania
+Lindi	Tanzania
+Manyara	Tanzania
+Mara	Tanzania
+Mbeya	Tanzania
+Morogoro	Tanzania
+Mtwara	Tanzania
+Mwanza	Tanzania
+Njombe	Tanzania
+Pemba North	Tanzania
+Pemba South	Tanzania
+Pwani	Tanzania
+Rukwa	Tanzania
+Ruvuma	Tanzania
+Shinyanga	Tanzania
+Simiyu	Tanzania
+Singida	Tanzania
+Tabora	Tanzania
+Tanga	Tanzania
+Zanzibar Central/South	Tanzania
+Zanzibar North	Tanzania
+Zanzibar Urban/West	Tanzania
+Avtonomna Respublika Krym	Ukraine
+Cherkas’ka Oblast’	Ukraine
+Chernihivs’ka Oblast’	Ukraine
+Chernivets'ka Oblast'	Ukraine
+Dnipropetrovska Oblast'	Ukraine
+Donets’ka Oblast’	Ukraine
+Ivano-Frankivs’ka Oblast’	Ukraine
+Kharkivs’ka Oblast’	Ukraine
+Khersons’ka Oblast’	Ukraine
+Khmel’nyts’ka Oblast’	Ukraine
+Kirovohrads’ka Oblast’	Ukraine
+Kyiv City	Ukraine
+Kyiv Oblast	Ukraine
+Luhans’ka Oblast’	Ukraine
+L’vivs’ka Oblast’	Ukraine
+Misto Sevastopol’	Ukraine
+Mykolayivs’ka Oblast’	Ukraine
+Odessa	Ukraine
+Poltavs’ka Oblast’	Ukraine
+Rivnens’ka Oblast’	Ukraine
+Sums’ka Oblast’	Ukraine
+Ternopil’s’ka Oblast’	Ukraine
+Vinnyts’ka Oblast’	Ukraine
+Volyns’ka Oblast’	Ukraine
+Zakarpattia Oblast	Ukraine
+Zaporiz’ka Oblast’	Ukraine
+Zhytomyrs’ka Oblast’	Ukraine
+Central Region	Uganda
+Eastern Region	Uganda
+Northern Region	Uganda
+Western Region	Uganda
+Baker Island	U.S. Minor Outlying Islands
+Howland Island	U.S. Minor Outlying Islands
+Jarvis Island	U.S. Minor Outlying Islands
+Johnston Atoll	U.S. Minor Outlying Islands
+Kingman Reef	U.S. Minor Outlying Islands
+Midway Islands	U.S. Minor Outlying Islands
+Navassa Island	U.S. Minor Outlying Islands
+Palmyra Atoll	U.S. Minor Outlying Islands
+Wake Island	U.S. Minor Outlying Islands
+Alabama	United States
+Alaska	United States
+Arizona	United States
+Arkansas	United States
+California	United States
+Colorado	United States
+Connecticut	United States
+Delaware	United States
+Florida	United States
+Georgia	United States
+Hawaii	United States
+Idaho	United States
+Illinois	United States
+Indiana	United States
+Iowa	United States
+Kansas	United States
+Kentucky	United States
+Louisiana	United States
+Maine	United States
+Maryland	United States
+Massachusetts	United States
+Michigan	United States
+Minnesota	United States
+Mississippi	United States
+Missouri	United States
+Montana	United States
+Nebraska	United States
+Nevada	United States
+New Hampshire	United States
+New Jersey	United States
+New Mexico	United States
+New York	United States
+North Carolina	United States
+North Dakota	United States
+Ohio	United States
+Oklahoma	United States
+Oregon	United States
+Pennsylvania	United States
+Rhode Island	United States
+South Carolina	United States
+South Dakota	United States
+Tennessee	United States
+Texas	United States
+Utah	United States
+Vermont	United States
+Virginia	United States
+Washington	United States
+West Virginia	United States
+Wisconsin	United States
+Wyoming	United States
+Artigas	Uruguay
+Canelones	Uruguay
+Cerro Largo	Uruguay
+Colonia	Uruguay
+Departamento de Durazno	Uruguay
+Departamento de Flores	Uruguay
+Departamento de Montevideo	Uruguay
+Departamento de Paysandú	Uruguay
+Departamento de Rivera	Uruguay
+Departamento de Rocha	Uruguay
+Departamento de Río Negro	Uruguay
+Departamento de Salto	Uruguay
+Departamento de San José	Uruguay
+Departamento de Tacuarembó	Uruguay
+Departamento de Treinta y Tres	Uruguay
+Florida	Uruguay
+Lavalleja	Uruguay
+Maldonado	Uruguay
+Soriano	Uruguay
+Andijan	Uzbekistan
+Bukhara	Uzbekistan
+Fergana	Uzbekistan
+Jizzakh Province	Uzbekistan
+Karakalpakstan	Uzbekistan
+Namangan	Uzbekistan
+Navoiy Province	Uzbekistan
+Qashqadaryo	Uzbekistan
+Samarqand Viloyati	Uzbekistan
+Sirdaryo	Uzbekistan
+Surxondaryo Viloyati	Uzbekistan
+Toshkent Shahri	Uzbekistan
+Toshkent Viloyati	Uzbekistan
+Xorazm Viloyati	Uzbekistan
+Grenadines	Saint Vincent and the Grenadines
+Parish of Charlotte	Saint Vincent and the Grenadines
+Parish of Saint Andrew	Saint Vincent and the Grenadines
+Parish of Saint David	Saint Vincent and the Grenadines
+Parish of Saint George	Saint Vincent and the Grenadines
+Parish of Saint Patrick	Saint Vincent and the Grenadines
+Amazonas	Venezuela
+Anzoátegui	Venezuela
+Apure	Venezuela
+Aragua	Venezuela
+Barinas	Venezuela
+Bolívar	Venezuela
+Carabobo	Venezuela
+Cojedes	Venezuela
+Delta Amacuro	Venezuela
+Dependencias Federales	Venezuela
+Distrito Federal	Venezuela
+Estado Yaracuy	Venezuela
+Falcón	Venezuela
+Guárico	Venezuela
+Lara	Venezuela
+Miranda	Venezuela
+Monagas	Venezuela
+Mérida	Venezuela
+Nueva Esparta	Venezuela
+Portuguesa	Venezuela
+Sucre	Venezuela
+Trujillo	Venezuela
+Táchira	Venezuela
+Vargas	Venezuela
+Zulia	Venezuela
+Saint Croix Island	U.S. Virgin Islands
+Saint John Island	U.S. Virgin Islands
+Saint Thomas Island	U.S. Virgin Islands
+An Giang	Vietnam
+Gia Lai	Vietnam
+Hau Giang	Vietnam
+Huy?n Ði?n Biên	Vietnam
+Kon Tum	Vietnam
+Long An	Vietnam
+Saigon	Vietnam
+Thành Ph? C?n Th?	Vietnam
+Thành Ph? Hà N?i	Vietnam
+Thành Ph? H?i Phòng	Vietnam
+Thành Ph? ?à N?ng	Vietnam
+T?nh Bà R?a-V?ng Tàu	Vietnam
+T?nh Bình D??ng	Vietnam
+T?nh Bình Ph??c	Vietnam
+T?nh Bình Thu?n	Vietnam
+T?nh Bình ??nh	Vietnam
+T?nh B?c Liêu	Vietnam
+T?nh B?c Giang	Vietnam
+T?nh B?c K?n	Vietnam
+T?nh B?c Ninh	Vietnam
+T?nh B?n Tre	Vietnam
+T?nh Cao B?ng	Vietnam
+T?nh Cà Mau	Vietnam
+T?nh Hà Giang	Vietnam
+T?nh Hà Nam	Vietnam
+T?nh Hà T?nh	Vietnam
+T?nh Hòa Bình	Vietnam
+T?nh H?ng Yên	Vietnam
+T?nh H?i D??ng	Vietnam
+T?nh Khánh Hòa	Vietnam
+T?nh Ki?n Giang	Vietnam
+T?nh Lai Châu	Vietnam
+T?nh Lào Cai	Vietnam
+T?nh Lâm ??ng	Vietnam
+T?nh L?ng S?n	Vietnam
+T?nh Nam ??nh	Vietnam
+T?nh Ngh? An	Vietnam
+T?nh Ninh Bình	Vietnam
+T?nh Ninh Thu?n	Vietnam
+T?nh Phú Th?	Vietnam
+T?nh Phú Yên	Vietnam
+T?nh Qu?ng Bình	Vietnam
+T?nh Qu?ng Nam	Vietnam
+T?nh Qu?ng Ngãi	Vietnam
+T?nh Qu?ng Ninh	Vietnam
+T?nh Qu?ng Tr?	Vietnam
+T?nh Sóc Tr?ng	Vietnam
+T?nh S?n La	Vietnam
+T?nh Thanh Hóa	Vietnam
+T?nh Thái Bình	Vietnam
+T?nh Thái Nguyên	Vietnam
+T?nh Th?a Thiên-Hu?	Vietnam
+T?nh Ti?n Giang	Vietnam
+T?nh Trà Vinh	Vietnam
+T?nh Tuyên Quang	Vietnam
+T?nh Tây Ninh	Vietnam
+T?nh V?nh Long	Vietnam
+T?nh V?nh Phúc	Vietnam
+T?nh Yên Bái	Vietnam
+T?nh ??k L?k	Vietnam
+T?nh ??ng Nai	Vietnam
+T?nh ??ng Tháp	Vietnam
+Ð?k Nông	Vietnam
+Malampa Province	Vanuatu
+Penama Province	Vanuatu
+Sanma Province	Vanuatu
+Shefa Province	Vanuatu
+Tafea Province	Vanuatu
+Torba Province	Vanuatu
+Circonscription d'Alo	Wallis and Futuna
+Circonscription d'Uvéa	Wallis and Futuna
+Circonscription de Sigavé	Wallis and Futuna
+A'ana	Samoa
+Aiga-i-le-Tai	Samoa
+Atua	Samoa
+Fa‘asaleleaga	Samoa
+Gagaifomauga	Samoa
+Gaga‘emauga	Samoa
+Palauli	Samoa
+Satupa‘itea	Samoa
+Tuamasaga	Samoa
+Vaisigano	Samoa
+Va‘a-o-Fonoti	Samoa
+Hani i Elezit	Kosovo
+Kamenica	Kosovo
+Komuna e Deçanit	Kosovo
+Komuna e Dragashit	Kosovo
+Komuna e Drenasit	Kosovo
+Komuna e Ferizajt	Kosovo
+Komuna e Gjakovës	Kosovo
+Komuna e Gjilanit	Kosovo
+Komuna e Graçanicës	Kosovo
+Komuna e Istogut	Kosovo
+Komuna e Junikut	Kosovo
+Komuna e Kaçanikut	Kosovo
+Komuna e Klines	Kosovo
+Komuna e Kllokotit	Kosovo
+Komuna e Leposaviqit	Kosovo
+Komuna e Malisheves	Kosovo
+Komuna e Mamushës	Kosovo
+Komuna e Mitrovicës	Kosovo
+Komuna e Obiliqit	Kosovo
+Komuna e Parteshit	Kosovo
+Komuna e Pejës	Kosovo
+Komuna e Prishtinës	Kosovo
+Komuna e Ranillugut	Kosovo
+Komuna e Shtimes	Kosovo
+Komuna e Skenderajt	Kosovo
+Komuna e Thërandës	Kosovo
+Komuna e Vitisë	Kosovo
+Komuna e Zubin Potokut	Kosovo
+Kosovo Polje	Kosovo
+Lipjan	Kosovo
+Novo Brdo	Kosovo
+Opština Zve?an	Kosovo
+Opština Štrpce	Kosovo
+Orahovac	Kosovo
+Podujevo	Kosovo
+Prizren	Kosovo
+Vushtrri	Kosovo
+Aden	Yemen
+Al Mahrah	Yemen
+Al Ma?w?t	Yemen
+Amanat Al Asimah	Yemen
+Ibb	Yemen
+Mu??faz?at Abyan	Yemen
+Mu??faz?at Dham?r	Yemen
+Mu??faz?at La?ij	Yemen
+Mu??faz?at Ma’rib	Yemen
+Mu??faz?at Raymah	Yemen
+Mu??faz?at Ta‘izz	Yemen
+Mu??faz?at al Bay??’	Yemen
+Mu??faz?at al Jawf	Yemen
+Mu??faz?at al ?udaydah	Yemen
+Mu??faz?at a? ??li‘	Yemen
+Mu??faz?at ?a‘dah	Yemen
+Mu??faz?at ?ajjah	Yemen
+Mu??faz?at ?a?ramawt	Yemen
+Omran	Yemen
+Sanaa	Yemen
+Shabwah	Yemen
+Acoua	Mayotte
+Bandraboua	Mayotte
+Bandrele	Mayotte
+Bouéni	Mayotte
+Chiconi	Mayotte
+Chirongui	Mayotte
+Dembeni	Mayotte
+Dzaoudzi	Mayotte
+Kani-Kéli	Mayotte
+Koungou	Mayotte
+M'Tsangamouji	Mayotte
+Mamoudzou	Mayotte
+Mtsamboro	Mayotte
+Ouangani	Mayotte
+Pamandzi	Mayotte
+Sada	Mayotte
+Tsingoni	Mayotte
+Gauteng	South Africa
+KwaZulu-Natal	South Africa
+Limpopo	South Africa
+Mpumalanga	South Africa
+Northern Cape	South Africa
+Orange Free State	South Africa
+Province of Eastern Cape	South Africa
+Province of North West	South Africa
+Province of the Western Cape	South Africa
+Central Province	Zambia
+Copperbelt	Zambia
+Eastern Province	Zambia
+Luapula Province	Zambia
+Lusaka Province	Zambia
+North-Western Province	Zambia
+Northern Province	Zambia
+Southern Province	Zambia
+Western Province	Zambia
+Bulawayo	Zimbabwe
+Harare	Zimbabwe
+Manicaland	Zimbabwe
+Mashonaland Central	Zimbabwe
+Mashonaland East Province	Zimbabwe
+Mashonaland West	Zimbabwe
+Masvingo Province	Zimbabwe
+Matabeleland North	Zimbabwe
+Matabeleland South Province	Zimbabwe
+Midlands Province	Zimbabwe
+Buugaaf	United Arab Emirates
+Ilp	Algeria
+Fragham	China

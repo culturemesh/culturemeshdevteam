@@ -1,5 +1,5 @@
 <?php
-require('../Environment.php');
+require('../environment.php');
 $cm = new Environment();
 
 // set up the router

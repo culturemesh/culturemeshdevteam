@@ -45,6 +45,7 @@ class TextData {
 				break;
 			}
 
+
 			return self::rewriteLanguages();
 			break;
 		}
@@ -57,8 +58,10 @@ class TextData {
 		$f0_name = self::$tf_data['languages'][0];
 		$f1_name = self::$tf_data['languages'][1];
 
-		$f0 = fopen($f0_name, 'w');
-		$f1 = fopen($f1_name, 'w');
+		$f0 = fopen($f0_name, 'wb');
+		$f0_name = "\xEF\xBB\xBF".$f0_name;
+		$f1 = fopen($f1_name, 'wb');
+		$f1_name = "\xEF\xBB\xBF".$f1_name;
 
 		$f0_string = 'name'.PHP_EOL;
 		$f1_string = '';
@@ -68,8 +71,10 @@ class TextData {
 			$f1_string .= strtolower($language['name']).PHP_EOL;
 		}
 
-		fwrite($f0, $f0_string);
-		fwrite($f1, $f1_string);
+		fputs($f0, $f0_string);
+		fputs($f1, $f1_string);
+//		fwrite($f0, $f0_string);
+//		fwrite($f1, $f1_string);
 
 		fclose($f0);
 		fclose($f1);
@@ -90,7 +95,8 @@ class TextData {
 
 				// get file
 				$filename = self::$tf_data[$l][$i];
-				$file = fopen($filename, 'w');
+				$file = fopen($filename, 'wb');
+				$filename = "\xEF\xBB\xBF".$filename;
 
 				$filestring = '';
 
@@ -144,10 +150,13 @@ class TextData {
 				}
 
 				// write and close file
-				fwrite($file, $filestring);
+//				fwrite($file, $filestring);
+				fputs($file, $filestring);
 				fclose($file);
 			}
 		}
+
+		return true;
 	}
 }
 ?>

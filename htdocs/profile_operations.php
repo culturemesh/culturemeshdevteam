@@ -1,6 +1,7 @@
 <?php
 
-ini_set('display_errors', true);
+ini_set("display_errors", false);
+
 include("zz341/fxn.php");
 include("data/dal_user.php");
 include("data/dal_user_info.php");
@@ -205,7 +206,7 @@ if (isset($_POST['more_posts']))
 	mysqli_close($con);
 	 */
 
-	include('Environment.php');
+	include('environment.php');
 	$cm = new \Environment();
 
 	$user = new \dobj\User();

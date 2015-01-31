@@ -32,14 +32,16 @@ class QueryHandler
 	}
 
 	public static function getDBConnection() {
-		//return new mysqli(DB_SERVER,DB_USER,DB_PASS,DB_NAME);
-		if (!file_exists('../../../../abcd123.php')) 
-		  return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
-		else {
+
+
+		if ($_SERVER['HTTP_HOST'] == 'www.culturemesh.com') {
 			if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') !== false) 
 			  return new mysqli('localhost', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
 			else
 			  return new mysqli('localhost', 'culturp7', 'IanTheMan2014!', 'culturp7_ktc');
+		}
+		else {
+			return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
 		}
 	}
 
