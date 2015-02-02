@@ -1,5 +1,4 @@
 <?php
-
 final class Environment {
 
 	// COMPILE TIME PROPERTIES //
@@ -29,16 +28,18 @@ final class Environment {
 	private $db_user;
 	private $db_pass;
 	private $db_name;
-	
+
 	// BIGGUMS
 	private static $environment = NULL;
 	private static $connection = NULL;
 
 	public function __construct() {
+
 		// make environment the working directory
 		chdir(dirname(__FILE__));
 		self::$site_root = getcwd();
 		$doc_root = $_SERVER['DOCUMENT_ROOT'];
+
 		// returns hostname
 		// eg - http://www.culturemesh.com/
 		// eg - localhost
@@ -54,7 +55,6 @@ final class Environment {
 			$this->f_root = str_replace($doc_root, '', getcwd());
 			$this->img_host_repo = $this->host_root.'/../../user_images';
 
-
 			// doing this until I can test to make sure I can get rid of host_root
 			if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') !== False)
 				$this->img_host_repo = '//'.$_SERVER['HTTP_HOST'].'/../../user_images';
@@ -65,10 +65,11 @@ final class Environment {
 		if( !$this::includeEnvFiles() ) {
 			throw new Exception('Could not find environment files');
 		}
+
 		// setup autoload
 		$this::setupAutoload();
 		$this->img_dir;
-//		$this->img_repo_dir = self::$site_root.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'user_images';
+		// $this->img_repo_dir = self::$site_root.DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'user_images';
 		$this->img_repo_dir = '/home3/culturp7/public_html/user_images';
 		$this->blank_img;
 		$this->template_dir = self::$site_root.DIRECTORY_SEPARATOR.'templates';
@@ -90,7 +91,6 @@ final class Environment {
 	public static function hostname() {
 		if (!isset(self::$hostname_s))
 			self::$hostname_s = $_SERVER['HTTP_HOST'];
-
 		// return
 		return self::$hostname_s;
 	}
@@ -109,24 +109,18 @@ final class Environment {
 			&& !file_exists('../../localdbconn.php'))
 		{
 			$this->db_user = "culturp7";
-
 			// other shiz
 			if ( !file_exists("../../../abcd123.php")
 				&& !file_exists("../../../../abcd123.php"))
 			{
 				return false;
 			}
-
 			if ( file_exists("../../abcd123.php"))
 				include "../../abcd123.php";
-
 			if ( file_exists("../../../abcd123.php"))
 				include "../../../abcd123.php";
-
-
 			if ( file_exists("../../../../abcd123.php"))
 				include "../../../../abcd123.php";
-
 			$this->db_server = $DB_SERVER;
 			$this->db_name = $DB_NAME;
 			$this->db_pass = $DB_PASS;
@@ -225,7 +219,7 @@ final class Environment {
 	public static function tearDown() {
 		self::$environment = NULL;
 	}
-	
+
 	public function getBaseTemplate() {
 		return file_get_contents($this->template_dir . $this->ds . 'base.html');
 	}
@@ -235,7 +229,6 @@ final class Environment {
 	 * Fo' mustache
 	 */
 	public function getVars() {
-
 		return array(
 			'img_host_repo' => $this->img_host_repo,
 			'home_path' => $this->host_root,
