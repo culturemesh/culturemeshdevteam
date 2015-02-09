@@ -208,6 +208,20 @@ class User extends DObj {
 		return $inlist;
 	}
 
+	public function prepare($cm) {
+
+		if (!isset($cm))
+			throw new \Exception('No environment variable passed to user');
+
+		// get image thing set up
+		if ( !is_file($cm->img_repo_dir . $cm->ds . $this->img_link)) 
+		  $this->img_link = '//' . $cm->hostname . $cm->ds . 'images/blank_profile.png';
+		else
+		  $this->img_link = '//' . $cm->img_host_repo . '/' . $this->img_link;
+
+		return $this;
+	}
+
 	/*
 	 * Necessary for mustache
 	 */

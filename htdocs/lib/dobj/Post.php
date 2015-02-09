@@ -157,8 +157,6 @@ class Post extends DisplayDObj {
 				}
 			}
 
-
-
 			// get template
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-post.html');
 			return $mustache->render($template, array(
@@ -166,7 +164,7 @@ class Post extends DisplayDObj {
 				'delete_button' => $delete_button,
 				'reply_request' => $reply_request,
 				'show_replies' => $show_replies,
-				'post' => $this,
+				'post' => $this->prepare($cm),
 				'text' => $this->formatText(),
 				'relative_date' => $this->getRelativeDate(),
 				'name' => $name,
@@ -185,7 +183,7 @@ class Post extends DisplayDObj {
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-post.html');
 			return $mustache->render($template, array(
 				'active' => true,
-				'post' => $this,
+				'post' => $this->prepare($cm),
 				'relative_date' => $this->getRelativeDate(),
 				'name' => $this->getName(),
 				'vars' => $cm->getVars()
@@ -289,12 +287,21 @@ class Post extends DisplayDObj {
 		return $this->post_text;
 	}
 
-	public function formatText() {
+	public function prepare($cm) {
 
-		
-		// I need to get the locations of all the links
-		// I need to get the locations of all the
-		//
+		if (!isset($cm))
+			throw new \Exception('No environment variable passed to user');
+
+		// get image thing set up
+		if ( !is_file($cm->img_repo_dir . $cm->ds . $this->img_link)) 
+		  $this->img_link = '//' . $cm->hostname . $cm->ds . 'images/blank_profile.png';
+		else
+		  $this->img_link = $cm->img_host_repo . '/' . $this->img_link;
+
+		return $this;
+	}
+
+	public function formatText() {
 
 		// split on links
 		$raw_text = $this->getText();
@@ -305,41 +312,12 @@ class Post extends DisplayDObj {
 
 		// autodetect links w/o tags
 		$al_match = "#((?:http|https|ftp)\:\/\/)*([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
+		//$al_match = "#((?:http|https|ftp)\:\/\/)*({[a-zA-Z0-9]+\.}+[a-zA-Z0-9]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
 		$al_replace = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
 		$new_text = preg_replace($al_match, $al_replace, $no_ltag['replacement']);
 
 		// replace link tags
 		$new_text = \misc\Util::StrReform($new_text, 'link', $no_ltag['extractions']);
-
-
-		// so i need to mark bare links
-	//	$match = "#\[link\](". $all_chars .")\[/link\]#";
-
-		/*
-		// autolink match
-		$al_match = "#((?:http|https|ftp)\:\/\/)*([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
-		$al_replace = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
-
-		// tag match
-		$tl_match =  "#\[link\](". $all_chars .")\[/link\]#";
-		$tl_replace = '<a target=\'_blank\' href=\'http://${1}\'>${1}</a>'; 
-		
-
-		$new_text = preg_replace(array($al_match, $tl_match), array($al_replace, $tl_replace),
-			$raw_text);
-
-		 */
-		/*
-		 * OLD HTML REPLACE, LET's keep it around
-		$match = "#((?:http|https|ftp)\:\/\/)*([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
-		$replacement = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
-		// return match
-		$new_text =  preg_replace($match, $replacement, $text);
-
-		 */
-
-//		$raw_text = $this->post_text; //'Not bold [b] Bold [/b]'; //$this->post_text;
-		//$all_chars = "[\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_space\$\@]*";
 
 		// find bolded text
 		$match = "#\[b\](".$all_chars.")\[/b\]#";

@@ -147,7 +147,9 @@
 			<div id="post-wall">
 				{{# page_vars.member }}
 				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.hostname }}/network_post.php" enctype="multipart/form-data">
-					<img id="profile-post" src="{{ vars.img_host_repo}}/{{ site_user.img_link }}" width="45" height="45">
+					<!--<img id="profile-post" src="{{ vars.img_host_repo}}/{{ site_user.img_link }}" width="45" height="45">-->
+
+					<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
 					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 					<div class="fileupload-error"></div>
 					<div id='post-form-panel' class="fileupload-panel"></div>

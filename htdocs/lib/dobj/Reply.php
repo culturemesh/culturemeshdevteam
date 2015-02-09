@@ -51,7 +51,7 @@ class Reply extends Post {
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-reply.html');
 			return $mustache->render($template, array(
 				'active' => $active,
-				'reply' => $this,
+				'reply' => $this->prepare($cm),
 				'text' => $this->formatText(),
 				'owner' => $owner,
 				'relative_date' => $this->getRelativeDate(),

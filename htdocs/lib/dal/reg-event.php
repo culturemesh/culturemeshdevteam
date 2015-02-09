@@ -51,7 +51,7 @@ SQL
 SELECT e.*, n.network_class, 
 n.city_cur, n.region_cur, n.country_cur,
 n.city_origin, n.region_origin, n.country_origin,
-n.language_origin,  u.img_link AS usr_image, u.first_name, u.last_name
+n.language_origin,  u.img_link, u.first_name, u.last_name
 FROM events e, users u, networks n
 WHERE id_network IN (
 SELECT id_network
@@ -80,7 +80,7 @@ SQL
 				'address_2', 'city', 'country', 'description', 'region',
 				'network_class', 'city_cur', 'region_cur', 'country_cur',
 				'city_origin', 'region_origin', 'country_origin', 'language_origin',
-				'usr_image', 'first_name', 'last_name'
+				'img_link', 'first_name', 'last_name'
 			)
 		));
 
@@ -122,7 +122,7 @@ SQL
 				'address_2', 'city', 'country', 'description', 'region',
 				'network_class', 'city_cur', 'region_cur', 'country_cur',
 				'city_origin', 'region_origin', 'country_origin', 'language_origin',
-				'usr_image', 'first_name', 'last_name'
+				'img_link', 'first_name', 'last_name'
 			)
 		));
 

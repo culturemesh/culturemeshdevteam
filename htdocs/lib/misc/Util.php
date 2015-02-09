@@ -55,7 +55,7 @@ class Util {
 				// return first property with a nonzero value assigned
 				// attach designation( month, year, etc)
 				if ($props[$i] == 'i')
-				  $n = 60 - $interval->$props[$i];
+				  $n = $interval->$props[$i];
 				else
 				  $n = $interval->$props[$i];
 

@@ -224,6 +224,10 @@ final class Environment {
 		return file_get_contents($this->template_dir . $this->ds . 'base.html');
 	}
 
+	public function getDefaultProfileImage() {
+		return $this->host_root . 'images/blank_profile.png';
+	}
+
 	/*
 	 * gets a bunch of relevant variables
 	 * Fo' mustache
