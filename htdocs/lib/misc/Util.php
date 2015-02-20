@@ -216,13 +216,6 @@ class Util {
 				$start = $open + $stag_len;
 				$length = $close - $start;
 
-				/*
-				if ($length == 0) {
-					echo 'breaking';
-					break;
-				}
-				 */
-
 				$target = substr($str, $start, $length);
 
 				array_push($result['extractions'], $target);
@@ -248,28 +241,6 @@ class Util {
 		// string length must not change
 		return $result;
 	}
-
-
-			/*
-				echo 'OFFSET: ' . $offset . ' ';
-				echo 'STRLEN: ' . strlen($str) . ' ';
-			echo 'OPEN: '. $open . ' ';
-			 */
-
-				//echo 'CLOSE: '. $close . ' '; 
-
-				/*
-				echo 'START: ' . $start . ' ';
-				echo 'LENGTH: ' . $length . ' ';
-				echo 'TARGET: ' . $target . ' ';
-				 */
-
-//				echo 'RESULT: ' . $str . ' ';
-	//
-				/*
-				echo 'OFFSET: ' . $offset . ' ';
-				echo 'STRLEN: ' . strlen($str) . ' ';
-				 */
 
 	public static function StrReform($subject, $tag, $elements) {
 
@@ -304,6 +275,66 @@ class Util {
 			else {  // skip this tag
 
 				$offset++;
+			}
+		}
+
+		return $str;
+	}
+
+	// Replace tags in string with html tags
+	// eg tag: [tag]Example text[/tag]
+	//
+	// and replaces with html tag <tag>Example text</tag>
+	public static function TagReplace($subject, $tag, $replacement=NULL) {
+
+		// allows user to specify replacement
+		if ($replacement == NULL)
+			$replacement = $tag;
+
+		$stag = '[' . $tag . ']';
+		$etag = '[/' . $tag . ']';
+		$tag_len = strlen($tag); // important for substring
+		$stag_len = strlen($stag);
+		$etag_len = strlen($etag);
+
+		$str = NULL;
+
+		// loop through string, looking for tags
+		$offset = 0;
+		$i = 0;
+
+		$str = $subject;
+
+		// if we have open
+		while (($open = strpos($str, $stag, $offset)) !== false) {
+
+
+			// if we're here, we've found a closing tag
+			if (($close = strpos($str, $etag, $open+1)) !== false) {
+
+				// so now we search for any other opening tags within the substring
+				// captured by open and close. We count the amount found, and then
+				// use strpos operations until we get to the end
+
+				$substr = substr($str, $open, $close);
+
+				$embed_tag_count = 0;
+
+				$search_index = $open+1;
+				
+				while ($tag = strpos($substr, $stag, $search_index)) {
+
+					$new_close = strpos($str, $etag, $close+1);
+
+					// get new substring
+					$substr = substr($str, $open+$tag, $new_close);
+
+					// increment search so we don't get stuck
+					$search_index = tag+1;
+					$embed_tag_count++;
+				}
+
+				// with
 			}
 		}
 

@@ -9,10 +9,23 @@ abstract class DObj {
 
 	}
 
+
+	// UNUSED FUNCTION
+	public function fill($result) {
+
+	}
+
 	public static function createFromId($id, $dal, $do2db) {
 
 	}
 
+	// This function returns a dobj based on a row of data
+	// received from a database
+	//
+	// This function takes in a PDO result data row as a parameter
+	//
+	// This function is normally called by the do2db object
+	//
 	public static function createFromDataRow($row) {
 
 		$keys = array_keys($row);
@@ -130,10 +143,29 @@ abstract class DObj {
 		return $origin_str . ' in ' . $location_str;
 	}
 
-	public function fill($result) {
 
+	// This function is called when the data coming from the
+	// database needs a little massaging before it's ready to be
+	// used. You see, the db data is unaware of which environment it's
+	// being called from, so it needs a little help from a cm Environment
+	// variable 
+	//
+	public function prepare($cm) {
+
+		if (!isset($cm))
+			throw new \Exception('No environment variable passed to user');
+
+		// get image link acting right
+		if (!property_exists($this, 'img_link')) {
+
+			if ( !is_file($cm->img_repo_dir . $cm->ds . $this->img_link)) 
+			  $this->img_link = '//' . $cm->hostname . $cm->ds . 'images/blank_profile.png';
+			else
+			  $this->img_link = $cm->img_host_repo . '/' . $this->img_link;
+		}
+
+		return $this;
 	}
-
 
 	public function __get($name) {
 

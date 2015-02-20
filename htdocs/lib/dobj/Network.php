@@ -41,6 +41,9 @@ class Network extends DisplayDObj {
 
 		$network = $do2db->execute($dal, $network, 'getNetworkById');
 
+		if (get_class($network) == 'PDOStatement')
+			return false;
+
 		// set up origin array
 		$origin_keys = array('id_city_origin', 'city_origin', 'id_region_origin',
 			'region_origin', 'id_country_origin', 'country_origin',

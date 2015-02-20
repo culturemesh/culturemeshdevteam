@@ -217,7 +217,7 @@ class User extends DObj {
 		if ( !is_file($cm->img_repo_dir . $cm->ds . $this->img_link)) 
 		  $this->img_link = '//' . $cm->hostname . $cm->ds . 'images/blank_profile.png';
 		else
-		  $this->img_link = '//' . $cm->img_host_repo . '/' . $this->img_link;
+		  $this->img_link = $cm->img_host_repo . '/' . $this->img_link;
 
 		return $this;
 	}

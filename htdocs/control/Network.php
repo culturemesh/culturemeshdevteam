@@ -30,7 +30,7 @@ class Network {
 
 		// 404 Redirect
 		if ($network == False) {
-			header('Location: ' . $cm->host_root . $cm->ds . '404.php');
+			header('Location: ' . $cm->hostpath . $cm->ds . '404.php');
 		}
 
 		$network->getPosts($dal, $do2db);
