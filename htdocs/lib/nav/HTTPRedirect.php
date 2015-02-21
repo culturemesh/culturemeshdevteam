@@ -15,7 +15,7 @@ class HTTPRedirect {
 	private $value;
 
 	private $redirect_url;
-	private $cm;
+	protected $cm;
 
 	// takes a url and separates it into component parts
 	// makes path relative
