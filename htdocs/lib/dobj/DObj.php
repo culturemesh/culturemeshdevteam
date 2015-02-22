@@ -155,16 +155,18 @@ abstract class DObj {
 		if (!isset($cm))
 			throw new \Exception('No environment variable passed to user');
 
+		$copy = clone $this;
+
 		// get image link acting right
-		if (!property_exists($this, 'img_link')) {
+		if (isset($this->img_link)) {
 
 			if ( !is_file($cm->img_repo_dir . $cm->ds . $this->img_link)) 
-			  $this->img_link = '//' . $cm->hostname . $cm->ds . 'images/blank_profile.png';
+			  $copy->img_link = '//' . $cm->hostname . $cm->ds . 'images/blank_profile.png';
 			else
-			  $this->img_link = $cm->img_host_repo . '/' . $this->img_link;
+			  $copy->img_link = $cm->img_host_repo . '/' . $this->img_link;
 		}
 
-		return $this;
+		return $copy;
 	}
 
 	public function __get($name) {

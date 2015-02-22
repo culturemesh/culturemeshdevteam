@@ -287,20 +287,6 @@ class Post extends DisplayDObj {
 		return $this->post_text;
 	}
 
-	public function prepare($cm) {
-
-		if (!isset($cm))
-			throw new \Exception('No environment variable passed to user');
-
-		// get image thing set up
-		if ( !is_file($cm->img_repo_dir . $cm->ds . $this->img_link)) 
-		  $this->img_link = '//' . $cm->hostname . $cm->ds . 'images/blank_profile.png';
-		else
-		  $this->img_link = $cm->img_host_repo . '/' . $this->img_link;
-
-		return $this;
-	}
-
 	public function formatText() {
 
 		// split on links

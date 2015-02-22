@@ -208,6 +208,7 @@ class User extends DObj {
 		return $inlist;
 	}
 
+	/*
 	public function prepare($cm) {
 
 		if (!isset($cm))
@@ -221,6 +222,7 @@ class User extends DObj {
 
 		return $this;
 	}
+	 */
 
 	/*
 	 * Necessary for mustache

@@ -17,14 +17,6 @@ abstract class DisplayDObj extends DObj {
 		return isset($this->$name);
 	}
 
-	/*
-	 * Prepares dobj for display with mustache
-	 * @params - Environment object
-	 */
-	public function prepare($cm) {
-
-	}
-
 	protected function startMustache($layout) {
 
 		// get engine
