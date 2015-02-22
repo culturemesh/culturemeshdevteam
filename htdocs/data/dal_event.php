@@ -265,7 +265,7 @@ SQL;
 	{
 		$query = <<<SQL
 			UPDATE events 
-			SET event_date='$event_dt->event_date', address_1='$event_dt->address_1',
+			SET title='$event_dt->title', event_date='$event_dt->event_date', address_1='$event_dt->address_1',
 			address_2='$event_dt->address_2', city='$event_dt->city', region='$event_dt->region',
 			description='$event_dt->description'
 			WHERE id=$event_dt->id
