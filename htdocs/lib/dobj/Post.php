@@ -305,23 +305,15 @@ class Post extends DisplayDObj {
 		// replace link tags
 		$new_text = \misc\Util::StrReform($new_text, 'link', $no_ltag['extractions']);
 
-		// find bolded text
-		$match = "#\[b\](".$all_chars.")\[/b\]#";
-		$replacement = '<b>${1}</b>';
-
-		$new_text = preg_replace($match, $replacement, $new_text);
-
-		// find italicized text
-		$match = "#\[i\](". $all_chars .")\[/i\]#";
-		$replacement = '<i>${1}</i>';
-
-		$new_text = preg_replace($match, $replacement, $new_text);
-
 		// find links
 		$match = "#\[link\]((?:http|https|ftp)\:\/\/)*(". $all_chars .")\[/link\]#";
 		$replacement = '<a target=\'_blank\' href=\'http://${2}\'>${2}</a>';
 
 		$new_text = preg_replace($match, $replacement, $new_text);
+
+		// find bold and italics
+		$new_text = \misc\Util::TagReplace($new_text, 'b');
+		$new_text = \misc\Util::TagReplace($new_text, 'i');
 
 		return $new_text;
 	}

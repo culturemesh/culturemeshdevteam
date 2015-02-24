@@ -220,6 +220,24 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('[link]First[/link][link]Last[/link]', $new_string);
 	}
+
+	public function testTagReplace() {
+
+		$string = '[test]One[/test][test]Two[/test]';
+		$new_string = misc\Util::TagReplace($string, 'test');
+
+		$this->assertEquals('<test>One</test><test>Two</test>', $new_string);
+	}
+
+	public function testTagReplaceMixed() {
+
+		$string = '[test]One[/test] [mixed]Two[/mixed] [test][mixed]Three[/mixed][/test]';
+
+		$new_string = misc\Util::TagReplace($string, 'test');
+		$new_string = misc\Util::TagReplace($new_string, 'mixed');
+
+		$this->assertEquals('<test>One</test> <mixed>Two</mixed> <test><mixed>Three</mixed></test>', $new_string);
+	}
 }
 
 ?>
