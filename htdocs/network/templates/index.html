@@ -275,22 +275,11 @@
 	</script>
 	{{/ get.eperror }}
 	<script>
-		var qs = new QueryStringParser();
+		if (qs == undefined)
+			var qs = new QueryStringParser();
+
 		if (qs.qsGet != null ) {
 
-			if (qs.qsGet['lerror'] != undefined) {
-				if (qs.qsGet['lerror'] == 'success') {
-					$('#signout_panel').children('p').text('You are now logged in!');
-					$('#signout_panel').show();
-					$('#signout_panel').fadeOut(5000);
-				}
-			}
-			if (qs.qsGet['rerror'] != undefined) {
-				if (qs.qsGet['rerror'] == 'success') {
-					$('#signout_panel').children('p').html('You are now registered! Click <a href="{{ vars.hostname }}/profile/{{ site_user.id }}">here</a> to see your profile page.');
-					$('#signout_panel').show();
-				}
-			}
 			if (qs.qsGet['lnerror'] != undefined) {
 				$('#lnerror').text(qs.qsGet['lnerror']);
 				$('#lnerror').fadeOut(5000);

@@ -158,7 +158,7 @@
 								<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
 								<div class="clear"></div>
 								<span id="password_validation"></span>
-								<span id="server_error"></span>
+								<span id="register_server_error"></span>
 								</div>
 								</br>
 								</br>
@@ -223,6 +223,38 @@
 				$("#login_modal").modal('hide');
 				$("#register_modal").modal('show');
 			}
+		</script>
+		<script>
+		var qs = new QueryStringParser();
+
+		if (qs.qsGet != null) {
+
+			// process login and registration errors
+
+			if (qs.qsGet['lerror'] != undefined) {
+				if (qs.qsGet['lerror'] == 'success') {
+					$('#signout_panel').children('p').text('You are now logged in!');
+					$('#signout_panel').show();
+					$('#signout_panel').fadeOut(5000);
+				}
+				else {
+					// call login modal and display error message
+					$("#login_modal").modal('show');
+					$("#log_validation").html(qs.qsGet['lerror']);
+				}
+			}
+			if (qs.qsGet['rerror'] != undefined) {
+				if (qs.qsGet['rerror'] == 'success') {
+					$('#signout_panel').children('p').html('You are now registered! Click <a href="{{ vars.hostname }}/profile/{{ site_user.id }}">here</a> to see your profile page.');
+					$('#signout_panel').show();
+				}
+				else {
+					// call login modal and display error message
+					$("#register_modal").modal('show');
+					$("#register_server_error").html(qs.qsGet['rerror']);
+				}
+			}
+		}
 		</script>
 		{{$ body_scripts }}
 		{{/ body_scripts }}
