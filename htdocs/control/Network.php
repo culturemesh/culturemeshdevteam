@@ -6,6 +6,7 @@ class Network {
 	public static function fail($cm, $params) {
 		// 404 redirect
 		$er = new \nav\ErrorRedirect($cm, '404');
+		$er->execute();
 	}
 
 	/*
