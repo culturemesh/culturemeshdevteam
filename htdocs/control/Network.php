@@ -2,8 +2,10 @@
 namespace control;
 class Network {
 
-	public static function test($cm, $params) {
-		echo 'Test chamber';
+
+	public static function fail($cm, $params) {
+		// 404 redirect
+		$er = new \nav\ErrorRedirect($cm, '404');
 	}
 
 	/*

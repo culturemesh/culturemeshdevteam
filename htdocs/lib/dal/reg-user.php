@@ -3,20 +3,14 @@
 function registerUser($obj) {
 
 	/*
-	 * TEST
+	 * Passed in to get Complete User with Id
+	 * Uses :> getting logged in user, getting profile user
 	 */
 	$obj->getUserById = function($con=NULL) {
 
 		$m = new dal\DBQuery();
 
 		$m->setValues(array(
-			/*
-			'query' => <<<SQL
-SELECT *
-FROM users
-WHERE id=?
-SQL
-			 */
 			'query' => <<<SQL
 
 SELECT u.*, 
@@ -26,6 +20,7 @@ FROM users u
 LEFT JOIN ( SELECT id_user, id_network FROM network_registration) nr ON u.id= nr. id_user
 LEFT JOIN ( SELECT id_guest, id_event FROM event_registration) er ON u.id= er. id_guest
 WHERE u.id=?
+GROUP BY u.id
 SQL
 		/////////////////////////////////
 		,	'test_query' => <<<SQL

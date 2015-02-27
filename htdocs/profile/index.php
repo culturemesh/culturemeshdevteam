@@ -10,10 +10,14 @@ if (strpos($cm->f_root, 'live') == False)
 else
   $al->setBasePath('/profile');
 
-// set up maps
-$al->map('GET', '/', function() { echo 'No profile chosen'; }, 'nonet');
+// success maps
 $al->map('GET', '/[i:id]', 'control\Profile#match', 'match'); 
 $al->map('GET', '/[i:id]/', 'control\Profile#match', 'match_slash'); 
+
+// fail maps
+$al->map('GET', '/', 'control\Profile#fail', 'no_arg');
+$al->map('GET', '/[*]', 'control\Profile#fail', 'fail_alpha'); 
+$al->map('GET', '/[*]/', 'control\Profile#fail', 'fail_alpha_slash'); 
 
 $match = $al->match();
 

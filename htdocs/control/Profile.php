@@ -3,6 +3,11 @@ namespace control;
 
 class Profile {
 
+	public static function fail($cm, $params) {
+		// 404 redirect
+		header('Location: ' . $cm->host_root . $cm->ds . '404.php');
+	}
+
 	public static function match($cm, $params) {
 
 		// start session
