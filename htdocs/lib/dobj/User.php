@@ -84,8 +84,35 @@ class User extends DObj {
 			//print_r($err);
 			$this->yn_events = NULL;
 		}
-		else
-		  $this->yn_events = $result->splits('network');
+		else {
+
+			// create section list
+			$this->yn_events = $result->splits(array('network', function($obj) {
+
+				// check if event has already occurred
+				$event_date = new \DateTime($obj->event_date);
+				$now = new \DateTime();
+
+				$result = $event_date > $now;
+
+				if ($result == True) {
+					return array(
+						'section' => 'active-event',
+						'key' => 'active');
+				} else {
+					return array(
+						'section' => 'inactive-event',
+						'key' => 'active');
+				}
+			}), array('inline', 'class')
+			);
+
+			// order events
+			$this->yn_events->order('active', array(
+				'active-event' => 1,
+				'inactive-event' => 0
+			));
+		}
 	}
 
 	public function getEventsHosting($dal, $do2db) {
@@ -102,8 +129,35 @@ class User extends DObj {
 			//print_r($err);
 			$this->yh_events = NULL;
 		}
-		else
-		  $this->yh_events = $result->splits('network');
+		else {
+
+			$this->yh_events = $result->splits(array('network', function($obj) {
+
+				// check if event has already occurred
+				$event_date = new \DateTime($obj->event_date);
+				$now = new \DateTime();
+
+				$result = $event_date > $now;
+
+				if ($result == True) {
+					return array(
+						'section' => 'active-event',
+						'key' => 'active');
+				} else {
+					return array(
+						'section' => 'inactive-event',
+						'key' => 'active');
+				}
+			}), array('inline', 'class')
+			);
+
+
+			// order events
+			$this->yh_events->order('active', array(
+				'active-event' => 1,
+				'inactive-event' => 0
+			));
+		}
 	}
 
 	public function getEventsAttending($dal, $do2db) {
@@ -121,7 +175,25 @@ class User extends DObj {
 			$this->ya_events = NULL;
 		}
 		else
-		  $this->ya_events = $result->splits('network');
+			$this->ya_events = $result->splits(array('network', function($obj) {
+
+				// check if event has already occurred
+				$event_date = new \DateTime($obj->event_date);
+				$now = new \DateTime();
+
+				$result = $event_date > $now;
+
+				if ($result == True) {
+					return array(
+						'section' => 'active-event',
+						'key' => 'active');
+				} else {
+					return array(
+						'section' => 'inactive-event',
+						'key' => 'active');
+				}
+			}), array('inline', 'class')
+			);
 	}
 
 	public function getPosts($dal, $do2db, $lbound=0, $ubound=11) {

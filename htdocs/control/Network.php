@@ -15,10 +15,6 @@ class Network {
 	 */
 	public static function match($cm, $params) {
 
-		error_reporting(1);
-		//echo $cm->host_root;
-		// $stuffs = $cm->getVars();
-		// echo $stuffs['home_path'];
 		$nid = $params['id'];
 
 		// set session var
@@ -31,9 +27,10 @@ class Network {
 		// load network
 		$network = \dobj\Network::createFromId($nid, $dal, $do2db);
 
-		// 404 Redirect
 		if ($network == False) {
-			header('Location: ' . $cm->hostpath . $cm->ds . '404.php');
+			// 404 Redirect
+			$er = new \nav\ErrorRedirect($cm, '404');
+			$er->execute();
 		}
 
 		$network->getPosts($dal, $do2db);

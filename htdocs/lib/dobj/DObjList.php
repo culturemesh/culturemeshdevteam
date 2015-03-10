@@ -12,6 +12,8 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 	private $ulid;
 	private $ulclass;
 
+	protected $display_mode;
+
 	public function __construct() {
 
 		// just makin' sure
@@ -79,21 +81,74 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 	/*
 	 * transforms array into sectioned list
 	 */
-	public function splits($property) {
+	public function splits($property_arg, $display_mode_arg='inline') {
 
 		$splits = array();
+		$property = NULL;
 
+
+		// get display mode arg
+		// if it's an array, shift off the first property
+		// whether or not property_arg is an array
+		//
+		// in case the user makes a mistake, and only intends on 
+		// one level of sectioning, only use the
+		// first item of array as a display mode arg
+		//
+		// after this, array display_mode_arg will have one less element
+		// and be ready to pass to a recursive splits call
+		//
+		if (is_array($display_mode_arg)) 
+		  $display_mode = array_shift($display_mode_arg);
+		else
+		  $display_mode = $display_mode_arg;
+
+		if (is_array($property_arg)) {
+			$property = array_shift($property_arg);
+
+		}
+		else {
+			$property = $property_arg;
+		}
+
+		// Loop through each object
+		// and fold into a new dobjlist
+		// based on a property of the object
+		//
+		// if there isn't already a list representing
+		// the value of a property, a new list will
+		// be created
+		//
 		foreach ($this->dlist as $obj) {
-			$p = $obj->getSplit($property);
+			
+			// can be either a closure or a string
+			if (is_object($property) && $property instanceof \Closure) {
 
-			// can simplify this section later
-			// split on object
+				$result = $property($obj);
+				$section = $result['section'];
+				$key = $result['key'];
+			}
+			else {
 
-			// blank to string
-			if (is_object($p))
-			  $s = $p->standOut();
-			else
-			  $s = $p;
+				// split on object
+				$section = $obj->getSplit($property);
+
+				// get nice things if there are more to get
+				// could fold into getSplit later
+				if (is_object($section))
+				  $section = $section->standOut();
+
+				$key = $property;
+
+				/*
+				// can simplify this section later
+				// blank to string
+				if (is_object($section))
+				  $key = $section->standOut();
+				else
+				  $key = $section;
+				 */
+			}
 
 			// check for existing value
 			$found = false;
@@ -103,7 +158,7 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 				$split = $splits[$i];
 
 				// add to the thing
-				if (isset($split['key']) && $split['key'] == $s) {
+				if (isset($split['section']) && $split['section'] == $section) {
 					$found = true;
 					$index = $i;
 					break;
@@ -112,23 +167,44 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 			}
 
 			if ($found)
-   			  array_push($splits[$index]['array'], $obj);
-
-			// make new split
+   			  $splits[$index]['array']->dInsert($obj);
 			else {
+				$new_list = new DObjList();
+				$new_list->dInsert($obj);
+
 				array_push($splits, array(
-					'array' => array($obj),
-					'section' => $p,
-					'key' => $s)
+					'array' => $new_list,
+					'section' => $section,
+					'key' => $key)
 				);
 			}
 		}
 
+		// If we've been given an array of properties
+		// do the thing again with the recursion and stuff
+		//
+		if (is_array($property_arg)) {
+
+			if (count($property_arg) > 0) {
+
+				// make sure we have enough of display mode arg
+				// to go around
+				//
+				if (count($display_mode_arg) <= 0)
+					$display_mode_arg = $display_mode;
+
+				foreach ($splits as &$split) {
+					
+					$split['array'] = $split['array']->splits($property_arg, $display_mode_arg);
+				}
+			}
+		}
+
 		$sl = new SectedDObjList();
+		$sl->display_mode = $display_mode;
 		$sl->slist = $splits;
 		return $sl;
 	}
-	
 
 	//////////// THINGS I MUST SET ////////////////
 	public function count() {

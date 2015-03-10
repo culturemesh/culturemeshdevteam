@@ -1263,7 +1263,12 @@ li.event.dashboard
 {
 	width:auto;
 	border-style:none;
+	padding-top:10px;
 	margin-bottom:25px;
+}
+
+ul.dashboard.nested {
+    margin-left: 0;
 }
 
 div.event-host
@@ -1276,6 +1281,18 @@ div.event-text
 	float:left;
 	margin-left:15px;
 	margin-top:-15px;
+}
+
+li.inactive-event {
+	background-color:#ebebeb;
+}
+
+li.inactive-event a {
+	color:#ababab;
+}
+
+li.inactive-event p#event-desc {
+	color:#ababab;
 }
 
 .network-post.dashboard

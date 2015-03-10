@@ -5,7 +5,8 @@ class Profile {
 
 	public static function fail($cm, $params) {
 		// 404 redirect
-		header('Location: ' . $cm->host_root . $cm->ds . '404.php');
+		$er = new \nav\ErrorRedirect($cm, '404');
+		$er->execute();
 	}
 
 	public static function match($cm, $params) {
@@ -25,7 +26,9 @@ class Profile {
 		$user = \dobj\User::createFromId($uid, $dal, $do2db);
 
 		if ($user == False) {
-			header('Location: ' . $cm->host_root . $cm->ds . '404.php');
+			// 404 redirect
+			$er = new \nav\ErrorRedirect($cm, '404');
+			$er->execute();
 		}
 
 		// get user information
