@@ -4,7 +4,7 @@
 	</div>
 	<div class='event-text'>
 		<div class='event-title'>
-			<h3 class='h-network'><a href='{{ vars.hostname }}/network/{{ event.id_network }}?elink={{ event.id }}'>{{ event.title }}</a></h3>
+			<h3 class='h-network'>{{# list_vars.active }}<a href='{{ vars.hostname }}/network/{{ event.id_network }}?elink={{ event.id }}'>{{/ list_vars.active }}{{ event.title }}{{# list_vars.active }}</a>{{/ list_vars.active }}</h3>
 		</div>
 		<div class='event-info'>
 			<p id='event-info'>Hosted by <a href='{{ vars.hostname}}/profile/{{ event.id_host }}'>{{ host }}</a> and set for {{ date }}</p>
