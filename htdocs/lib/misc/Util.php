@@ -55,7 +55,7 @@ class Util {
 				// return first property with a nonzero value assigned
 				// attach designation( month, year, etc)
 				if ($props[$i] == 'i')
-				  $n = 60 - $interval->$props[$i];
+				  $n = $interval->$props[$i];
 				else
 				  $n = $interval->$props[$i];
 
@@ -216,13 +216,6 @@ class Util {
 				$start = $open + $stag_len;
 				$length = $close - $start;
 
-				/*
-				if ($length == 0) {
-					echo 'breaking';
-					break;
-				}
-				 */
-
 				$target = substr($str, $start, $length);
 
 				array_push($result['extractions'], $target);
@@ -248,28 +241,6 @@ class Util {
 		// string length must not change
 		return $result;
 	}
-
-
-			/*
-				echo 'OFFSET: ' . $offset . ' ';
-				echo 'STRLEN: ' . strlen($str) . ' ';
-			echo 'OPEN: '. $open . ' ';
-			 */
-
-				//echo 'CLOSE: '. $close . ' '; 
-
-				/*
-				echo 'START: ' . $start . ' ';
-				echo 'LENGTH: ' . $length . ' ';
-				echo 'TARGET: ' . $target . ' ';
-				 */
-
-//				echo 'RESULT: ' . $str . ' ';
-	//
-				/*
-				echo 'OFFSET: ' . $offset . ' ';
-				echo 'STRLEN: ' . strlen($str) . ' ';
-				 */
 
 	public static function StrReform($subject, $tag, $elements) {
 
@@ -308,6 +279,24 @@ class Util {
 		}
 
 		return $str;
+	}
+
+	// Replace tags in string with html tags
+	// eg tag: [tag]Example text[/tag]
+	//
+	// and replaces with html tag <tag>Example text</tag>
+	public static function TagReplace($subject, $tag, $replacement=NULL) {
+
+		// allows user to specify replacement
+		if ($replacement == NULL)
+			$replacement = $tag;
+
+		$stag = '[' . $tag . ']';
+		$etag = '[/' . $tag . ']';
+		$stag_replacement = '<' . $tag . '>';
+		$etag_replacement = '</' . $tag . '>';
+
+		return str_replace(array($stag, $etag), array($stag_replacement, $etag_replacement), $subject);
 	}
 }
 

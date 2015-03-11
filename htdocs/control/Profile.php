@@ -3,6 +3,12 @@ namespace control;
 
 class Profile {
 
+	public static function fail($cm, $params) {
+		// 404 redirect
+		$er = new \nav\ErrorRedirect($cm, '404');
+		$er->execute();
+	}
+
 	public static function match($cm, $params) {
 
 		// start session
@@ -20,7 +26,9 @@ class Profile {
 		$user = \dobj\User::createFromId($uid, $dal, $do2db);
 
 		if ($user == False) {
-			header('Location: ' . $cm->host_root . $cm->ds . '404.php');
+			// 404 redirect
+			$er = new \nav\ErrorRedirect($cm, '404');
+			$er->execute();
 		}
 
 		// get user information
@@ -47,7 +55,7 @@ class Profile {
 
 		if (isset($_SESSION['uid'])) {
 			$logged_in = true;
-			$site_user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db);
+			$site_user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db)->prepare($cm);
 
 			if ($site_user->id == $user->id) {
 				$guest = false;
@@ -137,7 +145,7 @@ class Profile {
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'profile' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
-			'user' => $user,
+			'user' => $user->prepare($cm),
 			'site_user' => $site_user,
 			'sections' => array(
 				'searchbar' => $searchbar,

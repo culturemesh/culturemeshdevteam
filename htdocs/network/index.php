@@ -14,11 +14,14 @@ if (strpos($cm->f_root, 'live') == False)
 else
   $al->setBasePath('/network');
 
-// set up maps
-$al->map('GET', '/', function() { echo 'No network chosen'; }, 'nonet');
+// success maps
 $al->map('GET', '/[i:id]/', 'control\Network#match', 'match_slash'); 
 $al->map('GET', '/[i:id]', 'control\Network#match', 'match'); 
-$al->map('GET', '/test', 'control\Network#test', 'test');
+
+// fail maps
+$al->map('GET', '/[*]', 'control\Network#fail', 'fail_alpha'); 
+$al->map('GET', '/[*]/', 'control\Network#fail', 'fail_alpha_slash'); 
+$al->map('GET', '/', 'control\Network#fail', 'no_arg');
 
 $match = $al->match();
 

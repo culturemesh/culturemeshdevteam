@@ -76,7 +76,7 @@ SQL
 		$m->setValues(array(
 			'query' => <<<SQL
 
-SELECT reply_count, COUNT(p.id_network) AS post_count
+SELECT (IFNULL(reply_count, 0) + COUNT(p.id_network)) AS post_count
 FROM posts p
 LEFT JOIN (SELECT id_network, COUNT(id_network) AS reply_count
 		FROM post_replies

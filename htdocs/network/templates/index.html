@@ -147,7 +147,9 @@
 			<div id="post-wall">
 				{{# page_vars.member }}
 				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.hostname }}/network_post.php" enctype="multipart/form-data">
-					<img id="profile-post" src="{{ vars.img_host_repo}}/{{ site_user.img_link }}" width="45" height="45">
+					<!--<img id="profile-post" src="{{ vars.img_host_repo}}/{{ site_user.img_link }}" width="45" height="45">-->
+
+					<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
 					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 					<div class="fileupload-error"></div>
 					<div id='post-form-panel' class="fileupload-panel"></div>
@@ -179,7 +181,7 @@
 				{{# page_vars.more_posts }}
 				<div>
 					<form class="more_posts" method="POST" action="{{ vars.hostname }}/network_more_posts.php">
-						<input type="hidden" id="nmp_lb" name="lb" value=11 />
+						<input type="hidden" id="nmp_lb" name="lb" value=10 />
 						<input type="hidden" id="nmp_ub" name="ub" value=10 />
 						<input type="hidden" id="nmp_nid" name="nid" value="{{ page_vars.nid }}" />
 						<button id="mp_button" class="post show">Load Older Posts</button>
@@ -273,22 +275,11 @@
 	</script>
 	{{/ get.eperror }}
 	<script>
-		var qs = new QueryStringParser();
+		if (qs == undefined)
+			var qs = new QueryStringParser();
+
 		if (qs.qsGet != null ) {
 
-			if (qs.qsGet['lerror'] != undefined) {
-				if (qs.qsGet['lerror'] == 'success') {
-					$('#signout_panel').children('p').text('You are now logged in!');
-					$('#signout_panel').show();
-					$('#signout_panel').fadeOut(5000);
-				}
-			}
-			if (qs.qsGet['rerror'] != undefined) {
-				if (qs.qsGet['rerror'] == 'success') {
-					$('#signout_panel').children('p').html('You are now registered! Click <a href="{{ vars.hostname }}/profile/{{ site_user.id }}">here</a> to see your profile page.');
-					$('#signout_panel').show();
-				}
-			}
 			if (qs.qsGet['lnerror'] != undefined) {
 				$('#lnerror').text(qs.qsGet['lnerror']);
 				$('#lnerror').fadeOut(5000);

@@ -23,7 +23,8 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 
 		$cm = new \Environment();
 
-		// get bounds
+		// add one to the upper bound so that we can check if there
+		// are more posts
 		$bounds = array($_POST['lb'], $_POST['ub'] + 1);
 
 		$network = new \dobj\Network();

@@ -47,6 +47,15 @@ class Event extends DisplayDObj {
 
 	public function getHTML($context, $vars) {
 
+		// list_vars
+		$list_vars = array();
+		$list_vars['item_class'] = $vars['item_class'];
+		
+		echo $list_vars['item_class'];
+
+		if ($list_vars['item_class'] == 'active-event')
+		  $list_vars['active'] = true;
+
 		// get vars
 		$cm = $vars['cm'];
 		$mustache = $vars['mustache'];
@@ -61,6 +70,7 @@ class Event extends DisplayDObj {
 				'event' => $this,
 				'host' => $this->getName(),
 				'date' => $this->formatDate('card'),
+				'list_vars' => $list_vars,
 				'vars' => $cm->getVars()
 				)
 			);
@@ -90,6 +100,7 @@ class Event extends DisplayDObj {
 				'user' => $user,
 				'attending' => $attending,
 				'owner' => $owner,
+				'list_vars' => $list_vars,
 				'date' => $this->formatDate('modal'),
 				'vars' => $cm->getVars()
 				)
@@ -102,6 +113,8 @@ class Event extends DisplayDObj {
 			return $mustache->render($template, array(
 				'event' => $this,
 				'host' => $this->getName(),
+				'date' => $this->formatDate('modal'),
+				'list_vars' => $list_vars,
 				'vars' => $cm->getVars()
 				)
 			);

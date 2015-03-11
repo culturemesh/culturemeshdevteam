@@ -36,11 +36,16 @@ cm.PostWall.prototype = {
 	// adds created post html to beginning of ul
 	_addPost: function(data, f) {
 
+		// clear post
+		this._clearPost();
+
 		if (data.error != 0) {
 		  alert(data.error);
 		}
 		else {
 		  $( this._wallUl ).prepend(data.html);
+		  $( this._wallUl ).children().first().hide();
+		  $( this._wallUl ).children().first().fadeIn('fast');
 
 		  // function from a parent
 		  this._boss._shoutOrders();

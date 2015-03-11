@@ -101,6 +101,29 @@ cm.FileUploader.prototype = {
 			}
 			*/
 	},
+	_clearPost: function() {
+
+		// get parent element
+		var length = $( '.fileupload-button' ).children().length;
+
+		// remove all but the last element
+		for (var i = 0; i < length-1; i++) {
+			$( '.fileupload-button input:first' ).remove();
+			delete this._inputList[i];
+		}
+
+		// move last thing to first place, if images were uploaded
+		if (length > 1) {
+			this._inputList[0] = this._inputList[i];
+			delete this._inputList[i];
+		}
+		
+		// reset inputList vars
+		this._inputListSize = 1;
+		this._inputList_i = 0;
+
+		this._panel._clearImages();
+	},
 	_createInputButton: function(element) {
 		var self = this;
 
@@ -369,6 +392,12 @@ cm.PreviewPanel.prototype = {
 		for (var i=0; i < target; i++)
 			reader.readAsDataURL(input.files[i]);
 	},
+	_clearImages: function() {
+		// probably add a fade
+		$( this._ul ).children().fadeOut('slow', function() {
+			$( this._ul ).empty();
+		});
+	}
 }
 
 cm.PostSubmit = function(o, FileUpload) {
@@ -455,6 +484,14 @@ cm.PostSubmit.prototype = {
 			var ff = self._onFailure.bind(data);
 			ff();
 		});
+	},
+	_clearPost: function() {
+
+		// replace with specified post area later
+		$('.post-text').val('');
+
+		// cancel images
+		this._FileUpload._clearPost();
 	},
 	_setOnSuccess: function(f) {
 		this._onSuccess = f;

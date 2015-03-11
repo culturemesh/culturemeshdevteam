@@ -124,6 +124,17 @@ class Image extends DisplayDObj {
 			'thumb' => $thumb
 		);
 	}
+
+	/*
+	 * Check if image is exists
+	 */
+	public function doesExist() {
+
+		if (file_exists($this->getPathAndName()['dir']))
+			return true;
+		else
+			return false;
+	}
 }
 
 ?>

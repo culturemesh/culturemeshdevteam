@@ -2,8 +2,11 @@
 namespace control;
 class Network {
 
-	public static function test($cm, $params) {
-		echo 'Test chamber';
+
+	public static function fail($cm, $params) {
+		// 404 redirect
+		$er = new \nav\ErrorRedirect($cm, '404');
+		$er->execute();
 	}
 
 	/*
@@ -12,9 +15,6 @@ class Network {
 	 */
 	public static function match($cm, $params) {
 
-		//echo $cm->host_root;
-		// $stuffs = $cm->getVars();
-		// echo $stuffs['home_path'];
 		$nid = $params['id'];
 
 		// set session var
@@ -27,9 +27,10 @@ class Network {
 		// load network
 		$network = \dobj\Network::createFromId($nid, $dal, $do2db);
 
-		// 404 Redirect
 		if ($network == False) {
-			header('Location: ' . $cm->host_root . $cm->ds . '404.php');
+			// 404 Redirect
+			$er = new \nav\ErrorRedirect($cm, '404');
+			$er->execute();
 		}
 
 		$network->getPosts($dal, $do2db);
@@ -49,7 +50,7 @@ class Network {
 
 			// check if user is registered
 			// if so, get user info
-			$site_user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db);
+			$site_user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db)->prepare($cm);
 
 			// see if user is registered
 			// in network
