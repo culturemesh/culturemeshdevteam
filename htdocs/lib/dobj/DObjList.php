@@ -133,21 +133,17 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 				// split on object
 				$section = $obj->getSplit($property);
 
-				// get nice things if there are more to get
-				// could fold into getSplit later
-				if (is_object($section))
-				  $section = $section->standOut();
+				// split into a compact string
+				// and also keep the parts recorded in object
+				// in case we need them in display
+				//
+				if (is_object($section)) {
+
+					$section_object = $section;
+				  	$section = $section->standOut();
+				}
 
 				$key = $property;
-
-				/*
-				// can simplify this section later
-				// blank to string
-				if (is_object($section))
-				  $key = $section->standOut();
-				else
-				  $key = $section;
-				 */
 			}
 
 			// check for existing value
@@ -175,6 +171,7 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 				array_push($splits, array(
 					'array' => $new_list,
 					'section' => $section,
+					'section_object' => $section_object,
 					'key' => $key)
 				);
 			}
