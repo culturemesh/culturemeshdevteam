@@ -151,8 +151,6 @@ class SectedDObjList extends DObjList {
 				}
 			}
 
-			var_dump($this->slist);
-
 			return $mustache->render($template, array(
 				 'vars' => $cm->getVars(),
 				 'list_vars' => $list_vars,
