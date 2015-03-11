@@ -51,8 +51,6 @@ class Event extends DisplayDObj {
 		$list_vars = array();
 		$list_vars['item_class'] = $vars['item_class'];
 		
-		echo $list_vars['item_class'];
-
 		if ($list_vars['item_class'] == 'active-event')
 		  $list_vars['active'] = true;
 
