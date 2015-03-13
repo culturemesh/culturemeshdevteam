@@ -17,7 +17,8 @@
 
 	"autoload": {
 		"psr-4": {
-			"Upload\\": "vendor/codeguy/src/Upload"
+			"Upload\\": "vendor/codeguy/src/Upload",
+			"twitter\\": "vendor/j7mbo/twitter-api-php/"
 		}
 	}
 }

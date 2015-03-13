@@ -1,0 +1,31 @@
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ stylesheets }}
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+	<div id="content">
+		<h1>Twitter Basics</h1>
+		<div>
+			<p><b>Basics Go Here</b></p>
+			<p><b>Sample Tweet</b></p>
+			<div>
+			{{ sample_tweet }}
+			</div>
+			<p><b>Network Jams</b></p>
+		</div>
+	</div>
+	{{/ content }}
+
+	{{$ body_scripts }}
+	{{/ body_scripts }}
+
+{{/ layout }}
