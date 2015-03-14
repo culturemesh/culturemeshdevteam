@@ -21,11 +21,42 @@
 			{{ sample_tweet }}
 			</div>
 			<p><b>Network Jams</b></p>
+			<div>
+			</div>
+			<p><b>Get Twitter languages</b></p>
+			<div>
+				<button id="get-twitter-languages-button">GO!!!</button>
+				<span id="get-twitter-languages-response"></span>
+			</div>
 		</div>
 	</div>
 	{{/ content }}
 
 	{{$ body_scripts }}
+	<script type="text/javascript">
+
+		$('#get-twitter-languages-button').on('click', function(e) {
+
+				// prevent default behavior
+				e.preventDefault();
+
+				var fn = new Ajax({
+						requestType: 'POST',
+						requestUrl: 'ops/get-twitter-json.php',
+						requestParameters: ' ',
+						data: '',
+						dataType : 'string',
+						sendNow: true
+						}, function(data) { 
+
+							// should return with a handsome table
+							//var result = JSON.parse(data);
+
+							$('#get-twitter-languages-response').text("The thing was successful at the thing");
+							$('#get-twitter-languages-response').fadeOut("slow");
+						});
+				});
+	</script>
 	{{/ body_scripts }}
 
 {{/ layout }}

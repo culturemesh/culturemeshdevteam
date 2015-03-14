@@ -221,4 +221,86 @@ class Network extends DisplayDObj {
 		
 		return $origin_str . ' in ' . $location_str;
 	}
+
+	/*
+	 * Returns array of info required to make Twitter API queries
+	 */
+	public function getTwitterApiInfo() {
+
+		// get location data
+		$location_name = $this->getLowestLocationComponent();
+
+		if (isset($this->language_origin)) { 
+
+			$origin_language_code = someFunction($this->language_origin);
+
+			return array(
+				'location_name' => $location_name,
+				'language_origin' => $this->language_origin,
+				'language_code' => $origin_language_code
+			);
+		}
+		else {
+
+		}
+	}
+
+	/*
+	 * Returns lowest component of origin for this particular
+	 * network 
+	 *
+	 * e.g. city < region < country
+	 */
+	public function getLowestOriginComponent() {
+
+		if (isset($this->language_origin))
+			return $this->language_origin;
+		if (isset($this->city_origin))
+			return $this->city_origin;
+		if (isset($this->region_origin))
+			return $this->region_origin;
+		if (isset($this->country_origin))
+			return $this->country_origin;
+
+		throw new \Exception("There is no origin data set for this network");
+	}
+
+	/*
+	 * Returns highest component of origin for this particular
+	 * network 
+	 *
+	 * e.g. country > region > city  
+	 */
+	public function getHighestOriginComponent() {
+
+		if (isset($this->language_origin))
+			return $this->language_origin;
+		if (isset($this->country_origin))
+			return $this->country_origin;
+		if (isset($this->region_origin))
+			return $this->region_origin;
+		if (isset($this->city_origin))
+			return $this->city_origin;
+
+		throw new \Exception("There is no origin data set for this network");
+	}
+
+
+	/*
+	 * Returns lowest component of location for this particular
+	 * network 
+	 *
+	 * e.g. city < region < country
+	 */
+	public function getLowestLocationComponent() {
+
+		if (isset($this->city_cur))
+			return $this->city_cur;
+		if (isset($this->region_cur))
+			return $this->region_cur;
+		if (isset($this->country_cur))
+			return $this->country_cur;
+
+		throw new \Exception("There is no location data set for this network");
+	}
 }
