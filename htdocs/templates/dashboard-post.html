@@ -3,7 +3,7 @@
 		<img id='profile-post' src='{{ post.img_link }}' class='{$i_class}' width='45' height='45'>
 	</div>
 	<div class='post-info'>
-		<h5 class='h-network'><a href='{{ cm.hostname }}/network/{{ post.id_network }}/?ap=true#post-{{ post.id }}'>{{ name }}</a></h5>
+		<h5 class='h-network'><a href='{{ vars.hostname }}/network/{{ post.id_network }}/?ap=true#post-{{ post.id }}'>{{ name }}</a></h5>
 		<p class='network'>{{ post.post_text }}</p>
 	</div>
 	<div class='clear'></div>
