@@ -8,6 +8,7 @@ nbproject/
 htdocs/error_log
 htdocs/error_log*
 htdocs/php.ini*
+htdocs/apc.php
 .DS_Store
 *error_log*
 culturemesh
