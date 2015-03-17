@@ -86,6 +86,17 @@ class Network extends DisplayDObj {
 			return false;
 	}
 
+	/*
+	 * Returns info necessary for generating
+	 * twitter search queries
+	 */
+	public function getTwitterInfo() {
+
+		return array(
+			'error' => 0
+		);
+	}
+
 	public function getPosts($dal, $do2db, $lobound=0, $upbound=10) {
 
 		if ($this->id == NULL) {

@@ -190,6 +190,11 @@
 				{{/ page_vars.more_posts }}
 				{{# get.ap }} lambda required
 				{{/ get.ap }}
+				<ul id="tweet-wall-ul" class="network">
+				{{# sections.tweets }}
+				{{{.}}}
+				{{/ sections.tweets }}
+				</ul>
 			</div>
 			</div>
 			<script>

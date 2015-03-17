@@ -2,6 +2,9 @@
 include("../environment.php");
 $cm = new \Environment();
 
+$memcache = new \Memcache();
+$memcache->connect('localhost', 11211) or die ("Could not connect");
+
 require_once("vendor/j7mbo/twitter-api-php/TwitterAPIExchange.php");
 
 // base layout
@@ -28,6 +31,9 @@ $tweets = json_decode($dump, true);
 
 $list = api\Twitter::JsonToTweets($tweets);
 
+// get a component mustache
+$m_comp = new \misc\MustacheComponent();
+
 // get engine
 $m = new Mustache_Engine(array(
   'pragmas' => array(Mustache_Engine::PRAGMA_BLOCKS),
@@ -46,7 +52,9 @@ $template = file_get_contents(__DIR__.$cm->ds.'templates'.$cm->ds.'twitter.html'
 $page_vars = array(
 	'vars' => $cm->getVars(),
 	'logged_in' => $logged_in,
-	'tweet' => $list[0]->getInfo()
+	'sample_tweet' => $list[0]->getHTML('network', array(
+		'cm' => $cm,
+	       	'mustache' => $m_comp))
 );
 
 echo $m->render($template, $page_vars);

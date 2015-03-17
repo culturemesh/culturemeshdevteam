@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpunit bootstrap='cmtest_startkapow.php'>
 	<testsuites>
+		<testsuite name='api'>
+			<directory>lib/api</directory>
+		</testsuite>
 		<testsuite name='hello'>
 			<directory>hello</directory>
 		</testsuite>

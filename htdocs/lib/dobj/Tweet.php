@@ -35,6 +35,8 @@ class Tweet extends Post {
 	protected $withheld_in_countries;
 	protected $withheld_scope;
 
+	private static $MAX_REPLIES = 4;
+
 	/*
 	 * Fills up Tweet object with properties (usually)
 	 *  from a json encoded twitter api call
@@ -106,6 +108,66 @@ class Tweet extends Post {
 
 	public function getHTML($context, $vars) {
 
+		$cm = $vars['cm'];
+		$mustache = $vars['mustache'];
+
+		$network = $vars['network'];
+
+		// activate replies_html
+		$this->replies_html = array();
+
+		$show_replies = false;
+		if (count($this->replies) > self::$MAX_REPLIES) {
+			$show_replies = true;
+		}
+
+		// get html for replies
+		for ($i = 0; $i < count($this->replies) && $i < self::$MAX_REPLIES; $i++) {
+
+			$reply = $this->replies[$i];
+			$html = $reply->getHTML($context, $vars);
+			array_push($this->replies_html, $html);
+		}
+
+		// get name
+		$name = $this->getName();
+
+		// check authentication
+		$delete_button = false;
+		$reply_request = false;
+
+		$site_user = NULL;
+		if (isset($_SESSION['uid'])) {
+			$active = true;
+			$site_user = $vars['site_user'];
+
+			// if we're making a new post
+			// --- give own switch statement later
+			if ($name == 'UNNAMED USER') {
+				$name = $site_user->getName();
+				$this->img_link = $site_user->img_link;
+			}
+
+			$reply_request = $site_user->checkNetworkRegistration($network->id);
+
+			if ($this->id_user == $site_user->id) {
+				$delete_button = true;
+			}
+		}
+
+		// get template
+		$template = file_get_contents($cm->template_dir . $cm->ds . 'network-tweet.html');
+		return $mustache->render($template, array(
+			'active' => true,
+			'delete_button' => $delete_button,
+			'reply_request' => $reply_request,
+			'show_replies' => $show_replies,
+			'tweet' => $this->getInfo(),
+			'site_user' => $site_user,
+			'replies' => $this->replies_html,
+			'vars' => $cm->getVars()
+			)
+		);
 	}
 }
 

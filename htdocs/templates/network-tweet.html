@@ -4,20 +4,6 @@
 	</div>
 	<div class='post-info'>
 		<h5 class='h-network post'><b>{{ tweet.name }}</b>&nbsp;&nbsp;&nbsp;&nbsp;@{{ tweet.screen_name }}</h5> 
-
-		{{# delete_button }}
-		<div class='reply-button delete'>
-			<form id='post-delete-{{ post.id }}' class='personal post_delete' method="POST" action="{{ vars.hostname }}/network_post_delete.php">
-				<noscript>
-				<input type="hidden" name="NOJS" value="NOJS"/>
-				</noscript>
-				<input type="hidden" name="replies" value="{{ post.reply_count }}" />
-				<input type="hidden" name="pid" value="{{ post.id }}"/>
-				<input type="hidden" name="nid" value="{{ post.id_network }}"/>
-				<button class='post delete-button user'>&#10006</button>
-			</form>
-		</div>
-		{{/ delete_button }}
 		<div class="clear"></div>
 		<p class='network'>{{{ tweet.text }}}</p>
 		<div>

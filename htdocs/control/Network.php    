@@ -38,6 +38,14 @@ class Network {
 		$network->getPostCount($dal, $do2db);
 		$network->getMemberCount($dal, $do2db);
 
+		// get TWITTER things
+		$twitter_query = new \api\TwitterQuery();
+		$twitter_query->buildSearch($network);
+		$twitter_call = new \api\TwitterApiCall($cm, $twitter_query);
+		$twitter_json = $twitter_call->execute();
+		$tweets = \api\Twitter::JsonToTweets($twitter_json);
+
+		
 		// check if user is logged in
 		// check registration
 		$site_user = NULL;
@@ -131,6 +139,14 @@ class Network {
 			$em_html = NULL;
 		}
 
+		// get TWITTER html
+		$tweets_html = $tweets->getHTML('network', array(
+			'cm' => $cm,
+			'network' => $network,
+			'site_user' => $site_user,
+			'mustache' => $m_comp
+		));
+
 		// check if we need more posts
 		$more_posts = false;
 
@@ -164,6 +180,7 @@ class Network {
 				'lrg_network' => 'Large Network',
 				'network_title' => $network->getTitle(),
 				'posts' => $p_html,
+				'tweets' => $tweets_html,
 				'event_slider' => $ec_html,
 				'event_modals' => $em_html),
 			'vars' => $cm->getVars(),

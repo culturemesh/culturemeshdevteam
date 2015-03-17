@@ -1,9 +1,11 @@
 <?php
-
 include("../../environment.php");
 $cm = new \Environment();
 
 require_once("vendor/j7mbo/twitter-api-php/TwitterAPIExchange.php");
+
+// base layout
+$base = file_get_contents($cm->template_dir . $cm->ds . 'base.html');
 
 // twitter api call
 $settings = array(
@@ -13,25 +15,14 @@ $settings = array(
     'consumer_secret' => $GLOBALS['TWITTER_CONSUMER_SECRET']
 );
 
-$url = 'https://api.twitter.com/1.1/help/languages.json';
+$url = 'https://api.twitter.com/1.1/application/rate_limit_status.json';
+$getfield = '?resources=search';
 $requestMethod = 'GET';
 
 $twitter = new TwitterAPIExchange($settings);
-$dump = $twitter->buildOauth($url, $requestMethod)
+$dump = $twitter->setGetfield($getfield)
+             ->buildOauth($url, $requestMethod)
              ->performRequest();
 
-$path = '/home3/culturp7/public_html/culturemesh-live/htdocs' . '/lib/api/twitter-languages.json';
-
-if (file_put_contents($path, $dump ) ) {
-
-	echo json_encode(array('error' => 0));
-	exit();
-}
-
-else {
-	echo json_encode(array('error' => 1,
-				'path' => $path));
-	exit();
-}
-
+echo $dump;
 ?>
