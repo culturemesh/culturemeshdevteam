@@ -20,6 +20,9 @@ class Network {
 		// set session var
 		$_SESSION['cur_network'] = $nid;
 
+		// new cache object
+		$cache = new \misc\Cache($cm);
+
 		// prepare for db
 		$dal = new \dal\DAL($cm->getConnection());
 		$dal->loadFiles();
@@ -34,18 +37,30 @@ class Network {
 		}
 
 		$network->getPosts($dal, $do2db);
+		$network->getTweets($dal, $do2db);
 		$network->getEvents($dal, $do2db);
 		$network->getPostCount($dal, $do2db);
 		$network->getMemberCount($dal, $do2db);
 
-		// get TWITTER things
-		$twitter_query = new \api\TwitterQuery();
-		$twitter_query->buildSearch($network);
-		$twitter_call = new \api\TwitterApiCall($cm, $twitter_query);
-		$twitter_json = $twitter_call->execute();
-		$tweets = \api\Twitter::JsonToTweets($twitter_json);
+		// get TWITTER things if they are not cached
+		$tweet_key = 'n' . $network->id . '_tweets';
 
-		
+		if (!$tweets = $cache->fetch($tweet_key)) {
+
+			// make an api call to the lords of twitter
+			$twitter_query = new \api\TwitterQuery();
+			$twitter_query->buildSearch($network);
+			$twitter_call = new \api\TwitterApiCall($cm, $twitter_query);
+			$twitter_json = $twitter_call->execute();
+			$tweets = \api\Twitter::JsonToTweets($twitter_json);
+
+			// must be a way to look out for duplicate tweets
+		}
+
+		//add tweets to posts
+		if($network->posts->merge( $tweets ) === False)
+			echo 'FAIL';
+
 		// check if user is logged in
 		// check registration
 		$site_user = NULL;
@@ -139,6 +154,7 @@ class Network {
 			$em_html = NULL;
 		}
 
+		/*
 		// get TWITTER html
 		$tweets_html = $tweets->getHTML('network', array(
 			'cm' => $cm,
@@ -146,6 +162,7 @@ class Network {
 			'site_user' => $site_user,
 			'mustache' => $m_comp
 		));
+		 */
 
 		// check if we need more posts
 		$more_posts = false;
@@ -180,7 +197,7 @@ class Network {
 				'lrg_network' => 'Large Network',
 				'network_title' => $network->getTitle(),
 				'posts' => $p_html,
-				'tweets' => $tweets_html,
+		//		'tweets' => $tweets_html,
 				'event_slider' => $ec_html,
 				'event_modals' => $em_html),
 			'vars' => $cm->getVars(),

@@ -10,17 +10,30 @@ else {
 	include_once('html_builder.php');
 	
 	include_once 'environment.php';
+
+	$cm = new \Environment();
+	$m_comp = new \misc\MustacheComponent();
+	$template = $cm->template_dir . $cm->ds . 'network-reply-prompt.html';
+
 	// get user and post
 	$uid = $_POST['uid'];
 	$pid = $_POST['pid'];
 	$nid = $_POST['nid'];
+
+
+	if (isset($tid)) {
+
+	}
+
+	if (isset($pid)) {
+		$response['html'] = HTMLBuilder::displayReplyPrompt($pid, $uid, $nid, \Environment::host_root());
+	}
 
 	$response = array(
 		'error' => NULL,
 		'html' => NULL);
 
 	$response['error'] = 0;
-	$response['html'] = HTMLBuilder::displayReplyPrompt($pid, $uid, $nid, \Environment::host_root());
 
 	echo json_encode($response);
 }

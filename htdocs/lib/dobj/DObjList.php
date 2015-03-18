@@ -20,6 +20,9 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		$this->position = 0;
 	}
 
+	/*
+	 * Insert dObj into list
+	 */
 	public function dInsert($item) {
 
 		if (!$item instanceOf DObj) {
@@ -29,6 +32,28 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		array_push($this->dlist, $item);
 
 		return true;
+	}
+
+	/*
+	 * Merge one array (or DObjList with this one)
+	 *
+	 * Could easily allow for multiple arrays in the future
+	 *
+	 */
+	public function merge($candidate) {
+
+		if (get_class($candidate) == 'dobj\DObjList') {
+			$this->dlist = array_merge($this->dlist, $candidate->dlist);
+			return True;
+		}
+
+		if (is_array($candidate)) {
+			$this->dlist = array_merge($this->dlist, $candidate);
+			return True;
+		}
+
+		// if neither option was reached
+		return False;
 	}
 
 	/////// DISPLAY FUNCTIONS ///////////
@@ -51,8 +76,11 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 
 		// check if the item is displayable
 		// by checking first item in list
+		//
 		if (count($this->dlist) > 0) {
+
 			$first_thing = $this->dlist[0];
+
 			if (method_exists($first_thing, 'getHTML')) {
 				$displayable = true;
 			}
