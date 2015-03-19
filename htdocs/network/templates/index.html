@@ -172,11 +172,14 @@
 					<input type="hidden" name="post_original" value="NULL"></input>
 				</form>
 				-->
+				{{{ sections.post_wall }}}
+				<!--
 				<ul id="post-wall-ul" class="network">
 				{{# sections.posts }}
 				{{{.}}}
 				{{/ sections.posts }}
 				</ul>
+				-->
 				<div class="clear"></div>
 				{{# page_vars.more_posts }}
 				<div>
@@ -190,7 +193,6 @@
 				{{/ page_vars.more_posts }}
 				{{# get.ap }} lambda required
 				{{/ get.ap }}
-				<ul id="tweet-wall-ul" class="network">
 				{{# sections.tweets }}
 				{{{.}}}
 				{{/ sections.tweets }}

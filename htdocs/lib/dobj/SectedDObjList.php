@@ -89,6 +89,8 @@ class SectedDObjList extends DObjList {
 		//
 		if ($this->display_mode == 'class')
 		  $list_vars['section_header'] = False;
+		else if ($this->display_mode == 'none')
+		  $list_vars['section_header'] = False;
 		else
 		  $list_vars['section_header'] = True;
 
@@ -162,11 +164,24 @@ class SectedDObjList extends DObjList {
 		  throw new \Exception('This list is empty');
 	}
 
-	// Lotsa recursion in this here class
-	//
-	// returns true if list was ordered succcessfully
-	// 	returns false if key not found
-	//
+	/*
+	 * Orders list by section
+	 *
+	 *  Params
+	 *    target_key - the name of the key that we wish to order by
+	 *    arrangement - how we wish to order
+	 *       possible values:
+	 *         - 'asc' : ascending order
+	 *         - 'desc' : descending order
+	 *         - associative array : 
+	 *            keys => the key here represents the weight of the value,
+	 *                lower values are given priority
+	 *            value => the value is the value of the section
+	 *
+	 *  Returns
+	 *    True - if list was ordered successfully
+	 *    False - if key was not found
+	 */
 	public function order($target_key, $arrangement) {
 
 		if ($this->slist[0]['key'] == $target_key) {
@@ -215,6 +230,8 @@ class SectedDObjList extends DObjList {
 		else {
 			for ($i = 0; $i < count($this); $i++) {
 
+				// Lotsa recursion in this here class
+				//
 				if ($this->slist[$i]['array'] instanceof SectedDObjList)
 				   $this->slist[$i]['array']->order($target_key, $arrangement);
 			}

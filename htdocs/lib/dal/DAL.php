@@ -60,6 +60,9 @@ class DAL {
 
 		include_once('reg-event.php');
 		\registerEvent($this);
+
+		include_once('reg-tweet.php');
+		\registerTweet($this);
 	}
 
 	public function getRegistryCount() {

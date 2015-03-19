@@ -120,6 +120,57 @@ class Network extends DisplayDObj {
 		}
 	}
 
+
+	public function getTweets($dal, $do2db, $lobound=0, $upbound=10) {
+
+		if ($this->id == NULL) {
+			throw new Exception('No id is associated with this network object');
+		}
+
+		$args = new Blank();
+		$args->id_network = $this->id;
+		$args->lobound = $lobound;
+		$args->upbound = $upbound;
+
+		$this->tweets = $do2db->execute($dal, $args, 'getTweetsByNetworkId');
+
+		if (get_class($this->tweets) == 'PDOStatement') {
+			$this->tweets = new DObjList();
+		}
+
+		foreach ($this->tweets as $tweet) {
+			$tweet->getReplies($dal, $do2db);
+		}
+	}
+
+	/* 
+	 * Merges all posts with all tweets
+	 * Makes sure no tweets are duplicated (as can happen with cached stuff)
+	 *
+	 * Not the cleanest solution, but I'm under a time crunch at the moment
+	 * Will take out the parameter later and get it below O(n^2)
+	 *
+	 */
+	public function mergePostsAndTweets($api_tweets) {
+
+		// get saved tweets, check to see that they aren't in api tweets
+		foreach ($this->tweets as $tweet) {
+
+			for($i=0; $i<count($api_tweets); $i++) {
+
+				if( $api_tweets[$i]->id == $tweet->id ) {
+
+					unset($api_tweets[$i]);
+					$api_tweets->array_values();
+				}
+			}
+		}
+
+		// merge all the arrays
+		$this->posts->merge($this->tweets);
+		$this->posts->merge($api_tweets);
+	}
+
 	public function getPostCount($dal, $do2db) {
 
 		if ($this->id == NULL) {

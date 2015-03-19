@@ -37,15 +37,20 @@ class Network {
 		}
 
 		$network->getPosts($dal, $do2db);
+
 		$network->getTweets($dal, $do2db);
+
 		$network->getEvents($dal, $do2db);
 		$network->getPostCount($dal, $do2db);
 		$network->getMemberCount($dal, $do2db);
 
+//		$network->posts->merge($network->tweets);
+
 		// get TWITTER things if they are not cached
 		$tweet_key = 'n' . $network->id . '_tweets';
+		$tweets = $cache->fetch($tweet_key);
 
-		if (!$tweets = $cache->fetch($tweet_key)) {
+		if ($tweets == False) {
 
 			// make an api call to the lords of twitter
 			$twitter_query = new \api\TwitterQuery();
@@ -54,12 +59,56 @@ class Network {
 			$twitter_json = $twitter_call->execute();
 			$tweets = \api\Twitter::JsonToTweets($twitter_json);
 
+			// add tweets to cache
+			$TIME_TO_LIVE = 30; // 30 minutes, or two call cycles
+			$cache->add($tweet_key, $tweets, $TIME_TO_LIVE * 60);
+
 			// must be a way to look out for duplicate tweets
 		}
 
 		//add tweets to posts
-		if($network->posts->merge( $tweets ) === False)
-			echo 'FAIL';
+		$network->mergePostsAndTweets( $tweets );
+
+		// add tweets to post count
+		$network->post_count += count($tweets);
+
+		// put tweets and posts all together
+		$network->posts = $network->posts->splits(function( $obj ) {
+
+			if ( get_class($obj) == 'dobj\Tweet') {
+
+				return array (
+					'section' => 2,
+					'key' => 'rank');
+			} // end if
+
+			else if (get_class($obj) == 'dobj\Post') {
+
+				$now = new \DateTime();
+				$date = new \DateTime( $obj->post_date );
+
+				// returns diffence between dates,
+				// forced to be positive
+				$interval = $now->diff($date, true);
+				$diff = (int) $interval->format('%a');
+
+				if ($diff < 30) {
+					return array (
+						'section' => 1,
+						'key' => 'rank');
+				} // endif 
+
+				else {
+					return array (
+						'section' => 3,
+						'key' => 'rank');
+				} // end else
+
+			} // end else if
+
+		}, 'inline'); // end function
+
+		$network->posts->order('rank', 'asc');
 
 		// check if user is logged in
 		// check registration
@@ -103,7 +152,9 @@ class Network {
 
 		try
 		{
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-postwall.html');
 			$p_html = $network->posts->getHTML('network', array(
+				'list_template' => $template,
 				'cm' => $cm,
 				'network' => $network,
 				'site_user' => $site_user,
@@ -154,16 +205,6 @@ class Network {
 			$em_html = NULL;
 		}
 
-		/*
-		// get TWITTER html
-		$tweets_html = $tweets->getHTML('network', array(
-			'cm' => $cm,
-			'network' => $network,
-			'site_user' => $site_user,
-			'mustache' => $m_comp
-		));
-		 */
-
 		// check if we need more posts
 		$more_posts = false;
 
@@ -196,8 +237,7 @@ class Network {
 				'searchbar' => $searchbar,
 				'lrg_network' => 'Large Network',
 				'network_title' => $network->getTitle(),
-				'posts' => $p_html,
-		//		'tweets' => $tweets_html,
+				'post_wall' => $p_html,
 				'event_slider' => $ec_html,
 				'event_modals' => $em_html),
 			'vars' => $cm->getVars(),
@@ -215,6 +255,7 @@ class Network {
 			'site_user' => $site_user
 		);
 
+		// display the page proudly, chieftain
 		echo $m->render($template, $page_vars);
 	}
 }

@@ -1,6 +1,6 @@
 <li class='network-post'>
 	<div class='post-img'>
-		<img id='profile-post' src='{{ tweet.image_url }}' width='45' height='45'>
+		<img id='profile-post' src='{{ tweet.profile_image }}' width='45' height='45'>
 	</div>
 	<div class='post-info'>
 		<h5 class='h-network post'><b>{{ tweet.name }}</b>&nbsp;&nbsp;&nbsp;&nbsp;@{{ tweet.screen_name }}</h5> 
@@ -20,7 +20,12 @@
 				</noscript>
 				<input type="hidden" name="uid" value="{{ site_user.id }}"/>
 				<input type="hidden" name="tid" value="{{ tweet.id }}" />
-				<input type="hidden" name="nid" value="{{ post.id_network }}"/>
+				<input type="hidden" name="tweet_text" value="{{ tweet.text }}" />
+				<input type="hidden" name="tweet_date" value="{{ tweet.timestamp }}" />
+				<input type="hidden" name="name" value="{{ tweet.name }}" />
+				<input type="hidden" name="profile_image" value="{{ tweet.profile_image }}" />
+				<input type="hidden" name="screen_name" value="{{ tweet.screen_name }}" />
+				<input type="hidden" name="nid" value="{{ network.id }}" />
 				<button class='post'>Reply</button>
 			</form>
 		</div>

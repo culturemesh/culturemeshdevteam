@@ -71,7 +71,7 @@ class Cache {
 	 *   overwrite - if true, will overwrite if key is already present in cache
 	 *
 	 */
-	public function add($key, $value, $ttl, $overwrite=True) {
+	public function add($key, $value, $ttl=0, $overwrite=True) {
 
 		$real_key = $this->host_prefix . $key;
 

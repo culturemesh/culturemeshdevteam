@@ -28,6 +28,7 @@ if ($nid == "") {
 		echo json_encode($response);
 	}
 }
+
 // can't figure out user or parent post
 else if ($uid == "" || $id_parent == "") {
 	//mysqli_close($con);
