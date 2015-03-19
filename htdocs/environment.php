@@ -143,9 +143,6 @@ final class Environment {
 
 	private function setupAutoload() {
 
-		// get twitterapiexchange
-		include "vendor/j7mbo/twitter-api-php/TwitterAPIExchange.php";
-
 		// get composer autoload
 		include 'vendor/autoload.php';
 

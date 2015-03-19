@@ -33,7 +33,7 @@ class TwitterApiCall {
 		$getfield = $this->query->getQuery();
 		$requestMethod = 'GET';
 
-		$twitter = new \TwitterAPIExchange($settings);
+		$twitter = new TwitterAPIExchange($settings);
 		$dump = $twitter->setGetfield($getfield)
 			     ->buildOauth($url, $requestMethod)
 			     ->performRequest();
