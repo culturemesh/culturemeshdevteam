@@ -12,3 +12,4 @@ htdocs/php.ini*
 *error_log*
 culturemesh
 htdocs/cache/
+htdocs/apc.php

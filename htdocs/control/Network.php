@@ -48,6 +48,7 @@ class Network {
 
 		// get TWITTER things if they are not cached
 		$tweet_key = 'n' . $network->id . '_tweets';
+/*
 		$tweets = $cache->fetch($tweet_key);
 
 		if ($tweets == False) {
@@ -65,6 +66,13 @@ class Network {
 
 			// must be a way to look out for duplicate tweets
 		}
+*/
+		// make an api call to the lords of twitter
+		$twitter_query = new \api\TwitterQuery();
+		$twitter_query->buildSearch($network);
+		$twitter_call = new \api\TwitterApiCall($cm, $twitter_query);
+		$twitter_json = $twitter_call->execute();
+		$tweets = \api\Twitter::JsonToTweets($twitter_json);
 
 		//add tweets to posts
 		$network->mergePostsAndTweets( $tweets );

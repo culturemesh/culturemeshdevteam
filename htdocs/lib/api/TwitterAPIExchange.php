@@ -35,7 +35,7 @@ class TwitterAPIExchange
     {
         if (!in_array('curl', get_loaded_extensions())) 
         {
-            throw new Exception('You need to install cURL, see: http://curl.haxx.se/docs/install.html');
+            throw new \Exception('You need to install cURL, see: http://curl.haxx.se/docs/install.html');
         }
         
         if (!isset($settings['oauth_access_token'])
@@ -43,7 +43,7 @@ class TwitterAPIExchange
             || !isset($settings['consumer_key'])
             || !isset($settings['consumer_secret']))
         {
-            throw new Exception('Make sure you are passing in the correct parameters');
+            throw new \Exception('Make sure you are passing in the correct parameters');
         }
 
         $this->oauth_access_token = $settings['oauth_access_token'];
@@ -63,7 +63,7 @@ class TwitterAPIExchange
     {
         if (!is_null($this->getGetfield())) 
         { 
-            throw new Exception('You can only choose get OR post fields.'); 
+            throw new \Exception('You can only choose get OR post fields.'); 
         }
         
         if (isset($array['status']) && substr($array['status'], 0, 1) === '@')
@@ -87,7 +87,7 @@ class TwitterAPIExchange
     {
         if (!is_null($this->getPostfields())) 
         { 
-            throw new Exception('You can only choose get OR post fields.'); 
+            throw new \Exception('You can only choose get OR post fields.'); 
         }
         
         $search = array('#', ',', '+', ':');
@@ -131,7 +131,7 @@ class TwitterAPIExchange
     {
         if (!in_array(strtolower($requestMethod), array('post', 'get')))
         {
-            throw new Exception('Request method must be either POST or GET');
+            throw new \Exception('Request method must be either POST or GET');
         }
         
         $consumer_key = $this->consumer_key;
@@ -182,7 +182,7 @@ class TwitterAPIExchange
     {
         if (!is_bool($return)) 
         { 
-            throw new Exception('performRequest parameter must be true or false'); 
+            throw new \Exception('performRequest parameter must be true or false'); 
         }
         
         $header = array($this->buildAuthorizationHeader($this->oauth), 'Expect:');
