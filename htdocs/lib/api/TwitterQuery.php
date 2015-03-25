@@ -203,7 +203,8 @@ class TwitterQuery {
 			$end = substr($this->query, -3);
 
 			if ($end !== '?q=') {
-				$this->query .= $this->op_space . $this->op_or . $this->op_space;
+//				$this->query .= $this->op_space . $this->op_or . $this->op_space;
+				$this->query .= $this->op_space;
 			}
 
 			$this->query .= $this->replaceSpace( $arg['basic'] );
@@ -246,7 +247,8 @@ class TwitterQuery {
 		$end = substr($this->query, -3);
 
 		if ($end !== '?q=') {
-			$this->query .= $this->op_space . $this->op_or . $this->op_space;
+			//$this->query .= $this->op_space . $this->op_or . $this->op_space;
+			$this->query .= $this->op_space;
 		}
 
 		// replace spaces and add quotes
