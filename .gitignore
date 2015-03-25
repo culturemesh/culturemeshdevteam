@@ -11,5 +11,6 @@ htdocs/php.ini*
 .DS_Store
 *error_log*
 culturemesh
-htdocs/cache/
+htdocs/cache
+htdocs/cache*
 htdocs/apc.php

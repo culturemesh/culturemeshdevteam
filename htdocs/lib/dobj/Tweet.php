@@ -189,11 +189,41 @@ class Tweet extends Post {
 			'id' => $this->id,
 			'name' => $name,
 			'screen_name' => $screen_name,
-			'text' => $this->text,
+			'text' => $this->formatText(),
 			'date' => $this->getRelativeDate(),
 			'timestamp' => $this->created_at,
 			'profile_image' => $profile_image_url
 		);
+	}
+
+	/*
+	 * For now, adds anchor tags to tweets (if there are any twitter urls present)
+	 *
+	 * Returns:
+	 * 	text with anchor tags
+	 */
+	public function formatText() {
+
+		$raw_text = $this->getText();
+
+		// autodetect links w/o tags
+		$al_match = "#(http\:\/\/t\.co\/)+([a-zA-Z0-9]+)#";
+		$al_replace = '<a target=\'_blank\' href=\'${1}${2}\'>${1}${2}</a>';
+		$new_text = preg_replace($al_match, $al_replace, $raw_text);
+
+		return $new_text;
+	}
+
+	/*
+	 * Returns a tweets text
+	 *
+	 * Inherited from Post, but modified
+	 *
+	 * Returns
+	 * 	$this->text
+	 */
+	public function getText() {
+		return $this->text;
 	}
 
 	public function getRelativeDate() {

@@ -42,7 +42,7 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 		$query = new api\TwitterQuery();
 		$query->buildSearch($this->location_network);
 
-		$this->assertEquals('https://api.twitter.com/1.1/search/tweets.json?q=Detroit%20OR%20China', $query->getSearch());
+		$this->assertEquals('https://api.twitter.com/1.1/search/tweets.json?q=Detroit%20OR%20China&result_type=mixed', $query->getSearch());
 	}
 
 	public function testLanguageNetworkBuildSearch() {
@@ -50,9 +50,14 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 		$query = new api\TwitterQuery();
 		$query->buildSearch($this->language_network);
 
-		$this->assertEquals('https://api.twitter.com/1.1/search/tweets.json?q=Detroit%20OR%20lang:zh-tw', $query->getSearch());
+		$this->assertEquals('https://api.twitter.com/1.1/search/tweets.json?q=Detroit%20OR%20Chinese&lang=zh-tw&result_type=mixed', $query->getSearch());
 	}
 
+	/*
+	 * Tests to make sure a proper hashtag is built
+	 * for locations with whitespace in the middle
+	 *
+	 */
 	public function testHashNetworkBuildSearch() {
 
 		$this->location_network = new dobj\Network();
@@ -65,7 +70,17 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 		$query = new api\TwitterQuery();
 		$query->buildSearch($this->location_network);
 
-		$this->assertEquals('https://api.twitter.com/1.1/search/tweets.json?q=Grand%20Rapids%20OR%20%23GrandRapids%20OR%20China', $query->getSearch());
+		$this->assertEquals('https://api.twitter.com/1.1/search/tweets.json?q=%23GrandRapids%20OR%20%22Grand%20Rapids%22%20OR%20China&result_type=mixed', $query->getSearch());
+	}
+
+	public function testSlashLanguageNetworkBuildSearch() {
+
+		$this->language_network->language_origin = 'Mandarin Chinese/Putonghua';
+
+		$query = new api\TwitterQuery();
+		$query->buildSearch($this->language_network);
+
+		$this->assertEquals('https://api.twitter.com/1.1/search/tweets.json?q=Detroit%20OR%20%23MandarinChinese%20OR%20%22Mandarin%20Chinese%22%20OR%20Putonghua&lang=zh-tw&result_type=mixed', $query->getSearch());
 	}
 }
 

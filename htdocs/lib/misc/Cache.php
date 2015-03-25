@@ -5,6 +5,7 @@ class Cache {
 
 	private $cm;
 	private $host_prefix;
+	private $cache;
 
 	/*
 	 * Constructor
@@ -29,6 +30,12 @@ class Cache {
 		//
 		$prefix = substr(md5($this->cm->hostname), 0, 3);
 		$this->host_prefix = $prefix . '_';
+
+		// Create the nice cache
+		//
+		\phpFastCache::setup('storage', 'files');
+		\phpFastCache::setup('path', $cm->cache_dir);
+		$this->cache = phpFastCache();
 	}
 
 	/*
@@ -47,14 +54,14 @@ class Cache {
 
 		$real_key = $this->host_prefix . $key;
 
-		$result = apc_fetch($real_key, $success);
+		$result = $this->cache->get($real_key);
 
 		// Not sure what result returns if nothing is found
 		//   the documentation is unclear
 		//
 		//   So we'll just have this if statement here
 		//
-		if ($success == True)
+		if ($result !== NULL)
 			return $result;
 		else
 			return False;
@@ -76,12 +83,36 @@ class Cache {
 		$real_key = $this->host_prefix . $key;
 
 		if ($overwrite === True) {
-			return apc_store($real_key, $value, $ttl);
+			return $this->cache->set($real_key, $value, $ttl);
 		}
 		else {
-			return apc_add($real_key, $value, $ttl);
+			return $this->cache->set($real_key, $value, $ttl);
 		}
 
+	}
+
+	/*
+	 * WARNING ** DON'T USE, NOT WORKING ***
+	 *
+	 * Checks to see if a key exists in the cache already
+	 *
+	 * Params:
+	 * 	$key - the identifier key
+	 * Returns:
+	 * 	True if it exists
+	 * 	False if it don't
+	 *
+	 */
+	public function exists($key) {
+
+		$real_key = $this->host_prefix . $key;
+		return $this->cache->isExisting($real_key);
+	}
+
+	public function getInfo($key) {
+
+		$real_key = $this->host_prefix . $key;
+		return $this->cache->getInfo($real_key);
 	}
 }
 

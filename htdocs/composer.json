@@ -2,7 +2,8 @@
 	"require": {
 		"respect/validation": "*",
 		"mustache/mustache": "~2.7",
-	        "altorouter/altorouter": "1.1.0"
+	        "altorouter/altorouter": "1.1.0",
+		"phpfastcache/phpfastcache": "2.4.2"
 	},
 
 	"require-dev": {

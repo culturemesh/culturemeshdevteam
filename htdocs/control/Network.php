@@ -48,10 +48,10 @@ class Network {
 
 		// get TWITTER things if they are not cached
 		$tweet_key = 'n' . $network->id . '_tweets';
-/*
-		$tweets = $cache->fetch($tweet_key);
 
-		if ($tweets == False) {
+		$tweets_exist = $cache->exists($tweet_key);
+
+		if ($tweets_exist == False) {
 
 			// make an api call to the lords of twitter
 			$twitter_query = new \api\TwitterQuery();
@@ -63,16 +63,11 @@ class Network {
 			// add tweets to cache
 			$TIME_TO_LIVE = 30; // 30 minutes, or two call cycles
 			$cache->add($tweet_key, $tweets, $TIME_TO_LIVE * 60);
-
-			// must be a way to look out for duplicate tweets
 		}
-*/
-		// make an api call to the lords of twitter
-		$twitter_query = new \api\TwitterQuery();
-		$twitter_query->buildSearch($network);
-		$twitter_call = new \api\TwitterApiCall($cm, $twitter_query);
-		$twitter_json = $twitter_call->execute();
-		$tweets = \api\Twitter::JsonToTweets($twitter_json);
+		else {
+
+			$tweets = $cache->fetch($tweet_key);
+		}
 
 		//add tweets to posts
 		$network->mergePostsAndTweets( $tweets );

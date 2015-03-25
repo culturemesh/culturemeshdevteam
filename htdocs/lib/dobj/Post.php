@@ -298,7 +298,6 @@ class Post extends DisplayDObj {
 
 		// autodetect links w/o tags
 		$al_match = "#((?:http|https|ftp)\:\/\/)*([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
-		//$al_match = "#((?:http|https|ftp)\:\/\/)*({[a-zA-Z0-9]+\.}+[a-zA-Z0-9]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
 		$al_replace = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
 		$new_text = preg_replace($al_match, $al_replace, $no_ltag['replacement']);
 

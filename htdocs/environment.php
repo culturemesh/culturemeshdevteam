@@ -18,6 +18,7 @@ final class Environment {
 	private $f_root; // needed for AltoRouter
 	private $ds;
 	private $template_dir;
+	private $cache_dir;
 	private $env_file;
 	private $img_dir;
 	private $img_repo_dir;
@@ -73,6 +74,7 @@ final class Environment {
 		$this->img_repo_dir = '/home3/culturp7/public_html/user_images';
 		$this->blank_img;
 		$this->template_dir = self::$site_root.DIRECTORY_SEPARATOR.'templates';
+		$this->cache_dir = self::$site_root.DIRECTORY_SEPARATOR.'cache';
 		$this->ds = DIRECTORY_SEPARATOR;
 		self::$environment = $this;
 	}
@@ -145,6 +147,7 @@ final class Environment {
 
 		// get composer autoload
 		include 'vendor/autoload.php';
+		require_once('vendor/phpfastcache/phpfastcache/phpfastcache.php');
 
 		// set up autoloads
 		spl_autoload_register('Environment::autoloadLib');
