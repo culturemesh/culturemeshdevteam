@@ -266,3 +266,83 @@ cm.DisposeSupport = {
   }
 };
 
+/*
+ * Two buttons and an input used as
+ * a simple counter. I'm unsure why this
+ * doesn't already exist.
+ *
+ */
+cm.Counter = function(o) {
+
+	// load options
+	this._options = {
+		element: null,
+		left_button: null,
+		right_button: null,
+		maxCount: 99,
+		minCount: -99
+	};
+
+	// extend user things
+	cm.extend(this._options, o);
+	cm.extend(this, cm.DisposeSupport);
+
+	// important elements
+	this._element = this._options.element;
+	this._left_button = this._createLeftButton(this._options.left_button);
+	this._right_button = this._createRightButton(this._options.right_button);
+
+	// stuff
+	this._count = 0;
+//	this._button = this._createInputButton(this._find(this._element, 'button'));
+//	this._errorLabel = this._find(this._element, 'error');
+}
+
+cm.Counter.prototype = {
+	_increment: function() {
+
+		if (this._count < this._options.maxCount) {
+			this._count++;
+			$( this._element ).val(this._count);
+		}
+	},
+	_decrement: function() {
+
+		if (this._count > this._options.minCount) {
+			this._count--;
+			$( this._element ).val(this._count);
+		}
+	},
+	_update: function(o) {
+		cm.extend(this._options, o);
+	},
+	_setValue: function(value) {
+
+		$( this._element ).val(value);
+		this._count = value;
+	},
+	_createLeftButton: function(button) {
+
+		var self = this;
+
+		button.onclick = function(e) {
+			
+			e.preventDefault();
+			self._decrement();
+		}
+
+		return button;
+	},
+	_createRightButton: function(button) {
+
+		var self = this;
+
+		button.onclick = function(e) {
+			
+			e.preventDefault();
+			self._increment();
+		}
+
+		return button;
+	}
+}

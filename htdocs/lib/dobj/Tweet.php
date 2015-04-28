@@ -125,7 +125,7 @@ class Tweet extends Post {
 	 *  from a json encoded twitter api call
 	 *
 	 */
-	public function fillFromJson($json_tweet) {
+	public function fillFromJson($json_tweet, $remora=NULL) {
 
 		$this->annotations = $json_tweet['annotations'];
 		$this->contributors = $json_tweet['contributors'];
@@ -163,6 +163,19 @@ class Tweet extends Post {
 		$this->name = $this->user->name;
 		$this->screen_name = $this->user->screen_name;
 		$this->profile_image_url = $this->user->profile_image_url;
+
+		// do the remora
+		if ($remora != NULL) {
+
+			if (is_array($remora)) {
+
+				// execute on a loop
+			}
+
+			else {
+				$remora->execute($this);
+			}
+		}
 	}
 
 	/*

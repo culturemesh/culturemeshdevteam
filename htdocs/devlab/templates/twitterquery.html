@@ -1,0 +1,496 @@
+
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ stylesheets }}
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	<script type='text/javascript'>
+			var counter1, counter2, counter3;
+
+			cm.Autoloader(function() {
+					/*
+					counter1 = new cm.Counter({
+						element: document.getElementById('broad-adjustment-value'),
+						left_button: document.getElementById('broad-adjustment-leftbtn'),
+						right_button: document.getElementById('broad-adjustment-rightbtn'),
+						maxCount: 4,
+						minCount: -4
+						});
+						*/
+
+					counter2 = new cm.Counter({
+						element: document.getElementById('origin_scope_adjustment_value'),
+						left_button: document.getElementById('origin_scope_adjustment_leftbtn'),
+						right_button: document.getElementById('origin_scope_adjustment_rightbtn'),
+						maxCount: 4,
+						minCount: -4
+						});
+
+					counter3 = new cm.Counter({
+						element: document.getElementById('location_scope_adjustment_value'),
+						left_button: document.getElementById('location_scope_adjustment_leftbtn'),
+						right_button: document.getElementById('location_scope_adjustment_rightbtn'),
+						maxCount: 4,
+						minCount: -4
+						});
+
+					$('#panel-2-left').collapse({
+						toggle: false});
+
+					$('#panel-2-right').collapse({
+						toggle: false});
+
+					$('#adjustment-bureau').collapse({
+						toggle: false});
+
+					window.primeAdjustment = function() {
+						$('#adjustment-btn').on('click', function(e) {
+
+								e.preventDefault();
+
+								var formData;
+
+								/*
+								broadSwitch = document.getElementById('adjustment-radio-broad');
+								fineSwitch = document.getElementById('adjustment-radio-fine');
+								*/
+
+								var cnt1 = counter1;
+								var cnt2 = counter2;
+								var cnt3 = counter3;
+
+								var testthing = $( '#adjustment-nid-broad' ).val();
+
+								/*
+								// Stop if there is no nid
+								//
+								if ( $( '#adjustment-nid-broad' ).val() == '' &&
+								     $( '#adjustment-nid-fine' ).val() == '') {
+
+									$( '#adjustment-error' ).text('There is no network set');
+									return -1;
+								}
+
+								if ( broadSwitch.checked == true) {
+
+									formData = $( '#adjustment-broad' ).serialize();
+								}
+
+								if ( fineSwitch.checked == true) {
+									formData = $( '#adjustment-fine' ).serialize();
+								}
+								*/
+								
+								formData = $( '#adjustment-fine' ).serialize();
+
+								var adjust = new Ajax({
+										requestType: 'POST',
+										requestUrl: 'ops/twitterquery-getadjustment.php',
+										requestParameters: ' ',
+										data: formData,
+										dataType : 'string',
+										sendNow: true
+									},
+									function(data) {
+									
+										var results = JSON.parse(data);
+
+										// fill the info thing
+										$('#table-network-title-value').text(results.info.title);
+										$('#table-query-value').text(results.info.query);
+										$('#table-relevance-value').text(results.info.query_relevance);
+										$('#table-result-value').text(results.info.result_count);
+										$('#table-max-result-value').text(results.info.max_count);
+										$('#table-level-value').text(results.info.level);
+										$('#table-origin-term-value').text(results.info.origin_term);
+										$('#table-origin-scope-value').text(results.info.origin_scope);
+										$('#table-location-term-value').text(results.info.location_term);
+										$('#table-location-scope-value').text(results.info.location_scope);
+										$('#table-query-origin-scope-value').text(results.info.query_origin_scope);
+										$('#table-query-location-scope-value').text(results.info.query_location_scope);
+										$('#table-since-date-value').text(results.info.since_date);
+
+										// update counters
+										/*
+										cnt1._update({
+											    minCount : (-1) * results.info.min_level_distance,
+											    maxCount : results.info.max_level_distance
+											    });
+											    */
+
+										cnt2._update({
+											    minCount : results.info.min_origin,
+											    maxCount : results.info.max_origin
+											    });
+
+										cnt3._update({
+											    minCount : results.info.min_location,
+											    maxCount : results.info.max_location
+											    });
+
+										//cnt1._setValue(results.info.level);
+										cnt2._setValue(results.info.query_origin_scope);
+										cnt3._setValue(results.info.query_location_scope);
+
+										if (results.error == 0) {
+
+											$( '#adjustment-error' ).text( '' );
+											$('#tweet-error').text('');
+
+											// fill the tweet list
+											$('#tweet-ul').html(results.html);
+
+										}
+										else {
+											if (results.html == null) {
+												$('#tweet-ul').html('');
+											}
+
+											$( '#adjustment-error' ).text( results.error );
+											$('#tweet-error').text( results.error );
+										}
+									});
+								});
+						};
+					});
+
+
+	</script>
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+	<div id="content" class='container-fluid'>
+		<div id='panel-0' class='row panel'>
+			<h1>Network Twitter Queries</h2>
+
+			<p>Learning and jazz. Pull out a network and
+			figure out what works best query-wise.</p>
+
+			<p>You can even set queries for automatic use</p>
+
+			<p>This is a precursor to the query admin page</p>
+		</div>
+		<h2>Get Network By Id</h4>
+		<div id='panel-1' class='row panel'>
+			<div class='row'>
+			<form id="get-network-form" method="POST" action="twitterquery_get_network.php">
+				<div class='span2'>
+				<input id='network-id-input' class='form-control' type="text" name="nid"/>
+				</div>
+				<div class='span4'>
+				<button id='get-network-button' class='btn btn-default'>GO!!!</button>
+				</div>
+			</form>
+			</div>
+			<div id='adjustment-bureau' class='row panel span12 collapse'>
+			<div id='adjustment-accordion' class='accordion'>
+				<div class='accordion-heading'>
+					<a class='accordion-toggle' data-toggle="collapse" data-parent="#adjustment-accordion" href="#adjustment-right">
+					Make Adjustments
+					</a>
+				</div>
+				<div id='adjustment-right' class='accordion-body'>
+				<h2>Adjustment Bureau</h2>
+				<form id='adjustment-fine'>
+					<fieldset id='adjustment-fine-fieldset'>
+					<input id='adjustment-nid-fine' class='adjustment-nid' name='nid' type='hidden'/>
+					<label>Origin Scope</label>
+					<div class=''>
+						<button id='origin_scope_adjustment_leftbtn' class='btn btn-default'> < </button>
+						<input id='origin_scope_adjustment_value' type='text' class='tq-small-input' name='origin_scope' value='0' readonly />
+						<input class='adjustment_control' type='hidden' name='adjustment_control' value='fine' />
+						<button id='origin_scope_adjustment_rightbtn' class='btn btn-default'> > </button>
+					</div>
+					<label>Location Scope</label>
+					<div class=''>
+						<button id='location_scope_adjustment_leftbtn'  class='btn btn-default'> < </button>
+						<input id='location_scope_adjustment_value' type='text' class='tq-small-input' name='location_scope' value='0' readonly />
+						<button id='location_scope_adjustment_rightbtn' class='btn btn-default'> > </button>
+					</div>
+					<label for='adjust-since-date'>Adjust Since Date (YYYY-MM-DD)</label>
+					<input id='adjust-since-date' type='text' name='since_date' /> </br>
+					<input type='radio' name='term_link' value='3'>All OR</input> </br>
+					<input type='radio' name='term_link' value='2'>OR between terms</input> </br>
+					<input type='radio' name='term_link' value='1' checked='true'>All AND</input>
+					<fieldset>
+				</form>
+				<button id='adjustment-btn' class='btn btn-default'>Make the ALTERATIONS</button>
+				</ br>
+				<span id='adjustment-error' style="color:red"></span>
+				</div>
+			</div>
+			</div>
+				<!--
+				<div class='row'>
+					<div class='span1'></div>
+					<div class='span10 panel'>
+					<input id='adjustment-radio-broad' class='adjustment-radio' type='radio' name='control' value='broad' checked>Broad</input>
+					<input id='adjustment-radio-fine' class='adjustment-radio' type='radio' name='control' value='fine'>Fine</input>
+					</div>
+				</div>
+				<div class='row'>
+					<div class='span1'></div>
+					<div id='adjustment-left' class='span4'>
+					<form id='adjustment-broad'>
+						<fieldset id='adjustment-broad-fieldset'>
+						<label for='broad-adjustment-value'>Level</label>
+						<input id='adjustment-nid-broad' class='adjustment-nid' name='nid' type='hidden'/>
+						<input class='adjustment_control' type='hidden' name='adjustment_control' value='broad' />
+						<div class='row'>
+							<button id='broad-adjustment-leftbtn' class='btn btn-default'> < </button>
+							<input id='broad-adjustment-value' type='text' class='tq-small-input' name='level_adjustment' value='0' readonly />
+							<button id='broad-adjustment-rightbtn' class='btn btn-default'> > </button>
+						</div>
+						<fieldset>
+					</form>
+					</div>
+					<div id='adjustment-right' class='span6'>
+					<form id='adjustment-fine'>
+						<fieldset id='adjustment-fine-fieldset' disabled>
+						<input id='adjustment-nid-fine' class='adjustment-nid' name='nid' type='hidden'/>
+						<label>Origin Scope</label>
+						<div class='row'>
+							<button id='origin_scope_adjustment_leftbtn' class='btn btn-default'> < </button>
+							<input id='origin_scope_adjustment_value' type='text' class='tq-small-input' name='origin_scope' value='0' readonly />
+							<input class='adjustment_control' type='hidden' name='adjustment_control' value='broad' />
+							<button id='origin_scope_adjustment_rightbtn' class='btn btn-default'> > </button>
+						</div>
+						<label>Location Scope</label>
+						<div class='row'>
+							<button id='location_scope_adjustment_leftbtn'  class='btn btn-default'> < </button>
+							<input id='location_scope_adjustment_value' type='text' class='tq-small-input' name='location_scope' value='0' readonly />
+							<button id='location_scope_adjustment_rightbtn' class='btn btn-default'> > </button>
+						</div>
+						<label for='adjust-since-date'>Adjust Since Date (YYYY-MM-DD)</label>
+						<input id='adjust-since-date' type='text' name='since_date' /> </br>
+						<input type='radio' name='term_link' value='3'>All OR</input> </br>
+						<input type='radio' name='term_link' value='2'>OR between terms</input> </br>
+						<input type='radio' name='term_link' value='1' checked='true'>All AND</input>
+						<fieldset>
+					</form>
+					</div>
+				</div>
+				
+				<div class='clear'></div>
+				-->
+		</div>
+		<div id='panel-2' class='row panel span12'>
+			<div class='row'>
+				<div id='panel-2-left' class="span4 panel collapse">
+					<div class=''>
+					<h2>Network Info</h2>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Property</th>
+								<th>Value</th>
+							</tr>
+						</thead>
+						<tfoot></tfoot>
+						<tbody>
+							<tr>
+								<td>Network Title</td>
+								<td id='table-network-title-value'></td>
+							</tr>
+							<tr>
+								<td>Query</td>
+								<td id='table-query-value'></td>
+							</tr>
+							<tr>
+								<td>Relevance</td>
+								<td id='table-relevance-value'></td>
+							</tr>
+							<tr>
+								<td>RESULT COUNT</td>
+								<td id='table-result-value'></td>
+							</tr>
+							<tr>
+								<td>MAX RESULT COUNT</td>
+								<td id='table-max-result-value'></td>
+							</tr>
+							<tr>
+								<td>Level</td>
+								<td id='table-level-value'></td>
+							</tr>
+							<tr>
+								<td>Since Date</td>
+								<td id='table-since-date-value'></td>
+							</tr>
+							<tr>
+								<td>Origin Term</td>
+								<td id='table-origin-term-value'></td>
+							</tr>
+							<tr>
+								<td>Origin Scope</td>
+								<td id='table-origin-scope-value'></td>
+							</tr>
+							<tr>
+								<td>Query Origin Scope</td>
+								<td id='table-query-origin-scope-value'></td>
+							</tr>
+							<tr>
+								<td>Location Term</td>
+								<td id='table-location-term-value'></td>
+							</tr>
+							<tr>
+								<td>Location Scope</td>
+								<td id='table-location-scope-value'></td>
+							</tr>
+							<tr>
+								<td>Query Location Scope</td>
+								<td id='table-query-location-scope-value'></td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+				<div class='span1'></div>
+				<div id='panel-2-right' class="span6 col-lg-6 panel collapse">
+					<h2>Tweets</h2>
+					<div id='tweet-list' class='row'>
+						<div>
+							<p id='tweet-error' class='text-center'></p>
+							<ul id='tweet-ul' class='list-unstyled'>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='clear'></div>
+			<!--
+			<div id='test-queries'>
+				<form method="POST" action='ops/twitterquery-modifytest.php'>
+					<input type='hidden' name='nid' value='352' />
+					<input type='hidden' name='origin_scope' value='2' />
+					<input type='hidden' name='location_scope' value='1' />
+					<button class='btn btn-default'>Test Modify Query</button>
+				</form>
+				<form method="POST" action='ops/twitterquery-addadjustment.php'>
+					<button class='btn btn-default'>Test Add Data</button>
+				</form>
+			</div>
+			-->
+		</div>
+	</div>
+
+	{{/ content }}
+	{{$ body_scripts }}
+	<script type="text/javascript">
+
+		$('#get-network-button').on('click', function(e) {
+
+				// STOP THEM BEFORE IT's TOO LATE
+				e.preventDefault();
+
+//				var cnt1 = counter1;
+				var cnt2 = counter2;
+				var cnt3 = counter3;
+				var pa = window.primeAdjustment;
+			
+				var getForm = new Ajax({
+						requestType: 'POST',
+						requestUrl: 'ops/twitterquery-getnetwork.php',
+						requestParameters: ' ',
+						data: $('#get-network-form').serialize(),
+						dataType : 'string',
+						sendNow: true
+					},
+
+					function(data) {
+						
+						var results = JSON.parse(data);
+
+						// fill the info thing
+						$('#table-network-title-value').text(results.info.title);
+						$('#table-query-value').text(results.info.query);
+						$('#table-relevance-value').text(results.info.query_relevance);
+						$('#table-result-value').text(results.info.result_count);
+						$('#table-max-result-value').text(results.info.max_count);
+						$('#table-level-value').text(results.info.level);
+						$('#table-origin-term-value').text(results.info.origin_term);
+						$('#table-origin-scope-value').text(results.info.origin_scope);
+						$('#table-location-term-value').text(results.info.location_term);
+						$('#table-location-scope-value').text(results.info.location_scope);
+						$('#table-query-origin-scope-value').text(results.info.query_origin_scope);
+						$('#table-query-location-scope-value').text(results.info.query_location_scope);
+						$('#table-since-date-value').text(results.info.since_date);
+
+						// update counters
+						/*
+						cnt1._update({
+							    minCount : (-1) * results.info.min_level_distance,
+							    maxCount : results.info.max_level_distance
+							    });
+							    */
+
+						cnt2._update({
+							    minCount : results.info.min_origin,
+							    maxCount : results.info.max_origin
+							    });
+
+						cnt3._update({
+							    minCount : results.info.min_location,
+							    maxCount : results.info.max_location
+							    });
+
+						//cnt1._setValue(results.info.level);
+						cnt2._setValue(results.info.query_origin_scope);
+						cnt3._setValue(results.info.query_location_scope);
+						
+						$('#panel-2-left').collapse('show');
+						$('#panel-2-right').collapse('show');
+						$('#adjustment-bureau').collapse('show');
+
+						pa();
+						$('#adjustment-right').collapse('hide');
+
+						// fill nid value things
+						$( '.adjustment-nid' ).val(results.network.id);
+
+						if (results.error == 0) {
+
+							// fill the tweet list
+							$('#tweet-ul').html(results.html);
+						}
+						else {
+							if (results.html == null) {
+								$('#tweet-ul').html('');
+							}
+
+							$( '#adjustment-error' ).text( results.error );
+							$( '#tweet-error' ).text( results.error );
+						}
+					}
+
+					)
+		});
+
+		/*
+		$('.adjustment-radio').on('change', function(e) { 
+
+				var broadField = document.getElementById('adjustment-broad-fieldset');
+				var fineField = document.getElementById('adjustment-fine-fieldset');
+
+				$( '.adjustment_control' ).val( $( e.target ).val() );
+
+				if ( $( e.target ).val() == 'broad') {
+					broadField.disabled = false;
+					fineField.disabled = true;
+				}
+
+				else {
+					broadField.disabled = true;
+					fineField.disabled = false;
+				}
+
+				});
+				*/
+	</script> {{/ body_scripts }}
+
+{{/ layout }}

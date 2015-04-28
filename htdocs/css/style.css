@@ -31,6 +31,7 @@ h1.center, h2.center, h3.center, h4.center, h5.center, p.center {
 .cmhide {
     display:none;
 }
+
 /******
 INDEX PAGE
 */
@@ -1500,6 +1501,55 @@ a.profile
 	font-size:14px;
 }
 
+
+/*******
+ * TWITTER QUERY
+ * ******
+*/
+
+/*
+#panel-2-left {
+
+	width:420px;
+	float:left;
+}
+
+#panel-2-right {
+
+	width:420px;
+	margin-left: 40px;
+	float:left;
+}
+*/
+
+#tweet-list {
+	height:500px;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+
+#tweet-list > div > ul {
+
+	list-style-type: none;
+}
+
+/*
+#adjustment-left {
+
+	float:left;
+	width: 200px;
+}
+
+#adjustment-right {
+	float:left;
+	width: 200px;
+}
+*/
+
+.tq-small-input {
+
+	width:20px;
+}
 /**********************************/
 
 /*******

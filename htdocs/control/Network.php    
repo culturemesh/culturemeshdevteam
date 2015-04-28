@@ -44,8 +44,7 @@ class Network {
 		$network->getPostCount($dal, $do2db);
 		$network->getMemberCount($dal, $do2db);
 
-//		$network->posts->merge($network->tweets);
-
+		/*
 		// get TWITTER things if they are not cached
 		$tweet_key = 'n' . $network->id . '_tweets';
 
@@ -68,6 +67,10 @@ class Network {
 
 			$tweets = $cache->fetch($tweet_key);
 		}
+		 */
+
+		$tweet_manager = new \api\TweetManager($cm, $network, $dal, $do2db);
+		$tweets = $tweet_manager->requestTweets();
 
 		//add tweets to posts
 		$network->mergePostsAndTweets( $tweets );

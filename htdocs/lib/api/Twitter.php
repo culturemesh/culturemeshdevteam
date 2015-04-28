@@ -8,14 +8,14 @@ class Twitter {
 	 * and turns it into a dobjList of dobjTweets
 	 *
 	 */
-	public static function JsonToTweets($json_input) {
+	public static function JsonToTweets($json_input, $remora=NULL) {
 
 		$list = new \dobj\DObjList();
 
 		foreach ($json_input['statuses'] as $json_tweet) {
 
 			$tweet = new \dobj\Tweet();
-			$tweet->fillFromJson($json_tweet);
+			$tweet->fillFromJson($json_tweet, $remora);
 
 			$list->dInsert( $tweet );
 		}

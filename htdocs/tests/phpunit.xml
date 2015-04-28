@@ -22,6 +22,9 @@
 		<testsuite name='dal'>
 			<directory>lib/dal</directory>
 		</testsuite>
+		<testsuite name='dal-nodb'>
+			<directory>lib/dal-nodb</directory>
+		</testsuite>
 		<testsuite name='nav'>
 			<directory>lib/nav</directory>
 		</testsuite>

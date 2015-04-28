@@ -243,4 +243,129 @@ SQL
 		$m->setConnection($con);
 		return $m;
 	};
+
+
+	/*
+	 * Get tweets by network id
+	 *
+	 */
+	$obj->getNetworkTweetQuery = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+SELECT *
+FROM network_tweet_query_scope
+WHERE id_network=?
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'getNetworkTweetQuery',
+			'params' => array('id_network'),
+			'param_types' => 'i',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_list' => true,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => 'dobj\Tweet',
+			'returning_cols' => array('id_network', 'query_origin_scope', 'query_location_scope', 
+				'query_level', 'query_auto_update', 'query_default',
+				'query_since_date'
+			)
+
+));
+		$m->setConnection($con);
+		return $m;
+	};
+
+	/*
+	 * Update tweet query
+	 *
+	 */
+	$obj->updateNetworkTweetQuery = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+UPDATE network_tweet_query_scope
+SET 
+query_origin_scope = ?,
+query_location_scope = ?, 
+query_level = ?, 
+query_auto_update = ?,
+query_default = ?, 
+query_since_date = ?
+WHERE id_network=?
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'updateNetworkTweetQuery',
+			'params' => array('query_origin_scope', 'query_location_scope',
+					'query_level', 'query_auto_update', 'query_default',
+					'query_since_date', 'id'),
+			'param_types' => 'iiiiisi',
+			'nullable' => array(),
+			'returning' => False,
+			'returning_list' => False,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => NULL,
+			'returning_cols' => NULL
+
+));
+		$m->setConnection($con);
+		return $m;
+	};
+
+	/*
+	 * Inserts data for tweet adjustment
+	 *
+	 */
+	$obj->insertTweetAdjustment = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+INSERT INTO tweet_query_adjustments
+(id_network, start_level, target_level, origin_scope_start,
+ origin_scope_end, location_scope_start, location_scope_end,
+ start_since_date, end_since_date, prev_query_relevance)
+VALUES
+(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'insertTweetAdjustment',
+			'params' => array('id_network', 'start_level', 'target_level',
+					'origin_scope_start', 'origin_scope_end',
+					'location_scope_start', 'location_scope_end',
+					'start_since_date', 'end_since_date',
+					'prev_query_relevance'
+					),
+			'param_types' => 'iiiiiiisss',
+			'nullable' => array('origin_scope_start', 'origin_scope_end',
+				'location_scope_start', 'location_scope_end',
+				'start_since_date', 'end_since_date',
+				'prev_query_relevance'),
+			'returning' => False,
+			'returning_list' => False,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => NULL,
+			'returning_cols' => NULL
+
+));
+		$m->setConnection($con);
+		return $m;
+	};
 }
