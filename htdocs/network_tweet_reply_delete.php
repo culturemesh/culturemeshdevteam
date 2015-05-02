@@ -12,10 +12,12 @@ if (isset($_POST['rid']) && isset($_POST['nid']) && isset($_POST['tid'])) {
 	$reply = new \dobj\TweetReply();
 	$reply->id = (int) $_POST['rid'];
 
+
 	$dal = new \dal\DAL($cm->getConnection());
 	$dal->loadFiles();
 	$do2db = new \dal\Do2Db();
 
+	$network = \dobj\Network::createFromId((int) $_POST['nid'], $dal, $do2db);
 	$success = $reply->delete($dal, $do2db);
 
 	if ($success) {
@@ -28,6 +30,7 @@ if (isset($_POST['rid']) && isset($_POST['nid']) && isset($_POST['tid'])) {
 
 			$tweet = \dobj\Tweet::createFromId((int) $_POST['tid'], $dal, $do2db);
 			$success = $tweet->delete($dal, $do2db);
+			$network->decrementTweetCount($dal, $do2db);
 
 			if ($success) {
 

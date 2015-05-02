@@ -1,16 +1,28 @@
 <?php
 
-// get post variables
-$nid = $_POST['nid'];
-
-include '../../environment.php';
-$cm = new \Environment();
-
 $response = array (
 	'error' => 0,
 	'info' => NULL,
 	'tweets' => NULL
 );
+
+if (!isset($_POST['location_weight']) || !isset($_POST['origin_weight']) || 
+	!isset($_POST['count_weight'])) {
+
+	$response['error'] = 'One of these things was not set you amateur!';
+	echo json_encode($response);
+	exit();
+}
+
+// get post variables
+$nid = 352;
+$location_weight = $_POST['location_weight'];
+$origin_weight = $_POST['origin_weight'];
+$count_weight = $_POST['count_weight'];
+
+include '../../environment.php';
+$cm = new \Environment();
+
 
 $dal = new dal\DAL($cm->getConnection());
 $dal->loadFiles();
@@ -18,34 +30,13 @@ $do2db = new dal\Do2Db();
 
 $network = dobj\Network::createFromId($nid, $dal, $do2db);
 
-$adjustment_control = $_POST['adjustment_control'];
-$adjustment = NULL;
-
-$adj = new dobj\TweetQueryAdjustment();
-
-
-if ($adjustment_control == 'broad') {
-
-	// gets broad level adjustment,
-	// must be processed into terms understandable
-	// by db
-	//
-	$adjustment = $_POST['level_adjustment'];
-}
-if ($adjustment_control == 'fine') {
-
-	$adjustment['query_origin_scope'] = $_POST['origin_scope'];
-	$adjustment['query_location_scope'] = $_POST['location_scope'];
-	$adjustment['query_since_date'] = $_POST['since_date'];
-	$adjustment['query_level'] = $_POST['term_link'];
-}
-
-$adj->processAdjustment($network, $adjustment);
-$adj->insert($dal, $do2db);
-$network->adjustTwitterQuery($dal, $do2db);
-
 $tweet_manager = new \api\TweetManager($cm, $network, $dal, $do2db);
-$tweets = $tweet_manager->requestTweets('adjust');
+$tweets = $tweet_manager->requestTweets( 'adjust', array(
+			'location_weight' => $location_weight,
+			'origin_weight' => $origin_weight,
+			'count_weight' => $count_weight)
+		);
+
 $info = $tweet_manager->getQueryInfo();
 
 $cm->closeConnection();

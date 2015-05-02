@@ -10,7 +10,7 @@ function registerNetwork($obj) {
 SELECT *
 FROM networks n
 LEFT JOIN (SELECT * FROM
-	network_tweet_query_scope) ntqs
+	network_tweet_query_data) ntqs
 ON n.id = ntqs.id_network
 WHERE id=?
 SQL
@@ -33,7 +33,7 @@ SQL
 					'id_country_origin', 'country_origin', 'id_language_origin',
 					'language_origin', 'network_class', 'date_added',
 					'query_origin_scope', 'query_location_scope', 'query_level', 'query_since_date',
-					'query_auto_update', 'query_default'
+					'query_auto_update', 'query_default', 'tweet_count'
 		 		)
 		));
 

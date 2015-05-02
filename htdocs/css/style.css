@@ -1522,6 +1522,10 @@ a.profile
 }
 */
 
+#mod-panel {
+
+}
+
 #tweet-list {
 	height:500px;
 	overflow-y:scroll;

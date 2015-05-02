@@ -165,7 +165,7 @@
 	{{/ autoload_scripts }}
 
 	{{$ content }}
-	<div id="content" class='container-fluid'>
+	<div data-spy="affix-top">
 		<div id='panel-0' class='row panel'>
 			<h1>Network Twitter Queries</h2>
 
@@ -176,9 +176,16 @@
 
 			<p>This is a precursor to the query admin page</p>
 		</div>
-		<h2>Get Network By Id</h4>
-		<div id='panel-1' class='row panel'>
-			<div class='row'>
+		<div id='mod-tab' class='panel'>
+			<ul class="nav nav-tabs">
+			  <li><a href="#query-adjustment" data-toggle="tab">Network Query</a></li>
+			  <li><a href="#equation-adjustment" data-toggle="tab">Equation</a></li>
+			</ul>
+		</div>
+		<div class="tab-content">
+		  <div class="tab-pane" id="query-adjustment">
+			<div class='row span8'>
+			<label>Select Network</label>
 			<form id="get-network-form" method="POST" action="twitterquery_get_network.php">
 				<div class='span2'>
 				<input id='network-id-input' class='form-control' type="text" name="nid"/>
@@ -226,6 +233,40 @@
 				</div>
 			</div>
 			</div>
+		  </div>
+		  <div class="tab-pane" id="equation-adjustment">
+			<div class='row span12'>
+				<div class=''>
+				<h2>Adjust Equation</h2>
+					<div>
+						<h5>Tweet Relevance</h5>
+						<p>r(x) = LocationScope * OriginScope * CountRatio</p>
+						<p>LocationScope = <span>c</span>(  Scope / 1 )</p>
+						<p>OriginScope = <span>c<span>( Scope / 1)</p>
+					</div>
+					<div>
+						<h5>All the Relevance</h5>
+						<p>avg(relevance) * count(ratio)</p>
+					</div>
+					<div>
+						<h5>Adjustments</h5>
+						<form id='form-adjust-equation'>
+							<label for='input-location-weight'>Location Weight</label>
+							<input id='input-location-weight' type='text' name='location_weight' />
+							<label for='input-origin-weight'>Origin Weight</label>
+							<input id='input-origin-weight' type='text' name='origin_weight' />
+							<label for='input-count-weight'>Count Weight</label>
+							<input id='input-count-weight' type='text' name='count_weight' />
+							<button id='button-adjust-equation'>Try It Out</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		  </div>
+		</div>
+	</div>
+	<div id="content" class='container-fluid'>
+		<div id='panel-1' class='row panel'>
 				<!--
 				<div class='row'>
 					<div class='span1'></div>
@@ -377,6 +418,8 @@
 			</div>
 			-->
 		</div>
+		<div id='panel-3' class='row panel span12'>
+		</div>
 	</div>
 
 	{{/ content }}
@@ -491,6 +534,57 @@
 
 				});
 				*/
+		$('#button-adjust-equation').on('click', function(e) {
+
+				// STOP THEM BEFORE IT's TOO LATE
+				e.preventDefault();
+
+				var getForm = new Ajax({
+						requestType: 'POST',
+						requestUrl: 'ops/twitterquery-adjustequation.php',
+						requestParameters: ' ',
+						data: $('#form-adjust-equation').serialize(),
+						dataType : 'string',
+						sendNow: true
+					},
+					function(data) {
+						
+						var results = JSON.parse(data);
+
+						// fill the info thing
+						$('#table-network-title-value').text(results.info.title);
+						$('#table-query-value').text(results.info.query);
+						$('#table-relevance-value').text(results.info.query_relevance);
+						$('#table-result-value').text(results.info.result_count);
+						$('#table-max-result-value').text(results.info.max_count);
+						$('#table-level-value').text(results.info.level);
+						$('#table-origin-term-value').text(results.info.origin_term);
+						$('#table-origin-scope-value').text(results.info.origin_scope);
+						$('#table-location-term-value').text(results.info.location_term);
+						$('#table-location-scope-value').text(results.info.location_scope);
+						$('#table-query-origin-scope-value').text(results.info.query_origin_scope);
+						$('#table-query-location-scope-value').text(results.info.query_location_scope);
+						$('#table-since-date-value').text(results.info.since_date);
+
+						$('#panel-2-left').collapse('show');
+						$('#panel-2-right').collapse('show');
+
+						if (results.error == 0) {
+
+							// fill the tweet list
+							$('#tweet-ul').html(results.html);
+						}
+						else {
+							if (results.html == null) {
+								$('#tweet-ul').html('');
+							}
+
+							$( '#tweet-error' ).text( results.error );
+						}
+					}
+					);
+				});
+
 	</script> {{/ body_scripts }}
 
 {{/ layout }}

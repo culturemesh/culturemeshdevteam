@@ -90,6 +90,9 @@ if(mysqli_num_rows($result) == 0)
 { 
 	$id = Network::launchNetwork($network, $con); 
 
+	// give launched network a twitter query row
+	Network::insertQueryRow($id, $con); 
+
 	// add user to launched network
 	if (isset($_SESSION['uid'])) {
 		$netreg = new NetworkRegistrationDT();

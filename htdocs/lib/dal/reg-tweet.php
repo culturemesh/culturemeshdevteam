@@ -256,7 +256,7 @@ SQL
 			'query' => <<<SQL
 
 SELECT *
-FROM network_tweet_query_scope
+FROM network_tweet_query_data
 WHERE id_network=?
 SQL
 		/////////////////////////////
@@ -292,7 +292,7 @@ SQL
 		$m->setValues(array(
 			'query' => <<<SQL
 
-UPDATE network_tweet_query_scope
+UPDATE network_tweet_query_data
 SET 
 query_origin_scope = ?,
 query_location_scope = ?, 
@@ -323,6 +323,41 @@ SQL
 		$m->setConnection($con);
 		return $m;
 	};
+
+	/*
+	 * Update tweet query
+	 *
+	 */
+	$obj->updateNetworkTweetCount = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+UPDATE network_tweet_query_data
+SET tweet_count = ?
+WHERE id_network=?
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'updateNetworkTweetCount',
+			'params' => array('tweet_count', 'id'),
+			'param_types' => 'ii',
+			'nullable' => array(),
+			'returning' => False,
+			'returning_list' => False,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => NULL,
+			'returning_cols' => NULL
+
+));
+		$m->setConnection($con);
+		return $m;
+	};
+
 
 	/*
 	 * Inserts data for tweet adjustment

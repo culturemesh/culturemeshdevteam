@@ -207,6 +207,20 @@ class Network
 		else 
 			return false;
 	}
+
+	public static function insertQueryRow($id, $con) {
+
+		$query = <<<SQL
+			INSERT INTO network_tweet_query_scope
+			(id_network) VALUES
+			($id)
+SQL;
+		/// execute
+		$result = QueryHandler::executeQuery($query, $con);
+
+		// leave
+		return $result;
+	}
 	
 	////////////////////// READ OPERATIONS //////////////////////////////////////////////
 	public static function getAllNetworks()

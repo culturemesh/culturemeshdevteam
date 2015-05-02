@@ -40,6 +40,7 @@ class Network extends DisplayDObj {
 	protected $query_auto_update;
 	protected $query_default;
 	protected $query_still_date;
+	protected $tweet_count;
 
 	public static function createFromId($id, $dal, $do2db) {
 
@@ -185,6 +186,7 @@ class Network extends DisplayDObj {
 		}
 
 		$this->post_count = $do2db->execute($dal, $this, 'getPostCount');
+		$this->post_count += $this->tweet_count;
 	}
 
 	public function getMemberCount($dal, $do2db) {
@@ -450,7 +452,7 @@ class Network extends DisplayDObj {
 			throw new \Exception('Network: GetOriginComponent Scope must be below level 3');
 			break;
 		default:
-			throw new \Exception('Network: GetOriginComponent cannot find a component with given value');
+			throw new \Exception('Network: GetOriginComponent cannot find a component with given value: ' . $component_level);
 			break;
 		}
 	}
@@ -549,11 +551,27 @@ class Network extends DisplayDObj {
 		return array(
 			'origin_scope' => $this->getOriginScope(),
 			'query_origin_scope' => $this->query_origin_scope,
-			'origin_scope_ratio' => 1 / ($this->query_origin_scope / $this->getOriginScope()),
+			'origin_scope_ratio' => $this->getOriginScopeRatio(),
 			'location_scope' => $this->getLocationScope(),
 			'query_location_scope' => $this->query_location_scope,
-			'location_scope_ratio' => 1 / ($this->query_location_scope / $this->getLocationScope())
+			'location_scope_ratio' => $this->getLocationScopeRatio()
 		);
+	}
+
+	/*
+	 * Is (1) unless scope has been broadened
+	 *
+	 */
+	public function getOriginScopeRatio() {
+		return $this->query_origin_scope / 1;
+	}
+
+	/*
+	 * Returns (1) unless scope has been broadened
+	 *
+	 */
+	public function getLocationScopeRatio() {
+		return $this->query_location_scope / 1;
 	}
 
 	public function getDistanceToMaxLevel() {
@@ -585,5 +603,18 @@ class Network extends DisplayDObj {
 	public function adjustTwitterQuery($dal, $do2db) {
 
 		$result = $do2db->execute($dal, $this, 'updateNetworkTweetQuery');
+	}
+
+	public function updateTweetCount($dal, $do2db, $query_tweet_count) {
+
+		$this->tweet_count += $query_tweet_count;
+
+		$result = $do2db->execute($dal, $this, 'updateNetworkTweetCount');
+	}
+
+	public function decrementTweetCount($dal, $do2db) {
+
+		$this->tweet_count -= 1;
+		$result = $do2db->execute($dal, $this, 'updateNetworkTweetCount');
 	}
 }

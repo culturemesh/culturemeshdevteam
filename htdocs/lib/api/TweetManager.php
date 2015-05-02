@@ -20,6 +20,9 @@ class TweetManager {
 
 	private $query_info;
 
+	private $dal;
+	private $do2db;
+
 	/*
 	 * Constructor
 	 *
@@ -41,6 +44,8 @@ class TweetManager {
 
 		$this->cm = $cm;
 		$this->network = $network;
+		$this->dal = $dal;
+		$this->do2db = $do2db;
 	}
 
 	/*
@@ -54,17 +59,28 @@ class TweetManager {
 	 * @exception - Thrown if either cm or network are not correct type
 	 *
 	 */
-	public function requestTweets() {
+	public function requestTweets($mode = 'network',
+		
+		$equation_constants = array(
+			'location_weight' => 1,
+			'origin_weight' => 1,
+			'count_weight' => 1
+		),
+
+		$something = ''
+	) 
+	{
 
 		// new cache object
 		$cache = new \misc\Cache($this->cm);
 
 		$tweet_key = 'n' . $this->network->id . '_tweets';
+		$tweet_info_key = $tweet_key . '_info';
 		$tweets_exist = $cache->exists($tweet_key);
 
 		$tweets_exist = False;
 
-		if ($tweets_exist == False) {
+		if ($tweets_exist == False || $mode == 'adjust') {
 
 			// make an api call to the lords of twitter
 			$twitter_query = new TwitterQuery();
@@ -82,6 +98,7 @@ class TweetManager {
 			$remora->search_scope = $search_scope;
 			$remora->search_terms = $search_terms;
 			$remora->relevance_array = array();
+			$remora->constants = $equation_constants;
 
 			// remora function
 			$remora->setFunction(function($obj) {
@@ -95,13 +112,17 @@ class TweetManager {
 
 				foreach ($this->search_terms as $term) {
 
-				if (strpos($obj->text, $term) > -1)
-						$term_count_actual++;
+					if (strpos($obj->text, $term) > -1)
+							$term_count_actual++;
 				}
 
-				$term_count_ratio = $term_count_actual / $term_count_expected;
+				$term_count_ratio_raw = $term_count_actual / $term_count_expected;
 
 				// something about time here
+
+				$origin_scope_ratio = $this->constants['origin_weight'] * $this->search_scope['origin_scope_ratio'];
+				$location_scope_ratio = $this->constants['location_weight'] * $this->search_scope['location_scope_ratio'];
+				$term_count_ratio = $this->constants['count_weight'] * $term_count_ratio_raw;
 
 				// get relevance
 				$tweet_relevance = $term_count_ratio * $this->search_scope['origin_scope_ratio'] * $this->search_scope['location_scope_ratio'];
@@ -132,23 +153,29 @@ class TweetManager {
 				//echo 'Increase level';
 			}
 
+			// update tweet count
+			$this->network->updateTweetCount($this->dal, $this->do2db, $remora->count);
+
 			// add tweets to cache
 			$TIME_TO_LIVE = 30; // 30 minutes, or two call cycles
 			$cache->add($tweet_key, $tweets, $TIME_TO_LIVE * 60);
+
+			// fill query info
+			$this->query_info = array(
+				'relevance' => $query_efficacy,
+				'max_count' => $this->MAX_RESULT_COUNT,
+				'result_count' => $relevance_count,
+				'since_date' => $this->network->query_since_date,
+				'query' => urldecode( $twitter_query->getQuery() )
+			);
+
+			$cache->add($tweet_info_key, $this->query_info);
 		}
 		else
 		{
 			$tweets = $cache->fetch($tweet_key);
+			$this->query_info = $cache->fetch($tweet_info_key);
 		}
-
-		// fill query info
-		$this->query_info = array(
-			'relevance' => $query_efficacy,
-			'max_count' => $this->MAX_RESULT_COUNT,
-			'result_count' => $relevance_count,
-			'since_date' => $this->network->query_since_date,
-			'query' => urldecode( $twitter_query->getQuery() )
-		);
 
 		return $tweets;
 	}
