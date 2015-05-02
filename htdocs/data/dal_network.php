@@ -211,7 +211,7 @@ class Network
 	public static function insertQueryRow($id, $con) {
 
 		$query = <<<SQL
-			INSERT INTO network_tweet_query_scope
+			INSERT INTO network_tweet_query_data
 			(id_network) VALUES
 			($id)
 SQL;
