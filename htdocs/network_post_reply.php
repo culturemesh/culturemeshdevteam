@@ -63,6 +63,7 @@ else {
 			header("Location: network/{$nid}");
 		}
 		else {
+
 			// create network
 			$network = new \dobj\Network();
 			$network->id = $nid;
@@ -73,6 +74,9 @@ else {
 			$post->id = $id_parent;
 			$post->getReplies($dal, $do2db);
 
+			// emails
+			//$em = new cm\EmailManager();
+			
 			// close connection
 			$cm->closeConnection();
 			//mysqli_close($con);

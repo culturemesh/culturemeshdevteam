@@ -85,7 +85,7 @@ $network->country_cur = $loc_data[5];
 $test_query = Network::networkToQuery($network);
 $result = Network::getNetworksAllClasses($test_query, $con);
 $id = NULL;
-//var_dump($network);
+var_dump($network);
 if(mysqli_num_rows($result) == 0)
 { 
 	$id = Network::launchNetwork($network, $con); 
@@ -139,5 +139,5 @@ else {
 }
 
 // execute redirect
-$redirect->execute();
+//$redirect->execute();
 ?>

@@ -16,9 +16,9 @@ if (!isset($_POST['location_weight']) || !isset($_POST['origin_weight']) ||
 
 // get post variables
 $nid = 352;
-$location_weight = $_POST['location_weight'];
-$origin_weight = $_POST['origin_weight'];
-$count_weight = $_POST['count_weight'];
+$location_weight = (float) $_POST['location_weight'];
+$origin_weight = (float) $_POST['origin_weight'];
+$count_weight = (float) $_POST['count_weight'];
 
 include '../../environment.php';
 $cm = new \Environment();
