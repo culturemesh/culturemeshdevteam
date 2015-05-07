@@ -14,3 +14,4 @@ culturemesh
 htdocs/cache
 htdocs/cache*
 htdocs/apc.php
+htdocs/data/s_*

@@ -74,6 +74,7 @@ class Network
 			array_push($statement_values, array($key, $network[$key]));
 		}
 		 */
+
 		foreach ($network as $key => $value)
 		{
 			if ($value == null)
@@ -166,6 +167,8 @@ class Network
 
 		//echo $statement;
 		$result = mysqli_query($con, $statement); 
+
+		var_dump($statement);
 
 		echo $con->error;
 		if ($result)

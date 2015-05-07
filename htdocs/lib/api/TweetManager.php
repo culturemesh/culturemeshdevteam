@@ -164,7 +164,10 @@ class TweetManager {
 				'max_count' => $this->MAX_RESULT_COUNT,
 				'result_count' => $relevance_count,
 				'since_date' => $this->network->query_since_date,
-				'query' => urldecode( $twitter_query->getQuery() )
+				'query' => urldecode( $twitter_query->getQuery() ),
+				'origin_weight' => $equation_constants['origin_weight'],
+				'location_weight' => $equation_constants['location_weight'],
+				'count_weight' => $equation_constants['count_weight']
 			);
 
 			$cache->add($tweet_info_key, $this->query_info);
