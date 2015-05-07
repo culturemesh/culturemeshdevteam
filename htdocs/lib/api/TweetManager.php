@@ -78,8 +78,6 @@ class TweetManager {
 		$tweet_info_key = $tweet_key . '_info';
 		$tweets_exist = $cache->exists($tweet_key);
 
-		$tweets_exist = False;
-
 		if ($tweets_exist == False || $mode == 'adjust') {
 
 			// make an api call to the lords of twitter
