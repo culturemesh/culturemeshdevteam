@@ -106,11 +106,22 @@ class Event extends DisplayDObj {
 			break;
 
 		case 'dashboard':
+
+			$user = $vars['site_user'];
+
+			if ($user->id == $this->id_host) {
+				$owner = true;
+			}
+			else {
+				$owner = false;
+			}
+
 			// get template
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-event.html');
 			return $mustache->render($template, array(
 				'event' => $this,
 				'host' => $this->getName(),
+				'owner' => $owner,
 				'date' => $this->formatDate('modal'),
 				'list_vars' => $list_vars,
 				'vars' => $cm->getVars()
