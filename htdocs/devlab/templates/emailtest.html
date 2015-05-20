@@ -14,10 +14,13 @@
 	{{$ content }}
 	<div id="content" class='container-fluid'>
 		<div id='panel-1' class='row panel'>
-		    <h1>Send Test Emails</h1>
-		    <button id='button-post-reply'>Send Post Reply</button>
-		    <button id='button-related-reply'>Send Related Reply</button>
-		    <span id='op-error'></span>
+			<h1>Send Test Emails</h1>
+			<button id='button-post-reply'>Send Post Reply</button>
+			<button id='button-related-reply'>Send Related Reply</button>
+			<span id='op-error'></span>
+		</div>
+		<div class='row panel'>
+			<iframe id='email-iframe' src="" width='600' style='display:none'></iframe>
 		</div>
 	</div>
 	{{/ content }}
@@ -49,6 +52,41 @@
 					$('#op-error').show();
 					$('#op-error').text('The thing you did did the thing.');
 					$('#op-error').delay(1000).fadeOut('slow');
+					$('#email-iframe').show();
+					$('#email-iframe').attr('src', results.link);
+				}
+
+			});
+		});
+
+		$('#button-related-reply').on('click', function(e) {
+			
+			e.preventDefault();
+			
+			var postReplyAjax = new Ajax({
+				requestType: 'POST',
+				requestUrl: 'ops/email-relatedreply.php',
+				requestParameters: ' ',
+				data: '',
+				dataType : 'string',
+				sendNow: true
+			},
+
+			function(data) {
+
+				var results = JSON.parse(data);
+
+				if (results.error !== 0) {
+					$('#op-error').show();
+					$('#op-error').text(results.error);
+					$('#op-error').delay(1000).fadeOut('slow');
+				}
+				else {
+					$('#op-error').show();
+					$('#op-error').text('The thing you did did the thing.');
+					$('#op-error').delay(1000).fadeOut('slow');
+					$('#email-iframe').show();
+					$('#email-iframe').attr('src', results.link);
 				}
 
 			});

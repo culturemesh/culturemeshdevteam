@@ -19,6 +19,16 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 	&& isset($_POST['nid'])) {
 	
 
+		if ($_POST['direction'] == 'older') {
+
+			$network->getOlderPostsFromId($dal, $do2db, $pid, $_POST['lb'], $_POST['ub']);
+		}
+
+		if ($_POST['direction'] == 'newer') {
+
+			$network->getNewerPostsFromId($dal, $do2db, $pid, $_POST['lb'], $_POST['ub']);
+		}
+
 		include 'environment.php';
 
 		$cm = new \Environment();

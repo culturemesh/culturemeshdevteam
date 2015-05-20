@@ -70,6 +70,11 @@
 						content: text,
 						html: true
 						});
+
+					if (qs.fragment != null) {
+						$( qs.fragment ).goTo();
+					}
+
 					});
 	</script>
 	{{/ autoload_scripts }}
@@ -145,6 +150,16 @@
 			<div class="network tab-content">
 			<div id="post-wall-container" class="tab-pane active">
 			<div id="post-wall">
+				{{# page_vars.newer_posts }}
+				<div>
+					<form class="more_posts" method="POST" action="{{ vars.hostname }}/network_more_posts.php">
+						<input type="hidden" id="nmp_lb" name="lb" value="{{ page_vars.newer_posts_lower_bound }}" />
+						<input type="hidden" id="nmp_ub" name="ub" value=10 />
+						<input type="hidden" id="nmp_nid" name="nid" value="{{ page_vars.nid }}" />
+						<button id="mp_button" class="post show">Load Newer Posts</button>
+					</form>
+				</div>
+				{{/ page_vars.newer_posts }}
 				{{# page_vars.member }}
 				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.hostname }}/network_post.php" enctype="multipart/form-data">
 					<!--<img id="profile-post" src="{{ vars.img_host_repo}}/{{ site_user.img_link }}" width="45" height="45">-->
@@ -184,7 +199,7 @@
 				{{# page_vars.more_posts }}
 				<div>
 					<form class="more_posts" method="POST" action="{{ vars.hostname }}/network_more_posts.php">
-						<input type="hidden" id="nmp_lb" name="lb" value=10 />
+						<input type="hidden" id="nmp_lb" name="lb" value={{ page_vars.older_posts_lower_bound }} />
 						<input type="hidden" id="nmp_ub" name="ub" value=10 />
 						<input type="hidden" id="nmp_nid" name="nid" value="{{ page_vars.nid }}" />
 						<button id="mp_button" class="post show">Load Older Posts</button>

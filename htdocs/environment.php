@@ -2,6 +2,11 @@
 final class Environment {
 
 	// COMPILE TIME PROPERTIES //
+
+	/*
+	 * The absolute file directory for the server
+	 * - used for internal php access
+	 */
 	public static $site_root = __FILE__;
 	public static $host_root_s;
 	public static $hostname_s;
@@ -13,8 +18,22 @@ final class Environment {
 	private static $support_email = '';
 
 	// RUNTIME PROPERTIES //
-	private $host_root;
+
+	/*
+	 * The file directory as it needs to be accessed
+	 * on the website
+	 *
+	 * ex: www.culturemesh.build
+	 */
 	private $hostname;
+
+	/*
+	 * The file directory as it needs to be accessed
+	 * in an html file
+	 *
+	 * ex: //www.culturemesh.build
+	 */
+	private $host_root;
 	private $f_root; // needed for AltoRouter
 	private $ds;
 	private $template_dir;

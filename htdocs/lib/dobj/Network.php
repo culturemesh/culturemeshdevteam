@@ -128,6 +128,56 @@ class Network extends DisplayDObj {
 		}
 	}
 
+	public function getOlderPostsFromId($dal, $do2db, $pid, $lobound=0, $upbound=10) {
+
+		if ($this->id == NULL) {
+			throw new Exception('No id is associated with this network object');
+		}
+
+		$args = new Blank();
+		$args->id = $pid;
+		$args->id_network = $this->id;
+		$args->lobound = $lobound;
+		$args->upbound = $upbound;
+
+		$this->posts = $do2db->execute($dal, $args, 'getOlderPostsFromId');
+
+		if (get_class($this->posts) == 'PDOStatement') {
+			$this->posts = new DObjList();
+		}
+
+		foreach ($this->posts as $post) {
+			$post->getImages();
+			$post->getReplies($dal, $do2db);
+		}
+	}
+
+	public function getNewerPostsFromId($dal, $do2db, $pid, $lobound=0, $upbound=10) {
+
+		if ($this->id == NULL) {
+			throw new Exception('No id is associated with this network object');
+		}
+
+		$args = new Blank();
+		$args->id = $this->id;
+		$args->id_network = $this->id;
+		$args->lobound = $lobound;
+		$args->upbound = $upbound;
+
+		$this->posts = $do2db->execute($dal, $args, 'getNewerPostsFromId');
+
+		if (get_class($this->posts) == 'PDOStatement') {
+			$this->posts = new DObjList();
+		}
+		else {
+			$this->posts->reverse();
+		}
+
+		foreach ($this->posts as $post) {
+			$post->getImages();
+			$post->getReplies($dal, $do2db);
+		}
+	}
 
 	public function getTweets($dal, $do2db, $lobound=0, $upbound=10) {
 

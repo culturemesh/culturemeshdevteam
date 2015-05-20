@@ -251,6 +251,10 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		$sl->slist = $splits;
 		return $sl;
 	}
+	//////////// NICE TO HAVE ////////////////////
+	public function reverse() {
+		$this->dlist = array_reverse($this->dlist);
+	}
 
 	//////////// THINGS I MUST SET ////////////////
 	public function count() {

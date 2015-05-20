@@ -36,38 +36,18 @@ class Network {
 			$er->execute();
 		}
 
-		$network->getPosts($dal, $do2db);
+		if (isset($_GET['plink'])) {
+			$network->getOlderPostsFromId($dal, $do2db, (int) $_GET['plink']);
+		}
+		else {
+			$network->getPosts($dal, $do2db);
+		}
 
 		$network->getTweets($dal, $do2db);
 
 		$network->getEvents($dal, $do2db);
 		$network->getPostCount($dal, $do2db);
 		$network->getMemberCount($dal, $do2db);
-
-		/*
-		// get TWITTER things if they are not cached
-		$tweet_key = 'n' . $network->id . '_tweets';
-
-		$tweets_exist = $cache->exists($tweet_key);
-
-		if ($tweets_exist == False) {
-
-			// make an api call to the lords of twitter
-			$twitter_query = new \api\TwitterQuery();
-			$twitter_query->buildSearch($network);
-			$twitter_call = new \api\TwitterApiCall($cm, $twitter_query);
-			$twitter_json = $twitter_call->execute();
-			$tweets = \api\Twitter::JsonToTweets($twitter_json);
-
-			// add tweets to cache
-			$TIME_TO_LIVE = 30; // 30 minutes, or two call cycles
-			$cache->add($tweet_key, $tweets, $TIME_TO_LIVE * 60);
-		}
-		else {
-
-			$tweets = $cache->fetch($tweet_key);
-		}
-		 */
 
 		$tweet_manager = new \api\TweetManager($cm, $network, $dal, $do2db);
 		$tweets = $tweet_manager->requestTweets();
@@ -216,6 +196,8 @@ class Network {
 
 		if ($network->post_count > 10) {
 			$more_posts = true;
+			$older_posts_lower_bound = 10;
+			$newer_posts_lower_bound = NULL;
 		}
 
 		// map embed
@@ -252,6 +234,8 @@ class Network {
 				'member' => $member,
 				'member_count' => $network->member_count,
 				'more_posts' => $more_posts,
+				'newer_posts_lower_bound' => $newer_posts_lower_bound,
+				'older_posts_lower_bound' => $older_posts_lower_bound,
 				'post_count' => $network->post_count,
 				'uid' => null,
 				'nid' => $nid,

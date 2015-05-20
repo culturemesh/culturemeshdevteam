@@ -250,6 +250,25 @@ class Post extends DisplayDObj {
 		  $this->replies = $result;
 	}
 
+	/*
+	 * Returns a reply from the replies list
+	 *
+	 * @returns - dobj\Reply if found
+	 * @returns - False if not found
+	 */
+	public function findReply($id) {
+
+		// start at the beginning of the list
+		foreach ($this->replies as $reply) {
+
+			if ($reply->id == $id)
+				return $reply;
+		}
+
+		// nothing found
+		return false;
+	}
+
 	protected function getRelativeDate() {
 		$now = new \DateTime();
 		$then = new \DateTime($this->post_date);

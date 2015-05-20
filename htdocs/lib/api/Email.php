@@ -11,7 +11,7 @@ abstract class Email {
     /*
      * Standard constructor
      */
-    public function __construct($cm, $mustache, $address, $settings) {
+    public function __construct($cm, $mustache, $address_arg, $settings) {
         
     	$this->headers = "From: no-reply@culturemesh.com\n";
     	$this->headers .= "MIME-Version: 1.0\n";
@@ -20,8 +20,24 @@ abstract class Email {
         // Make sure all the things required exist
         $this->reviewSettings($settings);
         
-        // Email address
-        $this->address = $address;
+        // Set email address
+	//// check for array
+	if (is_array($address_arg)) {
+
+		$this->address = '';
+
+		for ($i = 0; $i < count($address_arg); $i++) {
+
+			$this->address .= $address_arg[$i];
+
+			// add comma
+			if (count($address_arg) - $i > 1)
+				$this->address .= ', ';
+		}
+	}
+	else {
+        	$this->address = $address_arg;
+	}
         
         // create message based on specific email class
         $this->message = $this->compose($cm, $mustache, $settings);
@@ -43,6 +59,23 @@ abstract class Email {
         
         return mail($this->address, $this->subject, $this->message, $this->headers);
     }
+
+    /*
+     * Gets the html message for testing purposes
+     * @returns - the html message
+     */
+    public function getMessage() {
+
+	    return $this->message;
+    }
+
+    /*
+     * Gets the to address for testing purposes
+     * @returns - string: the email address
+     */
+	public function getAddress() {
+		return $this->address;
+	}
 }
 
 ?>

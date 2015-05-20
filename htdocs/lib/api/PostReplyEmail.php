@@ -9,7 +9,9 @@ class PostReplyEmail extends Email {
         $template = file_get_contents($cm->template_dir . $cm->ds . 'email/post-reply.html');
         
         return $mustache->render($template, array(
-                    'something' => true));
+		'vars' => $cm->getVars(),
+		'reply' => $settings['reply']
+	));
     }
     
     protected function reviewSettings($settings) {

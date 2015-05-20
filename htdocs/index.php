@@ -29,10 +29,18 @@
 	//"images/cmfrontpage_image1.jpg",
 	// too much white
 		$bg_links = array( 
+			"images/cmfrontpage_image1.jpg",
 			"images/cmfrontpage_image2.jpg", 
-			"images/cmfrontpage_image3.jpg");
+			"images/cmfrontpage_image3.jpg",
+			"images/cmfrontpage_image4.jpg",
+			"images/cmfrontpage_image5.jpg",
+			"images/cmfrontpage_image6.jpg",
+			"images/cmfrontpage_image7.jpg",
+			"images/cmfrontpage_image8.jpg",
+			"images/cmfrontpage_image9.jpg",
+			"images/cmfrontpage_image10.jpg");
 		
-		$i = rand(0,1);
+		$i = rand(0,9);
 		
 		if (isset($_SESSION['cur_bg']))
 		{

@@ -318,11 +318,23 @@ input[class="modal-text-input"] {
     color:#7F7F7F;
 }
 
+input[class="modal-text-input-conf"] {
+    margin:0;
+    width:121px;
+    border-color:#B3B3B3;
+    border-width:1px;
+    border-radius:4px;
+    height:36px;
+    font-size:18px;
+    color:#7F7F7F;
+}
+
 #login-passwords
 {
     margin:0px auto;
     width:85%;
 }
+/*
 input[id^="password"] {
     margin-left: auto;
     margin-right: auto;
@@ -335,6 +347,7 @@ input[id^="password"] {
     font:18px Lato, sans-serif;
     color:#7F7F7F;
 }
+*/
 
 input[id^="password"].dashboard {
     margin-left: auto;
@@ -352,10 +365,12 @@ input[id^="password"].dashboard {
 input[id^="log"] {
     margin-top:25px;
 }
+/*
 input[id="password_conf"]
 {
    margin-left:6px;
 }
+*/
 
 input[class="submit"]
 {
