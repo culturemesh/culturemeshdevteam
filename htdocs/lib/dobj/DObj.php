@@ -174,7 +174,7 @@ abstract class DObj {
 		$copy = clone $this;
 
 		// get image link acting right
-		if (isset($this->img_link)) {
+		if (property_exists($this, 'img_link')) {
 
 			if ( !is_file($cm->img_repo_dir . $cm->ds . $this->img_link)) 
 			  $copy->img_link = '//' . $cm->hostname . $cm->ds . 'images/blank_profile.png';

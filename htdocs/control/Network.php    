@@ -242,7 +242,7 @@ class Network {
 				'get' => $_GET
 			),
 			'logged_in' => $logged_in,
-			'site_user' => $site_user
+			'site_user' => $site_user->prepare($cm)
 		);
 
 		// display the page proudly, chieftain
