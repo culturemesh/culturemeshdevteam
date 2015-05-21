@@ -10,7 +10,8 @@ class PostReplyEmail extends Email {
         
         return $mustache->render($template, array(
 		'vars' => $cm->getVars(),
-		'reply' => $settings['reply']
+		'reply' => $settings['reply'],
+		'name' => $settings['reply']->getName()
 	));
     }
     
