@@ -38,7 +38,17 @@
 			"images/cmfrontpage_image7.jpg",
 			"images/cmfrontpage_image8.jpg",
 			"images/cmfrontpage_image9.jpg",
-			"images/cmfrontpage_image10.jpg");
+			"images/cmfrontpage_image10.jpg",
+			"images/cmfrontpage_image11.jpg",
+			"images/cmfrontpage_image12.jpg",
+			"images/cmfrontpage_image13.jpg",
+			"images/cmfrontpage_image14.jpg",
+			"images/cmfrontpage_image15.jpg",
+			"images/cmfrontpage_image16.jpg",
+			"images/cmfrontpage_image17.jpg",
+			"images/cmfrontpage_image18.jpg",
+			"images/cmfrontpage_image19.jpg",
+			);
 		
 		$i = rand(0,9);
 		
