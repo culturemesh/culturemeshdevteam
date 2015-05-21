@@ -48,9 +48,18 @@
 			"images/cmfrontpage_image17.jpg",
 			"images/cmfrontpage_image18.jpg",
 			"images/cmfrontpage_image19.jpg",
+			"images/cmfrontpage_image20.jpg",
+			"images/cmfrontpage_image21.jpg",
+			"images/cmfrontpage_image22.jpg",
+			"images/cmfrontpage_image23.jpg",
+			"images/cmfrontpage_image24.jpg",
+			"images/cmfrontpage_image25.jpg",
+			"images/cmfrontpage_image26.jpg",
+			"images/cmfrontpage_image27.jpg",
+			"images/cmfrontpage_image28.jpg"
 			);
 		
-		$i = rand(0,18);
+		$i = rand(0,27);
 		
 		if (isset($_SESSION['cur_bg']))
 		{
