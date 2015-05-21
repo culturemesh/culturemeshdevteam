@@ -50,7 +50,7 @@
 			"images/cmfrontpage_image19.jpg",
 			);
 		
-		$i = rand(0,9);
+		$i = rand(0,18);
 		
 		if (isset($_SESSION['cur_bg']))
 		{
