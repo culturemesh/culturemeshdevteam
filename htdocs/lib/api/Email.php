@@ -13,8 +13,8 @@ abstract class Email {
      */
     public function __construct($cm, $mustache, $address_arg, $settings) {
         
-    	$this->headers = "From: no-reply@culturemesh.com\n";
-    	$this->headers .= "MIME-Version: 1.0\n";
+    	$this->headers = "From: no-reply@culturemesh.com" ."\r\n";
+    	$this->headers .= "MIME-Version: 1.0" . "\r\n";
         $this->headers .= "Content-type: text/html; charset=iso-8859-1";
         
         // Make sure all the things required exist

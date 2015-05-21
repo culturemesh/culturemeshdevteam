@@ -2,29 +2,23 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Someone Replied to Your Post</title>
-		<!--
-		<link href="{{ vars.hostname }}/css/bootstrap.css" rel="stylesheet">
-		<link href="{{ vars.hostname }}/css/style.css#" rel="stylesheet">
-		-->
-		<link href="//www.culturemesh.build/css/bootstrap.css" rel="stylesheet">
-		<link href="//www.culturemesh.build/css/style.css#" rel="stylesheet">
 	</head>
 	<body>
 		<h1>Someone Replied to Your Post</h1>
 		<div>
 		    <div>
-				<div class='post-img'>
-					<img id='profile-post' src='{{ vars.hostname }}/images/blank_profile.png' width='45' height='45'>
+				<div>
+					<!--
+					<img src='http:{{ vars.hostname }}/images/blank_profile.png' width='45' height='45'>
+					-->
 				</div>
-				<div class='post-info'>
-					<h5 class='h-network post'><a href='{{ vars.hostname }}/profile/{{ reply.id_user }}'></a></h5>
-					<div class="clear"></div>
-					<p class='network reply'>{{{ reply.reply_text }}}</p>
-					<p class='network reply date'>{{ reply.relative_date }}</p>
+				<div>
+					<h5><a href='{{ vars.hostname }}/profile/{{ reply.id_user }}'></a></h5>
+					<p>{{{ reply.reply_text }}}</p>
+					<p>{{ reply.relative_date }}</p>
 				</div>
-				<div class='clear'></div>
 			</div>
-			<a href='{{ vars.hostname }}/network/{{ reply.id_network }}?plink={{ reply.id_parent }}'>Warp to Reply</a>
+			<a href='http:{{ vars.hostname }}/network/{{ reply.id_network }}?plink={{ reply.id_parent }}'>Go to Post</a>
 		</div>
 		</br>
 	</body>
