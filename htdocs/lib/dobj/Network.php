@@ -118,6 +118,9 @@ class Network extends DisplayDObj {
 
 		$this->posts = $do2db->execute($dal, $args, 'getPostsByNetworkId');
 
+		// single post count
+		$value = $do2db->execute($dal, NULL, 'selectFoundRows');
+
 		if (get_class($this->posts) == 'PDOStatement') {
 			$this->posts = new DObjList();
 		}

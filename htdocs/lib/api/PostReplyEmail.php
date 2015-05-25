@@ -16,7 +16,6 @@ class PostReplyEmail extends Email {
     }
     
     protected function reviewSettings($settings) {
-        
     }
 }
 

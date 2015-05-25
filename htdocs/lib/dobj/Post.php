@@ -329,9 +329,15 @@ class Post extends DisplayDObj {
 
 		$new_text = preg_replace($match, $replacement, $new_text);
 
+		// TEMPORARY: remove ellipsis tag links
+		$match = '#<a target=\'_blank\' href=\'http://('. $all_chars .')\'>(('. $all_chars .')(\.)+)</a>#';
+		$replacement = '${2}';
+		$new_text = preg_replace($match, $replacement, $new_text);
+
 		// find bold and italics
 		$new_text = \misc\Util::TagReplace($new_text, 'b');
 		$new_text = \misc\Util::TagReplace($new_text, 'i');
+
 
 		return $new_text;
 	}

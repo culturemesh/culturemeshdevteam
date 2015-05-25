@@ -23,7 +23,10 @@ class DAL {
 	// returns a closure for 
 	public function __get($name) {
 
-		return $this->registry[$name]();
+		if (isset($this->registry[$name]))
+			return $this->registry[$name]();
+		else
+			return $this->$name;
 	}
 
 	public function getCQuery($name) {
@@ -60,6 +63,9 @@ class DAL {
 
 		include_once('reg-event.php');
 		\registerEvent($this);
+
+		include_once('reg-meta.php');
+		\registerMeta($this);
 
 		include_once('reg-tweet.php');
 		\registerTweet($this);

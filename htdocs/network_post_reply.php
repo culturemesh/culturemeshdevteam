@@ -116,6 +116,7 @@ else {
 			// create email for those who replied to original post
 			if (count($reply_emails) > 0) {
 				$related_reply_email = new \api\RelatedReplyEmail($cm, $mustache, $reply_emails, $settings);
+				$related_reply_email->send();
 			}
 
 			if ($html != NULL) {

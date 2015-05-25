@@ -15,8 +15,20 @@ class RelatedReplyEmail extends Email {
 	));
     }
     
+    /*
+     * Swaps address set in constructor for sender address,
+     * puts address set in constructor in bcc header
+     *
+     */
     protected function reviewSettings($settings) {
-        
+
+	    // Add blind carbon copy addresses,
+	    // don't want these people seeing each other's emails
+	    $this->headers .= "\r\n";
+	    $this->headers .= "Bcc: " . $this->address;
+
+	    // set address equal to sender
+	    $this->address .= 'no-reply@culturemesh.com';
     }
 }
 

@@ -33,25 +33,25 @@
 			"images/cmfrontpage_image2.jpg", 
 			"images/cmfrontpage_image3.jpg",
 			"images/cmfrontpage_image4.jpg",
-			"images/cmfrontpage_image5.jpg",
+			//"images/cmfrontpage_image5.jpg",
 			"images/cmfrontpage_image6.jpg",
 			"images/cmfrontpage_image7.jpg",
-			"images/cmfrontpage_image8.jpg",
-			"images/cmfrontpage_image9.jpg",
-			"images/cmfrontpage_image10.jpg",
+			//"images/cmfrontpage_image8.jpg",
+			//"images/cmfrontpage_image9.jpg",
+			//"images/cmfrontpage_image10.jpg",
 			"images/cmfrontpage_image11.jpg",
 			"images/cmfrontpage_image12.jpg",
-			"images/cmfrontpage_image13.jpg",
-			"images/cmfrontpage_image14.jpg",
-			"images/cmfrontpage_image15.jpg",
+			//"images/cmfrontpage_image13.jpg",
+			//"images/cmfrontpage_image14.jpg",
+			//"images/cmfrontpage_image15.jpg",
 			"images/cmfrontpage_image16.jpg",
 			"images/cmfrontpage_image17.jpg",
-			"images/cmfrontpage_image18.jpg",
+			//"images/cmfrontpage_image18.jpg",
 			"images/cmfrontpage_image19.jpg",
 			"images/cmfrontpage_image20.jpg",
 			"images/cmfrontpage_image21.jpg",
 			"images/cmfrontpage_image22.jpg",
-			"images/cmfrontpage_image23.jpg",
+			//"images/cmfrontpage_image23.jpg",
 			"images/cmfrontpage_image24.jpg",
 			"images/cmfrontpage_image25.jpg",
 			"images/cmfrontpage_image26.jpg",
@@ -59,7 +59,7 @@
 			"images/cmfrontpage_image28.jpg"
 			);
 		
-		$i = rand(0,27);
+		$i = rand(0,18);
 		
 		if (isset($_SESSION['cur_bg']))
 		{
@@ -124,7 +124,7 @@
 			<div id="stage-area">
 				<div id="stage-content">
 					<h3 id="stage-title">Connecting the world's diasporas</h3>
-					<form id="search-form" method="GET" action="search_results.php" autocomplete="off">
+					<form id="search-form" class='stage' method="GET" action="search_results.php" autocomplete="off">
 					<div id="opening" class='stage'>Find people who
 					<select id="verb-select" name="verb" class="stage-input">
 						<option value="arefrom">are from</option>

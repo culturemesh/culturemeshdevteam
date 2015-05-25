@@ -29,6 +29,10 @@ cm.PostWall = function(o) {
 
 	// make wallDiv appear
 	$( this._wallDiv ).show('slow');
+
+	if (qs.qsGet['plink'] != undefined) {
+		$('#post-' + qs.qsGet['plink']).goTo();
+	}
 };
 
 cm.PostWall.prototype = {

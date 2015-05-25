@@ -17,9 +17,6 @@ abstract class Email {
     	$this->headers .= "MIME-Version: 1.0" . "\r\n";
         $this->headers .= "Content-type: text/html; charset=iso-8859-1";
         
-        // Make sure all the things required exist
-        $this->reviewSettings($settings);
-        
         // Set email address
 	//// check for array
 	if (is_array($address_arg)) {
@@ -39,6 +36,9 @@ abstract class Email {
         	$this->address = $address_arg;
 	}
         
+        // Make sure all the things required exist
+        $this->reviewSettings($settings);
+
         // create message based on specific email class
         $this->message = $this->compose($cm, $mustache, $settings);
     }
