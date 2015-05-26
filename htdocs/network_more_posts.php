@@ -19,6 +19,7 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 	&& isset($_POST['nid'])) {
 	
 
+		/*
 		if ($_POST['direction'] == 'older') {
 
 			$network->getOlderPostsFromId($dal, $do2db, $pid, $_POST['lb'], $_POST['ub']);
@@ -28,6 +29,7 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 
 			$network->getNewerPostsFromId($dal, $do2db, $pid, $_POST['lb'], $_POST['ub']);
 		}
+		 */
 
 		include 'environment.php';
 
@@ -35,7 +37,8 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 
 		// add one to the upper bound so that we can check if there
 		// are more posts
-		$bounds = array($_POST['lb'], $_POST['ub'] + 1);
+		$bounds = array((int) $_POST['lb'], (int) $_POST['ub']);
+		$bounds[1] += 1;
 
 		$network = new \dobj\Network();
 		$network->id = (int) $_POST['nid'];
@@ -46,7 +49,7 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 
 		$site_user = \dobj\User::createFromId((int) $_SESSION['uid'], $dal, $do2db);
 
-		$network->getPosts($dal, $do2db, (int ) $bounds[0], (int) $bounds[1]);
+		$network->getPosts($dal, $do2db, $bounds[0], $bounds[1]);
 		$cm->closeConnection();
 
 		/////// make components //////////

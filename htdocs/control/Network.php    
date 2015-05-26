@@ -201,6 +201,8 @@ class Network {
 			$newer_posts_lower_bound = NULL;
 		}
 		 */
+		$older_posts_lower_bound = 10;
+		$newer_posts_lower_bound = NULL;
 
 		// map embed
 		$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');

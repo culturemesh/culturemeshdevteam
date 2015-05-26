@@ -328,6 +328,7 @@ cm.PostWall.prototype = {
 	_primeMorePosts: function() {
 		var self = this;
 
+		$( ".more_posts" ).unbind('submit');
 		$('.more_posts').on('submit', function(e) {
 			
 			// prevent default
