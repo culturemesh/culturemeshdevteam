@@ -99,7 +99,7 @@ SQL
 		$m = new dal\DBQuery();
 		$m->setValues(array(
 			'query' => <<<SQL
-SELECT p.*, u.email, u.username, u.first_name, u.last_name, u.img_link, reply_count, hash
+SELECT SQL_CALC_FOUND_ROWS p.*, u.email, u.username, u.first_name, u.last_name, u.img_link, reply_count, hash
 FROM posts p
 LEFT JOIN (SELECT id_parent, COUNT(id_parent) AS reply_count
 		FROM post_replies
@@ -149,7 +149,7 @@ SQL
 		$m = new dal\DBQuery();
 		$m->setValues(array(
 			'query' => <<<SQL
-SELECT p.*, u.email, u.username, u.first_name, u.last_name, u.img_link, reply_count, hash
+SELECT SQL_CALC_FOUND_ROWS p.*, u.email, u.username, u.first_name, u.last_name, u.img_link, reply_count, hash
 FROM posts p
 LEFT JOIN (SELECT id_parent, COUNT(id_parent) AS reply_count
 		FROM post_replies

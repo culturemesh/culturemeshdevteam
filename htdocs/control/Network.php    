@@ -191,6 +191,7 @@ class Network {
 			$em_html = NULL;
 		}
 
+		/*
 		// check if we need more posts
 		$more_posts = false;
 
@@ -199,6 +200,7 @@ class Network {
 			$older_posts_lower_bound = 10;
 			$newer_posts_lower_bound = NULL;
 		}
+		 */
 
 		// map embed
 		$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
@@ -233,7 +235,8 @@ class Network {
 			'page_vars' => array (
 				'member' => $member,
 				'member_count' => $network->member_count,
-				'more_posts' => $more_posts,
+				'more_posts' => $network->more_older_posts,
+				'newer_posts' => $network->more_newer_posts,
 				'newer_posts_lower_bound' => $newer_posts_lower_bound,
 				'older_posts_lower_bound' => $older_posts_lower_bound,
 				'post_count' => $network->post_count,

@@ -139,5 +139,5 @@ else {
 }
 
 // execute redirect
-//$redirect->execute();
+$redirect->execute();
 ?>

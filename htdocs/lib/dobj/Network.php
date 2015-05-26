@@ -124,10 +124,21 @@ class Network extends DisplayDObj {
 		if (get_class($this->posts) == 'PDOStatement') {
 			$this->posts = new DObjList();
 		}
+		
+		$this->more_newer_posts = false;
+	
+		if ($value > 10) {
+			$this->more_older_posts = true;
+		}
+
+		else {
+			$this->more_older_posts = false;
+		}
 
 		foreach ($this->posts as $post) {
 			$post->getImages();
 			$post->getReplies($dal, $do2db);
+
 		}
 	}
 
@@ -145,8 +156,36 @@ class Network extends DisplayDObj {
 
 		$this->posts = $do2db->execute($dal, $args, 'getOlderPostsFromId');
 
+		// single post count
+		$value = $do2db->execute($dal, NULL, 'selectFoundRows');
+
 		if (get_class($this->posts) == 'PDOStatement') {
 			$this->posts = new DObjList();
+		}
+
+		/*
+		$this->more_posts = array(
+			'more' => false,
+			'newer_posts' => true,
+			'newer_posts_pid' => $pid,
+			'older_posts' => false,
+			'older_posts_pid' => $pid
+			);
+
+		$this->more_newer_posts = true;
+	
+		if ($value > 10) {
+			$this->more_posts['older_posts'] = true;
+		}*/
+		
+		$this->more_newer_posts = false;
+	
+		if ($value > 10) {
+			$this->more_older_posts = true;
+		}
+
+		else {
+			$this->more_older_posts = false;
 		}
 
 		foreach ($this->posts as $post) {
@@ -173,6 +212,11 @@ class Network extends DisplayDObj {
 			$this->posts = new DObjList();
 		}
 		else {
+			$this->more_newer_posts = false;
+			if ($value > 10) {
+				$this->more_newer_posts = true;
+			}
+
 			$this->posts->reverse();
 		}
 
