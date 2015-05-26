@@ -72,9 +72,11 @@ var_dump($storage);
 
 //echo __DIR__;
 //throw new Exception('test');
-echo 'something else';
+echo 'something else' . '<br>';
+echo $_SERVER['HTTP_HOST'];
 ?>
 	
+<!--
 	<form action="/file-upload"
 	      class="dropzone"
 	      id="my-awesome-dropzone"></form>
@@ -89,5 +91,7 @@ var dropzone = new Dropzone("div#upload", {
 	acceptedFiles : 'image/*'
 });
 	</script>
+-->
 	</body>
 </html>
+

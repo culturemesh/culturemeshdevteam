@@ -15,3 +15,4 @@ htdocs/cache
 htdocs/cache*
 htdocs/apc.php
 htdocs/data/s_*
+htdocs/.htaccess
