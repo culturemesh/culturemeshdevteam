@@ -26,17 +26,21 @@ class HTTPRedirect {
 		$parsed_url = parse_url($raw_url);
 
 		// get stuff to fill url parts
-		$this->url_host = $parsed_url['host'];
-		$this->url_path = self::extractRelativePath($parsed_url['path']);
+		if (isset($parsed_url['host']))
+			$this->url_host = $parsed_url['host'];
+
+		if  (isset($parsed_url['path']))
+			$this->url_path = self::extractRelativePath($parsed_url['path']);
 
 		// add query string
-		if (strlen($parsed_url['query']) > 0)
+		if (isset($parsed_url['query']) && strlen($parsed_url['query']) > 0)
 			$this->url_query = '?'.$parsed_url['query'];
 		else
 			$this->url_query = '';
 
 		// add fragment
-		$this->url_fragment = $parsed_url['fragment'];
+		if (isset($parsed_url['fragment']))
+			$this->url_fragment = $parsed_url['fragment'];
 	}
 
 	// extracts the relative path from the parse_url path

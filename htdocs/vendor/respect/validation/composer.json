@@ -1,5 +1,5 @@
 {
-    "name": "Respect/Validation",
+    "name": "respect/validation",
     "description": "The most awesome validation engine ever created for PHP",
     "keywords": ["respect", "validation", "validator"],
     "type": "library",
@@ -11,22 +11,35 @@
             "homepage": "https://github.com/Respect/Validation/graphs/contributors"
         }
     ],
-    "repositories": [{
-        "type": "composer",
-        "url": "https://packages.zendframework.com/"
-    }],
+    "require": {
+        "php": ">=5.3.0"
+    },
     "require-dev": {
-        "zendframework/zend-validator": "~2.0",
-        "symfony/validator": "~2.1",
-        "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "~4.0",
+        "symfony/validator": "~2.6",
+        "malkusch/bav": "~1.0",
+        "zendframework/zend-validator": "~2.3"
     },
     "suggest": {
         "ext-bcmath": "Arbitrary Precision Mathematics",
-        "ext-mbstring": "Multibyte String Functions"
+        "ext-mbstring": "Multibyte String Functions",
+        "malkusch/bav": "German bank account validation",
+        "symfony/validator": "Use Symfony validator through Respect\\Validation",
+        "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
     },
     "autoload": {
-        "psr-0": {
-            "Respect\\Validation": "library\/"
+        "psr-4": {
+            "Respect\\Validation\\": "library/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Respect\\Validation\\Test\\": "tests/library/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.8-dev"
         }
     }
 }

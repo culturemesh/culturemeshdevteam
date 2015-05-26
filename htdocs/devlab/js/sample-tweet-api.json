@@ -1,0 +1,391 @@
+{
+    "search_metadata": {
+        "completed_in": 0.035,
+        "count": 4,
+        "max_id": 250126199840518145,
+        "max_id_str": "250126199840518145",
+        "next_results": "?max_id=249279667666817023&q=%23freebandnames&count=4&include_entities=1&result_type=mixed",
+        "query": "%23freebandnames",
+        "refresh_url": "?since_id=250126199840518145&q=%23freebandnames&result_type=mixed&include_entities=1",
+        "since_id": 24012619984051000,
+        "since_id_str": "24012619984051000"
+    },
+    "statuses": [
+        {
+            "contributors": null,
+            "coordinates": null,
+            "created_at": "Mon Sep 24 03:35:21 +0000 2012",
+            "entities": {
+                "hashtags": [
+                    {
+                        "indices": [
+                            20,
+                            34
+                        ],
+                        "text": "freebandnames"
+                    }
+                ],
+                "urls": [],
+                "user_mentions": []
+            },
+            "favorited": false,
+            "geo": null,
+            "id": 250075927172759552,
+            "id_str": "250075927172759552",
+            "in_reply_to_screen_name": null,
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "metadata": {
+                "iso_language_code": "en",
+                "result_type": "recent"
+            },
+            "place": null,
+            "retweet_count": 0,
+            "retweeted": false,
+            "source": "<a>Twitter for Mac</a>",
+            "text": "Aggressive Ponytail #freebandnames",
+            "truncated": false,
+            "user": {
+                "contributors_enabled": false,
+                "created_at": "Mon Apr 26 06:01:55 +0000 2010",
+                "default_profile": true,
+                "default_profile_image": false,
+                "description": "Born 330 Live 310",
+                "entities": {
+                    "description": {
+                        "urls": []
+                    },
+                    "url": {
+                        "urls": [
+                            {
+                                "expanded_url": null,
+                                "indices": [
+                                    0,
+                                    0
+                                ],
+                                "url": ""
+                            }
+                        ]
+                    }
+                },
+                "favourites_count": 0,
+                "follow_request_sent": null,
+                "followers_count": 70,
+                "following": null,
+                "friends_count": 110,
+                "geo_enabled": true,
+                "id": 137238150,
+                "id_str": "137238150",
+                "is_translator": false,
+                "lang": "en",
+                "listed_count": 2,
+                "location": "LA, CA",
+                "name": "Sean Cummings",
+                "notifications": null,
+                "profile_background_color": "C0DEED",
+                "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png",
+                "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png",
+                "profile_background_tile": false,
+                "profile_image_url": "http://a0.twimg.com/profile_images/2359746665/1v6zfgqo8g0d3mk7ii5s_normal.jpeg",
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/2359746665/1v6zfgqo8g0d3mk7ii5s_normal.jpeg",
+                "profile_link_color": "0084B4",
+                "profile_sidebar_border_color": "C0DEED",
+                "profile_sidebar_fill_color": "DDEEF6",
+                "profile_text_color": "333333",
+                "profile_use_background_image": true,
+                "protected": false,
+                "screen_name": "sean_cummings",
+                "show_all_inline_media": false,
+                "statuses_count": 579,
+                "time_zone": "Pacific Time (US & Canada)",
+                "url": null,
+                "utc_offset": -28800,
+                "verified": false
+            }
+        },
+        {
+            "contributors": null,
+            "coordinates": null,
+            "created_at": "Fri Sep 21 23:40:54 +0000 2012",
+            "entities": {
+                "hashtags": [
+                    {
+                        "indices": [
+                            20,
+                            34
+                        ],
+                        "text": "FreeBandNames"
+                    }
+                ],
+                "urls": [],
+                "user_mentions": []
+            },
+            "favorited": false,
+            "geo": null,
+            "id": 249292149810667520,
+            "id_str": "249292149810667520",
+            "in_reply_to_screen_name": null,
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "metadata": {
+                "iso_language_code": "pl",
+                "result_type": "recent"
+            },
+            "place": null,
+            "retweet_count": 0,
+            "retweeted": false,
+            "source": "web",
+            "text": "Thee Namaste Nerdz. #FreeBandNames",
+            "truncated": false,
+            "user": {
+                "contributors_enabled": false,
+                "created_at": "Tue Apr 07 19:05:07 +0000 2009",
+                "default_profile": false,
+                "default_profile_image": false,
+                "description": "You will come to Durham, North Carolina. I will sell you some records then, here in Durham, North Carolina. Fun will happen.",
+                "entities": {
+                    "description": {
+                        "urls": []
+                    },
+                    "url": {
+                        "urls": [
+                            {
+                                "expanded_url": null,
+                                "indices": [
+                                    0,
+                                    32
+                                ],
+                                "url": "http://bullcityrecords.com/wnng/"
+                            }
+                        ]
+                    }
+                },
+                "favourites_count": 8,
+                "follow_request_sent": null,
+                "followers_count": 2052,
+                "following": null,
+                "friends_count": 348,
+                "geo_enabled": false,
+                "id": 29516238,
+                "id_str": "29516238",
+                "is_translator": false,
+                "lang": "en",
+                "listed_count": 118,
+                "location": "Durham, NC",
+                "name": "Chaz Martenstein",
+                "notifications": null,
+                "profile_background_color": "9AE4E8",
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/9423277/background_tile.bmp",
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/9423277/background_tile.bmp",
+                "profile_background_tile": true,
+                "profile_image_url": "http://a0.twimg.com/profile_images/447958234/Lichtenstein_normal.jpg",
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/447958234/Lichtenstein_normal.jpg",
+                "profile_link_color": "0084B4",
+                "profile_sidebar_border_color": "BDDCAD",
+                "profile_sidebar_fill_color": "DDFFCC",
+                "profile_text_color": "333333",
+                "profile_use_background_image": true,
+                "protected": false,
+                "screen_name": "bullcityrecords",
+                "show_all_inline_media": true,
+                "statuses_count": 7579,
+                "time_zone": "Eastern Time (US & Canada)",
+                "url": "http://bullcityrecords.com/wnng/",
+                "utc_offset": -18000,
+                "verified": false
+            }
+        },
+        {
+            "contributors": null,
+            "coordinates": null,
+            "created_at": "Fri Sep 21 23:30:20 +0000 2012",
+            "entities": {
+                "hashtags": [
+                    {
+                        "indices": [
+                            29,
+                            43
+                        ],
+                        "text": "freebandnames"
+                    }
+                ],
+                "urls": [],
+                "user_mentions": []
+            },
+            "favorited": false,
+            "geo": null,
+            "id": 249289491129438208,
+            "id_str": "249289491129438208",
+            "in_reply_to_screen_name": null,
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "metadata": {
+                "iso_language_code": "en",
+                "result_type": "recent"
+            },
+            "place": null,
+            "retweet_count": 0,
+            "retweeted": false,
+            "source": "web",
+            "text": "Mexican Heaven, Mexican Hell #freebandnames",
+            "truncated": false,
+            "user": {
+                "contributors_enabled": false,
+                "created_at": "Tue Sep 01 21:21:35 +0000 2009",
+                "default_profile": false,
+                "default_profile_image": false,
+                "description": "Science Fiction Writer, sort of. Likes Superheroes, Mole People, Alt. Timelines.",
+                "entities": {
+                    "description": {
+                        "urls": []
+                    },
+                    "url": {
+                        "urls": [
+                            {
+                                "expanded_url": null,
+                                "indices": [
+                                    0,
+                                    0
+                                ],
+                                "url": ""
+                            }
+                        ]
+                    }
+                },
+                "favourites_count": 19,
+                "follow_request_sent": null,
+                "followers_count": 63,
+                "following": null,
+                "friends_count": 63,
+                "geo_enabled": false,
+                "id": 70789458,
+                "id_str": "70789458",
+                "is_translator": false,
+                "lang": "en",
+                "listed_count": 1,
+                "location": "Kingston New York",
+                "name": "Thomas John Wakeman",
+                "notifications": null,
+                "profile_background_color": "352726",
+                "profile_background_image_url": "http://a0.twimg.com/images/themes/theme5/bg.gif",
+                "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme5/bg.gif",
+                "profile_background_tile": false,
+                "profile_image_url": "http://a0.twimg.com/profile_images/2219333930/Froggystyle_normal.png",
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/2219333930/Froggystyle_normal.png",
+                "profile_link_color": "D02B55",
+                "profile_sidebar_border_color": "829D5E",
+                "profile_sidebar_fill_color": "99CC33",
+                "profile_text_color": "3E4415",
+                "profile_use_background_image": true,
+                "protected": false,
+                "screen_name": "MonkiesFist",
+                "show_all_inline_media": false,
+                "statuses_count": 1048,
+                "time_zone": "Eastern Time (US & Canada)",
+                "url": null,
+                "utc_offset": -18000,
+                "verified": false
+            }
+        },
+        {
+            "contributors": null,
+            "coordinates": null,
+            "created_at": "Fri Sep 21 22:51:18 +0000 2012",
+            "entities": {
+                "hashtags": [
+                    {
+                        "indices": [
+                            20,
+                            34
+                        ],
+                        "text": "freebandnames"
+                    }
+                ],
+                "urls": [],
+                "user_mentions": []
+            },
+            "favorited": false,
+            "geo": null,
+            "id": 249279667666817024,
+            "id_str": "249279667666817024",
+            "in_reply_to_screen_name": null,
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "metadata": {
+                "iso_language_code": "en",
+                "result_type": "recent"
+            },
+            "place": null,
+            "retweet_count": 0,
+            "retweeted": false,
+            "source": "<a>Twitter for iPhone</a>",
+            "text": "The Foolish Mortals #freebandnames",
+            "truncated": false,
+            "user": {
+                "contributors_enabled": false,
+                "created_at": "Mon May 04 00:05:00 +0000 2009",
+                "default_profile": false,
+                "default_profile_image": false,
+                "description": "Cartoonist, Illustrator, and T-Shirt connoisseur",
+                "entities": {
+                    "description": {
+                        "urls": []
+                    },
+                    "url": {
+                        "urls": [
+                            {
+                                "expanded_url": null,
+                                "indices": [
+                                    0,
+                                    24
+                                ],
+                                "url": "http://www.omnitarian.me"
+                            }
+                        ]
+                    }
+                },
+                "favourites_count": 647,
+                "follow_request_sent": null,
+                "followers_count": 608,
+                "following": null,
+                "friends_count": 249,
+                "geo_enabled": false,
+                "id": 37539828,
+                "id_str": "37539828",
+                "is_translator": false,
+                "lang": "en",
+                "listed_count": 52,
+                "location": "Wisconsin, USA",
+                "name": "Marty Elmer",
+                "notifications": null,
+                "profile_background_color": "EEE3C4",
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/106455659/rect6056-9.png",
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/106455659/rect6056-9.png",
+                "profile_background_tile": true,
+                "profile_image_url": "http://a0.twimg.com/profile_images/1629790393/shrinker_2000_trans_normal.png",
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/1629790393/shrinker_2000_trans_normal.png",
+                "profile_link_color": "3B2A26",
+                "profile_sidebar_border_color": "615A44",
+                "profile_sidebar_fill_color": "BFAC83",
+                "profile_text_color": "000000",
+                "profile_use_background_image": true,
+                "protected": false,
+                "screen_name": "Omnitarian",
+                "show_all_inline_media": true,
+                "statuses_count": 3575,
+                "time_zone": "Central Time (US & Canada)",
+                "url": "http://www.omnitarian.me",
+                "utc_offset": -21600,
+                "verified": false
+            }
+        }
+    ]
+}

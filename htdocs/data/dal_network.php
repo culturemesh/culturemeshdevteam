@@ -74,6 +74,7 @@ class Network
 			array_push($statement_values, array($key, $network[$key]));
 		}
 		 */
+
 		foreach ($network as $key => $value)
 		{
 			if ($value == null)
@@ -167,6 +168,8 @@ class Network
 		//echo $statement;
 		$result = mysqli_query($con, $statement); 
 
+		var_dump($statement);
+
 		echo $con->error;
 		if ($result)
 		{
@@ -206,6 +209,20 @@ class Network
 		}
 		else 
 			return false;
+	}
+
+	public static function insertQueryRow($id, $con) {
+
+		$query = <<<SQL
+			INSERT INTO network_tweet_query_data
+			(id_network) VALUES
+			($id)
+SQL;
+		/// execute
+		$result = QueryHandler::executeQuery($query, $con);
+
+		// leave
+		return $result;
 	}
 	
 	////////////////////// READ OPERATIONS //////////////////////////////////////////////

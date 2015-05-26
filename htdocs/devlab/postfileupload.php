@@ -1,5 +1,5 @@
 <?php
-include("../Environment.php");
+include("../environment.php");
 $cm = new Environment();
 
 // base layout

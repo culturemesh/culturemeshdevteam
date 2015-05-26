@@ -34,11 +34,11 @@ class PostTest extends PHPUnit_Framework_TestCase {
 	public function testFormatTextAutoLink() {
 
 		$post = new dobj\Post();
-		$post->post_text = 'www.culturemesh.com [link]www.culturemesh.com[/link]';
+		$post->post_text = 'www.culturemesh.com';
 
 		$formatted = $post->formatText();
 
-		$this->assertEquals("<a target='blank' href='http://www.culturemesh.com'>www.culturemesh.com</a>", $formatted);
+		$this->assertEquals("<a target='_blank' href='http://www.culturemesh.com'>www.culturemesh.com</a>", $formatted);
 	}
 
 	public function testFormatTextMultipleLinks() {
@@ -48,7 +48,17 @@ class PostTest extends PHPUnit_Framework_TestCase {
 
 		$formatted = $post->formatText();
 
-		$this->assertEquals("<a target='blank' href='http://www.culturemesh.com'>www.culturemesh.com</a> <a target='_blank' href='http://www.culturemesh.com'>www.culturemesh.com</a>", $formatted);
+		$this->assertEquals("<a target='_blank' href='http://www.culturemesh.com'>www.culturemesh.com</a> <a target='_blank' href='http://www.culturemesh.com'>www.culturemesh.com</a>", $formatted);
+	}
+
+	public function testEliminateEllipsis() {
+
+		$post = new dobj\Post();
+		$post->post_text = 'test...';
+
+		$formatted = $post->formatText();
+
+		$this->assertEquals("test...", $formatted);
 	}
 }
 

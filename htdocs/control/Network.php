@@ -20,6 +20,9 @@ class Network {
 		// set session var
 		$_SESSION['cur_network'] = $nid;
 
+		// new cache object
+		$cache = new \misc\Cache($cm);
+
 		// prepare for db
 		$dal = new \dal\DAL($cm->getConnection());
 		$dal->loadFiles();
@@ -33,10 +36,65 @@ class Network {
 			$er->execute();
 		}
 
-		$network->getPosts($dal, $do2db);
+		if (isset($_GET['plink'])) {
+			$network->getOlderPostsFromId($dal, $do2db, (int) $_GET['plink']);
+		}
+		else {
+			$network->getPosts($dal, $do2db);
+		}
+
+		$network->getTweets($dal, $do2db);
+
 		$network->getEvents($dal, $do2db);
 		$network->getPostCount($dal, $do2db);
 		$network->getMemberCount($dal, $do2db);
+
+		$tweet_manager = new \api\TweetManager($cm, $network, $dal, $do2db);
+		$tweets = $tweet_manager->requestTweets();
+
+		//add tweets to posts
+		$network->mergePostsAndTweets( $tweets );
+
+		// add tweets to post count
+		$network->post_count += count($tweets);
+
+		// put tweets and posts all together
+		$network->posts = $network->posts->splits(function( $obj ) {
+
+			if ( get_class($obj) == 'dobj\Tweet') {
+
+				return array (
+					'section' => 2,
+					'key' => 'rank');
+			} // end if
+
+			else if (get_class($obj) == 'dobj\Post') {
+
+				$now = new \DateTime();
+				$date = new \DateTime( $obj->post_date );
+
+				// returns diffence between dates,
+				// forced to be positive
+				$interval = $now->diff($date, true);
+				$diff = (int) $interval->format('%a');
+
+				if ($diff < 30) {
+					return array (
+						'section' => 1,
+						'key' => 'rank');
+				} // endif 
+
+				else {
+					return array (
+						'section' => 3,
+						'key' => 'rank');
+				} // end else
+
+			} // end else if
+
+		}, 'inline'); // end function
+
+		$network->posts->order('rank', 'asc');
 
 		// check if user is logged in
 		// check registration
@@ -80,7 +138,9 @@ class Network {
 
 		try
 		{
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-postwall.html');
 			$p_html = $network->posts->getHTML('network', array(
+				'list_template' => $template,
 				'cm' => $cm,
 				'network' => $network,
 				'site_user' => $site_user,
@@ -131,12 +191,18 @@ class Network {
 			$em_html = NULL;
 		}
 
+		/*
 		// check if we need more posts
 		$more_posts = false;
 
 		if ($network->post_count > 10) {
 			$more_posts = true;
+			$older_posts_lower_bound = 10;
+			$newer_posts_lower_bound = NULL;
 		}
+		 */
+		$older_posts_lower_bound = 10;
+		$newer_posts_lower_bound = NULL;
 
 		// map embed
 		$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
@@ -163,7 +229,7 @@ class Network {
 				'searchbar' => $searchbar,
 				'lrg_network' => 'Large Network',
 				'network_title' => $network->getTitle(),
-				'posts' => $p_html,
+				'post_wall' => $p_html,
 				'event_slider' => $ec_html,
 				'event_modals' => $em_html),
 			'vars' => $cm->getVars(),
@@ -171,7 +237,10 @@ class Network {
 			'page_vars' => array (
 				'member' => $member,
 				'member_count' => $network->member_count,
-				'more_posts' => $more_posts,
+				'more_posts' => $network->more_older_posts,
+				'newer_posts' => $network->more_newer_posts,
+				'newer_posts_lower_bound' => $newer_posts_lower_bound,
+				'older_posts_lower_bound' => $older_posts_lower_bound,
 				'post_count' => $network->post_count,
 				'uid' => null,
 				'nid' => $nid,
@@ -181,6 +250,7 @@ class Network {
 			'site_user' => $site_user
 		);
 
+		// display the page proudly, chieftain
 		echo $m->render($template, $page_vars);
 	}
 }

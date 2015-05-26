@@ -1,0 +1,57 @@
+<li class='network-post'>
+	<div class='post-img'>
+		<img id='profile-post' src='{{ tweet.profile_image }}' width='45' height='45'>
+	</div>
+	<div class='post-info'>
+		<h5 class='h-network post'><b>{{ tweet.name }}</b>&nbsp;&nbsp;&nbsp;&nbsp;@{{ tweet.screen_name }}</h5> 
+		<div class="clear"></div>
+		<p class='network'>{{{ tweet.text }}}</p>
+		<div>
+			{{# images }}
+			<a href="{{ vars.img_host_repo }}/{{ dir }}" data-lightbox="post-{{ post.id }}"><img src="{{ vars.img_host_repo }}/{{ thumb }}"></img></a>
+			{{/ images }}
+		</div>
+		<p class='network date'><i>{{ tweet.date }}</i></p>
+		{{# reply_request }}
+		<div class='reply-button'>
+			<form class="request_reply" method="POST" action="{{ vars.hostname }}/network_request_reply.php">
+				<noscript>
+				<input type="hidden" name="NOJS" value="NOJS"/>
+				</noscript>
+				<input type="hidden" name="uid" value="{{ site_user.id }}"/>
+				<input type="hidden" name="tid" value="{{ tweet.id }}" />
+				<input type="hidden" name="tweet_text" value="{{ tweet.text }}" />
+				<input type="hidden" name="tweet_date" value="{{ tweet.timestamp }}" />
+				<input type="hidden" name="name" value="{{ tweet.name }}" />
+				<input type="hidden" name="profile_image" value="{{ tweet.profile_image }}" />
+				<input type="hidden" name="screen_name" value="{{ tweet.screen_name }}" />
+				<input type="hidden" name="nid" value="{{ network.id }}" />
+				<button class='post'>Reply</button>
+			</form>
+		</div>
+		{{/ reply_request }}
+		<div class="clear"></div>
+	</div>
+	<div class='clear'></div>
+	<div class="replies">
+		<ul class="replies">
+			{{# replies }}	
+			{{{.}}}
+			{{/ replies }}
+		</ul>
+	</div>
+	<div class="prompt"></div>
+	{{# show_replies }}
+	<div class='show_reply_div reply-button'>
+		<form id="" class="show_reply" method="POST" action="{{ vars.hostname }}/network_show_reply.php">
+			<input type="hidden" name="rids" value="{{ rids }}"/>
+			<input type="hidden" name="pid" value="{{ post.id }}"/>
+			<input type="hidden" name="nid" value="{{ post.id_network }}"/>
+			<noscript>
+			<input type="hidden" name="NOJS" value="NOJS"/>
+			</noscript>
+			<input type="submit" class="post show" value="Show All Replies"/>
+		</form>
+	</div>
+	{{/ show_replies }}
+</li>

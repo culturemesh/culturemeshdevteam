@@ -35,6 +35,7 @@
 		<script src="{{ vars.hostname }}/js/fxn.js"></script>
 		<script src="{{ vars.hostname }}/js/ajax.js"></script>
 		<script src="{{ vars.hostname }}/js/mustache.js/mustache.js"></script>
+		<script src="{{ vars.hostname }}/js/utilities.js"></script>
 
 		<script>
 			window.fbAsyncInit = function() {
@@ -76,9 +77,11 @@
 
 			this.length = 0;
 			this.qsGet = null;
+			this.fragment = null;
 
 			// get query string
 			var qs = window.location.search.substring(1).split('?')[0];
+			this.fragment = window.location.hash;
 
 			// split into array of key value pairs
 			if (qs.length == 0) {
@@ -146,22 +149,31 @@
 					<div class="modal-body">
 						<form id="reg_form" method="post" action="{{ vars.hostname }}/r.php">
 							<div id="register-div">
+								<div class='row'>
 								<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
-								</br>
+								</div>
+								<div class='row'>
 								<input type="text" name="fname" id="fname" class="modal-text-input" placeholder="First Name" required /></br>
-								</br>
+								</div>
+								<div class='row'>
 								<input type="text" name="lname" id="lname" class="modal-text-input" placeholder="Last Name" required /></br>
-								</br>
+								</div>
+								<div class='row'>
 								<span id="email_dup_txt" style="display:none" class="label label-important"></span>
-								<div id="login-passwords">
-								<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
-								<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
+								</div>
+								<div id="login-passwords"> 
+								<div class='row'>
+									<div class='span2'>
+									<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
+									</div>
+									<div class='span2'>
+									<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
+									</div>
+								</div>
 								<div class="clear"></div>
 								<span id="password_validation"></span>
 								<span id="register_server_error"></span>
 								</div>
-								</br>
-								</br>
 								<span id="pass_mism_txt" class="label label-important"></span>
 								<div class="clear"></div>
 								<input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
