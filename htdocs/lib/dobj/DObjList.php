@@ -20,6 +20,9 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		$this->position = 0;
 	}
 
+	/*
+	 * Insert dObj into list
+	 */
 	public function dInsert($item) {
 
 		if (!$item instanceOf DObj) {
@@ -29,6 +32,39 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		array_push($this->dlist, $item);
 
 		return true;
+	}
+
+	/*
+	 * Merge one array (or DObjList with this one)
+	 *
+	 * Could easily allow for multiple arrays in the future
+	 *
+	 * Params:
+	 *   candidate - an array or dobjlist
+	 */
+	public function merge($candidate) {
+
+		if (get_class($candidate) == 'dobj\DObjList') {
+			$this->dlist = array_merge($this->dlist, $candidate->dlist);
+			return True;
+		}
+
+		if (is_array($candidate)) {
+			$this->dlist = array_merge($this->dlist, $candidate);
+			return True;
+		}
+
+		// if neither option was reached
+		return False;
+	}
+
+	/*
+	 * Creating a version of array_values,
+	 *   if used raw, dobjlist will be made null
+	 */
+	public function array_values() {
+
+		$this->dlist = array_values($this->dlist);
 	}
 
 	/////// DISPLAY FUNCTIONS ///////////
@@ -51,8 +87,11 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 
 		// check if the item is displayable
 		// by checking first item in list
+		//
 		if (count($this->dlist) > 0) {
+
 			$first_thing = $this->dlist[0];
+
 			if (method_exists($first_thing, 'getHTML')) {
 				$displayable = true;
 			}
@@ -79,7 +118,17 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 	}
 
 	/*
-	 * transforms array into sectioned list
+	 * Transforms array into sectioned list
+	 *
+	 * Params:
+	 *   - property_arg - Can be a string representing some object property,
+	 *        can be a closure determining how to separate objects 
+	 *
+	 *   - display_mode_arg - Determines how section titles will
+	 *        be displayed when the lists elements are finally rendered
+	 *        
+	 *        > inline : Sections are denoted by a header within the list
+	 *        > class : Items in the section are given a special css class
 	 */
 	public function splits($property_arg, $display_mode_arg='inline') {
 
@@ -201,6 +250,14 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		$sl->display_mode = $display_mode;
 		$sl->slist = $splits;
 		return $sl;
+	}
+	//////////// NICE TO HAVE ////////////////////
+	public function reverse() {
+		$this->dlist = array_reverse($this->dlist);
+	}
+
+	public function slice($offset, $length) {
+		$this->dlist = array_slice($this->dlist, $offset, $length);
 	}
 
 	//////////// THINGS I MUST SET ////////////////

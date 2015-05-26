@@ -1,0 +1,124 @@
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ stylesheets }}
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+	<div id="content">
+		<h1>Twitter Basics</h1>
+		<div>
+			<p><b>Basics Go Here</b></p>
+			<p><b>Sample Tweet</b></p>
+			<div>
+				{{{ sample_tweet }}}
+			</div>
+			<p><b>Network Jams</b></p>
+			<div>
+				<form id="network-jams-form">
+					<input type="text" name="nid" placeholder="Pick your network, b" />
+					<br />
+					<button id="network-jams-button">Submit</button>
+					<span id="network-jams-response"></span>
+				</form>
+			</div>
+			<p><b>Get Twitter languages</b></p>
+			<div>
+				<button id="get-twitter-languages-button">GO!!!</button>
+				<span id="get-twitter-languages-response"></span>
+			</div>
+			<p><b>Check Rate Limit</b></p>
+			<div>
+				<button id='get-twitter-rate-limit-button'>CHECK IT OUT!!!</button>
+				<span id="get-twitter-rate-limit-response"></span>
+			</div>
+		</div>
+	</div>
+	{{/ content }}
+
+	{{$ body_scripts }}
+	<script type="text/javascript">
+
+		$('#network-jams-button').on('click', function(e) {
+
+				e.preventDefault();
+
+				var submit = new Ajax({
+						requestType: 'POST',
+						requestUrl: 'ops/get-twitter-network-jam.php',
+						requestParameters: ' ',
+						data: $('#network-jams-form').serialize(),
+						dataType : 'string',
+						sendNow: true
+					},
+					
+					function(data) {
+
+						var result = JSON.parse(data);
+						alert('Done');
+					});
+		});
+
+		$('#get-twitter-languages-button').on('click', function(e) {
+
+				// prevent default behavior
+				e.preventDefault();
+
+				var fn = new Ajax({
+						requestType: 'POST',
+						requestUrl: 'ops/get-twitter-json.php',
+						requestParameters: ' ',
+						data: '',
+						dataType : 'string',
+						sendNow: true
+						}, function(data) { 
+
+							// should return with a handsome table
+							var result = JSON.parse(data);
+
+							if (result.error == 0) {
+								$('#get-twitter-languages-response').text("The thing was successful at the thing");
+							}
+							else {
+								$('#get-twitter-languages-response').text("Wrong path: " + result.path);
+							}
+							
+						});
+				});
+
+
+		$('#get-twitter-rate-limit-button').on('click', function(e) {
+
+				// prevent default behavior
+				e.preventDefault();
+
+				var fn = new Ajax({
+						requestType: 'POST',
+						requestUrl: 'ops/get-twitter-ratelimit.php',
+						requestParameters: ' ',
+						data: '',
+						dataType : 'string',
+						sendNow: true
+						}, function(data) { 
+
+							// should return with a handsome table
+							var result = JSON.parse(data);
+
+							var rate_limit_object = result.resources.search["/search/tweets"];
+
+							var nitty_gritty = "Limit: " + rate_limit_object.limit + ", " + "Remaining: " + rate_limit_object.remaining;
+							$('#get-twitter-rate-limit-response').text(nitty_gritty);
+						});
+				});
+
+	</script>
+	{{/ body_scripts }}
+
+{{/ layout }}

@@ -25,8 +25,6 @@ uploadForm.appendChild(submitButton);
 
 // simulate a mouse event to pass to function
 
-
-
 /*
 clickEvent = new MouseEvent("click", {
 	canBubble:true,
@@ -132,6 +130,7 @@ uploadForm.onsubmit = function (e) {
 				// disappear upload div
 				// additionally: booger
 				//uploadToggle();
+				location.reload();
 			} 
 			else {
 				successLabel.innerHTML = response['error'];

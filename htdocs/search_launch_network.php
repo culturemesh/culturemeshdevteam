@@ -85,10 +85,13 @@ $network->country_cur = $loc_data[5];
 $test_query = Network::networkToQuery($network);
 $result = Network::getNetworksAllClasses($test_query, $con);
 $id = NULL;
-//var_dump($network);
+var_dump($network);
 if(mysqli_num_rows($result) == 0)
 { 
 	$id = Network::launchNetwork($network, $con); 
+
+	// give launched network a twitter query row
+	Network::insertQueryRow($id, $con); 
 
 	// add user to launched network
 	if (isset($_SESSION['uid'])) {

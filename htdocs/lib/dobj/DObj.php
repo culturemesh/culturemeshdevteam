@@ -26,7 +26,10 @@ abstract class DObj {
 	//
 	// This function is normally called by the do2db object
 	//
-	public static function createFromDataRow($row) {
+	// Also takes in a data collection / manipulation object
+	// called a DRemora
+	//
+	public static function createFromDataRow($row, $remora=NULL) {
 
 		$keys = array_keys($row);
 		$class = get_called_class();
@@ -34,6 +37,19 @@ abstract class DObj {
 
 		foreach ($keys as $key) {
 			$dobj->$key = $row[$key];
+		}
+
+		// do the remora
+		if ($remora != NULL) {
+
+			if (is_array($remora)) {
+
+				// execute on a loop
+			}
+
+			else {
+				$remora->execute($dobj);
+			}
 		}
 
 		return $dobj;
@@ -158,7 +174,7 @@ abstract class DObj {
 		$copy = clone $this;
 
 		// get image link acting right
-		if (isset($this->img_link)) {
+		if (property_exists($this, 'img_link')) {
 
 			if ( !is_file($cm->img_repo_dir . $cm->ds . $this->img_link)) 
 			  $copy->img_link = '//' . $cm->hostname . $cm->ds . 'images/blank_profile.png';
@@ -167,6 +183,23 @@ abstract class DObj {
 		}
 
 		return $copy;
+	}
+
+	/*
+	 * Allows the user to pass in an associative array
+	 * so's he/she can modify multiple elements at once
+	 *
+	 * @param: $extension - an associative array with keys taken
+	 * 			from object properties
+	 */
+	public function extend($extension) {
+
+		$keys = array_keys($extension);
+
+		foreach ($keys as $key) {
+
+			$this->$key = $extension[$key];
+		}
 	}
 
 	public function __get($name) {

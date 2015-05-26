@@ -70,6 +70,11 @@
 						content: text,
 						html: true
 						});
+
+					if (qs.fragment != null) {
+						$( qs.fragment ).goTo();
+					}
+
 					});
 	</script>
 	{{/ autoload_scripts }}
@@ -172,16 +177,31 @@
 					<input type="hidden" name="post_original" value="NULL"></input>
 				</form>
 				-->
+				{{# page_vars.newer_posts }}
+				<!--
+				<div>
+					<form class="more_posts" method="POST" action="{{ vars.hostname }}/network_more_posts.php">
+						<input type="hidden" id="pid" name="more_new_posts" value="true" />
+						<input type="hidden" id="nmp_nid" name="nid" value="{{ page_vars.nid }}" />
+						<input type="hidden" id="pid" name="pid" value="{{ page_vars.newer_posts.from_pid }}" />
+						<button id="mp_button" class="post show">Load Newer Posts</button>
+					</form>
+				</div>
+				-->
+				{{/ page_vars.newer_posts }}
+				{{{ sections.post_wall }}}
+				<!--
 				<ul id="post-wall-ul" class="network">
 				{{# sections.posts }}
 				{{{.}}}
 				{{/ sections.posts }}
 				</ul>
+				-->
 				<div class="clear"></div>
 				{{# page_vars.more_posts }}
 				<div>
 					<form class="more_posts" method="POST" action="{{ vars.hostname }}/network_more_posts.php">
-						<input type="hidden" id="nmp_lb" name="lb" value=10 />
+						<input type="hidden" id="nmp_lb" name="lb" value={{ page_vars.older_posts_lower_bound }} />
 						<input type="hidden" id="nmp_ub" name="ub" value=10 />
 						<input type="hidden" id="nmp_nid" name="nid" value="{{ page_vars.nid }}" />
 						<button id="mp_button" class="post show">Load Older Posts</button>
@@ -190,6 +210,10 @@
 				{{/ page_vars.more_posts }}
 				{{# get.ap }} lambda required
 				{{/ get.ap }}
+				{{# sections.tweets }}
+				{{{.}}}
+				{{/ sections.tweets }}
+				</ul>
 			</div>
 			</div>
 			<script>

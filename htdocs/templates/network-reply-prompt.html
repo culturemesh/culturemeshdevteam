@@ -1,0 +1,22 @@
+<form method="POST" class="member reply_form" action="//{{ cm.hostname }}/{{ action }}">
+<!--<img id="profile-reply" src="<?php //echo $img_link; ?>" width="45" height="45">-->
+	<textarea class="reply-text" name="reply_text" placeholder="Post reply..."></textarea>
+	<div class="clear"></div>
+	<input type="submit" class="post send" value="Send"></input>
+	<input type="hidden" name="nid" value="{{ nid }}"/>
+	<input type="hidden" name="uid" value="{{ uid }}"/>
+	{{# post }}
+	<input type="hidden" name="id_parent" value="{{ pid }}"/>
+	{{/ post }}
+	{{# tweet }}
+	<input type="hidden" name="id_tweet" value="{{ tid }}"/>
+	<input type="hidden" name="tweet_text" value="{{ tweet.text }}"/>
+	<input type="hidden" name="tweet_date" value="{{ tweet.date }}"/>
+	<input type="hidden" name="name" value="{{ tweet.name }}"/>
+	<input type="hidden" name="screen_name" value="{{ tweet.screen_name }}"/>
+	<input type="hidden" name="profile_image" value="{{ tweet.profile_image }}"/>
+	{{/ tweet }}
+	<noscript>
+		<input type="hidden" name="NOJS" value="NOJS"/>
+	</noscript>
+</form>

@@ -28,6 +28,7 @@ if ($nid == "") {
 		echo json_encode($response);
 	}
 }
+
 // can't figure out user or parent post
 else if ($uid == "" || $id_parent == "") {
 	//mysqli_close($con);
@@ -62,26 +63,61 @@ else {
 			header("Location: network/{$nid}");
 		}
 		else {
+
 			// create network
 			$network = new \dobj\Network();
 			$network->id = $nid;
 
-			// get reply by stuff
-			//$replies = Post::getRepliesByParentId($id_parent, $con);
-			$post = new \dobj\Post();
-			$post->id = $id_parent;
-			$post->getReplies($dal, $do2db);
+			$mustache = new \misc\MustacheComponent();
 
+			// get reply by stuff
+			$post = \dobj\Post::createFromId($id_parent, $dal, $do2db);
+			$post->getReplies($dal, $do2db);
+			
 			// close connection
 			$cm->closeConnection();
 			//mysqli_close($con);
 
 			$html = $post->getHTML('replies', array(
 					'cm' => $cm,
-					'mustache' => new \misc\MustacheComponent(),
+					'mustache' => $mustache,
 					'network' => $network
 				)
 			);
+
+			$settings_reply = $post->findReply($id);
+
+			// collect email addresses
+			$original_email = $post->email;
+			$reply_emails = array();
+
+			foreach ( $post->replies as $reply ) {
+
+				if ($reply->email != $original_email && 
+					!in_array($reply->email)) {
+
+					array_push($reply_emails, $reply->email);
+				}
+			}
+
+			// get reply
+			$settings = array(
+				'reply' => $post->findReply($id)->prepare($cm)
+			);
+
+			$response['settings'] = $settings;
+
+			// create email for original poster
+			if ($original_email != $settings_reply->email) {
+				$post_reply_email = new \api\PostReplyEmail($cm, $mustache, $original_email, $settings);
+				$post_reply_email->send();
+			}
+
+			// create email for those who replied to original post
+			if (count($reply_emails) > 0) {
+				$related_reply_email = new \api\RelatedReplyEmail($cm, $mustache, $reply_emails, $settings);
+				$related_reply_email->send();
+			}
 
 			if ($html != NULL) {
 				$response['html'] = $html;

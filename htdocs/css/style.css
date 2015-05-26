@@ -31,6 +31,7 @@ h1.center, h2.center, h3.center, h4.center, h5.center, p.center {
 .cmhide {
     display:none;
 }
+
 /******
 INDEX PAGE
 */
@@ -64,6 +65,7 @@ body {
     font-family: 'Lato-bold', sans-serif;
     font-weight: 20;
     letter-spacing:1px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 span.at.stage {
@@ -77,8 +79,8 @@ span.at.network {
 #search-bar {
     height:60px;
     border-radius:4px;
-    background:rgba(00,00,00,0.5);
     /*
+    background:rgba(00,00,00,0.5);
     background: transparent;
     zoom: 1;    
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);/*IE 6 & 7*/
@@ -87,8 +89,14 @@ span.at.network {
 
 #search-form
 {
-    padding-top:8px;
-    padding-left:10px;
+	padding-top:8px;
+	padding-left:10px;
+}
+
+#search-form.stage {
+	padding-left:6px;
+	border-radius:4px;
+	background:rgba(00,00,00,0.5);
 }
 
 #opening.stage
@@ -97,6 +105,9 @@ span.at.network {
 	font-size:20px;
 	font-family: 'Lato-Light', sans-serif;
 	color:white;
+	/*
+	background: rgba(0, 0, 0, 0.5) none repeat scroll 0% 0%;
+	*/
 }
 
 #opening.network
@@ -317,11 +328,23 @@ input[class="modal-text-input"] {
     color:#7F7F7F;
 }
 
+input[class="modal-text-input-conf"] {
+    margin:0;
+    width:121px;
+    border-color:#B3B3B3;
+    border-width:1px;
+    border-radius:4px;
+    height:36px;
+    font-size:18px;
+    color:#7F7F7F;
+}
+
 #login-passwords
 {
     margin:0px auto;
     width:85%;
 }
+/*
 input[id^="password"] {
     margin-left: auto;
     margin-right: auto;
@@ -334,6 +357,7 @@ input[id^="password"] {
     font:18px Lato, sans-serif;
     color:#7F7F7F;
 }
+*/
 
 input[id^="password"].dashboard {
     margin-left: auto;
@@ -351,10 +375,12 @@ input[id^="password"].dashboard {
 input[id^="log"] {
     margin-top:25px;
 }
+/*
 input[id="password_conf"]
 {
    margin-left:6px;
 }
+*/
 
 input[class="submit"]
 {
@@ -1500,6 +1526,59 @@ a.profile
 	font-size:14px;
 }
 
+
+/*******
+ * TWITTER QUERY
+ * ******
+*/
+
+/*
+#panel-2-left {
+
+	width:420px;
+	float:left;
+}
+
+#panel-2-right {
+
+	width:420px;
+	margin-left: 40px;
+	float:left;
+}
+*/
+
+#mod-panel {
+
+}
+
+#tweet-list {
+	height:500px;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+
+#tweet-list > div > ul {
+
+	list-style-type: none;
+}
+
+/*
+#adjustment-left {
+
+	float:left;
+	width: 200px;
+}
+
+#adjustment-right {
+	float:left;
+	width: 200px;
+}
+*/
+
+.tq-small-input {
+
+	width:20px;
+}
 /**********************************/
 
 /*******

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpunit bootstrap='cmtest_startkapow.php'>
 	<testsuites>
+		<testsuite name='api'>
+			<directory>lib/api</directory>
+		</testsuite>
 		<testsuite name='hello'>
 			<directory>hello</directory>
 		</testsuite>
@@ -18,6 +21,9 @@
 		</testsuite>
 		<testsuite name='dal'>
 			<directory>lib/dal</directory>
+		</testsuite>
+		<testsuite name='dal-nodb'>
+			<directory>lib/dal-nodb</directory>
 		</testsuite>
 		<testsuite name='nav'>
 			<directory>lib/nav</directory>

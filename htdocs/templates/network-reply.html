@@ -6,13 +6,18 @@
 		<h5 class='h-network post'><a href='{{ vars.hostname }}/profile/{{ reply.id_user }}'>{{ name }}</a></h5>
 		{{# owner }}
 		<div class='reply-button delete'>
-			<form class='personal delete_reply' method="POST" action="{{ vars.hostname }}/network_reply_delete.php">
+			<form class='personal delete_reply' method="POST" action="{{ vars.hostname }}/{{^ tweet }}network_reply_delete.php{{/ tweet }}{{# tweet }}network_tweet_reply_delete.php{{/ tweet }}">
 				<noscript>
 				<input type="hidden" name="NOJS" value="NOJS"/>
 				</noscript>
 				<input type="hidden" name="rid" value="{{ reply.id }}"/>
-				<input type="hidden" name="nid" value="{{ reply.id_network }}"/>
-				<input type="hidden" name="pid" value="{{ reply.id_parent }}"/>
+				<input type="hidden" name="nid" value="{{ reply.id_network }}" />
+				{{^ tweet }}
+				<input type="hidden" name="pid" value="{{ reply.id_parent }}" />
+				{{/ tweet }}
+				{{# tweet }}
+				<input type="hidden" name="tid" value="{{ reply.id_parent }}" />
+				{{/ tweet }}
 				<button class='post delete-button user reply'>&#10006</button>
 			</form>
 		</div>

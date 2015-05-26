@@ -8,7 +8,10 @@ function registerNetwork($obj) {
 		$m->setValues(array(
 			'query' => <<<SQL
 SELECT *
-FROM networks
+FROM networks n
+LEFT JOIN (SELECT * FROM
+	network_tweet_query_data) ntqs
+ON n.id = ntqs.id_network
 WHERE id=?
 SQL
 		/////////////////////////////
@@ -28,7 +31,9 @@ SQL
 					'region_cur' , 'id_country_cur', 'country_cur', 'id_city_origin',
 					'city_origin', 'id_region_origin', 'region_origin',
 					'id_country_origin', 'country_origin', 'id_language_origin',
-					'language_origin', 'network_class', 'date_added'
+					'language_origin', 'network_class', 'date_added',
+					'query_origin_scope', 'query_location_scope', 'query_level', 'query_since_date',
+					'query_auto_update', 'query_default', 'tweet_count'
 		 		)
 		));
 
@@ -75,13 +80,20 @@ SQL
 		$m = new dal\DBQuery();
 		$m->setValues(array(
 			'query' => <<<SQL
-
-SELECT (IFNULL(reply_count, 0) + COUNT(p.id_network)) AS post_count
+SELECT (IFNULL(tweet_count, 0) + IFNULL(tweet_reply_count, 0) + IFNULL(reply_count, 0) + COUNT(p.id_network)) AS post_count
 FROM posts p
 LEFT JOIN (SELECT id_network, COUNT(id_network) AS reply_count
 		FROM post_replies
 		GROUP BY id_network) pr
 ON p.id_network = pr.id_network
+LEFT JOIN (SELECT id_network, COUNT(id_network) AS tweet_count
+		FROM post_tweets
+		GROUP BY id_network) pt
+ON p.id_network = pt.id_network
+LEFT JOIN (SELECT id_network, COUNT(id_network) AS tweet_reply_count
+		FROM post_tweet_replies
+		GROUP BY id_network) ptr
+ON p.id_network = ptr.id_network
 WHERE p.id_network=?
 SQL
 		/////////////////////////////

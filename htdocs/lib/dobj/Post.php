@@ -250,6 +250,25 @@ class Post extends DisplayDObj {
 		  $this->replies = $result;
 	}
 
+	/*
+	 * Returns a reply from the replies list
+	 *
+	 * @returns - dobj\Reply if found
+	 * @returns - False if not found
+	 */
+	public function findReply($id) {
+
+		// start at the beginning of the list
+		foreach ($this->replies as $reply) {
+
+			if ($reply->id == $id)
+				return $reply;
+		}
+
+		// nothing found
+		return false;
+	}
+
 	protected function getRelativeDate() {
 		$now = new \DateTime();
 		$then = new \DateTime($this->post_date);
@@ -298,7 +317,6 @@ class Post extends DisplayDObj {
 
 		// autodetect links w/o tags
 		$al_match = "#((?:http|https|ftp)\:\/\/)*([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
-		//$al_match = "#((?:http|https|ftp)\:\/\/)*({[a-zA-Z0-9]+\.}+[a-zA-Z0-9]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
 		$al_replace = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
 		$new_text = preg_replace($al_match, $al_replace, $no_ltag['replacement']);
 
@@ -311,9 +329,15 @@ class Post extends DisplayDObj {
 
 		$new_text = preg_replace($match, $replacement, $new_text);
 
+		// TEMPORARY: remove ellipsis tag links
+		$match = '#<a target=\'_blank\' href=\'http://('. $all_chars .')\'>(('. $all_chars .')(\.)+)</a>#';
+		$replacement = '${2}';
+		$new_text = preg_replace($match, $replacement, $new_text);
+
 		// find bold and italics
 		$new_text = \misc\Util::TagReplace($new_text, 'b');
 		$new_text = \misc\Util::TagReplace($new_text, 'i');
+
 
 		return $new_text;
 	}

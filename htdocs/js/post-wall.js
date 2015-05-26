@@ -29,6 +29,10 @@ cm.PostWall = function(o) {
 
 	// make wallDiv appear
 	$( this._wallDiv ).show('slow');
+
+	if (qs.qsGet['plink'] != undefined) {
+		$('#post-' + qs.qsGet['plink']).goTo();
+	}
 };
 
 cm.PostWall.prototype = {
@@ -155,9 +159,15 @@ cm.PostWall.prototype = {
 			var targ = e.target;
 			var postForm = $( targ ).serialize();
 
+			var action = 'network_post_reply.php';
+
+			// check for tweet
+			if (postForm.indexOf('id_tweet') > -1)
+				action = 'network_tweet_reply.php';
+
 			var sendReply = new Ajax({
 				requestType: 'POST',
-				requestUrl: cm.home_path + '/network_post_reply.php',
+				requestUrl: cm.home_path + '/' + action,
 					requestParameters: ' ',
 					data: postForm,
 					dataType: 'string',
@@ -214,9 +224,14 @@ cm.PostWall.prototype = {
 				var targ = e.target;
 				var postForm = $( targ ).serialize();
 
+				var action = 'network_reply_delete.php';
+
+				if (postForm.indexOf('tid') > -1)
+					action = 'network_tweet_reply_delete.php';
+
 				var sendReply = new Ajax({
 					requestType: 'POST',
-					requestUrl: cm.home_path + '/network_reply_delete.php',
+					requestUrl: cm.home_path + '/' + action,
 						requestParameters: ' ',
 						data: postForm,
 						dataType: 'string',
@@ -313,6 +328,7 @@ cm.PostWall.prototype = {
 	_primeMorePosts: function() {
 		var self = this;
 
+		$( ".more_posts" ).unbind('submit');
 		$('.more_posts').on('submit', function(e) {
 			
 			// prevent default

@@ -100,7 +100,8 @@ class Profile {
 			$yn_event_html = $user->yn_events->getHTML('dashboard', array(
 				'cm' => $cm,
 				'mustache' => $m_comp,
-				'list_template' => $tmp
+				'list_template' => $tmp,
+				'site_user' => $site_user
 				)
 			);
 		}
@@ -110,7 +111,8 @@ class Profile {
 			$yh_event_html = $user->yh_events->getHTML('dashboard', array(
 				'cm' => $cm,
 				'mustache' => $m_comp,
-				'list_template' => $tmp
+				'list_template' => $tmp,
+				'site_user' => $site_user
 				)
 			);
 		}
@@ -120,7 +122,8 @@ class Profile {
 			$ya_event_html = $user->ya_events->getHTML('dashboard', array(
 				'cm' => $cm,
 				'mustache' => $m_comp,
-				'list_template' => $tmp
+				'list_template' => $tmp,
+				'site_user' => $site_user
 				)
 			);
 		}

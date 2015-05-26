@@ -66,6 +66,7 @@ SQL;
 	}
 	public static function getLanguageByName($name, $con=null)
 	{
+		var_dump($name);
 
 		$query = <<<SQL
 			SELECT id, name 

@@ -34,6 +34,14 @@ class Network extends DisplayDObj {
 	protected $events;
 	protected $events_sect;
 
+	protected $query_origin_scope;
+	protected $query_location_scope;
+	protected $query_level;
+	protected $query_auto_update;
+	protected $query_default;
+	protected $query_still_date;
+	protected $tweet_count;
+
 	public static function createFromId($id, $dal, $do2db) {
 
 		$network = new Network();
@@ -86,6 +94,17 @@ class Network extends DisplayDObj {
 			return false;
 	}
 
+	/*
+	 * Returns info necessary for generating
+	 * twitter search queries
+	 */
+	public function getTwitterInfo() {
+
+		return array(
+			'error' => 0
+		);
+	}
+
 	public function getPosts($dal, $do2db, $lobound=0, $upbound=10) {
 
 		if ($this->id == NULL) {
@@ -99,14 +118,162 @@ class Network extends DisplayDObj {
 
 		$this->posts = $do2db->execute($dal, $args, 'getPostsByNetworkId');
 
+		// single post count
+		$value = $do2db->execute($dal, NULL, 'selectFoundRows');
+
 		if (get_class($this->posts) == 'PDOStatement') {
 			$this->posts = new DObjList();
+		}
+		
+		$this->more_newer_posts = false;
+	
+		if ($value > 10) {
+			$this->more_older_posts = true;
+		}
+
+		else {
+			$this->more_older_posts = false;
+		}
+
+		foreach ($this->posts as $post) {
+			$post->getImages();
+			$post->getReplies($dal, $do2db);
+
+		}
+	}
+
+	public function getOlderPostsFromId($dal, $do2db, $pid, $lobound=0, $upbound=10) {
+
+		if ($this->id == NULL) {
+			throw new Exception('No id is associated with this network object');
+		}
+
+		$args = new Blank();
+		$args->id = $pid;
+		$args->id_network = $this->id;
+		$args->lobound = $lobound;
+		$args->upbound = $upbound;
+
+		$this->posts = $do2db->execute($dal, $args, 'getOlderPostsFromId');
+
+		// single post count
+		$value = $do2db->execute($dal, NULL, 'selectFoundRows');
+
+		if (get_class($this->posts) == 'PDOStatement') {
+			$this->posts = new DObjList();
+		}
+
+		/*
+		$this->more_posts = array(
+			'more' => false,
+			'newer_posts' => true,
+			'newer_posts_pid' => $pid,
+			'older_posts' => false,
+			'older_posts_pid' => $pid
+			);
+
+		$this->more_newer_posts = true;
+	
+		if ($value > 10) {
+			$this->more_posts['older_posts'] = true;
+		}*/
+		
+		$this->more_newer_posts = false;
+	
+		if ($value > 10) {
+			$this->more_older_posts = true;
+		}
+
+		else {
+			$this->more_older_posts = false;
 		}
 
 		foreach ($this->posts as $post) {
 			$post->getImages();
 			$post->getReplies($dal, $do2db);
 		}
+	}
+
+	public function getNewerPostsFromId($dal, $do2db, $pid, $lobound=0, $upbound=10) {
+
+		if ($this->id == NULL) {
+			throw new Exception('No id is associated with this network object');
+		}
+
+		$args = new Blank();
+		$args->id = $this->id;
+		$args->id_network = $this->id;
+		$args->lobound = $lobound;
+		$args->upbound = $upbound;
+
+		$this->posts = $do2db->execute($dal, $args, 'getNewerPostsFromId');
+
+		if (get_class($this->posts) == 'PDOStatement') {
+			$this->posts = new DObjList();
+		}
+		else {
+			$this->more_newer_posts = false;
+			if ($value > 10) {
+				$this->more_newer_posts = true;
+			}
+
+			$this->posts->reverse();
+		}
+
+		foreach ($this->posts as $post) {
+			$post->getImages();
+			$post->getReplies($dal, $do2db);
+		}
+	}
+
+	public function getTweets($dal, $do2db, $lobound=0, $upbound=10) {
+
+		if ($this->id == NULL) {
+			throw new Exception('No id is associated with this network object');
+		}
+
+		$args = new Blank();
+		$args->id_network = $this->id;
+		$args->lobound = $lobound;
+		$args->upbound = $upbound;
+
+		$this->tweets = $do2db->execute($dal, $args, 'getTweetsByNetworkId');
+
+		if (get_class($this->tweets) == 'PDOStatement') {
+			$this->tweets = new DObjList();
+		}
+
+		foreach ($this->tweets as $tweet) {
+			$tweet->getReplies($dal, $do2db);
+		}
+	}
+
+	/* 
+	 * Merges all posts with all tweets
+	 * Makes sure no tweets are duplicated (as can happen with cached stuff)
+	 *
+	 * Not the cleanest solution, but I'm under a time crunch at the moment
+	 * Will take out the parameter later and get it below O(n^2)
+	 *
+	 */
+	public function mergePostsAndTweets($api_tweets) {
+
+		// get saved tweets, check to see that they aren't in api tweets
+		foreach ($this->tweets as $tweet) {
+
+			for($i=0; $i<count($api_tweets); $i++) {
+
+				if( $api_tweets[$i]->id == $tweet->id ) {
+
+					unset($api_tweets[$i]);
+					$api_tweets->array_values();
+				}
+			}
+		}
+
+		// merge all the arrays
+		$this->posts->merge($this->tweets);
+		$this->posts->merge($api_tweets);
 	}
 
 	public function getPostCount($dal, $do2db) {
@@ -116,6 +283,7 @@ class Network extends DisplayDObj {
 		}
 
 		$this->post_count = $do2db->execute($dal, $this, 'getPostCount');
+		$this->post_count += $this->tweet_count;
 	}
 
 	public function getMemberCount($dal, $do2db) {
@@ -220,5 +388,330 @@ class Network extends DisplayDObj {
 		}
 		
 		return $origin_str . ' in ' . $location_str;
+	}
+
+	/*
+	 * Returns array of info required to make Twitter API queries
+	 */
+	public function getTwitterApiInfo() {
+
+		// get location data
+		$location_name = $this->getLowestLocationComponent();
+
+		if (isset($this->language_origin)) { 
+
+			$origin_language_code = someFunction($this->language_origin);
+
+			return array(
+				'location_name' => $location_name,
+				'language_origin' => $this->language_origin,
+				'language_code' => $origin_language_code
+			);
+		}
+		else {
+
+		}
+	}
+
+	/*
+	 * Returns lowest component of origin for this particular
+	 * network 
+	 *
+	 * e.g. city < region < country
+	 */
+	public function getLowestOriginComponent() {
+
+		if (isset($this->language_origin))
+			return $this->language_origin;
+		if (isset($this->city_origin))
+			return $this->city_origin;
+		if (isset($this->region_origin))
+			return $this->region_origin;
+		if (isset($this->country_origin))
+			return $this->country_origin;
+
+		throw new \Exception("There is no origin data set for this network");
+	}
+
+	/*
+	 * Returns highest component of origin for this particular
+	 * network 
+	 *
+	 * e.g. country > region > city  
+	 */
+	public function getHighestOriginComponent() {
+
+		if (isset($this->language_origin))
+			return $this->language_origin;
+		if (isset($this->country_origin))
+			return $this->country_origin;
+		if (isset($this->region_origin))
+			return $this->region_origin;
+		if (isset($this->city_origin))
+			return $this->city_origin;
+
+		throw new \Exception("There is no origin data set for this network");
+	}
+
+
+	/*
+	 * Returns lowest component of location for this particular
+	 * network 
+	 *
+	 * e.g. city < region < country
+	 */
+	public function getLowestLocationComponent() {
+
+		if (isset($this->city_cur))
+			return $this->city_cur;
+		if (isset($this->region_cur))
+			return $this->region_cur;
+		if (isset($this->country_cur))
+			return $this->country_cur;
+
+		throw new \Exception("There is no location data set for this network");
+	}
+
+	/*
+	 * A series of functions that returns scopes and components
+	 *
+	 * Get Component
+	 * @params - $component_level - a number from 1 to 3
+	 * 	1: language/country
+	 * 	2: region
+	 * 	3: city
+	 *
+	 */
+	public function getOriginScope() {
+
+		if (isset($this->language_origin))
+			return 1;
+		if (isset($this->city_origin))
+			return 3;
+		if (isset($this->region_origin))
+			return 2;
+		if (isset($this->country_origin))
+			return 1;
+	}
+
+	public function getMinOriginScope() {
+		return 1;
+	}
+
+
+	public function getMaxOriginScope() {
+
+		if (isset($this->language_origin))
+			return 1;
+		if (isset($this->city_origin))
+			return 3;
+		if (isset($this->region_origin))
+			return 2;
+		if (isset($this->country_origin))
+			return 1;
+	}
+
+	public function getOriginComponent($component_level) {
+
+		switch($component_level) {
+
+		case 1:
+			if (isset($this->language_origin))
+				return $this->language_origin;
+			if (isset($this->city_origin))
+				return $this->city_origin;
+			if (isset($this->region_origin))
+				return $this->region_origin;
+			if (isset($this->country_origin))
+				return $this->country_origin;
+			
+			throw new \Exception('Network: GetOriginComponent no origin set.');
+
+			break;
+		case 2:
+			if (isset($this->city_origin))
+				return $this->region_origin;
+			if (isset($this->region_origin))
+				return $this->country_origin;
+
+			if (isset($this->language_origin))
+				throw new \Exception('Network: GetOriginComponent this is a language network, scope == 1');
+
+			throw new \Exception('Network: GetOriginComponent Scope must be below level 2');
+			break;
+		case 3:
+			if (isset($this->city_origin))
+				return $this->country_origin;
+			
+			if (isset($this->language_origin))
+				throw new \Exception('Network: GetOriginComponent this is a language network, scope == 1');
+
+			throw new \Exception('Network: GetOriginComponent Scope must be below level 3');
+			break;
+		default:
+			throw new \Exception('Network: GetOriginComponent cannot find a component with given value: ' . $component_level);
+			break;
+		}
+	}
+
+	/*
+	 * Gives the current location as specified by query scope
+	 *
+	 */
+	public function getQueryOriginComponent() {
+		
+		return $this->getOriginComponent($this->query_origin_scope);
+	}
+
+	public function getLocationScope() {
+
+		if (isset($this->city_cur))
+			return 3;
+		if (isset($this->region_cur))
+			return 2;
+		if (isset($this->country_cur))
+			return 1;
+	}
+
+	public function getMinLocationScope() {
+		return 1;
+	}
+
+	public function getMaxLocationScope() {
+
+		if (isset($this->city_cur))
+			return 3;
+		if (isset($this->region_cur))
+			return 2;
+		if (isset($this->country_cur))
+			return 1;
+	}
+
+	/*
+	 *
+	 * 1 : returns tightest scope
+	 * 2 : returns 'middle' scope
+	 * 3 : returns broadest scope
+	 */
+	public function getLocationComponent($component_level) {
+
+		switch($component_level) {
+
+		case 1:
+			if (isset($this->city_cur))
+				return $this->city_cur;
+			if (isset($this->region_cur))
+				return $this->region_cur;
+			if (isset($this->country_cur))
+				return $this->country_cur;
+			
+			throw new \Exception('Network: GetLocationComponent no location variables are set');
+
+			break;
+		case 2:
+			if (isset($this->city_cur))
+				return $this->region_cur;
+			if (isset($this->region_cur))
+				return $this->country_cur;
+
+			throw new \Exception('Network: GetLocationComponent: This location\'s scope must be level 1');
+			break;
+		case 3:
+			if (isset($this->city_cur))
+				return $this->country_cur;
+			
+			throw new \Exception('Network: GetLocationComponent This location\'s scope must be level 2 or below.');
+			break;
+		default:
+			throw new \Exception('Network: GetLocationComponent Not a valid scope designation');
+			break;
+		}
+	}
+
+
+	/*
+	 * Gives the current location as specified by query scope
+	 *
+	 */
+	public function getQueryLocationComponent() {
+		
+		return $this->getLocationComponent($this->query_location_scope);
+	}
+
+	/*
+	 * Returns information relevant to the tweet manager
+	 * Gives network scope, query scope, and (1 / the ratio between the two)
+	 *
+	 */
+	public function getScopeInfo() {
+
+		return array(
+			'origin_scope' => $this->getOriginScope(),
+			'query_origin_scope' => $this->query_origin_scope,
+			'origin_scope_ratio' => $this->getOriginScopeRatio(),
+			'location_scope' => $this->getLocationScope(),
+			'query_location_scope' => $this->query_location_scope,
+			'location_scope_ratio' => $this->getLocationScopeRatio()
+		);
+	}
+
+	/*
+	 * Is (1) unless scope has been broadened
+	 *
+	 */
+	public function getOriginScopeRatio() {
+		return $this->query_origin_scope / 1;
+	}
+
+	/*
+	 * Returns (1) unless scope has been broadened
+	 *
+	 */
+	public function getLocationScopeRatio() {
+		return $this->query_location_scope / 1;
+	}
+
+	public function getDistanceToMaxLevel() {
+
+		$max_level = $this->getMaxOriginScope() * $this->getMaxLocationScope() * 3;
+		$cur_level = ($this->query_origin_scope * $this->query_location_scope) + $this->query_level;
+		$distance = $max_level - $cur_level;
+
+		return $distance;
+	}
+
+	public function getDistanceToMinLevel() {
+
+		$min_level = 0;
+		$cur_level = ($this->query_origin_scope * $this->query_location_scope) + $this->query_level;
+		$distance = $cur_level - 0;
+
+		return $distance;
+	}
+
+	public function getMaxLevel() {
+		return 2;
+	}
+
+	public function getMinLevel() {
+		return 0;
+	}
+
+	public function adjustTwitterQuery($dal, $do2db) {
+
+		$result = $do2db->execute($dal, $this, 'updateNetworkTweetQuery');
+	}
+
+	public function updateTweetCount($dal, $do2db, $query_tweet_count) {
+
+		$this->tweet_count += $query_tweet_count;
+
+		$result = $do2db->execute($dal, $this, 'updateNetworkTweetCount');
+	}
+
+	public function decrementTweetCount($dal, $do2db) {
+
+		$this->tweet_count -= 1;
+		$result = $do2db->execute($dal, $this, 'updateNetworkTweetCount');
 	}
 }
