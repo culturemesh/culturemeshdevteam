@@ -10,7 +10,7 @@ $POST_INCREMENT = 10;
 $json_response = array(
 	'error' => NULL,
 	'html' => NULL,
-	'continue' => NULL,
+	'continue' => 'n',
 	'lb' => NULL,
 	'ub' => NULL
 	);
@@ -48,14 +48,22 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 		$do2db = new \dal\Do2Db();
 
 		$site_user = \dobj\User::createFromId((int) $_SESSION['uid'], $dal, $do2db);
-
 		$network->getPosts($dal, $do2db, $bounds[0], $bounds[1]);
+
 		$cm->closeConnection();
 
 		/////// make components //////////
 		$m_comp = new \misc\MustacheComponent();
 
 		// set network stuff
+		if (count($network->posts) > $POST_INCREMENT) {
+			$json_response['continue'] = 'y';
+			$json_response['lb'] = $bounds[0] + $POST_INCREMENT;
+			$json_response['ub'] = 10;
+
+			$network->posts->slice(0, 10);
+		}
+
 		$network->posts->setMustache($m_comp);
 
 		try
@@ -77,13 +85,6 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 		// successful
 		$json_response['error'] = 'Success';
 		$json_response['html'] = $p_html;
-		$json_response['continue'] = 'n';
-
-		if (count($network->posts) > $POST_INCREMENT) {
-			$json_response['continue'] = 'y';
-			$json_response['lb'] = $bounds[0] + $POST_INCREMENT;
-			$json_response['ub'] = 10;
-		}
 
 		// return stuff
 		echo json_encode($json_response);

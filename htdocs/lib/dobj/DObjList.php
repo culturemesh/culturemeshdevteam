@@ -256,6 +256,10 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		$this->dlist = array_reverse($this->dlist);
 	}
 
+	public function slice($offset, $length) {
+		$this->dlist = array_slice($this->dlist, $offset, $length);
+	}
+
 	//////////// THINGS I MUST SET ////////////////
 	public function count() {
 
