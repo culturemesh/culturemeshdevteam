@@ -25,10 +25,10 @@ class RelatedReplyEmail extends Email {
 	    // Add blind carbon copy addresses,
 	    // don't want these people seeing each other's emails
 	    $this->headers .= "\r\n";
-	    $this->headers .= "Bcc: " . $this->address;
+	    $this->headers .= "Bcc: " . $this->address . "\r\n";
 
 	    // set address equal to sender
-	    $this->address .= 'no-reply@culturemesh.com';
+	    $this->address = 'no-reply@culturemesh.com';
     }
 }
 
