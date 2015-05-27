@@ -11,7 +11,7 @@ $json_response = array(
 //
 if (!isset($_POST['nid']) || !isset($_POST['uid']) || !isset($_POST['id_tweet']) || !isset($_POST['tweet_text'])
 	|| !isset($_POST['tweet_date']) || !isset($_POST['name']) || !isset($_POST['screen_name'])
-	|| !isset($_POST['reply_text']) || !isset($_POST['profile_image'])) {
+	|| !isset($_POST['reply_text']) || !isset($_POST['profile_image']) || !isset($_POST['email'])) {
 
 		$json_response['error'] = 1;
 		$json_response['error_message'] = 'Not all values were accounted for.';
@@ -53,8 +53,9 @@ $do2db = new dal\Do2Db();
 //
 // GETTING THE USER, MY FRIENDS
 //
-$uid = $_SESSION['uid'];
-$site_user = dobj\User::createFromId($uid, $dal, $do2db);
+$uid = (int) $_POST['uid'];
+//$site_user = dobj\User::createFromId($uid, $dal, $do2db);
+$user_email = $_POST['email'];
 
 // 
 // LOADING UP THE TWEET INFORMATION
@@ -78,7 +79,7 @@ $origin_tweet->saved = $_POST['saved'];
 //
 $tweet_reply = new \dobj\TweetReply();
 $tweet_reply->id_parent = (int) $origin_tweet->id;
-$tweet_reply->id_user = (int) $site_user->id;
+$tweet_reply->id_user = $uid;
 $tweet_reply->id_network = (int)  $_POST['nid'];
 $tweet_reply->reply_text = strip_tags($_POST['reply_text']);
 

@@ -24,6 +24,7 @@ else {
 
 	// get user and post
 	$uid = $_POST['uid'];
+	$email = $_POST['email'];
 	$pid = $_POST['pid'];
 	$nid = $_POST['nid'];
 	$tid = $_POST['tid'];
@@ -55,6 +56,7 @@ else {
 		'cm' => $cm,
 		'post' => $post,
 		'tweet' => $tweet,
+		'email' => $email,
 		'uid' => $uid,
 		'pid' => $pid,
 		'nid' => $nid,

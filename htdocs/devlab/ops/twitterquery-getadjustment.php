@@ -39,6 +39,20 @@ if ($adjustment_control == 'fine') {
 	$adjustment['query_since_date'] = $_POST['since_date'];
 	$adjustment['query_level'] = $_POST['term_link'];
 }
+/*
+if ($_POST['custom_query'] == '') {
+	$adjustment['query_custom'] = $_POST['custom_query'];
+
+	$adj->processAdjustment($network, $adjustment);
+	$adj->insert($dal, $do2db);
+	$network->adjustTwitterQuery($dal, $do2db);
+}
+else {
+	$adj->processAdjustment($network, $adjustment);
+	$adj->insert($dal, $do2db);
+	$network->adjustTwitterQuery($dal, $do2db);
+}
+ */
 
 $adj->processAdjustment($network, $adjustment);
 $adj->insert($dal, $do2db);

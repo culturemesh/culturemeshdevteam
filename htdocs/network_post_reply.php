@@ -16,6 +16,7 @@ $text = strip_tags($_POST['reply_text']);
 $nid = (int) $_POST['nid'];
 $uid = (int) $_POST['uid'];
 $id_parent = (int) $_POST['id_parent'];
+$user_email = $_POST['email'];
 
 // can't figure out network
 if ($nid == "") {
@@ -93,7 +94,8 @@ else {
 
 			foreach ( $post->replies as $reply ) {
 
-				if ($reply->email != $original_email && 
+				if ($reply->email != $original_email &&
+					$reply->email != $user_email &&
 					!in_array($reply->email)) {
 
 					array_push($reply_emails, $reply->email);

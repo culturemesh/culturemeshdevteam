@@ -116,6 +116,8 @@
 										$('#table-query-location-scope-value').text(results.info.query_location_scope);
 										$('#table-since-date-value').text(results.info.since_date);
 
+										
+										$('#adjust-custom-query').val(results.info.query.slice(3));
 										// update counters
 										/*
 										cnt1._update({
@@ -225,6 +227,8 @@
 					<input type='radio' name='term_link' value='3'>All OR</input> </br>
 					<input type='radio' name='term_link' value='2'>OR between terms</input> </br>
 					<input type='radio' name='term_link' value='1' checked='true'>All AND</input>
+					<label for='adjust-custom-query'>Input Query ** Changes to the Above Items Will Nullify Custom Query **</label>
+					<input id='adjust-custom-query' type='text' name='custom_query' />
 					<fieldset>
 				</form>
 				<button id='adjustment-btn' class='btn btn-default'>Make the ALTERATIONS</button>
@@ -258,6 +262,20 @@
 							<label for='input-count-weight'>Count Weight</label>
 							<input id='input-count-weight' type='text' name='count_weight' />
 							<button id='button-adjust-equation'>Try It Out</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		  </div>
+		  <div class="tab-pane" id="custom-query">
+			<div class='row span12'>
+				<div class=''>
+				<h2>Custom Equation</h2>
+					<div>
+						<form id='form-adjust-equation'>
+							<label for='input-custom-query'>Input Query</label>
+							<input id='custom-query' type='text' name='custom_query' />
+							<button id='button-custom-query'>Write Query</button>
 						</form>
 					</div>
 				</div>
@@ -463,6 +481,7 @@
 						$('#table-query-origin-scope-value').text(results.info.query_origin_scope);
 						$('#table-query-location-scope-value').text(results.info.query_location_scope);
 						$('#table-since-date-value').text(results.info.since_date);
+						$('#adjust-custom-query').val(results.info.query.slice(3));
 
 						// update counters
 						/*
