@@ -235,6 +235,25 @@ Operation.prototype.activatePanel = function() {
 
 	// if batch
 	// 	- load batch template
+	if (this.operation == 'update' &&
+			this.singobatch == 'batch') {
+
+				/*
+			// get search results, and never
+			// darken our doorway with this again
+			var addJSON = new Ajax({
+				requestType: 'POST',
+				requestUrl: 'admin/admin_ops.php',
+				requestParameters: ' ',
+				data: formData,
+				dataType : 'JSON',
+				sendNow: true
+				}, function(data) { 
+				// should return with a handsome table
+				result = JSON.parse(data);
+			});
+			*/
+	}
 	
 }
 

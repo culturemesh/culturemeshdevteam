@@ -36,6 +36,7 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 
 	public function testConstruct() {
 
+		$this->markTestSkipped();
 		$query = new api\TwitterQuery($this->location_network);
 
 		$this->assertEquals('api\TwitterQuery', get_class($query));
@@ -53,6 +54,7 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testLocationNetworkBuildSearch() {
 
+		$this->markTestSkipped();
 		$query = new api\TwitterQuery($this->location_network);
 
 		$this->assertEquals(urldecode('https://api.twitter.com/1.1/search/tweets.json?q=(China) (#UnitedStates OR "United States") -filter:retweets&result_type=mixed&since=2010-01-01'), urldecode($query->getSearch()));
@@ -60,6 +62,7 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 
 	public function testLanguageNetworkBuildSearch() {
 
+		$this->markTestSkipped();
 		$query = new api\TwitterQuery($this->language_network);
 
 		$this->assertEquals(urldecode('https://api.twitter.com/1.1/search/tweets.json?q=(#UnitedStates OR "United States") -filter:retweets&lang=zh-tw&result_type=mixed&since=2010-01-01'), urldecode($query->getSearch()));
@@ -72,6 +75,7 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testHashNetworkBuildSearch() {
 
+		$this->markTestSkipped();
 		$this->location_network->city_cur = 'Grand Rapids';
 		$this->location_network->region_cur = 'Michigan';
 		$this->location_network->country_cur = 'United States';
@@ -87,6 +91,7 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 
 	public function testSlashLanguageNetworkBuildSearch() {
 
+		$this->markTestSkipped();
 		$this->language_network->language_origin = 'Mandarin Chinese/Putonghua';
 		$this->language_network->query_location_scope = 3;
 
@@ -97,6 +102,7 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 
 	public function testParenthesisLanguageNetworkBuildSearch() {
 
+		$this->markTestSkipped();
 		$this->language_network->language_origin = 'American Sign Language (ASL)';
 
 		$query = new api\TwitterQuery($this->language_network);

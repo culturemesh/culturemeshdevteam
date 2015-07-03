@@ -263,7 +263,7 @@ class Network extends DisplayDObj {
 
 			for($i=0; $i<count($api_tweets); $i++) {
 
-				if( $api_tweets[$i]->id == $tweet->id ) {
+				if( $api_tweets[$i]->id == (int) $tweet->id_twitter ) {
 
 					unset($api_tweets[$i]);
 					$api_tweets->array_values();
@@ -623,7 +623,7 @@ class Network extends DisplayDObj {
 			throw new \Exception('Network: GetLocationComponent This location\'s scope must be level 2 or below.');
 			break;
 		default:
-			throw new \Exception('Network: GetLocationComponent Not a valid scope designation');
+			throw new \Exception('Network: GetLocationComponent: ' . $component_level . ' is not a valid scope. Outside range.');
 			break;
 		}
 	}
@@ -646,11 +646,11 @@ class Network extends DisplayDObj {
 	public function getScopeInfo() {
 
 		return array(
-			'origin_scope' => $this->getOriginScope(),
 			'query_origin_scope' => $this->query_origin_scope,
+			'max_origin_scope' => $this->getMaxOriginScope(),
 			'origin_scope_ratio' => $this->getOriginScopeRatio(),
-			'location_scope' => $this->getLocationScope(),
 			'query_location_scope' => $this->query_location_scope,
+			'max_location_scope' => $this->getMaxLocationScope(),
 			'location_scope_ratio' => $this->getLocationScopeRatio()
 		);
 	}

@@ -51,11 +51,13 @@ class Network {
 
 		$tweet_manager = new \api\TweetManager($cm, $network, $dal, $do2db);
 		$tweets = $tweet_manager->requestTweets();
+		$query_info = $tweet_manager->getQueryInfo();
 
 		//add tweets to posts
 		$network->mergePostsAndTweets( $tweets );
 
 		// add tweets to post count
+		$page_post_count = count($network->posts);
 		$network->post_count += count($tweets);
 
 		// put tweets and posts all together
@@ -191,18 +193,19 @@ class Network {
 			$em_html = NULL;
 		}
 
-		/*
 		// check if we need more posts
-		$more_posts = false;
+		$more_post_content = True;
+		$more_posts = False;
+		$more_tweets = True; // make default for now
 
-		if ($network->post_count > 10) {
-			$more_posts = true;
+		if ($page_post_count > 10) {
+
+			if ($page_post_count > 10)
+				$more_posts = True;
+
 			$older_posts_lower_bound = 10;
 			$newer_posts_lower_bound = NULL;
 		}
-		 */
-		$older_posts_lower_bound = 10;
-		$newer_posts_lower_bound = NULL;
 
 		// map embed
 		$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
@@ -237,11 +240,16 @@ class Network {
 			'page_vars' => array (
 				'member' => $member,
 				'member_count' => $network->member_count,
-				'more_posts' => $network->more_older_posts,
+				'more_post_content' => $more_post_content,
+				'more_posts' => $more_posts,
+				'more_tweets' => 1,
+				'last_updated' => 0,
 				'newer_posts' => $network->more_newer_posts,
 				'newer_posts_lower_bound' => $newer_posts_lower_bound,
 				'older_posts_lower_bound' => $older_posts_lower_bound,
 				'post_count' => $network->post_count,
+				'tweet_until_date' => $query_info['until_date'],
+				'tweet_scope_info' => $network->getScopeInfo(),
 				'uid' => null,
 				'nid' => $nid,
 				'get' => $_GET

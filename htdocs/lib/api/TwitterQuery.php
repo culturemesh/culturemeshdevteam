@@ -3,41 +3,45 @@ namespace api;
 
 class TwitterQuery {
 
-	private	$search_base = 'https://api.twitter.com/1.1/search/tweets.json';
+	protected	$search_base = 'https://api.twitter.com/1.1/search/tweets.json';
 
 
 	/*
 	 * Representation of the beginning of the query string.
 	 * This will always be the first, so it must have a '?'
 	 */
-	private $query = '?q=';
-	private $request_method = 'GET';
-	private $language_assignment = '&lang=';
-	private $filter_retweets = '-filter:retweets';
+	protected $query = '?q=';
+	protected $request_method = 'GET';
+	protected $language_assignment = '&lang=';
+	protected $filter_retweets = '-filter:retweets';
 
 	/*
 	 * Result assignment will always have an & because
 	 * the query operand will always be the first
 	 * element of any api call
 	 */
-	private $result_assignment = '&result_type=';
+	protected $result_assignment = '&result_type=';
 
-	private $op_space = '%20';
-	private $op_quote = '%22';
-	private $op_hashtag = '%23';
-	private $op_or = 'OR';
-	private $op_and = '%20';
-	private $op_l_parenthesis = '%28';
-	private $op_r_parenthesis = '%29';
+	protected $op_space = '%20';
+	protected $op_quote = '%22';
+	protected $op_hashtag = '%23';
+	protected $op_or = 'OR';
+	protected $op_and = '%20';
+	protected $op_l_parenthesis = '%28';
+	protected $op_r_parenthesis = '%29';
 
-	private $until_assignment = '&until=';
-	private $since_assignment = '&since=';
+	protected $until_date = NULL;
+	protected $until_assignment = '&until=';
+	protected $using_until_date = False;
+
+	protected $since_assignment = '&since=';
 
 	/*
 	 * Table for converting languages
 	 */
-	private $language_table = array(
-		'Mandarin Chinese' => 'zh-tw'
+	protected $language_table = array(
+		'Mandarin Chinese' => 'zh-tw',
+		'Chinese' => 'zh-tw'
 	);
 
 	/*
@@ -110,6 +114,10 @@ class TwitterQuery {
 		$this->addResultType('mixed');
 		$this->addSinceDate($network);
 
+		if ($this->using_until_date) {
+			$this->addUntilDate();
+		}
+
 		// record query variables
 		$this->origin_arg = $origin_arg;
 		$this->location_arg = $location_arg;
@@ -129,7 +137,7 @@ class TwitterQuery {
 	 * 		array(basic => the string with quotes, 
 	 * 			hashtag => the string put into hashtag form)
 	 */
-	private function prepareComponent($component_arg) {
+	protected function prepareComponent($component_arg) {
 
 
 		if (is_array($component_arg))  {
@@ -177,7 +185,7 @@ class TwitterQuery {
 	 * 		array(basic => the string with quotes, 
 	 * 			hashtag => the string put into hashtag form)
 	 */
-	private function addArg($arg, $link) {
+	protected function addArg($arg, $link) {
 
 		$arg_string = $this->op_l_parenthesis;
 
@@ -201,7 +209,7 @@ class TwitterQuery {
 		$this->query .= $arg_string;
 	}
 
-	private function getArg($arg, $link) {
+	protected function getArg($arg, $link) {
 
 		$arg_string = '';
 
@@ -220,7 +228,7 @@ class TwitterQuery {
 	 * ...at least for a while
 	 *
 	 */
-	private function addComponents($network, $origin, $location, $level) {
+	protected function addComponents($network, $origin, $location, $level) {
 
 		if ($level == 1) {
 			$component_link = $this->op_and;
@@ -240,6 +248,7 @@ class TwitterQuery {
 
 			// check for the language code
 			$language_code = $this->getLanguageCode($origin);
+
 
 			if ($language_code === False || isset($origin[0])) {
 				$this->addArg($origin, $link_term);
@@ -272,7 +281,7 @@ class TwitterQuery {
 	 * Params:
 	 * 	$term_arg : single string
 	 */
-	private function makeHashtag($term_arg) {
+	protected function makeHashtag($term_arg) {
 
 		$clay = NULL;
 
@@ -307,7 +316,7 @@ class TwitterQuery {
 	/*
 	 * Adds a hashtag only if 
 	 */
-	private function addHashtag($term_arg, $link) {
+	protected function addHashtag($term_arg, $link) {
 
 		// check to see if this is the first query argument
 		// if it isn't, adds or and a space
@@ -337,7 +346,7 @@ class TwitterQuery {
 	 * Returns true if it doesn't need modification
 	 * REturns false if work must be done
 	 */
-	private function determineStringHashability($string) {
+	protected function determineStringHashability($string) {
 
 		if (strpos($string, '(') === False &&
 			strpos($string, ' ') === False)
@@ -350,11 +359,11 @@ class TwitterQuery {
 	 * Removes spaces from a string
 	 *   needed for hashtag searches
 	 */
-	private function removeSpace($string) {
+	protected function removeSpace($string) {
 		return str_replace(' ', '', $string);
 	}
 
-	private function replaceSpace($string) {
+	protected function replaceSpace($string) {
 		return str_replace(' ', $this->op_space, $string);
 	}
 
@@ -368,7 +377,7 @@ class TwitterQuery {
 	 *
 	 * Returns the string, modified or not
 	 */
-	private function addQuotes($string) {
+	protected function addQuotes($string) {
 
 		if ( preg_match('/\s/', $string) ) 
 			return $this->op_quote . $string . $this->op_quote;
@@ -376,7 +385,7 @@ class TwitterQuery {
 			return $string;
 	}
 
-	private function removeParentheses($string) {
+	protected function removeParentheses($string) {
 
 		$i = strpos($string, '(');
 		if ($i !== False) {
@@ -393,7 +402,7 @@ class TwitterQuery {
 	 *   Params:
 	 *     $string - the special term to get all dolled up.
 	 */
-	private function prepareTerm($string) {
+	protected function prepareTerm($string) {
 
 		return $this->replaceSpace( $this->addQuotes($string) );
 	}
@@ -404,7 +413,7 @@ class TwitterQuery {
 	 *
 	 * Useful for grabbing 
 	 */
-	private function explodeSlash($string) {
+	protected function explodeSlash($string) {
 
 		$test_array = explode('/', $string);
 
@@ -418,7 +427,7 @@ class TwitterQuery {
 	 * Adds a term to the query,
 	 *   usually gives a li'l space between new things
 	 */
-	private function addQueryTerm($term_arg) {
+	protected function addQueryTerm($term_arg) {
 
 		// Do nothing if term_arg is empty
 		//
@@ -456,7 +465,7 @@ class TwitterQuery {
 	 * Params - 
 	 *    $term_arg - The two letter language code
 	 */
-	private function addLanguageTerm($term_arg) {
+	protected function addLanguageTerm($term_arg) {
 
 		// If there is no term arg
 		// make the language default to English
@@ -481,7 +490,7 @@ class TwitterQuery {
 	 * 	$term_arg : The result type to be added
 	 * 	  can be mixed, recent, or popular
 	 */
-	private function addResultType($term_arg) {
+	protected function addResultType($term_arg) {
 
 		$valid_queries = array('mixed', 'recent', 'popular');
 
@@ -491,7 +500,7 @@ class TwitterQuery {
 		$this->query .= $this->result_assignment . $term_arg;
 	}
 
-	private function filterRetweets() {
+	protected function filterRetweets() {
 
 		$this->query .= $this->op_space . $this->filter_retweets;
 	}
@@ -500,7 +509,7 @@ class TwitterQuery {
 	 * Adds until date to query
 	 *
 	 */
-	private function addUntilDate() {
+	protected function addUntilDate() {
 
 		$this->query .= $this->until_assignment . $this->until_date;
 	}
@@ -509,7 +518,7 @@ class TwitterQuery {
 	 * Adds since date to query
 	 *
 	 */
-	private function addSinceDate($network) {
+	protected function addSinceDate($network) {
 
 		$this->query .= $this->since_assignment . $network->query_since_date;
 	}
@@ -517,7 +526,7 @@ class TwitterQuery {
 	/*
 	 * Check to see if a country has a specific language supported
 	 */
-	private function checkCountryForLanguage() {
+	protected function checkCountryForLanguage() {
 
 	}
 
@@ -566,6 +575,30 @@ class TwitterQuery {
 		return $this->since_date;
 	}
 
+	public function getUntilDate() {
+		return $this->until_date;
+	}
+
+	/*
+	 * Sets until date,
+	 * also tells query to include until date
+	 */
+	public function includeUntilDate($new_date) { 
+
+		// format date
+		
+		// set new date
+		$this->until_date = $new_date;
+		$this->using_until_date = True;
+
+		if ($this->query == NULL) {
+			return True;
+		}
+		else {
+			$this->addUntilDate();
+		}
+	}
+
 	/*
 	 * Search twitter json for language codes
 	 *
@@ -583,7 +616,7 @@ class TwitterQuery {
 	 * it's language code has been found
 	 *
 	 */
-	private function getLanguageCode(&$target_lingo) {
+	protected function getLanguageCode(&$target_lingo) {
 
 		// else, check out the json file
 		$languages = file_get_contents('lib/api/twitter-languages.json');
@@ -597,7 +630,8 @@ class TwitterQuery {
 
 				// must make variable, or error thrown
 				$raw_lingo = $lingo['raw'];
-
+				
+				// check for the language code
 				$result = $this->getLanguageCode($raw_lingo);
 
 				if ($result !== False)
@@ -663,7 +697,7 @@ class TwitterQuery {
 	 * @param - $level
 	 *
 	 */
-	private function linkTerms() {
+	protected function linkTerms() {
 
 		switch ($level) {
 

@@ -17,6 +17,11 @@ cm.PostWall = function(o) {
 	this._wallUl = this._options.wallUl;
 	this._postSubmit = this._options.postSubmit;
 
+	this._olderPostSwitch = new cm.MorePostsSwitch({
+		mainDivId : 'more-post-div',
+		type : 'older'
+	});
+	
 	if (this._postSubmit != null) {
 		var self = this;
 		this._postSubmit._boss = self;
@@ -162,7 +167,7 @@ cm.PostWall.prototype = {
 			var action = 'network_post_reply.php';
 
 			// check for tweet
-			if (postForm.indexOf('id_tweet') > -1)
+			if (postForm.indexOf('id_twitter') > -1)
 				action = 'network_tweet_reply.php';
 
 			var sendReply = new Ajax({
@@ -198,6 +203,16 @@ cm.PostWall.prototype = {
 					//  c) increment in hidden submit
 					$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('form.post_delete').children("input[name='replies']").val(replyCount)
 					//  d) increment at top of page
+
+					// turn tweets into other things
+					//
+					// add id_twitter
+					if (postForm.indexOf('id_twitter') > -1) {
+						// request reply form change
+						$( targ ).parents( 'div.prompt' ).siblings('div.post-info').children("div.reply-button").children("form.request_reply").children("input[name='tid']").val(response.id_cmtweet);
+						// reply form change
+						$( targ ).parents( 'div.prompt' ).children('form.reply_form').children("input[name='id_cmtweet']").val(response.id_cmtweet);
+					}
 
 					// activate delete buttons
 					self._primeDeletes();
@@ -327,6 +342,7 @@ cm.PostWall.prototype = {
 	},
 	_primeMorePosts: function() {
 		var self = this;
+		var olderPostSwitch = this._olderPostSwitch;
 
 		$( ".more_posts" ).unbind('submit');
 		$('.more_posts').on('submit', function(e) {
@@ -337,10 +353,22 @@ cm.PostWall.prototype = {
 			// get form
 			var targ = $(e.target);
 			var postForm = $( targ ).serialize();
+
+			var morePostsForm = $( targ );
+			var moreTweets = $( morePostsForm ).children("input[name='nmp_more_tweets']").val();
+			var morePosts = $( morePostsForm ).children("input[name='nmp_more_posts']").val();
+
+			var operation = 'network_more_posts.php';
+			var handlingTweets = false;
+
+			if (moreTweets == "1" && morePosts != "1") {
+				handlingTweets = true;
+				operation = 'network_more_tweets.php';
+			}
 			
 			var requestPosts = new Ajax({
 					requestType: 'POST',
-					requestUrl: cm.home_path + '/network_more_posts.php',
+					requestUrl: cm.home_path + '/' + operation,
 					requestHeaders: ' ',
 					data: postForm,
 					dataType: 'string',
@@ -350,8 +378,16 @@ cm.PostWall.prototype = {
 				// add stuff to post wall
 				$("#post-wall-ul").append(response.html);
 
+				if (handlingTweets) {
+
+					// update more posts stuff
+					olderPostSwitch._updateAll(response.postSwitchValues);
+				}
+
 				// with new stuff, call primes
 				self._shoutOrders();
+
+				$('#nmp_more_posts').val(response['nmp_more_posts']);
 
 				if(response['continue'] == 'n') {
 					$( targ ).hide();
@@ -363,5 +399,70 @@ cm.PostWall.prototype = {
 			}, function() {
 			});
 		});
+	}
+};
+
+cm.MorePostsSwitch = function(o) {
+
+	this._options = {
+
+		mainDivId : 'more-post-div',
+		type: 'older'
+	};
+
+	cm.extend(this._options, o);
+	cm.extend(this, cm.DisposeSupport);
+
+	// get div
+	this.mainDiv = document.getElementById( this._options.mainDivId );
+
+	this.nmp_form;
+
+	this._inputs = {
+		nmp_lb : null,
+		nmp_ub : null,
+		nmp_nid : null,
+		nmp_tweet_until_date : null,
+		nmp_initial: null,
+		nmp_more_posts : null,
+		nmp_more_tweets : null,
+		nmp_last_updated : null,
+		nmp_cur_location_scope : null,
+		nmp_max_location_scope : null,
+		nmp_cur_origin_scope : null,
+		nmp_max_origin_scope : null
+	};
+
+	this._activate();
+};
+
+cm.MorePostsSwitch.prototype = {
+
+	_activate: function() {
+
+		this.nmp_form = $( this.mainDiv ).children('form.more_posts');
+
+		$( this.nmp_form ).children('input');
+
+		var keys = cm.objectKeys( this._inputs );
+
+		// assign all things to input
+		for (var i = 0; i < keys.length; i++) {
+			var cur_key = keys[i];
+			this._inputs[cur_key] = $( this.nmp_form ).children("input[name='" + cur_key + "']");
+		}
+	},
+	_updateValue: function(element, value) {
+		$( this._inputs[element] ).val( value );
+	},
+	_updateAll: function(values) {
+
+		var keys = cm.objectKeys( values );
+
+		for (var i = 0; i < keys.length; i++) {
+			
+			var cur_key = keys[i];
+			this._updateValue(cur_key, values[cur_key]);
+		}
 	}
 };

@@ -10,7 +10,8 @@
 	<input type="hidden" name="id_parent" value="{{ pid }}"/>
 	{{/ post }}
 	{{# tweet }}
-	<input type="hidden" name="id_tweet" value="{{ tid }}"/>
+	<input type="hidden" name="id_cmtweet" value="{{ tid }}"/>
+	<input type="hidden" name="id_twitter" value="{{ twid }}"/>
 	<input type="hidden" name="tweet_text" value="{{ tweet.text }}"/>
 	<input type="hidden" name="tweet_date" value="{{ tweet.date }}"/>
 	<input type="hidden" name="name" value="{{ tweet.name }}"/>

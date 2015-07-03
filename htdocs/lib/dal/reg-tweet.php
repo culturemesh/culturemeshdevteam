@@ -12,7 +12,7 @@ function registerTweet($obj) {
 		$m->setValues(array(
 			'query' => <<<SQL
 INSERT INTO post_tweets
-(id, id_network, name, screen_name, text, profile_image_url, created_at) 
+(id_twitter, id_network, name, screen_name, text, profile_image_url, created_at) 
 VALUES (?, ?, ?, ?, ?, ?, ?)
 SQL
 
@@ -21,7 +21,7 @@ SQL
 SQL
 		/////////////////////////////
 		,	'name' => 'insertPostTweet',
-			'params' => array('id', 'id_network', 'name', 'screen_name',
+			'params' => array('id_twitter', 'id_network', 'name', 'screen_name',
 				'text', 'profile_image_url', 'created_at'),
 			'param_types' => 'nnsssss',
 			'nullable' => array(),

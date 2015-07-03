@@ -8,6 +8,9 @@ if (isset($_POST['NOJS'])) {
 	if (isset($_POST['tid']))
 		$tid = $_POST['tid'];
 
+	if (isset($_POST['twid']))
+		$twid = $_POST['twid'];
+
 	$nid = $_POST['nid'];
 
 	header("Location: network.php?id={$nid}&pid={$pid}#post-{$pid}");
@@ -28,6 +31,7 @@ else {
 	$pid = $_POST['pid'];
 	$nid = $_POST['nid'];
 	$tid = $_POST['tid'];
+	$twid = $_POST['twid'];
 
 	$response = array(
 		'error' => NULL,
@@ -61,6 +65,7 @@ else {
 		'pid' => $pid,
 		'nid' => $nid,
 		'tid' => $tid,
+		'twid' => $twid,
 		'action' => $action
 	));
 
