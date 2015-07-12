@@ -12,7 +12,7 @@ $response = array(
 
 // get post values
 //$con = QueryHandler::getDBConnection();
-$text = strip_tags($_POST['reply_text']);
+$text = nl2br( strip_tags($_POST['reply_text']) );
 $nid = (int) $_POST['nid'];
 $uid = (int) $_POST['uid'];
 $id_parent = (int) $_POST['id_parent'];

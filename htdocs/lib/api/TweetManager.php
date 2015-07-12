@@ -103,6 +103,8 @@ class TweetManager {
 		$tweet_info_key = $tweet_key . '_info';
 		$tweets_exist = $cache->exists($tweet_key);
 
+		$tweets_exist = False;
+
 		// proceed straight to query if mode is 'network_addtl' or 'adjust'
 		if ($tweets_exist === False || $mode == 'adjust') {
 
@@ -267,6 +269,7 @@ class TweetManager {
 				'since_date' => $this->network->query_since_date,
 				'until_date' => $remora->earliest_tweet_date,
 				'query' => urldecode( $twitter_query->getQuery() ),
+				'component_string' => urldecode( $twitter_query->getComponentString() ),
 				'origin_weight' => $equation_constants['origin_weight'],
 				'location_weight' => $equation_constants['location_weight'],
 				'count_weight' => $equation_constants['count_weight'],

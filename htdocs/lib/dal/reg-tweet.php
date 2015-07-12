@@ -403,4 +403,72 @@ SQL
 		$m->setConnection($con);
 		return $m;
 	};
+
+	/*
+	 * Inserts data for tweet adjustment
+	 *
+	 */
+	$obj->writeNetworkCustomQuery = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+UPDATE network_tweet_query_data
+SET query_custom=?
+WHERE id_network=?
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'writeNetworkCustomQuery',
+			'params' => array('query_custom', 'id'),
+			'param_types' => 'si',
+			'nullable' => NULL,
+			'returning' => False,
+			'returning_list' => False,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => NULL,
+			'returning_cols' => NULL
+
+));
+		$m->setConnection($con);
+		return $m;
+	};
+
+	/*
+	 * Deletes custom query
+	 *
+	 */
+	$obj->deleteNetworkCustomQuery = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+UPDATE network_tweet_query_data
+SET query_custom=NULL
+WHERE id_network=?
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'deleteNetworkCustomQuery',
+			'params' => array('id'),
+			'param_types' => 'i',
+			'nullable' => NULL,
+			'returning' => False,
+			'returning_list' => False,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => NULL,
+			'returning_cols' => NULL
+
+));
+		$m->setConnection($con);
+		return $m;
+	};
 }

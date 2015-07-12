@@ -40,6 +40,7 @@ class Network extends DisplayDObj {
 	protected $query_auto_update;
 	protected $query_default;
 	protected $query_still_date;
+	protected $query_custom;
 	protected $tweet_count;
 
 	public static function createFromId($id, $dal, $do2db) {
@@ -700,6 +701,16 @@ class Network extends DisplayDObj {
 	public function adjustTwitterQuery($dal, $do2db) {
 
 		$result = $do2db->execute($dal, $this, 'updateNetworkTweetQuery');
+	}
+
+	public function writeCustomQuery($dal, $do2db) {
+
+		$result = $do2db->execute($dal, $this, 'writeNetworkCustomQuery');
+	}
+
+	public function deleteCustomQuery($dal, $do2db) {
+
+		$result = $do2db->execute($dal, $this, 'deleteNetworkCustomQuery');
 	}
 
 	public function updateTweetCount($dal, $do2db, $query_tweet_count) {

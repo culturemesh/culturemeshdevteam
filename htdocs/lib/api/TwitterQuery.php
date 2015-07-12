@@ -3,7 +3,7 @@ namespace api;
 
 class TwitterQuery {
 
-	protected	$search_base = 'https://api.twitter.com/1.1/search/tweets.json';
+	protected $search_base = 'https://api.twitter.com/1.1/search/tweets.json';
 
 
 	/*
@@ -11,6 +11,7 @@ class TwitterQuery {
 	 * This will always be the first, so it must have a '?'
 	 */
 	protected $query = '?q=';
+	protected $component_string = '';
 	protected $request_method = 'GET';
 	protected $language_assignment = '&lang=';
 	protected $filter_retweets = '-filter:retweets';
@@ -96,20 +97,32 @@ class TwitterQuery {
 		if (get_class($network) != 'dobj\Network') 
 			throw new \Exception('TwitterQuery: Cannot build a query, was not passed a dobj\Network');
 
-		$this->origin_scope = $network->query_origin_scope;
-		$this->location_scope = $network->query_location_scope;
-		$this->query_level = $network->query_level;
+		if ($network->query_custom == NULL) {
 
-		// get origin
-		$raw_origin = $network->getQueryOriginComponent();
-		$origin_component = $this->explodeSlash($raw_origin);
-		$origin_arg = $this->prepareComponent($origin_component);
+			$this->origin_scope = $network->query_origin_scope;
+			$this->location_scope = $network->query_location_scope;
+			$this->query_level = $network->query_level;
 
-		// get current location
-		$raw_location = $network->getQueryLocationComponent();
-		$location_arg = $this->prepareComponent($raw_location);
+			// get origin
+			$raw_origin = $network->getQueryOriginComponent();
+			$origin_component = $this->explodeSlash($raw_origin);
+			$origin_arg = $this->prepareComponent($origin_component);
 
-		$this->addComponents($network, $origin_arg, $location_arg, $this->query_level);
+			// get current location
+			$raw_location = $network->getQueryLocationComponent();
+			$location_arg = $this->prepareComponent($raw_location);
+
+			$this->addComponents($network, $origin_arg, $location_arg, $this->query_level);
+
+			// record query variables
+			$this->origin_arg = $origin_arg;
+			$this->location_arg = $location_arg;
+		}
+		else {
+
+			$this->query .= urlencode( $network->query_custom );
+			$this->filterRetweets();
+		}
 
 		$this->addResultType('mixed');
 		$this->addSinceDate($network);
@@ -117,10 +130,6 @@ class TwitterQuery {
 		if ($this->using_until_date) {
 			$this->addUntilDate();
 		}
-
-		// record query variables
-		$this->origin_arg = $origin_arg;
-		$this->location_arg = $location_arg;
 	}
 
 	/*
@@ -206,7 +215,10 @@ class TwitterQuery {
 		}
 
 		$arg_string .= $this->op_r_parenthesis;
+
+		// add to query and component string
 		$this->query .= $arg_string;
+		$this->component_string .= $arg_string;
 	}
 
 	protected function getArg($arg, $link) {
@@ -253,6 +265,7 @@ class TwitterQuery {
 			if ($language_code === False || isset($origin[0])) {
 				$this->addArg($origin, $link_term);
 				$this->query .= $component_link;
+				$this->component_string .= $component_link;
 			}
 		}
 		else {
@@ -260,6 +273,7 @@ class TwitterQuery {
 			// add origin
 			$this->addArg($origin, $link_term);
 			$this->query .= $component_link;
+			$this->component_string .= $component_link;
 		}
 
 
@@ -549,6 +563,13 @@ class TwitterQuery {
 	 */
 	public function getQuery() {
 		return $this->query;
+	}
+
+	/*
+	 * Returns the components to be added to the query
+	 */
+	public function getComponentString() {
+		return $this->component_string;
 	}
 
 	/*

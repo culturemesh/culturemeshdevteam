@@ -69,6 +69,21 @@ cm.PostWall.prototype = {
 		this._primeDeletePosts();
 		this._primeShowReplies();
 		this._primeMorePosts();
+		this._primePostInputBehavior();
+	},
+	_primePostInputBehavior: function() {
+
+		$("textarea.post-text, textarea.reply-text").off("change");
+		$("textarea.post-text, textarea.reply-text").on("change", function(e) {
+
+			e.preventDefault();
+
+			function resize() {
+				
+			}
+
+			alert( $(e.target).attr('rows'));
+		});
 	},
 	_primeShowReplies: function() {
 
@@ -142,6 +157,7 @@ cm.PostWall.prototype = {
 						$( targ ).children('button').text('Cancel');
 						$( targ ).parents('li.network-post').children('div.prompt').html(response.html);
 						self._primeReplyForms();
+						self._primePostInputBehavior();
 					}
 				}, function(response, rStatus) {
 

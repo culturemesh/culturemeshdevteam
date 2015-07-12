@@ -36,8 +36,12 @@ if ($valid)
 	$post = new \dobj\Post();
 	$post->id_user = $_SESSION['uid'];
 	$post->id_network = $_SESSION['cur_network'];
-	$post->post_text = strip_tags($_POST['post_text']);
 	$post->post_class = $_POST['post_class'];
+
+	// strips tags from post
+	// also converts newline to <br>, must be done after
+	// strip tags
+	$post->post_text = nl2br( strip_tags($_POST['post_text']) );
 
 	$network = new \dobj\Network();
 	$network->id = (int) $_SESSION['cur_network'];
