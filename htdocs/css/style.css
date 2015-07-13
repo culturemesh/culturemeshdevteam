@@ -1636,6 +1636,7 @@ button.upload-img-delete {
 div.team-member {
    float:left;
    margin:3px;
+   width:205px;
 }
 
 img.team_thumb{
