@@ -1633,9 +1633,23 @@ button.upload-img-delete {
  * TEAM THUMBNAIL 
  ********/
 
-.team_thumb{
+div.team-member {
+   float:left;
+   margin:3px;
+}
+
+img.team_thumb{
     width: 205px;
     height: 205px;
+}
+
+p.team {
+    text-align:center;
+}
+
+p.team.team-name {
+    font-weight:bold;
+    margin: 0;
 }
 
 /********

@@ -19,9 +19,16 @@
 	    <ul class="img-strip-ul" style="width:<?php echo $width; ?>px;">
 		<?php
 		foreach($team_members as $member):?>
-		    <li><img src="<?php echo $member['thumb_url'];?>" title="<?php echo $member['name'];?>" alt="<?php echo $member['name'];?>" class="team_thumb" /></li>
+			<li>
+				<div class="team-member">
+				<img src="<?php echo $member['thumb_url'];?>" title="<?php echo $member['name'];?>" alt="<?php echo $member['name'];?>" class="team_thumb" />
+				<p class="team team-name"><?php echo $member['name']; ?></p>
+				<p class="team team-job-title"><?php echo $member['job_title']; ?></p>
+				</div>
+			</li>
 		<?php endforeach;?>
 	    </ul>
+	    <div class="clear"></div>
     </div>
 </div>
 
