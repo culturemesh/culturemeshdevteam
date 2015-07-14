@@ -13,21 +13,28 @@
 	    <?php
 		$pic_length = 205;
 		$team_members = getRowsQuery("SELECT * FROM internal_team");
-		$width = count($team_members) * $pic_length + 15;
+		$team_members_count = count($team_members);
+		$row_length = 4;
+
+		$ul_count = $team_members_count / 4;
+		$row_width = $row_length * $pic_length + 60;
 	    ?>
-	    <!--<ul class="img-strip-ul center-elem">-->
-	    <ul class="img-strip-ul" style="width:<?php echo $width; ?>px;">
-		<?php
-		foreach($team_members as $member):?>
-			<li>
-				<div class="team-member">
-				<img src="<?php echo $member['thumb_url'];?>" title="<?php echo $member['name'];?>" alt="<?php echo $member['name'];?>" class="team_thumb" />
-				<p class="team team-name"><?php echo $member['name']; ?></p>
-				<p class="team team-job-title"><?php echo $member['job_title']; ?></p>
-				</div>
-			</li>
-		<?php endforeach;?>
-	    </ul>
+		<div id="team-row-container">
+		<?php for($i = 0; $i < $team_members_count;):?>
+		    <!--<ul class="img-strip-ul center-elem">-->
+			<ul class="img-strip-ul team" style="width:<?php echo $row_width; ?>px;">
+			<?php for($j = 0; $j < $row_length; $j++, $i++):?>
+				<li class="team-member">
+					<div>
+					<img src="<?php echo $team_members[$i]['thumb_url'];?>" title="<?php echo $team_members[$i]['name'];?>" alt="<?php echo $team_members[$i]['name'];?>" class="team_thumb" />
+					<p class="team team-name"><?php echo $team_members[$i]['name']; ?></p>
+					<p class="team team-job-title"><?php echo $team_members[$i]['job_title']; ?></p>
+					</div>
+				</li>
+			<?php endfor;?>
+	    		</ul>
+		<?php endfor; ?>
+		</div>
 	    <div class="clear"></div>
     </div>
 </div>

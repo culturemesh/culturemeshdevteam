@@ -1633,10 +1633,14 @@ button.upload-img-delete {
  * TEAM THUMBNAIL 
  ********/
 
-div.team-member {
+li.team-member {
    float:left;
    margin:3px;
    width:205px;
+}
+
+ul.team.img-strip-ul {
+   width:800px;
 }
 
 img.team_thumb{
