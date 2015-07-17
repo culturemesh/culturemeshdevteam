@@ -7,7 +7,7 @@
 <div class="mid-grid">
 
 </div>
-<div class="mid-grid">
+<div id="team" class="mid-grid">
     <h2 class="pheader text-center">The Team</h2>
     <div>
 	    <?php
@@ -17,24 +17,36 @@
 		$row_length = 4;
 
 		$ul_count = $team_members_count / 4;
-		$row_width = $row_length * $pic_length + 60;
+		$item_width = $pic_length + 6;
+		
 	    ?>
-		<div id="team-row-container">
 		<?php for($i = 0; $i < $team_members_count;):?>
-		    <!--<ul class="img-strip-ul center-elem">-->
-			<ul class="img-strip-ul team" style="width:<?php echo $row_width; ?>px;">
-			<?php for($j = 0; $j < $row_length; $j++, $i++):?>
+			<?php
+			$quotient = $i / $row_length;
+
+			if ($quotient === 0) {
+				$row_item_count = $row_length;
+			}
+			else {
+				$row_item_count = $team_members_count - $i;
+			}	
+
+			$row_width = $row_item_count * $item_width;
+			?>
+			<div id="team-row-container">
+			<ul class="img-strip-ul team" style="width:<?php echo $row_width;?>px">
+			<?php for($j = 0; $j < $row_length && $i < $team_members_count; $j++, $i++):?>
 				<li class="team-member">
-					<div>
-					<img src="<?php echo $team_members[$i]['thumb_url'];?>" title="<?php echo $team_members[$i]['name'];?>" alt="<?php echo $team_members[$i]['name'];?>" class="team_thumb" />
+					<div class="team-member">
+					<img src="<?php echo $team_members[$i]['thumb_url'];?>" title="<?php echo $team_members[$i]['name'];?>" alt="<?php echo $team_members[$i]['name'];?>" class="team_thumb" /></br>
 					<p class="team team-name"><?php echo $team_members[$i]['name']; ?></p>
 					<p class="team team-job-title"><?php echo $team_members[$i]['job_title']; ?></p>
 					</div>
 				</li>
 			<?php endfor;?>
 	    		</ul>
+			</div>
 		<?php endfor; ?>
-		</div>
 	    <div class="clear"></div>
     </div>
 </div>

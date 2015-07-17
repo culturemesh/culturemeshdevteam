@@ -1634,13 +1634,13 @@ button.upload-img-delete {
  ********/
 
 li.team-member {
-   float:left;
    margin:3px;
    width:205px;
+   float:left;
 }
 
-ul.team.img-strip-ul {
-   width:800px;
+span.team-member {
+   width:205px;
 }
 
 img.team_thumb{
@@ -1849,7 +1849,7 @@ div.mid-grid {
     margin:0 auto;
 }
 .img-strip-ul li{
-    display: inline;
+    /*display: inline;*/
 }
 .input-big{
     width:75%;
