@@ -1,7 +1,13 @@
 <?php
 //ini_set('display_errors', true);
 //error_reporting(E_ALL ^ E_NOTICE);
-include("http_redirect.php");
+//include("http_redirect.php");
+include('environment.php');
+
+include_once('http_redirect.php');
+include_once('lib/nav/HTTPRedirect.php');
+
+$cm = new Environment();
 
 $json_response = array(
 	"message" => NULL,
@@ -19,7 +25,7 @@ $pages = array('index', 'network', 'search_results',
 $prev_url = $_SERVER['HTTP_REFERER'];
 
 // create redirect object
-$redirect = new HTTPRedirect($prev_url, $pages);
+$redirect = new \nav\HTTPRedirect($cm, $prev_url, $pages);
 $redirect->removeQueryParameters(array('lerror', 'rerror'));
 
 // make sure that the user has written
@@ -41,7 +47,12 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		$redirect->addQueryParameter('rerror', 'Password must be longer than 6 characters.');
 		$redirect->execute();
 	}
+	// Check if password matches password confirmation
+	else if(strlen($_POST['password']) > 25){
 
+		$redirect->addQueryParameter('rerror', 'Password too long, must be 25 characters or less');
+		$redirect->execute();
+	}
 	// Check if password matches password confirmation
 	else if($_POST['password'] != $_POST['password_conf']){
 		/*
