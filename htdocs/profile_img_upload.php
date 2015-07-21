@@ -59,8 +59,6 @@ if (!empty($_FILES['picfile'])) {
 				$rel_dir = $sec.'_';
 				$dir = UPLOAD_DIR . $rel_dir.$inc.'/';
 
-				echo $dir;
-
 				//echo '</br>'.$dir;
 
 				//echo 'user doesn\'t have directory';
