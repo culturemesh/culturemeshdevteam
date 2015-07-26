@@ -347,6 +347,20 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 			exit();
 		}
 
+		/********************
+		 * SHUT OFF SWITCH
+		 */
+
+		/*
+		$json_response['error'] = 'Exiting early for now';
+		echo json_encode($json_response);
+		exit();
+		 */
+
+		/********************
+		 * SHUT OFF SWITCH
+		 */
+
 		// arrange only modified columns
 		// into fun array type deal
 		$cols = array();
@@ -356,8 +370,12 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 
 			$value = $data[$mod_cols[$i]];
 
-			if ($sqlTypeDict[$mod_cols[$i]] == 'string')
-				$value = "'".$value."'";
+			// if type is string, add quotes
+			// ...disregard if string === null
+			//
+			if ($sqlTypeDict[$mod_cols[$i]] == 'string' && $value !== "NULL") {
+					$value = "'".$value."'";
+			}
 
 			$new_value = array(
 				'col' => $mod_cols[$i],

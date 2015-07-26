@@ -928,9 +928,16 @@ SQL;
 		$ncl = $class.'_name';
 		 */
 
+		$term_string = $terms;
+
+		// add quotes if the string is NOT NULL
+		if ($terms != "NULL") {
+			$term_string = '\'' . $term_string . '\'';
+		}
+
 		$query = <<<SQL
 			UPDATE cities 
-			SET region_tweet_terms = '$terms'
+			SET region_tweet_terms = $term_string
 			WHERE region_id = $id
 SQL;
 
@@ -942,10 +949,17 @@ SQL;
 		$icl = 'country_id'; 
 		$ncl = 'country_tweet_terms';
 
+		$term_string = $terms;
+
+		// add quotes if the string is NOT NULL
+		if ($terms != "NULL") {
+			$term_string = '\'' . $term_string . '\'';
+		}
+
 		$query = <<<SQL
 			UPDATE regions, cities
-			SET regions.$ncl = '$terms',
-			cities.$ncl = '$terms'
+			SET regions.$ncl = $term_string,
+			cities.$ncl = $term_string
 			WHERE cities.country_id = regions.country_id
 			AND regions.country_id = $id
 SQL;

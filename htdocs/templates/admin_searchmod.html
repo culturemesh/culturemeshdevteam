@@ -103,6 +103,10 @@
 							<button class="btn delete-term" type="button">&#x2716;</button>
 						</div>
 						{{ vars.l_brace }}/ value{{vars.r_brace}}
+						{{ vars.l_brace }}^ value{{vars.r_brace}}
+						<input class="on null-term" type="hidden" value="NULL">
+						{{ vars.l_brace }}/ value{{vars.r_brace}}
+						
 					</td>
 					{{ vars.l_brace }}/colCond.specone{{vars.r_brace}}
 	<!--		-->
@@ -320,6 +324,9 @@
 				<input class="on span2" type="text" value="{{ vars.l_brace }} value {{vars.r_brace}}" disabled>
 				<button class="btn delete-term" type="button">&#x2716;</button>
 			</div>
+	</script>
+	<script id='new-null-term-tmpl' type='x-tmpl-mustache'>
+			<input class="on null-term" type="hidden" value="NULL">
 	</script>
 
 	<div id='template-test'>

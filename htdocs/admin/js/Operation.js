@@ -631,6 +631,9 @@ Operation.prototype.activateUpdate = function() {
 			// change class of input to indicate that terms have been changed
 			$( this ).parents('td.op_action').siblings('td.op_val').removeClass('terms-modified');
 		}
+
+		// if null term exists in td, get rid of it
+		$( valueTd ).children('input.null-term').remove();
 	});
 
 	// give submit-edit its action
@@ -644,6 +647,7 @@ Operation.prototype.activateUpdate = function() {
 		// get parent table and original string
 		// while gettin is good
 		var td = $( this ).parents('td.op_val');
+		var inputCount = self.countTdInputTerms( $( td ) );
 		var original_string = $( td ).children('input[name="term-original-string"]').val();
 
 		// get value
@@ -664,6 +668,18 @@ Operation.prototype.activateUpdate = function() {
 		else {
 			// change class of input to indicate that terms have been changed
 			$( td ).removeClass('terms-modified');
+		}
+
+		// if input count is 1, well, now it's zero
+		// and we must add a null term to td
+		if (inputCount == 1) {
+
+			// get the template
+			var tmpl = document.getElementById('new-null-term-tmpl').innerHTML; 
+
+			// set panel's html
+			var newTermHtml = Mustache.render(tmpl);
+			$( td ).append( newTermHtml );
 		}
 	});
 }
@@ -774,6 +790,16 @@ Operation.prototype.checkTdInputTerms = function(td) {
 		return '';
 	else
 		return valArray.join(', ');
+}
+
+/*
+ * Returns number of inputs with class 'term' in a given td
+ *
+ */
+Operation.prototype.countTdInputTerms = function(td) {
+
+	var elem = $( td ).children('input.term');
+	return $( elem ).length;
 }
 
 document.getElementById('commence').onclick = function(e) {
@@ -971,6 +997,7 @@ ModPackage.prototype.parseTable = function(tableId) {
 
 	var tdClasses = ['td.op_val.filled span',
 	    'td.op_val.terms-modified input.term',
+	    'td.op_val.terms-modified input.null-term',
 	    'td.op_val span',
 	    'td.op_input input'
 	];
@@ -979,6 +1006,10 @@ ModPackage.prototype.parseTable = function(tableId) {
 
 	var tableString = '#' + tableId + ' table tbody tr';
 
+	// Loop through EACH of the table rows
+	//
+	// NO EXCEPTIONSSSSSS
+	//
 	$( tableString ).each(function() {
 		
 		// GET TDs
@@ -989,7 +1020,11 @@ ModPackage.prototype.parseTable = function(tableId) {
 		var value = "";
 		var count = 0;
 
-		while ( value == "" && count < tdClasses.length) { 
+		// Check each of the td classes
+		// 
+		// Look for modified columns
+		//
+		while ( value === "" && count < tdClasses.length) { 
 
 			var elem = $( tdClasses[count], this )
 
@@ -1027,7 +1062,7 @@ ModPackage.prototype.parseTable = function(tableId) {
 		//
 		if (modCols != undefined)
 		{
-			if (count <= 2 && count > 0) {
+			if (count <= 3 && count > 0) {
 
 				modCols.push(key);
 
