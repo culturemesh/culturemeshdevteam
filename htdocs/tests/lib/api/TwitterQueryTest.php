@@ -7,12 +7,23 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp() {
 
+		$location_searchable = new dobj\City();
+		$location_searchable->name = 'Detroit';
+		$location_searchable->region_name = 'Michigan';
+		$location_searchable->country_name = 'United States';
+
+		$loc_origin_searchable = new dobj\Country();
+		$loc_origin_searchable->name = 'China';
+
 		$this->location_network = new dobj\Network();
 		$this->location_network->city_cur = 'Detroit';
 		$this->location_network->region_cur = 'Michigan';
 		$this->location_network->country_cur = 'United States';
 		$this->location_network->country_origin = 'China';
 		$this->location_network->network_class = 'co';
+
+		$this->location_network->location_searchable = $location_searchable;
+		$this->location_network->origin_searchable = $loc_origin_searchable;
 
 		// set levels
 		$this->location_network->query_level = 2;
@@ -30,13 +41,12 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 		// set levels
 		$this->language_network->query_level = 2;
 		$this->language_network->query_origin_scope = 1;
-		$this->language_network->query_location_scope = 1;
+		$this->language_network->query_location_scope = 3;
 		$this->language_network->query_since_date = '2010-01-01';
 	}
 
 	public function testConstruct() {
 
-		$this->markTestSkipped();
 		$query = new api\TwitterQuery($this->location_network);
 
 		$this->assertEquals('api\TwitterQuery', get_class($query));
@@ -54,7 +64,7 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testLocationNetworkBuildSearch() {
 
-		$this->markTestSkipped();
+		$this->location_network->query_location_scope = 3;
 		$query = new api\TwitterQuery($this->location_network);
 
 		$this->assertEquals(urldecode('https://api.twitter.com/1.1/search/tweets.json?q=(China) (#UnitedStates OR "United States") -filter:retweets&result_type=mixed&since=2010-01-01'), urldecode($query->getSearch()));
@@ -62,7 +72,7 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 
 	public function testLanguageNetworkBuildSearch() {
 
-		$this->markTestSkipped();
+		$this->language_network->query_location_scope = 3;
 		$query = new api\TwitterQuery($this->language_network);
 
 		$this->assertEquals(urldecode('https://api.twitter.com/1.1/search/tweets.json?q=(#UnitedStates OR "United States") -filter:retweets&lang=zh-tw&result_type=mixed&since=2010-01-01'), urldecode($query->getSearch()));
@@ -75,14 +85,13 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testHashNetworkBuildSearch() {
 
-		$this->markTestSkipped();
 		$this->location_network->city_cur = 'Grand Rapids';
 		$this->location_network->region_cur = 'Michigan';
 		$this->location_network->country_cur = 'United States';
 		$this->location_network->country_origin = 'China';
 		$this->location_network->network_class = 'co';
 
-		$this->location_network->query_location_scope = 3;
+		$this->location_network->query_location_scope = 1;
 
 		$query = new api\TwitterQuery($this->location_network);
 
@@ -91,9 +100,8 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 
 	public function testSlashLanguageNetworkBuildSearch() {
 
-		$this->markTestSkipped();
 		$this->language_network->language_origin = 'Mandarin Chinese/Putonghua';
-		$this->language_network->query_location_scope = 3;
+		$this->language_network->query_location_scope = 1;
 
 		$query = new api\TwitterQuery($this->language_network);
 
@@ -102,12 +110,40 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 
 	public function testParenthesisLanguageNetworkBuildSearch() {
 
-		$this->markTestSkipped();
 		$this->language_network->language_origin = 'American Sign Language (ASL)';
+		$this->language_network->query_location_scope = 3;
 
 		$query = new api\TwitterQuery($this->language_network);
 
 		$this->assertEquals(urldecode('https://api.twitter.com/1.1/search/tweets.json?q=(%23ASL%20OR%20%22American%20Sign%20Language%22)%20(#UnitedStates OR "United States") -filter:retweets&result_type=mixed&since=2010-01-01'), urldecode($query->getSearch()));
+	}
+
+	/*
+	public function testCustomOriginTweetTermsBuildSearch() {
+		$query = new api\TwitterQuery($this->language_network);
+
+		$this->assertEquals(urldecode('https://api.twitter.com/1.1/search/tweets.json?q=(%23ASL%20OR%20%22American%20Sign%20Language%22)%20(#UnitedStates OR "United States") -filter:retweets&result_type=mixed&since=2010-01-01'), urldecode($query->getSearch()));
+
+	}
+	 */
+	public function testCustomLocationTweetTermsBuildSearch() {
+
+		$this->location_network->query_location_scope = 3;
+		$this->location_network->location_searchable->country_tweet_terms = "US, USA, US of A";
+
+		$query = new api\TwitterQuery($this->location_network);
+
+		$this->assertEquals(urldecode('https://api.twitter.com/1.1/search/tweets.json?q=(China) (#UnitedStates OR "United States" OR US OR USA OR #USofA OR "US of A") -filter:retweets&result_type=mixed&since=2010-01-01'), urldecode($query->getSearch()));
+	}
+
+	public function testCustomOriginTweetTermsBuildSearch() {
+
+		$this->location_network->query_location_scope = 3;
+		$this->location_network->origin_searchable->tweet_terms = "Chayland";
+
+		$query = new api\TwitterQuery($this->location_network);
+
+		$this->assertEquals(urldecode('https://api.twitter.com/1.1/search/tweets.json?q=(China OR Chayland) (#UnitedStates OR "United States") -filter:retweets&result_type=mixed&since=2010-01-01'), urldecode($query->getSearch()));
 	}
 }
 

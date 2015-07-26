@@ -1,6 +1,7 @@
 *~
 *.swo
 *.swp
+*.swk
 *.swm
 localdbconn.php
 htdocs/db_test*

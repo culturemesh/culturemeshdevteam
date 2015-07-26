@@ -97,7 +97,8 @@ SQL;
 		while($row = mysqli_fetch_array($result))
 			$language = array(
 				'id' => $row['id'],
-			       	'name' => $row['name']);	
+				'name' => $row['name'],
+				'tweet_terms' => $row['tweet_terms']);	
 
 		return $language;
 	}

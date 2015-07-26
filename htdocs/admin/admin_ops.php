@@ -54,7 +54,10 @@ $sqlTypeDict = array (
 	'feature_code' => 'string',
 	'featureCode' => 'string',
 	'added' => 'int',
-	'iso_a2' => 'string'
+	'iso_a2' => 'string',
+	'tweet_terms' => 'string',
+	'region_tweet_terms' => 'string',
+	'country_tweet_terms' => 'string'
 );
 
 /*
@@ -192,6 +195,15 @@ else if ($json_post['op'] == 'searchSearchables') {
 
 	// make right for jscript down below
 	foreach ($srbl as $key => $value) {
+
+		// special tweet case
+		// turn value into array
+		if (strpos($key, 'tweet') >= 0) {
+
+			if ($value !== NULL)
+				$value = explode(', ', $value);
+		}
+
 		$col = array(
 			'COLUMN_NAME' => $key,
 			'value' => $value,
@@ -347,7 +359,6 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 			if ($sqlTypeDict[$mod_cols[$i]] == 'string')
 				$value = "'".$value."'";
 
-			//
 			$new_value = array(
 				'col' => $mod_cols[$i],
 				'value' => $value
@@ -439,6 +450,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 	}
 
 	$id = $json_post['data']['id'];
+	$terms = $json_post['data']['tweet_terms'];
 	$name = $json_post['data']['name'];
 	$class = $searchable_singular[$json_post['table']];
 
@@ -448,22 +460,27 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 		// modify networks
 		if ( $json_post['table'] == 'languages') {
 
-			echo Language::updateNetworkNames($id, $name, $con);
+			//echo Language::updateNetworkNames($id, $name, $con);
+			Language::updateNetworkNames($id, $name, $con);
 		}
 		else if ( in_array($json_post['table'], $location_tables)) {
 
-			echo Location::updateNetworkNames($id, $name, $class, $con);
+			//echo Location::updateNetworkNames($id, $name, $class, $con);
+			Location::updateNetworkNames($id, $name, $class, $con);
 
 			// update children, regions and cites if country
 			if ($json_post['table'] == 'countries')
 			{
-				echo Location::updateChildrenNames($id, $name, 'regions', 'country', $con);
-				echo Location::updateChildrenNames($id, $name, 'cities', 'country', $con);
+				//echo Location::updateChildrenNames($id, $name, 'regions', 'country', $con);
+				//echo Location::updateChildrenNames($id, $name, 'cities', 'country', $con);
+				Location::updateChildrenNames($id, $name, 'regions', 'country', $con);
+				Location::updateChildrenNames($id, $name, 'cities', 'country', $con);
 			}
 
 			// just cities if region
 			if ($json_post['table'] == 'regions') {
-				echo Location::updateChildrenNames($id, $name, 'cities', 'region', $con);
+				//echo Location::updateChildrenNames($id, $name, 'cities', 'region', $con);
+				Location::updateChildrenNames($id, $name, 'cities', 'region', $con);
 			}
 
 
@@ -489,7 +506,27 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 		$pname = $json_post['data']['country_name'];
 		$pclass = 'country';
 
-		echo Location::updateNetworkParent($id, $class, $pid, $pname, $pclass, $con);
+		//echo Location::updateNetworkParent($id, $class, $pid, $pname, $pclass, $con);
+		Location::updateNetworkParent($id, $class, $pid, $pname, $pclass, $con);
+	}
+
+	// UPDATE CHILDREN TWEET THINGS
+	// 	(2) country
+	if (in_array('tweet_terms', $mod_cols)) {
+
+		$id = $json_post['data']['id'];
+
+		// update children, regions and cites if country
+		if ($json_post['table'] == 'countries')
+		{
+			Location::updateCountryChildrenTweetNames($id, $terms, $con);
+		}
+
+		// just cities if region
+		if ($json_post['table'] == 'regions') {
+			//echo Location::updateChildrenNames($id, $name, 'cities', 'region', $con);
+			Location::updateRegionChildrenTweetNames($id, $terms, $con);
+		}
 	}
 
 	// close dbj connection
@@ -693,7 +730,7 @@ else if ($_POST['op'] == 'update' && $_POST['singobatch'] == 'batch') {
 
 	// (1)run query
 	$con = QueryHandler::getDBConnection();
-	echo $stmt;
+	//echo $stmt;
 	$response['error'] = QueryHandler::executeQuery($stmt, $con);
 	
 	// (2) if location, update location data to add nearby locations
@@ -917,7 +954,7 @@ else if ($_POST['op'] == 'create' && $_POST['singobatch'] == 'batch') {
 
 	// (1) RUN MAIN QUERY
 	//
-	echo $stmt;
+	//echo $stmt;
 	$response['error'] = QueryHandler::executeQuery($stmt, $con);
 
 	// possibly maybe update nearby stuff

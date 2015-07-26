@@ -104,12 +104,13 @@ class TwitterQuery {
 			$this->query_level = $network->query_level;
 
 			// get origin
-			$raw_origin = $network->getQueryOriginComponent();
+			$raw_origin = $network->getQueryOriginComponent('array');
 			$origin_component = $this->explodeSlash($raw_origin);
 			$origin_arg = $this->prepareComponent($origin_component);
 
 			// get current location
-			$raw_location = $network->getQueryLocationComponent();
+			//$raw_location = $network->getQueryLocationComponent();
+			$raw_location = $network->getQueryLocationComponent('array');
 			$location_arg = $this->prepareComponent($raw_location);
 
 			$this->addComponents($network, $origin_arg, $location_arg, $this->query_level);
@@ -238,6 +239,8 @@ class TwitterQuery {
 	/*
 	 * Hopefully this will be the last version of this
 	 * ...at least for a while
+	 *
+	 * From Future Ian: YOUR HOPES WERE SMASHED!!!!!!
 	 *
 	 */
 	protected function addComponents($network, $origin, $location, $level) {
@@ -427,14 +430,34 @@ class TwitterQuery {
 	 *
 	 * Useful for grabbing 
 	 */
-	protected function explodeSlash($string) {
+	protected function explodeSlash($arg) {
 
-		$test_array = explode('/', $string);
+		if (is_string($arg)) {
 
-		if (count($test_array) > 1)
-			return $test_array;
-		else
-			return $test_array[0];
+			$test_array = explode('/', $arg);
+
+			if (count($test_array) > 1)
+				return $test_array;
+			else
+				return $test_array[0];
+		}
+		else {
+			$result_array = array();
+
+			for ($i = 0; $i < count($arg); $i++) {
+
+				$result = $this->explodeSlash($arg[$i]);
+
+				if (is_array($result)) {
+					$result_array = array_merge($result_array, $result);
+				}
+				else {
+					$result_array[] = $result;
+				}
+			}
+
+			return $result_array;
+		}
 	}
 
 	/*

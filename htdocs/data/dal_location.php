@@ -351,9 +351,9 @@ SQL;
 		$query = <<<SQL
 			SELECT *
 			FROM cities
-			WHERE name=$name
-			AND region_name=$region_name
-			AND country_name=$country_name
+			WHERE name='$name'
+			AND region_name='$region_name'
+			AND country_name='$country_name'
 SQL;
 ///////////////
 		$result = QueryHandler::executeQuery($query, $con);
@@ -371,7 +371,10 @@ SQL;
 			'country_name' => $row['country_name'],
 			'latitude' => $row['latitude'],
 			'longitude' => $row['longitude'],
-			'population' => $row['population']);
+			'population' => $row['population'],
+			'tweet_terms' => $row['tweet_terms'],
+			'region_tweet_terms' => $row['region_tweet_terms'],
+			'country_tweet_terms' => $row['country_tweet_terms']);
 
 		return $city;
 	}
@@ -445,7 +448,9 @@ SQL;
 			'country_name' => $row['country_name'],
 			'latitude' => $row['latitude'],
 			'longitude' => $row['longitude'],
-			'population' => $row['population']);
+			'population' => $row['population'],
+			'tweet_terms' => $row['tweet_terms'],
+			'country_tweet_terms' => $row['country_tweet_terms']);
 
 		return $region;
 	}
@@ -511,7 +516,8 @@ SQL;
 			'name' => $row['name'], 
 			'latitude' => $row['latitude'],
 			'longitude' => $row['longitude'],
-			'population' => $row['population']);
+			'population' => $row['population'],
+			'tweet_terms' => $row['tweet_terms']);
 
 		return $country;
 	}
@@ -904,12 +910,44 @@ SQL;
 	public static function updateChildrenNames($id, $name, $table, $class, $con=NULL) {
 			// important names
 		$icl = $class.'_id'; // eg id_city_cur
-		$ncl = $class.'_name';
+		$ncl = $class.'_tweet_terms';
 
 		$query = <<<SQL
 			UPDATE $table 
 			SET $ncl = '$name'
 			WHERE $icl = $id
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+	}
+
+	public static function updateRegionChildrenTweetNames($id, $terms, $con=NULL) {
+		/*
+			// important names
+		$icl = $class.'_id'; // eg id_city_cur
+		$ncl = $class.'_name';
+		 */
+
+		$query = <<<SQL
+			UPDATE cities 
+			SET region_tweet_terms = '$terms'
+			WHERE region_id = $id
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+	}
+
+	public static function updateCountryChildrenTweetNames($id, $terms, $con=NULL) {
+			// important names
+		$icl = 'country_id'; 
+		$ncl = 'country_tweet_terms';
+
+		$query = <<<SQL
+			UPDATE regions, cities
+			SET regions.$ncl = '$terms',
+			cities.$ncl = '$terms'
+			WHERE cities.country_id = regions.country_id
+			AND regions.country_id = $id
 SQL;
 
 		return QueryHandler::executeQuery($query, $con);
