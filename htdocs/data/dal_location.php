@@ -910,7 +910,7 @@ SQL;
 	public static function updateChildrenNames($id, $name, $table, $class, $con=NULL) {
 			// important names
 		$icl = $class.'_id'; // eg id_city_cur
-		$ncl = $class.'_tweet_terms';
+		$ncl = $class.'_name';
 
 		$query = <<<SQL
 			UPDATE $table 
