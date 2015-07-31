@@ -214,6 +214,13 @@
 			<div id="signout_panel" style="display:none">
 				<p>You have successfully signed out.</p>
 			</div>
+			{{# vars.maintenance.notification }}
+			<div id="maintenance-panel">
+				<b>Scheduled Maintenance</b>
+				<p>CultureMesh is going to undergo scheduled maintenance on {{ vars.maintenance.date }}</p>
+				<p>It should last about {{ vars.maintenance.duration }}</p>
+			</div>
+			{{/ vars.maintenance.notification }}
 			{{$ content }}
 			{{/ content }}
 			<div class="footer">

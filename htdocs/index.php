@@ -7,6 +7,8 @@
 	include_once("data/dal_network.php");
 	include_once("html_builder.php");
 	include_once("environment.php");
+
+	$cm = new Environment();
 	
 	session_name("myDiaspora");
 	session_start();
