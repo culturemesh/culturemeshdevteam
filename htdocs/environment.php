@@ -49,6 +49,8 @@ final class Environment {
 	private $db_pass;
 	private $db_name;
 
+	private $maintenance_info;
+
 	// BIGGUMS
 	private static $environment = NULL;
 	private static $connection = NULL;
@@ -96,6 +98,13 @@ final class Environment {
 		$this->cache_dir = self::$site_root.DIRECTORY_SEPARATOR.'cache';
 		$this->ds = DIRECTORY_SEPARATOR;
 		self::$environment = $this;
+
+		// setup maintenance stuff
+		$this->maintenance_info = array(
+			'notification' => $GLOBALS['MAINTENANCE_NOTIFICATION'],
+			'date' => $GLOBALS['MAINTENANCE_DATE'],
+			'duration' => $GLOBALS['MAINTENANCE_DURATION']
+		);
 	}
 
 	public function __get($name) {
@@ -262,7 +271,8 @@ final class Environment {
 			'home_path' => $this->host_root,
 			'f_root' => $this->f_root,
 			'img_path' => $this->img_dir,
-			'hostname' => '//' . $this->hostname
+			'hostname' => '//' . $this->hostname,
+			'maintenance' => $this->maintenance_info
 		);
 	}
 	

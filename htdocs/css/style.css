@@ -1345,10 +1345,16 @@ li.inactive-event p#event-desc {
 }
 
 #confirmation_panel {
-	width: 100%;
 	color:#FFFFFF;
 	background-color:rgb(151, 203, 56);
+	border:1px solid #CCCCCC;
 	padding:5px;
+}
+
+#maintenance-panel {
+	color:#EE542F;
+	padding:5px;
+	border:1px solid #CCCCCC;
 }
 
 .profile_dashboard

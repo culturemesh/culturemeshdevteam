@@ -267,3 +267,8 @@
 <div id="signout_panel" style="display:none">
 	<p>You have successfully signed out.</p>
 </div>
+<div id="maintenance-panel">
+	<b>Scheduled Maintenance</b>
+	<p>CultureMesh is going to undergo scheduled maintenance on <?php echo $GLOBALS['MAINTENANCE_DATE']; ?></p>
+	<p>It should last about <?php echo $GLOBALS['MAINTENANCE_DURATION']; ?></p>
+</div>
