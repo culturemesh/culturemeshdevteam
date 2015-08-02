@@ -190,30 +190,32 @@
 				-->
 				{{/ page_vars.newer_posts }}
 				{{{ sections.post_wall }}}
-				<!--
-				<ul id="post-wall-ul" class="network">
-				{{# sections.posts }}
-				{{{.}}}
-				{{/ sections.posts }}
-				</ul>
-				-->
 				<div class="clear"></div>
-				{{# page_vars.more_posts }}
-				<div>
-					<form class="more_posts" method="POST" action="{{ vars.hostname }}/network_more_posts.php">
-						<input type="hidden" id="nmp_lb" name="lb" value={{ page_vars.older_posts_lower_bound }} />
-						<input type="hidden" id="nmp_ub" name="ub" value=10 />
-						<input type="hidden" id="nmp_nid" name="nid" value="{{ page_vars.nid }}" />
+				{{# page_vars.more_post_content }}
+				<div id='more-post-div'>
+					<form class="more_posts" method="POST" action="{{ vars.hostname }}/network_more_posts.php" autocomplete="off">
+						<input type="hidden" id="nmp_more_tweets" name="nmp_more_tweets" value="{{ page_vars.more_tweets }}" autocomplete="off"/>
+						<input type="hidden" id="nmp_lb" name="lb" value={{ page_vars.older_posts_lower_bound }} autocomplete="off" />
+						<input type="hidden" id="nmp_ub" name="ub" value=10 autocomplete="off" />
+						<input type="hidden" id="nmp_nid" name="nid" value="{{ page_vars.nid }}" autocomplete="off" />
+						{{# page_vars.more_posts }}
+						<input type="hidden" id="nmp_more_posts" name="nmp_more_posts" value="1" autocomplete="off"/>
+						{{/ page_vars.more_posts }}
+						{{# page_vars.more_tweets }}
+						<input type="hidden" id="nmp_last_updated" name="nmp_last_updated" value="{{ page_vars.last_updated }}" autocomplete="off"/>
+						<input type="hidden" id="nmp_cur_location_scope" name="nmp_cur_location_scope" value="{{ page_vars.tweet_scope_info.query_location_scope }}" autocomplete="off"/>
+						<input type="hidden" id="nmp_max_location_scope" name="nmp_max_location_scope" value="{{ page_vars.tweet_scope_info.max_location_scope }}" autocomplete="off"/>
+						<input type="hidden" id="nmp_cur_origin_scope" name="nmp_cur_origin_scope" value="{{ page_vars.tweet_scope_info.query_origin_scope }}" autocomplete="off"/>
+						<input type="hidden" id="nmp_max_origin_scope" name="nmp_max_origin_scope" value="{{ page_vars.tweet_scope_info.max_origin_scope }}" autocomplete="off"/>
+						<input type="hidden" id="nmp_tweet_until_date" name="nmp_tweet_until_date" value="{{ page_vars.tweet_until_date }}" autocomplete="off"/>
+						<input type="hidden" id="nmp_initial" name="nmp_initial" value="1" autocomplete="off"/>
+						{{/ page_vars.more_tweets }}
 						<button id="mp_button" class="post show">Load Older Posts</button>
 					</form>
 				</div>
-				{{/ page_vars.more_posts }}
+				{{/ page_vars.more_post_content }}
 				{{# get.ap }} lambda required
 				{{/ get.ap }}
-				{{# sections.tweets }}
-				{{{.}}}
-				{{/ sections.tweets }}
-				</ul>
 			</div>
 			</div>
 			<script>

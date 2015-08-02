@@ -1,7 +1,9 @@
 *~
 *.swo
 *.swp
+*.swk
 *.swm
+*.swn
 localdbconn.php
 htdocs/db_test*
 nbproject/

@@ -182,18 +182,19 @@
 			<ul class="nav nav-tabs">
 			  <li><a href="#query-adjustment" data-toggle="tab">Network Query</a></li>
 			  <li><a href="#equation-adjustment" data-toggle="tab">Equation</a></li>
+			  <li><a href="#custom-query" data-toggle="tab">Custom Query</a></li>
 			</ul>
 		</div>
 		<div class="tab-content">
 		  <div class="tab-pane" id="query-adjustment">
 			<div class='row span8'>
 			<label>Select Network</label>
-			<form id="get-network-form" method="POST" action="twitterquery_get_network.php">
+			<form id="form-adjustment-get-network" method="POST" action="twitterquery_get_network.php">
 				<div class='span2'>
 				<input id='network-id-input' class='form-control' type="text" name="nid"/>
 				</div>
 				<div class='span4'>
-				<button id='get-network-button' class='btn btn-default'>GO!!!</button>
+				<button id='adjustment-get-network-button' class='get-network btn btn-default'>GO!!!</button>
 				</div>
 			</form>
 			</div>
@@ -269,15 +270,45 @@
 		  </div>
 		  <div class="tab-pane" id="custom-query">
 			<div class='row span12'>
-				<div class=''>
-				<h2>Custom Equation</h2>
-					<div>
-						<form id='form-adjust-equation'>
-							<label for='input-custom-query'>Input Query</label>
-							<input id='custom-query' type='text' name='custom_query' />
-							<button id='button-custom-query'>Write Query</button>
+				<h2>Custom Query Builder</h2>
+				<div id='custom-query-network-select' class=''>
+					<div class='row span8'>
+					<label>Select Network</label>
+					<form id="form-custom-query-get-network" method="POST" action="twitterquery_get_network.php">
+						<div class='span2'>
+						<input id='network-id-input' class='form-control' type="text" name="nid"/>
+						</div>
+						<div class='span4'>
+						<button id='query-get-network-button' class='get-network btn btn-default'>GO!!!</button>
+						</div>
+					</form>
+					</div>
+				</div>
+				<div id='custom-query-builder' class='row panel span12 collapse'>
+					<div class='panel'>
+						<b>Use parentheses for grouping</b>
+						<b
+						<b>This will only return results that contain both the terms in the query</b>
+						<blockquote>(#NewYork OR "New York") (Chicago)</blockquote>
+						<b>This return results that contain EITHER ONE or BOTH of the terms in the query</b>
+						<blockquote>(#NewYork OR "New York") OR (Chicago)</blockquote>
+					</div>
+					<div class='panel' style="border:1px;">
+						<b>Current Query</b>
+						<blockquote id='custom-query-current-query'></blockquote>
+						<form id='form-custom-query'>
+							<label for='input-custom-query'>Write a Custom Query for a Network</label>
+							<input id='query-custom' type='text' name='query-custom' />
+							<input id='query-custom-nid' type='hidden' name='nid' />
+							<div> 
+							<button id='button-write-custom-query'>Write Query</button>
+							</div>
+							<div>
+							<button id='button-delete-custom-query'>Delete Query</button>
+							</div>
 						</form>
 					</div>
+					<span id='custom-query-error-span'></span>
 				</div>
 			</div>
 		  </div>
@@ -444,7 +475,7 @@
 	{{$ body_scripts }}
 	<script type="text/javascript">
 
-		$('#get-network-button').on('click', function(e) {
+		$('button.get-network').on('click', function(e) {
 
 				// STOP THEM BEFORE IT's TOO LATE
 				e.preventDefault();
@@ -453,12 +484,15 @@
 				var cnt2 = counter2;
 				var cnt3 = counter3;
 				var pa = window.primeAdjustment;
-			
+
+				var targ = e.target;
+				var targForm = $( targ ).parents('form');
+
 				var getForm = new Ajax({
 						requestType: 'POST',
 						requestUrl: 'ops/twitterquery-getnetwork.php',
 						requestParameters: ' ',
-						data: $('#get-network-form').serialize(),
+						data: $( targForm ).serialize(),
 						dataType : 'string',
 						sendNow: true
 					},
@@ -466,67 +500,79 @@
 					function(data) {
 						
 						var results = JSON.parse(data);
+						var parentId = $( targForm ).attr('id');
 
-						// fill the info thing
-						$('#table-network-title-value').text(results.info.title);
-						$('#table-query-value').text(results.info.query);
-						$('#table-relevance-value').text(results.info.query_relevance);
-						$('#table-result-value').text(results.info.result_count);
-						$('#table-max-result-value').text(results.info.max_count);
-						$('#table-level-value').text(results.info.level);
-						$('#table-origin-term-value').text(results.info.origin_term);
-						$('#table-origin-scope-value').text(results.info.origin_scope);
-						$('#table-location-term-value').text(results.info.location_term);
-						$('#table-location-scope-value').text(results.info.location_scope);
-						$('#table-query-origin-scope-value').text(results.info.query_origin_scope);
-						$('#table-query-location-scope-value').text(results.info.query_location_scope);
-						$('#table-since-date-value').text(results.info.since_date);
-						$('#adjust-custom-query').val(results.info.query.slice(3));
+						if ( parentId == 'form-adjustment-get-network') {
 
-						// update counters
-						/*
-						cnt1._update({
-							    minCount : (-1) * results.info.min_level_distance,
-							    maxCount : results.info.max_level_distance
-							    });
-							    */
+							// fill the info thing
+							$('#table-network-title-value').text(results.info.title);
+							$('#table-query-value').text(results.info.query);
+							$('#table-relevance-value').text(results.info.query_relevance);
+							$('#table-result-value').text(results.info.result_count);
+							$('#table-max-result-value').text(results.info.max_count);
+							$('#table-level-value').text(results.info.level);
+							$('#table-origin-term-value').text(results.info.origin_term);
+							$('#table-origin-scope-value').text(results.info.origin_scope);
+							$('#table-location-term-value').text(results.info.location_term);
+							$('#table-location-scope-value').text(results.info.location_scope);
+							$('#table-query-origin-scope-value').text(results.info.query_origin_scope);
+							$('#table-query-location-scope-value').text(results.info.query_location_scope);
+							$('#table-since-date-value').text(results.info.since_date);
+							$('#adjust-custom-query').val(results.info.query.slice(3));
 
-						cnt2._update({
-							    minCount : results.info.min_origin,
-							    maxCount : results.info.max_origin
-							    });
+							// update counters
+							/*
+							cnt1._update({
+								    minCount : (-1) * results.info.min_level_distance,
+								    maxCount : results.info.max_level_distance
+								    });
+								    */
 
-						cnt3._update({
-							    minCount : results.info.min_location,
-							    maxCount : results.info.max_location
-							    });
+							cnt2._update({
+								    minCount : results.info.min_origin,
+								    maxCount : results.info.max_origin
+								    });
 
-						//cnt1._setValue(results.info.level);
-						cnt2._setValue(results.info.query_origin_scope);
-						cnt3._setValue(results.info.query_location_scope);
-						
-						$('#panel-2-left').collapse('show');
-						$('#panel-2-right').collapse('show');
-						$('#adjustment-bureau').collapse('show');
+							cnt3._update({
+								    minCount : results.info.min_location,
+								    maxCount : results.info.max_location
+								    });
 
-						pa();
-						$('#adjustment-right').collapse('hide');
+							//cnt1._setValue(results.info.level);
+							cnt2._setValue(results.info.query_origin_scope);
+							cnt3._setValue(results.info.query_location_scope);
+							
+							$('#panel-2-left').collapse('show');
+							$('#panel-2-right').collapse('show');
+							$('#adjustment-bureau').collapse('show');
 
-						// fill nid value things
-						$( '.adjustment-nid' ).val(results.network.id);
+							pa();
+							$('#adjustment-right').collapse('hide');
 
-						if (results.error == 0) {
+							// fill nid value things
+							$( '.adjustment-nid' ).val(results.network.id);
 
-							// fill the tweet list
-							$('#tweet-ul').html(results.html);
-						}
-						else {
-							if (results.html == null) {
-								$('#tweet-ul').html('');
+							if (results.error == 0) {
+
+								// fill the tweet list
+								$('#tweet-ul').html(results.html);
 							}
+							else {
+								if (results.html == null) {
+									$('#tweet-ul').html('');
+								}
 
-							$( '#adjustment-error' ).text( results.error );
-							$( '#tweet-error' ).text( results.error );
+								$( '#adjustment-error' ).text( results.error );
+								$( '#tweet-error' ).text( results.error );
+							}
+						}
+						else if (parentId == 'form-custom-query-get-network') {
+
+							$('#custom-query-builder').collapse('show');
+
+							$('#query-custom-nid').val(results.network.id);
+							$('#custom-query-current-query').text(results.info.component_string);
+
 						}
 					}
 
@@ -602,6 +648,44 @@
 						}
 					}
 					);
+				});
+
+		$('#button-write-custom-query').on('click', function(e) {
+
+				e.preventDefault();
+
+				var submitCustomQuery = new Ajax({
+						requestType: 'POST',
+						requestUrl: 'ops/twitterquery-customizequery.php',
+						requestParameters: ' ',
+						data: $('#form-custom-query').serialize(),
+						dataType : 'string',
+						sendNow: true
+					},
+					function(data) {
+
+						var results = JSON.parse(data);
+						$('#custom-query-error-span').text(results.error);
+					});
+				});
+
+		$('#button-delete-custom-query').on('click', function(e) {
+
+				e.preventDefault();
+
+				var submitCustomQuery = new Ajax({
+						requestType: 'POST',
+						requestUrl: 'ops/twitterquery-customquerydelete.php',
+						requestParameters: ' ',
+						data: $('#form-custom-query').serialize(),
+						dataType : 'string',
+						sendNow: true
+					},
+					function(data) {
+
+						var results = JSON.parse(data);
+						$('#custom-query-error-span').text(results.error);
+					});
 				});
 
 	</script> {{/ body_scripts }}

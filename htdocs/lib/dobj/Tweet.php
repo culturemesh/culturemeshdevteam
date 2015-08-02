@@ -14,6 +14,7 @@ class Tweet extends Post {
 	protected $filter_level;
 	protected $geo;
 	protected $id;
+	protected $id_twitter;
 	protected $id_str;
 	protected $in_reply_to_screen_name;
 	protected $in_reply_to_status_id;
@@ -40,6 +41,8 @@ class Tweet extends Post {
 	protected $name;
 	protected $screen_name;
 	protected $profile_image_url;
+
+	protected $duplicate;
 
 	protected $saved; // how we distinguish db tweets from api tweets
 
@@ -68,8 +71,8 @@ class Tweet extends Post {
 	 */
 	public function insert($dal, $do2db) {
 
-		if (!isset($this->id))
-			throw new \Exception('Tweet: id is not set');
+		if (!isset($this->id_twitter))
+			throw new \Exception('Tweet: id_twitter is not set');
 		if (!isset($this->id_network))
 			throw new \Exception('Tweet: id_network is not set');
 		if (!isset($this->text))
@@ -83,7 +86,8 @@ class Tweet extends Post {
 		if (!isset($this->created_at))
 			throw new \Exception('Tweet: created_at is not set');
 
-		$do2db->execute($dal, $this, 'insertPostTweet');
+		$result = $do2db->execute($dal, $this, 'insertPostTweet');
+		return $dal->lastInsertId();
 	}
 
 
@@ -137,7 +141,7 @@ class Tweet extends Post {
 		$this->favorited = $json_tweet['favorited'];
 		$this->filter_level = $json_tweet['filter_level'];
 		$this->geo = $json_tweet['geo'];
-		$this->id = $json_tweet['id'];
+		$this->id_twitter = $json_tweet['id'];
 		$this->id_str = $json_tweet['id_str'];
 		$this->in_reply_to_screen_name = $json_tweet['in_reply_to_screen_name'];
 		$this->in_reply_to_status_id = $json_tweet['in_reply_to_status_id'];
@@ -200,6 +204,7 @@ class Tweet extends Post {
 
 		return array(
 			'id' => $this->id,
+			'id_twitter' => $this->id_twitter,
 			'name' => $name,
 			'screen_name' => $screen_name,
 			'text' => $this->formatText(),

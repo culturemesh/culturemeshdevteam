@@ -12,7 +12,7 @@ function registerTweet($obj) {
 		$m->setValues(array(
 			'query' => <<<SQL
 INSERT INTO post_tweets
-(id, id_network, name, screen_name, text, profile_image_url, created_at) 
+(id_twitter, id_network, name, screen_name, text, profile_image_url, created_at) 
 VALUES (?, ?, ?, ?, ?, ?, ?)
 SQL
 
@@ -21,7 +21,7 @@ SQL
 SQL
 		/////////////////////////////
 		,	'name' => 'insertPostTweet',
-			'params' => array('id', 'id_network', 'name', 'screen_name',
+			'params' => array('id_twitter', 'id_network', 'name', 'screen_name',
 				'text', 'profile_image_url', 'created_at'),
 			'param_types' => 'nnsssss',
 			'nullable' => array(),
@@ -392,6 +392,74 @@ SQL
 				'location_scope_start', 'location_scope_end',
 				'start_since_date', 'end_since_date',
 				'prev_query_relevance'),
+			'returning' => False,
+			'returning_list' => False,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => NULL,
+			'returning_cols' => NULL
+
+));
+		$m->setConnection($con);
+		return $m;
+	};
+
+	/*
+	 * Inserts data for tweet adjustment
+	 *
+	 */
+	$obj->writeNetworkCustomQuery = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+UPDATE network_tweet_query_data
+SET query_custom=?
+WHERE id_network=?
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'writeNetworkCustomQuery',
+			'params' => array('query_custom', 'id'),
+			'param_types' => 'si',
+			'nullable' => NULL,
+			'returning' => False,
+			'returning_list' => False,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => NULL,
+			'returning_cols' => NULL
+
+));
+		$m->setConnection($con);
+		return $m;
+	};
+
+	/*
+	 * Deletes custom query
+	 *
+	 */
+	$obj->deleteNetworkCustomQuery = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+UPDATE network_tweet_query_data
+SET query_custom=NULL
+WHERE id_network=?
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'deleteNetworkCustomQuery',
+			'params' => array('id'),
+			'param_types' => 'i',
+			'nullable' => NULL,
 			'returning' => False,
 			'returning_list' => False,
 			'returning_value' => False,

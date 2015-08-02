@@ -21,6 +21,7 @@ $network = dobj\Network::createFromId($nid, $dal, $do2db);
 
 $tweet_manager = new \api\TweetManager($cm, $network, $dal, $do2db);
 $tweets = $tweet_manager->requestTweets();
+//echo count($tweets);
 $info = $tweet_manager->getQueryInfo();
 
 $cm->closeConnection();
@@ -65,7 +66,8 @@ $response['info'] = array(
 	'max_count' => $info['max_count'],
 	'result_count' => $info['result_count'],
 	'since_date' => $info['since_date'],
-	'query' => $info['query']
+	'query' => $info['query'],
+	'component_string' => $info['component_string']
 );
 
 $response['network'] = array(

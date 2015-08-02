@@ -52,6 +52,9 @@ class DAL {
 		include_once('reg-network.php');
 		\registerNetwork($this);
 
+		include_once('reg-searchable.php');
+		\registerSearchable($this);
+
 		include_once('reg-conversation.php');
 		\registerConversation($this);
 

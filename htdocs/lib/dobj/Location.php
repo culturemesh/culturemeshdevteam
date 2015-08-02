@@ -4,6 +4,10 @@ namespace dobj;
 class Location extends Searchable {
 
 	protected $name_values;
+	protected $latitude;
+	protected $longitude;
+	protected $population;
+	protected $feature_code;
 
 	public function toString() {
 

@@ -3,13 +3,14 @@
 $json_response = array(
 	'error' => NULL,
 	'error_message' => NULL,
-	'html' => NULL
+	'html' => NULL,
+	'id_cmtweet' => NULL
 );
 
 //
 // Checking for a great deal of variables
 //
-if (!isset($_POST['nid']) || !isset($_POST['uid']) || !isset($_POST['id_tweet']) || !isset($_POST['tweet_text'])
+if (!isset($_POST['nid']) || !isset($_POST['uid']) || !isset($_POST['id_cmtweet']) || !isset($_POST['id_twitter']) || !isset($_POST['tweet_text'])
 	|| !isset($_POST['tweet_date']) || !isset($_POST['name']) || !isset($_POST['screen_name'])
 	|| !isset($_POST['reply_text']) || !isset($_POST['profile_image']) || !isset($_POST['email'])) {
 
@@ -61,7 +62,11 @@ $user_email = $_POST['email'];
 // LOADING UP THE TWEET INFORMATION
 //
 $origin_tweet = new \dobj\Tweet();
-$origin_tweet->id = (int) $_POST['id_tweet'];
+
+$origin_tweet->id = (int) $_POST['id_cmtweet']; // turns to 0 if value is ""
+$json_response['id_cmtweet'] = $_POST['id_cmtweet'];
+
+$origin_tweet->id_twitter = (int) $_POST['id_twitter'];
 $origin_tweet->id_network = (int) $_POST['nid'];
 $origin_tweet->text = $_POST['tweet_text'];
 
@@ -72,7 +77,6 @@ $origin_tweet->created_at = date('Y-m-d H:i:s', $tweet_date);
 $origin_tweet->name = $_POST['name'];
 $origin_tweet->screen_name = $_POST['screen_name'];
 $origin_tweet->profile_image_url = $_POST['profile_image'];
-$origin_tweet->saved = $_POST['saved'];
 
 //
 // LOADING UP THE REPLY INFORMATION
@@ -83,11 +87,15 @@ $tweet_reply->id_user = $uid;
 $tweet_reply->id_network = (int)  $_POST['nid'];
 $tweet_reply->reply_text = strip_tags($_POST['reply_text']);
 
-
-if ($origin_tweet->saved !== True) {
+if ($origin_tweet->id === NULL) {
 
 	// Load tweet into database
-	$origin_tweet->insert($dal, $do2db);
+	$id = (int) $origin_tweet->insert($dal, $do2db);
+
+	// set these other things
+	$origin_tweet->id = $id;
+	$tweet_reply->id_parent = $id;
+	$json_response['id_cmtweet'] = (string) $id;
 
 	// Overwrite cache without saved tweet
 	/*
