@@ -28,6 +28,9 @@
 		<testsuite name='nav'>
 			<directory>lib/nav</directory>
 		</testsuite>
+		<testsuite name='stl'>
+			<directory>lib/stl</directory>
+		</testsuite>
 		<testsuite name='single'>
 			<directory>lib/single</directory>
 		</testsuite>

@@ -165,6 +165,19 @@ cm.children = function(element){
     return children;
 };
 
+// 
+// Getting keys from an object
+
+cm.objectKeys = function(object) {
+	var keys = [];
+
+	for(var key in object){
+		keys.push(key);
+	}
+
+	return keys;
+}
+
 cm.getByClass = function(element, className){
     if (element.querySelectorAll){
         return element.querySelectorAll('.' + className);

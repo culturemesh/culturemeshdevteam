@@ -11,7 +11,7 @@ class TwitterApiCall {
 		if (get_class($cm) != 'Environment')
 			throw new \Exception('TwitterApiCall: Not a valid Environment object');
 
-		if (get_class($query) != 'api\TwitterQuery')
+		if (!in_array(get_class($query), array('api\TwitterQuery', 'api\ComponentTwitterQuery')))
 			throw new \Exception('TwitterApiCall: Not a valid TwitterQuery object');
 
 		$this->cm = $cm;

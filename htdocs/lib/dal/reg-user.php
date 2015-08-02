@@ -29,7 +29,7 @@ SQL
 		/////////////////////////////////
 		,	'name' => 'getUserById',
 			'params' => array('id'),
-			'param_types' => 's',
+			'param_types' => 'i',
 			'nullable' => array(),
 			'returning' => true,
 			'returning_value' => False,

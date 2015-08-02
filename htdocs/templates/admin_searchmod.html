@@ -33,7 +33,7 @@
 			{{ vars.l_brace }}/george{{vars.r_brace}}
 		</div>
 		-->
-		<table id='searchable'>
+		<table id='searchable' class='table'>
 			<thead>
 			</thead>
 			<tfoot>
@@ -90,6 +90,25 @@
 						<input class='edinput' type='text' name='{{ vars.l_brace }}name{{vars.r_brace}}'>
 					</td>
 					{{ vars.l_brace }}/colCond.create{{vars.r_brace}}
+			<!-- 	 -->
+			<!-- SPECIAL #1 -->
+			<!-- 	 -->
+					{{ vars.l_brace }}#colCond.specone{{vars.r_brace}}
+					<td class='op_val'>
+						<input type="hidden" name='term-original-string' value="{{ vars.l_brace }}original_string{{vars.r_brace}}" />
+						{{ vars.l_brace }}# value{{vars.r_brace}}
+						<input class="on term" type="hidden" value="{{ vars.l_brace }} . {{vars.r_brace}}">
+						<div class="input-append">
+							<input class="on span2" type="text" value="{{ vars.l_brace }} . {{vars.r_brace}}" disabled>
+							<button class="btn delete-term" type="button">&#x2716;</button>
+						</div>
+						{{ vars.l_brace }}/ value{{vars.r_brace}}
+						{{ vars.l_brace }}^ value{{vars.r_brace}}
+						<input class="on null-term" type="hidden" value="NULL">
+						{{ vars.l_brace }}/ value{{vars.r_brace}}
+						
+					</td>
+					{{ vars.l_brace }}/colCond.specone{{vars.r_brace}}
 	<!--		-->
 	<!-- END SECTION -->
 	<!--		-->
@@ -101,6 +120,12 @@
 						{{ vars.l_brace }}#colCond.find{{vars.r_brace}}
 						<button class='find'>Find</button>
 						{{ vars.l_brace }}/colCond.find{{vars.r_brace}}
+						{{ vars.l_brace }}#colCond.specone{{vars.r_brace}}
+						<div class="input-append">
+							<input class="span2" type="text">
+							<button class="btn add-term" type="button">Add Term!</button>
+						</div>
+						{{ vars.l_brace }}/colCond.specone{{vars.r_brace}}
 					</td>
 				</tr>
 				{{ vars.l_brace }}/columns{{vars.r_brace}}
@@ -293,6 +318,17 @@
 			</form>
 	</script>
 
+	<script id='new-term-tmpl' type='x-tmpl-mustache'>
+			<input class="on term" type="hidden" value="{{ vars.l_brace }} value {{vars.r_brace}}">
+			<div class="input-append">
+				<input class="on span2" type="text" value="{{ vars.l_brace }} value {{vars.r_brace}}" disabled>
+				<button class="btn delete-term" type="button">&#x2716;</button>
+			</div>
+	</script>
+	<script id='new-null-term-tmpl' type='x-tmpl-mustache'>
+			<input class="on null-term" type="hidden" value="NULL">
+	</script>
+
 	<div id='template-test'>
 		{{# booger.snatch }}
 		Something
@@ -308,40 +344,40 @@
 	</div>
 	<div id='activated-panel'>
 		<div id='top-stuff'>
-		<select id='op-select'>
-			<option>-</option>
-			<option value='create'>Create</option>
-			<option value='update'>Update</option>
-		</select>
+			<select id='op-select'>
+				<option>-</option>
+				<option value='create'>Create</option>
+				<option value='update'>Update</option>
+			</select>
 
-		<select id='sibat-select'>
-			<option>-</option>
-			<option value='single'>Single</option>
-			<option value='batch'>Batch</option>
-		</select>
-		<select id='table-select'>
-			<option>-<option>
-			{{# tables }}<option>{{ . }}<option>{{/ tables }}
-		</select>
-		</br>
-		<button id='commence'>Commence Operation</button>
-		<button id='rewrite-txt'>Rewrite Text Files</button>
+			<select id='sibat-select'>
+				<option>-</option>
+				<option value='single'>Single</option>
+				<option value='batch'>Batch</option>
+			</select>
+			<select id='table-select'>
+				<option>-<option>
+				{{# tables }}<option>{{ . }}<option>{{/ tables }}
+			</select>
+			</br>
+			<button id='commence'>Commence Operation</button>
+			<button id='rewrite-txt'>Rewrite Text Files</button>
 		</div>
-
-	<div id='op-panel'>
+		<div id='op-panel'>
+		</div>
+		<div id='error-div'>
+			<p id='error-msg'></p>
+		</div>
+		<div id='spin'></div>
 	</div>
-	<div id='error-div'>
-		<p id='error-msg'></p>
-	</div>
-	<div id='spin'></div>
-	</div>
+	<div class='clear'></div>
 	{{/ content}}
 
 	{{$ body_scripts }}
 	<script src='admin/js/admin_searchmod.js'></script>
 	<script src="admin/js/Operation.js"></script>
 	<script src='js/ssearchbar.js'></script>
-	<script src="admin/js/ModPackage.js"></script>
+	<!--<script src="admin/js/ModPackage.js"></script>-->
 	<script>
 		$('#activated-panel').hide();
 

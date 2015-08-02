@@ -22,6 +22,9 @@ class Network extends DisplayDObj {
 	protected $origin;
 	protected $location;
 
+	protected $origin_searchable;
+	protected $location_searchable;
+
 	protected $date_added;		// timestamp
 	protected $img_link;
 	
@@ -40,6 +43,7 @@ class Network extends DisplayDObj {
 	protected $query_auto_update;
 	protected $query_default;
 	protected $query_still_date;
+	protected $query_custom;
 	protected $tweet_count;
 
 	public static function createFromId($id, $dal, $do2db) {
@@ -76,6 +80,31 @@ class Network extends DisplayDObj {
 		// now process, separate into origin and 
 		$network->origin  = \misc\Util::ArrayToSearchable($origin_array);
 		$network->location = \misc\Util::ArrayToSearchable($location_array);
+
+		// get origin searchable
+		if (isset($network->id_city_origin)) {
+			$network->origin_searchable = City::createFromId($network->id_city_origin, $dal, $do2db);
+		}
+		else if (isset($network->id_region_origin)) {
+			$network->origin_searchable = Region::createFromId($network->id_region_origin, $dal, $do2db);
+		}
+		else if (isset($network->id_country_origin)) {
+			$network->origin_searchable = Country::createFromId($network->id_country_origin, $dal, $do2db);
+		}
+		else if (isset($network->id_language_origin)) {
+			$network->origin_searchable = Language::createFromId($network->id_language_origin, $dal, $do2db);
+		}
+
+		// get location searchable
+		if (isset($network->id_city_cur)) {
+			$network->location_searchable = City::createFromId($network->id_city_cur, $dal, $do2db);
+		}
+		else if (isset($network->id_region_cur)) {
+			$network->location_searchable = Region::createFromId($network->id_region_cur, $dal, $do2db);
+		}
+		else if (isset($network->id_country_cur)) {
+			$network->location_searchable = Country::createFromId($network->id_country_cur, $dal, $do2db);
+		}
 
 		return $network;
 	}
@@ -248,6 +277,29 @@ class Network extends DisplayDObj {
 		}
 	}
 
+	/*
+	 * Load the custom tweet data
+	 */
+	/*
+	public function loadCustomTweetTerms($dal, $do2db) {
+
+		if ($this->id == NULL) {
+			throw new Exception('No id is associated with this network object');
+		}
+
+		$args = new Blank();
+		$args->id_network = $this->id;
+
+
+
+		$this->tweets = $do2db->execute($dal, $args, 'getNetworkCustomTweetTerms');
+
+		if (get_class($this->tweets) == 'PDOStatement') {
+			$this->tweets = new DObjList();
+		}
+	}
+	 */
+
 	/* 
 	 * Merges all posts with all tweets
 	 * Makes sure no tweets are duplicated (as can happen with cached stuff)
@@ -263,7 +315,7 @@ class Network extends DisplayDObj {
 
 			for($i=0; $i<count($api_tweets); $i++) {
 
-				if( $api_tweets[$i]->id == $tweet->id ) {
+				if( $api_tweets[$i]->id == (int) $tweet->id_twitter ) {
 
 					unset($api_tweets[$i]);
 					$api_tweets->array_values();
@@ -555,10 +607,122 @@ class Network extends DisplayDObj {
 	}
 
 	/*
+	 * Returns a string or an array of strings
+	 */
+	public function getOriginComponentArray($component_level) {
+
+		try {
+			$default_string = $this->getOriginComponent($component_level);
+		}
+		catch (\Exception $e) {
+			exit('Inside getOriginComponentArray: ' . $e);
+		}
+
+		$custom_term_string = $this->getOriginComponentCustomTweetTerm($component_level);
+
+		// return default string if custom_term is NOTHING
+		if ($custom_term_string == NULL) {
+			return $default_string;
+		}
+			
+		$component = array();
+		$component[] = $default_string;
+
+		// merge the two arrays
+		$component = array_merge($component, explode(', ', $custom_term_string));
+
+		return $component;
+	}
+
+	public function getOriginComponentId($component_level) {
+
+		switch($component_level) {
+
+		case 1:
+			if (isset($this->id_language_origin))
+				return $this->id_language_origin;
+			if (isset($this->id_city_origin))
+				return $this->id_city_origin;
+			if (isset($this->id_region_origin))
+				return $this->id_region_origin;
+			if (isset($this->id_country_origin))
+				return $this->id_country_origin;
+			
+			throw new \Exception('Network: GetOriginComponent no origin set.');
+
+			break;
+		case 2:
+			if (isset($this->id_city_origin))
+				return $this->id_region_origin;
+			if (isset($this->id_region_origin))
+				return $this->id_country_origin;
+
+			if (isset($this->id_language_origin))
+				throw new \Exception('Network: GetOriginComponent this is a language network, scope == 1');
+
+			throw new \Exception('Network: GetOriginComponent Scope must be below level 2');
+			break;
+		case 3:
+			if (isset($this->id_city_origin))
+				return $this->id_country_origin;
+			
+			if (isset($this->id_language_origin))
+				throw new \Exception('Network: GetOriginComponent this is a language network, scope == 1');
+
+			throw new \Exception('Network: GetOriginComponent Scope must be below level 3');
+			break;
+		default:
+			throw new \Exception('Network: GetOriginComponent cannot find a component with given value: ' . $component_level);
+			break;
+		}
+	}
+
+	/*
+	 *
+	 * 1 : returns tightest scope
+	 * 2 : returns 'middle' scope
+	 * 3 : returns broadest scope
+	 */
+	public function getOriginComponentCustomTweetTerm($component_level) {
+
+		switch($component_level) {
+
+		case 1:
+			if (isset($this->city_origin) || isset($this->region_origin) || isset($this->country_origin) || isset($this->language_origin))
+				return $this->origin_searchable->tweet_terms;
+
+			throw new \Exception('Network: GetOriginComponentCustomTweetTerm no origin variables are set');
+
+			break;
+		case 2:
+			if (isset($this->city_origin))
+				return $this->origin_searchable->region_tweet_terms;
+			if (isset($this->region_origin))
+				return $this->origin_searchable->country_tweet_terms;
+
+			throw new \Exception('Network: GetOriginComponentCustomTweetTerm: This origin\'s scope must be level 1');
+			break;
+		case 3:
+			if (isset($this->city_origin))
+				return $this->origin_searchable->country_tweet_terms;
+			
+			throw new \Exception('Network: GetOriginComponent This origin\'s scope must be level 2 or below.');
+			break;
+		default:
+			throw new \Exception('Network: GetOriginComponentCustomTweetTerm: ' . $component_level . ' is not a valid scope. Outside range.');
+			break;
+		}
+	}
+
+	/*
 	 * Gives the current location as specified by query scope
 	 *
 	 */
-	public function getQueryOriginComponent() {
+	public function getQueryOriginComponent($class='string') {
+		
+		if ($class == 'array') {
+			return $this->getOriginComponentArray($this->query_origin_scope);
+		}
 		
 		return $this->getOriginComponent($this->query_origin_scope);
 	}
@@ -585,6 +749,43 @@ class Network extends DisplayDObj {
 			return 2;
 		if (isset($this->country_cur))
 			return 1;
+	}
+
+	/*
+	 *
+	 * 1 : returns tightest scope
+	 * 2 : returns 'middle' scope
+	 * 3 : returns broadest scope
+	 */
+	public function getLocationComponentCustomTweetTerm($component_level) {
+
+		switch($component_level) {
+
+		case 1:
+			if (isset($this->city_cur) || isset($this->region_cur) || isset($this->country_cur))
+				return $this->location_searchable->tweet_terms;
+
+			throw new \Exception('Network: GetLocationComponent no location variables are set');
+
+			break;
+		case 2:
+			if (isset($this->city_cur))
+				return $this->location_searchable->region_tweet_terms;
+			if (isset($this->region_cur))
+				return $this->location_searchable->country_tweet_terms;
+
+			throw new \Exception('Network: GetLocationComponent: This location\'s scope must be level 1');
+			break;
+		case 3:
+			if (isset($this->city_cur))
+				return $this->location_searchable->country_tweet_terms;
+			
+			throw new \Exception('Network: GetLocationComponent This location\'s scope must be level 2 or below.');
+			break;
+		default:
+			throw new \Exception('Network: GetLocationComponent: ' . $component_level . ' is not a valid scope. Outside range.');
+			break;
+		}
 	}
 
 	/*
@@ -623,17 +824,89 @@ class Network extends DisplayDObj {
 			throw new \Exception('Network: GetLocationComponent This location\'s scope must be level 2 or below.');
 			break;
 		default:
-			throw new \Exception('Network: GetLocationComponent Not a valid scope designation');
+			throw new \Exception('Network: GetLocationComponent: ' . $component_level . ' is not a valid scope. Outside range.');
 			break;
 		}
 	}
 
+	/*
+	 *
+	 * 1 : returns tightest scope
+	 * 2 : returns 'middle' scope
+	 * 3 : returns broadest scope
+	 */
+	public function getLocationComponentId($component_level) {
+
+		switch($component_level) {
+
+		case 1:
+			if (isset($this->id_city_cur))
+				return $this->id_city_cur;
+			if (isset($this->id_region_cur))
+				return $this->id_region_cur;
+			if (isset($this->id_country_cur))
+				return $this->id_country_cur;
+			
+			throw new \Exception('Network: GetLocationComponent no location variables are set');
+
+			break;
+		case 2:
+			if (isset($this->id_city_cur))
+				return $this->id_region_cur;
+			if (isset($this->id_region_cur))
+				return $this->id_country_cur;
+
+			throw new \Exception('Network: GetLocationComponent: This location\'s scope must be level 1');
+			break;
+		case 3:
+			if (isset($this->id_city_cur))
+				return $this->id_country_cur;
+			
+			throw new \Exception('Network: GetLocationComponent This location\'s scope must be level 2 or below.');
+			break;
+		default:
+			throw new \Exception('Network: GetLocationComponent: ' . $component_level . ' is not a valid scope. Outside range.');
+			break;
+		}
+	}
+
+	/*
+	 * Returns a string or an array of strings
+	 */
+	public function getLocationComponentArray($component_level) {
+
+		try {
+			$default_string = $this->getLocationComponent($component_level);
+		}
+		catch (\Exception $e) {
+			exit('Inside getLocationComponentArray: ' . $e);
+		}
+
+		$custom_term_string = $this->getLocationComponentCustomTweetTerm($component_level);
+
+		// return default string if custom_term is NOTHING
+		if ($custom_term_string == NULL) {
+			return $default_string;
+		}
+			
+		$component = array();
+		$component[] = $default_string;
+
+		// merge the two arrays
+		$component = array_merge($component, explode(', ', $custom_term_string));
+
+		return $component;
+	}
 
 	/*
 	 * Gives the current location as specified by query scope
 	 *
 	 */
-	public function getQueryLocationComponent() {
+	public function getQueryLocationComponent($class='string') {
+		
+		if ($class == 'array') {
+			return $this->getLocationComponentArray($this->query_location_scope);
+		}
 		
 		return $this->getLocationComponent($this->query_location_scope);
 	}
@@ -646,11 +919,11 @@ class Network extends DisplayDObj {
 	public function getScopeInfo() {
 
 		return array(
-			'origin_scope' => $this->getOriginScope(),
 			'query_origin_scope' => $this->query_origin_scope,
+			'max_origin_scope' => $this->getMaxOriginScope(),
 			'origin_scope_ratio' => $this->getOriginScopeRatio(),
-			'location_scope' => $this->getLocationScope(),
 			'query_location_scope' => $this->query_location_scope,
+			'max_location_scope' => $this->getMaxLocationScope(),
 			'location_scope_ratio' => $this->getLocationScopeRatio()
 		);
 	}
@@ -700,6 +973,16 @@ class Network extends DisplayDObj {
 	public function adjustTwitterQuery($dal, $do2db) {
 
 		$result = $do2db->execute($dal, $this, 'updateNetworkTweetQuery');
+	}
+
+	public function writeCustomQuery($dal, $do2db) {
+
+		$result = $do2db->execute($dal, $this, 'writeNetworkCustomQuery');
+	}
+
+	public function deleteCustomQuery($dal, $do2db) {
+
+		$result = $do2db->execute($dal, $this, 'deleteNetworkCustomQuery');
 	}
 
 	public function updateTweetCount($dal, $do2db, $query_tweet_count) {

@@ -235,6 +235,25 @@ Operation.prototype.activatePanel = function() {
 
 	// if batch
 	// 	- load batch template
+	if (this.operation == 'update' &&
+			this.singobatch == 'batch') {
+
+				/*
+			// get search results, and never
+			// darken our doorway with this again
+			var addJSON = new Ajax({
+				requestType: 'POST',
+				requestUrl: 'admin/admin_ops.php',
+				requestParameters: ' ',
+				data: formData,
+				dataType : 'JSON',
+				sendNow: true
+				}, function(data) { 
+				// should return with a handsome table
+				result = JSON.parse(data);
+			});
+			*/
+	}
 	
 }
 
@@ -277,6 +296,7 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 			display : null,
 			create : null,
 			find : null,
+			specone : null
 		};
 
 		if (operation == 'create') {
@@ -336,19 +356,46 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 				colCond.create = null;
 				colCond.update = null;
 			}
+
+			if (obj['COLUMN_NAME'].indexOf('tweet') == 0) {
+				colCond.display = null;
+				colCond.find = null;
+				colCond.create = null;
+				colCond.update = null;
+				colCond.specone = true;
+			}
+			else if (obj['COLUMN_NAME'].indexOf('tweet') > 0) {
+				colCond.display = true;
+				colCond.find = null;
+				colCond.create = null;
+				colCond.update = null;
+				colCond.specone = null;
+			}
 		}
 
 		colCond['fart'] = true;
 
-		// add to awesomeness array
-		cols.push({
+		var colObj = {
 			name : obj['COLUMN_NAME'],
 			value : obj['value'],
 		//	validation : validationString,
 			colCond : colCond
-		});
+		};
 
+		// something special for tweets
+		//
+		// an origin string to check for any changes
+		//
+		if (obj['COLUMN_NAME'].indexOf('tweet') >= 0) {
 
+			// if not null, join value into single string
+			if (colObj['value'] != null) {
+				colObj['original_string'] = colObj['value'].join(', ');
+			}
+		}
+
+		// add to awesomeness array
+		cols.push(colObj);
 	}
 
 	tmplData = {
@@ -479,6 +526,8 @@ Operation.prototype.activateFinds = function() {
 
 Operation.prototype.activateUpdate = function() {
 
+	var self = this;
+
 	// hide input fields
 	$( 'td.op_input input' ).hide();
 	$( 'td.op_action button.submit-edit').hide();
@@ -486,6 +535,7 @@ Operation.prototype.activateUpdate = function() {
 	// give change button its action
 	// when clicked, show the input field,
 	// show the submit-edit field
+	$( 'td.op_action button.edit-toggle' ).off('click');
 	$( 'td.op_action button.edit-toggle' ).on('click', function(e) {
 
 		// prevent default action
@@ -514,6 +564,7 @@ Operation.prototype.activateUpdate = function() {
 
 	// give submit-edit its action
 	// when clicked, fill sibling with input value
+	$( 'td.op_action button.submit-edit').off('click');
 	$( 'td.op_action button.submit-edit').on('click', function(e) {
 
 		// prevent default
@@ -544,6 +595,93 @@ Operation.prototype.activateUpdate = function() {
 		$( this ).hide();
 		$( editTgl ).html('Edit');
 	});
+
+	// give submit-edit its action
+	// when clicked, fill sibling with input value
+	$( 'td.op_action button.add-term').off('click');
+	$( 'td.op_action button.add-term').on('click', function(e) {
+
+		// prevent default
+		e.preventDefault();
+
+		// Td in which we'll write the new values
+		var valueTd = $( this ).parents('td.op_action').siblings('td.op_val');
+
+		var newTerm = $( this ).siblings('input.span2').val();
+
+		// get the template
+		var tmpl = document.getElementById('new-term-tmpl').innerHTML; 
+
+		// set panel's html
+		var newTermHtml = Mustache.render(tmpl, { "value": newTerm });
+
+		// insert the thing in the thing
+		$( valueTd ).append( newTermHtml );
+
+		self.activateUpdate();
+
+		var original_string = $( this ).parents('td.op_action').siblings('td.op_val').children('input[name="term-original-string"]').val();
+		var new_string = self.checkTdInputTerms( $( this ).parents('td.op_action').siblings('td.op_val') );
+
+		if (original_string != new_string) {
+			// change class of input to indicate that terms have been changed
+			$( this ).parents('td.op_action').siblings('td.op_val').addClass('terms-modified');
+		}
+		else {
+			// change class of input to indicate that terms have been changed
+			$( this ).parents('td.op_action').siblings('td.op_val').removeClass('terms-modified');
+		}
+
+		// if null term exists in td, get rid of it
+		$( valueTd ).children('input.null-term').remove();
+	});
+
+	// give submit-edit its action
+	// when clicked, fill sibling with input value
+	$( 'td.op_val button.delete-term').off('click');
+	$( 'td.op_val button.delete-term').on('click', function(e) {
+
+		// prevent default
+		e.preventDefault();
+
+		// get parent table and original string
+		// while gettin is good
+		var td = $( this ).parents('td.op_val');
+		var inputCount = self.countTdInputTerms( $( td ) );
+		var original_string = $( td ).children('input[name="term-original-string"]').val();
+
+		// get value
+		var val = $( this ).siblings('input.span2').val();
+
+		// remove input
+		$( this ).parent().siblings("input[value='" + val + "']").remove();
+
+		// remove input
+		$( this ).parent().remove();
+
+		// change class of input to indicate that terms have been changed
+		var new_string = self.checkTdInputTerms( $( td ) );
+
+		if (original_string != new_string) {
+			$( td ).addClass('terms-modified');
+		}
+		else {
+			// change class of input to indicate that terms have been changed
+			$( td ).removeClass('terms-modified');
+		}
+
+		// if input count is 1, well, now it's zero
+		// and we must add a null term to td
+		if (inputCount == 1) {
+
+			// get the template
+			var tmpl = document.getElementById('new-null-term-tmpl').innerHTML; 
+
+			// set panel's html
+			var newTermHtml = Mustache.render(tmpl);
+			$( td ).append( newTermHtml );
+		}
+	});
 }
 
 Operation.prototype.activateSend = function() {
@@ -566,7 +704,7 @@ Operation.prototype.activateSend = function() {
 		// get data
 		mp.parseTable('table');
 
-		mp.operation = 'test';
+		//mp.operation = 'test';
 
 		var target = document.getElementById('spin');
 		var spinner = new Spinner(opts).spin(target);
@@ -587,7 +725,7 @@ Operation.prototype.activateSend = function() {
 				// get result
 				var result = JSON.parse(data);
 
-				if (result.error == 0) {
+				if (result.error == true) {
 					$('#error-msg').show();
 					$('#error-msg').text('Operation successful!');					
 					$('#error-msg').delay(1000).hide(500);
@@ -596,7 +734,7 @@ Operation.prototype.activateSend = function() {
 				}
 				else {
 					$('#error-msg').show();
-					$('#error-msg').text(result.error_msg);
+					$('#error-msg').text(result.error);
 					$('#error-msg').delay(1000).hide(1500);
 				}
 				
@@ -604,6 +742,7 @@ Operation.prototype.activateSend = function() {
 	}
 
 }
+
 Operation.prototype.activateThings = function() {
 	
 	// activate search bar
@@ -633,7 +772,39 @@ Operation.prototype.activateThings = function() {
 	});
 }
 
-document.getElementById('commence').onclick = function() {
+/*
+ * Checks special td for input terms
+ *
+ * No error resolution at the moment
+ */
+Operation.prototype.checkTdInputTerms = function(td) {
+
+	var valArray = [];
+	var elem = $( td ).children('input.term');
+
+	for (var i = 0; i < $( elem ).length; i++) {
+		valArray.push( $( elem )[i].value );
+	}
+
+	if (valArray.length == 0)
+		return '';
+	else
+		return valArray.join(', ');
+}
+
+/*
+ * Returns number of inputs with class 'term' in a given td
+ *
+ */
+Operation.prototype.countTdInputTerms = function(td) {
+
+	var elem = $( td ).children('input.term');
+	return $( elem ).length;
+}
+
+document.getElementById('commence').onclick = function(e) {
+
+	e.preventDefault();
 
 	operation.reset();	// get rid of old stuff
 	operation.loadPanel();	// fill panel
@@ -743,4 +914,222 @@ Validator.prototype.parseLength = function(string) {
 		length : length[0],
 		depth : length[1]
 	};
+}
+
+/*
+ * package {
+ * 	table : "",
+ * 	op : "",
+ * 	singobatch : "",
+ *	data : {
+ *		col1 : val1,
+ *		col2 : val2,
+ *		.... : ....
+ *		}
+ *	}
+ */
+
+var sqlTypeDict = {
+	'name' : 'string',
+	'id' : 'int',
+	'region_id': 'int',
+	'region_name': 'string',
+	'country_id': 'int',
+	'country_name': 'string',
+	'latitude': 'float',
+	'longitude': 'float',
+	'population': 'int',
+	'num_speakers': 'int'
+};
+
+function ModPackage(operation, singobatch, table) {
+	// constructor props
+	this.operation = operation;
+	this.singobatch = singobatch;
+
+	// other props
+	this.table = table;
+	this.data = {};
+
+	this.op = 'MP';
+
+	if (operation == 'update')
+	{
+		this.modCols = [];
+	}
+}
+
+// set the table name
+ModPackage.prototype.setTable = function(table) {
+	this.table = table;
+}
+
+// set singobatch
+ModPackage.prototype.setSingobatch = function(value) {
+	this.singobatch = value;
+}
+
+// set operation
+ModPackage.prototype.setOperation = function(op) {
+	this.operation = op;
+}
+
+// set package contents 
+ModPackage.prototype.setPackage = function(cols, values) {
+
+	// clear data
+	this.data = {};
+
+	// set key value pairs
+	for (var i = 0; i < cols.length; i++) {
+		this.data[cols[i]] = values[i];		
+	}
+}
+
+ModPackage.prototype.parseTable = function(tableId) {
+
+	// name => db_col : first thing
+	// value => td-edit-value.span,
+	// 	   td-edit-value.input
+	//	   db_edit
+	//	   col_match
+	var data = {};
+
+	var tdClasses = ['td.op_val.filled span',
+	    'td.op_val.terms-modified input.term',
+	    'td.op_val.terms-modified input.null-term',
+	    'td.op_val span',
+	    'td.op_input input'
+	];
+
+	var modCols = this.modCols;
+
+	var tableString = '#' + tableId + ' table tbody tr';
+
+	// Loop through EACH of the table rows
+	//
+	// NO EXCEPTIONSSSSSS
+	//
+	$( tableString ).each(function() {
+		
+		// GET TDs
+		var key = $( this ).children('td.db_col').text(); 
+		key = stringParse(key);
+
+		// loop through possible table values
+		var value = "";
+		var count = 0;
+
+		// Check each of the td classes
+		// 
+		// Look for modified columns
+		//
+		while ( value === "" && count < tdClasses.length) { 
+
+			var elem = $( tdClasses[count], this )
+
+			// sometimes we have multiple inputs that need to be
+			// parsed *cough* TWEETS *cough*
+			if ( $( elem ).length > 1) {
+
+				var valArray = [];
+
+				for (var i = 0; i < $( elem ).length; i++)
+				{
+					valArray.push( $( elem )[i].value ); 
+				}
+
+				// return as comma separated value
+				value = valArray.join(', ');
+			}
+			else {
+
+				// get value one way or another
+				if (stringParse($( elem ).text()) === "")
+					value = stringParse($( elem ).val());
+				else
+					value = stringParse($( elem ).text());
+			}
+
+			// reset to this
+			if (value == undefined)
+				value = "";
+
+			count++;
+		}
+
+		// add to modified columns
+		//
+		if (modCols != undefined)
+		{
+			if (count <= 3 && count > 0) {
+
+				modCols.push(key);
+
+				/*
+				if (count == 1) {
+					modCols.push(key);
+				}
+
+				// some special checks for tweets
+				// THAT'S WHAT THIS MEANS!!!
+				// WE'RE DEALING WITH TWEETS
+				//
+				// WILL FIX LATER
+				if (count == 2) {
+
+					var original_string = $("input[name='tweet-term-original-string']").val();
+
+					if (value != original_string) {
+						modCols.push(key);
+					}
+				}
+				*/
+			}
+		}
+
+		// complete col object
+		data[key] = value;
+	});
+
+	// assign this.data
+	this.data = data;
+}
+
+// submit to the server
+ModPackage.prototype.submitPackage = function() {
+
+	var target = document.getElementById('spin');
+	var spinner = new Spinner(opts).spin(target);
+
+	var submitObj = this;
+	var submit = new Ajax({
+		requestType: 'POST',
+		requestUrl: 'admin/admin_ops.php',
+		requestParameters: ' ',
+	  	data: submitObj,
+	 	dataType: 'JSON',
+		sendNow: true
+		}, function(data) { 
+
+			// stop loading scrn
+			spinner.stop();
+
+			// get result
+			var result = JSON.parse(data);
+		});
+
+}
+
+ModPackage.prototype.processPackage = function() {
+
+	var keys = Object.keys(this.data);
+
+	// add escape quotes to string things
+	for (var i = 0; i < keys.length; i++) {
+
+		if (sqlTypeDict[keys[i]] == 'string') {
+			this.data[keys[i]] = "\'" + this.data[keys[i]] + "\'";
+		}
+	}
 }

@@ -495,5 +495,5 @@ cm.PostSubmit.prototype = {
 	},
 	_setOnSuccess: function(f) {
 		this._onSuccess = f;
-	}
+	},
 }

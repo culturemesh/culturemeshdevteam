@@ -67,21 +67,59 @@ class TweetManager {
 			'count_weight' => 1
 		),
 
-		$something = ''
+		$params = array(
+			'until_date' => '2010-01-01',
+			'component' => 'location'
+		)
 	) 
 	{
 
 		// new cache object
 		$cache = new \misc\Cache($this->cm);
 
-		$tweet_key = 'n' . $this->network->id . '_tweets';
+		if ( $mode == 'network' || $mode == 'adjust') {
+			$tweet_key = 'n' . $this->network->id . '_tweets';
+		}
+
+		if ( $mode == 'network_addtl') {
+
+			$qls = NULL;
+			$key_until_date = 'initial';
+
+			if ($params['component'] == 'location') {
+				$qls = $this->network->query_location_scope;
+			}
+			if ($params['component'] == 'origin') {
+				$qls = $this->network->query_origin_scope;
+			}
+
+			if ($params['until_date'] != "") {
+				$key_until_date = $params['until_date'];
+			}
+
+			$tweet_key = 'n' . $this->network->id . '_addtl_tweets_' . $params['component'] . '_' . $qls . '_' . $key_until_date;
+		}
+
 		$tweet_info_key = $tweet_key . '_info';
 		$tweets_exist = $cache->exists($tweet_key);
 
-		if ($tweets_exist == False || $mode == 'adjust') {
+		$tweets_exist = False;
 
+		// proceed straight to query if mode is 'network_addtl' or 'adjust'
+		if ($tweets_exist === False || $mode == 'adjust') {
+
+			/*
 			// make an api call to the lords of twitter
 			$twitter_query = new TwitterQuery();
+
+			if ($mode == 'network_addtl') {
+
+				if (!isset($params['until_date']))
+					throw new \Exception('No until date set in Tweet Manager');
+
+				$twitter_query->includeUntilDate($params['until_date']);
+			}
+
 			$twitter_query->buildSearch($this->network);
 			$search_scope = $this->network->getScopeInfo();
 			$search_terms = $twitter_query->getTerms();
@@ -89,73 +127,138 @@ class TweetManager {
 			// do the thing
 			$twitter_call = new TwitterApiCall($this->cm, $twitter_query);
 			$twitter_json = $twitter_call->execute();
+			 */
+
+			$twitter_query = NULL;
+
+			if ($mode == 'network_addtl') {
+
+				if (!isset($params['until_date']))
+					throw new \Exception('No until date set in Tweet Manager');
+
+				$twitter_query = new ComponentTwitterQuery();
+				$twitter_query->buildSearch($this->network, $params['component']);
+				$twitter_query->includeUntilDate($params['until_date']);
+			}
+			else {
+
+				$twitter_query = new TwitterQuery();
+				$twitter_query->buildSearch($this->network);
+			}
+
+			$search_scope = $this->network->getScopeInfo();
+			$search_terms = $twitter_query->getTerms();
+
+			// do the thing
+			$twitter_call = new TwitterApiCall($this->cm, $twitter_query);
+
+			// returns JSON of twitter stuffs
+			$twitter_json = $twitter_call->execute();
 
 			// create Remora
 			$remora = new \dal\Remora();
-			$remora->count = 0;
-			$remora->search_scope = $search_scope;
-			$remora->search_terms = $search_terms;
-			$remora->relevance_array = array();
-			$remora->constants = $equation_constants;
 
-			// remora function
-			$remora->setFunction(function($obj) {
+			if ($mode == 'network' || $mode=='adjust') {
 
-				// check the relevance of a particular tweet
-				$this->count += 1;
+				$remora->count = 0;
+				$remora->search_scope = $search_scope;
+				$remora->search_terms = $search_terms;
+				$remora->relevance_array = array();
+				$remora->constants = $equation_constants;
+				$remora->string_array = array();
+				$remora->earliest_tweet_date = NULL;
 
-				// get term count
-				$term_count_expected = count($this->search_terms);
-				$term_count_actual = 0;
+				// remora function
+				$remora->setFunction(function($obj) {
 
-				foreach ($this->search_terms as $term) {
+					// check the relevance of a particular tweet
+					$this->count += 1;
 
-					if (strpos($obj->text, $term) > -1)
-							$term_count_actual++;
-				}
+					// get term count
+					$term_count_expected = count($this->search_terms);
+					$term_count_actual = 0;
 
-				$term_count_ratio_raw = $term_count_actual / $term_count_expected;
+					foreach ($this->search_terms as $term) {
 
-				// something about time here
+						if (strpos($obj->text, $term) > -1)
+								$term_count_actual++;
+					}
 
-				$origin_scope_ratio = $this->constants['origin_weight'] * $this->search_scope['origin_scope_ratio'];
-				$location_scope_ratio = $this->constants['location_weight'] * $this->search_scope['location_scope_ratio'];
-				$term_count_ratio = $this->constants['count_weight'] * $term_count_ratio_raw;
+					$term_count_ratio_raw = $term_count_actual / $term_count_expected;
 
-				// get relevance
-				$tweet_relevance = $term_count_ratio * $this->search_scope['origin_scope_ratio'] * $this->search_scope['location_scope_ratio'];
+					// something about time here
 
-				// must do it in this complicated way, because
-				// the registry makes array access complicated
-				//
-				$arr = $this->relevance_array;
-				$arr[] = $tweet_relevance;
+					$origin_scope_ratio = $this->constants['origin_weight'] * $this->search_scope['origin_scope_ratio'];
+					$location_scope_ratio = $this->constants['location_weight'] * $this->search_scope['location_scope_ratio'];
+					$term_count_ratio = $this->constants['count_weight'] * $term_count_ratio_raw;
 
-				$this->relevance_array = $arr;
-			});
+					// get relevance
+					$tweet_relevance = $term_count_ratio * $this->search_scope['origin_scope_ratio'] * $this->search_scope['location_scope_ratio'];
+
+					// must do it in this complicated way, because
+					// the registry makes array access complicated
+					//
+					$arr = $this->relevance_array;
+					$arr[] = $tweet_relevance;
+
+					$this->relevance_array = $arr;
+
+					// check if this tweet has been duplicated
+					//
+					// if not...
+					if (in_array($obj->text, $this->string_array)) {
+						$obj->duplicate = True;
+					}
+					else {
+						$obj->duplicate = False;
+						array_push($this->string_array, $obj->text);
+					}
+
+					$this->earliest_tweet_date = $obj->created_at;
+
+				});
+			}
+
+			if ($mode == 'network_addtl') {
+
+				$remora->earliest_tweet_date = NULL;
+
+				// capture earliest tweet date
+				$remora->setFunction(function($obj) {
+					$this->earliest_tweet_date = $obj->created_at;
+				});
+			}
 
 			// get relevance index from remora data
 			$tweets = Twitter::JsonToTweets($twitter_json, $remora);
 
-			$relevance_count = count( $remora->relevance_array );
-			$count_ratio = $relevance_count / $this->MAX_RESULT_COUNT;
-			$mean_relevance = array_sum( $remora->relevance_array ) / $relevance_count;
-			$query_efficacy = $mean_relevance * $count_ratio;
+			if ($mode == 'network' || $mode=='adjust') {
 
-			if ($relevance_index >= $this->RELEVANCE_METRIC) {
+				$relevance_count = count( $remora->relevance_array );
+				$count_ratio = $relevance_count / $this->MAX_RESULT_COUNT;
+				$mean_relevance = array_sum( $remora->relevance_array ) / $relevance_count;
+				$query_efficacy = $mean_relevance * $count_ratio;
 
-				// recommend changes to the query
-				//echo 'Increase scope';
+				if ($relevance_index >= $this->RELEVANCE_METRIC) {
+
+					// recommend changes to the query
+					//echo 'Increase scope';
+				}
+				else {
+					//echo 'Increase level';
+				}
+
+				// update tweet count
+				$this->network->updateTweetCount($this->dal, $this->do2db, $remora->count);
 			}
-			else {
-				//echo 'Increase level';
-			}
-
-			// update tweet count
-			$this->network->updateTweetCount($this->dal, $this->do2db, $remora->count);
 
 			// add tweets to cache
 			$TIME_TO_LIVE = 30; // 30 minutes, or two call cycles
+
+			if ($mode == 'network_addtl') {
+				$TIME_TO_LIVE = 1440; // 24 hours
+			}
+
 			$cache->add($tweet_key, $tweets, $TIME_TO_LIVE * 60);
 
 			// fill query info
@@ -164,18 +267,32 @@ class TweetManager {
 				'max_count' => $this->MAX_RESULT_COUNT,
 				'result_count' => $relevance_count,
 				'since_date' => $this->network->query_since_date,
+				'until_date' => $remora->earliest_tweet_date,
 				'query' => urldecode( $twitter_query->getQuery() ),
+				'component_string' => urldecode( $twitter_query->getComponentString() ),
 				'origin_weight' => $equation_constants['origin_weight'],
 				'location_weight' => $equation_constants['location_weight'],
-				'count_weight' => $equation_constants['count_weight']
+				'count_weight' => $equation_constants['count_weight'],
+				'tweet_key' => $tweet_key,
+				'tweet_info_key' => $tweet_info_key,
+				'previously_cached' => False
 			);
 
-			$cache->add($tweet_info_key, $this->query_info);
+			$cache->add($tweet_info_key, $this->query_info, $TIME_TO_LIVE * 60);
 		}
-		else
+		else if ($tweets_exist) //&& $mode != 'network_addtl')
 		{
-			$tweets = $cache->fetch($tweet_key);
-			$this->query_info = $cache->fetch($tweet_info_key);
+			$this->query_info['previously_cached'] = True;
+
+			if ($mode == 'network_addtl') {
+				$tweets = $cache->fetch($tweet_key);
+				$this->query_info = $cache->fetch($tweet_info_key);
+			}
+
+			if ($mode == 'network' || $mode == 'adjust') {
+				$tweets = $cache->fetch($tweet_key);
+				$this->query_info = $cache->fetch($tweet_info_key);
+			}
 		}
 
 		return $tweets;
@@ -191,5 +308,9 @@ class TweetManager {
 	 */
 	public function getQueryInfo() {
 		return $this->query_info;
+	}
+
+	public function checkCache() {
+
 	}
 }
