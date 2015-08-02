@@ -72,16 +72,14 @@ if($_POST['email'] && $_POST['password']){
 			echo json_encode($json_response);
 			 */
 		}
-		else if (strlen($pass) > 18)
+		else if (strlen($pass) > 25)
 		{
 			mysqli_close($con);
-			$redirect->addQueryParameter('lerror', 'Password too long, must be 18 characters or less');
+			$redirect->addQueryParameter('lerror', 'Password too long, must be 25 characters or less');
 			$redirect->execute();
 //			header("Location: ".$redirect);
-			/*
-			$json_response['error'] = 4;
-			echo json_encode($json_response);
-			 */
+//			$json_response['error'] = 4;
+//			echo json_encode($json_response);
 		}
 		else
 		{	

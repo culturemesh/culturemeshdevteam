@@ -1344,10 +1344,16 @@ li.inactive-event p#event-desc {
 }
 
 #confirmation_panel {
-	width: 100%;
 	color:#FFFFFF;
 	background-color:rgb(151, 203, 56);
+	border:1px solid #CCCCCC;
 	padding:5px;
+}
+
+#maintenance-panel {
+	color:#EE542F;
+	padding:5px;
+	border:1px solid #CCCCCC;
 }
 
 .profile_dashboard
@@ -1632,9 +1638,28 @@ button.upload-img-delete {
  * TEAM THUMBNAIL 
  ********/
 
-.team_thumb{
+li.team-member {
+   margin:3px;
+   width:205px;
+   float:left;
+}
+
+span.team-member {
+   width:205px;
+}
+
+img.team_thumb{
     width: 205px;
     height: 205px;
+}
+
+p.team {
+    text-align:center;
+}
+
+p.team.team-name {
+    font-weight:bold;
+    margin: 0;
 }
 
 /********
@@ -1829,7 +1854,7 @@ div.mid-grid {
     margin:0 auto;
 }
 .img-strip-ul li{
-    display: inline;
+    /*display: inline;*/
 }
 .input-big{
     width:75%;

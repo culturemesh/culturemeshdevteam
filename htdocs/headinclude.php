@@ -93,6 +93,14 @@ if (!isset($_SESSION['uid']) && !in_array($_SERVER['REMOTE_ADDR'], $whitelist)) 
 		}
 		
 	<?php endif; ?>
+
+	<?php if ($GLOBALS['MAINTENANCE_NOTIFICATION'] == False) : ?>
+
+		#maintenance-panel {
+		    display: none;
+		}
+
+	<?php endif; ?>
 </style>
 <script>
 	/*

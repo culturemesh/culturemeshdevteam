@@ -7,21 +7,47 @@
 <div class="mid-grid">
 
 </div>
-<div class="mid-grid">
+<div id="team" class="mid-grid">
     <h2 class="pheader text-center">The Team</h2>
     <div>
 	    <?php
 		$pic_length = 205;
 		$team_members = getRowsQuery("SELECT * FROM internal_team");
-		$width = count($team_members) * $pic_length + 15;
+		$team_members_count = count($team_members);
+		$row_length = 4;
+
+		$ul_count = $team_members_count / 4;
+		$item_width = $pic_length + 6;
+		
 	    ?>
-	    <!--<ul class="img-strip-ul center-elem">-->
-	    <ul class="img-strip-ul" style="width:<?php echo $width; ?>px;">
-		<?php
-		foreach($team_members as $member):?>
-		    <li><img src="<?php echo $member['thumb_url'];?>" title="<?php echo $member['name'];?>" alt="<?php echo $member['name'];?>" class="team_thumb" /></li>
-		<?php endforeach;?>
-	    </ul>
+		<?php for($i = 0; $i < $team_members_count;):?>
+			<?php
+			$quotient = $i / $row_length;
+
+			if ($quotient === 0) {
+				$row_item_count = $row_length;
+			}
+			else {
+				$row_item_count = $team_members_count - $i;
+			}	
+
+			$row_width = $row_item_count * $item_width;
+			?>
+			<div id="team-row-container">
+			<ul class="img-strip-ul team" style="width:<?php echo $row_width;?>px">
+			<?php for($j = 0; $j < $row_length && $i < $team_members_count; $j++, $i++):?>
+				<li class="team-member">
+					<div class="team-member">
+					<img src="<?php echo $team_members[$i]['thumb_url'];?>" title="<?php echo $team_members[$i]['name'];?>" alt="<?php echo $team_members[$i]['name'];?>" class="team_thumb" /></br>
+					<p class="team team-name"><?php echo $team_members[$i]['name']; ?></p>
+					<p class="team team-job-title"><?php echo $team_members[$i]['job_title']; ?></p>
+					</div>
+				</li>
+			<?php endfor;?>
+	    		</ul>
+			</div>
+		<?php endfor; ?>
+	    <div class="clear"></div>
     </div>
 </div>
 

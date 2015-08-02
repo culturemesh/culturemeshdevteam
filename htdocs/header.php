@@ -184,7 +184,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
 			</div>
 			<div class="modal-body">
-				<form id="reg_form" method="post" action="//<?php echo $_SERVER['HTTP_HOST']; ?>/r.php">
+				<form id="reg_form" method="post" action="//<?php echo \Environment::host_root(); ?>/r.php">
 					<div id="register-div">
 						<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
 						</br>
@@ -219,7 +219,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
 			</div>
 			<div class="modal-body">
-			<form id="log_form" method="post" action="//<?php echo $_SERVER['HTTP_HOST']; ?>/l.php">
+			<form id="log_form" method="post" action="//<?php echo \Environment::host_root(); ?>/l.php">
 					<div id="login-div">
 						<input type="email" name="email" id="log_email" class="modal-text-input" placeholder="Email" required />
 						<input type="password" name="password" id="log_password" class="modal-text-input" onchange="validateInput(this, document.getElementById(\'log_validation\'))" placeholder="Password" required />
@@ -266,4 +266,9 @@
 </div>
 <div id="signout_panel" style="display:none">
 	<p>You have successfully signed out.</p>
+</div>
+<div id="maintenance-panel">
+	<b>Scheduled Maintenance</b>
+	<p>CultureMesh is going to undergo scheduled maintenance on <?php echo $GLOBALS['MAINTENANCE_DATE']; ?></p>
+	<p>It should last about <?php echo $GLOBALS['MAINTENANCE_DURATION']; ?></p>
 </div>
