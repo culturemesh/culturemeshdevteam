@@ -73,6 +73,7 @@ cm.PostWall.prototype = {
 	},
 	_primePostInputBehavior: function() {
 
+		/*
 		$("textarea.post-text, textarea.reply-text").off("change");
 		$("textarea.post-text, textarea.reply-text").on("change", function(e) {
 
@@ -84,6 +85,7 @@ cm.PostWall.prototype = {
 
 			alert( $(e.target).attr('rows'));
 		});
+		*/
 	},
 	_primeShowReplies: function() {
 
