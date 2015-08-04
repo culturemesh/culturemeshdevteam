@@ -826,6 +826,13 @@ EHTML;
 } 
 ///////////////////////////////////////////////////
 public static function googleMapsEmbed($location) {
+
+	// google fix
+	//
+	// depends on location including country_name
+	if ($location == 'Georgia')
+		$location = 'Country Georgia';
+
 ////////////////////////////////////////////////
 	$key = $GLOBALS['G_API_KEY'];
 /////////////////////////////////////////////////
