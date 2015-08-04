@@ -118,7 +118,7 @@ class Tweet extends Post {
 		$result = $do2db->execute($dal, $this, 'getTweetRepliesByParentId');
 
 		if (get_class($result) == 'PDOStatement') {
-			$this->replies = new DOBjList();
+			$this->replies = new DObjList();
 		}
 		else
 			$this->replies = $result;
