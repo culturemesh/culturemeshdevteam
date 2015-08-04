@@ -139,18 +139,11 @@ if(isset($_POST['email']) && isset($_POST['password'])
 				$redirect->addQueryParameter('other', 'Email couldn\'t be sent');
 			}
 
-			/*
-			// close up
-			mysqli_close($conn);
-			$json_response["error"] = 5;
-			$json_response["message"] = "Account created successfully!";
-			echo json_encode($json_response);
-			 */
 			//header("Location: ".$redirect."?msg={$msg}");
 
 			// if not coming from network, redirect to profile_edit
-			if (!$redirect->pathContains('network')) {
-				$redirect->setPath('profile/'.$_SESSION['uid']);
+			if (!$redirect->getControl()['control'] == 'network') {
+				$redirect->setControl('profile', $_SESSION['uid']);
 				// will sooon have to set get parameter here
 			}
 
@@ -159,11 +152,6 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		}
 		else
 		{
-			/*
-		    $json_response["error"] = 4;
-		    $json_response["message"] = "Username already exists.";
-		    echo json_encode($json_response);
-			 */
 			//$msg = urlencode();
 			//header("Location: ".$redirect."?regerror=true&msg={$msg}");
 			$redirect->addQueryParameter('rerror', 'Username already exists');
