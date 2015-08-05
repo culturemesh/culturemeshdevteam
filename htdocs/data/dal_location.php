@@ -373,8 +373,11 @@ SQL;
 			'longitude' => $row['longitude'],
 			'population' => $row['population'],
 			'tweet_terms' => $row['tweet_terms'],
+			'tweet_terms_override' => $row['tweet_terms_override'],
 			'region_tweet_terms' => $row['region_tweet_terms'],
-			'country_tweet_terms' => $row['country_tweet_terms']);
+			'region_tweet_terms_override' => $row['region_tweet_terms_override'],
+			'country_tweet_terms' => $row['country_tweet_terms'],
+			'country_tweet_terms_override' => $row['country_tweet_terms_override']);
 
 		return $city;
 	}
@@ -450,7 +453,9 @@ SQL;
 			'longitude' => $row['longitude'],
 			'population' => $row['population'],
 			'tweet_terms' => $row['tweet_terms'],
-			'country_tweet_terms' => $row['country_tweet_terms']);
+			'tweet_terms_override' => $row['tweet_terms_override'],
+			'country_tweet_terms' => $row['country_tweet_terms'],
+			'country_tweet_terms_override' => $row['country_tweet_terms_override']);
 
 		return $region;
 	}
@@ -517,7 +522,8 @@ SQL;
 			'latitude' => $row['latitude'],
 			'longitude' => $row['longitude'],
 			'population' => $row['population'],
-			'tweet_terms' => $row['tweet_terms']);
+			'tweet_terms' => $row['tweet_terms'],
+			'tweet_terms_override' => $row['tweet_terms_override']);
 
 		return $country;
 	}
@@ -944,6 +950,17 @@ SQL;
 		return QueryHandler::executeQuery($query, $con);
 	}
 
+	public static function updateRegionChildrenTweetOverride($id, $value, $con=NULL) {
+
+		$query = <<<SQL
+			UPDATE cities
+			SET region_tweet_terms_override = $value
+			WHERE region_id = $id
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+	}
+
 	public static function updateCountryChildrenTweetNames($id, $terms, $con=NULL) {
 			// important names
 		$icl = 'country_id'; 
@@ -960,6 +977,19 @@ SQL;
 			UPDATE regions, cities
 			SET regions.$ncl = $term_string,
 			cities.$ncl = $term_string
+			WHERE cities.country_id = regions.country_id
+			AND regions.country_id = $id
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+	}
+
+	public static function updateCountryChildrenTweetOverride($id, $value, $con=NULL) {
+
+		$query = <<<SQL
+			UPDATE regions, cities
+			SET regions.country_tweet_terms_override = $value,
+			cities.country_tweet_terms_override = $value
 			WHERE cities.country_id = regions.country_id
 			AND regions.country_id = $id
 SQL;

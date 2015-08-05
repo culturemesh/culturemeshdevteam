@@ -109,6 +109,16 @@
 						
 					</td>
 					{{ vars.l_brace }}/colCond.specone{{vars.r_brace}}
+			<!-- 	 -->
+			<!-- BOOLEAN -->
+			<!-- 	 -->
+					{{ vars.l_brace }}#colCond.update_bool{{vars.r_brace}}
+					<td class='op_val update_bool'>
+						<input type="hidden" name='term-original-string' value="{{ vars.l_brace }}original_string{{vars.r_brace}}" />
+						<input type="radio" name='{{ vars.l_brace }} name {{ vars.r_brace }}' value="1" {{ vars.l_brace }}# value {{vars.r_brace}} checked {{ vars.l_brace }}/ value {{vars.r_brace}}>True</input></br>
+						<input type="radio" name='{{ vars.l_brace }} name {{ vars.r_brace }}' value="0" {{ vars.l_brace }}^ value {{vars.r_brace}} checked {{ vars.l_brace }}/ value {{vars.r_brace}}>False</input>
+					</td>
+					{{ vars.l_brace }}/colCond.update_bool{{vars.r_brace}}
 	<!--		-->
 	<!-- END SECTION -->
 	<!--		-->

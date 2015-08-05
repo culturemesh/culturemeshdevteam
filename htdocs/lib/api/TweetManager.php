@@ -23,6 +23,8 @@ class TweetManager {
 	private $dal;
 	private $do2db;
 
+	private $blocked_users;
+
 	/*
 	 * Constructor
 	 *
@@ -46,6 +48,8 @@ class TweetManager {
 		$this->network = $network;
 		$this->dal = $dal;
 		$this->do2db = $do2db;
+
+		$this->blocked_users = array('asianchicks_xxx');
 	}
 
 	/*
@@ -102,8 +106,6 @@ class TweetManager {
 
 		$tweet_info_key = $tweet_key . '_info';
 		$tweets_exist = $cache->exists($tweet_key);
-
-		$tweets_exist = False;
 
 		// proceed straight to query if mode is 'network_addtl' or 'adjust'
 		if ($tweets_exist === False || $mode == 'adjust') {
@@ -166,6 +168,7 @@ class TweetManager {
 				$remora->relevance_array = array();
 				$remora->constants = $equation_constants;
 				$remora->string_array = array();
+				$remora->blocked_users = $this->blocked_users;
 				$remora->earliest_tweet_date = NULL;
 
 				// remora function
@@ -212,6 +215,13 @@ class TweetManager {
 					else {
 						$obj->duplicate = False;
 						array_push($this->string_array, $obj->text);
+					}
+
+					if (in_array($obj->user['screen_name'], $this->blocked_users)) {
+						$obj->blocked = True;
+					}
+					else {
+						$obj->blocked = False;
 					}
 
 					$this->earliest_tweet_date = $obj->created_at;

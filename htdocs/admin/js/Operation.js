@@ -296,7 +296,8 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 			display : null,
 			create : null,
 			find : null,
-			specone : null
+			specone : null,
+			update_bool : null
 		};
 
 		if (operation == 'create') {
@@ -363,6 +364,16 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 				colCond.create = null;
 				colCond.update = null;
 				colCond.specone = true;
+
+				if (obj['COLUMN_NAME'].indexOf('override') > 0) {
+
+					colCond.specone = null;
+					colCond.update_bool = true;
+
+					if (obj['value'] == '0') {
+						obj['value'] = null;
+					}
+				}
 			}
 			else if (obj['COLUMN_NAME'].indexOf('tweet') > 0) {
 				colCond.display = true;
@@ -372,8 +383,6 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 				colCond.specone = null;
 			}
 		}
-
-		colCond['fart'] = true;
 
 		var colObj = {
 			name : obj['COLUMN_NAME'],
@@ -386,7 +395,7 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 		//
 		// an origin string to check for any changes
 		//
-		if (obj['COLUMN_NAME'].indexOf('tweet') >= 0) {
+		if (obj['COLUMN_NAME'].indexOf('tweet') >= 0 && obj['COLUMN_NAME'].indexOf('override') < 0) {
 
 			// if not null, join value into single string
 			if (colObj['value'] != null) {
@@ -998,6 +1007,7 @@ ModPackage.prototype.parseTable = function(tableId) {
 	var tdClasses = ['td.op_val.filled span',
 	    'td.op_val.terms-modified input.term',
 	    'td.op_val.terms-modified input.null-term',
+	    'td.op_val.update_bool :radio:checked',
 	    'td.op_val span',
 	    'td.op_input input'
 	];
@@ -1062,7 +1072,7 @@ ModPackage.prototype.parseTable = function(tableId) {
 		//
 		if (modCols != undefined)
 		{
-			if (count <= 3 && count > 0) {
+			if (count <= 4 && count > 0) {
 
 				modCols.push(key);
 

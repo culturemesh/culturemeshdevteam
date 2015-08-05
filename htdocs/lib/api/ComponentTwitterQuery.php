@@ -42,11 +42,11 @@ class ComponentTwitterQuery extends TwitterQuery {
 
 		if ($component == 'origin') {
 			$this->component_scope = $network->query_origin_scope;
-			$raw_component = $network->getQueryOriginComponent();
+			$raw_component = $network->getQueryOriginComponent('array');
 		}
 		else if ($component == 'location') {
 			$this->component_scope = $network->query_location_scope;
-			$raw_component = $network->getQueryLocationComponent();
+			$raw_component = $network->getQueryLocationComponent('array');
 		}
 
 		$component = $this->explodeSlash($raw_component);
