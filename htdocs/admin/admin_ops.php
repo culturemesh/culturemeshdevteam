@@ -198,10 +198,11 @@ else if ($json_post['op'] == 'searchSearchables') {
 
 		// special tweet case
 		// turn value into array
-		if (strpos($key, 'tweet') >= 0 && strpos($key, 'override') < 0) {
+		if (strpos($key, 'tweet') >= 0 && strpos($key, 'override') == False) {
 
-			if ($value !== NULL)
+			if ($value !== NULL) {
 				$value = explode(', ', $value);
+			}
 		}
 
 		$col = array(

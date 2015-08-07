@@ -618,6 +618,9 @@ Operation.prototype.activateUpdate = function() {
 
 		var newTerm = $( this ).siblings('input.span2').val();
 
+		// clear new term
+		$( this ).siblings('input.span2').val('');
+
 		// get the template
 		var tmpl = document.getElementById('new-term-tmpl').innerHTML; 
 

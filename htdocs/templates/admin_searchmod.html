@@ -339,18 +339,11 @@
 			<input class="on null-term" type="hidden" value="NULL">
 	</script>
 
-	<div id='template-test'>
-		{{# booger.snatch }}
-		Something
-		{{/ booger.snatch }}
-		{{# booger.grab }}
-		 New
-		{{/ booger.grab }}
-	</div>
 	<div id='kwik-login'>
-		<span>What's the password?</span>
+		<span>What's the password? Huh? <b>Huh?</b></span></br>
 		<input id='pass-input' type='password' name='password'/></br>
 		<button id='login-button'>Login</button>
+		<p id='pass-error-msg'></p>
 	</div>
 	<div id='activated-panel'>
 		<div id='top-stuff'>
@@ -417,7 +410,9 @@
 						$('#kwik-login').hide();
 					}
 					else {
-						$('#error-msg').text('Sorry, that ain\'t the password');
+						$('#pass-error-msg').show();
+						$('#pass-error-msg').text('Sorry, that ain\'t the password');
+						$('#pass-error-msg').delay(1000).hide(500);
 					}
 				});
 			});
