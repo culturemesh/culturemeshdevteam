@@ -43,6 +43,7 @@ class Tweet extends Post {
 	protected $profile_image_url;
 
 	protected $duplicate;
+	protected $blocked;
 
 	protected $saved; // how we distinguish db tweets from api tweets
 

@@ -1531,6 +1531,11 @@ a.profile
 	font-size:14px;
 }
 
+#pass-error-msg {
+	color:red;
+	font-size:14px;
+}
+
 
 /*******
  * TWITTER QUERY

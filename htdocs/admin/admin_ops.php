@@ -198,10 +198,11 @@ else if ($json_post['op'] == 'searchSearchables') {
 
 		// special tweet case
 		// turn value into array
-		if (strpos($key, 'tweet') >= 0) {
+		if (strpos($key, 'tweet') >= 0 && strpos($key, 'override') == False) {
 
-			if ($value !== NULL)
+			if ($value !== NULL) {
 				$value = explode(', ', $value);
+			}
 		}
 
 		$col = array(
@@ -469,6 +470,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 
 	$id = $json_post['data']['id'];
 	$terms = $json_post['data']['tweet_terms'];
+	$tweet_terms_override = (int) $json_post['data']['tweet_terms_override'];
 	$name = $json_post['data']['name'];
 	$class = $searchable_singular[$json_post['table']];
 
@@ -544,6 +546,24 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 		if ($json_post['table'] == 'regions') {
 			//echo Location::updateChildrenNames($id, $name, 'cities', 'region', $con);
 			Location::updateRegionChildrenTweetNames($id, $terms, $con);
+		}
+	}
+
+	// UPDATE CHILDREN TWEET OVERRIDES
+	// 	(2) country
+	if (in_array('tweet_terms_override', $mod_cols)) {
+
+		$id = $json_post['data']['id'];
+
+		// update children, regions and cites if country
+		if ($json_post['table'] == 'countries')
+		{
+			Location::updateCountryChildrenTweetOverride($id, $tweet_terms_override, $con);
+		}
+
+		// just cities if region
+		if ($json_post['table'] == 'regions') {
+			Location::updateRegionChildrenTweetOverride($id, $tweet_terms_override, $con);
 		}
 	}
 

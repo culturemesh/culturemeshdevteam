@@ -17,7 +17,7 @@ class Twitter {
 			$tweet = new \dobj\Tweet();
 			$tweet->fillFromJson($json_tweet, $remora);
 
-			if (!$tweet->duplicate) {
+			if (!$tweet->duplicate && !$tweet->blocked) {
 				$list->dInsert( $tweet );
 			}
 		}

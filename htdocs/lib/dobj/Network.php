@@ -570,21 +570,46 @@ class Network extends DisplayDObj {
 		case 1:
 			if (isset($this->language_origin))
 				return $this->language_origin;
-			if (isset($this->city_origin))
-				return $this->city_origin;
-			if (isset($this->region_origin))
-				return $this->region_origin;
-			if (isset($this->country_origin))
-				return $this->country_origin;
+
+			if (isset($this->city_origin)) {
+
+				if ($this->origin_searchable->tweet_terms_override == 0)
+					return $this->city_origin;
+				else
+					return NULL;
+			}
+					
+			if (isset($this->region_origin)) {
+
+				if ($this->origin_searchable->tweet_terms_override == 0)
+					return $this->region_origin;
+				else
+					return NULL;
+			}
+
+			if (isset($this->country_origin)) {
+				if ($this->origin_searchable->tweet_terms_override == 0)
+					return $this->country_origin;
+				else
+					return NULL;
+			}
 			
 			throw new \Exception('Network: GetOriginComponent no origin set.');
 
 			break;
 		case 2:
-			if (isset($this->city_origin))
-				return $this->region_origin;
-			if (isset($this->region_origin))
-				return $this->country_origin;
+			if (isset($this->city_origin)) {
+				if ($this->origin_searchable->region_tweet_terms_override == 0)
+					return $this->region_origin;
+				else
+					return NULL;
+			}
+			if (isset($this->region_origin)) {
+				if ($this->origin_searchable->country_tweet_terms_override == 0)
+					return $this->country_origin;
+				else
+					return NULL;
+			}
 
 			if (isset($this->language_origin))
 				throw new \Exception('Network: GetOriginComponent this is a language network, scope == 1');
@@ -592,8 +617,12 @@ class Network extends DisplayDObj {
 			throw new \Exception('Network: GetOriginComponent Scope must be below level 2');
 			break;
 		case 3:
-			if (isset($this->city_origin))
-				return $this->country_origin;
+			if (isset($this->city_origin)) {
+				if ($this->origin_searchable->country_tweet_terms_override == 0)
+					return $this->country_origin;
+				else
+					return NULL;
+			}
 			
 			if (isset($this->language_origin))
 				throw new \Exception('Network: GetOriginComponent this is a language network, scope == 1');
@@ -626,7 +655,10 @@ class Network extends DisplayDObj {
 		}
 			
 		$component = array();
-		$component[] = $default_string;
+		
+		if ($default_string != NULL) {
+			$component[] = $default_string;
+		}
 
 		// merge the two arrays
 		$component = array_merge($component, explode(', ', $custom_term_string));
@@ -799,6 +831,68 @@ class Network extends DisplayDObj {
 		switch($component_level) {
 
 		case 1:
+
+			if (isset($this->city_cur)) {
+
+				if ($this->location_searchable->tweet_terms_override == 0)
+					return $this->city_cur;
+				else
+					return NULL;
+			}
+					
+			if (isset($this->region_cur)) {
+
+				if ($this->location_searchable->tweet_terms_override == 0)
+					return $this->region_cur;
+				else
+					return NULL;
+			}
+
+			if (isset($this->country_cur)) {
+				if ($this->location_searchable->tweet_terms_override == 0)
+					return $this->country_cur;
+				else
+					return NULL;
+			}
+			
+			throw new \Exception('Network: GetLocationComponent no location set.');
+
+			break;
+		case 2:
+			if (isset($this->city_cur)) {
+				if ($this->location_searchable->region_tweet_terms_override == 0)
+					return $this->region_cur;
+				else
+					return NULL;
+			}
+
+			if (isset($this->region_cur)) {
+				if ($this->location_searchable->country_tweet_terms_override == 0)
+					return $this->country_cur;
+				else
+					return NULL;
+			}
+
+			throw new \Exception('Network: GetLocationComponent Scope must be below level 2');
+			break;
+		case 3:
+			if (isset($this->city_cur)) {
+				if ($this->location_searchable->country_tweet_terms_override == 0)
+					return $this->country_cur;
+				else
+					return NULL;
+			}
+			
+			throw new \Exception('Network: GetLocationComponent Scope must be below level 3');
+			break;
+		default:
+			throw new \Exception('Network: GetLocationComponent cannot find a component with given value: ' . $component_level);
+			break;
+		}
+		/*
+		switch($component_level) {
+
+		case 1:
 			if (isset($this->city_cur))
 				return $this->city_cur;
 			if (isset($this->region_cur))
@@ -827,6 +921,7 @@ class Network extends DisplayDObj {
 			throw new \Exception('Network: GetLocationComponent: ' . $component_level . ' is not a valid scope. Outside range.');
 			break;
 		}
+		 */
 	}
 
 	/*
@@ -890,7 +985,10 @@ class Network extends DisplayDObj {
 		}
 			
 		$component = array();
-		$component[] = $default_string;
+
+		if ($default_string != NULL) {
+			$component[] = $default_string;
+		}
 
 		// merge the two arrays
 		$component = array_merge($component, explode(', ', $custom_term_string));

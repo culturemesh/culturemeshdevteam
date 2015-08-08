@@ -1,7 +1,4 @@
 <?php
-	ini_set('display_errors', true);
-	error_reporting(E_ALL ^ E_NOTICE);
-
 	session_name('myDiaspora');
 	session_start();
 
@@ -146,7 +143,14 @@
 			)
 		);
 
-		// successful
+		$json_response['error'] = 'Success';
+	}
+	catch (\Exception $e)
+	{
+		$p_html = NULL;
+		$json_response['error'] = 'Failure: ' . $e;
+	}
+
 		$json_response['html'] = $p_html;
 
 		/////////////////////////////////////////////////////////////////////////////////
@@ -204,7 +208,6 @@
 			}
 		}
 
-		$json_response['error'] = 'Success';
 		$json_response['continue'] = 'y';
 		$json_response['postSwitchValues']['nmp_more_tweets'] = 1;
 
@@ -223,12 +226,6 @@
 			$json_response['continue'] = 'n';
 			$json_response['postSwitchValues']['nmp_more_tweets'] = 0;
 		}
-	}
-	catch (\Exception $e)
-	{
-		$p_html = NULL;
-		$json_response['error'] = 'Failure: ' . $e;
-	}
 
 	// return stuff
 	echo json_encode($json_response);

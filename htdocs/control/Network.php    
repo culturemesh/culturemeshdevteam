@@ -152,7 +152,7 @@ class Network {
 		}
 		catch (\Exception $e)
 		{
-			$p_html = NULL;
+			$p_html = "<ul id='post-wall-ul' class='network'></ul>";
 		}
 
 		$network->events->setMustache($m_comp);

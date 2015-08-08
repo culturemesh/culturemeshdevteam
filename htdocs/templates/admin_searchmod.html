@@ -109,6 +109,16 @@
 						
 					</td>
 					{{ vars.l_brace }}/colCond.specone{{vars.r_brace}}
+			<!-- 	 -->
+			<!-- BOOLEAN -->
+			<!-- 	 -->
+					{{ vars.l_brace }}#colCond.update_bool{{vars.r_brace}}
+					<td class='op_val update_bool'>
+						<input type="hidden" name='term-original-string' value="{{ vars.l_brace }}original_string{{vars.r_brace}}" />
+						<input type="radio" name='{{ vars.l_brace }} name {{ vars.r_brace }}' value="1" {{ vars.l_brace }}# value {{vars.r_brace}} checked {{ vars.l_brace }}/ value {{vars.r_brace}}>True</input></br>
+						<input type="radio" name='{{ vars.l_brace }} name {{ vars.r_brace }}' value="0" {{ vars.l_brace }}^ value {{vars.r_brace}} checked {{ vars.l_brace }}/ value {{vars.r_brace}}>False</input>
+					</td>
+					{{ vars.l_brace }}/colCond.update_bool{{vars.r_brace}}
 	<!--		-->
 	<!-- END SECTION -->
 	<!--		-->
@@ -329,18 +339,11 @@
 			<input class="on null-term" type="hidden" value="NULL">
 	</script>
 
-	<div id='template-test'>
-		{{# booger.snatch }}
-		Something
-		{{/ booger.snatch }}
-		{{# booger.grab }}
-		 New
-		{{/ booger.grab }}
-	</div>
 	<div id='kwik-login'>
-		<span>What's the password?</span>
+		<span>What's the password? Huh? <b>Huh?</b></span></br>
 		<input id='pass-input' type='password' name='password'/></br>
 		<button id='login-button'>Login</button>
+		<p id='pass-error-msg'></p>
 	</div>
 	<div id='activated-panel'>
 		<div id='top-stuff'>
@@ -407,7 +410,9 @@
 						$('#kwik-login').hide();
 					}
 					else {
-						$('#error-msg').text('Sorry, that ain\'t the password');
+						$('#pass-error-msg').show();
+						$('#pass-error-msg').text('Sorry, that ain\'t the password');
+						$('#pass-error-msg').delay(1000).hide(500);
 					}
 				});
 			});
