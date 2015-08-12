@@ -2,8 +2,6 @@
 
 	include_once("data/dal_user.php");
 	
-	include "log.php";
-	
 	include_once("data/dal_network.php");
 	include_once("html_builder.php");
 	include_once("environment.php");
@@ -13,7 +11,7 @@
 	session_name("myDiaspora");
 	session_start();
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 	<head>
 		<?php
@@ -90,26 +88,6 @@
 		{
 			background:url(<?php echo $bg_links[$i]; ?>);
 		}
-		
-		<?php if (isset($_SESSION['uid'])) : ?>
-			#login-link {
-			    display:none;
-			}
-			
-			#register-link {
-			    display:none;
-			}
-		<?php else : ?>
-			#welcome {
-			    display: none;
-			}
-			
-			#sign-out {
-			    display: none;
-			}
-			
-		<?php endif; ?>
-		
 		</style>
 	</head>
 	<body id="index">

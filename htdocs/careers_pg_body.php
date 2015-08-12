@@ -38,19 +38,19 @@ $boxes = array(
         <li class="careers_box_engineering">
             <div class="over">
             <h3 class="pheader careers_box_head">Engineering</h3>
-            <a href="" class="btn cm-button careers_box_btn">See Openings</a>
+            <a href="apply.php" class="btn cm-button careers_box_btn">See Openings</a>
             </div>
         </li>
         <li class="careers_box_creative">
             <div class="over">
             <h3 class="pheader careers_box_head">Creative</h3>
-            <a href="" class="btn cm-button careers_box_btn">See Openings</a>
+            <a href="apply.php" class="btn cm-button careers_box_btn">See Openings</a>
             </div>
         </li>
         <li class="careers_box_business">
             <div class="over">
             <h3 class="pheader careers_box_head">Business</h3>
-            <a href="" class="btn cm-button careers_box_btn">See Openings</a>
+            <a href="apply.php" class="btn cm-button careers_box_btn">See Openings</a>
             </div>
         </li>
     </ul>

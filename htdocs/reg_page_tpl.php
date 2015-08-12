@@ -18,10 +18,8 @@
         <?php 
         include 'header.php';
         include $ppre.'_body.php';
+	include 'footer.php';
 	?>
     </div>
 </body>
-<?php
-include 'footer.php';
-?>
 </html>

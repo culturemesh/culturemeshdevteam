@@ -36,11 +36,6 @@
 <script src="<?php echo \Environment::host_root(); ?>/js/fxn.js"></script>
 <script src="<?php echo \Environment::host_root(); ?>/js/ajax.js"></script>
 
-<script type="text/javascript">
-// register validation
-
-// login validation
-</script>
 <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
 <?php
