@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 
 $json_response = array(
 	'error' => NULL,
@@ -142,7 +143,7 @@ if ($reply_id != False) {
 		foreach ( $origin_tweet->replies as $reply ) {
 
 			if ($reply->email != $user_email &&
-				!in_array($reply->email)) {
+				!in_array($reply->email, $reply_emails)) {
 
 				array_push($reply_emails, $reply->email);
 			}
@@ -152,6 +153,13 @@ if ($reply_id != False) {
 				$settings['reply'] = $reply->prepare($cm);
 			}
 		}
+
+		// get specific reply settings
+		$settings = array(
+			'reply' => $origin_tweet->findReply($reply_id)->prepare($cm)
+		);
+
+		echo 'HERE';
 		$related_reply_email = new \api\RelatedPTReplyEmail($cm, $mustache, $reply_emails, $settings);
 		$related_reply_email->send();
 	}
