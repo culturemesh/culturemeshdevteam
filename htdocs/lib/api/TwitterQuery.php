@@ -265,7 +265,8 @@ class TwitterQuery {
 			$language_code = $this->getLanguageCode($origin);
 
 
-			if ($language_code === False || isset($origin[0])) {
+			if ($language_code === False //|| isset($origin[0])
+							) {
 				$this->addArg($origin, $link_term);
 				$this->query .= $component_link;
 				$this->component_string .= $component_link;

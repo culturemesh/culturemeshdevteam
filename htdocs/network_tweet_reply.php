@@ -124,6 +124,26 @@ if ($reply_id != False) {
 		'network' => $network
 	)); 
 
+	//
+	// Send email to those who reply to the stuff
+	//
+	if (count($origin_tweet->replies) > 1) {
+
+		// GET EMAILS
+		$reply_emails = array();
+
+		foreach ( $origin_tweet->replies as $reply ) {
+
+			if ($reply->email != $user_email &&
+				!in_array($reply->email)) {
+
+				array_push($reply_emails, $reply->email);
+			}
+		}
+		$related_reply_email = new \api\RelatedPTReplyEmail($cm, $mustache, $reply_emails, $settings);
+		$related_reply_email->send();
+	}
+
 	$json_response['html'] = $replies_html;
 	$json_response['error'] = 0;
 	$json_response['error_message'] = 'SUCCESS!!';

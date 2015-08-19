@@ -100,12 +100,22 @@ class TwitterQueryTest extends PHPUnit_Framework_TestCase {
 
 	public function testSlashLanguageNetworkBuildSearch() {
 
+		$this->language_network->language_origin = 'Mandarin Chinese/Gentility';
+		$this->language_network->query_location_scope = 1;
+
+		$query = new api\TwitterQuery($this->language_network);
+
+		$this->assertEquals(urldecode('https://api.twitter.com/1.1/search/tweets.json?q=(Detroit) -filter:retweets&lang=zh-tw&result_type=mixed&since=2010-01-01'), urldecode($query->getSearch()));
+	}
+
+	public function testSlashLanguageNoMatchNetworkBuildSearch() {
+
 		$this->language_network->language_origin = 'Mandarin Chinese/Putonghua';
 		$this->language_network->query_location_scope = 1;
 
 		$query = new api\TwitterQuery($this->language_network);
 
-		$this->assertEquals(urldecode('https://api.twitter.com/1.1/search/tweets.json?q=(%23MandarinChinese%20OR%20%22Mandarin%20Chinese%22%20OR%20Putonghua) (Detroit) -filter:retweets&lang=zh-tw&result_type=mixed&since=2010-01-01'), urldecode($query->getSearch()));
+		$this->assertEquals(urldecode('https://api.twitter.com/1.1/search/tweets.json?q=(Detroit) -filter:retweets&lang=zh-tw&result_type=mixed&since=2010-01-01'), urldecode($query->getSearch()));
 	}
 
 	public function testParenthesisLanguageNetworkBuildSearch() {

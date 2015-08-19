@@ -65,7 +65,7 @@ class Event extends DisplayDObj {
 			// get template
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-card.html');
 			return $mustache->render($template, array(
-				'event' => $this,
+				'event' => $this->prepare($cm),
 				'host' => $this->getName(),
 				'date' => $this->formatDate('card'),
 				'list_vars' => $list_vars,
@@ -93,7 +93,7 @@ class Event extends DisplayDObj {
 			// get template
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-modal.html');
 			return $mustache->render($template, array(
-				'event' => $this,
+				'event' => $this->prepare($cm),
 				'host' => $this->getName(),
 				'user' => $user,
 				'attending' => $attending,
@@ -119,7 +119,7 @@ class Event extends DisplayDObj {
 			// get template
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-event.html');
 			return $mustache->render($template, array(
-				'event' => $this,
+				'event' => $this->prepare($cm),
 				'host' => $this->getName(),
 				'owner' => $owner,
 				'date' => $this->formatDate('modal'),
