@@ -117,10 +117,12 @@ if ($reply_id != False) {
 
 	// close connection
 	$cm->closeConnection();
+
+	$mustache = new \misc\MustacheComponent();
 	
 	$replies_html = $origin_tweet->getHTML('replies', array(
 		'cm' => $cm,
-		'mustache' => new \misc\MustacheComponent(),
+		'mustache' => $mustache,
 		'network' => $network
 	)); 
 
@@ -128,6 +130,11 @@ if ($reply_id != False) {
 	// Send email to those who reply to the stuff
 	//
 	if (count($origin_tweet->replies) > 1) {
+
+		// get reply
+		$settings = array(
+			'reply' => NULL
+		);
 
 		// GET EMAILS
 		$reply_emails = array();
@@ -138,6 +145,11 @@ if ($reply_id != False) {
 				!in_array($reply->email)) {
 
 				array_push($reply_emails, $reply->email);
+			}
+
+			// add reply id to settings
+			if ($reply_id == $reply->id) {
+				$settings['reply'] = $reply->prepare($cm);
 			}
 		}
 		$related_reply_email = new \api\RelatedPTReplyEmail($cm, $mustache, $reply_emails, $settings);
