@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-
 $json_response = array(
 	'error' => NULL,
 	'error_message' => NULL,
@@ -159,7 +157,6 @@ if ($reply_id != False) {
 			'reply' => $origin_tweet->findReply($reply_id)->prepare($cm)
 		);
 
-		echo 'HERE';
 		$related_reply_email = new \api\RelatedPTReplyEmail($cm, $mustache, $reply_emails, $settings);
 		$related_reply_email->send();
 	}
