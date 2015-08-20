@@ -1,8 +1,13 @@
 <?php
+/*
 ini_set('display_errors', true);
 error_reporting(E_ALL ^ E_NOTICE);
+ */
 
-session_name('myDiaspora');
+include 'environment.php';
+$cm = new \Environment();
+
+session_name($cm->session_name);
 session_start();
 
 $POST_INCREMENT = 10;
@@ -35,9 +40,6 @@ if (isset($_POST['lb']) && isset($_POST['ub'])
 		 */
 
 
-		include 'environment.php';
-
-		$cm = new \Environment();
 
 		// add one to the upper bound so that we can check if there
 		// are more posts

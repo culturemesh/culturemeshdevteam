@@ -12,7 +12,7 @@ class Profile {
 	public static function match($cm, $params) {
 
 		// start session
-		session_name("myDiaspora");
+		session_name($cm->session_name);
 		session_start();
 
 		$uid = $params['id'];

@@ -1,7 +1,9 @@
 <?php
     ini_set('display_errors', true);
     error_reporting(E_ALL ^ E_NOTICE);
-    session_name("myDiaspora");
+	include 'environment.php';
+	$cm = new Environment();
+    session_name($cm->session_name);
     session_start();
     
     include_once("data/dal_user.php");

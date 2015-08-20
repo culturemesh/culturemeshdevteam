@@ -1,12 +1,17 @@
 <?php
+/*
 ini_set('display_errors', 'On');
 error_reporting(E_ALL ^ E_NOTICE);
+ */
 
 include_once("data/dal_query_handler.php");
 include_once "data/dal_event.php";
 include_once "data/dal_network_registration.php";
 
-session_name("myDiaspora");
+include 'environment.php';
+$cm = new Environment();
+
+session_name($cm->session_name);
 session_start();
 
 $test = new NetworkRegistrationDT();

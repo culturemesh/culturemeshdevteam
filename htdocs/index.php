@@ -8,7 +8,7 @@
 
 	$cm = new Environment();
 	
-	session_name("myDiaspora");
+	session_name($cm->session_name);
 	session_start();
 ?>
 <!DOCTYPE html>

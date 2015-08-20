@@ -9,7 +9,10 @@ if (!empty($_FILES['picfile'])) {
 	include_once 'data/dal_user.php';
 	include_once 'zz341/fxn.php';
 
-	session_name("myDiaspora");
+	include 'environment.php';
+	$cm = new Environment();
+
+	session_name($cm->session_name);
 	session_start();
 
 	$uid = $_SESSION['uid'];

@@ -10,7 +10,7 @@
 	include_once("environment.php");
 	
 	
-	//session_name("myDiaspora");
+	//session_name($cm->session_name);
 	//session_start();
 //	echo $_GET['id'];
 	header('Location: network/'.$_GET['id']);
