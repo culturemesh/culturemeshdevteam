@@ -5,5 +5,4 @@
         <li><a href="press.php">Press</a></li>
         <li><a href="about.php#contact">Contact</a></li>
     </ul>
-    
 </div>
