@@ -144,14 +144,12 @@
 		<div class="tab-pane active" id="profile_dashboard_tab">
 			<div>
 				<h5><b>EVENTS YOU'RE HOSTING</b></h5>
-				<ul class="dashboard item">
 				{{# sections.yh_events }}
 				{{{ . }}}
 				{{/ sections.yh_events }}
 				{{^ sections.yh_events }}
 				<p>You aren't hosting any events</p>
 				{{/ sections.yh_events }}
-				</ul>
 			</div>
 			<div>
 				<h5><b>EVENTS IN YOUR NETWORKS</b></h5>
@@ -185,39 +183,33 @@
 		<div class="tab-pane" id="profile_networks_tab">
 			<div>
 				<h5>Your Networks</h5>
-				<ul class="dashboard item">
 				{{# sections.yn_networks }}
 				{{{ . }}}
 				{{/ sections.yn_networks  }}
 				{{^ sections.yn_networks }}
 				<p>You haven't joined any networks. Get out there, dawg!</p>
 				{{/ sections.yn_networks }}
-				</ul>
 			</div>
 		</div>
 		<!-- EVENTS TAB -->
 		<div class="tab-pane" id="profile_events_tab">
 			<div>
 				<h5>EVENTS YOU'RE HOSTING</h5>
-				<ul class='dashboard item'>
 					{{# sections.yh_events }}
 					{{{ . }}}
 					{{/ sections.yh_events }}
 					{{^ sections.yh_events }}
 					<p>You are not hosting any events</p>
 					{{/ sections.yh_events }}
-				</ul>
 			</div>
 			<div>
 				<h5>EVENTS YOU'RE ATTENDING</h5>
-				<ul class='dashboard item'>
 					{{# sections.ya_events }}
 					{{{ . }}}
 					{{/ sections.ya_events }}
 					{{^ sections.ya_events }}
 					<p>You are not attending any events</p>
 					{{/ sections.ya_events }}
-				</ul>
 			</div>
 		</div>
 	<!--        <div class="tab-pane" id="profile_inbox_tab">

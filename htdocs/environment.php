@@ -274,7 +274,9 @@ final class Environment {
 			'f_root' => $this->f_root,
 			'img_path' => $this->img_dir,
 			'hostname' => '//' . $this->hostname,
-			'maintenance' => $this->maintenance_info
+			'maintenance' => $this->maintenance_info,
+			'l_brace' => '{{',
+			'r_brace' => '}}'
 		);
 	}
 	
