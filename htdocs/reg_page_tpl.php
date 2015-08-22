@@ -2,6 +2,9 @@
 	//include_once('log.php'); 
 	include_once('data/dal_user.php');
 	$con = getDBConnection();
+
+	session_name($cm->session_name);
+	session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
