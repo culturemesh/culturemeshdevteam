@@ -48,6 +48,7 @@ final class Environment {
 	private $db_user;
 	private $db_pass;
 	private $db_name;
+	private $session_name;
 
 	private $maintenance_info;
 
@@ -155,6 +156,7 @@ final class Environment {
 			$this->db_name = $DB_NAME;
 			$this->db_pass = $DB_PASS;
 			$this->g_api_key = $GLOBALS['G_API_KEY'];
+			$this->session_name = $SESSION_NAME;
 			// leave
 			return True;
 		}
@@ -272,7 +274,9 @@ final class Environment {
 			'f_root' => $this->f_root,
 			'img_path' => $this->img_dir,
 			'hostname' => '//' . $this->hostname,
-			'maintenance' => $this->maintenance_info
+			'maintenance' => $this->maintenance_info,
+			'l_brace' => '{{',
+			'r_brace' => '}}'
 		);
 	}
 	

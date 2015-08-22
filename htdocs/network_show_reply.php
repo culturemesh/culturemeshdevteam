@@ -19,8 +19,11 @@ if (isset($_POST['NOJS'])) {
 	header("Location: network/{$nid}?reply={$rids}#post-{$pid}");
 }
 else {
+	include ('environment.php');
+	$cm = new \Environment();
+
 	// begin session
-	session_name("myDiaspora");
+	session_name($cm->session_name);
 	session_start();
 
 //	include_once('html_builder.php');
@@ -36,9 +39,6 @@ else {
 	}
 
 	else {
-
-		include ('environment.php');
-		$cm = new \Environment();
 
 		// get connection
 		$dal = new \dal\DAL($cm->getConnection());

@@ -1,5 +1,5 @@
 <?php
-ini_set("display_errors", true);
+//ini_set("display_errors", true);
 
 include_once("data/dal_network.php");
 include_once("data/dal_network-dt.php");
@@ -7,7 +7,10 @@ include_once("data/dal_location.php");
 include_once("data/dal_language.php");
 include_once("http_redirect.php");
 
-session_name("myDiaspora");
+include 'environment.php';
+$cm = new Environment();
+
+session_name($cm->session_name);
 session_start();
 
 // start db connection

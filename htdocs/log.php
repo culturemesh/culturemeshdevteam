@@ -1,5 +1,8 @@
 <?php
-session_name("myDiaspora");
+include 'environment.php';
+$cm = new Environment();
+
+session_name($cm->session_name);
 session_start();
 //$admins = array("jenki221@msu.edu", "jenki221@umich.edu", "admin@msu.edu", "professorkos@msu.edu", "jenki221", "jenki221@stanford.edu");
 include_once 'zz341/fxn.php';

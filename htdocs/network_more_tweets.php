@@ -1,5 +1,8 @@
 <?php
-	session_name('myDiaspora');
+	include 'environment.php';
+	$cm = new \Environment();
+
+	session_name($cm->session_name);
 	session_start();
 
 	$json_response = array(
@@ -33,9 +36,6 @@
 			exit();
 		}
 
-	include 'environment.php';
-
-	$cm = new \Environment();
 
 	$json_response['postSwitchValues']['nmp_max_location_scope'] = (int) $_POST['nmp_max_location_scope'];
 	$json_response['postSwitchValues']['nmp_max_origin_scope'] = (int) $_POST['nmp_max_origin_scope'];
@@ -58,7 +58,6 @@
 	$cur_until_date = $date_dt->format('Y-m-d');
 
 	$component = NULL;
-
 
 	// Check and see if it's the first time,
 	//

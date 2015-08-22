@@ -3,13 +3,17 @@
 if (!(isset($_POST['msg_to']) && isset($_POST['msg_txt'])))
 	exit("You don't belong here.");
 
-ini_set('display_errors', true);
+//ini_set('display_errors', true);
 
-include("zz341/fxn.php");
+//include("zz341/fxn.php");
 include_once("data/dal_user.php");
 include_once("data/dal_conversation.php");
 include_once("data/dal_message.php");
-session_name("myDiaspora");
+
+include 'environment.php';
+$cm = new Environment();
+
+session_name($cm->session_name);
 session_start();
 
 $msg_to_c = mysql_escape_string($_POST['msg_to']);

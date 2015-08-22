@@ -3,6 +3,9 @@
 	ini_set('display_errors', true);
 	error_reporting(E_ALL ^ E_NOTICE);
 
+	include 'environment.php';
+	$cm = new Environment();
+
 	include 'debug.php';
 
 	// include db stuff
@@ -27,12 +30,14 @@
 		'countries'
 	);
 
+	/*
 	$variable = array(
 		'title' => 'ADMIN PANEL (locations)',
 		'home_path' => HOME_PATH,
 		'l_brace' => '{{',
 		'r_brace' => '}}'
 	);
+	 */
 	
 	/*
 	 * PLAY EXAMPLE
@@ -79,7 +84,7 @@
 
 	// render
 	echo $m->render($template, array(
-					'vars' => $variable,
+		 			'vars' => $cm->getVars(),
 					'tables' => $tables,
 					'booger' => array(
 						'snatch' => true,

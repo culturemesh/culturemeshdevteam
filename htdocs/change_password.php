@@ -1,5 +1,4 @@
 <?php
-ini_set("display_errors", 1);
 include "data/dal_user.php";
 
 // if variables aren't posted, probably don't need to be here
@@ -10,8 +9,11 @@ if (!isset($_POST['password']) || !isset($_POST['password_conf']) || !isset($_PO
 if ($_POST['password'] != $_POST['password_conf'])
 	header("Location: profile_edit.php?cp_error=different+passwords");
 
+include 'environment.php';
+$cm = new Environment();
+
 // start the process
-session_name("myDiaspora");
+session_name($cm->session_name);
 session_start();
 
 $c_email = mysql_escape_string($_POST['email']);

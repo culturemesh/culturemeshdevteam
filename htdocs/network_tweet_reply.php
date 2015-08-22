@@ -1,5 +1,4 @@
 <?php
-
 $json_response = array(
 	'error' => NULL,
 	'error_message' => NULL,
@@ -28,7 +27,7 @@ include('environment.php');
 
 $cm = new \Environment();
 
-session_name('myDiaspora');
+session_name($cm->session_name);
 session_start();
 
 
@@ -117,12 +116,50 @@ if ($reply_id != False) {
 
 	// close connection
 	$cm->closeConnection();
+
+	$mustache = new \misc\MustacheComponent();
 	
 	$replies_html = $origin_tweet->getHTML('replies', array(
 		'cm' => $cm,
-		'mustache' => new \misc\MustacheComponent(),
+		'mustache' => $mustache,
 		'network' => $network
 	)); 
+
+	//
+	// Send email to those who reply to the stuff
+	//
+	if (count($origin_tweet->replies) > 1) {
+
+		// get reply
+		$settings = array(
+			'reply' => NULL
+		);
+
+		// GET EMAILS
+		$reply_emails = array();
+
+		foreach ( $origin_tweet->replies as $reply ) {
+
+			if ($reply->email != $user_email &&
+				!in_array($reply->email, $reply_emails)) {
+
+				array_push($reply_emails, $reply->email);
+			}
+
+			// add reply id to settings
+			if ($reply_id == $reply->id) {
+				$settings['reply'] = $reply->prepare($cm);
+			}
+		}
+
+		// get specific reply settings
+		$settings = array(
+			'reply' => $origin_tweet->findReply($reply_id)->prepare($cm)
+		);
+
+		$related_reply_email = new \api\RelatedPTReplyEmail($cm, $mustache, $reply_emails, $settings);
+		$related_reply_email->send();
+	}
 
 	$json_response['html'] = $replies_html;
 	$json_response['error'] = 0;

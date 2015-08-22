@@ -2,8 +2,9 @@
 include_once "data/dal_post.php";
 include_once "data/dal_network_registration.php";
 include_once "environment.php";
+$cm = new Environment();
 
-session_name("myDiaspora");
+session_name($cm->session_name);
 session_start();
 
 $json_response = array(

@@ -1,8 +1,11 @@
 <?php
 
+include 'environment.php';
+$cm = new Environment();
+
 // turned off error display
 // start session for reply thing
-session_name('myDiaspora');
+session_name($cm->session_name);
 session_start();
 
 $response = array(

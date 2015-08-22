@@ -1,6 +1,10 @@
 <?php
-session_name("myDiaspora");
+include 'environment.php';
+$cm = new Environment();
+
+session_name($cm->session_name);
 session_start();
+
 if (!isset($_SESSION['uid'])) {
 	header("index.php?signout=true");
 }

@@ -2,9 +2,12 @@
 ini_set('display_errors', true);
 error_reporting(E_ALL ^ E_NOTICE);
 
+include 'environment.php';
+$cm = new Environment();
+
 include_once "data/dal_network_registration.php";
 
-session_name("myDiaspora");
+session_name($cm->session_name);
 session_start();
 
 $netreg = new NetworkRegistrationDT();

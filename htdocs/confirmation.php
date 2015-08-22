@@ -1,6 +1,10 @@
 <?php
 //	ini_set('display_errors', true);
-	session_name("myDiaspora");
+	
+	include 'environment.php';
+	$cm = new Environment();
+	
+	session_name($cm->session_name);
 	session_start();
 	include "zz341/fxn.php";
 	include "data/dal_user.php";

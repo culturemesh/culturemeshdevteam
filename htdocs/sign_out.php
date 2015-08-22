@@ -1,12 +1,12 @@
 <?php
 
-session_name("myDiaspora");
+include 'environment.php';
+$cm = new Environment();
+
+session_name($cm->session_name);
 session_start();
 
 unset($_SESSION['uid']);
-
-include 'environment.php';
-$cm = new Environment();
 
 // possible pages that we could be logging out from
 $pages = array('index', 'network', 'search_results', 

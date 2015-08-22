@@ -45,7 +45,7 @@ if($_POST['email'] && $_POST['password']){
 		include_once("data/dal_event.php");
 		include_once("data/dal_event_registration.php");
 		
-		session_name("myDiaspora");
+		session_name($cm->session_name);
 		session_start();
 		$con = getDBConnection();
 		

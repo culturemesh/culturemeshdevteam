@@ -99,7 +99,7 @@ if(isset($_POST['email']) && isset($_POST['password'])
 	}
 	else
 	{
-		session_name("myDiaspora");
+		session_name($cm->session_name);
 		session_start();
 		
 		include 'zz341/fxn.php';
