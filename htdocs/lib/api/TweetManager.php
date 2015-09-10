@@ -96,6 +96,9 @@ class TweetManager {
 			if ($params['component'] == 'origin') {
 				$qls = $this->network->query_origin_scope;
 			}
+			if ($params['component'] == 'both') {
+				$qls = $this->network->query_location_scope . '+' . $this->network->query_origin_scope;
+			}
 
 			if ($params['until_date'] != "") {
 				$key_until_date = $params['until_date'];
@@ -138,9 +141,16 @@ class TweetManager {
 				if (!isset($params['until_date']))
 					throw new \Exception('No until date set in Tweet Manager');
 
-				$twitter_query = new ComponentTwitterQuery();
-				$twitter_query->buildSearch($this->network, $params['component']);
-				$twitter_query->includeUntilDate($params['until_date']);
+				if ($params['component'] == 'both') {
+					$twitter_query = new TwitterQuery();
+					$twitter_query->buildSearch($this->network);
+					$twitter_query->includeUntilDate($params['until_date']);
+				}
+				else {
+					$twitter_query = new ComponentTwitterQuery();
+					$twitter_query->buildSearch($this->network, $params['component']);
+					$twitter_query->includeUntilDate($params['until_date']);
+				}
 			}
 			else {
 

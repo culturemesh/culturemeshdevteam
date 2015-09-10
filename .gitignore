@@ -4,6 +4,7 @@
 *.swk
 *.swm
 *.swn
+*.log
 localdbconn.php
 htdocs/db_test*
 nbproject/

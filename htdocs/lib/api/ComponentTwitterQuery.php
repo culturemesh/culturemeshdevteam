@@ -53,7 +53,7 @@ class ComponentTwitterQuery extends TwitterQuery {
 		$component_arg = $this->prepareComponent($component);
 
 		$this->addComponents($network, $component, $component_arg);
-		$this->addResultType('mixed');
+		$this->addResultType('recent');
 		$this->addSinceDate($network);
 
 		if ($this->using_until_date) {

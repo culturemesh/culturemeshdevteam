@@ -210,6 +210,166 @@ class NetworkTest extends PHPUnit_Framework_TestCase {
 		$title = $this->network->getTitle();
 		$this->assertEquals($title, 'Language speakers in Country');
 	}
+
+	public function testGetNetworkQueryRoster_1() {
+
+		$this->markTestSkipped('No Reason');
+		$this->network->origin_searchable = new dobj\City();
+		$this->network->location_searchable = new dobj\City();
+
+		$this->network->origin_searchable->name = 'City';
+		$this->network->city_origin = 'City';
+		$this->network->origin_searchable->id = 1;
+		$this->network->id_city_origin = 1;
+		$this->network->origin_searchable->region_name = 'Region';
+		$this->network->region_origin = 'Region';
+		$this->network->origin_searchable->region_id = 2;
+		$this->network->id_region_origin = 2;
+		$this->network->origin_searchable->country_name = 'Country';
+		$this->network->country_origin = 'Country';
+		$this->network->origin_searchable->country_id = 3; 
+		$this->network->id_country_origin = 3;
+		$this->network->location_searchable->name = 'City';
+		$this->network->city_cur = 'City';
+		$this->network->location_searchable->id = 4;
+		$this->network->id_city_cur = 4;
+		$this->network->location_searchable->region_name = 'Region';
+		$this->network->region_cur = 'Region';
+		$this->network->location_searchable->region_id = 5;
+		$this->network->id_region_cur = 5;
+		$this->network->location_searchable->country_name = 'Country';
+		$this->network->country_cur = 'Country';
+		$this->network->location_searchable->country_id = 6;
+		$this->network->id_country_cur = 6;
+
+		$this->network->query_level = 2;
+		$this->network->query_origin_scope = 1;
+		$this->network->query_location_scope = 1;
+
+		$roster = $this->network->getNetworkQueryRoster();
+		$this->assertEquals(9, count($roster));
+	}
+
+	public function testGetNetworkQueryRoster_2() {
+
+		$this->markTestSkipped('No Reason');
+		$this->network->origin_searchable = new dobj\City();
+		$this->network->location_searchable = new dobj\City();
+
+		$this->network->origin_searchable->name = 'City';
+		$this->network->city_origin = 'City';
+		$this->network->origin_searchable->id = 1;
+		$this->network->id_city_origin = 1;
+		$this->network->origin_searchable->region_name = 'Region';
+		$this->network->region_origin = 'Region';
+		$this->network->origin_searchable->region_id = 2;
+		$this->network->id_region_origin = 2;
+		$this->network->origin_searchable->country_name = 'Country';
+		$this->network->country_origin = 'Country';
+		$this->network->origin_searchable->country_id = 3; 
+		$this->network->id_country_origin = 3;
+		$this->network->location_searchable->name = 'City';
+		$this->network->city_cur = 'City';
+		$this->network->location_searchable->id = 4;
+		$this->network->id_city_cur = 4;
+		$this->network->location_searchable->region_name = 'Region';
+		$this->network->region_cur = 'Region';
+		$this->network->location_searchable->region_id = 5;
+		$this->network->id_region_cur = 5;
+		$this->network->location_searchable->country_name = 'Country';
+		$this->network->country_cur = 'Country';
+		$this->network->location_searchable->country_id = 3;
+		$this->network->id_country_cur = 3;
+
+		$this->network->query_level = 2;
+		$this->network->query_origin_scope = 1;
+		$this->network->query_location_scope = 1;
+
+		$roster = $this->network->getNetworkQueryRoster();
+		$this->assertFalse(False);
+	}
+
+	public function testGetNetworkQueryRoster_3() {
+
+		$this->network->origin_searchable = new dobj\City();
+		$this->network->location_searchable = new dobj\City();
+
+		$this->network->origin_searchable->name = 'City';
+		$this->network->city_origin = 'City';
+		$this->network->origin_searchable->id = 1;
+		$this->network->id_city_origin = 1;
+		$this->network->origin_searchable->region_name = 'Region';
+		$this->network->region_origin = 'Region';
+		$this->network->origin_searchable->region_id = 2;
+		$this->network->id_region_origin = 2;
+		$this->network->origin_searchable->country_name = 'Country';
+		$this->network->country_origin = 'Country';
+		$this->network->origin_searchable->country_id = 3; 
+		$this->network->id_country_origin = 3;
+		/*
+		$this->network->location_searchable->name = 'City';
+		$this->network->city_cur = 'City';
+		$this->network->location_searchable->id = 4;
+		$this->network->id_city_cur = 4;
+		$this->network->location_searchable->region_name = 'Region';
+		$this->network->region_cur = 'Region';
+		$this->network->location_searchable->region_id = 5;
+		$this->network->id_region_cur = 5;
+		 */
+		$this->network->location_searchable->country_name = 'Country';
+		$this->network->country_cur = 'Country';
+		$this->network->location_searchable->country_id = 3;
+		$this->network->id_country_cur = 3;
+
+		$this->network->query_level = 2;
+		$this->network->query_origin_scope = 1;
+		$this->network->query_location_scope = 1;
+
+		$roster = $this->network->getNetworkQueryRoster();
+
+		$this->assertEquals(7, count($roster));
+	}
+
+	public function testGetNetworkQueryRoster_4() {
+
+		$this->network->origin_searchable = new dobj\City();
+		$this->network->location_searchable = new dobj\City();
+
+		$this->network->origin_searchable->name = 'City';
+		$this->network->city_origin = 'City';
+		$this->network->origin_searchable->id = 1;
+		$this->network->id_city_origin = 1;
+		$this->network->origin_searchable->region_name = 'Region';
+		$this->network->region_origin = 'Region';
+		$this->network->origin_searchable->region_id = 2;
+		$this->network->id_region_origin = 2;
+		$this->network->origin_searchable->country_name = 'Country';
+		$this->network->country_origin = 'Country';
+		$this->network->origin_searchable->country_id = 3; 
+		$this->network->id_country_origin = 3;
+		/*
+		$this->network->location_searchable->name = 'City';
+		$this->network->city_cur = 'City';
+		$this->network->location_searchable->id = 4;
+		$this->network->id_city_cur = 4;
+		$this->network->location_searchable->region_name = 'Region';
+		$this->network->region_cur = 'Region';
+		$this->network->location_searchable->region_id = 5;
+		$this->network->id_region_cur = 5;
+		 */
+		$this->network->location_searchable->country_name = 'Country';
+		$this->network->country_cur = 'Country';
+		$this->network->location_searchable->country_id = 3;
+		$this->network->id_country_cur = 3;
+
+		$this->network->query_level = 2;
+		$this->network->query_origin_scope = 2;
+		$this->network->query_location_scope = 1;
+
+		$roster = $this->network->getNetworkQueryRoster();
+
+		$this->assertEquals(3, count($roster));
+	}
 }
 
 ?>

@@ -202,13 +202,17 @@
 						<input type="hidden" id="nmp_more_posts" name="nmp_more_posts" value="1" autocomplete="off"/>
 						{{/ page_vars.more_posts }}
 						{{# page_vars.more_tweets }}
+						<input type="hidden" id="nmp_cur_roster_level" name="nmp_cur_roster_level" value="{{ page_vars.cur_query_roster }}" autocomplete="off"/>
+						<input type="hidden" id="nmp_tweet_until_date" name="nmp_tweet_until_date" value="{{ page_vars.tweet_until_date }}" autocomplete="off"/>
+						<!--
 						<input type="hidden" id="nmp_last_updated" name="nmp_last_updated" value="{{ page_vars.last_updated }}" autocomplete="off"/>
 						<input type="hidden" id="nmp_cur_location_scope" name="nmp_cur_location_scope" value="{{ page_vars.tweet_scope_info.query_location_scope }}" autocomplete="off"/>
 						<input type="hidden" id="nmp_max_location_scope" name="nmp_max_location_scope" value="{{ page_vars.tweet_scope_info.max_location_scope }}" autocomplete="off"/>
 						<input type="hidden" id="nmp_cur_origin_scope" name="nmp_cur_origin_scope" value="{{ page_vars.tweet_scope_info.query_origin_scope }}" autocomplete="off"/>
 						<input type="hidden" id="nmp_max_origin_scope" name="nmp_max_origin_scope" value="{{ page_vars.tweet_scope_info.max_origin_scope }}" autocomplete="off"/>
-						<input type="hidden" id="nmp_tweet_until_date" name="nmp_tweet_until_date" value="{{ page_vars.tweet_until_date }}" autocomplete="off"/>
 						<input type="hidden" id="nmp_initial" name="nmp_initial" value="1" autocomplete="off"/>
+						<input type="hidden" id="nmp_separate_tweet_components" name="nmp_separate_tweet_components" value="{{ page_vars.separate_tweet_components }}" autocomplete="off"/>
+						-->
 						{{/ page_vars.more_tweets }}
 						<button id="mp_button" class="post show">Load Older Posts</button>
 					</form>

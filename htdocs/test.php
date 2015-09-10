@@ -1,5 +1,17 @@
 <?php
+include('environment.php');
+$cm = new Environment();
+
 ini_set('display_errors', true);
+
+/*
+$log = new \misc\Log($cm, 'test.log');
+$log->logMessage('Hello World!');
+$log->logArray(array('test' => 'one'));
+$log->logArray(array('two', 'three'));
+$log->logVar($cm);
+ */
+
 /*
 	include_once("data/dal_location.php");
 	include_once("data/dal_query_handler.php");

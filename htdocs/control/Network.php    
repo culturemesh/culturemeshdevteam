@@ -57,8 +57,9 @@ class Network {
 		$network->mergePostsAndTweets( $tweets );
 
 		// add tweets to post count
-		$page_post_count = count($network->posts);
-		$network->post_count += count($tweets);
+		$page_post_count = $network->native_post_count;
+		$page_tweet_count = count($tweets);
+		$network->post_count += $page_tweet_count;
 
 		// put tweets and posts all together
 		$network->posts = $network->posts->splits(function( $obj ) {
@@ -197,6 +198,9 @@ class Network {
 		$more_post_content = True;
 		$more_posts = False;
 		$more_tweets = True; // make default for now
+		$until_date = new \DateTime($query_info['until_date']);
+		$until_date = $until_date->format('Y-m-d');
+		$cur_query_roster = 0;	// 0 for false
 
 		if ($page_post_count > 10) {
 
@@ -205,6 +209,38 @@ class Network {
 
 			$older_posts_lower_bound = 10;
 			$newer_posts_lower_bound = NULL;
+		}
+
+		// if cur_query_roster is set to 0, upon the start of search
+		// for more tweets, it will search for both components
+		//
+		// however, if the tweet count ain't high enough at the start,
+		// there's no point
+		//
+		// don't start tweet search by looking for both components
+		//
+		if ($page_tweet_count < 15) {
+			
+			$cur_query_roster = 1;
+			$until_date = 0;
+		}
+		else {
+
+			// MUST ALSO CHECK DATE
+			//
+			// To make sure there will be tweets to be found with this query
+			//
+			$earliest_tweet_date = new \DateTime($query_info['until_date']);
+			$now = new \DateTime();
+
+			// now check to see if we've past the 10 days mark
+			$new_difference = $now->diff($earliest_tweet_date);
+			$query_exhausted = (int) $new_difference->format('%a') >= 8 || count($tweets) < 15;
+
+			if ($query_exhausted) {
+				$cur_query_roster = 1;
+				$until_date = 0;
+			}
 		}
 
 		// map embed
@@ -249,12 +285,13 @@ class Network {
 				'more_post_content' => $more_post_content,
 				'more_posts' => $more_posts,
 				'more_tweets' => 1,
+				'cur_query_roster' => $cur_query_roster,
 				'last_updated' => 0,
 				'newer_posts' => $network->more_newer_posts,
 				'newer_posts_lower_bound' => $newer_posts_lower_bound,
 				'older_posts_lower_bound' => $older_posts_lower_bound,
 				'post_count' => $network->post_count,
-				'tweet_until_date' => $query_info['until_date'],
+				'tweet_until_date' => $until_date,
 				'tweet_scope_info' => $network->getScopeInfo(),
 				'uid' => null,
 				'nid' => $nid,
