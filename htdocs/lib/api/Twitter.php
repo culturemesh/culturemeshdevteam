@@ -7,6 +7,12 @@ class Twitter {
 	 * Takes a json response from Twitter's Search API
 	 * and turns it into a dobjList of dobjTweets
 	 *
+	 * Also, because of a strange quirk in Twitter's api,
+	 * some popular tweets are always floated to the top of 
+	 * the list, so we work to detect the point when popular tweets
+	 * become recent tweets, and we jam those back on the end
+	 * when the loop is done - saving ourselves a sort
+	 *
 	 */
 	public static function JsonToTweets($json_input, $remora=NULL) {
 
@@ -17,10 +23,16 @@ class Twitter {
 			$tweet = new \dobj\Tweet();
 			$tweet->fillFromJson($json_tweet, $remora);
 
+
 			if (!$tweet->duplicate && !$tweet->blocked) {
-				$list->dInsert( $tweet );
+
+				$list->dInsert($tweet);
 			}
 		}
+
+		$list->sort(array('key' => 'created_at',
+				'order' => 'asc',
+				'sorting_date' => True));
 
 		return $list;
 	}

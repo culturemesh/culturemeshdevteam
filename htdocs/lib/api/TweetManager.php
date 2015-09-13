@@ -109,6 +109,7 @@ class TweetManager {
 
 		$tweet_info_key = $tweet_key . '_info';
 		$tweets_exist = $cache->exists($tweet_key);
+		$tweets_exist = False;
 
 		// proceed straight to query if mode is 'network_addtl' or 'adjust'
 		if ($tweets_exist === False || $mode == 'adjust') {
@@ -251,6 +252,14 @@ class TweetManager {
 
 			// get relevance index from remora data
 			$tweets = Twitter::JsonToTweets($twitter_json, $remora);
+
+			// get earliest tweet date
+			if (count($tweets) > 0) {
+				$remora->earliest_tweet_date = $tweets->end()->created_at;
+			}
+			else {
+				$remora->earliest_tweet_date = NULL;
+			}
 
 			if ($mode == 'network' || $mode=='adjust') {
 

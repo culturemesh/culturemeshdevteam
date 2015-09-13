@@ -266,8 +266,34 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		return count($this->dlist);
 	}
 
-	public function sort($key, $asc) {
+	public function sort($options=array(
+				'key' => NULL,
+				'order' => 'desc',
+				'sorting_date' => False)) {
 
+		usort($this->dlist, function($a, $b) use ($options) {
+
+			$a = $a->$options['key'];
+			$b = $b->$options['key'];
+
+			// Make into a date
+			//
+			if ($options['sorting_date'] == True) {
+
+				$a = new \DateTime($a);
+				$b = new \DateTime($b);
+			}
+
+			if ($options['order'] == 'desc') {
+				return ($a > $b) ? 1 : -1;
+			}
+			else if ($options['order'] == 'asc') {
+				return ($a > $b) ? -1 : 1;
+			}
+			else {
+				throw new \Exception('DObjList->sort: ' . $options['order'] . ' is not a valid sorting arrangement. Choose \'asc\' or \'desc\'');
+			}
+		});
 	}
 
 	public function me() {
@@ -292,6 +318,11 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 	// reset at zero
 	function rewind() {
 		$this->position = 0;
+	}
+
+	// get end element
+	function end() {
+		return end($this->dlist);
 	}
 
 	// checks if current position is valid
