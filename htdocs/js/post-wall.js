@@ -393,8 +393,16 @@ cm.PostWall.prototype = {
 					sendNow: true
 			}, function(data) {
 				var response = JSON.parse(data);
+
 				// add stuff to post wall
-				$("#post-wall-ul").append(response.html);
+				if (response.error == "Success") {
+					$("#post-wall-ul").append(response.html);
+				}
+				else {
+					$("#post-wall-nmp-error").text("Cannot find more posts.");
+					$("#post-wall-nmp-error").show();
+					$("#post-wall-nmp-error").hide(1000);
+				}
 
 				if (handlingTweets) {
 
@@ -441,14 +449,9 @@ cm.MorePostsSwitch = function(o) {
 		nmp_ub : null,
 		nmp_nid : null,
 		nmp_tweet_until_date : null,
-		nmp_initial: null,
 		nmp_more_posts : null,
 		nmp_more_tweets : null,
-		nmp_last_updated : null,
-		nmp_cur_location_scope : null,
-		nmp_max_location_scope : null,
-		nmp_cur_origin_scope : null,
-		nmp_max_origin_scope : null
+		nmp_cur_roster_level : null
 	};
 
 	this._activate();

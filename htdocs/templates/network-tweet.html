@@ -1,6 +1,6 @@
 <li {{# tweet.id }} id='pt-{{ . }}' {{/ tweet.id }} class='network-post'>
 	<div class='post-img'>
-		<img id='profile-post' src='{{ tweet.profile_image }}' width='45' height='45'>
+		<img id='profile-post' src='{{ tweet.profile_image }}' onerror="this.src='{{ vars.hostname }}/images/blank_profile.png'" width='45' height='45'>
 	</div>
 	<div class='post-info'>
 		<h5 class='h-network post'><b>{{ tweet.name }}</b>&nbsp;&nbsp;&nbsp;&nbsp;@{{ tweet.screen_name }}</h5> 

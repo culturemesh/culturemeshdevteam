@@ -125,7 +125,7 @@ class TwitterQuery {
 			$this->filterRetweets();
 		}
 
-		$this->addResultType('mixed');
+		$this->addResultType('recent');
 		$this->addSinceDate($network);
 
 		if ($this->using_until_date) {

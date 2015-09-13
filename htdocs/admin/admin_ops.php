@@ -289,6 +289,19 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 	// make a data object for use in queries to come
 	$data = $json_post['data'];
 
+
+	/********************
+	 * SHUT OFF SWITCH
+	 */
+
+	$json_response['error'] = 'Exiting early for now';
+	echo json_encode($json_response);
+	exit();
+
+	/********************
+	 * SHUT OFF SWITCH
+	 */
+
 	$mod_cols = array();
 		
 //	$sql_data = addSqlQuotes($data);
@@ -347,20 +360,6 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 			echo json_encode($json_response);
 			exit();
 		}
-
-		/********************
-		 * SHUT OFF SWITCH
-		 */
-
-		/*
-		$json_response['error'] = 'Exiting early for now';
-		echo json_encode($json_response);
-		exit();
-		 */
-
-		/********************
-		 * SHUT OFF SWITCH
-		 */
 
 		// arrange only modified columns
 		// into fun array type deal

@@ -30,6 +30,7 @@ class Network extends DisplayDObj {
 	
 	protected $member_count;
 	protected $post_count;
+	protected $native_post_count;
 	protected $join_date;
 	protected $existing;		// bool, not in db
 
@@ -334,8 +335,8 @@ class Network extends DisplayDObj {
 			throw new Exception('No id is associated with this network object');
 		}
 
-		$this->post_count = $do2db->execute($dal, $this, 'getPostCount');
-		$this->post_count += $this->tweet_count;
+		$this->native_post_count = (int) $do2db->execute($dal, $this, 'getPostCount');
+		$this->post_count += $this->native_post_count + $this->tweet_count;
 	}
 
 	public function getMemberCount($dal, $do2db) {
@@ -680,7 +681,7 @@ class Network extends DisplayDObj {
 			if (isset($this->id_country_origin))
 				return $this->id_country_origin;
 			
-			throw new \Exception('Network: GetOriginComponent no origin set.');
+			throw new \Exception('Network: GetOriginComponentId no origin set.');
 
 			break;
 		case 2:
@@ -690,7 +691,7 @@ class Network extends DisplayDObj {
 				return $this->id_country_origin;
 
 			if (isset($this->id_language_origin))
-				throw new \Exception('Network: GetOriginComponent this is a language network, scope == 1');
+				throw new \Exception('Network: GetOriginComponentId this is a language network, scope == 1');
 
 			throw new \Exception('Network: GetOriginComponent Scope must be below level 2');
 			break;
@@ -699,12 +700,12 @@ class Network extends DisplayDObj {
 				return $this->id_country_origin;
 			
 			if (isset($this->id_language_origin))
-				throw new \Exception('Network: GetOriginComponent this is a language network, scope == 1');
+				throw new \Exception('Network: GetOriginComponentId this is a language network, scope == 1');
 
-			throw new \Exception('Network: GetOriginComponent Scope must be below level 3');
+			throw new \Exception('Network: GetOriginComponentId Scope must be below level 3');
 			break;
 		default:
-			throw new \Exception('Network: GetOriginComponent cannot find a component with given value: ' . $component_level);
+			throw new \Exception('Network: GetOriginComponentId cannot find a component with given value: ' . $component_level);
 			break;
 		}
 	}
@@ -1024,6 +1025,183 @@ class Network extends DisplayDObj {
 			'max_location_scope' => $this->getMaxLocationScope(),
 			'location_scope_ratio' => $this->getLocationScopeRatio()
 		);
+	}
+
+	public function getNetworkQueryRoster() {
+
+		/*
+		 * Order!
+		 *
+		 * - Both
+		 * - Origin
+		 * - Location
+		 */
+		$initial_roster = array();
+		$key_array = array();
+
+		$cur_roster_origin_level = $this->query_origin_scope;
+		$cur_roster_location_level = $this->query_location_scope;
+		$cur_roster_origin_level_max = $this->getMaxOriginScope();
+		$cur_roster_location_level_max = $this->getMaxLocationScope();
+		$finished = False;
+
+		$last_updated = NULL;
+		$skip_origin = False;
+		$skip_location = False;
+		$key_count = 0;	// count for keeping track of keys
+
+		// COMPLICATED LOOP
+		//
+		// Creating first roster of things
+		//
+		// Iterates until the break statement is reached
+		//
+		while (True)
+		{
+			// get both
+			$origin = $this->getOriginComponentId($cur_roster_origin_level);
+			$location = $this->getLocationComponentId($cur_roster_location_level);
+
+
+			// BOTH
+			if ($last_updated == NULL || $last_updated == 'location') {
+
+
+				// Figure out what goes in here later
+				array_push($initial_roster, array(
+					'component' => 'both',
+					'value' => array($origin, $location),
+					'origin_level' => $cur_roster_origin_level,
+					'location_level' => $cur_roster_location_level
+				));
+
+				// increase key_count
+				$key_count++;
+
+				$last_updated = 'both';
+			}
+
+			// ORIGIN
+			if ($last_updated == 'both') {
+
+				if ($skip_origin === False) {
+
+					array_push($initial_roster, array(
+						'component' => 'origin',
+						'value' => $origin,
+						'level' => $cur_roster_origin_level
+					));
+
+					$key_array[$origin] = $key_count;
+
+					// increase key_count
+					$key_count++;
+				}
+
+				// increment level
+				if ($cur_roster_origin_level < $cur_roster_origin_level_max) {
+					$cur_roster_origin_level++;
+				}
+				else {
+					$skip_origin = True;
+				}
+
+				$last_updated = 'origin';
+			}
+			
+			// LOCATION
+			if ($last_updated == 'origin') {
+				
+				if ($skip_location === False) {
+
+					array_push($initial_roster, array(
+						'component' => 'location',
+						'value' => $location,
+						'level' => $cur_roster_location_level
+					));
+					
+					$key_array[$location] = $key_count;
+
+					// increase key_count
+					$key_count++;
+				}
+
+				// UPDATE
+				if ($cur_roster_location_level < $cur_roster_location_level_max) {
+					$cur_roster_location_level++;
+				}
+				else {
+					$skip_location = True;
+				}
+
+				$last_updated = 'location';
+			}
+
+			// TRACKING
+			if ($skip_location == True && $skip_origin == True) {
+
+				// end loop
+				break;
+			}
+		}
+
+		// now I have two arrays
+		// initial_roster, and key_array
+		//
+
+		$suspect_keys = array();
+		$last_value = 0;
+
+		 // Key array will most def be arranged in ascending order
+		foreach($key_array as $location => $key) {
+
+			$difference = $key - $last_value;
+
+			// if difference is greater than one, it means we've skipped something
+			if ($difference > 1) {
+
+				$suspect_keys = array_merge($suspect_keys, range(($last_value+1), ($key-1)));
+			}
+			
+			// make sure first (zero) value is chosen
+			//  -- Shouldn't need it, but just in case
+			if ($difference == 1 && $last_value == 0) {
+
+				array_push($suspect_keys, $last_value);
+			}
+
+			// set us up for the next one
+			$last_value = $key;
+		}
+
+		// check that some final value was not skipped (necessary?)
+		//
+
+
+		// loop through suspect keys and find bad keys and DESTROY THEM
+		foreach($suspect_keys as $key) {
+
+			// UNSET IF IT HAS BEEN MARKED
+			if ($initial_roster[$key]['component'] !== 'both') {
+
+				unset($initial_roster[$key]);
+			}
+
+			// UNSET IF BOTH component has DUPLICATE VALUES
+			//
+			if ($initial_roster[$key]['component'] == 'both') {
+
+				$value_1 = $initial_roster[$key]['value'][0];
+				$value_2 = $initial_roster[$key]['value'][1];
+
+				if ($value_1 === $value_2) {
+					unset($initial_roster[$key]);
+				}
+			}
+		}
+
+		// return newly indexed array
+		return array_values($initial_roster);
 	}
 
 	/*
