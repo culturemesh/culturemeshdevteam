@@ -109,7 +109,6 @@ class TweetManager {
 
 		$tweet_info_key = $tweet_key . '_info';
 		$tweets_exist = $cache->exists($tweet_key);
-		$tweets_exist = False;
 
 		// proceed straight to query if mode is 'network_addtl' or 'adjust'
 		if ($tweets_exist === False || $mode == 'adjust') {
