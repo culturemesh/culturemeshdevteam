@@ -41,6 +41,16 @@ class PostTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("<a target='_blank' href='http://www.culturemesh.com'>www.culturemesh.com</a>", $formatted);
 	}
 
+	public function testFormatTextAutoLink_2() {
+
+		$post = new dobj\Post();
+		$post->post_text = "Michael Resin's Album \"Emotion Sickness\" in Japan, China, Taiwan, Malaysia and more Bongo Boy Records https://t.co/xebVOJXDge via @sharethis";
+
+		$formatted = $post->formatText();
+
+		$this->assertEquals("<a target='_blank' href='https://t.co/xebVOJXDge'>https://t.co/xebVOJXDge</a>", $formatted);
+	}
+
 	public function testFormatTextMultipleLinks() {
 
 		$post = new dobj\Post();
