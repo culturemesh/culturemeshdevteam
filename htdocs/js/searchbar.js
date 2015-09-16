@@ -165,6 +165,10 @@ function fillACArray(acArray, data, type) {
 	}
 }
 
+function fillArrayFromDB() {
+
+}
+
 function loadInitialData() {
 	// search bar
 	searchBar.initialize();
@@ -207,6 +211,15 @@ function loadInitialData() {
 		sendNow: true
 		}, function(data) { 
 			fillACArray(locations, data, 'cc');
+		});
+
+	var allDataRequest = new Ajax({
+		requestType: 'GET',
+		requestUrl: cm.home_path + '/searchbar-data.php',
+		requestParameters: ' ',
+		sendNow: true
+		}, function(data) { 
+			// nothing
 		});
 }
 

@@ -300,6 +300,13 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		return $this->dlist;
 	}
 
+	/*
+	 * Replacing the horribly named me function
+	 */
+	public function toArray() {
+		return $this->dlist;
+	}
+
 	// return current thing
 	function current() {
 		return $this->dlist[$this->position];

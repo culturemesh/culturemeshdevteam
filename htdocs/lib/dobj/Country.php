@@ -20,6 +20,16 @@ class Country extends Location {
 		return $this->name;
 	}
 
+	public static function getAll($dal, $do2db) {
+
+		$countries = $do2db->execute($dal, NULL, 'getAllCountries');
+
+		if (get_class($countries) == 'PDOStatement')
+			return false;
+
+		return $countries;
+	}
+
 	public static function createFromId($id, $dal, $do2db) {
 
 		$country = new Country();

@@ -9,6 +9,16 @@ class Language extends Searchable {
 		return $this->name;
 	}
 
+	public static function getAll($dal, $do2db) {
+
+		$languages = $do2db->execute($dal, NULL, 'getAllLanguages');
+
+		if (get_class($languages) == 'PDOStatement')
+			return false;
+
+		return $languages;
+	}
+
 	public static function createFromId($id, $dal, $do2db) {
 
 		$language = new Language();

@@ -20,6 +20,16 @@ class Region extends Location {
 		$this->name_values = array('name', 'country_name');
 	}
 
+	public static function getAll($dal, $do2db) {
+
+		$regions = $do2db->execute($dal, NULL, 'getAllRegions');
+
+		if (get_class($regions) == 'PDOStatement')
+			return false;
+
+		return $regions;
+	}
+
 	public static function createFromId($id, $dal, $do2db) {
 
 		$region = new Region();

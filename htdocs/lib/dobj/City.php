@@ -21,6 +21,16 @@ class City extends Location {
 		$this->name_values = array('name', 'region_name', 'country_name');
 	}
 
+	public static function getAll($dal, $do2db) {
+
+		$cities = $do2db->execute($dal, NULL, 'getAllCities');
+
+		if (get_class($cities) == 'PDOStatement')
+			return false;
+
+		return $cities;
+	}
+
 	public static function createFromId($id, $dal, $do2db) {
 
 		$city = new City();

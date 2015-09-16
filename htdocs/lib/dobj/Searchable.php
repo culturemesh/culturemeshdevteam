@@ -10,6 +10,10 @@ class Searchable extends DObj {
 	public function toString() {
 		return $name;
 	}
+
+	public static function getAll($cm, $dal, $do2db)  {
+
+	}
 }
 
 ?>
