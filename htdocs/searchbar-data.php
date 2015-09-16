@@ -25,14 +25,24 @@ else
 {
 }
  */
+ini_set('memory_limit', '512M');
 
 // check cache for current data
 $cache = new \misc\Cache($cm);
 $data_key = 'searchable_data_assoc_';
 
 $tables = array('languages', 'cities', 'regions', 'countries');
+$tables_found = True;
 
-if ($cache->exists($data_key)) {
+foreach($tables as $table) {
+
+	if (!$cache->exists($data_key . $table)) {
+		$tables_found = False;
+		break;
+	}
+}
+
+if ($tables_found) {
 	$data_arrays = array();
 
 	foreach($tables as $table) {
