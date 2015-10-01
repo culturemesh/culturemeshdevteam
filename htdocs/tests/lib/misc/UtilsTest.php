@@ -238,6 +238,15 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('<test>One</test> <mixed>Two</mixed> <test><mixed>Three</mixed></test>', $new_string);
 	}
+
+	public function testDoubleMetaphone() {
+
+		$string = 'test';
+
+		$metaphone_thing = misc\Util::DoubleMetaphone($string);
+
+		$this->assertEquals('TST', $metaphone_thing['primary']);
+	}
 }
 
 ?>
