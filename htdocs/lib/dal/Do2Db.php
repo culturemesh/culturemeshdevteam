@@ -43,6 +43,11 @@ class Do2Db {
 		return true;
 	}
 
+	/*
+	 * Returns an array of arguments (from the dobj) 
+	 * based on the scheme required from the dbquery
+	 *
+	 */
 	private function prepareArgs($scheme) {
 
 		$args = array();
@@ -64,7 +69,16 @@ class Do2Db {
 			}
 			else {
 				$thing = &$this->dobj->getReference($param);
-				array_push($args, $thing);
+
+				if (is_array($thing)) {
+					foreach($thing as $item_in_thing) {
+						array_push($args, $item_in_thing);
+					}
+				}
+				else {
+					array_push($args, $thing);
+				}
+
 			}
 		}
 		
@@ -164,6 +178,11 @@ class Do2Db {
 		$this->dobj = NULL;
 		$this->query = NULL;
 		$this->op = NULL;
+	}
+
+	public function initializeCustomQuery() {
+
+		return new CustomSelectQuery();
 	}
 }
 

@@ -1,0 +1,45 @@
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ stylesheets }}
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+	<div class-"net-left">
+		<div class-"leftbar">
+			
+			{{{ sections.map_embed }}}
+		</div>
+	</div>
+	<div class="net-right">
+		{{{ sections.searchbar }}}
+		<div id='searchable-results'>
+			<b> Origin </b>
+			<ul>
+				{{# sections.origin-results }}
+				{{{ . }}}
+				{{/ sections.origin-results }}
+			</ul>
+			<b> Location </b>
+			<ul>
+				{{# sections.location-results }}
+				{{{ . }}}
+				{{/ sections.location-results }}
+			</ul>
+		</div>
+		<div id='network-results'>
+		</div>
+	</div>
+	{{/ content }}
+
+	{{$ body_scripts }}
+	{{/ body_scripts }}
+
+{{/ layout }}

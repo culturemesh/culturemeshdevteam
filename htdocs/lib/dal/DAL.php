@@ -41,6 +41,13 @@ class DAL {
 		return $thing($this->connection);
 	}
 
+	public function addCustomQuery($query) {
+
+		if (get_class($query) != 'CustomSelectQuery')
+			throw new \Exception('Not the correct class: must be CustomSelectQuery');
+
+	}
+
 	public function loadFiles()
 	{
 		include_once('reg-test.php');
