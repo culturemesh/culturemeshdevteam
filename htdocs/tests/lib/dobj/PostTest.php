@@ -70,6 +70,16 @@ class PostTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals("test...", $formatted);
 	}
+	
+	public function testEliminateEllipsis2() {
+
+		$post = new dobj\Post();
+		$post->post_text = 'I...again twisst';
+
+		$formatted = $post->formatText();
+
+		$this->assertEquals("I...again twisst", $formatted);
+	}
 }
 
 ?>
