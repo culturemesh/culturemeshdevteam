@@ -51,6 +51,26 @@ class PostTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("<a target='_blank' href='https://t.co/xebVOJXDge'>https://t.co/xebVOJXDge</a>", $formatted);
 	}
 
+	public function testFormatTextAutoLink_3() {
+
+		$post = new dobj\Post();
+		$post->post_text = 'http://t.co/N4jIT89Hrk';
+
+		$formatted = $post->formatText();
+
+		$this->assertEquals("<a target='_blank' href='http://t.co/N4jIT89Hrk'>http://t.co/N4jIT89Hrk</a>", $formatted);
+	}
+
+	public function testFormatTextAutoLink_4() {
+
+		$post = new dobj\Post();
+		$post->post_text = 'MAPPE MONDE, WORLD MAP, NORTH POLE AND ANTARCTICA, EUGENE BELIN 1890 https://t.co/gsanF1qpp5 https://t.co/EYJuPXXLVw';
+
+		$formatted = $post->formatText();
+
+		$this->assertEquals("", $formatted);
+	}
+
 	public function testFormatTextMultipleLinks() {
 
 		$post = new dobj\Post();

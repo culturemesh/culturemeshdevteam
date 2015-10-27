@@ -292,12 +292,12 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 
 	/********************
 	 * SHUT OFF SWITCH
-	 */
 
 	$json_response['error'] = 'Exiting early for now';
 	echo json_encode($json_response);
 	exit();
 
+	 */
 	/********************
 	 * SHUT OFF SWITCH
 	 */
