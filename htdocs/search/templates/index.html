@@ -9,37 +9,60 @@
 	{{/ more_scripts }}
 
 	{{$ autoload_scripts }}
+	<script type='text/javascript'>
+		
+			cm.Autoloader(function() {
+
+					var ns = new cm.NetworkSearcher({
+							searchable_selector: document.getElementById('searchable-results'),
+							results: document.getElementById('network-results'),
+							error_span: document.getElementById('results-error')
+						});
+
+					});
+	</script>
 	{{/ autoload_scripts }}
 
 	{{$ content }}
-	<div class-"net-left">
-		<div class-"leftbar">
-			
-			{{{ sections.map_embed }}}
+	<div id="content">
+		<div class-"net-left">
+			<div class="leftbar">
+				
+				{{{ sections.map_embed }}}
+			</div>
+		</div>
+		<div class="net-right">
+			{{{ sections.searchbar }}}
+			<div id='searchable-results' class='panel row span12'>
+					<div class='row'>
+					<div class='span4'>
+					<b> Origin </b>
+						<div id='origin-results'>
+						{{# sections.origin-results }}
+						{{{ . }}}
+						{{/ sections.origin-results }}
+						</div>
+					</div>
+					<div class='span4'>
+					<b> Location </b>
+						<div id='location-results'>
+						{{# sections.location-results }}
+						{{{ . }}}
+						{{/ sections.location-results }}
+						</div>
+					</div>
+					</div>
+				<span id='results-error'></span>
+			</div>
+			<div id='network-results'>
+			</div>
 		</div>
 	</div>
-	<div class="net-right">
-		{{{ sections.searchbar }}}
-		<div id='searchable-results'>
-			<b> Origin </b>
-			<ul>
-				{{# sections.origin-results }}
-				{{{ . }}}
-				{{/ sections.origin-results }}
-			</ul>
-			<b> Location </b>
-			<ul>
-				{{# sections.location-results }}
-				{{{ . }}}
-				{{/ sections.location-results }}
-			</ul>
-		</div>
-		<div id='network-results'>
-		</div>
-	</div>
+	<div class="clear"></div>
 	{{/ content }}
 
 	{{$ body_scripts }}
+	<script src="{{vars.hostname}}/js/searchbar.js"></script>
 	{{/ body_scripts }}
 
 {{/ layout }}

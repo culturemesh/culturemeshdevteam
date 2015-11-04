@@ -1,1 +1,6 @@
-<li>{{ name }}</li>
+<div class='searchable-radio'>
+<input type="radio" name="{{ radio_name }}" value="{{ searchable.fullname }}" autocomplete="off">{{ searchable.fullname }}</br>
+<input type="hidden" name="id" value="{{ searchable.id }}" />
+<input type="hidden" name="name" value="{{ searchable.name }}" />
+<input type="hidden" name="class" value="{{ searchable.class }}" />
+</div>

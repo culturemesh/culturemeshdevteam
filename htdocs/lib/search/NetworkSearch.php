@@ -47,6 +47,12 @@ class NetworkSearch extends Search {
 		};
 
 		$results = $do2db->execute($dal, $custom_query->getParamObject(), 'customNetworkSearch');
+
+		// Check for no results
+		if (get_class($results) != 'PDOStatement') {
+
+		}
+
 		return $results;
 	}
 }

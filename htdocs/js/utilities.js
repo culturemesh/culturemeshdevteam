@@ -359,3 +359,136 @@ cm.Counter.prototype = {
 		return button;
 	}
 }
+
+cm.NetworkSearcher = function(o) {
+
+	this._options = {
+		searchable_selector : null,
+		results : null,
+		location_radio_name : 'location',
+		origin_radio_name : 'origin',
+		error_span : null
+	};
+
+	cm.extend(this._options, o);
+	cm.extend(this, cm.DisposeSupport);
+
+	this._originRadioDiv;
+	this._locationRadioDiv;
+
+	this._registerElements();
+	this._registerRadioEvents();
+
+	this._radio_intro = 'input[name="';
+	this._radio_end = '"]:checked';
+}
+
+cm.NetworkSearcher.prototype = {
+	_registerElements: function() {
+
+		//var self = this;
+
+		this._originRadioDiv = document.getElementById('origin-results');
+		this._locationRadioDiv = document.getElementById('location-results');
+
+		// check if two things not undefined 
+
+		var originRadios = $( this._originRadioDiv ).children('div.searchable-radio');
+		var locationRadios = $( this._locationRadioDiv ).children('div.searchable-radio');
+
+		// check for named radio values
+ 
+		this._allRadios = $( originRadios ).add( locationRadios );
+	},
+	_registerRadioEvents: function() {
+
+		var self = this;
+
+		$( this._allRadios ).change( function(e) {
+
+			// Proceed if both have been selected
+			if (self._bothSelected()) {
+
+				var values = self._gatherValues();
+				self._runSearch(values, self._processResults);
+			}
+		});
+	},
+	_bothSelected: function() {
+
+		var lname = this._options.location_radio_name;
+		var oname = this._options.origin_radio_name;
+
+		var location_selected = 1 == $( this._radio_intro + lname + this._radio_end ).length;
+		var origin_selected = 1 == $( this._radio_intro + oname + this._radio_end ).length;
+
+		if (location_selected && origin_selected)
+			return true;
+		else
+			return false;
+	},
+	_gatherValues: function() {
+
+		var locationJSON = {
+			name : null,
+			fullname : null,
+			id : null,
+			searchable_class : null
+		};
+
+		var originJSON = {
+			name : null,
+			fullname : null,
+			id : null,
+			searchable_class : null
+		};
+
+		var lname = this._options.location_radio_name;
+		var oname = this._options.origin_radio_name;
+
+		// get location searchable
+		var location_searchable = $( this._radio_intro + lname + this._radio_end ).parent('div.searchable-radio');
+
+		locationJSON.name = $( location_searchable ).children( 'input[name="name"]' ).val();
+		locationJSON.id = $( location_searchable ).children( 'input[name="id"]' ).val();
+		locationJSON.searchable_class = $( location_searchable ).children( 'input[name="class"]' ).val();
+		locationJSON.fullname = $( location_searchable ).children( 'input[type="radio"]' ).val();
+
+		// get origin searchable
+		var origin_searchable = $( this._radio_intro + oname + this._radio_end ).parent('div.searchable-radio');
+
+		originJSON.name = $( origin_searchable ).children( 'input[name="name"]' ).val();
+		originJSON.id = $( origin_searchable ).children( 'input[name="id"]' ).val();
+		originJSON.searchable_class = $( origin_searchable ).children( 'input[name="class"]' ).val();
+		originJSON.fullname = $( origin_searchable ).children( 'input[type="radio"]' ).val();
+
+		return { location : locationJSON, origin : originJSON };
+	},
+	_runSearch: function(values, returnFunction) {
+
+		var self = this;
+
+		var networkSearchAjax = new Ajax({
+			requestType: 'POST',
+			requestUrl: cm.home_path + '/api/search/network-post.php',
+		    	data: values,
+			dataType: 'JSON',
+			requestParameters: ' ',
+			sendNow: true
+			}, 
+			function(data) {
+				data = JSON.parse(data);
+				self._processResults(data);
+			});
+	},
+	_processResults: function(data) {
+
+		if (data.error != 0) {
+			$( this._options.error_span ).text(data.error);
+		}
+
+		// I feel like this oughta be the first
+		// thing to use js mustache
+		this._options.results;
+	}
+}

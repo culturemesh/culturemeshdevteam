@@ -15,6 +15,19 @@ class Searchable extends DisplayDObj {
 
 	}
 
+	/*
+	 * Returns an array with all the nice object properties
+	 */
+	public function prepare() {
+
+		return array(
+			'name' => $this->name,
+			'fullname' => $this->toString(),
+			'id' => $this->id,
+			'class' => get_class($this)
+		);
+	}
+
 	public function getHTML($context, $vars) {
 
 		$cm = $vars['cm'];
@@ -24,10 +37,13 @@ class Searchable extends DisplayDObj {
 
 		case 'user-results':
 
+			$radio_name = $vars['radio_name'];
+
 			// get template
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_searchable.html');
 			return $mustache->render($template, array(
-				'name' => $this->toString(),
+				'searchable' => $this->prepare(),
+				'radio_name' => $radio_name
 				)
 			);
 		}

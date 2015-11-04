@@ -84,17 +84,35 @@ class Search {
 		// RESULTS LISTS
 		for($i = 0; $i < count($results); $i++) {
 
-			$results[$i]->setMustache($m_comp);
 			$html = NULL;
 
+			if ($i == 0)
+			  $radio_name = 'origin';
+
+			if ($i == 1)
+			  $radio_name = 'location';
+
 			try {
-				$template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_searchable_options.html');
-				$html = $results[$i]->getHTML('user-results', array(
-					'list_template' => $template,
-					'cm' => $cm,
-					'mustache' => $m_comp
-					)
-				);
+				// Check if result is a Null result
+				if (get_class($results[$i]) == 'search\NullSearchResult') {
+
+					$html = $results[$i]->getHTML('user-results', array(
+						'cm' => $cm,
+						'mustache' => $m_comp
+						)
+					);
+				}
+				else {
+					$results[$i]->setMustache($m_comp);
+					$template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_searchable_options.html');
+					$html = $results[$i]->getHTML('user-results', array(
+						'list_template' => $template,
+						'cm' => $cm,
+						'radio_name' => $radio_name,
+						'mustache' => $m_comp
+						)
+					);
+				}
 			}
 			catch (\Exception $e)
 			{

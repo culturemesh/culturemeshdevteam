@@ -52,6 +52,14 @@ class SearchableSearch extends Search {
 
 		$results = $do2db->execute($dal, $custom_query->getParamObject(), $query_name);
 
+		// if no results were found
+		// create a NullResult Object
+		if (get_class($results) == 'PDOStatement') {
+
+			$results = new NullSearchResult();
+			$results->setUserInput($this->input);
+			$results->setAlternate($this->input);
+		}
 		/*
 		$searchable_results = new \dobj\DObjList();
 
