@@ -79,7 +79,7 @@ if ($json_post['op'] == 'login') {
 		'error' => NULL
 	);
 
-	if ($json_post['password'] == "password") {
+	if ($json_post['password'] == "HairClockOperaMouse") {
 		$response['error'] = 0;
 	}
 	else {
