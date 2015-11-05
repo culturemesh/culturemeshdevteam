@@ -223,6 +223,12 @@ class Tweet extends Post {
 	 */
 	public function formatText() {
 
+		// if it's got native replies, it's already been formatted
+		if (count($this->replies) > 0) {
+			return $this->getText();
+		}
+
+		/*
 		$raw_text = $this->getText();
 
 		// autodetect links w/o tags
@@ -231,6 +237,8 @@ class Tweet extends Post {
 		$new_text = preg_replace($al_match, $al_replace, $raw_text);
 
 		return $new_text;
+		 */
+		return parent::formatText();
 	}
 
 	/*

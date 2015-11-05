@@ -316,7 +316,13 @@ class Post extends DisplayDObj {
 		$no_ltag = \misc\Util::StrExtract($raw_text, 'link');
 
 		// autodetect links w/o tags
-		$al_match = "#((?:http|https|ftp)\:\/\/)*([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
+		// $regex .= "(\/([a-z0-9+\$_-]\.?)+)*\/?"; // Path 
+		// (modified) "(?:(\/([a-z0-9+\$_-]\.?)+)*\/?)?"; // Path 
+		//(old) $al_match = "#((?:http|https|ftp)\:\/\/)?([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
+		//$al_match = "#((?:http|https|ftp)\:\/\/)?((?:[a-z0-9-]+\.?[a-z0-9-]+)+\.(?:[a-z]{2,3}))((\/([a-z0-9+\$_-]\.?)+)*\/?)#";
+		//$al_match = "#((?:http|https|ftp)\:\/\/)?((?:[a-z0-9-]+\.?[a-z0-9-]+)+\.(?:[a-z]{2,3}))((\/([a-z0-9+\$_-]\.?)+)*\/?)#";
+		//$al_match = "#((?:https?|ftp)\:\/\/)?((?:[a-z0-9-]+\.[a-z0-9-]+)*(?:[a-z0-9-]*[a-z][a-z0-9-]*)(?:\.[a-z]{2,3}))((?:\/([a-z0-9+\$_-]\.?)+)*\/?)#";
+		$al_match = "#((?:https?|ftp)\:\/\/)?((?:[a-z0-9-]+\.[a-z0-9-]+)*(?:[a-z0-9-]*[a-z][a-z0-9-]*)(?:\.[a-z]{2,3}))((?:\/([a-zA-Z0-9+\$_-]\.?)+)*\/?)#";
 		$al_replace = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
 		$new_text = preg_replace($al_match, $al_replace, $no_ltag['replacement']);
 
@@ -337,7 +343,6 @@ class Post extends DisplayDObj {
 		// find bold and italics
 		$new_text = \misc\Util::TagReplace($new_text, 'b');
 		$new_text = \misc\Util::TagReplace($new_text, 'i');
-
 
 		return $new_text;
 	}
