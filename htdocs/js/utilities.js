@@ -279,6 +279,14 @@ cm.DisposeSupport = {
   }
 };
 
+cm.ErrorMessage = function(o) {
+
+};
+
+cm.ErrorMessage.prototype = {
+
+};
+
 /*
  * Two buttons and an input used as
  * a simple counter. I'm unsure why this

@@ -1,4 +1,7 @@
 <?php
+	require '../../environment.php';
+	$cm = new \Environment();
+
 	// JSON RESPONSE
 	$json_response = array(
 		'error' => NULL
@@ -16,7 +19,18 @@
 		exit();
 	}
 
+	/*
 	$json_response['error'] = 'Transmitted post';
+	echo json_encode($json_response);
+	 */
+
+	// Database stuff
+	$cm->enableDatabase($dal, $do2db);
+
+	// Close database
+	$cm->closeConnection();
+
+	$json_response['error'] = 'Reworked database';
 	echo json_encode($json_response);
 	exit();
 ?>

@@ -251,6 +251,13 @@ final class Environment {
 		self::$connection = NULL;
 	}
 
+	public function enableDatabase(&$dal, &$do2db) {
+
+		$dal = new \dal\DAL($this->getConnection());
+		$dal->loadFiles();
+		$do2db = new \dal\Do2db();
+	}
+
 	public static function tearDown() {
 		self::$environment = NULL;
 	}
