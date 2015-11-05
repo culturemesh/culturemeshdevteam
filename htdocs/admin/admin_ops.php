@@ -314,13 +314,27 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 		$vals = array();
 		$cols = array();
 
+		$nullable_keys = array('region_id', 'region_name', 'country_id', 'country_name');
+
 		// put keys and values in cols and vals arrays respectively
 		foreach( $data as $key => $value) {
 			if ($key == 'id')
 				continue;
 
+			// write the string in
 			if ($sqlTypeDict[$key] == 'string')
 				$value = "'".$value."'";
+
+			// 
+			if (in_array($key, $nullable_keys)) {
+				
+				if ($value == '') {
+					$value = 'NULL';
+				}
+				else if ($value == "''") {
+					$value = 'NULL';
+				}
+			}
 
 			array_push($cols, $key);
 			array_push($vals, $value);

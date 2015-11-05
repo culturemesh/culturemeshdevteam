@@ -381,6 +381,11 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 				colCond.create = null;
 				colCond.update = null;
 				colCond.specone = null;
+
+				// set override value to 0 by default
+				if (obj['COLUMN_NAME'].indexOf('override') > 0) {
+					obj['value'] = 0;
+				}
 			}
 		}
 
