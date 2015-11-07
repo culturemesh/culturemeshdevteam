@@ -707,7 +707,7 @@ class Util {
 					if (substr($original, $current + 1, 1) == 'N'){
 						if ($current == 1
 						 && Util::IsVowel($original, 0)
-						 && !Slavo_Germanic($original)
+						 && !Util::Slavo_Germanic($original)
 						){
 							$primary   .= 'KN';
 							$secondary .= 'N';
@@ -715,7 +715,7 @@ class Util {
 							// not e.g. 'cagney'
 							if (!Util::StringAt($original, $current + 2, 2, array('EY'))
 							 && substr($original, $current + 1) != 'Y'
-							 && !Slavo_Germanic($original)
+							 && !Util::Slavo_Germanic($original)
 							){
 								$primary   .= 'N';
 								$secondary .= 'KN';
@@ -730,7 +730,7 @@ class Util {
 
 					// 'tagliaro'
 					if (Util::StringAt($original, $current + 1, 2,array('LI'))
-					 && !Slavo_Germanic($original)
+					 && !Util::Slavo_Germanic($original)
 					){
 						$primary   .= 'KL';
 						$secondary .= 'L';
@@ -848,7 +848,7 @@ class Util {
 					} else {
 						// spanish pron. of .e.g. 'bajador'
 						if (Util::IsVowel($original, $current - 1)
-						 && !Slavo_Germanic($original)
+						 && !Util::Slavo_Germanic($original)
 						 && (
 								substr($original, $current + 1, 1) == 'A'
 							 || substr($original, $current + 1, 1) == 'O'
@@ -982,7 +982,7 @@ class Util {
 				case 'R':
 					// french e.g. 'rogier', but exclude 'hochmeier'
 					if ($current == $last
-					 && !Slavo_Germanic($original)
+					 && !Util::Slavo_Germanic($original)
 					 && Util::StringAt($original, $current - 2, 2,array('IE'))
 					 && !Util::StringAt($original, $current - 4, 2,array('ME','MA'))
 					){
@@ -1033,7 +1033,7 @@ class Util {
 					if (Util::StringAt($original, $current, 3, array('SIO','SIA'))
 					 || Util::StringAt($original, $current, 4, array('SIAN'))
 					){
-						if (!Slavo_Germanic($original)){
+						if (!Util::Slavo_Germanic($original)){
 							$primary   .= 'S';
 							$secondary .= 'X';
 						} else {

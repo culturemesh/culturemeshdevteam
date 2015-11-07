@@ -39,7 +39,8 @@ class CustomSelectQuery extends DBQuery {
 			'group_by_table' => NULL,
 			'limit_offset' => NULL,
 			'limit_row_count' => NULL,
-			'returning_class' => 'dobj\Blank'
+			'returning_class' => 'dobj\Blank',
+			'returning_list' => True
 		),
 	       	$user_values);
 	}
@@ -147,7 +148,7 @@ class CustomSelectQuery extends DBQuery {
 			'params' => $this->where_columns,
 			'nullable' => array(),
 			'returning' => True,
-			'returning_list' => True,
+			'returning_list' => $this->query_values['returning_list'],
 			'returning_value' => False,
 			'returning_assoc' => False,
 			'returning_class' => $this->query_values['returning_class'],
@@ -212,6 +213,18 @@ class CustomSelectQuery extends DBQuery {
 
 		$this->where_value_types .= $type;
 
+		return True;
+	}
+
+	public function addANull($column) {
+
+		array_push($this->where_lines, new SelectWhereLine($column, 'IS NULL'));
+		return True;
+	}
+
+	public function appendANull($conjunction='AND', $column) {
+
+		array_push($this->where_lines, new SelectWhereLine($column, 'IS NULL', $conjunction));
 		return True;
 	}
 

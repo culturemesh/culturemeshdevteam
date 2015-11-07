@@ -279,12 +279,49 @@ cm.DisposeSupport = {
   }
 };
 
+/*
+ * Specify a div to contain an error message
+ *
+ * Also specify a delay time and a hide time
+ */
 cm.ErrorMessage = function(o) {
 
+	this._options = {
+		display_element: null,
+		error_class : 'cm_error',
+		success_class : 'cm_success',
+		show_time: 500,
+		delay_time: 1000,
+		hide_time: 500
+	};
+
+	cm.extend(this._options, o);
+
+	this._display_element = this._options.display_element;
 };
 
 cm.ErrorMessage.prototype = {
 
+	_formatElement: function(msg_type) {
+		// remove all my classes
+		$( this._display_element ).removeClass( this._options.error_class + ' ' + this._options.success_class );
+
+		if (msg_type == 'Error' || msg_type == 'error') {
+			$( this._display_element ).addClass( this._options.error_class );
+		}
+		else if (msg_type == 'Success' || msg_type == 'success') {
+			$( this._display_element ).addClass( this._options.success_class );
+		}
+	},
+
+	_display: function(msg_type, text) {
+
+		this._formatElement( msg_type );
+		$( this._display_element ).clearQueue();	// get rid of extra animations (in case there are many clicks)
+		$( this._display_element ).text( text );
+		$( this._display_element ).fadeIn( this._options.show_time );
+		$( this._display_element ).delay( this._options.delay_time ).fadeOut( this._options.hide_time );
+	}
 };
 
 /*
@@ -373,9 +410,9 @@ cm.NetworkSearcher = function(o) {
 	this._options = {
 		searchable_selector : null,
 		results : null,
+		error_element : null,
 		location_radio_name : 'location',
 		origin_radio_name : 'origin',
-		error_span : null
 	};
 
 	cm.extend(this._options, o);
@@ -389,7 +426,15 @@ cm.NetworkSearcher = function(o) {
 
 	this._radio_intro = 'input[name="';
 	this._radio_end = '"]:checked';
-}
+
+	// set error element
+	if (this._options.error_element != null) {
+	 	this._error_message = new cm.ErrorMessage({ display_element: this._options.error_element });
+	}
+	else {
+		alert ('No error message has been assigned');
+	}
+};
 
 cm.NetworkSearcher.prototype = {
 	_registerElements: function() {
@@ -492,11 +537,11 @@ cm.NetworkSearcher.prototype = {
 	_processResults: function(data) {
 
 		if (data.error != 0) {
-			$( this._options.error_span ).text(data.error);
+			this._error_message._display('success', data.error);
 		}
 
 		// I feel like this oughta be the first
 		// thing to use js mustache
 		this._options.results;
 	}
-}
+};

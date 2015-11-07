@@ -1645,6 +1645,26 @@ button.upload-img-delete {
 	float:left;
 }
 
+.cm_error {
+
+	background-color: #e2747d;
+	border: medium none;
+	border-radius: 3px;
+	color: white;
+	font: bold 14px Lato,sans-serif;
+	padding: 10px;
+}
+
+.cm_success {
+
+	background-color: #0088cc;
+	border: medium none;
+	border-radius: 3px;
+	color: white;
+	font: bold 14px Lato,sans-serif;
+	padding: 10px;
+}
+
 
 /********
  * TEAM THUMBNAIL 

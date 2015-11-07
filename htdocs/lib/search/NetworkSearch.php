@@ -4,24 +4,29 @@ namespace search;
 class NetworkSearch extends Search {
 
 	private $searchables;
+	private $class_to_column;
 
-	public function __construct($state='searchable') {
+	public function __construct($origin, $location) {
 
-		// initialize states
-		$this->states = array('searchable', 'network');
-		$this->current_state = $state;
+		$this->class_to_column = array(
 
-		$this->processGetVariables();
-	}
+			'dobj\City' => array(
+				'location' => 'id_city_cur',
+				'origin' => 'id_city_origin'),
+			'dobj\Region' => array(
+				'location' => 'id_region_cur',
+				'origin' => 'id_region_origin'),
+			'dobj\Country' => array(
+				'location' => 'id_country_cur',
+				'origin' => 'id_country_origin'),
+			'dobj\Language' => array(
+				'location' => NULL,
+				'origin' => 'id_language_origin'));
 
-	private function processGetVariables() {
-
-		// get the GET values
-		$search1_value = $_GET['search-1'];
-		$search2_value = $_GET['search-2'];
-
-		$search1_array = misc\Util::DoubleMetaphone($search1_value);
-		$search2_array = misc\Util::DoubleMetaphone($search2_value);
+		$this->searchables = array(
+			'origin' => $origin,
+			'location' => $location
+		);
 	}
 
 	public function run($dal, $do2db) {
@@ -35,12 +40,33 @@ class NetworkSearch extends Search {
 			'name' => 'NetworkSearchQuery',
 			'select_rows' => array(),
 			'from_tables' => array('networks'),
-			'returning_class' => 'dobj\Network'
+			'returning_class' => 'dobj\Network',
+			'returning_list' => False
 			)
 		);
 
-		$custom_query->addAWhere($searchables[0]->getNetworkSearchColumn(), '=', $searchables[0]->getLowestScopeId(), 'i');
-		$custom_query->addAnotherWhere('AND', $searchables[0]->getNetworkSearchColumn(), '=', $searchables[0]->getLowestScopeId(), 'i');
+		$custom_query->addAWhere($this->class_to_column[ $this->searchables['origin']['searchable_class'] ]['origin'], '=', $this->searchables['origin']['id'], 'i');
+		$custom_query->addAnotherWhere('AND', $this->class_to_column[ $this->searchables['location']['searchable_class'] ]['location'], '=', $this->searchables['location']['id'], 'i');
+
+		// Depending on the scope of the searchables, we'll have to add some NULLs to the query
+		//
+		// ...For origin
+		if ( in_array($this->searchables['origin']['searchable_class'], array('dobj\Region', 'dobj\Country') )) {
+			$custom_query->appendANull('AND', 'id_city_origin');
+		}
+
+		if ( $this->searchables['origin']['searchable_class'] == 'dobj\Country' ) {
+			$custom_query->appendANull('AND', 'id_region_origin');
+		}
+
+		// ...For location
+		if ( in_array($this->searchables['location']['searchable_class'], array('dobj\Region', 'dobj\Country') )){
+			$custom_query->appendANull('AND', 'id_city_cur');
+		}
+
+		if ( $this->searchables['location']['searchable_class'] == 'dobj\Country' ) {
+			$custom_query->appendANull('AND', 'id_region_cur');
+		}
 
 		$dal->customNetworkSearch = function($con=NULL) use ($custom_query) {
 			return $custom_query->toDBQuery($con);
@@ -49,8 +75,8 @@ class NetworkSearch extends Search {
 		$results = $do2db->execute($dal, $custom_query->getParamObject(), 'customNetworkSearch');
 
 		// Check for no results
-		if (get_class($results) != 'PDOStatement') {
-
+		if (get_class($results) == 'PDOStatement') {
+			return False;
 		}
 
 		return $results;

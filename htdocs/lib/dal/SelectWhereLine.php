@@ -37,7 +37,12 @@ class SelectWhereLine {
 			$formatted_operator = ' ' . $formatted_operator . ' ';
 		}
 
-		$return_string = $this->column . $formatted_operator . $this->question_mark;
+		// put together most of the return string
+		$return_string = $this->column . $formatted_operator;
+	       
+		// Add question mark for most things, but not null operators
+		if ($this->operator !== 'IS NULL')
+			$return_string .= $this->question_mark;
 
 		// Add conjunction to the string if
 		// it's present
