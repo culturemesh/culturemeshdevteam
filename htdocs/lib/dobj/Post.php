@@ -157,27 +157,55 @@ class Post extends DisplayDObj {
 				}
 			}
 
-			// get template
-			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-post.html');
-			return $mustache->render($template, array(
-				'active' => true,
-				'delete_button' => $delete_button,
-				'reply_request' => $reply_request,
-				'show_replies' => $show_replies,
-				'post' => $this->prepare($cm),
-				'text' => $this->formatText(),
-				'relative_date' => $this->getRelativeDate(),
-				'name' => $name,
-				'site_user' => $site_user,
-				'replies' => $this->replies_html,
-				'images' => $this->getImagePaths(),
-				'vars' => $cm->getVars()
-				)
-			);
+			// get template and render
+			//
+			// Things change IF POST HAS BEEN DELETED
+			//
+			if ($this->post_text != NULL) {
+				$template = file_get_contents($cm->template_dir . $cm->ds . 'network-post.html');
+				return $mustache->render($template, array(
+					'active' => true,
+					'delete_button' => $delete_button,
+					'reply_request' => $reply_request,
+					'show_replies' => $show_replies,
+					'post' => $this->prepare($cm),
+					'text' => $this->formatText(),
+					'relative_date' => $this->getRelativeDate(),
+					'name' => $name,
+					'site_user' => $site_user,
+					'replies' => $this->replies_html,
+					'images' => $this->getImagePaths(),
+					'vars' => $cm->getVars()
+					)
+				);
+			}
+			else {  
+				$this->img_link = NULL;
+
+				// POST HAS BEEN DELETED
+				$template = file_get_contents($cm->template_dir . $cm->ds . 'network-post-deleted.html');
+				return $mustache->render($template, array(
+					'active' => false,
+					'delete_button' => $delete_button,
+					'reply_request' => $reply_request,
+					'show_replies' => $show_replies,
+					'post' => $this->prepare($cm),
+					'name' => $name,
+					'site_user' => $site_user,
+					'replies' => $this->replies_html,
+					'vars' => $cm->getVars()
+					)
+				);
+			}
 				
 			break;
 
 		case 'dashboard':
+
+			// If post has been deleted, return NULL
+			if ($this->post_text == NULL) {
+				return NULL;
+			}
 
 			// get template
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-post.html');
@@ -346,8 +374,6 @@ class Post extends DisplayDObj {
 
 		return $new_text;
 	}
-
-
 }
 
 ?>
