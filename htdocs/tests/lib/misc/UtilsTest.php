@@ -238,6 +238,31 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('<test>One</test> <mixed>Two</mixed> <test><mixed>Three</mixed></test>', $new_string);
 	}
+
+	public function testStrReplaceAtPosition() {
+
+		$string = '<b><b><b>';
+		$new_string = misc\Util::StrReplaceAtPosition('<b>', '<b></b>', $string, 3);
+
+		$this->assertEquals('<b><b></b><b></b>', $new_string);
+	}
+
+	public function testTagPurify_1() {
+
+		$this->markTestSkipped();
+		$string = '<b><b><b>';
+		$new_string = misc\Util::PurifyTag($string, 'b');
+
+		$this->assertEquals('<b></b><b></b><b></b>', $new_string);
+	}
+
+	public function testTagPurify_2() {
+
+		$string = '<b><b></b><b>';
+		$new_string = misc\Util::PurifyTag($string, 'b');
+
+		$this->assertEquals('<b></b><b></b><b></b>', $new_string);
+	}
 }
 
 ?>

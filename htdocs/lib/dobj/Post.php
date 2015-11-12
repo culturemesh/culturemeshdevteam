@@ -343,16 +343,39 @@ class Post extends DisplayDObj {
 		// remove link tags
 		$no_ltag = \misc\Util::StrExtract($raw_text, 'link');
 
-		// autodetect links w/o tags
-		// $regex .= "(\/([a-z0-9+\$_-]\.?)+)*\/?"; // Path 
-		// (modified) "(?:(\/([a-z0-9+\$_-]\.?)+)*\/?)?"; // Path 
-		//(old) $al_match = "#((?:http|https|ftp)\:\/\/)?([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
-		//$al_match = "#((?:http|https|ftp)\:\/\/)?((?:[a-z0-9-]+\.?[a-z0-9-]+)+\.(?:[a-z]{2,3}))((\/([a-z0-9+\$_-]\.?)+)*\/?)#";
-		//$al_match = "#((?:http|https|ftp)\:\/\/)?((?:[a-z0-9-]+\.?[a-z0-9-]+)+\.(?:[a-z]{2,3}))((\/([a-z0-9+\$_-]\.?)+)*\/?)#";
-		//$al_match = "#((?:https?|ftp)\:\/\/)?((?:[a-z0-9-]+\.[a-z0-9-]+)*(?:[a-z0-9-]*[a-z][a-z0-9-]*)(?:\.[a-z]{2,3}))((?:\/([a-z0-9+\$_-]\.?)+)*\/?)#";
-		$al_match = "#((?:https?|ftp)\:\/\/)?((?:[a-z0-9-]+\.[a-z0-9-]+)*(?:[a-z0-9-]*[a-z][a-z0-9-]*)(?:\.[a-z]{2,3}))((?:\/([a-zA-Z0-9+\$_-]\.?)+)*\/?)#";
-		$al_replace = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
-		$new_text = preg_replace($al_match, $al_replace, $no_ltag['replacement']);
+		// Autodetect Emails
+		$ae_match = '/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})/';
+		$ae_replace = '!#<a href="mailto:$1">$1</a>!#';
+		$new_text = preg_replace($ae_match, $ae_replace, $no_ltag['replacement']);
+		$text_without_emails = explode('!#', $new_text);
+
+		// AUTODETECTING LINKS WITHOUT TAGS
+		//
+		// must be handled after the split
+		//
+		for ($i = 0; $i < count($text_without_emails); $i++) {
+
+			// we only want even things
+			if (($i % 2) == 0) {
+
+				// we only go if there's something in the string
+				if (strlen($text_without_emails[$i]) > 0) {
+
+					// autodetect links w/o tags
+					// $regex .= "(\/([a-z0-9+\$_-]\.?)+)*\/?"; // Path 
+					// (modified) "(?:(\/([a-z0-9+\$_-]\.?)+)*\/?)?"; // Path 
+					//(old) $al_match = "#((?:http|https|ftp)\:\/\/)?([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
+					//$al_match = "#((?:http|https|ftp)\:\/\/)?((?:[a-z0-9-]+\.?[a-z0-9-]+)+\.(?:[a-z]{2,3}))((\/([a-z0-9+\$_-]\.?)+)*\/?)#";
+					//$al_match = "#((?:http|https|ftp)\:\/\/)?((?:[a-z0-9-]+\.?[a-z0-9-]+)+\.(?:[a-z]{2,3}))((\/([a-z0-9+\$_-]\.?)+)*\/?)#";
+					//$al_match = "#((?:https?|ftp)\:\/\/)?((?:[a-z0-9-]+\.[a-z0-9-]+)*(?:[a-z0-9-]*[a-z][a-z0-9-]*)(?:\.[a-z]{2,3}))((?:\/([a-z0-9+\$_-]\.?)+)*\/?)#";
+					$al_match = "#((?:https?|ftp)\:\/\/)?((?:[a-z0-9-]+\.[a-z0-9-]+)*(?:[a-z0-9-]*[a-z][a-z0-9-]*)(?:\.[a-z]{2,3}))((?:\/([a-zA-Z0-9+\$_-]\.?)+)*\/?)#";
+					$al_replace = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
+					$text_without_emails[$i] = preg_replace($al_match, $al_replace, $text_without_emails[$i]);
+				}
+			}
+		}
+
+		$new_text = implode($text_without_emails);
 
 		// replace link tags
 		$new_text = \misc\Util::StrReform($new_text, 'link', $no_ltag['extractions']);

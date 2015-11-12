@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<div class="bottom-info">
+<div id="contact" class="bottom-info">
     <h2 class="pheader text-center">Contact Us</h2>
     <?php
         if(isset($_POST['contact_name']) && ($_POST['contact_body'])
