@@ -99,7 +99,7 @@
 	<!-- PROFILE LEFT PANEL -->
 	<div class="profile_left_panel">
 	    <span class="profile_image">
-		    <img id="profile_image" class='usr_image' src="{{ user.img_link }}#{{ page_vars.rand }}"/>
+		    <img id="profile_image" class='usr_image' src="{{ user.img_link }}{{^ user.img_link }}{{ vars.blank_profile_path_lrg }}{{/ user.img_link}}#{{ page_vars.rand }}"/>
 	    </span>
 	    <div id="pic-upload-div">
 		    <p id="success-label"></p>

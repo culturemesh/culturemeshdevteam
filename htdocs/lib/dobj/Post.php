@@ -81,6 +81,24 @@ class Post extends DisplayDObj {
 		  return $result;
 	}
 
+	public function wipe($dal, $do2db) {
+
+		if (!isset($this->id))
+	  	  throw new \Exception('id is not set');
+
+		$result = $do2db->execute($dal, $this, 'wipePost');
+
+		// alter this post text, in case this object is still to be used
+		$this->post_text = NULL;
+
+		if (get_class($result) == 'PDOStatement') {
+			var_dump($result->getErrorInfo());
+		}
+		else
+		  return $result;
+
+	}
+
 	public function registerImages($dal, $do2db) {
 
 		$obj = new \dobj\Blank();
@@ -157,27 +175,58 @@ class Post extends DisplayDObj {
 				}
 			}
 
-			// get template
-			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-post.html');
-			return $mustache->render($template, array(
-				'active' => true,
-				'delete_button' => $delete_button,
-				'reply_request' => $reply_request,
-				'show_replies' => $show_replies,
-				'post' => $this->prepare($cm),
-				'text' => $this->formatText(),
-				'relative_date' => $this->getRelativeDate(),
-				'name' => $name,
-				'site_user' => $site_user,
-				'replies' => $this->replies_html,
-				'images' => $this->getImagePaths(),
-				'vars' => $cm->getVars()
-				)
-			);
+			// get template and render
+			//
+			// Things change IF POST HAS BEEN DELETED
+			//
+			if ($this->post_text != NULL) {
+				$template = file_get_contents($cm->template_dir . $cm->ds . 'network-post.html');
+				return $mustache->render($template, array(
+					'active' => true,
+					'delete_button' => $delete_button,
+					'reply_request' => $reply_request,
+					'show_replies' => $show_replies,
+					'post' => $this->prepare($cm),
+					'text' => $this->formatText(),
+					'relative_date' => $this->getRelativeDate(),
+					'name' => $name,
+					'site_user' => $site_user,
+					'replies' => $this->replies_html,
+					'images' => $this->getImagePaths(),
+					'vars' => $cm->getVars()
+					)
+				);
+			}
+			else {  
+				$this->img_link = NULL;
+
+				// this is here because I'm lazy
+				$this->reply_count = count($this->replies);
+
+				// POST HAS BEEN DELETED
+				$template = file_get_contents($cm->template_dir . $cm->ds . 'network-post-deleted.html');
+				return $mustache->render($template, array(
+					'active' => false,
+					'delete_button' => $delete_button,
+					'reply_request' => $reply_request,
+					'show_replies' => $show_replies,
+					'post' => $this->prepare($cm),
+					'name' => $name,
+					'site_user' => $site_user,
+					'replies' => $this->replies_html,
+					'vars' => $cm->getVars()
+					)
+				);
+			}
 				
 			break;
 
 		case 'dashboard':
+
+			// If post has been deleted, return NULL
+			if ($this->post_text == NULL) {
+				return NULL;
+			}
 
 			// get template
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'dashboard-post.html');
@@ -315,16 +364,39 @@ class Post extends DisplayDObj {
 		// remove link tags
 		$no_ltag = \misc\Util::StrExtract($raw_text, 'link');
 
-		// autodetect links w/o tags
-		// $regex .= "(\/([a-z0-9+\$_-]\.?)+)*\/?"; // Path 
-		// (modified) "(?:(\/([a-z0-9+\$_-]\.?)+)*\/?)?"; // Path 
-		//(old) $al_match = "#((?:http|https|ftp)\:\/\/)?([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
-		//$al_match = "#((?:http|https|ftp)\:\/\/)?((?:[a-z0-9-]+\.?[a-z0-9-]+)+\.(?:[a-z]{2,3}))((\/([a-z0-9+\$_-]\.?)+)*\/?)#";
-		//$al_match = "#((?:http|https|ftp)\:\/\/)?((?:[a-z0-9-]+\.?[a-z0-9-]+)+\.(?:[a-z]{2,3}))((\/([a-z0-9+\$_-]\.?)+)*\/?)#";
-		//$al_match = "#((?:https?|ftp)\:\/\/)?((?:[a-z0-9-]+\.[a-z0-9-]+)*(?:[a-z0-9-]*[a-z][a-z0-9-]*)(?:\.[a-z]{2,3}))((?:\/([a-z0-9+\$_-]\.?)+)*\/?)#";
-		$al_match = "#((?:https?|ftp)\:\/\/)?((?:[a-z0-9-]+\.[a-z0-9-]+)*(?:[a-z0-9-]*[a-z][a-z0-9-]*)(?:\.[a-z]{2,3}))((?:\/([a-zA-Z0-9+\$_-]\.?)+)*\/?)#";
-		$al_replace = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
-		$new_text = preg_replace($al_match, $al_replace, $no_ltag['replacement']);
+		// Autodetect Emails
+		$ae_match = '/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})/';
+		$ae_replace = '!#<a href="mailto:$1">$1</a>!#';
+		$new_text = preg_replace($ae_match, $ae_replace, $no_ltag['replacement']);
+		$text_without_emails = explode('!#', $new_text);
+
+		// AUTODETECTING LINKS WITHOUT TAGS
+		//
+		// must be handled after the split
+		//
+		for ($i = 0; $i < count($text_without_emails); $i++) {
+
+			// we only want even things
+			if (($i % 2) == 0) {
+
+				// we only go if there's something in the string
+				if (strlen($text_without_emails[$i]) > 0) {
+
+					// autodetect links w/o tags
+					// $regex .= "(\/([a-z0-9+\$_-]\.?)+)*\/?"; // Path 
+					// (modified) "(?:(\/([a-z0-9+\$_-]\.?)+)*\/?)?"; // Path 
+					//(old) $al_match = "#((?:http|https|ftp)\:\/\/)?([a-zA-Z0-9]+\.[a-zA-Z0-9.]+)([\/a-zA-Z0-9\?\+\%\&\.\-\#\=\_]*)#";
+					//$al_match = "#((?:http|https|ftp)\:\/\/)?((?:[a-z0-9-]+\.?[a-z0-9-]+)+\.(?:[a-z]{2,3}))((\/([a-z0-9+\$_-]\.?)+)*\/?)#";
+					//$al_match = "#((?:http|https|ftp)\:\/\/)?((?:[a-z0-9-]+\.?[a-z0-9-]+)+\.(?:[a-z]{2,3}))((\/([a-z0-9+\$_-]\.?)+)*\/?)#";
+					//$al_match = "#((?:https?|ftp)\:\/\/)?((?:[a-z0-9-]+\.[a-z0-9-]+)*(?:[a-z0-9-]*[a-z][a-z0-9-]*)(?:\.[a-z]{2,3}))((?:\/([a-z0-9+\$_-]\.?)+)*\/?)#";
+					$al_match = "#((?:https?|ftp)\:\/\/)?((?:[a-z0-9-]+\.[a-z0-9-]+)*(?:[a-z0-9-]*[a-z][a-z0-9-]*)(?:\.[a-z]{2,3}))((?:\/([a-zA-Z0-9+\#\$_-]\.?)+)*\/?)#";
+					$al_replace = '<a target=\'_blank\' href=\'http://${2}${3}\'>${1}${2}${3}</a>';
+					$text_without_emails[$i] = preg_replace($al_match, $al_replace, $text_without_emails[$i]);
+				}
+			}
+		}
+
+		$new_text = implode($text_without_emails);
 
 		// replace link tags
 		$new_text = \misc\Util::StrReform($new_text, 'link', $no_ltag['extractions']);
@@ -346,8 +418,6 @@ class Post extends DisplayDObj {
 
 		return $new_text;
 	}
-
-
 }
 
 ?>

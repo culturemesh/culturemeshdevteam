@@ -298,6 +298,163 @@ class Util {
 
 		return str_replace(array($stag, $etag), array($stag_replacement, $etag_replacement), $subject);
 	}
+
+	public static function TagMatch($subject, $tag, $replacement=NULL) {
+
+	}
+
+	public static function PurifyTag($subject, $tag) {
+
+		$open_tag = '<' . $tag . '>';
+		$open_tag_length = strlen($open_tag);
+		$close_tag = '</' . $tag . '>';
+		$close_tag_length = strlen($close_tag);
+		$completed_tag = $open_tag . $close_tag;
+		$completed_tag_length = strlen($completed_tag);
+
+		$continuing = True;
+		$last_open_pos = 0;
+		$last_close_pos = 0;
+
+		$count = 0;
+
+		while($continuing) {
+
+			if ($count >= 5) {
+				//break;
+			}
+
+			$cur_open_pos = strpos($subject, $open_tag, $last_open_pos);
+			$cur_close_pos = strpos($subject, $close_tag, $last_close_pos);
+
+			// END CONDITION
+			//
+			if ($cur_open_pos === False && $cur_close_pos === False) {
+				$continuing = False;
+			}
+
+			// MISMATCHES
+			//
+			// 1) If no more open tags
+			//
+			else if ($cur_open_pos === False && $cur_close_pos !== False) {
+
+				// Fix rest of closing position tags
+				//
+				//$subject = substr_replace($subject, $completed_tag, $cur_close_pos);
+				$subject = Util::StrReplaceAtPosition($close_tag, $completed_tag, $subject, $cur_close_pos);
+				$continuing = False;
+			}
+
+			// 2) If no more closing tags
+			//
+			else if ($cur_open_pos !== False && $cur_close_pos === False) {
+
+				// Fix rest of opening position tags
+				//
+				//$subject = substr_replace($subject, $open_tag, $cur_open_pos);
+				$subject = Util::StrReplaceAtPosition($open_tag, $completed_tag, $subject, $cur_open_pos);
+				$continuing = False;
+			}
+
+			// 3) Found closing tag before opening tag
+			//
+			else if ($cur_open_pos > $cur_close_pos) {
+
+				// Fix closing tag
+				$subject = substr_replace($subject, $completed_tag, $cur_close_pos, $close_tag_length);
+
+				// Move back opening tag so that we find it again
+				//$cur_open_pos = $last_open_pos;
+				$last_open_pos = $cur_open_pos;
+				$last_close_pos = $cur_close_pos + 1;
+			}
+			else if ($cur_open_pos < $cur_close_pos) {
+
+				// check and see if there are any more open tags between current positions
+				//
+				// if so, you must close the preceding open tag and keep searching
+				//
+				$between_tag_found = False;
+				$between_open_pos = strpos($subject, $open_tag, $cur_open_pos + 1);
+				$inner_count = 0;
+
+				while ($between_open_pos < $cur_close_pos && $between_open_pos !== False) {
+
+					if (!$between_tag_found)
+						$between_tag_found = True;
+
+					if ($inner_count >= 5)
+						break;
+
+					// update string
+					// 
+					$subject = Util::StrReplaceAtPosition($open_tag, $completed_tag, $subject, $cur_open_pos, $cur_open_pos + $open_tag_length);
+
+
+					// update position counts
+					$cur_open_pos = $between_open_pos;
+					//$last_open_pos = $between_open_pos + 1;
+					$cur_close_pos += $close_tag_length - 1;
+
+					// look for next tag
+					$between_open_pos = strpos($subject, $open_tag, $between_open_pos + 1);
+					$next_open_pos = strpos($subject, $open_tag, $between_open_pos + 1);
+
+					var_dump($next_open_pos);
+					var_dump($cur_close_pos);
+
+					if ($next_open_pos > $cur_close_pos || $next_open_pos === False) {
+						$cur_open_pos = $between_open_pos;
+						break;
+					}
+
+					$inner_count += 1;
+				}
+
+				// update last open pos if it hasn't been done above
+				/*
+				if (!$between_tag_found) {
+				}
+				 */
+
+				$last_open_pos = $cur_open_pos + 1;
+				$last_close_pos = $cur_close_pos + 1;
+			}
+
+			$count++;
+		}
+
+		return $subject;
+	}
+
+	public static function StrReplaceAtPosition($tag, $tag_fix, $subject, $position, $end=NULL) {
+
+		if ($end != NULL) {
+
+			$substr_length = $end - $position;
+
+			// get the relevant substring
+			$str = substr($subject, $position, $substr_length);
+		}
+		else {
+			// get the relevant substring
+			$str = substr($subject, $position);
+		}
+
+
+		// replace all offending things with correct things in the substring
+		$replacement = str_replace($tag, $tag_fix, $str);
+
+		if ($end != NULL) {
+			// insert replacement into the subject @ location
+			return substr_replace($subject, $replacement, $position, $substr_length);
+		}
+		else {
+			// insert replacement into the subject @ location
+			return substr_replace($subject, $replacement, $position);
+		}
+	}
 }
 
 ?>
