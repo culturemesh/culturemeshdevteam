@@ -258,10 +258,19 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
 	public function testTagPurify_2() {
 
-		$string = '<b><b></b><b>';
+		$string = '<b><b><b><b></b><b>';
 		$new_string = misc\Util::PurifyTag($string, 'b');
 
-		$this->assertEquals('<b></b><b></b><b></b>', $new_string);
+		$this->assertEquals('<b></b><b></b><b></b><b></b>', $new_string);
+	}
+
+	public function testTagPurify_3() {
+
+		$this->markTestSkipped();
+		$string = '<b><b><b><b></b><b><b><b></b><b>';
+		$new_string = misc\Util::PurifyTag($string, 'b');
+
+		$this->assertEquals('<b></b><b></b><b></b><b></b>', $new_string);
 	}
 }
 
