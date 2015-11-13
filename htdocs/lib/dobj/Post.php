@@ -81,6 +81,24 @@ class Post extends DisplayDObj {
 		  return $result;
 	}
 
+	public function wipe($dal, $do2db) {
+
+		if (!isset($this->id))
+	  	  throw new \Exception('id is not set');
+
+		$result = $do2db->execute($dal, $this, 'wipePost');
+
+		// alter this post text, in case this object is still to be used
+		$this->post_text = NULL;
+
+		if (get_class($result) == 'PDOStatement') {
+			var_dump($result->getErrorInfo());
+		}
+		else
+		  return $result;
+
+	}
+
 	public function registerImages($dal, $do2db) {
 
 		$obj = new \dobj\Blank();
@@ -181,6 +199,9 @@ class Post extends DisplayDObj {
 			}
 			else {  
 				$this->img_link = NULL;
+
+				// this is here because I'm lazy
+				$this->reply_count = count($this->replies);
 
 				// POST HAS BEEN DELETED
 				$template = file_get_contents($cm->template_dir . $cm->ds . 'network-post-deleted.html');

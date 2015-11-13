@@ -29,7 +29,7 @@ if (isset($_POST['rid']) && isset($_POST['nid']) && isset($_POST['pid'])) {
 			$post = \dobj\Post::createFromId((int) $_POST['pid'], $dal, $do2db);
 
 			if ($post->post_text == NULL) {
-				$success = $post->delete();
+				$success = $post->delete($dal, $do2db);
 
 				if ($success) {
 
