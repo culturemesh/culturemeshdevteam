@@ -249,7 +249,6 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
 	public function testTagPurify_1() {
 
-		$this->markTestSkipped();
 		$string = '<b><b><b>';
 		$new_string = misc\Util::PurifyTag($string, 'b');
 
@@ -261,16 +260,31 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 		$string = '<b><b><b><b></b><b>';
 		$new_string = misc\Util::PurifyTag($string, 'b');
 
-		$this->assertEquals('<b></b><b></b><b></b><b></b>', $new_string);
+		$this->assertEquals('<b></b><b></b><b></b><b></b><b></b>', $new_string);
 	}
 
 	public function testTagPurify_3() {
 
-		$this->markTestSkipped();
 		$string = '<b><b><b><b></b><b><b><b></b><b>';
 		$new_string = misc\Util::PurifyTag($string, 'b');
 
-		$this->assertEquals('<b></b><b></b><b></b><b></b>', $new_string);
+		$this->assertEquals('<b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b>', $new_string);
+	}
+
+	public function testTagPurify_4() {
+
+		$string = '</b></b></b><b><b></b>';
+		$new_string = misc\Util::PurifyTag($string, 'b');
+
+		$this->assertEquals('<b></b><b></b><b></b><b></b><b></b>', $new_string);
+	}
+
+	public function testTagPurify_Typical() {
+
+		$string = 'The <b>usual problem<b>';
+		$new_string = misc\Util::PurifyTag($string, 'b');
+
+		$this->assertEquals('The <b></b>usual problem<b></b>', $new_string);
 	}
 }
 
