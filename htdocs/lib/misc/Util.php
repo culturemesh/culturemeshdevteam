@@ -321,7 +321,7 @@ class Util {
 		while($continuing) {
 
 			if ($count >= 5) {
-				//break;
+				break;
 			}
 
 			$cur_open_pos = strpos($subject, $open_tag, $last_open_pos);
@@ -365,9 +365,8 @@ class Util {
 				$subject = substr_replace($subject, $completed_tag, $cur_close_pos, $close_tag_length);
 
 				// Move back opening tag so that we find it again
-				//$cur_open_pos = $last_open_pos;
-				$last_open_pos = $cur_open_pos;
-				$last_close_pos = $cur_close_pos + 1;
+				$last_open_pos = $cur_open_pos + $open_tag_length;
+				$last_close_pos = $cur_close_pos + $open_tag_length + 1;
 			}
 			else if ($cur_open_pos < $cur_close_pos) {
 
@@ -377,46 +376,35 @@ class Util {
 				//
 				$between_tag_found = False;
 				$between_open_pos = strpos($subject, $open_tag, $cur_open_pos + 1);
-				$inner_count = 0;
 
 				while ($between_open_pos < $cur_close_pos && $between_open_pos !== False) {
 
 					if (!$between_tag_found)
 						$between_tag_found = True;
 
-					if ($inner_count >= 5)
-						break;
-
 					// update string
 					// 
 					$subject = Util::StrReplaceAtPosition($open_tag, $completed_tag, $subject, $cur_open_pos, $cur_open_pos + $open_tag_length);
-
-
-					// update position counts
-					$cur_open_pos = $between_open_pos;
-					//$last_open_pos = $between_open_pos + 1;
-					$cur_close_pos += $close_tag_length - 1;
 
 					// look for next tag
 					$between_open_pos = strpos($subject, $open_tag, $between_open_pos + 1);
 					$next_open_pos = strpos($subject, $open_tag, $between_open_pos + 1);
 
-					var_dump($next_open_pos);
-					var_dump($cur_close_pos);
+					// update position counts
+					$cur_open_pos = $between_open_pos;
+					$cur_close_pos += $close_tag_length - 1;
 
 					if ($next_open_pos > $cur_close_pos || $next_open_pos === False) {
-						$cur_open_pos = $between_open_pos;
+
+						// subtracting by one because of the +1 down below
+						//
+						// we're essentially starting at a new zero
+						//
+						$cur_open_pos = $next_open_pos - 1;
+						$cur_close_pos = $next_open_pos - 1;
 						break;
 					}
-
-					$inner_count += 1;
 				}
-
-				// update last open pos if it hasn't been done above
-				/*
-				if (!$between_tag_found) {
-				}
-				 */
 
 				$last_open_pos = $cur_open_pos + 1;
 				$last_close_pos = $cur_close_pos + 1;

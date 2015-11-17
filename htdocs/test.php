@@ -4,6 +4,7 @@ $cm = new Environment();
 
 ini_set('display_errors', true);
 
+misc\Util::PurifyTag('</b></b></b><b><b></b>', 'b');
 /*
 $log = new \misc\Log($cm, 'test.log');
 $log->logMessage('Hello World!');
@@ -84,8 +85,8 @@ var_dump($storage);
 
 //echo __DIR__;
 //throw new Exception('test');
-echo 'something else' . '<br>';
-echo $_SERVER['HTTP_HOST'];
+//echo 'something else' . '<br>';
+//echo $_SERVER['HTTP_HOST'];
 ?>
 	
 <!--

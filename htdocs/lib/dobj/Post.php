@@ -414,7 +414,9 @@ class Post extends DisplayDObj {
 
 		// find bold and italics
 		$new_text = \misc\Util::TagReplace($new_text, 'b');
+		$new_text = \misc\Util::PurifyTag($new_text, 'b');
 		$new_text = \misc\Util::TagReplace($new_text, 'i');
+		$new_text = \misc\Util::PurifyTag($new_text, 'i');
 
 		return $new_text;
 	}
