@@ -1,8 +1,99 @@
 <?php
+ini_set('display_errors', true);
 include('environment.php');
 $cm = new Environment();
+//$cm->displayErrors();
+$dal = NULL;
+$do2db = NULL;
+$cm->enableDatabase($dal, $do2db);
 
-ini_set('display_errors', true);
+$search_origin = array(
+	'searchable_class' => 'dobj\Country',
+	'id' => 45008,
+	'name' => 'China'
+);
+
+$search_location = array(
+	'searchable_class' => 'dobj\City',
+	'id' => 323791,
+	'name' => 'East Lansing'
+);
+
+$alt_location = array(
+	'searchable_class' => 'dobj\City',
+	'id' => 310991,
+	'name' => 'Tallahassee'
+);
+
+// Set up searchables from data
+$origin_searchable = new $search_origin['searchable_class'];
+$origin_searchable->id = $search_origin['id'];
+$origin_searchable->name = $search_origin['name'];
+
+$location_searchable = new $search_location['searchable_class'];
+$location_searchable->id = $search_location['id'];
+$location_searchable->name = $search_location['name'];
+
+$alt_searchable = new $alt_location['searchable_class'];
+$alt_searchable->id = $alt_location['id'];
+$alt_searchable->name = $alt_location['name'];
+
+// Database stuff
+$cm->enableDatabase($dal, $do2db);
+
+$network_search = new \search\NetworkSearch($origin_searchable, $location_searchable);
+$search_manager = new \search\SearchManager($cm, $dal, $do2db, $network_search);
+$results = $search_manager->getResults();
+
+$nearby_location_search = new \search\NearbyLocationSearch($location_searchable);
+$search_manager->setSearch($nearby_location_search);
+$results = $search_manager->getResults();
+
+$nearby_group_search = new \search\NearbyGroupLocationSearch(array($location_searchable, $alt_searchable));
+$search_manager->setSearch($nearby_group_search);
+$results = $search_manager->getResults();
+
+// make fake ass networks
+$networks = array();
+$network = new \dobj\Network();
+$network->origin_searchable = $location_searchable;
+$network->location_searchable = $origin_searchable;
+array_push($networks, $network);
+
+$network = new \dobj\Network();
+$network->origin_searchable = $origin_searchable;
+$network->location_searchable = $location_searchable;
+array_push($networks, $network);
+
+// ACTUAL NETWORK
+$actual_origin = new \dobj\City();
+$actual_origin->id = 267101;
+$actual_origin->name = 'Manila';
+
+$actual_location = new \dobj\City();
+$actual_location->id = 333381;
+$actual_location->name = 'San Francisco';
+
+$network = new \dobj\Network();
+$network->origin_searchable = $actual_origin;
+$network->location_searchable = $actual_location;
+array_push($networks, $network);
+
+$network_group_search = new \search\NetworkGroupSearch($networks);
+$search_manager->setSearch($network_group_search);
+$results = $search_manager->getResults();
+
+var_dump($results);
+
+// Query for related networks
+/*
+$related_search = new \search\RelatedNetworkSearch($origin_searchable, $location_searchable);
+$search_manager->setSearch($related_search);
+$results= $search_manager->getResults();
+*/
+
+$cm->closeConnection();
+
 
 /*
 $log = new \misc\Log($cm, 'test.log');

@@ -8,6 +8,7 @@ class NetworkSearch extends Search {
 
 	public function __construct($origin, $location) {
 
+/*
 		$this->class_to_column = array(
 
 			'dobj\City' => array(
@@ -22,6 +23,7 @@ class NetworkSearch extends Search {
 			'dobj\Language' => array(
 				'location' => NULL,
 				'origin' => 'id_language_origin'));
+*/
 
 		$this->searchables = array(
 			'origin' => $origin,
@@ -45,8 +47,18 @@ class NetworkSearch extends Search {
 			)
 		);
 
-		$custom_query->addAWhere($this->class_to_column[ $this->searchables['origin']['searchable_class'] ]['origin'], '=', $this->searchables['origin']['id'], 'i');
-		$custom_query->addAnotherWhere('AND', $this->class_to_column[ $this->searchables['location']['searchable_class'] ]['location'], '=', $this->searchables['location']['id'], 'i');
+		$origin_lines = $custom_query->createWhereLinesFromSearchable($this->searchables['origin'], 'networks', 'origin');
+		$location_lines = $custom_query->createWhereLinesFromSearchable($this->searchables['location'], 'networks', 'location', 'AND');
+
+		$all_lines = array_merge($origin_lines, $location_lines);
+
+		foreach ($all_lines as $line) {
+			$custom_query->insertWhereLine($line);
+		}
+
+		/*
+		$custom_query->addAWhere($this->class_to_column[ $this->searchables['origin']['searchable_class'] ]['origin'], '=', $this->searchables['origin']['id'], NULL, 'i');
+		$custom_query->addAnotherWhere('AND', $this->class_to_column[ $this->searchables['location']['searchable_class'] ]['location'], '=', $this->searchables['location']['id'], NULL, 'i');
 
 		// Depending on the scope of the searchables, we'll have to add some NULLs to the query
 		//
@@ -67,7 +79,8 @@ class NetworkSearch extends Search {
 		if ( $this->searchables['location']['searchable_class'] == 'dobj\Country' ) {
 			$custom_query->appendANull('AND', 'id_region_cur');
 		}
-
+		*/
+		// add to dal
 		$dal->customNetworkSearch = function($con=NULL) use ($custom_query) {
 			return $custom_query->toDBQuery($con);
 		};

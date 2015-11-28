@@ -42,6 +42,7 @@ abstract class DBOp {
 		$this->returning_class = $array['returning_class'];
 		$this->returning_cols = $array['returning_cols'];
 		$this->params = $array['params'];
+		$this->params_stack = $array['params_stack'];
 		$this->param_types = $array['param_types'];
 	}
 
@@ -49,6 +50,7 @@ abstract class DBOp {
 
 		return array(
 			'params' => $this->params,
+			'params_stack' => $this->params_stack,
 			'param_types' => $this->param_types,
 			'nullable' => $this->nullable,
 			'returning' => $this->returning,

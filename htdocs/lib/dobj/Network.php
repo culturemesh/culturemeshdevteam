@@ -110,6 +110,13 @@ class Network extends DisplayDObj {
 		return $network;
 	}
 
+	public static function createFromSearchables($origin, $location) {
+
+		$network = new dobj\Network();
+
+		return $network;
+	}
+
 	public function checkRegistration($uid, $dal, $do2db) {
 
 		$args = new \dobj\Blank();

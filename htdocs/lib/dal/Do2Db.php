@@ -71,7 +71,16 @@ class Do2Db {
 				$thing = &$this->dobj->getReference($param);
 
 				if (is_array($thing)) {
-					foreach($thing as $item_in_thing) {
+				
+					// Push everything from the array at once
+					if ($scheme['params_stack'] === NULL) {
+						foreach($thing as $item_in_thing) {
+							array_push($args, $item_in_thing);
+						}
+					}
+					else {
+						// Only push into array when parameter calls for it
+						$item_in_thing = array_shift($thing);
 						array_push($args, $item_in_thing);
 					}
 				}

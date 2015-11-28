@@ -30,9 +30,18 @@ class CustomSelectQueryTest extends PHPUnit_Framework_TestCase {
 			'from_tables' => array('nose'),
 			'where_cols' => array(),
 			'where_values' => array(),
+			'where_operators' => '=',
+			'where_conjunctions' => 'AND',
+			'value_types' => '',
 			'order_by_table' => '',
+			'order' => NULL, // defaults to ASC
 			'group_by_table' => '',
-			'value_types' => '');
+			'limit_offset' => NULL,
+			'limit_row_count' => NULL,
+			'returning_class' => 'dobj\Blank',
+			'returning_list' => True,
+			'params_stack' => True
+			);
 
 		$query->setValues($values);
 
@@ -43,13 +52,22 @@ class CustomSelectQueryTest extends PHPUnit_Framework_TestCase {
 
 		$query = $this->do2db->initializeCustomQuery();
 		$values = array(
+			'name' => 'default',
 			'select_rows' => array('booger', 'flort'),
 			'from_tables' => array('nose'),
-			'order_by_table' => '',
-			'group_by_table' => '',
-			'order' => null,
-			'upper_limit' => null,
-			'lower_limit' => null);
+			'where_cols' => array(),
+			'where_values' => array(),
+			'where_operators' => '=',
+			'where_conjunctions' => 'AND',
+			'value_types' => '',
+			'order_by_table' => NULL,
+			'order' => NULL, // defaults to ASC
+			'group_by_table' => NULL,
+			'limit_offset' => NULL,
+			'limit_row_count' => NULL,
+			'returning_class' => 'dobj\Blank',
+			'returning_list' => True
+			);
 
 		$query->setValues($values);
 
@@ -109,6 +127,7 @@ class CustomSelectQueryTest extends PHPUnit_Framework_TestCase {
 		$write_string = "SELECT booger, flort FROM nose WHERE booger=? AND treadstone=? AND eke=?";
 
 		$this->assertEquals($write_string, $query->writeQueryString());
+		$this->assertTrue($query->columnCountMatchesValues());
 	}
 
 	public function testWriteQueryOrderBy() {
@@ -207,5 +226,187 @@ class CustomSelectQueryTest extends PHPUnit_Framework_TestCase {
 		$write_string = "SELECT * FROM metaphone_keys WHERE meta_key LIKE ? OR meta_key LIKE ?";
 
 		$this->assertEquals($write_string, $query->writeQueryString());
+	}
+
+	public function testInModifierString() {
+
+		$query = $this->do2db->initializeCustomQuery();
+		$values = array(
+			'from_tables' => array('metaphone_keys'),
+			);
+
+		$query->setValues($values);
+		$query_values =  array('this', 'that');
+		$query->addAWhere('meta_key', 'IN', $query_values, 'ss', 2);
+
+		$write_string = "SELECT * FROM metaphone_keys WHERE meta_key IN (?, ?)";
+
+		$this->assertEquals($write_string, $query->writeQueryString());
+		$this->assertTrue($query->columnCountMatchesValues());
+	}
+
+	public function testInModifierParamObject() {
+
+		$query = $this->do2db->initializeCustomQuery();
+		$values = array(
+			'from_tables' => array('metaphone_keys'),
+			);
+
+		$query->setValues($values);
+		$query_values =  array('this', 'that');
+		$query->addAWhere('meta_key', 'IN', $query_values, 'ss', 2);
+
+		$obj = new \dobj\Blank();
+		$obj->meta_key = $query_values;
+
+		$this->assertEquals($obj, $query->getParamObject());
+	}
+
+	public function testCreateAndAddWhere() {
+
+		$query = $this->do2db->initializeCustomQuery();
+		$values = array(
+			'from_tables' => array('metaphone_keys'),
+			);
+
+		$query->setValues($values);
+		$where = $query->createWhereLine('meta_key', 'IN', $query_values, NULL, 'ss', 2);
+		$query->insertWhereLine($where);
+
+		$write_string = "SELECT * FROM metaphone_keys WHERE meta_key IN (?, ?)";
+		$obj = new \dobj\Blank();
+		$obj->meta_key = $query_values;
+
+		$this->assertEquals($write_string, $query->writeQueryString());
+		$this->assertEquals($obj, $query->getParamObject());
+	}
+
+	public function testCreateWhereLinesFromCity() {
+
+		$query = $this->do2db->initializeCustomQuery();
+		$values = array(
+			'from_tables' => array('networks'),
+			);
+
+		$query->setValues($values);
+
+		// create searchable
+		$searchable = new \dobj\City();
+		$searchable->id = 1;
+		$searchable->name = 'Flipper';
+
+		$lines = $query->createWhereLinesFromSearchable($searchable, 'networks', 'origin');
+
+		foreach ($lines as $line) {
+			$query->insertWhereLine($line);
+		}
+
+		$write_string = "SELECT * FROM networks WHERE id_city_origin=?";
+		$this->assertEquals($write_string, $query->writeQueryString());
+	}
+
+	public function testCreateWhereLinesFromRegion() {
+
+		$query = $this->do2db->initializeCustomQuery();
+		$values = array(
+			'from_tables' => array('networks'),
+			);
+
+		$query->setValues($values);
+
+		// create searchable
+		$searchable = new \dobj\Region();
+		$searchable->id = 1;
+		$searchable->name = 'Flipper';
+
+		$lines = $query->createWhereLinesFromSearchable($searchable, 'networks', 'origin');
+
+		foreach ($lines as $line) {
+			$query->insertWhereLine($line);
+		}
+
+		$write_string = "SELECT * FROM networks WHERE id_region_origin=? AND id_city_origin IS NULL";
+		$this->assertEquals($write_string, $query->writeQueryString());
+	}
+
+	public function testCreateWhereLinesFromCountry() {
+
+		$query = $this->do2db->initializeCustomQuery();
+		$values = array(
+			'from_tables' => array('networks'),
+			);
+
+		$query->setValues($values);
+
+		// create searchable
+		$searchable = new \dobj\Country();
+		$searchable->id = 1;
+		$searchable->name = 'Flipper';
+
+		$lines = $query->createWhereLinesFromSearchable($searchable, 'networks', 'origin');
+
+		foreach ($lines as $line) {
+			$query->insertWhereLine($line);
+		}
+
+		$write_string = "SELECT * FROM networks WHERE id_country_origin=? AND id_city_origin IS NULL AND id_region_origin IS NULL";
+		$this->assertEquals($write_string, $query->writeQueryString());
+	}
+
+	public function testAddParenthetical() {
+
+		$query = $this->do2db->initializeCustomQuery();
+		$values = array(
+			'from_tables' => array('networks'),
+			);
+
+		$query->setValues($values);
+
+		// create searchable
+		$searchable = new \dobj\Country();
+		$searchable->id = 1;
+		$searchable->name = 'Flipper';
+
+		$lines = $query->createWhereLinesFromSearchable($searchable, 'networks', 'origin');
+
+		$query->addAParenthetical($lines);
+
+		$write_string = "SELECT * FROM networks WHERE (id_country_origin=? AND id_city_origin IS NULL AND id_region_origin IS NULL)";
+		$this->assertEquals($write_string, $query->writeQueryString());
+	}
+
+	public function testAddFourParentheticals() {
+
+		$query = $this->do2db->initializeCustomQuery();
+		$values = array(
+			'from_tables' => array('networks'),
+			);
+
+		$query->setValues($values);
+
+		// create searchables
+		$origin_searchable = new \dobj\Country();
+		$origin_searchable->id = 1;
+		$origin_searchable->name = 'Flipper';
+
+		$location_searchable = new \dobj\Region();
+		$location_searchable->id = 3321;
+		$location_searchable->name = 'Oregon';
+
+		$origin_lines = $query->createWhereLinesFromSearchable($origin_searchable, 'networks', 'origin');
+		$location_lines = $query->createWhereLinesFromSearchable($location_searchable, 'networks', 'location', 'AND');
+
+		$merged_lines = array_merge($origin_lines, $location_lines);
+
+		$query->addAParenthetical($merged_lines);
+		$query->addAParenthetical($merged_lines, 'OR');
+		$query->addAParenthetical($merged_lines, 'OR');
+		$query->addAParenthetical($merged_lines, 'OR');
+
+		$write_string = "SELECT * FROM networks WHERE (id_country_origin=? AND id_city_origin IS NULL AND id_region_origin IS NULL AND id_region_cur=? AND id_city_origin IS NULL) OR (id_country_origin=? AND id_city_origin IS NULL AND id_region_origin IS NULL AND id_region_cur=? AND id_city_origin IS NULL) OR (id_country_origin=? AND id_city_origin IS NULL AND id_region_origin IS NULL AND id_region_cur=? AND id_city_origin IS NULL) OR (id_country_origin=? AND id_city_origin IS NULL AND id_region_origin IS NULL AND id_region_cur=? AND id_city_origin IS NULL)";
+		$this->assertEquals($write_string, $query->writeQueryString());
+		$this->assertTrue($query->columnCountMatchesValues());
+		//var_dump($query->getParamObject());
+		//var_dump($query->getWhereColumns());
 	}
 }

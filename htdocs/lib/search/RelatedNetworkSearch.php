@@ -3,8 +3,14 @@ namespace search;
 
 class RelatedNetworkSearch extends Search {
 
+	private $origin;
+	private $location;
+	
+	private $is_combined_search;
+	private $combined_search;
 	private $nearby_location_search;
 	private $nearby_origin_search;
+	private $network_group_search;
 
 	public function __construct($origin, $location) {
 
@@ -20,56 +26,74 @@ class RelatedNetworkSearch extends Search {
 				'table' => 'nearby_countries',
 				'column' => 'country_id')
 			);
+
+		$this->origin = $origin;
+		$this->location = $location;
+
+		if (get_class($origin) == get_class($location)) {
+			$this->is_combined_search = True;
+			$this->combined_search = new NearbyGroupLocationSearch($origin, $location);
+		}
+		else {
+			$this->is_combined_search = False;
+			$this->nearby_location_search = new NearbyLocationSearch($location);
+			$this->nearby_origin_search = new NearbyLocationSearch($origin);
+		}
+
 	}
 
 	public function run($dal, $do2db) {
 
-		$custom_query = $do2db->initializeCustomQuery();
+		$results = NULL;
 
-		$custom_query->setValues(array(
-			'name' => 'NetworkSearchQuery',
-			'select_rows' => array(),
-			'from_tables' => array('nearby_cities'),
-			'returning_class' => 'dobj\Network',
-			'returning_list' => False
-			)
-		);
-
-		$custom_query->addAWhere($this->class_to_column[ $this->searchables['origin']['searchable_class'] ]['origin'], '=', $this->searchables['origin']['id'], 'i');
-		$custom_query->addAnotherWhere('AND', $this->class_to_column[ $this->searchables['location']['searchable_class'] ]['location'], '=', $this->searchables['location']['id'], 'i');
-
-		// Depending on the scope of the searchables, we'll have to add some NULLs to the query
-		//
-		// ...For origin
-		if ( in_array($this->searchables['origin']['searchable_class'], array('dobj\Region', 'dobj\Country') )) {
-			$custom_query->appendANull('AND', 'id_city_origin');
+		if ($this->is_combined_search) {
+			$results = $this->combined_search->run($dal, $do2db);
+		}
+		else {
+			// run both queries
+			$results = array();
+			$results['location'] = $this->nearby_location_search->run($dal, $do2db);
+			$results['origin'] = $this->nearby_origin_search->run($dal, $do2db);
 		}
 
-		if ( $this->searchables['origin']['searchable_class'] == 'dobj\Country' ) {
-			$custom_query->appendANull('AND', 'id_region_origin');
+		// make networks
+		$networks = $this->determineNetworks($this->origin, $results['origin'], $this->location, $results['location']);
+		$this->network_group_search = new NetworkGroupSearch($networks);
+
+		return $this->network_group_search->run($dal, $do2db);
+	}
+
+	/*
+	 * Given the original searchables and a list of nearby search results,
+	 * this function determines how these suckas make networks
+	 *
+	 * The usual way...
+	 * 	search_origin + (2 nearby locations)
+	 * 	(2 nearby origins) + search_location
+	 */
+	private function determineNetworks($origin, $locations_near_origin, $location, $locations_near_location) {
+
+		$networks = array();
+
+		// Handle the locations
+		foreach ($locations_near_location as $l) {
+			$network = new \dobj\Network();		
+			$network->origin_searchable = $origin;
+			$network->location_searchable = $l;
+
+			array_push($networks, $network);
 		}
 
-		// ...For location
-		if ( in_array($this->searchables['location']['searchable_class'], array('dobj\Region', 'dobj\Country') )){
-			$custom_query->appendANull('AND', 'id_city_cur');
+		// Handle the origins
+		foreach ($locations_near_origin as $o) {
+			$network = new \dobj\Network();		
+			$network->origin_searchable = $o;
+			$network->location_searchable = $location;
+
+			array_push($networks, $network);
 		}
 
-		if ( $this->searchables['location']['searchable_class'] == 'dobj\Country' ) {
-			$custom_query->appendANull('AND', 'id_region_cur');
-		}
-
-		$dal->customNetworkSearch = function($con=NULL) use ($custom_query) {
-			return $custom_query->toDBQuery($con);
-		};
-
-		$results = $do2db->execute($dal, $custom_query->getParamObject(), 'customNetworkSearch');
-
-		// Check for no results
-		if (get_class($results) == 'PDOStatement') {
-			return False;
-		}
-
-		return $results;
+		return $networks;
 	}
 }
 

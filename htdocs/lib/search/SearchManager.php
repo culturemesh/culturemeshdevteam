@@ -28,6 +28,10 @@ class SearchManager {
 		return $this->search_results;
 	}
 
+	public function setSearch($search) {
+		$this->search = $search;
+	}
+
 	private function parseInput() {
 
 	}
