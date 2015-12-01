@@ -151,5 +151,42 @@ SQL
 
 		return $m;
 	};
+
+	$obj->getPopulousCitiesByCountry = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT *
+FROM cities
+WHERE country_id=? 
+ORDER BY population DESC
+LIMIT 0,5
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'getPopulousCitiesByCountry',
+			'params' => array('id'),
+			'param_types' => 'i',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\City',
+			'returning_cols' => array('id', 'name', 'latitude', 'longitude',
+					'region_id', 'region_name', 'country_id', 'country_name',
+					'population', 'feature_code', 'tweet_terms', 'region_tweet_terms',
+					'country_tweet_terms')
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
 }
 ?>

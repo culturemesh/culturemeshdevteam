@@ -2,7 +2,7 @@
 ini_set('display_errors', true);
 include('environment.php');
 $cm = new Environment();
-//$cm->displayErrors();
+$cm->displayErrors();
 $dal = NULL;
 $do2db = NULL;
 $cm->enableDatabase($dal, $do2db);
@@ -45,6 +45,15 @@ $network_search = new \search\NetworkSearch($origin_searchable, $location_search
 $search_manager = new \search\SearchManager($cm, $dal, $do2db, $network_search);
 $results = $search_manager->getResults();
 
+$related_search = new \search\RelatedNetworkSearch($origin_searchable, $location_searchable);
+$search_manager->setSearch($related_search);
+
+$related_networks = $search_manager->getResults();
+var_dump($related_networks);
+
+$cm->closeConnection();
+
+/*
 $nearby_location_search = new \search\NearbyLocationSearch($location_searchable);
 $search_manager->setSearch($nearby_location_search);
 $results = $search_manager->getResults();
@@ -84,6 +93,7 @@ $search_manager->setSearch($network_group_search);
 $results = $search_manager->getResults();
 
 var_dump($results);
+*/
 
 // Query for related networks
 /*
@@ -92,7 +102,6 @@ $search_manager->setSearch($related_search);
 $results= $search_manager->getResults();
 */
 
-$cm->closeConnection();
 
 
 /*

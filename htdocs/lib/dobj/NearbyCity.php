@@ -3,8 +3,8 @@ namespace dobj;
 
 class NearbyCity extends NearbyLocation {
 
-	private $city_id;
-	private $city_name;
+	protected $city_id;
+	protected $city_name;
 }
 
 ?>

@@ -3,8 +3,8 @@ namespace dobj;
 
 class NearbyRegion extends NearbyLocation {
 
-	private $region_id;
-	private $region_name;
+	protected $region_id;
+	protected $region_name;
 }
 
 ?>

@@ -14,13 +14,16 @@ class NearbyLocationSearch extends Search {
 
 			'dobj\City' => array(
 				'table' => 'nearby_cities',
-				'column' => 'city_id'),
+				'column' => 'city_id',
+				'result' => 'dobj\NearbyCity'),
 			'dobj\Region' => array(
 				'table' => 'nearby_regions',
-				'column' => 'region_id'),
+				'column' => 'region_id',
+				'result' => 'dobj\NearbyRegion'),
 			'dobj\Country' => array(
 				'table' => 'nearby_countries',
-				'column' => 'country_id')
+				'column' => 'country_id',
+				'result' => 'dobj\NearbyCountry')
 			);
 	}
 
@@ -35,7 +38,7 @@ class NearbyLocationSearch extends Search {
 			'name' => 'customNearbyLocationSearch',
 			'select_rows' => array(),
 			'from_tables' => array($c_to_c['table']),
-			'returning_class' => $location_class,
+			'returning_class' => $c_to_c['result'],
 			'returning_list' => True
 			)
 		);

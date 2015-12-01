@@ -1,6 +1,9 @@
 <?php
 namespace search;
 
+/*
+ * Check and see if networks can be found
+ */
 class NetworkGroupSearch extends Search {
 
 	private $networks;
@@ -33,6 +36,7 @@ class NetworkGroupSearch extends Search {
 
 			$network = $this->networks[$i];
 
+			// get their searchables
 			$o = $network->origin_searchable;
 			$l = $network->location_searchable;
 
