@@ -16,6 +16,12 @@ class NetworkGroupSearch extends Search {
 
 	public function run($dal, $do2db) {
 
+		// If there are no possible networks,
+		// return false
+		//
+		if (count($this->networks) <= 0)
+			return False;
+
 		//
 		// create search name
 	
@@ -26,7 +32,9 @@ class NetworkGroupSearch extends Search {
 			'select_rows' => array(),
 			'from_tables' => array('networks'),
 			'returning_class' => 'dobj\Network',
-			'returning_list' => True
+			'returning_list' => True,
+			'limit_offset' => 0,
+			'limit_row_count' => 4
 			)
 		);
 

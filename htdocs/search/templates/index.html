@@ -16,6 +16,8 @@
 					var ns = new cm.NetworkSearcher({
 							searchable_selector: document.getElementById('searchable-results'),
 							results: document.getElementById('network-results'),
+							best_match: document.getElementById('best-match-container'),
+							related_networks: document.getElementById('related-networks-container'),
 							error_element: document.getElementById('results-error')
 						});
 
@@ -24,8 +26,18 @@
 	{{/ autoload_scripts }}
 
 	{{$ content }}
+
+	<!-- TEMPLATES -->
+	<script id='possible-network-template' type='x-tmpl-mustache'>
+	{{{ templates.possible_network }}}
+	</script>
+
+	<script id='active-network-template' type='x-tmpl-mustache'>
+	{{{ templates.active_network }}}
+	</script>
+
 	<div id="content">
-		<div class-"net-left">
+		<div class="net-left">
 			<div class="leftbar">
 				
 				{{{ sections.map_embed }}}
@@ -54,7 +66,20 @@
 					</div>
 				<div id='results-error'></div>
 			</div>
+
+			<hr class='dashboard'>	
+
 			<div id='network-results'>
+				<div id="best-match">
+					<h3>Best Match</h3>
+					<div id="best-match-container">
+					</div>
+				</div>
+				<div id="related-networks">
+					<h3>RelatedNetworks</h3>
+					<div id="related-networks-container">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

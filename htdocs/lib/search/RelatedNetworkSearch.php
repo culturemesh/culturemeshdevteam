@@ -4,7 +4,9 @@ namespace search;
 class RelatedNetworkSearch extends Search {
 
 	private $origin;
+	private $origin_class;
 	private $location;
+	private $location_class;
 	
 	private $is_combined_search;
 	private $combined_search;
@@ -31,15 +33,15 @@ class RelatedNetworkSearch extends Search {
 		$this->origin = $origin;
 		$this->location = $location;
 
-		$origin_class = get_class($origin);
-		$location_class = get_class($location);
+		$this->origin_class = get_class($origin);
+		$this->location_class = get_class($location);
 
-		if ($origin_class == $location_class) {
+		if ($this->origin_class == $this->location_class) {
 
 			$this->is_combined_search = True;
 			$this->running_origin_search = True;
 
-			if ($origin_class == 'dobj\Country') {
+			if ($this->origin_class == 'dobj\Country') {
 				$this->combined_search = new PopulousCityGroupSearch( array($origin, $location) );
 			}
 			else {
@@ -49,17 +51,17 @@ class RelatedNetworkSearch extends Search {
 		else {
 			$this->is_combined_search = False;
 
-			if ($location_class == 'dobj\Country') {
+			if ($this->location_class == 'dobj\Country') {
 			  $this->nearby_location_search = new PopulousCitySearch($location);
 			}
 			else {
 			   $this->nearby_location_search = new NearbyLocationSearch($location);
 			}
 
-			if ($origin_class == 'dobj\Country') {
+			if ($this->origin_class == 'dobj\Country') {
 			  $this->nearby_origin_search = new PopulousCitySearch($origin);
 			}
-			else if ($origin_class == 'dobj\Language') {
+			else if ($this->origin_class == 'dobj\Language') {
 
 				// nothing
 				$this->running_origin_search = False;
@@ -80,8 +82,8 @@ class RelatedNetworkSearch extends Search {
 			$group_results = $this->combined_search->run($dal, $do2db);
 
 			$results = array(
-				'location' => NULL,
-				'origin' => NULL);
+				'location' => array(),
+				'origin' => array());
 
 			// Run through these things and turn them into searchables
 			// and sort them into location and origin
@@ -92,7 +94,13 @@ class RelatedNetworkSearch extends Search {
 
 				// turn a thing into a searchable
 				if (is_subclass_of($result, 'dobj\NearbyLocation')) {
-					$group_results[$i] = $result->toSearchable();
+
+					if ($result->isNeighborTo($this->origin)) {
+						array_push($results['origin'], $result->toSearchable($this->origin));
+					}
+					else if ($result->isNeighborTo($this->location)) {
+						array_push($results['location'], $result->toSearchable($this->location));
+					}
 				}
 			}
 		}
@@ -101,12 +109,10 @@ class RelatedNetworkSearch extends Search {
 			$results = array();
 			$results['location'] = $this->nearby_location_search->run($dal, $do2db);
 
-			var_dump($results['location']);
-
 			if ($this->running_origin_search)
 			  $results['origin'] = $this->nearby_origin_search->run($dal, $do2db);
 			else
-			  $results['origin'] = NULL;
+			  $results['origin'] = array();
 
 			// Run through these things and turn them into searchables
 			// and sort them into location and origin
@@ -117,7 +123,7 @@ class RelatedNetworkSearch extends Search {
 
 				// turn a thing into a searchable
 				if (is_subclass_of($result, 'dobj\NearbyLocation')) {
-					$results['location'][$i] = $result->toSearchable();
+					$results['location'][$i] = $result->toSearchable($this->location);
 				}
 			}
 
@@ -127,16 +133,41 @@ class RelatedNetworkSearch extends Search {
 
 				// turn a thing into a searchable
 				if (is_subclass_of($result, 'dobj\NearbyLocation')) {
-					$results['origin'][$i] = $result->toSearchable();
+					$results['origin'][$i] = $result->toSearchable($this->origin);
 				}
 			}
 		}
 
 		// make networks
-		$networks = $this->determineNetworks($this->origin, $results['origin'], $this->location, $results['location']);
-		$this->network_group_search = new NetworkGroupSearch($networks);
+		$networks = $this->createPossibleNetworks($this->origin, $results['origin'], $this->location, $results['location']);
 
-		return $this->network_group_search->run($dal, $do2db);
+		// create a hash of possible network titles
+		$network_hash = array();
+
+		foreach ($networks as $network) {
+			$network_hash[$network->getTitle()] = $network;
+		}
+
+		// Run network group search
+		$this->network_group_search = new NetworkGroupSearch($networks);
+		$final_results = $this->network_group_search->run($dal, $do2db);
+
+		//var_dump($final_results);
+
+		if ($final_results !== False) {
+
+			foreach($final_results as $existing_network) {
+
+				// set network to existing
+				$existing_network->existing = True;
+				$title = $existing_network->getTitle();
+
+				// replace possible network with existing one
+				$network_hash[$title] = $existing_network;
+			}
+		}
+
+		return array_values( $network_hash );
 	}
 
 	/*
@@ -147,54 +178,49 @@ class RelatedNetworkSearch extends Search {
 	 * 	search_origin + (2 nearby locations)
 	 * 	(2 nearby origins) + search_location
 	 */
-	private function determineNetworks($origin, $locations_near_origin, $location, $locations_near_location) {
+	private function createPossibleNetworks($origin, $locations_near_origin, $location, $locations_near_location) {
 
 		$networks = array();
 
 		// Handle the locations
-		/*
-		foreach ($locations_near_location as $l) {
-			$network = new \dobj\Network();		
-			$network->origin_searchable = $origin;
-			$network->location_searchable = $l;
+		// 
+		if ($locations_near_location !== NULL) {
 
-			array_push($networks, $network);
+			// also, if it's a non empty array
+			//
+			if (count($locations_near_location) > 0) {
+
+				for ($i = 0; $i < 2; $i++) {
+
+					$l = $locations_near_location[$i];
+
+					$network = new \dobj\Network();		
+					$network->origin_searchable = $origin;
+					$network->location_searchable = $l;
+
+					array_push($networks, $network);
+				}
+			}
 		}
-		*/
 
-		for ($i = 0; $i < 2; $i++) {
-
-			$l = $locations_near_location[$i];
-
-			$network = new \dobj\Network();		
-			$network->origin_searchable = $origin;
-			$network->location_searchable = $l;
-
-			array_push($networks, $network);
-		}
-
-		/*
 		// Handle the origins
-		foreach ($locations_near_origin as $o) {
-			$network = new \dobj\Network();		
-			$network->origin_searchable = $o;
-			$network->location_searchable = $location;
-
-			array_push($networks, $network);
-		}
-		*/
-
+		//
 		if ($locations_near_origin !== NULL) {
 
-			for ($i = 0; $i < 2; $i++) {
+			// also, if it's a non empty array
+			//
+			if (count($locations_near_origin) > 0) {
 
-				$o = $locations_near_origin[$i];
+				for ($i = 0; $i < 2; $i++) {
 
-				$network = new \dobj\Network();		
-				$network->origin_searchable = $o;
-				$network->location_searchable = $location;
+					$o = $locations_near_origin[$i];
 
-				array_push($networks, $network);
+					$network = new \dobj\Network();		
+					$network->origin_searchable = $o;
+					$network->location_searchable = $location;
+
+					array_push($networks, $network);
+				}
 			}
 		}
 

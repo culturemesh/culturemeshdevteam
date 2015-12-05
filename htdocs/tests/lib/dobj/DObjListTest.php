@@ -206,5 +206,30 @@ class DObjListTest extends PHPUnit_Framework_TestCase {
 		 */
 	}
 
+	/**
+	 * @covers Nothing, really
+	 *
+	 */
+	public function testElementChange() {
+
+		$x = new dobj\Blank();
+		$x->number = 1;
+		$y = new dobj\Blank();
+		$y->number = 2;
+		$z = new dobj\Blank();
+		$z->number = 3;
+
+		$list = new dobj\DObjList();
+		$list->dInsert($x);
+		$list->dInsert($y);
+
+		$this->assertEquals($list[0]->number, 1);
+
+		// make the change
+		$list[0] = $z;
+
+		$this->assertEquals($list[0]->number, 3);
+	}
+
 }
 ?>

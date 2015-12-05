@@ -2,7 +2,7 @@
 ini_set('display_errors', true);
 include('environment.php');
 $cm = new Environment();
-$cm->displayErrors();
+//$cm->displayErrors();
 $dal = NULL;
 $do2db = NULL;
 $cm->enableDatabase($dal, $do2db);

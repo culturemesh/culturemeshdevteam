@@ -126,6 +126,11 @@ class Search {
 			  $location_results = $html;
 		}
 
+		// load templates
+		//
+		$possible_network_template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_possible-network.html');
+		$active_network_template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_active-network.html');
+
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'search' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
@@ -134,6 +139,9 @@ class Search {
 				'searchbar' => $searchbar,
 				'origin-results' => $origin_results,
 				'location-results' => $location_results),
+			'templates' => array(
+				'possible_network' => $possible_network_template,
+				'active_network' => $active_network_template),
 			'vars' => $cm->getVars(),
 			'page_vars' => array (
 				'uid' => null,

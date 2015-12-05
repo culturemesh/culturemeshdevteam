@@ -410,6 +410,8 @@ cm.NetworkSearcher = function(o) {
 	this._options = {
 		searchable_selector : null,
 		results : null,
+		best_match : null,
+		related_networks : null,
 		error_element : null,
 		location_radio_name : 'location',
 		origin_radio_name : 'origin',
@@ -543,5 +545,41 @@ cm.NetworkSearcher.prototype = {
 		// I feel like this oughta be the first
 		// thing to use js mustache
 		this._options.results;
+
+		var possible_network_template = document.getElementById('possible-network-template').innerHTML;
+		var active_network_template = document.getElementById('active-network-template').innerHTML;
+
+		// render things
+		var best_match_html = null;
+
+		if (data.main_network.existing == false || data.main_network.existing == null) {
+			best_match_html = Mustache.render( possible_network_template, data.main_network );
+		}
+		else {
+			best_match_html = Mustache.render( active_network_template, data.main_network );
+		}
+
+		// clear prior results
+		$( this._options.best_match ).empty();
+		$( this._options.related_networks ).empty();
+
+		// add best match
+		$( this._options.best_match ).append( best_match_html );
+
+		// add related networks
+		for (var i=0; i < data.related_networks.length; i++) {
+
+			var html;
+
+			if (data.related_networks[i].existing == false || data.related_networks[i].existing == null) {
+				html = Mustache.render( possible_network_template, data.related_networks[i] );
+			}
+			else {
+				html = Mustache.render( active_network_template, data.related_networks[i] );
+			}
+
+			$( this._options.related_networks ).append( html );
+		}
+
 	}
 };
