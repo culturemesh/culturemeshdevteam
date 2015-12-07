@@ -104,7 +104,7 @@
 			<div id="stage-area">
 				<div id="stage-content">
 					<h3 id="stage-title">Connecting the world's diasporas</h3>
-					<form id="search-form" class='stage' method="GET" action="/search/" autocomplete="off">
+					<form id="search-form" class='stage' method="GET" action="//<?php echo \Environment::host_root(); ?>/search/" autocomplete="off">
 					<div id="opening" class='stage'>Find people who
 					<select id="verb-select" name="verb" class="stage-input">
 						<option value="arefrom">are from</option>
