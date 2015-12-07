@@ -81,6 +81,7 @@ if ($json_post['op'] == 'login') {
 		'error' => NULL
 	);
 
+	// hehehe
 	if ($json_post['password'] == $GLOBALS['ADMIN_PASSWORD']) {
 		$response['error'] = 0;
 	}
