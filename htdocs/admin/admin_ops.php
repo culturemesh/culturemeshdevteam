@@ -24,6 +24,8 @@ include_once '../data/dal_language.php';
 
 include_once '../data/loc_item.php';
 
+$cm = new \Environment();
+
 ini_set('display_errors', true);
 error_reporting(E_ALL ^ E_NOTICE);
 
@@ -79,7 +81,7 @@ if ($json_post['op'] == 'login') {
 		'error' => NULL
 	);
 
-	if ($json_post['password'] == "HairClockOperaMouse") {
+	if ($json_post['password'] == $GLOBALS['ADMIN_PASSWORD']) {
 		$response['error'] = 0;
 	}
 	else {
