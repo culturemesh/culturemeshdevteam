@@ -255,7 +255,7 @@ final class Environment {
 
 		$dal = new \dal\DAL($this->getConnection());
 		$dal->loadFiles();
-		$do2db = new \dal\Do2db();
+		$do2db = new \dal\Do2Db();
 	}
 
 	public static function tearDown() {
