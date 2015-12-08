@@ -4,11 +4,18 @@ namespace search;
 class SearchableSearch extends Search {
 
 	private $input;
+	private $class;
 	private $search_meta;
 
-	public function __construct($input) {
+	public function __construct($input, $class=NULL) {
 
 		$this->input = $input;
+
+		if (!in_array($class, array(NULL, 'location', 'language')))
+		  throw new \Exception('SearchableSearch: An invalid class was passed. For now it\'s location or language');
+		else
+		  $this->class = $class;
+
 		$this->processInput();
 	}
 
@@ -39,11 +46,28 @@ class SearchableSearch extends Search {
 			)
 		);
 
+		$primary_search = '%' . $this->search_meta['primary'] . '%';
+		$secondary_search = NULL;
+
+		if ($this->search_meta['secondary'] != NULL)
+			$secondary_search = '%' . $this->search_meta['primary'] . '%';
+
 		// add 
-		$custom_query->addAWhere('meta_key', 'LIKE', $this->search_meta['primary'], 's');
+		$custom_query->addAWhere('meta_key', 'LIKE', $primary_search, 's');
 
 		if ($this->search_meta['secondary'] != NULL) {
-			$custom_query->addAnotherWhere('OR', 'meta_key', 'LIKE', $this->search_meta['secondary'] , 's');
+			$custom_query->addAnotherWhere('OR', 'meta_key', 'LIKE', $secondary_search , 's');
+		}
+
+		if ($this->class != NULL) {
+
+			if ($this->class == 'location') {
+				$custom_query->addAnotherWhere('AND', 'class_searchable', '!=', 'language', 's');
+			}
+
+			if ($this->class == 'language') {
+				$custom_query->addAnotherWhere('AND', 'class_searchable', 'NOT IN', array('city', 'region', 'country'), 's', 3);
+			}
 		}
 
 		$dal->$query_name = function($con=NULL) use ($custom_query) {

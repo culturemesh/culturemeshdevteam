@@ -23,8 +23,18 @@ class FullNetworkSearch extends Search {
 
 			// create searches
 			$this->s1_searches = array();
-			array_push($this->s1_searches, new SearchableSearch($this->input['search-1']));
-			array_push($this->s1_searches, new SearchableSearch($this->input['search-2']));
+			$search_class = NULL;
+
+			if ($this->input['verb'] == 'arefrom')
+			  $search_class = 'location';
+			if ($this->input['verb'] == 'speak')
+			  $search_class = 'language';
+
+			// origin search
+			array_push($this->s1_searches, new SearchableSearch($this->input['search-1'], $search_class));
+
+			// location search
+			array_push($this->s1_searches, new SearchableSearch($this->input['search-2'], 'location'));
 		}
 	}
 

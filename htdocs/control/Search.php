@@ -18,6 +18,7 @@ class Search {
 
 		$search_one = $_GET['search-1'];
 		$search_two = $_GET['search-2'];
+		$verb = $_GET['verb'];
 
 		$metaphone_1 = \misc\Util::DoubleMetaphone($search_one);
 		$metaphone_2 = \misc\Util::DoubleMetaphone($search_two);
@@ -39,7 +40,8 @@ class Search {
 		// RUN SEARCH
 		$network_search = new \search\FullNetworkSearch(array(
 			'search-1' => $search_one,
-			'search-2' => $search_two));
+			'search-2' => $search_two,
+			'verb' => $verb));
 
 		$search_manager = new \search\SearchManager($cm, $dal, $do2db, $network_search);
 		$results = $search_manager->getResults();
