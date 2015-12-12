@@ -188,5 +188,144 @@ SQL
 
 		return $m;
 	};
+
+	/*
+	 * Must have download all cities
+	 */
+	$obj->getAllCities = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT *
+FROM cities
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'getAllCities',
+			'params' => array(),
+			'param_types' => '',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\City',
+			'returning_cols' => array('id', 'name', 'latitude', 'longitude',
+					'region_id', 'region_name', 'country_id', 'country_name',
+					'population', 'feature_code', 'tweet_terms', 'region_tweet_terms',
+					'country_tweet_terms')
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+	/*
+	 * Must have download all regions 
+	 */
+	$obj->getAllRegions = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT *
+FROM regions 
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'getAllRegions',
+			'params' => array(),
+			'param_types' => '',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\Region',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+	/*
+	 * Must have download all countries
+	 */
+	$obj->getAllCountries = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT *
+FROM countries 
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'getAllCountries',
+			'params' => array(),
+			'param_types' => '',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\Country',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+	/*
+	 * Must have download all languages
+	 */
+	$obj->getAllLanguages = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT *
+FROM languages
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'getAllLanguages',
+			'params' => array(),
+			'param_types' => '',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\Language',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
 }
 ?>

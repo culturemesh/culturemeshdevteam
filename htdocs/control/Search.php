@@ -20,8 +20,10 @@ class Search {
 		$search_two = $_GET['search-2'];
 		$verb = $_GET['verb'];
 
+		/*
 		$metaphone_1 = \misc\Util::DoubleMetaphone($search_one);
 		$metaphone_2 = \misc\Util::DoubleMetaphone($search_two);
+		 */
 
 		// prepare for db
 		$dal = new \dal\DAL($cm->getConnection());

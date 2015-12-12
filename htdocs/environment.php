@@ -130,7 +130,10 @@ final class Environment {
 		if (!isset(self::$host_root_s)) {
 			$doc_root = $_SERVER['DOCUMENT_ROOT'];
 			$hostname = $_SERVER['HTTP_HOST'];
-			self::$host_root_s = '//'.str_replace($doc_root, $hostname, getcwd());
+
+			$almost_there = '//'.str_replace($doc_root, $hostname, getcwd());
+
+			self::$host_root_s = str_replace('/culturemesh-live/htdocs', '', $almost_there);
 		}
 		return self::$host_root_s;
 	}

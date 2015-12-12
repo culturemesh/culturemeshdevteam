@@ -41,8 +41,8 @@ class SearchableSearch extends Search {
 		$custom_query->setValues(array(
 			'name' => $query_name,
 			'select_rows' => array(),
-			'from_tables' => array('metaphone_keys'),
-			'returning_class' => 'dobj\MetaphoneKey'
+			'from_tables' => array('search_keys'),
+			'returning_class' => 'dobj\SearchKey'
 			)
 		);
 
@@ -53,10 +53,10 @@ class SearchableSearch extends Search {
 			$secondary_search = '%' . $this->search_meta['primary'] . '%';
 
 		// add 
-		$custom_query->addAWhere('meta_key', 'LIKE', $primary_search, 's');
+		$custom_query->addAWhere('`key`', 'LIKE', $primary_search, 's');
 
 		if ($this->search_meta['secondary'] != NULL) {
-			$custom_query->addAnotherWhere('OR', 'meta_key', 'LIKE', $secondary_search , 's');
+			$custom_query->addAnotherWhere('OR', '`key`', 'LIKE', $secondary_search , 's');
 		}
 
 		if ($this->class != NULL) {

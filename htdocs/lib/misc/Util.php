@@ -11,6 +11,14 @@ class Util {
   		return (bool)count(array_filter(array_keys($array), 'is_string'));
 	}
 
+	public static function Quote($string) {
+		return '\'' . $string . '\'';
+	}
+
+	public static function DoubleQuote($string) {
+		return "\"" . $string . "\"";
+	}
+
 	public static function getController($string) {
 		$split = explode('#', $string);
 

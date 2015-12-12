@@ -2,6 +2,7 @@
 
 require('../environment.php');
 $cm = new Environment();
+//$cm->displayErrors();
 
 // set up the router
 $al = new AltoRouter();
