@@ -14,17 +14,7 @@ class SearchKey extends DObj{
 	private $language_name;
 	private $class_searchable;
 
-	public static function createFromDataRow($row) {
-
-		/*
-		$keys = array_keys($row);
-		$class = get_called_class();
-		$dobj = new $class();
-
-		foreach ($keys as $key) {
-			$dobj->$key = $row[$key];
-		}
-		 */
+	public static function createFromDataRow($row, $remora=NULL) {
 
 		$searchable = NULL;
 
@@ -71,7 +61,7 @@ class SearchKey extends DObj{
 			}
 
 			else {
-				$remora->execute($dobj);
+				$remora->execute($searchable);
 			}
 		}
 

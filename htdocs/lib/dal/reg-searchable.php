@@ -327,5 +327,169 @@ SQL
 
 		return $m;
 	};
+
+	/*
+	 * Location Search gets Info Stuff
+	 */
+	$obj->LocationInfoSearchById = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+CALL location_info_search_by_id(?)
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'LocationInfoSearchById',
+			'params' => array('id_string'),
+			'param_types' => 's',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\LocationResult',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+	/*
+	 * Language Search gets Info Stuff
+	 */
+	$obj->LanguageInfoSearchById = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+CALL language_info_search_by_id(?)
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'LanguageInfoSearchById',
+			'params' => array('id_string'),
+			'param_types' => 's',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\Language',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+	/*
+	 * Key searches
+	 *
+	 * 1) Location, single key
+	 * 2) Location, double key
+	 * 3) Language, single key
+	 * 4) Language, double key
+	 */
+	$obj->LocationSingleKeySearch = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+CALL location_single_key_search(?)
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'LocationInfoSearchById',
+			'params' => array('key'),
+			'param_types' => 's',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\LocationResult',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+	$obj->LocationDoubleKeySearch = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+CALL location_double_key_search(?, ?)
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'LocationDoubleKeySearch',
+			'params' => array('key'),
+			'param_types' => 'ss',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\LocationResult',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+	$obj->LanguageDoubleKeySearch = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+CALL language_double_key_search(?, ?)
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'LanguageDoubleKeySearch',
+			'params' => array('key'),
+			'param_types' => 'ss',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\Language',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
 }
 ?>

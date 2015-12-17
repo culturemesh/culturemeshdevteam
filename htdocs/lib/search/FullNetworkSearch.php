@@ -31,10 +31,10 @@ class FullNetworkSearch extends Search {
 			  $search_class = 'language';
 
 			// origin search
-			array_push($this->s1_searches, new SearchableSearch($this->input['search-1'], $search_class));
+			array_push($this->s1_searches, new SearchableKeySearch($this->input['search-1'], $search_class));
 
 			// location search
-			array_push($this->s1_searches, new SearchableSearch($this->input['search-2'], 'location'));
+			array_push($this->s1_searches, new SearchableKeySearch($this->input['search-2'], 'location'));
 		}
 	}
 

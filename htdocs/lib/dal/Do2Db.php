@@ -7,12 +7,13 @@ class Do2Db {
 	private $dobj;
 	private $query;
 	private $op;
+	private $remora;
 
-	public function execute($dal, $dobj, $query) {
+	public function execute($dal, $dobj, $query, $remora=NULL) {
 
 		$op = $dal->getCQuery($query);
 
-		$this->load($dal, $dobj, $query, $op);
+		$this->load($dal, $dobj, $query, $op, $remora);
 
 		if ($op == NULL) {
 			$this->cleanse();
@@ -133,7 +134,7 @@ class Do2Db {
 	private function fillObj($scheme, $row) {
 
 		// uses base dobj class to create dobj of any type
-		$dobj = $scheme['returning_class']::createFromDataRow($row);
+		$dobj = $scheme['returning_class']::createFromDataRow($row, $this->remora);
 		return $dobj;
 	}
 
@@ -172,13 +173,14 @@ class Do2Db {
 		return $list;
 	}
 
-	private function load($dal, $dobj, $query, $op) {
+	private function load($dal, $dobj, $query, $op, $remora) {
 	
 		// set things
 		$this->dal = $dal;
 		$this->dobj = $dobj;
 		$this->query = $query;
 		$this->op = $op;
+		$this->remora = $remora;
 	}
 
 	private function cleanse() {
@@ -187,6 +189,7 @@ class Do2Db {
 		$this->dobj = NULL;
 		$this->query = NULL;
 		$this->op = NULL;
+		$this->remora = NULL;
 	}
 
 	public function initializeCustomQuery() {

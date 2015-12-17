@@ -89,6 +89,7 @@ class Search {
 		for($i = 0; $i < count($results); $i++) {
 
 			$html = NULL;
+			$ARRAY_LENGTH = 7;
 
 			if ($i == 0)
 			  $radio_name = 'origin';
@@ -107,9 +108,10 @@ class Search {
 					);
 				}
 				else {
-					$results[$i]->setMustache($m_comp);
+					$slice = $results[$i]->slice( 0, $ARRAY_LENGTH, true );
+					$slice->setMustache($m_comp);
 					$template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_searchable_options.html');
-					$html = $results[$i]->getHTML('user-results', array(
+					$html = $slice->getHTML('user-results', array(
 						'list_template' => $template,
 						'cm' => $cm,
 						'radio_name' => $radio_name,

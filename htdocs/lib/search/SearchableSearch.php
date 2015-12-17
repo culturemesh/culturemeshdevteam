@@ -22,17 +22,19 @@ class SearchableSearch extends Search {
 	private function processInput() {
 
 		$input_exploded = explode(', ', $this->input);
+		$this->first_term = $input_exploded[0];
 
 		// may have to deal with commas and no spaces eg (tallahassee,florida)
 
 		// double metaphone
-		$this->search_meta = \misc\Util::DoubleMetaphone($input_exploded[0]);
+		$this->search_meta = \misc\Util::DoubleMetaphone($this->first_term);
 	}
 
 	public function run($dal, $do2db) {
 
 		//
 		// create search name
+		//
 	
 		$custom_query = $do2db->initializeCustomQuery();
 
@@ -74,7 +76,33 @@ class SearchableSearch extends Search {
 			return $custom_query->toDBQuery($con);
 		};
 
-		$results = $do2db->execute($dal, $custom_query->getParamObject(), $query_name);
+		// Create remora to track levenshtein distance
+		$remora = new \dal\Remora();
+		$remora->original_term = $this->first_term;
+		$remora->levenshtein_array = array();
+
+		$remora->setFunction(function($searchable) {
+
+			// this is an array push, it has to be complicated
+			// because of reasons
+			//
+			// I'm gonna simplify this thing later
+			//
+			$arr = $this->levenshtein_array;
+			$arr[] = array(
+				'name' => $searchable->name,
+				'distance' => levenshtein($this->original_term, $searchable->name)
+			);
+
+			// re add the thing
+			$this->levenshtein_array = $arr;
+		});
+
+		$results = $do2db->execute($dal, $custom_query->getParamObject(), $query_name, $remora);
+
+
+
+		var_dump($remora->levenshtein_array);
 
 		// if no results were found
 		// create a NullResult Object

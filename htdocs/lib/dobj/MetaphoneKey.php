@@ -71,7 +71,7 @@ class MetaphoneKey extends DObj{
 			}
 
 			else {
-				$remora->execute($dobj);
+				$remora->execute($searchable);
 			}
 		}
 
