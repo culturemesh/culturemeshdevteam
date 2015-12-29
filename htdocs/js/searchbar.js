@@ -138,17 +138,20 @@ function fillACArray(acArray, data, type) {
 		// create list item
 		var item = new ListItem();
 		item.type = type;
+		item.id = null;
 		item.name = '';
 
 		// split line (by tab)
 		iSplit = items[i].split('\t');
+
+		item.id = iSplit[ iSplit.length - 1 ];
 
 		// if there is a split to worry about,
 		// we gotta do some looping, b/c there's
 		// comma stuff to worry about - easier this way
 		if (iSplit.length > 1) {
 			var j = 0;
-			for (; j < iSplit.length - 1; j++) {
+			for (; j < iSplit.length - 2; j++) {
 				if (iSplit[j] != 'NULL' &&
 						iSplit[j] != '')
 					item.name += iSplit[j] + ', ';
@@ -224,6 +227,10 @@ function SearchBar() {
 	var topic = document.getElementById("search-topic");
 	var varUl = document.getElementById("s-var");
 	var locUl = document.getElementById("s-location");
+
+	var varIdField = document.getElementById("varId");
+	var locIdField = document.getElementById("locId");
+
 //	var loc_select, q_select, cur_query;
 
 	var selector = document.getElementById("verb-select");
@@ -289,14 +296,14 @@ function SearchBar() {
 					// Rank search results
 					//li_locations = rankLocations(li_locations);
 					// Fill up Ul
-					fillUl(varUl, li_locations.slice(0,4), searchOne, clik1);
+					fillUl(varUl, li_locations.slice(0,4), searchOne, clik1, varIdField);
 					boldifyMatch(varUl, value);
 					break;
 				case 1:
 					// search for language
 					li_languages = languages.search(value);
 					// fill ul
-					fillUl(varUl, li_languages.slice(0,4), searchOne, clik1);
+					fillUl(varUl, li_languages.slice(0,4), searchOne, clik1, varIdField);
 					boldifyMatch(varUl, value);
 					break;
 			}
@@ -324,7 +331,7 @@ function SearchBar() {
 			// Rank search results
 			//li_locations = rankLocations(li_locations);
 			// Fill up Ul
-			fillUl(locUl, li_locations.slice(0,4), searchTwo, clik2);
+			fillUl(locUl, li_locations.slice(0,4), searchTwo, clik2, locIdField);
 			boldifyMatch(locUl, value);
 		}
 
@@ -359,7 +366,7 @@ function SearchBar() {
 	 * 	  - data, a list of text
 	 * 	  - clickTarg, to receive click value
 	**/
-	function fillUl(ul, data, clickTarg, clickTrk) {
+	function fillUl(ul, data, clickTarg, clickTrk, idField) {
 		var name = null;	
 		for (var i = 0; i < data.length; i++) {
 			// check for duplicate names
@@ -377,9 +384,14 @@ function SearchBar() {
 			// add onclick function to
 			// add value to element
 			item.onclick = function(e) {
+
 				e.stopPropagation();
+
 				// get element
 				var elem = e.target;
+
+				// update id tag
+				idField.value = data[i].id;
 
 				//alert (e.target.tagName);
 				// check if we've got a bold tag by accident
