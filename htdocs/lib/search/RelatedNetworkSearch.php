@@ -42,7 +42,8 @@ class RelatedNetworkSearch extends Search {
 			$this->running_origin_search = True;
 
 			if ($this->origin_class == 'dobj\Country') {
-				$this->combined_search = new PopulousCityGroupSearch( array($origin, $location) );
+				//$this->combined_search = new PopulousCityGroupSearch( array($origin, $location) );
+				$this->combined_search = new NearbyGroupLocationSearch( array($origin, $location) );
 			}
 			else {
 				$this->combined_search = new NearbyGroupLocationSearch( array($origin, $location) );

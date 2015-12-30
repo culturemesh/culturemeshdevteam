@@ -6,8 +6,12 @@ class FullNetworkSearch extends Search {
 	private $states;
 	private $input;
 
+	private $origin_searchable;
+	private $location_searchable;
+
 	// 2nd state search items
-	private $s2_search;
+	private $network_search;
+	private $related_search;
 
 	public function __construct($input, $state='searchable') {
 
@@ -16,10 +20,15 @@ class FullNetworkSearch extends Search {
 
 		// initialize states
 		$this->states = array('searchable', 'network');
+
+		if ($input['click_1'] == 1 && $input['click_2'] == 1) {
+			$state = 'network';
+		}
+
 		$this->current_state = $state;
 
 		// something
-		if ($state == 'searchable') {
+		if ($this->current_state == 'searchable') {
 
 			// create searches
 			$this->s1_searches = array();
@@ -36,6 +45,11 @@ class FullNetworkSearch extends Search {
 			// location search
 			array_push($this->s1_searches, new SearchableKeySearch($this->input['search-2'], 'location'));
 		}
+		else if ($this->current_state = 'network') {
+
+			$this->network_search = new NetworkSearch($this->input['origin_searchable'], $this->input['location_searchable']);
+			$this->related_search = new RelatedNetworkSearch($this->input['origin_searchable'], $this->input['location_searchable']);
+		}
 	}
 
 	public function run($dal, $do2db) {
@@ -51,7 +65,9 @@ class FullNetworkSearch extends Search {
 			$this->current_state = 'network';
 		}
 		else if ($this->current_state == 'network') {
-			array_push($results, $this->s2_search->run($dal, $do2db));
+
+			$results['main_network'] = $this->network_search->run($dal, $do2db);
+			$results['related__networks'] = $this->related_search->run($dal, $do2db);
 		}
 
 		return $results;

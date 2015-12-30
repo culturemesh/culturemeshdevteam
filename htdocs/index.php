@@ -118,10 +118,12 @@
 								<ul id="s-var" class="search"></ul>
 								<input type="hidden" id="clik1" name="clik1" value=0></ul>
 								<input type="hidden" id="varId" name="varId" value=-1 />
+								<input type="hidden" id="varClass" name="varClass" value=-1 />
 							<input type="text" class="stage-input" name="search-2" id="search-2" autocomplete="off"></input>
 								<ul id="s-location" class="search"></ul>
 								<input type="hidden" id="clik2" name="clik2" value=0></ul>
 								<input type="hidden" id="locId" name="locId" value=-1 />
+								<input type="hidden" id="locClass" name="locClass" value=-1 />
 							<input type="submit" class="stage-button" value="SEARCH"></input>
 							<input type="hidden" id="search-topic" name="search-topic"></input>
 					</div>

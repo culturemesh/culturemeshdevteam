@@ -126,7 +126,7 @@ LocList.prototype.searchLocations = function(term) {
 	return fcMatches.concat(cMatches,results);
 }
 
-function fillACArray(acArray, data, type) {
+function fillACArray(acArray, data, type, srch_class) {
 	acArray.push = function(item) {
 		acArray.list.push(item);
 	}
@@ -140,6 +140,7 @@ function fillACArray(acArray, data, type) {
 		item.type = type;
 		item.id = null;
 		item.name = '';
+		item.srch_class = srch_class;
 
 		// split line (by tab)
 		iSplit = items[i].split('\t');
@@ -179,7 +180,7 @@ function loadInitialData() {
 		requestParameters: ' ',
 		sendNow: true
 		}, function(data) {
-			fillACArray(locations, data, 'co');
+			fillACArray(locations, data, 'co', '\\dobj\\Country');
 		});
 
 	// load languages
@@ -189,7 +190,7 @@ function loadInitialData() {
 		requestParameters: ' ',
 		sendNow: true
 		}, function(data) {
-			fillACArray(languages, data, '_l');
+			fillACArray(languages, data, '_l', '\\dobj\\Language');
 		});
 
 	// load regions
@@ -199,7 +200,7 @@ function loadInitialData() {
 		requestParameters: ' ',
 		sendNow: true
 		}, function(data) {
-			fillACArray(locations, data, 'rc');
+			fillACArray(locations, data, 'rc', '\\dobj\\Region');
 		});
 
 	// load cities
@@ -209,7 +210,7 @@ function loadInitialData() {
 		requestParameters: ' ',
 		sendNow: true
 		}, function(data) { 
-			fillACArray(locations, data, 'cc');
+			fillACArray(locations, data, 'cc', '\\dobj\\City');
 		});
 }
 
@@ -229,7 +230,9 @@ function SearchBar() {
 	var locUl = document.getElementById("s-location");
 
 	var varIdField = document.getElementById("varId");
+	var varClassField = document.getElementById("varClass");
 	var locIdField = document.getElementById("locId");
+	var locClassField = document.getElementById("locClass");
 
 //	var loc_select, q_select, cur_query;
 
@@ -296,14 +299,14 @@ function SearchBar() {
 					// Rank search results
 					//li_locations = rankLocations(li_locations);
 					// Fill up Ul
-					fillUl(varUl, li_locations.slice(0,4), searchOne, clik1, varIdField);
+					fillUl(varUl, li_locations.slice(0,4), searchOne, clik1, varIdField, varClassField);
 					boldifyMatch(varUl, value);
 					break;
 				case 1:
 					// search for language
 					li_languages = languages.search(value);
 					// fill ul
-					fillUl(varUl, li_languages.slice(0,4), searchOne, clik1, varIdField);
+					fillUl(varUl, li_languages.slice(0,4), searchOne, clik1, varIdField, varClassField);
 					boldifyMatch(varUl, value);
 					break;
 			}
@@ -331,7 +334,7 @@ function SearchBar() {
 			// Rank search results
 			//li_locations = rankLocations(li_locations);
 			// Fill up Ul
-			fillUl(locUl, li_locations.slice(0,4), searchTwo, clik2, locIdField);
+			fillUl(locUl, li_locations.slice(0,4), searchTwo, clik2, locIdField, locClassField);
 			boldifyMatch(locUl, value);
 		}
 
@@ -366,7 +369,7 @@ function SearchBar() {
 	 * 	  - data, a list of text
 	 * 	  - clickTarg, to receive click value
 	**/
-	function fillUl(ul, data, clickTarg, clickTrk, idField) {
+	function fillUl(ul, data, clickTarg, clickTrk, idField, classField) {
 		var name = null;	
 		for (var i = 0; i < data.length; i++) {
 			// check for duplicate names
@@ -377,9 +380,17 @@ function SearchBar() {
 			  {name = data[i].name;}
 			
 			var item = document.createElement("LI");
+			item.srch_name = data[i].name;
+			item.srch_topic = data[i].type;
+			item.srch_id = data[i].id;
+			item.srch_class = data[i].srch_class;
+
 			var itemText = document.createTextNode(data[i].name);
 			item.appendChild(itemText);
 			ul.appendChild(item);
+
+			var curIndex = i;
+			var dataItem = data[i];
 
 			// add onclick function to
 			// add value to element
@@ -391,7 +402,8 @@ function SearchBar() {
 				var elem = e.target;
 
 				// update id tag
-				idField.value = data[i].id;
+				idField.value = this.srch_id;
+				classField.value = this.srch_class;
 
 				//alert (e.target.tagName);
 				// check if we've got a bold tag by accident
@@ -410,15 +422,9 @@ function SearchBar() {
 
 				// mark down topic if we're varUl
 				if (e.target.parentNode.id == 's-var') {
-					// get type from parallel list
-					var children = e.target.parentNode.childNodes;
-					var i = 0;
-					for (; i < children.length; i++) 
-						if (e.target == children[i]) 
-							break;
-					// set type
-					topic.value = data[i].type;
+					topic.value = this.srch_topic;
 				}
+
 				// disappear parent
 				ul.style.display = 'none';
 
