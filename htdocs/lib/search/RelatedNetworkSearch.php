@@ -145,7 +145,9 @@ class RelatedNetworkSearch extends Search {
 		// create a hash of possible network titles
 		$network_hash = array();
 
+		// populate networks with possible things
 		foreach ($networks as $network) {
+			$network->existing = False;
 			$network_hash[$network->getTitle()] = $network;
 		}
 

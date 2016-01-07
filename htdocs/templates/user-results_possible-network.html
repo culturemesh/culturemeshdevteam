@@ -1,6 +1,6 @@
 <div>
 	<div class='net-info'>
-		<form method='POST' action='search_launch_network.php'> 
+		<form method='POST' action='{{ vars.hostname }}/api/ops/launch_network.php'> 
 			<p class='bottom-text'>{{ title }}</p>
 			<input type='submit' class='launch-network' value='Launch Network'></input>
 			<input type='hidden' name='origin_class' value='{{ origin_class }}'/>

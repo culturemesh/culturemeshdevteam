@@ -67,7 +67,7 @@ class FullNetworkSearch extends Search {
 		else if ($this->current_state == 'network') {
 
 			$results['main_network'] = $this->network_search->run($dal, $do2db);
-			$results['related__networks'] = $this->related_search->run($dal, $do2db);
+			$results['related_networks'] = $this->related_search->run($dal, $do2db);
 		}
 
 		return $results;

@@ -91,6 +91,9 @@ class NetworkSearch extends Search {
 		if (get_class($results) == 'PDOStatement') {
 			return False;
 		}
+		else {
+			$results->existing = True;
+		}
 
 		return $results;
 	}

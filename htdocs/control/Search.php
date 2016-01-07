@@ -12,8 +12,6 @@ class Search {
 
 	public static function match($cm, $params) {
 
-		$cm->displayErrors();
-
 		// start session
 		session_name($cm->session_name);
 		session_start();
@@ -45,11 +43,11 @@ class Search {
 			// Set up searchables from data
 			$origin_searchable = new $search_array['var_class'];
 			$origin_searchable->id = (int) $search_array['var_id'];
-			$origin_searchable->name = $search_array['search-1'];
+			$origin_searchable->name = $search_array['search_one'];
 
 			$location_searchable = new $search_array['loc_class'];
 			$location_searchable->id = (int) $search_array['loc_id'];
-			$location_searchable->name = $search_array['search-2'];
+			$location_searchable->name = $search_array['search_two'];
 
 			$main_network = new \dobj\Network();
 			$main_network->origin_searchable = $origin_searchable;
@@ -58,15 +56,6 @@ class Search {
 			$search_array['origin_searchable'] = $origin_searchable;
 			$search_array['location_searchable'] = $location_searchable;
 		}
-
-
-		/*
-		$search_one = $_GET['search-1'];
-		$search_two = $_GET['search-2'];
-		$verb = $_GET['verb'];
-		$click_1 = $_GET['clik1'];
-		$click_2 = $_GET['clik2'];
-		 */
 
 		// prepare for db
 		$dal = new \dal\DAL($cm->getConnection());
@@ -122,11 +111,16 @@ class Search {
 		// searchbar
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
 		$searchbar = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()));
+
+		// Results components 
 		$origin_results = NULL;
 		$location_results = NULL;
+		$network_results = NULL;
+		$related_results = NULL;
 
 		// RESULTS LISTS
 		if ($search_type == 'searchable') {
+
 			for($i = 0; $i < count($results); $i++) {
 
 				$html = NULL;
@@ -173,14 +167,42 @@ class Search {
 				  $location_results = $html;
 			}
 		}
-		else {
-
-		}
 
 		// load templates
 		//
 		$possible_network_template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_possible-network.html');
 		$active_network_template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_active-network.html');
+
+		if ($search_type == 'network') {
+
+			// decide if main network is active or possible
+			// -- might need to do it up THERE
+			//
+
+			if ($results['main_network'] !== False)
+			  $main_network = $results['main_network'];
+
+			$network_results = $main_network->getHTML('search', array(
+					'cm' => $cm,
+					'mustache' => $m_comp
+				));
+
+			// handle related networks
+			// // double array so that template can be simplified
+			$related_results = array('networks' => array()); 
+			foreach ($results['related_networks'] as $related_network) {
+
+				// render
+				$rn_html = $related_network->getHTML('search', array(
+					'cm' => $cm,
+					'mustache' => $m_comp
+				));
+
+				// add to array
+				array_push($related_results['networks'], $rn_html);
+			}
+		}
+
 
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'search' . $cm->ds . 'templates'.$cm->ds.'index.html');
@@ -188,8 +210,10 @@ class Search {
 			'sections' => array(
 				'map_embed' => $map_embed,
 				'searchbar' => $searchbar,
-				'origin-results' => $origin_results,
-				'location-results' => $location_results),
+				'origin_results' => $origin_results,
+				'location_results' => $location_results,
+				'network_results' => $network_results,
+				'related_results' => $related_results),
 			'templates' => array(
 				'possible_network' => $possible_network_template,
 				'active_network' => $active_network_template),

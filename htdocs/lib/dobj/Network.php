@@ -396,6 +396,27 @@ class Network extends DisplayDObj {
 				)
 			);
 			break;
+		case 'search':
+
+			$template_array = array(
+				'network' => $this,
+				'title' => $this->getTitle(),
+				'vars' => $cm->getVars()
+			);
+
+			if ($this->existing) {
+			  $template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_active-network.html');
+			}
+			else {
+			  $template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_possible-network.html');
+
+			  $template_array['origin_class'] = get_class($this->origin_searchable);
+			  $template_array['origin_id'] = $this->origin_searchable->id;
+			  $template_array['location_class'] = get_class($this->location_searchable);
+			  $template_array['location_id'] = $this->location_searchable->id;
+			}
+
+			return $mustache->render($template, $template_array); 
 		}
 	}
 

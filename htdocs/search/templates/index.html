@@ -47,22 +47,22 @@
 			{{{ sections.searchbar }}}
 			<div id='searchable-results' class='panel row span12'>
 					<div class='row'>
+					{{# sections.origin_results }}
 					<div class='span4'>
 					<b> Origin </b>
 						<div id='origin-results'>
-						{{# sections.origin-results }}
 						{{{ . }}}
-						{{/ sections.origin-results }}
 						</div>
 					</div>
+					{{/ sections.origin_results }}
+					{{# sections.location_results }}
 					<div class='span4'>
 					<b> Location </b>
 						<div id='location-results'>
-						{{# sections.location-results }}
 						{{{ . }}}
-						{{/ sections.location-results }}
 						</div>
 					</div>
+					{{/ sections.location_results }}
 					</div>
 				<div id='results-error'></div>
 			</div>
@@ -70,16 +70,24 @@
 			<hr class='dashboard'>	
 
 			<div id='network-results'>
+				{{# sections.network_results }}
 				<div id="best-match">
 					<h3>Best Match</h3>
 					<div id="best-match-container">
+						{{{ . }}}
 					</div>
 				</div>
+				{{/ sections.network_results }}
+				{{# sections.related_results }}
 				<div id="related-networks">
-					<h3>RelatedNetworks</h3>
+					<h3>Related Networks</h3>
 					<div id="related-networks-container">
+						{{# networks }}
+						{{{ . }}}
+						{{/ networks }}
 					</div>
 				</div>
+				{{/ sections.related_results }}
 			</div>
 		</div>
 	</div>
