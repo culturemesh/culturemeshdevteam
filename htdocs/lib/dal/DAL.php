@@ -35,7 +35,7 @@ class DAL {
 			throw new \Exception('Files have not been loaded');
 
 		if (!isset($this->registry[$name]))
-			throw new \Exception('This index does not exist');
+			throw new \Exception('This index ('. $name .') does not exist');
 
 		$thing = $this->registry[$name];
 		return $thing($this->connection);

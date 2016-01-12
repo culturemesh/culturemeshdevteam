@@ -35,8 +35,40 @@
 	// Database stuff
 	$cm->enableDatabase($dal, $do2db);
 
+	$search_manager = new \search\SearchManager($cm, $dal, $do2db, NULL);
+
+	// Gets a better version of the searchables
+	if ($search_origin['searchable_class'] == $search_location['searchable_class']) {
+
+		$ids = array( (int) $search_origin['id'], (int) $search_location['id']);
+		$combined_search = new \search\SearchableGroupIdSearch( $ids, $search_origin['searchable_class']);
+
+		$search_manager->setSearch($combined_search);
+		$results = $search_manager->getResults();
+
+		if ($results != False) {
+			foreach($results as $r) {
+				if ($r->id == $search_origin['id'])
+				  $origin_searchable = $r;
+				else
+				  $location_searchable = $r;
+			}
+		}
+	}
+	else {
+
+		$origin_search = new \search\SearchableIdSearch($search_origin['id'], $search_origin['searchable_class']);
+		$location_search = new \search\SearchableIdSearch($search_location['id'], $search_location['searchable_class']);
+
+		$search_manager->setSearch( $origin_search );
+		$origin_searchable = $search_manager->getResults();
+
+		$search_manager->setSearch( $location_search );
+		$location_searchable = $search_manager->getResults();
+	}
+
 	$network_search = new \search\NetworkSearch($origin_searchable, $location_searchable);
-	$search_manager = new \search\SearchManager($cm, $dal, $do2db, $network_search);
+	$search_manager->setSearch($network_search);
 
 	// Query for networks
 	$results = $search_manager->getResults();

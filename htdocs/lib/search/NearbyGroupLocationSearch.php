@@ -39,16 +39,19 @@ class NearbyGroupLocationSearch extends Search {
 
 			'dobj\City' => array(
 				'table' => 'nearby_cities',
+				'join_table' => 'cities',
 				'column' => 'city_id',
-				'result' => 'dobj\NearbyCity'),
+				'result' => 'dobj\City'),
 			'dobj\Region' => array(
 				'table' => 'nearby_regions',
+				'join_table' => 'regions',
 				'column' => 'region_id',
-				'result' => 'dobj\NearbyRegion'),
+				'result' => 'dobj\Region'),
 			'dobj\Country' => array(
 				'table' => 'nearby_countries',
+				'join_table' => 'countries',
 				'column' => 'country_id',
-				'result' => 'dobj\NearbyCountry')
+				'result' => 'dobj\Country')
 			);
 	}
 
@@ -62,8 +65,8 @@ class NearbyGroupLocationSearch extends Search {
 		$custom_query = $do2db->initializeCustomQuery();
 		$custom_query->setValues(array(
 			'name' => 'customNearbyGroupLocationSearch',
-			'select_rows' => array(),
-			'from_tables' => array($c_to_c['table']),
+			'select_rows' => array('s.*', 'ns.neighbor_id', 'ns.' . $c_to_c['column']),
+			'from_tables' => array($c_to_c['table'] . ' ns'),
 			'returning_class' => $c_to_c['result'],
 			'returning_list' => True 
 			)
@@ -79,8 +82,12 @@ class NearbyGroupLocationSearch extends Search {
 			$type_string .= 'i';
 		}
 
+		$custom_query->addJoinStatementRaw("LEFT JOIN (SELECT * 
+			FROM " . $c_to_c['join_table'] . ") s
+			ON s.id=ns.neighbor_id");
+
 		// Add statement to the query
-		$custom_query->addAWhere($c_to_c['column'], 'IN', $location_ids, $type_string, count($this->locations));
+		$custom_query->addAWhere($c_to_c['column'], 'IN', $location_ids, $type_string, count($this->locations), 'ns.');
 
 		$dal->customNearbyGroupLocationSearch = function($con=NULL) use ($custom_query) {
 			return $custom_query->toDBQuery($con);

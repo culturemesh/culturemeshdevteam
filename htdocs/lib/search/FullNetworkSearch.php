@@ -6,6 +6,10 @@ class FullNetworkSearch extends Search {
 	private $states;
 	private $input;
 
+	// 1st state search items
+	private $origin_search;
+	private $location_search;
+
 	private $origin_searchable;
 	private $location_searchable;
 
@@ -31,7 +35,6 @@ class FullNetworkSearch extends Search {
 		if ($this->current_state == 'searchable') {
 
 			// create searches
-			$this->s1_searches = array();
 			$search_class = NULL;
 
 			if ($this->input['verb'] == 'arefrom')
@@ -40,10 +43,10 @@ class FullNetworkSearch extends Search {
 			  $search_class = 'language';
 
 			// origin search
-			array_push($this->s1_searches, new SearchableKeySearch($this->input['search-1'], $search_class));
+			$this->origin_search = new SearchableKeySearch($this->input['search_one'], $search_class);
 
 			// location search
-			array_push($this->s1_searches, new SearchableKeySearch($this->input['search-2'], 'location'));
+			$this->location_search = new SearchableKeySearch($this->input['search_two'], 'location');
 		}
 		else if ($this->current_state = 'network') {
 
@@ -58,9 +61,8 @@ class FullNetworkSearch extends Search {
 
 		if ($this->current_state == 'searchable') {
 
-			foreach($this->s1_searches as $search) {
-				array_push($results, $search->run($dal, $do2db));
-			}
+			$results['origin'] = $this->origin_search->run($dal, $do2db);
+			$results['location'] = $this->location_search->run($dal, $do2db);
 
 			$this->current_state = 'network';
 		}

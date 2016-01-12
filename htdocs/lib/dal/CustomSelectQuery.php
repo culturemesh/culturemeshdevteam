@@ -15,6 +15,8 @@ class CustomSelectQuery extends DBQuery {
 
 	private $asterisk = '*';
 
+	private $join_statements_raw;
+
 	private $where_lines;
 	private $where_value_types;
 
@@ -71,6 +73,11 @@ class CustomSelectQuery extends DBQuery {
 		}
 
 		$query .= $this->from_intro . join(', ', $this->query_values['from_tables']);
+
+		// ADD RAW JOINS
+		foreach ($this->join_statements_raw as $statement) {
+			$query .= ' ' . $statement;
+		}
 
 		// CREATE WHERE CLAUSE
 		$where_clause = '';
@@ -202,7 +209,7 @@ class CustomSelectQuery extends DBQuery {
 		}
 		// The normal situation, one column, one parameter
 		else {
-			$this->param_obj->$column = $value;
+			  $this->param_obj->$column = $value;
 		}
 
 		return True;
@@ -211,12 +218,13 @@ class CustomSelectQuery extends DBQuery {
 	/*
 	 * Adds a line to a custom WHERE statement
 	 */
-	public function addAWhere($column, $operator='=', $value, $type='s', $value_count=NULL) {
+	public function addAWhere($column, $operator='=', $value, $type='s', $value_count=NULL, $prefix=NULL) {
 
 		$this->where_lines = array();
 		$this->where_value_types = '';
 
-		$line = new SelectWhereLine($column, $operator, NULL, $value, $type, $value_count);
+		$line = new SelectWhereLine($column, $operator, NULL, $value, $type, $value_count, $prefix);
+
 		array_push($this->where_lines, $line);
 
 		$this->setInWhereColumns($line->getParamColumns());
@@ -491,6 +499,30 @@ class CustomSelectQuery extends DBQuery {
 		}
 
 		return $lines;
+	}
+
+	public function addJoinStatementRaw($statement, $param_array=NULL) {
+		if (!is_array($this->join_statements_raw)) {
+			$this->join_statements_raw = array();
+			array_push($this->join_statements_raw, $statement);
+		}
+		else {
+			array_push($this->join_statements_raw, $statement);
+		}
+
+		if ($param_array != NULL) {
+
+			// add to value types
+			if ($this->where_value_types == NULL)
+				$this->where_value_types = '' . $param_array['param_type_string'];
+			else
+				$this->where_value_types .= $param_array['param_type_string'];
+
+			var_dump($this->where_value_types);
+			$this->setInParamObject($param_array['column'], $param_array['params']);
+		}
+
+		return True;
 	}
 }
 

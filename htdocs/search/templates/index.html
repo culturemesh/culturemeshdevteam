@@ -51,7 +51,9 @@
 					<div class='span4'>
 					<b> Origin </b>
 						<div id='origin-results'>
+						{{# origins }}
 						{{{ . }}}
+						{{/ origins }}
 						</div>
 					</div>
 					{{/ sections.origin_results }}
@@ -59,7 +61,9 @@
 					<div class='span4'>
 					<b> Location </b>
 						<div id='location-results'>
+						{{# locations }}
 						{{{ . }}}
+						{{/ locations }}
 						</div>
 					</div>
 					{{/ sections.location_results }}

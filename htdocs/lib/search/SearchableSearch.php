@@ -100,10 +100,6 @@ class SearchableSearch extends Search {
 
 		$results = $do2db->execute($dal, $custom_query->getParamObject(), $query_name, $remora);
 
-
-
-		var_dump($remora->levenshtein_array);
-
 		// if no results were found
 		// create a NullResult Object
 		if (get_class($results) == 'PDOStatement') {

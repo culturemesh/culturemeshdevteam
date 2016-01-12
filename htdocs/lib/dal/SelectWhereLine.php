@@ -15,9 +15,10 @@ class SelectWhereLine {
 	/*
 	 *
 	 */
-	public function __construct($column, $operator, $conjunction=NULL, $value=NULL, $type=NULL, $value_count=NULL) {
+	public function __construct($column, $operator, $conjunction=NULL, $value=NULL, $type=NULL, $value_count=NULL, $prefix=NULL) {
 
 		$this->column = $column;
+		$this->prefix = $prefix;
 		$this->operator = $operator;
 		$this->conjunction = $conjunction;
 		$this->value = $value;
@@ -47,7 +48,7 @@ class SelectWhereLine {
 		}
 
 		// put together most of the return string
-		$return_string = $this->column . $formatted_operator;
+		$return_string = $this->prefix . $this->column . $formatted_operator;
 
 	       
 		// Add single question mark for most things, but not: 

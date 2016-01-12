@@ -40,12 +40,23 @@ class NetworkSearch extends Search {
 
 		$custom_query->setValues(array(
 			'name' => 'NetworkSearchQuery',
-			'select_rows' => array(),
-			'from_tables' => array('networks'),
+			'select_rows' => array('n.*', 'mc.member_count', 'pc.post_count'),
+			'from_tables' => array('networks n'),
 			'returning_class' => 'dobj\Network',
 			'returning_list' => False
 			)
 		);
+
+		$custom_query->addJoinStatementRaw('LEFT JOIN (SELECT id_network, COUNT(id_network) AS member_count FROM network_registration GROUP BY id_network ORDER BY member_count) mc ON mc.id_network=n.id');
+		$custom_query->addJoinStatementRaw("LEFT JOIN 
+			(SELECT p.id_network, COUNT(p.id_network) + IFNULL(pr.reply_count,0) AS post_count 
+			FROM posts p 
+			LEFT JOIN (SELECT id_network, COUNT(id_network) AS reply_count 
+				FROM post_replies 
+				GROUP BY id_network) pr 
+			ON p.id_network=pr.id_network 
+			GROUP BY id_network ORDER BY post_count) pc 
+			ON pc.id_network=mc.id_network AND pc.id_network=n.id");
 
 		$origin_lines = $custom_query->createWhereLinesFromSearchable($this->searchables['origin'], 'networks', 'origin');
 		$location_lines = $custom_query->createWhereLinesFromSearchable($this->searchables['location'], 'networks', 'location', 'AND');

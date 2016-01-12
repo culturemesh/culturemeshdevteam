@@ -13,17 +13,20 @@ class NearbyLocationSearch extends Search {
 		$this->class_to_column = array(
 
 			'dobj\City' => array(
-				'table' => 'nearby_cities',
+				'join_table' => 'cities',
+				'table' => 'nearby_cities ns',
 				'column' => 'city_id',
-				'result' => 'dobj\NearbyCity'),
+				'result' => 'dobj\City'),
 			'dobj\Region' => array(
-				'table' => 'nearby_regions',
+				'join_table' => 'regions',
+				'table' => 'nearby_regions ns',
 				'column' => 'region_id',
-				'result' => 'dobj\NearbyRegion'),
+				'result' => 'dobj\Region'),
 			'dobj\Country' => array(
-				'table' => 'nearby_countries',
+				'join_table' => 'countries',
+				'table' => 'nearby_countries ns',
 				'column' => 'country_id',
-				'result' => 'dobj\NearbyCountry')
+				'result' => 'dobj\Country')
 			);
 	}
 
@@ -36,15 +39,19 @@ class NearbyLocationSearch extends Search {
 
 		$custom_query->setValues(array(
 			'name' => 'customNearbyLocationSearch',
-			'select_rows' => array(),
+			'select_rows' => array('s.*', 'ns.neighbor_id', 'ns.' . $c_to_c['column']),
 			'from_tables' => array($c_to_c['table']),
 			'returning_class' => $c_to_c['result'],
 			'returning_list' => True
 			)
 		);
 
-		$custom_query->addAWhere($c_to_c['column'], '=', $this->location->id, 'i');
-		
+		$custom_query->addJoinStatementRaw("LEFT JOIN (SELECT * 
+					FROM " . $c_to_c['join_table'] . ") s
+					ON ns.neighbor_id=s.id");
+
+		$custom_query->addAWhere($c_to_c['column'], '=', $this->location->id, 'i', NULL, 'ns.');
+
 		// add to dal
 		$dal->customNearbyLocationSearch = function($con=NULL) use ($custom_query) {
 			return $custom_query->toDBQuery($con);

@@ -28,4 +28,10 @@ class Blank extends DObj {
 
 		return $ME;
 	}
+
+	public function id($value=NULL) {
+
+		$this->id = $value;
+		return true;
+	}
 }

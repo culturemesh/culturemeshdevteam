@@ -36,11 +36,13 @@ class RelatedNetworkSearch extends Search {
 		$this->origin_class = get_class($origin);
 		$this->location_class = get_class($location);
 
-		if ($this->origin_class == $this->location_class) {
+		if ($this->origin_class == $this->location_class &&
+			(!in_array('dobj\Country', array($this->location_class, $this->origin_class)))) {
 
 			$this->is_combined_search = True;
 			$this->running_origin_search = True;
 
+			// This is inconsequential, grouping these is too much work at the moment
 			if ($this->origin_class == 'dobj\Country') {
 				//$this->combined_search = new PopulousCityGroupSearch( array($origin, $location) );
 				$this->combined_search = new NearbyGroupLocationSearch( array($origin, $location) );
@@ -51,6 +53,7 @@ class RelatedNetworkSearch extends Search {
 		}
 		else {
 			$this->is_combined_search = False;
+			$this->running_origin_search = True;
 
 			if ($this->location_class == 'dobj\Country') {
 			  $this->nearby_location_search = new PopulousCitySearch($location);
@@ -78,6 +81,8 @@ class RelatedNetworkSearch extends Search {
 
 		$results = NULL;
 
+		$c_to_c = $this->class_to_column[ $this->origin_class ];
+
 		if ($this->is_combined_search) {
 
 			$group_results = $this->combined_search->run($dal, $do2db);
@@ -102,6 +107,14 @@ class RelatedNetworkSearch extends Search {
 					else if ($result->isNeighborTo($this->location)) {
 						array_push($results['location'], $result->toSearchable($this->location));
 					}
+				}
+				else {
+					$var = $c_to_c['column'];
+
+					if ( $this->origin->id == $result->$var)
+					  array_push($results['origin'], $result);
+					else
+					  array_push($results['location'], $result);
 				}
 			}
 		}

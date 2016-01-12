@@ -409,4 +409,20 @@ class CustomSelectQueryTest extends PHPUnit_Framework_TestCase {
 		//var_dump($query->getParamObject());
 		//var_dump($query->getWhereColumns());
 	}
+
+	public function testJoin() {
+
+		$query = $this->do2db->initializeCustomQuery();
+		$values = array(
+			'select_rows' => array('n.*', 'mc.member_count', 'pc.post_count'),
+			'from_tables' => array('networks n'),
+			);
+
+		$query->setValues($values);
+		$query->addJoinStatementRaw('LEFT JOIN (SELECT id_network, COUNT(id_network) AS member_count FROM network_registration GROUP BY id_network ORDER BY member_count) mc ON mc.id_network=n.id');
+		$query->addJoinStatementRaw('LEFT JOIN (SELECT id_network, COUNT(id_network) AS post_count FROM posts GROUP BY id_network ORDER BY post_count) pc ON pc.id_network=n.id AND pc.id_network=mc.id_network');
+
+		$write_string = "SELECT n.*, mc.member_count, pc.post_count FROM networks n LEFT JOIN (SELECT id_network, COUNT(id_network) AS member_count FROM network_registration GROUP BY id_network ORDER BY member_count) mc ON mc.id_network=n.id LEFT JOIN (SELECT id_network, COUNT(id_network) AS post_count FROM posts GROUP BY id_network ORDER BY post_count) pc ON pc.id_network=n.id AND pc.id_network=mc.id_network";
+		$this->assertEquals($write_string, $query->writeQueryString());
+	}
 }

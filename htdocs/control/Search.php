@@ -12,6 +12,8 @@ class Search {
 
 	public static function match($cm, $params) {
 
+	//	$cm->displayErrors();
+
 		// start session
 		session_name($cm->session_name);
 		session_start();
@@ -22,9 +24,9 @@ class Search {
 			'verb' => $_GET['verb'],
 			'click_1' => $_GET['clik1'],
 			'click_2' => $_GET['clik2'],
-			'var_id' => $_GET['varId'],
+			'var_id' => (int) $_GET['varId'],
 			'var_class' => $_GET['varClass'],
-			'loc_id' => $_GET['locId'],
+			'loc_id' => (int) $_GET['locId'],
 			'loc_class' => $_GET['locClass'],
 			'origin_searchable' => NULL,
 			'location_searchable' => NULL
@@ -36,31 +38,8 @@ class Search {
 		$location_searchable = NULL;
 		$main_network = NULL;
 
-		if ($_GET['clik1'] == 1 && $_GET['clik2'] == 1) {
-
-			$search_type = 'network';
-
-			// Set up searchables from data
-			$origin_searchable = new $search_array['var_class'];
-			$origin_searchable->id = (int) $search_array['var_id'];
-			$origin_searchable->name = $search_array['search_one'];
-
-			$location_searchable = new $search_array['loc_class'];
-			$location_searchable->id = (int) $search_array['loc_id'];
-			$location_searchable->name = $search_array['search_two'];
-
-			$main_network = new \dobj\Network();
-			$main_network->origin_searchable = $origin_searchable;
-			$main_network->location_searchable = $location_searchable;
-
-			$search_array['origin_searchable'] = $origin_searchable;
-			$search_array['location_searchable'] = $location_searchable;
-		}
-
 		// prepare for db
-		$dal = new \dal\DAL($cm->getConnection());
-		$dal->loadFiles();
-		$do2db = new \dal\Do2Db();
+		$cm->enableDatabase($dal, $do2db);
 
 		if (isset($_SESSION['uid'])) {
 
@@ -71,10 +50,68 @@ class Search {
 			$site_user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db)->prepare($cm);
 		}
 
+		// initialize search manager
+		$search_manager = new \search\SearchManager($cm, $dal, $do2db, NULL);
+
+		if ($_GET['clik1'] == 1 && $_GET['clik2'] == 1) {
+
+			$search_type = 'network';
+
+			// Here's a little time saving technique,
+			// lump the searches in with one another
+			if ($search_array['var_class'] == $search_array['loc_class']) {
+
+				$ids = array($search_array['var_id'], $search_array['loc_id']);
+				$combined_search = new \search\SearchableGroupIdSearch( $ids, $search_array['var_class']);
+
+				$search_manager->setSearch($combined_search);
+				$results = $search_manager->getResults();
+
+				if ($results == False) {
+
+					// Set up searchables from data
+					$origin_searchable = new $search_array['var_class'];
+					$origin_searchable->id = (int) $search_array['var_id'];
+					$origin_searchable->name = $search_array['search_one'];
+
+					$location_searchable = new $search_array['loc_class'];
+					$location_searchable->id = (int) $search_array['loc_id'];
+					$location_searchable->name = $search_array['search_two'];
+				}
+				else {
+					foreach($results as $r) {
+						if ($r->id == $search_array['var_id'])
+						  $origin_searchable = $r;
+						else
+						  $location_searchable = $r;
+					}
+				}
+			}
+			else {
+
+				$origin_search = new \search\SearchableIdSearch($search_array['var_id'], $search_array['var_class']);
+				$location_search = new \search\SearchableIdSearch($search_array['loc_id'], $search_array['loc_class']);
+
+				$search_manager->setSearch( $origin_search );
+				$origin_searchable = $search_manager->getResults();
+
+				$search_manager->setSearch( $location_search );
+				$location_searchable = $search_manager->getResults();
+			}
+
+			$main_network = new \dobj\Network();
+			$main_network->origin_searchable = $origin_searchable;
+			$main_network->location_searchable = $location_searchable;
+
+			$search_array['origin_searchable'] = $origin_searchable;
+			$search_array['location_searchable'] = $location_searchable;
+		}
+
+
 		// RUN SEARCH
 		$network_search = new \search\FullNetworkSearch($search_array, $search_type);
+		$search_manager->setSearch($network_search);
 
-		$search_manager = new \search\SearchManager($cm, $dal, $do2db, $network_search);
 		$results = $search_manager->getResults();
 
 		// close connection
@@ -121,16 +158,36 @@ class Search {
 		// RESULTS LISTS
 		if ($search_type == 'searchable') {
 
+			$ARRAY_LENGTH = 7;
+
+			// PROCESS ORIGIN RESULTS
+			$slice = $results['origin']->slice( 0, $ARRAY_LENGTH, true );
+			$slice->setMustache($m_comp);
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_searchable_options.html');
+			$origin_html = $slice->getHTML('user-results', array(
+				'list_template' => $template,
+				'cm' => $cm,
+				'radio_name' => 'origin',
+				'mustache' => $m_comp
+				));
+
+			$origin_results = $origin_html;
+
+			// PROCESS LOCATION RESULTS
+			$slice = $results['location']->slice( 0, $ARRAY_LENGTH, true );
+			$slice->setMustache($m_comp);
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_searchable_options.html');
+			$location_html = $slice->getHTML('user-results', array(
+				'list_template' => $template,
+				'cm' => $cm,
+				'radio_name' => 'location',
+				'mustache' => $m_comp
+				));
+
+			$location_results = $location_html;
+
+			/*
 			for($i = 0; $i < count($results); $i++) {
-
-				$html = NULL;
-				$ARRAY_LENGTH = 7;
-
-				if ($i == 0)
-				  $radio_name = 'origin';
-
-				if ($i == 1)
-				  $radio_name = 'location';
 
 				try {
 					// Check if result is a Null result
@@ -160,12 +217,11 @@ class Search {
 					$html = "<ul id='results' class='network'></ul>";
 				}
 
-				if ($i == 0)
-				  $origin_results = $html;
 
 				if ($i == 1)
 				  $location_results = $html;
 			}
+			 */
 		}
 
 		// load templates
@@ -210,8 +266,8 @@ class Search {
 			'sections' => array(
 				'map_embed' => $map_embed,
 				'searchbar' => $searchbar,
-				'origin_results' => $origin_results,
-				'location_results' => $location_results,
+				'origin_results' => array('origins' => $origin_results),
+				'location_results' => array('locations' => $location_results),
 				'network_results' => $network_results,
 				'related_results' => $related_results),
 			'templates' => array(
