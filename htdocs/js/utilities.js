@@ -410,8 +410,8 @@ cm.NetworkSearcher = function(o) {
 	this._options = {
 		searchable_selector : null,
 		results : null,
-		best_match : null,
-		related_networks : null,
+		best_match_container : null,
+		related_networks_container : null,
 		error_element : null,
 		location_radio_name : 'location',
 		origin_radio_name : 'origin',
@@ -556,15 +556,21 @@ cm.NetworkSearcher.prototype = {
 			best_match_html = Mustache.render( possible_network_template, data.main_network );
 		}
 		else {
-			best_match_html = Mustache.render( active_network_template, data.main_network );
+			best_match_html = Mustache.render( active_network_template, {'network' : data.main_network } );
 		}
 
 		// clear prior results
-		$( this._options.best_match ).empty();
-		$( this._options.related_networks ).empty();
+		$( this._options.best_match_container ).empty();
+		$( this._options.related_networks_container ).empty();
+
+		// show networks (because they may be hidden)
+		$( this._options.best_match ).removeClass('cmhide');
+		$( this._options.best_match ).show();
+		$( this._options.related_networks ).removeClass('cmhide');
+		$( this._options.related_networks ).show();
 
 		// add best match
-		$( this._options.best_match ).append( best_match_html );
+		$( this._options.best_match_container ).append( best_match_html );
 
 		// add related networks
 		for (var i=0; i < data.related_networks.length; i++) {
@@ -578,7 +584,7 @@ cm.NetworkSearcher.prototype = {
 				html = Mustache.render( active_network_template, data.related_networks[i] );
 			}
 
-			$( this._options.related_networks ).append( html );
+			$( this._options.related_networks_container ).append( html );
 		}
 
 	}

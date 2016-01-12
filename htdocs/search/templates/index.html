@@ -16,8 +16,10 @@
 					var ns = new cm.NetworkSearcher({
 							searchable_selector: document.getElementById('searchable-results'),
 							results: document.getElementById('network-results'),
-							best_match: document.getElementById('best-match-container'),
-							related_networks: document.getElementById('related-networks-container'),
+							best_match: document.getElementById('best-match'),
+							best_match_container: document.getElementById('best-match-container'),
+							related_networks: document.getElementById('related-networks'),
+							related_networks_container: document.getElementById('related-networks-container'),
 							error_element: document.getElementById('results-error')
 						});
 
@@ -48,7 +50,7 @@
 			<div id='searchable-results' class='panel row span12'>
 					<div class='row'>
 					{{# sections.origin_results }}
-					<div class='span4'>
+					<div class='span4 {{# hidden }}cmhide{{/ hidden }}'>
 					<b> Origin </b>
 						<div id='origin-results'>
 						{{# origins }}
@@ -58,7 +60,7 @@
 					</div>
 					{{/ sections.origin_results }}
 					{{# sections.location_results }}
-					<div class='span4'>
+					<div class='span4 {{# hidden }}cmhide{{/ hidden }}'>
 					<b> Location </b>
 						<div id='location-results'>
 						{{# locations }}
@@ -75,15 +77,17 @@
 
 			<div id='network-results'>
 				{{# sections.network_results }}
-				<div id="best-match">
+				<div id="best-match" class="{{# hidden }}cmhide{{/ hidden }}">
 					<h3>Best Match</h3>
 					<div id="best-match-container">
+						{{# network }}
 						{{{ . }}}
+						{{/ network }}
 					</div>
 				</div>
 				{{/ sections.network_results }}
 				{{# sections.related_results }}
-				<div id="related-networks">
+				<div id="related-networks" class="{{# hidden }}cmhide{{/ hidden }}">
 					<h3>Related Networks</h3>
 					<div id="related-networks-container">
 						{{# networks }}

@@ -462,6 +462,36 @@ SQL
 		return $m;
 	};
 
+	$obj->LanguageSingleKeySearch = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+CALL language_single_key_search(?)
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'LanguageSingleKeySearch',
+			'params' => array('key'),
+			'param_types' => 'ss',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\Language',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
 	$obj->LanguageDoubleKeySearch = function($con=NULL) {
 
 		$m = new dal\DBQuery();

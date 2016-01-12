@@ -18,20 +18,17 @@ class SearchableIdSearch extends Search {
 
 		// Assigns query name so that we know what to
 		// pass to do2db
-		switch($this->search_class) {
-
-			case '\dobj\City':
-				$query_name = 'getCityById';
-				break;
-			case '\dobj\Region':
-				$query_name = 'getRegionById';
-				break;
-			case '\dobj\Country':
-				$query_name = 'getCountryById';
-				break;
-			case '\dobj\Language':
-				$query_name = 'getLanguageById';
-				break;
+		if (in_array($this->search_class, array('dobj\City', '\dobj\City'))) {
+		  $query_name = 'getCityById';
+		}
+		else if (in_array($this->search_class, array('dobj\Region', '\dobj\Region'))) {
+		  $query_name = 'getRegionById';
+		}
+		else if (in_array($this->search_class, array('dobj\Country', '\dobj\Country'))) {
+		  $query_name = 'getCountryById';
+		}
+		else if (in_array($this->search_class, array('dobj\Language', '\dobj\Language'))) {
+		  $query_name = 'getLanguageById';
 		}
 
 		$param_obj = new \dobj\Blank();

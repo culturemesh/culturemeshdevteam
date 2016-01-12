@@ -423,6 +423,7 @@ class Network extends DisplayDObj {
 	public function getJSON() {
 
 		return array(
+			'id' => $this->id,
 			'title' => $this->getTitle(),
 			'origin_class' => $this->getOriginClass(),
 			'origin_id' => $this->getOriginId(),

@@ -78,7 +78,7 @@
 
 		// get JSON if possible
 		//
-		$json_response['main_network'] = $results;
+		$json_response['main_network'] = $results->getJSON();
 	}
 	else {
 		$main_network = new \dobj\Network();

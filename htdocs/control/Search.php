@@ -12,8 +12,6 @@ class Search {
 
 	public static function match($cm, $params) {
 
-	//	$cm->displayErrors();
-
 		// start session
 		session_name($cm->session_name);
 		session_start();
@@ -150,13 +148,27 @@ class Search {
 		$searchbar = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()));
 
 		// Results components 
-		$origin_results = NULL;
-		$location_results = NULL;
-		$network_results = NULL;
-		$related_results = NULL;
+		$origin_results = array(
+			'hidden' => True,
+			'origins' => NULL);
+
+		$location_results = array(
+			'hidden' => True,
+			'locations' => NULL);
+
+		$network_results = array(
+			'hidden' => True,
+			'network' => NULL);
+
+		$related_results = array(
+			'hidden' => True,
+			'networks' => NULL);
 
 		// RESULTS LISTS
 		if ($search_type == 'searchable') {
+
+			$origin_results['hidden'] = False;
+			$location_results['hidden'] = False;
 
 			$ARRAY_LENGTH = 7;
 
@@ -171,7 +183,7 @@ class Search {
 				'mustache' => $m_comp
 				));
 
-			$origin_results = $origin_html;
+			$origin_results['origins'] = $origin_html;
 
 			// PROCESS LOCATION RESULTS
 			$slice = $results['location']->slice( 0, $ARRAY_LENGTH, true );
@@ -184,7 +196,7 @@ class Search {
 				'mustache' => $m_comp
 				));
 
-			$location_results = $location_html;
+			$location_results['locations'] = $location_html;
 
 			/*
 			for($i = 0; $i < count($results); $i++) {
@@ -238,14 +250,19 @@ class Search {
 			if ($results['main_network'] !== False)
 			  $main_network = $results['main_network'];
 
-			$network_results = $main_network->getHTML('search', array(
+			$network_results['hidden'] = false;
+
+			$network_results['network'] = $main_network->getHTML('search', array(
 					'cm' => $cm,
 					'mustache' => $m_comp
 				));
 
+
 			// handle related networks
 			// // double array so that template can be simplified
-			$related_results = array('networks' => array()); 
+			$related_results['hidden'] = false;
+			$related_results['networks'] = array();
+
 			foreach ($results['related_networks'] as $related_network) {
 
 				// render
@@ -266,8 +283,8 @@ class Search {
 			'sections' => array(
 				'map_embed' => $map_embed,
 				'searchbar' => $searchbar,
-				'origin_results' => array('origins' => $origin_results),
-				'location_results' => array('locations' => $location_results),
+				'origin_results' => $origin_results,
+				'location_results' => $location_results,
 				'network_results' => $network_results,
 				'related_results' => $related_results),
 			'templates' => array(
