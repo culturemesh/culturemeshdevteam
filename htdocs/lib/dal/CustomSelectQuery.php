@@ -518,7 +518,6 @@ class CustomSelectQuery extends DBQuery {
 			else
 				$this->where_value_types .= $param_array['param_type_string'];
 
-			var_dump($this->where_value_types);
 			$this->setInParamObject($param_array['column'], $param_array['params']);
 		}
 

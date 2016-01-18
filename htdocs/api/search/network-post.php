@@ -1,7 +1,6 @@
 <?php
 	require '../../environment.php';
 	$cm = new \Environment();
-	//$cm->displayErrors();
 
 	// JSON RESPONSE
 	$json_response = array(

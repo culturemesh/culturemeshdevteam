@@ -200,7 +200,7 @@ class RelatedNetworkSearch extends Search {
 
 		// Handle the locations
 		// 
-		if ($locations_near_location !== NULL) {
+		if ($locations_near_location !== NULL && $locations_near_location !== False) {
 
 			// also, if it's a non empty array
 			//
@@ -221,7 +221,7 @@ class RelatedNetworkSearch extends Search {
 
 		// Handle the origins
 		//
-		if ($locations_near_origin !== NULL) {
+		if ($locations_near_origin !== NULL && $locations_near_origin !== False) {
 
 			// also, if it's a non empty array
 			//
