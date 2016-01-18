@@ -553,10 +553,10 @@ cm.NetworkSearcher.prototype = {
 		var best_match_html = null;
 
 		if (data.main_network.existing == false || data.main_network.existing == null) {
-			best_match_html = Mustache.render( possible_network_template, data.main_network );
+			best_match_html = Mustache.render( possible_network_template, {'network' : data.main_network, 'vars' : data.vars } );
 		}
 		else {
-			best_match_html = Mustache.render( active_network_template, {'network' : data.main_network } );
+			best_match_html = Mustache.render( active_network_template, {'network' : data.main_network, 'vars' : data.vars } );
 		}
 
 		// clear prior results
@@ -578,7 +578,7 @@ cm.NetworkSearcher.prototype = {
 			var html;
 
 			if (data.related_networks[i].existing == false || data.related_networks[i].existing == null) {
-				html = Mustache.render( possible_network_template, data.related_networks[i] );
+				html = Mustache.render( possible_network_template, {'network' : data.related_networks[i], 'vars' : data.vars } );
 			}
 			else {
 				html = Mustache.render( active_network_template, data.related_networks[i] );

@@ -7,7 +7,8 @@
 		'error' => NULL,
 		'main_network' => NULL,
 		'possible_networks' => NULL,
-		'active_networks' => NULL
+		'active_networks' => NULL,
+		'vars' => NULL
 	);
 
 	// GET POST DATA
@@ -104,6 +105,7 @@
 	}
 
 	$json_response['related_networks'] = $related_networks_json;
+	$json_response['vars'] = array('hostname' => $cm->getVars()['hostname']);
 	$json_response['error'] = 0;
 
 	// RETURN THE STUFF
