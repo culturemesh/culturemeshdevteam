@@ -86,7 +86,6 @@ class Search {
 				}
 			}
 			else {
-
 				$origin_search = new \search\SearchableIdSearch($search_array['var_id'], $search_array['var_class']);
 				$location_search = new \search\SearchableIdSearch($search_array['loc_id'], $search_array['loc_class']);
 
@@ -104,7 +103,6 @@ class Search {
 			$search_array['origin_searchable'] = $origin_searchable;
 			$search_array['location_searchable'] = $location_searchable;
 		}
-
 
 		// RUN SEARCH
 		$network_search = new \search\FullNetworkSearch($search_array, $search_type);
