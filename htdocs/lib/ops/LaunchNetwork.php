@@ -84,17 +84,29 @@ class LaunchNetwork {
 		//
 		if (get_class($this->origin) === 'dobj\City') {
 
-			$origin_columns = array('id_city_origin', 'city_origin', 'id_region_origin', 'region_origin', 'id_country_origin', 'country_origin');
-
 			// set object values
 			$param_object->id_city_origin = $this->origin->id;
 			$param_object->city_origin = $this->origin->name;
-			$param_object->id_region_origin = $this->origin->region_id;
-			$param_object->region_origin = $this->origin->region_name;
 			$param_object->id_country_origin = $this->origin->country_id;
 			$param_object->country_origin = $this->origin->country_name;
 
-			$origin_placeholders = '?, ?, ?, ?, ?, ?';
+			/*
+			 * Some cities may not have a region attached
+			 */
+			if ($this->origin->region_id !== NULL) {
+
+				$origin_columns = array('id_city_origin', 'city_origin', 'id_region_origin', 'region_origin', 'id_country_origin', 'country_origin');
+
+				$param_object->id_region_origin = $this->origin->region_id;
+				$param_object->region_origin = $this->origin->region_name;
+
+				$origin_placeholders = '?, ?, ?, ?, ?, ?';
+			}
+			else {
+				$origin_columns = array('id_city_origin', 'city_origin', 'id_country_origin', 'country_origin');
+				$origin_placeholders = '?, ?, ?, ?';
+			}
+
 			$network_class = 'cc';
 		}
 
@@ -140,6 +152,30 @@ class LaunchNetwork {
 		//
 		if (get_class($this->location) === 'dobj\City') {
 
+			// set object values
+			$param_object->id_city_cur = $this->location->id;
+			$param_object->city_cur = $this->location->name;
+			$param_object->id_country_cur = $this->location->country_id;
+			$param_object->country_cur = $this->location->country_name;
+
+			/*
+			 * Some cities may not have a region attached
+			 */
+			if ($this->location->region_id !== NULL) {
+
+				$location_columns = array('id_city_cur', 'city_cur', 'id_region_cur', 'region_cur', 'id_country_cur', 'country_cur');
+
+				$param_object->id_region_cur = $this->location->region_id;
+				$param_object->region_cur = $this->location->region_name;
+
+				$location_placeholders = '?, ?, ?, ?, ?, ?';
+			}
+			else {
+				$location_columns = array('id_city_cur', 'city_cur', 'id_country_cur', 'country_cur');
+				$location_placeholders = '?, ?, ?, ?';
+			}
+
+			/*
 			$location_columns = array('id_city_cur', 'city_cur', 'id_region_cur', 'region_cur', 'id_country_cur', 'country_cur');
 
 			// set object values
@@ -151,6 +187,7 @@ class LaunchNetwork {
 			$param_object->country_cur = $this->location->country_name;
 
 			$location_placeholders = '?, ?, ?, ?, ?, ?';
+			 */
 		}
 
 		if (get_class($this->location) === 'dobj\Region') {
