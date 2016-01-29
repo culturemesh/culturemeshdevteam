@@ -83,6 +83,14 @@
 					</td>
 					{{ vars.l_brace }}/colCond.display{{vars.r_brace}}
 			<!-- 	 -->
+			<!-- FIND (pretty much the same as display) -->
+			<!-- 	 -->
+					{{ vars.l_brace }}#colCond.find{{vars.r_brace}}
+					<td class='op_val'>
+						<span>{{ vars.l_brace }}value{{vars.r_brace}}</span>
+					</td>
+					{{ vars.l_brace }}/colCond.find{{vars.r_brace}}
+			<!-- 	 -->
 			<!-- CREATE -->
 			<!-- 	 -->
 					{{ vars.l_brace }}#colCond.create{{vars.r_brace}}
@@ -119,6 +127,14 @@
 						<input type="radio" name='{{ vars.l_brace }} name {{ vars.r_brace }}' value="0" {{ vars.l_brace }}^ value {{vars.r_brace}} checked {{ vars.l_brace }}/ value {{vars.r_brace}}>False</input>
 					</td>
 					{{ vars.l_brace }}/colCond.update_bool{{vars.r_brace}}
+			<!-- 	 -->
+			<!-- HIDDEN -->
+			<!-- 	 -->
+					{{ vars.l_brace }}#colCond.hidden{{vars.r_brace}}
+					<td class='op_val hidden'>
+						<input type="hidden" name='{{ vars.l_brace }}name{{ vars.r_brace }}' value="{{ vars.l_brace }}value{{vars.r_brace}}" />
+					</td>
+					{{ vars.l_brace }}/colCond.hidden{{vars.r_brace}}
 	<!--		-->
 	<!-- END SECTION -->
 	<!--		-->
@@ -141,6 +157,11 @@
 				{{ vars.l_brace }}/columns{{vars.r_brace}}
 			</tbody>
 		</table>
+		<div>
+		{{ vars.l_brace }}#something{{ vars.r_brace }}
+		<input type="hidden" name="original-{{ values.column }}" value="{{ values.value }}" />
+		{{ vars.l_brace }}/something{{ vars.r_brace }}
+		</div>
 	</script>
 
 	<script id='create-single-tmpl' type='x-tmpl-mustache'>

@@ -500,6 +500,7 @@ SSearchBar.prototype.fetchValues = function(tables) {
 			var item = new ListItem();
 			item.type = tables;
 			item.name = '';
+			item.id = -1;
 
 			// split line (by tab)
 			iSplit = items[i].split('\t');
@@ -509,13 +510,14 @@ SSearchBar.prototype.fetchValues = function(tables) {
 			// comma stuff to worry about - easier this way
 			if (iSplit.length > 1) {
 				var j = 0;
-				for (; j < iSplit.length - 1; j++) {
+				for (; j < iSplit.length - 2; j++) {
 					if (iSplit[j] != 'NULL')
 						item.name += iSplit[j] + ', ';
 				}
 
 				// don't add comma on last item
 				item.name += iSplit[j];
+				item.id = iSplit[j+1];
 			}
 			else
 			  { item.name = items[i]; }

@@ -96,8 +96,8 @@ class SearchableKeySearch extends Search {
 			}
 
 			// Calculate population weight
-			if ($searchable->population >= 1000000)
-			  $weight_population = 3;
+			if ($searchable->population >= 500000)
+			  $weight_population = 13;
 			else
 			  $weight_population = 1;
 			

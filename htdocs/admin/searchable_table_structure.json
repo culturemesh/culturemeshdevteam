@@ -1,0 +1,137 @@
+{
+	"cities" : {
+		"create" : 
+			[
+			{ "COLUMN_NAME" : "id", "colCond": "display" },
+			{ "COLUMN_NAME" : "name", "colCond": "create" },
+			{ "COLUMN_NAME" : "region_id", "colCond": "find" },
+			{ "COLUMN_NAME" : "region_name", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_id", "colCond": "find" },
+			{ "COLUMN_NAME" : "country_name", "colCond": "display" },
+			{ "COLUMN_NAME" : "population", "colCond": "create" },
+			{ "COLUMN_NAME" : "feature_code", "colCond": "create" },
+			{ "COLUMN_NAME" : "tweet_terms", "colCond": "specone" },
+			{ "COLUMN_NAME" : "region_tweet_terms", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_tweet_terms", "colCond": "display" },
+			{ "COLUMN_NAME" : "tweet_terms_override", "colCond": "update_bool" },
+			{ "COLUMN_NAME" : "region_tweet_terms_override", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_tweet_terms_override", "colCond": "display" }
+			],
+		"find" : 
+			[
+			{ "COLUMN_NAME" : "id", "colCond": "display" },
+			{ "COLUMN_NAME" : "name", "colCond": "display" },
+			{ "COLUMN_NAME" : "region_id", "colCond": "display" },
+			{ "COLUMN_NAME" : "region_name", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_id", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_name", "colCond": "display" },
+			{ "COLUMN_NAME" : "region_tweet_terms", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_tweet_terms", "colCond": "display" },
+			{ "COLUMN_NAME" : "region_tweet_terms_override", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_tweet_terms_override", "colCond": "display" }
+			],
+		"update" : 
+			[
+			{ "COLUMN_NAME" : "id", "colCond": "display" },
+			{ "COLUMN_NAME" : "name", "colCond": "update" },
+			{ "COLUMN_NAME" : "original_name", "colCond": "hidden", "column_key" : "name"},
+			{ "COLUMN_NAME" : "region_id", "colCond": "find" },
+			{ "COLUMN_NAME" : "region_name", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_id", "colCond": "find" },
+			{ "COLUMN_NAME" : "country_name", "colCond": "display" },
+			{ "COLUMN_NAME" : "population", "colCond": "update" },
+			{ "COLUMN_NAME" : "feature_code", "colCond": "update" },
+			{ "COLUMN_NAME" : "tweet_terms", "colCond": "specone" },
+			{ "COLUMN_NAME" : "region_tweet_terms", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_tweet_terms", "colCond": "display" },
+			{ "COLUMN_NAME" : "tweet_terms_override", "colCond": "update_bool" },
+			{ "COLUMN_NAME" : "region_tweet_terms_override", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_tweet_terms_override", "colCond": "display" }
+			]
+	},
+	"regions" : {
+		"create" : 
+		[
+			{ "COLUMN_NAME" : "id", "colCond": "display" },
+			{ "COLUMN_NAME" : "name", "colCond": "create" },
+			{ "COLUMN_NAME" : "country_id", "colCond": "find" },
+			{ "COLUMN_NAME" : "country_name", "colCond": "display" },
+			{ "COLUMN_NAME" : "population", "colCond": "create" },
+			{ "COLUMN_NAME" : "feature_code", "colCond": "create" },
+			{ "COLUMN_NAME" : "tweet_terms", "colCond": "specone" },
+			{ "COLUMN_NAME" : "country_tweet_terms", "colCond": "display" },
+			{ "COLUMN_NAME" : "tweet_terms_override", "colCond": "update_bool" },
+			{ "COLUMN_NAME" : "country_tweet_terms_override", "colCond": "display" }
+		],
+		"find" : 
+		[
+			{ "COLUMN_NAME" : "id", "colCond": "display" },
+			{ "COLUMN_NAME" : "name", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_id", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_name", "colCond": "display" },
+			{ "COLUMN_NAME" : "tweet_terms", "colCond": "display" },
+			{ "COLUMN_NAME" : "tweet_terms_override", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_tweet_terms", "colCond": "display" },
+			{ "COLUMN_NAME" : "country_tweet_terms_override", "colCond": "display" }
+		],
+		"update" :
+		[
+			{ "COLUMN_NAME" : "id", "colCond": "display" },
+			{ "COLUMN_NAME" : "name", "colCond": "update" },
+			{ "COLUMN_NAME" : "original_name", "colCond": "hidden", "column_key" : "name"},
+			{ "COLUMN_NAME" : "country_id", "colCond": "find" },
+			{ "COLUMN_NAME" : "country_name", "colCond": "display" },
+			{ "COLUMN_NAME" : "population", "colCond": "update" },
+			{ "COLUMN_NAME" : "feature_code", "colCond": "update" },
+			{ "COLUMN_NAME" : "tweet_terms", "colCond": "specone" },
+			{ "COLUMN_NAME" : "country_tweet_terms", "colCond": "display" },
+			{ "COLUMN_NAME" : "tweet_terms_override", "colCond": "update_bool" },
+			{ "COLUMN_NAME" : "country_tweet_terms_override", "colCond": "display" }
+		]
+	},
+	"countries" : {
+		"create" : [
+			{ "COLUMN_NAME" : "id", "colCond": "display" },
+			{ "COLUMN_NAME" : "name", "colCond": "create" },
+			{ "COLUMN_NAME" : "population", "colCond": "create" },
+			{ "COLUMN_NAME" : "feature_code", "colCond": "create" },
+			{ "COLUMN_NAME" : "tweet_terms", "colCond": "specone" },
+			{ "COLUMN_NAME" : "tweet_terms_override", "colCond": "update_bool" }
+		],
+		"find" :
+		[
+			{ "COLUMN_NAME" : "id", "colCond": "display" },
+			{ "COLUMN_NAME" : "name", "colCond": "display" },
+			{ "COLUMN_NAME" : "tweet_terms", "colCond": "display" },
+			{ "COLUMN_NAME" : "tweet_terms_override", "colCond": "display" }
+		],
+		"update" : [
+			{ "COLUMN_NAME" : "id", "colCond": "display" },
+			{ "COLUMN_NAME" : "name", "colCond": "update" },
+			{ "COLUMN_NAME" : "original_name", "colCond": "hidden", "column_key" : "name"},
+			{ "COLUMN_NAME" : "population", "colCond": "update" },
+			{ "COLUMN_NAME" : "feature_code", "colCond": "update" },
+			{ "COLUMN_NAME" : "tweet_terms", "colCond": "specone" },
+			{ "COLUMN_NAME" : "tweet_terms_override", "colCond": "update_bool" }
+		]
+	},
+	"languages" : {
+		"create" : [
+			{ "COLUMN_NAME" : "id", "colCond": "display" },
+			{ "COLUMN_NAME" : "name", "colCond": "create" },
+			{ "COLUMN_NAME" : "num_speakers", "colCond": "create" },
+			{ "COLUMN_NAME" : "added", "colCond": "create" },
+			{ "COLUMN_NAME" : "tweet_terms", "colCond": "specone" },
+			{ "COLUMN_NAME" : "tweet_terms_override", "colCond": "update_bool" }
+		],
+		"update" : [
+			{ "COLUMN_NAME" : "id", "colCond": "display" },
+			{ "COLUMN_NAME" : "name", "colCond": "update" },
+			{ "COLUMN_NAME" : "original_name", "colCond": "hidden", "column_key" : "name"},
+			{ "COLUMN_NAME" : "num_speakers", "colCond": "update" },
+			{ "COLUMN_NAME" : "added", "colCond": "update" },
+			{ "COLUMN_NAME" : "tweet_terms", "colCond": "specone" },
+			{ "COLUMN_NAME" : "tweet_terms_override", "colCond": "update_bool" }
+		]
+	}
+}

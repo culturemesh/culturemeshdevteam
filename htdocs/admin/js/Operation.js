@@ -149,6 +149,7 @@ Operation.prototype.activatePanel = function() {
 		// create form data
 		var formData = {
 			op : 'getTableStructure',
+			client_op : 'create',
 			table : this.table
 		};
 
@@ -203,6 +204,7 @@ Operation.prototype.activatePanel = function() {
 			// think it was gonna do? Cure cancer?
 			var formData = {
 				op : 'searchSearchables',
+				client_op : 'update',
 				table : tables,
 				query : val
 			};
@@ -297,7 +299,8 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 			create : null,
 			find : null,
 			specone : null,
-			update_bool : null
+			update_bool : null,
+			hidden : null
 		};
 
 		if (operation == 'create') {
@@ -388,8 +391,10 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 			name : obj['COLUMN_NAME'],
 			value : obj['value'],
 		//	validation : validationString,
-			colCond : colCond
+			colCond : {} 
 		};
+
+		colObj.colCond[ obj['colCond']] = true;
 
 		// something special for tweets
 		//
@@ -466,6 +471,7 @@ Operation.prototype.activateFinds = function() {
 			// think it was gonna do? Cure cancer?
 			var formData = {
 				op : 'searchSearchables',
+				client_op : 'find',
 				table : table,
 				query : val
 			};

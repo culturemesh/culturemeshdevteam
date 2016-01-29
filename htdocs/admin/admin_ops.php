@@ -11,7 +11,7 @@
 
 require '../vendor/autoload.php';
 include_once '../zz341/fxn.php';
-include '../Environment.php';
+include '../environment.php';
 
 include_once '../error_pool.php';
 
@@ -103,7 +103,34 @@ if ($_POST['op'] == 'getTableStructure') {
 	);
 
 	// get table structure
-	$response['description'] = Meta::describeTable($_POST['table'], $con);
+	//$response['description'] = Meta::describeTable($_POST['table'], $con);
+
+	mysqli_close($con);
+
+	$table = $_POST['table'];
+	$client_op = $_POST['client_op'];
+
+	$response['description'] = json_decode(file_get_contents('searchable_table_structure.json'), TRUE)[$table][$client_op];
+
+	/*
+	// WRITE COMmon values
+	$srbl_description = array();
+
+	$srbl_description->add('id');
+	$srbl_description->add('name');
+
+	if ($table === 'cities') {
+
+	}
+
+	if ($table === 'regions') {
+
+	}
+
+	if ($table === 'countries') {
+
+	}
+	 */
 
 	// handle the error things
 	if ($response['description'] == false) {
@@ -190,9 +217,39 @@ else if ($json_post['op'] == 'searchSearchables') {
 		break;
 	}
 
+	/*
+	if ($json_post['client_op'] == 'find') {
+	  $server_op = 'create';
+	}
+	else {
+	  $server_op = 'update';
+	}
+	 */
+
+	$server_op = $json_post['client_op'];
+
+	$table = $json_post['table'];
+
+	$srbl_table = json_decode(file_get_contents('searchable_table_structure.json'), TRUE)[$table];
+	$thing = $srbl_table[$server_op];
+
 	// initialize array
 	$cols = array();
 
+	for($i=0; $i < count($thing); $i++) {
+
+		$item_value = $srbl[$thing[$i]['COLUMN_NAME']];
+
+		// in case we're dealing with 
+		// a column name that isn't a db column
+		//
+		if (isset($srbl[$thing[$i]['column_key']]))
+		  $item_value = $srbl[$thing[$i]['column_key']];
+
+		$thing[$i]['value'] = $item_value;
+	}
+
+	/*
 	// make right for jscript down below
 	foreach ($srbl as $key => $value) {
 
@@ -222,9 +279,10 @@ else if ($json_post['op'] == 'searchSearchables') {
 		// add to cols
 		array_push($cols, $col);
 	}
+	 */
 
 	$response['error'] = 0;
-	$response['description'] = $cols;
+	$response['description'] = $thing;
 
 	// return
 	echo json_encode($response);
@@ -279,6 +337,8 @@ else if ($json_post['op'] == 'MP' && $json_post['operation'] == 'test') {
 
 else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single') 
 {
+	//$cm = new \Environment();
+
 	// set up response object
 	$response = array(
 		'error' => NULL,
@@ -422,7 +482,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 		$jtable = Meta::createJunkCopy($json_post['table']);
 	}
 
-	$con = QueryHandler::getDBConnection();
+	//$con = QueryHandler::getDBConnection();
 
 	// EXECUTE QUERY
 	$response['error'] = QueryHandler::executeQuery($stmt, $con);
@@ -566,6 +626,9 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 		}
 	}
 
+	// UPDATE KEYS
+	// 	(2) country
+
 	// close dbj connection
 	mysqli_close($con);
 
@@ -639,6 +702,7 @@ else if ($_POST['op'] == 'ins-parse') {
 	exit();
 }
 else if ($_POST['op'] == 'update' && $_POST['singobatch'] == 'batch') {
+
 
 	$response = array(
 		'error' => NULL,
@@ -843,6 +907,7 @@ else if ($_POST['op'] == 'update' && $_POST['singobatch'] == 'batch') {
 	echo json_encode($response);
 }
 else if ($_POST['op'] == 'create' && $_POST['singobatch'] == 'batch') {
+
 
 	$response = array(
 		'error' => NULL,

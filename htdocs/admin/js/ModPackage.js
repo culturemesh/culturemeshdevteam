@@ -32,6 +32,7 @@ function ModPackage(operation, singobatch, table) {
 	// other props
 	this.table = table;
 	this.data = {};
+	this.original_data = {};
 
 	this.op = 'MP';
 

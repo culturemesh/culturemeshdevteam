@@ -32,6 +32,8 @@ class LocationResult extends Location {
 
 		$location->id = $row['id'];
 		$location->name = $row['name'];
+		$location->population = $row['population'];
+		$location->feature_code = $row['feature_code'];
 
 		// do the remora
 		if ($remora != NULL) {
