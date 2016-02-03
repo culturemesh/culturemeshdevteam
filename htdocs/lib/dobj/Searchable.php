@@ -48,6 +48,20 @@ class Searchable extends DisplayDObj {
 			);
 		}
 	}
+	
+	/*
+	 * Worry about context later
+	 */
+	public function getJSON($context=NULL) {
+
+		return array(
+			'name' => $this->name,
+			'fullname' => $this->toString(),
+			'id' => $this->id,
+			'obj_class' => get_class($this),
+			'type' => 'xx'
+		);
+	}
 }
 
 ?>

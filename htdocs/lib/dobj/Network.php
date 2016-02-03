@@ -436,7 +436,6 @@ class Network extends DisplayDObj {
 			'post_count' => $this->post_count,
 			'existing' => $this->existing
 		);
-
 	}
 
 	/*

@@ -2,11 +2,36 @@
 ini_set('display_errors', true);
 include('environment.php');
 $cm = new Environment();
-//$cm->displayErrors();
+$cm->displayErrors();
 $dal = NULL;
 $do2db = NULL;
 $cm->enableDatabase($dal, $do2db);
 
+$json_response = array(
+	'results' => NULL,
+	'error' => NULL
+);
+
+$input_value = 'san ant';
+$search_class = 'location'; // optional
+
+$name_search = new \search\SearchableByName($input_value, $search_class);
+
+$cm->enableDatabase($dal, $do2db);
+$search_manager = new \search\SearchManager($cm, $dal, $do2db, $name_search);
+$search_results = $search_manager->getResults();
+
+$json_results = array();
+
+foreach($search_results as $searchable) {
+	array_push($json_results, $searchable->getJSON());
+}
+
+$cm->closeConnection();
+
+var_dump($json_results);
+
+/*
 $search_origin = array(
 	'searchable_class' => 'dobj\Country',
 	'id' => 45008,
@@ -51,7 +76,7 @@ $search_manager->setSearch($related_search);
 $related_networks = $search_manager->getResults();
 var_dump($related_networks);
 
-$cm->closeConnection();
+ */
 
 /*
 $nearby_location_search = new \search\NearbyLocationSearch($location_searchable);

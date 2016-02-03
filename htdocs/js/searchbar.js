@@ -234,6 +234,11 @@ function SearchBar() {
 	var locIdField = document.getElementById("locId");
 	var locClassField = document.getElementById("locClass");
 
+	var MIN_LENGTH = 2;
+	var KEY_DELAY = 800;
+
+	var NAME_SEARCH;
+
 //	var loc_select, q_select, cur_query;
 
 	var selector = document.getElementById("verb-select");
@@ -276,12 +281,43 @@ function SearchBar() {
 
 		// update list
 		searchOne.onkeydown = function(e) {
+
+			// clear event (if necessary...don't know how to 'if' this)
+			clearTimeout(NAME_SEARCH);
+
+			/*
 			// clear ul
 			clearUl(varUl);
+			*/
 			
 			// get new value
-			var value = updateValue(e, searchOne);
+			var input_value = updateValue(e, searchOne);
+			var search_class;
 
+			if (selector.selectedIndex == 0) {
+			  search_class = 'location';
+			}
+			else if (selector.selectedIndex == 1) {
+			  search_class = 'language';
+			}
+			
+			//varUl, li_locations.slice(0,4), searchOne, clik1, varIdField, varClassField
+
+			var search_array = {
+				input_value : input_value,
+				search_class : search_class,
+				ul : varUl,
+				input : searchOne,
+				click_tracker : clik1,
+				id_field : varIdField,
+				class_field : varClassField
+			};
+
+			if (input_value.length >= MIN_LENGTH) {
+			  NAME_SEARCH = nameSearchCall( search_array );
+			}
+
+			/*
 			// if value has changed(could have been nothing), unclick
 			// and reset topic
 			if (value != searchOne.value) {
@@ -310,9 +346,11 @@ function SearchBar() {
 					boldifyMatch(varUl, value);
 					break;
 			}
+			fillUl(varUl, results, searchOne, clik1, varIdField, varClassField);
 
 			// displayUl
 			showUl(varUl);
+			*/
 		}
 
 		// update list
@@ -383,7 +421,7 @@ function SearchBar() {
 			item.srch_name = data[i].name;
 			item.srch_topic = data[i].type;
 			item.srch_id = data[i].id;
-			item.srch_class = data[i].srch_class;
+			item.srch_class = data[i].obj_class;
 
 			var itemText = document.createTextNode(data[i].name);
 			item.appendChild(itemText);
@@ -445,6 +483,54 @@ function SearchBar() {
 
 	function showUl(ul) {
 		ul.style.display = 'block';
+	}
+
+	function nameSearchCall(search_array) {
+
+		var values;
+		var self = this;
+
+		if (search_array['search_class'] == null || search_array['search_class'] == undefined) {
+		  search_array['search_class'] = 'location';
+		}
+
+		var values = {
+			input_value : search_array['input_value'],
+			search_class : search_array['search_class']
+		};
+
+		return setTimeout(
+			function() {
+				var search = new Ajax({
+					requestType: 'POST',
+					requestUrl: cm.home_path + '/api/search/search_names.php',
+					data: values,
+					dataType: 'JSON',
+					requestParameters: ' ',
+					sendNow: true
+					}, 
+					function(data) {
+
+						// should return a series of possible names
+						results = JSON.parse(data);
+
+						/*
+						fillUl(varUl, results, searchOne, clik1, varIdField, varClassField);
+
+						// displayUl
+						showUl(varUl);
+
+						///////////////////////////////
+						// VARIATION
+						//
+						*/
+						clearUl(search_array['ul']);
+						fillUl(search_array['ul'], results.results, search_array['input'], search_array['click_tracker'], search_array['id_field'], search_array['class_field']);
+						showUl(search_array['ul']);
+					});
+				}, KEY_DELAY
+				);
+
 	}
 
 	function updateValue(e, box) {

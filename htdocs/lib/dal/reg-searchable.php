@@ -152,6 +152,72 @@ SQL
 		return $m;
 	};
 
+	/*
+	 * Passed in to get Complete User with Id
+	 * Uses :> getting logged in user, getting profile user
+	 */
+	$obj->getLocationsByName = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT *
+FROM cities
+WHERE name LIKE ?
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'getLocationsByName',
+			'params' => array('name'),
+			'param_types' => 's',
+			'returning' => true,
+			'returning_list' => True,
+			'returning_class' => 'dobj\City',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+	/*
+	 * Passed in to get Complete User with Id
+	 * Uses :> getting logged in user, getting profile user
+	 */
+	$obj->getLanguagesByName = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT *
+FROM languages
+WHERE name LIKE ?
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'getLanguagesByName',
+			'params' => array('name'),
+			'param_types' => 's',
+			'returning' => True,
+			'returning_list' => True,
+			'returning_class' => 'dobj\Language',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
 	$obj->getPopulousCitiesByCountry = function($con=NULL) {
 
 		$m = new dal\DBQuery();
