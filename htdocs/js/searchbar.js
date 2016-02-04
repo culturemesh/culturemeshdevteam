@@ -313,8 +313,14 @@ function SearchBar() {
 				class_field : varClassField
 			};
 
+			// If past the minimum length
 			if (input_value.length >= MIN_LENGTH) {
 			  NAME_SEARCH = nameSearchCall( search_array );
+			}
+
+			// If length is 0, clear ul
+			if (input_value.length == 0) {
+			  clearUl(varUl);
 			}
 
 			/*
@@ -412,18 +418,18 @@ function SearchBar() {
 		for (var i = 0; i < data.length; i++) {
 			// check for duplicate names
 			// if they're in there, forget em
-			if (name == data[i].name) 
+			if (name == data[i].fullname) 
 			  {continue;}
 			else 
-			  {name = data[i].name;}
+			  {name = data[i].fullname;}
 			
 			var item = document.createElement("LI");
-			item.srch_name = data[i].name;
+			item.srch_name = data[i].fullname;
 			item.srch_topic = data[i].type;
 			item.srch_id = data[i].id;
 			item.srch_class = data[i].obj_class;
 
-			var itemText = document.createTextNode(data[i].name);
+			var itemText = document.createTextNode(data[i].fullname);
 			item.appendChild(itemText);
 			ul.appendChild(item);
 
@@ -477,6 +483,38 @@ function SearchBar() {
 			ul.removeChild(ul.firstChild);
 	}
 
+	function showLoadingLi(ul) {
+
+		var item = document.createElement("LI");
+		item.className = "sb-loading-li";
+
+		// get image ...streamline later
+		var img = document.createElement("IMG");
+		img.src = cm.home_path + "/images/searchbar-loading.gif";
+		item.width = "60px";
+
+		item.appendChild(img);
+
+		// insert as first element
+		ul.insertBefore(item, ul.childNodes[0]);
+	}
+
+	function clearLoadingLi(ul) {
+
+		if (ul.childNodes[0].className == "sb-loading-li") {
+		  ul.removeChild(ul.childNodes[0]);
+		}
+	}
+
+	// Maybe there's also room for an error li
+	function showErroLi(ul) {
+
+	}
+
+	function clearErroLi(ul) {
+
+	}
+
 	function hideUl(ul) {
 		ul.style.display = 'none';
 	}
@@ -501,6 +539,7 @@ function SearchBar() {
 
 		return setTimeout(
 			function() {
+				showLoadingLi(search_array['ul']);
 				var search = new Ajax({
 					requestType: 'POST',
 					requestUrl: cm.home_path + '/api/search/search_names.php',

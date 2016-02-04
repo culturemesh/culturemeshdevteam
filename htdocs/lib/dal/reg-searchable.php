@@ -162,9 +162,7 @@ SQL
 
 		$m->setValues(array(
 			'query' => <<<SQL
-SELECT *
-FROM cities
-WHERE name LIKE ?
+CALL location_search_by_name(?)
 SQL
 		/////////////////////////////////
 		,	'test_query' => <<<SQL
@@ -176,7 +174,7 @@ SQL
 			'param_types' => 's',
 			'returning' => true,
 			'returning_list' => True,
-			'returning_class' => 'dobj\City',
+			'returning_class' => 'dobj\LocationResult',
 			'returning_cols' => array()
 		));
 
