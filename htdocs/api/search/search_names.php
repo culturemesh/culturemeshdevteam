@@ -20,8 +20,14 @@
 
 	$json_results = array();
 
-	foreach($search_results as $searchable) {
-		array_push($json_results, $searchable->getJSON());
+	if ($search_results === False) {
+		$json_results = False;
+		$json_response['error'] = "No response was found";
+	}
+	else {
+		foreach($search_results as $searchable) {
+			array_push($json_results, $searchable->getJSON());
+		}
 	}
 
 	/*

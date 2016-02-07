@@ -188,6 +188,25 @@ ul.search > li:hover {
 	font-family: 'Lato-Bold', sans-serif;
 	background-color:#FFFFFF;
 }
+
+ul.search > li.sb-li {
+	width:150px;
+	text-align:center;
+}
+
+
+ul.search > li.sb-li.sb-error {
+	color:#9FA2A3;
+	background-color:#FFFFFF;
+	font-style: italic;
+}
+
+ul.search > li.sb-li.sb-loading {
+	color:#3EB3CA;
+	background-color:#FFFFFF;
+	min-width:150px;
+}
+
 /*
 #search-floater {
     float:left;

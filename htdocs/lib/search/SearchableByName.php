@@ -127,9 +127,15 @@ class SearchableByName extends Search {
 		}
 
 		$results = $do2db->execute($dal, $param_obj, $query_name, $remora);
-		$results->sort(array('key' => 'search_weight', 'order' => 'asc'));
 
-		return $results->slice(0, 5, True); 
+		if (get_class($results) == 'PDOStatement')
+		  $results = False;
+		else {
+		  $results->sort(array('key' => 'search_weight', 'order' => 'asc'));
+		  $results = $results->slice(0, 5, True);
+		}
+
+		return $results;
 	}
 }
 

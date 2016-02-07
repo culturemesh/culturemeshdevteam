@@ -248,6 +248,7 @@ function SearchBar() {
 		///////////////////////////////////
 		//////// ADD EVENTS
 		////////////////////////////////
+		//
 
 		// Allow for exit by clicking
 		// outside search boxes
@@ -285,6 +286,8 @@ function SearchBar() {
 			// clear event (if necessary...don't know how to 'if' this)
 			clearTimeout(NAME_SEARCH);
 
+			clearErrorLi(varUl);
+
 			/*
 			// clear ul
 			clearUl(varUl);
@@ -319,7 +322,7 @@ function SearchBar() {
 			}
 
 			// If length is 0, clear ul
-			if (input_value.length == 0) {
+			if (input_value.length < MIN_LENGTH) {
 			  clearUl(varUl);
 			}
 
@@ -486,7 +489,7 @@ function SearchBar() {
 	function showLoadingLi(ul) {
 
 		var item = document.createElement("LI");
-		item.className = "sb-loading-li";
+		item.className = "sb-li sb-loading";
 
 		// get image ...streamline later
 		var img = document.createElement("IMG");
@@ -501,18 +504,34 @@ function SearchBar() {
 
 	function clearLoadingLi(ul) {
 
-		if (ul.childNodes[0].className == "sb-loading-li") {
-		  ul.removeChild(ul.childNodes[0]);
+		if (ul.childNodes[0]) {
+			if (ul.childNodes[0].className == "sb-li sb-loading") {
+			  ul.removeChild(ul.childNodes[0]);
+			}
 		}
 	}
 
 	// Maybe there's also room for an error li
-	function showErroLi(ul) {
+	function showErrorLi(ul) {
 
+		var item = document.createElement("LI");
+		item.className = "sb-li sb-error";
+
+		var itemText = document.createTextNode("No results found");
+		item.appendChild(itemText);
+		ul.appendChild(item);
+
+		// insert as first element
+		ul.insertBefore(item, ul.childNodes[0]);
 	}
 
-	function clearErroLi(ul) {
+	function clearErrorLi(ul) {
 
+		if (ul.childNodes[0]) {
+			if (ul.childNodes[0].className == "sb-li sb-error") {
+			  ul.removeChild(ul.childNodes[0]);
+			}
+		}
 	}
 
 	function hideUl(ul) {
@@ -537,9 +556,11 @@ function SearchBar() {
 			search_class : search_array['search_class']
 		};
 
+		clearLoadingLi(search_array['ul']);
+		showLoadingLi(search_array['ul']);
+
 		return setTimeout(
 			function() {
-				showLoadingLi(search_array['ul']);
 				var search = new Ajax({
 					requestType: 'POST',
 					requestUrl: cm.home_path + '/api/search/search_names.php',
@@ -564,8 +585,15 @@ function SearchBar() {
 						//
 						*/
 						clearUl(search_array['ul']);
-						fillUl(search_array['ul'], results.results, search_array['input'], search_array['click_tracker'], search_array['id_field'], search_array['class_field']);
-						showUl(search_array['ul']);
+
+						if (results.results != false) {
+							fillUl(search_array['ul'], results.results, search_array['input'], search_array['click_tracker'], search_array['id_field'], search_array['class_field']);
+							showUl(search_array['ul']);
+						}
+						else {
+							showErrorLi(search_array['ul']);
+							showUl(search_array['ul']);
+						}
 					});
 				}, KEY_DELAY
 				);
