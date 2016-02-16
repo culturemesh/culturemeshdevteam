@@ -1,14 +1,26 @@
 <?php
 namespace search;
 
+/*
+ * Takes raw user input, and searches for it by name
+ *
+ * Analysis at Two Points
+ *
+ * 1) Relevance...past a certain threshold, results are not returned
+ * 2) Comma Additions, parts of input
+ *    that come after commas are ignored during initial search, but are
+ *    considered later
+ */
 class SearchableByName extends Search {
 
-	protected $input_value;
+	protected $search_value;
 	protected $search_class;
 
-	public function __construct($input_value, $search_class) {
+	protected $comma_separated;
+	protected $comma_string_count;
+	protected $comma_values;
 
-		$this->input_value = '%' . strtolower($input_value) . '%';
+	public function __construct($input_value, $search_class) {
 
 		if ($search_class == NULL) {
 		  $this->search_class = 'location';
@@ -16,6 +28,38 @@ class SearchableByName extends Search {
 		else {
 		  $this->search_class = $search_class;
 		}
+
+		$this->input_value = $this->processInput($input_value);
+	}
+
+	private function processInput($raw_input) {
+
+		$processed_input = NULL;
+
+		// replace ', ' with ','
+		$input = str_replace(', ', ',', $raw_input);
+		$input_parts = explode(',', $input);
+		$processed_input = '%' . $input_parts[0] . '%';
+
+		// do both things, decide which I like later
+		if ($this->search_class === 'location') {
+
+			$this->comma_separated = False;
+
+			$string_count = count($input_parts);
+
+			if ($string_count > 1) {
+
+				$this->comma_separated = True;
+				$this->comma_string_count = $string_count;
+
+				// take comma values starting from 2nd element
+				$this->comma_values = $input_parts;
+			}
+		}
+
+		return $processed_input;
+
 	}
 
 	public function run($dal, $do2db) {
@@ -131,11 +175,139 @@ class SearchableByName extends Search {
 		if (get_class($results) == 'PDOStatement')
 		  $results = False;
 		else {
-		  $results->sort(array('key' => 'search_weight', 'order' => 'asc'));
-		  $results = $results->slice(0, 5, True);
+
+			// include values by relevance
+			//
+			// later will use sort only after determining values have passed
+			// a certain threshold
+	  		$results->sort(array('key' => 'search_weight', 'order' => 'asc'));
+	  		$results = $results->slice(0, 10, True);
+
+			// If there are extra comma values (denoting region/country data), poke through
+			// the remaining values for matches/resemblance/relevance
+			//
+			// Note: This only happens for location
+			//
+			if ($this->search_class === 'location') {
+
+				if ($this->comma_separated) {
+
+					// Note: comma string count will always be
+					// greater than 1
+
+					// string count is gonna be 2 or 3
+					//
+					// set offset as 1, for first value
+					$element_offset = 1;
+
+					// We're gonna add to each of the searchable's weight
+					// and the re-sort the list
+					//
+					// I guess
+					foreach ($results as $searchable) {
+
+						// I could reset search weight to 0...
+						$searchable->search_weight = 0;
+
+						$searchable_value; // the value that HOPEFULLY corresponds
+
+						$string_count = $this->comma_string_count;
+						$element_count = $searchable->getElementCount();
+
+						// if string count == 2 && elementCount == 2
+						// 	// 1 : 1 string check
+						//
+						// if string count == 3 && elementCount == 3
+						// 	// 1 : 1 string check
+						//
+						if ($string_count === $element_count) {
+
+							for ($i = 1; $i < $string_count; $i++) {
+
+								$searchable_string = $searchable->getElement($i)['name'];
+								$user_string = $this->comma_values[$i];
+
+								// add compare weight
+								$searchable->search_weight += $this->calculateCompareWeight($user_string, $searchable_string);
+							}
+						}
+
+						// if string count == 2 && elementCount == 3
+						// 	// check 1 string against both elements
+
+						if ($string_count < $element_count) {
+
+							// string count WILL ALWAYS be 2
+							$user_string = $this->comma_values[1];
+
+							for($i = 1; $i < $element_count; $i++) {
+
+								$searchable_string = $searchable->getElement($i)['name'];
+
+								/*
+								if ($searchable->id == 265981) {
+									var_dump($searchable_string);
+									var_dump($user_string);
+								}
+								 */
+
+								// add compare weight
+								$searchable->search_weight += $this->calculateCompareWeight($user_string, $searchable_string);
+							}
+						}
+
+						// if string count == 2 && elementCount == 1
+						// 	// skip
+						//
+						// if string count == 3 && elementCount == 1
+						// 	// skip
+						//
+						// if string count == 3 && elementCount == 2
+						// 	// check element against both strings
+						//
+
+						if ($string_count > $element_count && $element_count == 2) {
+
+							$searchable_string = $searchable->getElement(1);
+								
+							for($i = 1; $i < $string_count; $i++) {
+								$user_string = $this->comma_values[$i];
+
+								$searchable->search_weight += $this->calculateCompareWeight($user_string, $searchable_string);
+							}
+						}
+					}
+					// endloop
+					//
+	  				$results->sort(array('key' => 'search_weight', 'order' => 'asc'));
+				}
+			}
 		}
 
 		return $results;
+	}
+
+	/*
+	 * S2 should be the "complete string" (ie haystack) to be checked against
+	 * as in strpos
+	 */
+	private function calculateCompareWeight($s1, $s2) {
+
+		$weight = 0;
+
+		// check position
+		//if (strpos($value['name'], $this->comma_values[$i-1]) === 0) {
+		if (strpos($s2, $s1) === 0) {
+			$weight += 10;
+		}
+
+		if ($s2 === $s1) {
+			$weight += 10;
+		}
+
+		// check levenshtein distance
+
+		return $weight;
 	}
 }
 

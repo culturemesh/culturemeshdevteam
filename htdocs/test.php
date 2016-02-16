@@ -12,7 +12,7 @@ $json_response = array(
 	'error' => NULL
 );
 
-$input_value = 'Somethin';
+$input_value = 'San Jose, Phillipines';
 $search_class = 'location'; // optional
 
 $name_search = new \search\SearchableByName($input_value, $search_class);

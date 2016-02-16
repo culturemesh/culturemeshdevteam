@@ -18,7 +18,7 @@ class Searchable extends DisplayDObj {
 	/*
 	 * Returns an array with all the nice object properties
 	 */
-	public function prepare() {
+	public function prepare($cm=NULL) {
 
 		return array(
 			'name' => $this->name,
