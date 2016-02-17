@@ -1,31 +1,7 @@
 
 cm.SearchField = function(user_options) {
 
-	/*
-	var searchOne = document.getElementById("search-1");
-	var clik1 = document.getElementById('clik1');
-	var searchTwo = document.getElementById("search-2");
-	var clik2 = document.getElementById('clik2');
-
-	var topic = document.getElementById("search-topic");
-	var varUl = document.getElementById("s-var");
-	var locUl = document.getElementById("s-location");
-
-	var varIdField = document.getElementById("varId");
-	var varClassField = document.getElementById("varClass");
-	var locIdField = document.getElementById("locId");
-	var locClassField = document.getElementById("locClass");
-
-	var MIN_LENGTH = 2;
-	var KEY_DELAY = 800;
-
-	var NAME_SEARCH;
-
-	var selector = document.getElementById("verb-select");
-	*/
-
 	this._options = {
-
 		input_field : null,
 		clicked : null,
 		id_field : null,
@@ -155,6 +131,7 @@ cm.SearchField.prototype = {
 
 		this._clearLoadingLi(search_array['ul']);
 		this._showLoadingLi(search_array['ul']);
+		this._showUl();
 
 		return setTimeout(
 			function() {
