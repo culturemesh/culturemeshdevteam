@@ -35,6 +35,7 @@
 <script src="<?php echo \Environment::host_root(); ?>/js/account.js"></script>
 <script src="<?php echo \Environment::host_root(); ?>/js/fxn.js"></script>
 <script src="<?php echo \Environment::host_root(); ?>/js/ajax.js"></script>
+<script src="<?php echo \Environment::host_root(); ?>/js/autoloader.js"></script>
 
 <script type="text/javascript">
 // register validation

@@ -168,8 +168,6 @@ class RelatedNetworkSearch extends Search {
 		$this->network_group_search = new NetworkGroupSearch($networks);
 		$final_results = $this->network_group_search->run($dal, $do2db);
 
-		//var_dump($final_results);
-
 		if ($final_results !== False) {
 
 			foreach($final_results as $existing_network) {
@@ -198,24 +196,25 @@ class RelatedNetworkSearch extends Search {
 
 		$networks = array();
 
+		$MAX_LOCATIONS = 2;
+
 		// Handle the locations
 		// 
 		if ($locations_near_location !== NULL && $locations_near_location !== False) {
 
 			// also, if it's a non empty array
 			//
-			if (count($locations_near_location) > 0) {
+			$location_count = count($locations_near_location);
 
-				for ($i = 0; $i < 2; $i++) {
+			for ($i = 0; $i < $MAX_LOCATIONS && $i < $location_count; $i++) {
 
-					$l = $locations_near_location[$i];
+				$l = $locations_near_location[$i];
 
-					$network = new \dobj\Network();		
-					$network->origin_searchable = $origin;
-					$network->location_searchable = $l;
+				$network = new \dobj\Network();		
+				$network->origin_searchable = $origin;
+				$network->location_searchable = $l;
 
-					array_push($networks, $network);
-				}
+				array_push($networks, $network);
 			}
 		}
 
@@ -223,20 +222,18 @@ class RelatedNetworkSearch extends Search {
 		//
 		if ($locations_near_origin !== NULL && $locations_near_origin !== False) {
 
-			// also, if it's a non empty array
-			//
-			if (count($locations_near_origin) > 0) {
+			// in case count is empty
+			$origin_count = count($locations_near_origin);
 
-				for ($i = 0; $i < 2; $i++) {
+			for ($i = 0; $i < $MAX_LOCATIONS && $i < $origin_count; $i++) {
 
-					$o = $locations_near_origin[$i];
+				$o = $locations_near_origin[$i];
 
-					$network = new \dobj\Network();		
-					$network->origin_searchable = $o;
-					$network->location_searchable = $location;
+				$network = new \dobj\Network();		
+				$network->origin_searchable = $o;
+				$network->location_searchable = $location;
 
-					array_push($networks, $network);
-				}
+				array_push($networks, $network);
 			}
 		}
 

@@ -71,9 +71,12 @@ function uploadToggle() {
 }
 
 // onclick, toggle div
-toggle.onclick = function(e) {
-	e.preventDefault();
-	uploadToggle();
+if (toggle) {
+
+	toggle.onclick = function(e) {
+		e.preventDefault();
+		uploadToggle();
+	}
 }
 
 // SUBMIT IMAGE TO SERVER

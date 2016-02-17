@@ -89,6 +89,32 @@
 			background:url(<?php echo $bg_links[$i]; ?>);
 		}
 		</style>
+
+		<script src="<?php echo \Environment::host_root(); ?>/js/searchbar.js"></script>
+
+		<script type="text/javascript">
+
+			cm.Autoloader(function() {
+
+				var searchOne = new cm.SearchField({
+					input_field : document.getElementById('search-1'),
+					clicked : document.getElementById('clik1'),
+					id_field : document.getElementById('varId'),
+					selector : document.getElementById('verb-select'),
+					class_field : document.getElementById('varClass'),
+					ul : document.getElementById('s-var'),
+					topic : document.getElementById('search-topic')
+				});
+
+				var searchTwo = new cm.SearchField({
+					input_field : document.getElementById('search-2'),
+					clicked : document.getElementById('clik2'),
+					id_field : document.getElementById('locId'),
+					class_field : document.getElementById('locClass'),
+					ul : document.getElementById('s-location'),
+				});
+			});
+		</script>
 	</head>
 	<body id="index">
 		<div class="wrapper">
@@ -186,5 +212,4 @@
 			?>
 		</div>
 	</body>
-	<script src="js/searchbar.js"></script>
 </html>

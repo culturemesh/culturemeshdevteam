@@ -200,6 +200,8 @@ class SearchableByName extends Search {
 					// set offset as 1, for first value
 					$element_offset = 1;
 
+					$final_results = new \dobj\DObjList();
+
 					// We're gonna add to each of the searchable's weight
 					// and the re-sort the list
 					//
@@ -244,13 +246,6 @@ class SearchableByName extends Search {
 
 								$searchable_string = $searchable->getElement($i)['name'];
 
-								/*
-								if ($searchable->id == 265981) {
-									var_dump($searchable_string);
-									var_dump($user_string);
-								}
-								 */
-
 								// add compare weight
 								$searchable->search_weight += $this->calculateCompareWeight($user_string, $searchable_string);
 							}
@@ -276,10 +271,17 @@ class SearchableByName extends Search {
 								$searchable->search_weight += $this->calculateCompareWeight($user_string, $searchable_string);
 							}
 						}
+
+						// add past certain threshhold
+						if ($searchable->search_weight >= 5) {
+							$final_results->dInsert($searchable);
+						}
 					}
 					// endloop
 					//
-	  				$results->sort(array('key' => 'search_weight', 'order' => 'asc'));
+	  				$final_results->sort(array('key' => 'search_weight', 'order' => 'asc'));
+	  				//$results->sort(array('key' => 'search_weight', 'order' => 'asc'));
+					$results = $final_results;
 				}
 			}
 		}
@@ -306,6 +308,19 @@ class SearchableByName extends Search {
 		}
 
 		// check levenshtein distance
+		//
+		$distance = levenshtein($s1, $s2);
+
+		if ($distance < 4) {
+			$weight += 5;
+		}
+
+		/*
+		var_dump($s1);
+		var_dump($s2);
+		var_dump($weight);
+		echo '------';
+		 */
 
 		return $weight;
 	}
