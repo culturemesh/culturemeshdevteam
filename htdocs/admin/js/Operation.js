@@ -404,7 +404,13 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 
 			// if not null, join value into single string
 			if (colObj['value'] != null) {
-				colObj['original_string'] = colObj['value'].join(', ');
+
+				if (typeof colObj['value'] === "string") {
+				  colObj['original_string'] = colObj['value'];
+				}
+				else {
+				  colObj['original_string'] = colObj['value'].join(', ');
+				}
 			}
 		}
 
@@ -1016,8 +1022,10 @@ ModPackage.prototype.parseTable = function(tableId) {
 	var tdClasses = ['td.op_val.filled span',
 	    'td.op_val.terms-modified input.term',
 	    'td.op_val.terms-modified input.null-term',
+	    'td.op_val input.null-term',
 	    'td.op_val.update_bool :radio:checked',
 	    'td.op_val span',
+	    'td.op_val input[type="hidden"]',
 	    'td.op_input input'
 	];
 
@@ -1049,7 +1057,16 @@ ModPackage.prototype.parseTable = function(tableId) {
 
 			// sometimes we have multiple inputs that need to be
 			// parsed *cough* TWEETS *cough*
-			if ( $( elem ).length > 1) {
+			//
+			// Have a stipulation about count being less than 5
+			// because I'm too lazy to make a certain change
+			// the tdval td.op_val input[type=hidden'] catches an object
+			// with an empty string which is added to the array
+			// and replaces the null value which should go to tweet terms
+			//
+			// This whole part is screwy. I need to fix it
+			//
+			if ( $( elem ).length > 1 && count < 6) {
 
 				var valArray = [];
 
@@ -1081,7 +1098,7 @@ ModPackage.prototype.parseTable = function(tableId) {
 		//
 		if (modCols != undefined)
 		{
-			if (count <= 4 && count > 0) {
+			if (count <= 5 && count > 0) {
 
 				modCols.push(key);
 

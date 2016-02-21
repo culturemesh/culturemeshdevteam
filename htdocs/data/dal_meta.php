@@ -134,5 +134,9 @@ SQL;
 
 		return QueryHandler::executeQuery($query, $con);
 	}
+
+	public static function getLastInsertId($con) {
+		return mysqli_insert_id($con);
+	}
 }
 ?>

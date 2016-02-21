@@ -1004,5 +1004,84 @@ SQL;
 		else
 			return "='{$name}'";
 	}
+
+	/*
+	public static function addSearchKeys($con=NULL) {
+
+		$query = <<<SQL
+			INSERT INTO search_keys VALUES ($columns, $class_name)
+			 ($values)
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+	}
+	 */
+
+	public static function deleteSearchKeys($id, $table, $con=NULL) {
+
+		$id_table = NULL;
+
+		if ($table == 'cities') {
+		  $id_table = 'city';
+		}
+
+		if ($table == 'regions') {
+		  $id_table = 'region';
+		}
+
+		if ($table == 'countries') {
+		  $id_table = 'country';
+		}
+
+		$identifier_column = $id_table . '_id';
+
+		$query = <<<SQL
+			DELETE FROM search_keys WHERE $identifier_column=$id AND class_searchable='$id_table'
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+	}
+
+	public static function deleteSearchKeysByName($id_value, $table, $con=NULL) {
+
+		$id_table = NULL;
+
+		if ($table == 'cities') {
+		  $id_table = 'city';
+		}
+
+		if ($table == 'regions') {
+		  $id_table = 'region';
+		}
+
+		if ($table == 'countries') {
+		  $id_table = 'country';
+		}
+
+		$identifier_column = $id_table . '_id';
+
+		$query = <<<SQL
+			DELETE FROM search_keys WHERE $identifier_column=$id_value
+SQL;
+
+		var_dump($query);
+		//return QueryHandler::executeQuery($query, $con);
+	}
+
+	/*
+	public static function updateSearchKeyParents($args, $table, $con=NULL) {
+
+		$query = <<<SQL
+			UPDATE search_keys
+			SET $region_id=$new_region_id
+			AND $region_name='$new_region_name'
+			AND $country_id=$new_country_id
+			AND $country_name='$new_country_name'
+			WHERE (city_id OR region_id) = ($city_id OR $region_id)
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+	}
+	 */
 }
 ?>

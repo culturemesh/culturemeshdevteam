@@ -6,6 +6,7 @@ cm.SearchField = function(user_options) {
 		clicked : null,
 		id_field : null,
 		selector : null,
+		submit_button : null,
 		class_field : null,
 		ul : null,
 		topic : null,
@@ -20,9 +21,13 @@ cm.SearchField = function(user_options) {
 	this._ul = this._options.ul;
 	this._id_field = this._options.id_field;
 	this._class_field = this._options.class_field;
-	this._selector = this._options.selector;
 
+	// MORE OPTIONAL VALUES
+	this._selector = this._options.selector;
 	this._topic = this._options.topic; // optional
+
+	// submit button
+	this._submit_button = this._options.submit_button;
 
 	this.MIN_LENGTH = this._options.MIN_LENGTH;
 	this.KEY_DELAY = this._options.KEY_DELAY;
@@ -354,6 +359,14 @@ cm.SearchField.prototype = {
 			  this._ul.removeChild(this._ul.childNodes[0]);
 			}
 		}
+	},
+	_setSubmit : function(callback) {
+
+		if (this._submit_button == null) {
+		  return false;
+		}
+
+		this._submit_button.onclick = callback;
 	}
 };
 
