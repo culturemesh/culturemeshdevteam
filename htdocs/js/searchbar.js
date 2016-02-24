@@ -5,13 +5,17 @@ cm.SearchField = function(user_options) {
 		input_field : null,
 		clicked : null,
 		id_field : null,
-		selector : null,
-		submit_button : null,
 		class_field : null,
 		ul : null,
-		topic : null,
 		MIN_LENGTH : 2,
-		KEY_DELAY : 800
+		KEY_DELAY : 800,
+		/////// OPTIONAL /////////////
+		selector : null,
+		topic : null,
+		display_table : null,
+		submit_button : null,
+		loading_image : "/images/searchbar-loading.gif",
+		ul_class : "search"
 	}
 
 	cm.extend(this._options, user_options);
@@ -28,6 +32,7 @@ cm.SearchField = function(user_options) {
 
 	// submit button
 	this._submit_button = this._options.submit_button;
+	this._display_table = this._options.display_table;
 
 	this.MIN_LENGTH = this._options.MIN_LENGTH;
 	this.KEY_DELAY = this._options.KEY_DELAY;
@@ -115,6 +120,14 @@ cm.SearchField.prototype = {
 			this._selector.onchange = function() {
 				self._topic.value = '';
 				self._clearUl();
+			}
+		}
+
+		// Might be a dumb idea to do this,
+		// but eh, wth
+		if (this._submit_button != null) {
+			this._submit_button.onclick = function(e) {
+				e.preventDefault();
 			}
 		}
 
@@ -320,7 +333,7 @@ cm.SearchField.prototype = {
 	_clearErrorLi : function() {
 
 		if (this._ul.childNodes[0]) {
-			if (this._ul.childNodes[0].className == "sb-li sb-error") {
+			if (this._ul.childNodes[0].className == this._options.ul_class + " " + "sb-li sb-error") {
 			  this._ul.removeChild(this._ul.childNodes[0]);
 			}
 		}
@@ -328,7 +341,7 @@ cm.SearchField.prototype = {
 	_showErrorLi : function() {
 
 		var item = document.createElement("LI");
-		item.className = "sb-li sb-error";
+		item.className = this._options.ul_class + " " + "sb-li sb-loading";
 
 		var itemText = document.createTextNode("No results found");
 		item.appendChild(itemText);
@@ -340,11 +353,11 @@ cm.SearchField.prototype = {
 	_showLoadingLi : function() {
 
 		var item = document.createElement("LI");
-		item.className = "sb-li sb-loading";
+		item.className = this._options.ul_class + " " + "sb-li sb-loading";
 
 		// get image ...streamline later
 		var img = document.createElement("IMG");
-		img.src = cm.home_path + "/images/searchbar-loading.gif";
+		img.src = cm.home_path + this._options.loading_image; 
 		item.width = "60px";
 
 		item.appendChild(img);
@@ -355,7 +368,7 @@ cm.SearchField.prototype = {
 	_clearLoadingLi : function() {
 
 		if (this._ul.childNodes[0]) {
-			if (this._ul.childNodes[0].className == "sb-li sb-loading") {
+			if (this._ul.childNodes[0].className == this._options.ul_class + " " + "sb-li sb-loading") {
 			  this._ul.removeChild(this._ul.childNodes[0]);
 			}
 		}

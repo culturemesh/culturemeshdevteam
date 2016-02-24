@@ -181,7 +181,8 @@ Operation.prototype.activatePanel = function() {
 		var sbDiv = document.getElementById('ssearchbar');
 
 		// create search bar
-		var searchbar = new SSearchBar('ssearchbar', this.operation, this.singobatch, this.table);
+		//var searchbar = new SSearchBar('ssearchbar', this.operation, this.singobatch, this.table);
+		var searchbar = new cm.SearchField({});
 		searchbar.setTableDiv('table-div');
 		searchbar.fetchValues(this.table);
 

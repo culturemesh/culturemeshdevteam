@@ -190,21 +190,20 @@ ul.search > li:hover {
 }
 
 ul.search > li.sb-li {
-	width:150px;
+	min-width:150px;
 	text-align:center;
 }
 
 
 ul.search > li.sb-li.sb-error {
 	color:#9FA2A3;
-	background-color:#FFFFFF;
+	/*background-color:#FFFFFF;*/
 	font-style: italic;
 }
 
 ul.search > li.sb-li.sb-loading {
 	color:#3EB3CA;
-	background-color:#FFFFFF;
-	min-width:150px;
+	/*background-color:#FFFFFF;*/
 }
 
 /*

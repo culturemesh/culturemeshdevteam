@@ -35,7 +35,9 @@
 					selector : document.getElementById('verb-select'),
 					class_field : document.getElementById('varClass'),
 					ul : document.getElementById('s-var'),
-					topic : document.getElementById('search-topic')
+					topic : document.getElementById('search-topic'),
+					ul_class : "network search",
+					loading_image : "/images/searchbar-loading-bw.gif"
 				});
 
 				var searchTwo = new cm.SearchField({
@@ -44,6 +46,8 @@
 					id_field : document.getElementById('locId'),
 					class_field : document.getElementById('locClass'),
 					ul : document.getElementById('s-location'),
+					ul_class : "network search",
+					loading_image : "/images/searchbar-loading-bw.gif"
 				});
 			});
 	</script>

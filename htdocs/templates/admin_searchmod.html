@@ -5,6 +5,7 @@
 
 	{{$ more_scripts }}
 	<script src='js/spin.js'></script>
+	<script src='js/searchbar.js'></script>
 	{{/ more_scripts }}
 	{{$ content }}
 
@@ -281,6 +282,10 @@
 	<script id='update-single-tmpl' type='x-tmpl-mustache'>
 	<div id='main-op'>
 		<div id='ssearchbar'>
+			<ul id='s-query' class='network search'></ul>
+			<input type='hidden' id='clicked' name='clicked' value=0></ul>
+			<input type="hidden" id="var_id" name="var_id" value=-1 />
+			<input type="hidden" id="var_class" name="var_class" value=-1 />
 		</div>
 		<div id='table-div'>
 		</div>
@@ -288,6 +293,10 @@
 	</div>
 	<div id='side-op'>
 		<div id='ssearchbar-extra'>
+			<ul id='s-query' class='network search'></ul>
+			<input type='hidden' id='clicked' name='clicked' value=0></ul>
+			<input type="hidden" id="var_id" name="var_id" value=-1 />
+			<input type="hidden" id="var_class" name="var_class" value=-1 />
 		</div>
 		<div id='table-search-div'>
 		</div>
@@ -400,7 +409,7 @@
 	{{$ body_scripts }}
 	<script src='admin/js/admin_searchmod.js'></script>
 	<script src="admin/js/Operation.js"></script>
-	<script src='js/ssearchbar.js'></script>
+	<!--<script src='js/ssearchbar.js'></script>-->
 	<!--<script src="admin/js/ModPackage.js"></script>-->
 	<script>
 		$('#activated-panel').hide();
