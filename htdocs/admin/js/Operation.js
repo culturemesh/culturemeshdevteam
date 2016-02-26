@@ -182,9 +182,22 @@ Operation.prototype.activatePanel = function() {
 
 		// create search bar
 		//var searchbar = new SSearchBar('ssearchbar', this.operation, this.singobatch, this.table);
-		var searchbar = new cm.SearchField({});
-		searchbar.setTableDiv('table-div');
-		searchbar.fetchValues(this.table);
+		var searchbar = new cm.SearchField({
+					input_field : 'search-1',
+					clicked : 'clik1',
+					ul : 's-var',
+					id_field : 'varId',
+					class_field : 'varClass',
+		    			submit_button : 'search-submit',
+		    			template : document.getElementById('single-search-tmpl'),
+					render_target : sbDiv,
+					ul_class : "network search",
+					loading_image : "/images/searchbar-loading-bw.gif"
+		});
+
+		searchbar._setTableDiv('table-div');
+		searchbar._setSearchTable(this.table);
+		//searchbar._fetchValues(this.table);
 
 		// give the searchbar a reference to this operation
 		var sbOp = this;
@@ -193,13 +206,13 @@ Operation.prototype.activatePanel = function() {
 
 		// somehow, i must give the searchbar
 		// the target div		
-		searchbar.setSubmit(function(e) {
+		searchbar._setSubmit(function(e) {
 			// prevent default event behavior.
 			e.preventDefault();
 
 			// it's submitting the search results
 			// i could get it to return the search results here
-			var val = searchbar.getValue();
+			var val = searchbar._getValue();
 
 			// what did you 
 			// think it was gonna do? Cure cancer?
@@ -458,21 +471,35 @@ Operation.prototype.activateFinds = function() {
 		var table = fk_ref[curCol];
 
 		// call searchbar
+		/*
 		var temp_bar = new SSearchBar('ssearchbar-alt', operation.operation, operation.singobatch,
 			table);
+			*/
+		var temp_bar = new cm.SearchField({
+					input_field : 'search-1',
+					clicked : 'clik1',
+					ul : 's-var',
+					id_field : 'varId',
+					class_field : 'varClass',
+		    			submit_button : 'search-submit',
+		    			template : document.getElementById('single-search-tmpl'),
+					render_target : document.getElementById('ssearchbar-alt'),
+					ul_class : "network search",
+					loading_image : "/images/searchbar-loading-bw.gif"
+		});
 
-		temp_bar.setTableDiv('table-search');
-		temp_bar.fetchValues(table);
+		temp_bar._setTableDiv('table-search');
+		temp_bar._setSearchTable(table);
 
 		// tell searchbar how to fill searchable
-		temp_bar.setSubmit(function(e) {
+		temp_bar._setSubmit(function(e) {
 
 			// ehhhhhhhhhh prevent default
 			e.preventDefault();
 
 			// it's submitting the search results
 			// i could get it to return the search results here
-			var val = temp_bar.getValue();
+			var val = temp_bar._getValue();
 
 			// what did you 
 			// think it was gonna do? Cure cancer?

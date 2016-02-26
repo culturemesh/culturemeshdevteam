@@ -156,6 +156,99 @@ SQL
 	 * Passed in to get Complete User with Id
 	 * Uses :> getting logged in user, getting profile user
 	 */
+	$obj->getCitiesByName = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT *
+FROM cities
+WHERE name LIKE ?
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'getCitiesByName',
+			'params' => array('name'),
+			'param_types' => 's',
+			'returning' => true,
+			'returning_list' => True,
+			'returning_class' => 'dobj\City',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+	/*
+	 */
+	$obj->getRegionsByName = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT *
+FROM regions 
+WHERE name LIKE ?
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'getRegionsByName',
+			'params' => array('name'),
+			'param_types' => 's',
+			'returning' => true,
+			'returning_list' => True,
+			'returning_class' => 'dobj\Region',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+	/*
+	 */
+	$obj->getCountriesByName = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT *
+FROM countries
+WHERE name LIKE ?
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'getCountriesByName',
+			'params' => array('name'),
+			'param_types' => 's',
+			'returning' => true,
+			'returning_list' => True,
+			'returning_class' => 'dobj\Country',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+	/*
+	 */
 	$obj->getLocationsByName = function($con=NULL) {
 
 		$m = new dal\DBQuery();
@@ -182,7 +275,6 @@ SQL
 
 		return $m;
 	};
-
 	/*
 	 * Passed in to get Complete User with Id
 	 * Uses :> getting logged in user, getting profile user

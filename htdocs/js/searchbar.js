@@ -15,7 +15,10 @@ cm.SearchField = function(user_options) {
 		display_table : null,
 		submit_button : null,
 		loading_image : "/images/searchbar-loading.gif",
-		ul_class : "search"
+		ul_class : "search",
+		template : null,
+		render_target : null,
+		search_table : null
 	}
 
 	cm.extend(this._options, user_options);
@@ -29,6 +32,9 @@ cm.SearchField = function(user_options) {
 	// MORE OPTIONAL VALUES
 	this._selector = this._options.selector;
 	this._topic = this._options.topic; // optional
+	this._search_table = this._options.search_table;
+	this._template = this._options.template;
+	this._render_target = this._options.render_target;
 
 	// submit button
 	this._submit_button = this._options.submit_button;
@@ -39,6 +45,8 @@ cm.SearchField = function(user_options) {
 
 	this.NAME_SEARCH;
 
+	this._tableDiv;
+
 	// initialize search field
 	this._init();
 };
@@ -48,6 +56,10 @@ cm.SearchField.prototype = {
 	_init : function() {
 
 		var self = this;
+
+		if (this._options.template != null) {
+			this._templateInit();
+		}
 
 		///////////////////////////////////
 		//////// ADD EVENTS
@@ -79,7 +91,14 @@ cm.SearchField.prototype = {
 			self._clearErrorLi();
 
 			// get new value
-			var input_value = self._updateValue(e);
+			var key_code = self._checkKey(e);
+
+			if (key_code === false) {
+				self._clearLoadingLi();
+				return False;
+			}
+
+			var input_value = self._updateValue(key_code);
 			var search_class;
 
 			// figure out selector (IF SELECTOR IS EVEN PRESENT)
@@ -101,7 +120,8 @@ cm.SearchField.prototype = {
 				input : self._input_field,
 				click_tracker : self._clicked,
 				id_field : self._id_field,
-				class_field : self._class_field 
+				class_field : self._class_field,
+				search_table : self._search_table
 			};
 
 			// If past the minimum length
@@ -133,6 +153,34 @@ cm.SearchField.prototype = {
 
 		this._positionUl();
 	},
+	_templateInit : function() {
+
+		///////////////////////////////////////////
+		// ADD TEMPLATE
+		// //////////
+		/*
+		if (type == 'single') {
+			this.template = document.getElementById('single-search-tmpl').innerHTML;
+		}
+		else {
+			this.template = document.getElementById('search-tmpl').innerHTML;
+		}
+		*/
+
+		// render search bar
+		this._render_target.innerHTML = Mustache.render( this._template.innerHTML );
+
+		/////////////////////////////////////////////
+		// ADD ELEMENTS
+		// //////////
+		this._input_field = document.getElementById( this._options.input_field );
+		this._clicked = document.getElementById( this._options.clicked );
+		this._ul = document.getElementById( this._options.ul );
+		this._id_field = document.getElementById( this._options.id_field );
+		this._class_field = document.getElementById( this._options.class_field );
+		this._submit_button = document.getElementById( this._options.submit_button );
+
+	},
 	_searchCall : function(search_array) {
 
 		var values;
@@ -144,7 +192,8 @@ cm.SearchField.prototype = {
 
 		var values = {
 			input_value : search_array['input_value'],
-			search_class : search_array['search_class']
+			search_class : search_array['search_class'],
+			search_table : search_array['search_table']
 		};
 
 		this._clearLoadingLi(search_array['ul']);
@@ -183,10 +232,23 @@ cm.SearchField.prototype = {
 				}, self.KEY_DELAY
 				);
 	},
-	_updateValue : function(e) {
+	/*
+	 * If this is something we don't like, (like TAB)
+	 * return False
+	 */
+	_checkKey : function(e) {
 
-		// get pressed key
 		var keyCode = ('which' in e) ? e.which : e.keyCode;
+
+		// check for tab
+		if (keyCode === 9) {
+		  return false;
+		}
+		else {
+		  return keyCode;
+		}
+	},
+	_updateValue : function(keyCode) {
 
 		// if it's a smelly shift, 
 		//  don't care
@@ -373,6 +435,12 @@ cm.SearchField.prototype = {
 			}
 		}
 	},
+	_setTableDiv : function (id) {
+		this._tableDiv = document.getElementById(id);
+	},
+	_setSearchTable : function(table) {
+		this._search_table = table;
+	},
 	_setSubmit : function(callback) {
 
 		if (this._submit_button == null) {
@@ -380,6 +448,9 @@ cm.SearchField.prototype = {
 		}
 
 		this._submit_button.onclick = callback;
+	},
+	_getValue : function() {
+		return $( this._input_field ).val();
 	}
 };
 

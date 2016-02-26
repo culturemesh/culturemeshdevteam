@@ -15,12 +15,13 @@ class SearchableByName extends Search {
 
 	protected $search_value;
 	protected $search_class;
+	protected $search_table;
 
 	protected $comma_separated;
 	protected $comma_string_count;
 	protected $comma_values;
 
-	public function __construct($input_value, $search_class) {
+	public function __construct($input_value, $search_class, $search_table) {
 
 		if ($search_class == NULL) {
 		  $this->search_class = 'location';
@@ -28,6 +29,9 @@ class SearchableByName extends Search {
 		else {
 		  $this->search_class = $search_class;
 		}
+
+		// search table thing
+		$this->search_table = $search_table;
 
 		$this->input_value = $this->processInput($input_value);
 	}
@@ -163,7 +167,21 @@ class SearchableByName extends Search {
 		});
 
 		if ($this->search_class == 'location') {
-		  $query_name = 'getLocationsByName';
+
+			if ($this->search_table === NULL) {
+			 $query_name = 'getLocationsByName';
+			}
+			if ($this->search_table == 'cities') {
+			  $query_name = 'getCitiesByName';
+			}
+
+			if ($this->search_table == 'regions') {
+			  $query_name = 'getRegionsByName';
+			}
+
+			if ($this->search_table == 'countries') {
+			  $query_name = 'getCountriesByName';
+			}
 		}
 
 		if ($this->search_class == 'language') {
