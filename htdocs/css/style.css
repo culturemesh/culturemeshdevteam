@@ -301,7 +301,9 @@ input[type="submit"].stage-button {
 .modal
 {
     width:426px;
+    /*
     height:535px;
+    */
 }
 .modal-header{
     color:#EF5330;
@@ -480,7 +482,7 @@ hr.hr-modal {
 
 .modal-body
 {
-    min-height: 397px;
+    /* min-height: 397px; */
     vertical-align:middle;
 }
 .modal-header .close 

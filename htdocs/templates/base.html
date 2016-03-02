@@ -112,6 +112,15 @@
 		QueryStringParser.prototype.getQSObject = function() {
 			return this.qsGet;
 		}
+
+
+		// HEIGHT ADJUSTMENT FOR MODALS
+		$('#register_modal,#login_modal').each(function() {
+			$( this ).on('shown', function () {
+				$('.modal .modal-body').css('overflow-y', 'auto'); 
+				$('.modal .modal-body').css('max-height', $(window).height() * 0.7);
+			})
+		});
 		</script>
 
 
@@ -168,6 +177,8 @@
 								</br>
 								<span id="pass_mism_txt" class="label label-important"></span>
 								<div class="clear"></div>
+								<input type="hidden" id="reg_joining" name="reg_joining" value="-1" />
+								<input type="hidden" id="reg_joining_network" name="reg_joining_network" value="-1" />
 								<input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
 							</div>
 							<!--

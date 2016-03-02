@@ -104,6 +104,7 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		
 		include 'zz341/fxn.php';
 		include 'data/dal_user.php';
+		include_once "data/dal_network_registration.php";
 		include 'cm_email.php';
 		
 		$conn = getDBConnection();
@@ -112,6 +113,8 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		$email = $conn->real_escape_string($_POST['email']);
 		$fname = $conn->real_escape_string($_POST['fname']);
 		$lname = $conn->real_escape_string($_POST['lname']);
+
+		$is_joining = $conn->real_escape_string($_POST['joining']) == "1";
 		
 		// check to see if email is already taken
 		$email_in_use = User::checkEmailMatch($email);
@@ -125,12 +128,25 @@ if(isset($_POST['email']) && isset($_POST['password'])
 			$new_user->password = md5($_POST['password']);
 			$new_user->role = 0;
 			$new_user->act_code = md5(microtime());
+
 			
 			// create user
 			User::createUser($new_user, $conn);
 			
 			// get user id back
 			$_SESSION['uid'] = User::getUserId($email, $conn);
+
+			if ($is_joining) {
+
+				$netreg = new NetworkRegistrationDT();
+
+				$netreg->id_user = $_SESSION['uid'];
+				$netreg->id_network = $_SESSION['cur_network'];
+
+				NetworkRegistration::createNetRegistration($netreg);
+
+				$redirect->addQueryParameter('jnerror', 'Welcome to the network!');
+			}
 
 			// send confirmation email
 			if(!CMEmail::sendConfirmationEmail($email, $_SESSION['uid'], $new_user->act_code)) {

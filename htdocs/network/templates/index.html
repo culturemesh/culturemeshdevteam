@@ -131,7 +131,7 @@
 					{{^ logged_in }}
 					<div class="guest">
 						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
-						<button class="network" onclick="$('#register_modal').modal('show');">Join us!</button>
+						<button class="network" onclick="JoinOnRegister();">Join us!</button>
 					</div>
 					{{/ logged_in }}
 					<!-- LOGGED IN, VISITING THE NETWORK -->
@@ -370,6 +370,15 @@
 				$('#leerror-'+mid).text(qs.qsGet['leerror']);
 			}
 		}
+	</script>
+	<script>
+
+		var JoinOnRegister = function() {
+			$('#register_modal').modal('show');
+			$('#reg_joining').val("1");
+			$('#reg_joining_network').val("{{ page_vars.nid }}");
+		}
+
 	</script>
 	{{/ body_scripts }}
 
