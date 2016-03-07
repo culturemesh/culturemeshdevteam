@@ -338,6 +338,8 @@ else if ($json_post['op'] == 'MP' && $json_post['operation'] == 'test') {
 else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single') 
 {
 	include_once '../lib/misc/Util.php';
+	include_once '../lib/misc/Keymaker.php';
+
 	//$cm = new \Environment();
 
 	// set up response object
@@ -701,11 +703,8 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 
 			/// Create keys for metaphone
 			//
-			$keys = \misc\Util::DoubleMetaphone($name);
-
-			// turn to keyed, array, also remove empty elements
-			//
-			$keys = array_filter( array_values($keys) );
+			$keymaker = new \misc\Keymaker('../data/');
+			$keys = $keymaker->generateKeys($name);
 
 			//
 			// CREATE A NEW SET OF KEYS

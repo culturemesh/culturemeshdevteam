@@ -114,8 +114,9 @@ if(isset($_POST['email']) && isset($_POST['password'])
 		$fname = $conn->real_escape_string($_POST['fname']);
 		$lname = $conn->real_escape_string($_POST['lname']);
 
-		$is_joining = $conn->real_escape_string($_POST['joining']) == "1";
-		
+		$is_joining = $conn->real_escape_string($_POST['reg_joining']) == "1";
+		$joining_network = (int) $conn->real_escape_string($_POST['reg_joining_network']);
+
 		// check to see if email is already taken
 		$email_in_use = User::checkEmailMatch($email);
 
@@ -129,7 +130,6 @@ if(isset($_POST['email']) && isset($_POST['password'])
 			$new_user->role = 0;
 			$new_user->act_code = md5(microtime());
 
-			
 			// create user
 			User::createUser($new_user, $conn);
 			

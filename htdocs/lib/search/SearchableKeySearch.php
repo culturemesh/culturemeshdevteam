@@ -33,6 +33,20 @@ class SearchableKeySearch extends Search {
 		// double metaphone
 		$this->search_meta = \misc\Util::DoubleMetaphone($this->first_term);
 
+		/*
+		for ($i = 0; $i < count($this->search_meta); $i++) {
+
+			$key = $this->search_meta[$i];
+
+			if ($i === 0) {
+				$this->param_obj->key = array($key);
+			}
+			else {
+				array_push($this->param_obj->key, $key);
+			}
+		}
+		 */
+
 		$this->param_obj->key = array($this->search_meta['primary']);
 
 		if ($this->search_meta['secondary'] !== NULL) {

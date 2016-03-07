@@ -1,0 +1,8 @@
+City
+Region
+District
+Municipio
+Rayon
+County
+Oblast
+Novads

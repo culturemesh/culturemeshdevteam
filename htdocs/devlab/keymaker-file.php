@@ -1,15 +1,17 @@
 <?php 
-
 	ini_set('memory_limit', '512M');
 	include '../environment.php';
 	$cm = new \Environment();
+	$keymaker = new \misc\Keymaker($cm);
 	//$cm->displayErrors();
 
 	$cm->enableDatabase($dal, $do2db);
 
-	/*
-	 * Okay, this is a nice, compact way to fill the key array
-	 */
+	$table = $_GET['generate'];
+
+	//
+	// Okay, this is a nice, compact way to fill the key array
+	// 
 	function fillKeyArray($item, $key, $type) {
 
 		$id_suffix = '_id';
@@ -40,64 +42,46 @@
 		return $obj_array;
 	}
 
-	//$languages = $do2db->execute($dal, NULL, 'getAllLanguages');
-	//$cities = $do2db->execute($dal, NULL, 'getAllCities');
-	$regions = $do2db->execute($dal, NULL, 'getAllRegions');
-	//$countries = $do2db->execute($dal, NULL, 'getAllCountries');
+	// Guide for
+	//  DB call
+	$full_guide = array(
+		'cities' => array(
+			'query_name' => 'getAllCities',
+			'type' => 'city',
+			'filename' => 'city-keys.sql'
+		),
+		'regions' => array(
+			'query_name' => 'getAllRegions',
+			'type' => 'region',
+			'filename' => 'region-keys.sql'
+		),
+		'countries' => array(
+			'query_name' => 'getAllCountries',
+			'type' => 'country',
+			'filename' => 'country-keys.sql'
+		),
+		'languages' => array(
+			'query_name' => 'getAllLanguages',
+			'type' => 'language',
+			'filename' => 'language-keys.sql'
+		)
+	);
 
-	$cm->closeConnection();
+	$guide = $full_guide[$table];
 
-	// Format language data
-	//
 	$key_data = array();
 
-	foreach ($languages as $l) {
+	$objects = $do2db->execute($dal, NULL, $guide['query_name']);
+	$cm->closeConnection();
 
-		$keys = \misc\Util::DoubleMetaphone($l->name);
+	foreach($objects as $object) {
 
-		array_push($key_data, fillKeyArray($l, $keys['primary'], 'language'));
+		$keys = $keymaker->generateKeys( $object->name );
 
-		if ($keys['secondary'] !== NULL) {
-			array_push($key_data, fillKeyArray($l, $keys['secondary'], 'language'));
+		foreach ($keys as $key) {
+		  array_push($key_data, fillKeyArray($object, $key, $guide['type']));
 		}
 	}
-
-	/*
-	foreach($cities as $ci) {
-
-		$keys = \misc\Util::DoubleMetaphone($ci->name);
-
-		array_push($key_data, fillKeyArray($ci, $keys['primary'], 'city'));
-
-		if ($keys['secondary'] !== NULL) {
-			array_push($key_data, fillKeyArray($ci, $keys['secondary'], 'city'));
-		}
-	}
-	 */
-
-	foreach($regions as $ri) {
-
-		$keys = \misc\Util::DoubleMetaphone($ri->name);
-
-		array_push($key_data, fillKeyArray($ri, $keys['primary'], 'region'));
-
-		if ($keys['secondary'] !== NULL) {
-			array_push($key_data, fillKeyArray($ri, $keys['secondary'], 'region'));
-		}
-	}
-
-	/*
-	foreach($countries as $ci) {
-
-		$keys = \misc\Util::DoubleMetaphone($ci->name);
-
-		array_push($key_data, fillKeyArray($ci, $keys['primary'], 'country'));
-
-		if ($keys['secondary'] !== NULL) {
-			array_push($key_data, fillKeyArray($ci, $keys['secondary'], 'country'));
-		}
-	}
-	 */
 
 	$batch_insert = new dal\SqlBatchInsert('search_keys', array('key', 'city_id', 'city_name', 'region_id', 'region_name', 'country_id', 'country_name', 'language_id', 'language_name', 'class_searchable'));
 
@@ -107,7 +91,7 @@
 	// Set headers
 	header("Cache-Control: public");
 	header("Content-Description: File Transfer");
-	header("Content-Disposition: attachment; filename=savethis.sql");
+	header("Content-Disposition: attachment; filename=" . $guide['filename']);
 	header("Content-type: text/sql");
 
 	// for now
