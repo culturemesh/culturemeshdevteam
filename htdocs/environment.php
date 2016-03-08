@@ -285,6 +285,8 @@ final class Environment {
 			'img_path' => $this->img_dir,
 			'hostname' => '//' . $this->hostname,
 			'maintenance' => $this->maintenance_info,
+			'blank_profile_path_icon' => '//' . $this->hostname . $this->ds . 'images/cm_logo_blank_profile_icon.png',
+			'blank_profile_path_lrg' => '//' . $this->hostname . $this->ds . 'images/cm_logo_blank_profile_lrg.png',
 			'l_brace' => '{{',
 			'r_brace' => '}}'
 		);

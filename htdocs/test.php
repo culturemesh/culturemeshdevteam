@@ -6,8 +6,6 @@ $cm->displayErrors();
 //$keymaker = new misc\Keymaker($cm);
 //$keys = $keymaker->generateKeys('Dainava (Kaunas) City');
 
-//var_dump($keys);
-
 ?>
 <html>
 	<head>

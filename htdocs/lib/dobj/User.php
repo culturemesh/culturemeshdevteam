@@ -281,18 +281,18 @@ class User extends DObj {
 	}
 
 	/*
-	public function prepare($cm) {
+	public function prepare($cm, $location='default') {
 
-		if (!isset($cm))
-			throw new \Exception('No environment variable passed to user');
+		if ($location == 'dashboard') {
 
-		// get image thing set up
-		if ( !is_file($cm->img_repo_dir . $cm->ds . $this->img_link)) 
-		  $this->img_link = '//' . $cm->hostname . $cm->ds . 'images/blank_profile.png';
-		else
-		  $this->img_link = $cm->img_host_repo . '/' . $this->img_link;
+			// get image thing set up
+			if ( !is_file($cm->img_repo_dir . $cm->ds . $this->img_link)) 
+			  $this->img_link = '//' . $cm->hostname . $cm->ds . 'images/cm_logo_blank_profile_lrg.png';
+			else
+			  $this->img_link = $cm->img_host_repo . '/' . $this->img_link;
+		}
 
-		return $this;
+		return parent::prepare($cm);
 	}
 	 */
 

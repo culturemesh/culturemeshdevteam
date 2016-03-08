@@ -1,35 +1,12 @@
 <li class='network-post' id='post-{{ post.id }}'>
 	<div class='post-img'>
-		<img id='profile-post' src='{{ post.img_link }}{{^ post.img_link }}{{ vars.blank_profile_path_icon }}{{/ post.img_link }}' width='45' height='45'>
+		<img id='profile-post' src='{{ vars.blank_profile_path_icon }}' width='45' height='45'>
 	</div>
 	<div class='post-info'>
-		<h5 class='h-network post'><a href="{{vars.hostname}}/profile/{{ post.id_user }}">{{ name }}</a></h5> 
-
-		{{# delete_button }}
-		<div class='reply-button delete'>
-			<form id='post-delete-{{ post.id }}' class='personal post_delete' method="POST" action="{{ vars.hostname }}/network_post_delete.php">
-				<noscript>
-				<input type="hidden" name="NOJS" value="NOJS"/>
-				</noscript>
-				<input type="hidden" name="replies" value="{{ post.reply_count }}" />
-				<input type="hidden" name="pid" value="{{ post.id }}"/>
-				<input type="hidden" name="nid" value="{{ post.id_network }}"/>
-				<button class='post delete-button user'>&#10006</button>
-			</form>
-		</div>
-		{{/ delete_button }}
-		<div class="clear"></div>
 		<p class='network'>{{{ text }}}</p>
-		<div>
-			{{# images }}
-			<a href="{{ vars.img_host_repo }}/{{ dir }}" data-lightbox="post-{{ post.id }}"><img src="{{ vars.img_host_repo }}/{{ thumb }}"></img></a>
-			{{/ images }}
-		</div>
 		<p class='network date'><i>{{ relative_date }}</i></p>
-		{{^ active }}
 		<p class='network'><i>The user has deleted this post</i></p>
-		<p class='network reply_count'>{{ post.reply_count }}</p>
-		{{/ active }}
+		<p class='network reply_count'>{{ post.reply_count }} replies</p>
 		{{# reply_request }}
 		<div class='reply-button'>
 			<form class="request_reply" method="POST" action="{{ vars.hostname }}/network_request_reply.php">

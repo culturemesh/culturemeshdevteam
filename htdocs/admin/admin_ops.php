@@ -24,6 +24,8 @@ include_once '../data/dal_language.php';
 
 include_once '../data/loc_item.php';
 
+$cm = new \Environment();
+
 ini_set('display_errors', true);
 error_reporting(E_ALL ^ E_NOTICE);
 
@@ -79,7 +81,8 @@ if ($json_post['op'] == 'login') {
 		'error' => NULL
 	);
 
-	if ($json_post['password'] == "password") {
+	// hehehe
+	if ($json_post['password'] == $GLOBALS['ADMIN_PASSWORD']) {
 		$response['error'] = 0;
 	}
 	else {
@@ -355,7 +358,6 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 
 	/********************
 	 * SHUT OFF SWITCH
-	 */
 
 	/*
 	$json_response['error'] = 'Exiting early for now...maintenance';
@@ -363,6 +365,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 	exit();
 	 */
 
+	 */
 	/********************
 	 * SHUT OFF SWITCH
 	 */
@@ -380,6 +383,8 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 		$vals = array();
 		$cols = array();
 
+		$nullable_keys = array('region_id', 'region_name', 'country_id', 'country_name');
+
 		// put keys and values in cols and vals arrays respectively
 		foreach( $data as $key => $value) {
 			if ($key == 'id')
@@ -388,6 +393,17 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 			if ($sqlTypeDict[$key] == 'string') {
 				if ($value != "NULL") {
 				  $value = "'".$value."'";
+				}
+			}
+
+			// 
+			if (in_array($key, $nullable_keys)) {
+				
+				if ($value == '') {
+					$value = 'NULL';
+				}
+				else if ($value == "''") {
+					$value = 'NULL';
 				}
 			}
 

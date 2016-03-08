@@ -302,6 +302,35 @@ SQL
 		return $m;
 	};
 
+	$obj->wipePost = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+UPDATE posts
+SET post_text = NULL
+WHERE id=?
+SQL
+
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'wipePost',
+			'params' => array('id'),
+			'param_types' => 'n',
+			'nullable' => array(),
+			'returning' => false,
+			'returning_list' => false,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => null,
+			'returning_cols' => null 
+		));
+		$m->setConnection($con);
+		return $m;
+	};
+
 	$obj->deletePost = function($con=NULL) {
 
 		$m = new dal\DBQuery();

@@ -62,13 +62,50 @@ class Network {
 		$network->post_count += $page_tweet_count;
 
 		// put tweets and posts all together
+		//
+		// RANK
+		// 1) posts ( < 30 days old)
+		// 2) tweets w replies ( < 30 days old)
+		// 3) tweets
+		// 4) posts ( >= 30 days old)
+		// 5) tweets w replies ( >= 30 days old)
+		//
 		$network->posts = $network->posts->splits(function( $obj ) {
 
 			if ( get_class($obj) == 'dobj\Tweet') {
 
-				return array (
-					'section' => 2,
-					'key' => 'rank');
+				// GET THE DATE
+				$now = new \DateTime();
+				$date = new \DateTime( $obj->created_at );
+
+				// returns diffence between dates,
+				// forced to be positive
+				$interval = $now->diff($date, true);
+				$diff = (int) $interval->format('%a');
+
+				// a tweet with native posts
+				if (count($obj->replies) > 0) {
+
+					
+					if ($diff < 30) {
+
+						return array (
+							'section' => 2,
+							'key' => 'rank');
+					}
+					else {
+
+						return array (
+							'section' => 5,
+							'key' => 'rank');
+					}
+				}
+				else {
+
+					return array (
+						'section' => 3,
+						'key' => 'rank');
+				}
 			} // end if
 
 			else if (get_class($obj) == 'dobj\Post') {
@@ -89,7 +126,7 @@ class Network {
 
 				else {
 					return array (
-						'section' => 3,
+						'section' => 4,
 						'key' => 'rank');
 				} // end else
 

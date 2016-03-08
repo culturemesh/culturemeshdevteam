@@ -177,7 +177,7 @@ abstract class DObj {
 		if (property_exists($this, 'img_link')) {
 
 			if ( !is_file($cm->img_repo_dir . $cm->ds . $this->img_link)) 
-			  $copy->img_link = '//' . $cm->hostname . $cm->ds . 'images/blank_profile.png';
+			  $copy->img_link = NULL;
 			else
 			  $copy->img_link = $cm->img_host_repo . '/' . $this->img_link;
 		}

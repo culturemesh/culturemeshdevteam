@@ -246,6 +246,55 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 		$metaphone_thing = misc\Util::DoubleMetaphone($string);
 
 		$this->assertEquals('TST', $metaphone_thing['primary']);
+
+	}
+
+	public function testStrReplaceAtPosition() {
+
+		$string = '<b><b><b>';
+		$new_string = misc\Util::StrReplaceAtPosition('<b>', '<b></b>', $string, 3);
+
+		$this->assertEquals('<b><b></b><b></b>', $new_string);
+	}
+
+	public function testTagPurify_1() {
+
+		$string = '<b><b><b>';
+		$new_string = misc\Util::PurifyTag($string, 'b');
+
+		$this->assertEquals('<b></b><b></b><b></b>', $new_string);
+	}
+
+	public function testTagPurify_2() {
+
+		$string = '<b><b><b><b></b><b>';
+		$new_string = misc\Util::PurifyTag($string, 'b');
+
+		$this->assertEquals('<b></b><b></b><b></b><b></b><b></b>', $new_string);
+	}
+
+	public function testTagPurify_3() {
+
+		$string = '<b><b><b><b></b><b><b><b></b><b>';
+		$new_string = misc\Util::PurifyTag($string, 'b');
+
+		$this->assertEquals('<b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b>', $new_string);
+	}
+
+	public function testTagPurify_4() {
+
+		$string = '</b></b></b><b><b></b>';
+		$new_string = misc\Util::PurifyTag($string, 'b');
+
+		$this->assertEquals('<b></b><b></b><b></b><b></b><b></b>', $new_string);
+	}
+
+	public function testTagPurify_Typical() {
+
+		$string = 'The <b>usual problem<b>';
+		$new_string = misc\Util::PurifyTag($string, 'b');
+
+		$this->assertEquals('The <b></b>usual problem<b></b>', $new_string);
 	}
 }
 
