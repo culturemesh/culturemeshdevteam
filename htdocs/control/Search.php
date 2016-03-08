@@ -127,19 +127,6 @@ class Search {
 		/////// make components //////////
 		$m_comp = new \misc\MustacheComponent();
 
-		/*
-		// map embed
-		$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
-		$map_location = $network->location->toString();
-
-		// fixes an issue that made the state GA display and not the country
-		if ($map_location == 'Georgia')
-			$map_location = 'Country Georgia';
-
-		$map_embed = $m_comp->render($map_embed_template, array(
-			'key' => $cm->g_api_key,
-			'location' => $map_location));
-		 */
 
 		// searchbar
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
@@ -239,6 +226,8 @@ class Search {
 		$possible_network_template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_possible-network.html');
 		$active_network_template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_active-network.html');
 
+		$map_embed = NULL;
+
 		if ($search_type == 'network') {
 
 			// decide if main network is active or possible
@@ -272,7 +261,20 @@ class Search {
 				// add to array
 				array_push($related_results['networks'], $rn_html);
 			}
+
+			// map embed
+			$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
+			$map_location = $main_network->location_searchable->toString();
+
+			// fixes an issue that made the state GA display and not the country
+			if ($map_location == 'Georgia')
+				$map_location = 'Country Georgia';
+
+			$map_embed = $m_comp->render($map_embed_template, array(
+				'key' => $cm->g_api_key,
+				'location' => $map_location));
 		}
+
 
 
 		// get actual site
