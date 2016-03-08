@@ -1,0 +1,28 @@
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ stylesheets }}
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+	<div>
+		<div></div>
+		<h3 href="keymaker-file.php">Generate SQL Keys</h3>
+		<a href="keymaker-file.php?generate=cities">Cities</a></br>
+		<a href="keymaker-file.php?generate=regions">Regions</a></br>
+		<a href="keymaker-file.php?generate=countries">Countries</a></br>
+		<a href="keymaker-file.php?generate=languages">Languages</a></br>
+	</div>
+	{{/ content }}
+
+	{{$ body_scripts }}
+	{{/ body_scripts }}
+
+{{/ layout }}

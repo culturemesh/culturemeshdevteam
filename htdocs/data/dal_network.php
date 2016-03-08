@@ -168,8 +168,6 @@ class Network
 		//echo $statement;
 		$result = mysqli_query($con, $statement); 
 
-		var_dump($statement);
-
 		echo $con->error;
 		if ($result)
 		{

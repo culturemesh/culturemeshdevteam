@@ -149,6 +149,7 @@ Operation.prototype.activatePanel = function() {
 		// create form data
 		var formData = {
 			op : 'getTableStructure',
+			client_op : 'create',
 			table : this.table
 		};
 
@@ -180,9 +181,23 @@ Operation.prototype.activatePanel = function() {
 		var sbDiv = document.getElementById('ssearchbar');
 
 		// create search bar
-		var searchbar = new SSearchBar('ssearchbar', this.operation, this.singobatch, this.table);
-		searchbar.setTableDiv('table-div');
-		searchbar.fetchValues(this.table);
+		//var searchbar = new SSearchBar('ssearchbar', this.operation, this.singobatch, this.table);
+		var searchbar = new cm.SearchField({
+					input_field : 'search-1',
+					clicked : 'clik1',
+					ul : 's-var',
+					id_field : 'varId',
+					class_field : 'varClass',
+		    			submit_button : 'search-submit',
+		    			template : document.getElementById('single-search-tmpl'),
+					render_target : sbDiv,
+					ul_class : "network search",
+					loading_image : "/images/searchbar-loading-bw.gif"
+		});
+
+		searchbar._setTableDiv('table-div');
+		searchbar._setSearchTable(this.table);
+		//searchbar._fetchValues(this.table);
 
 		// give the searchbar a reference to this operation
 		var sbOp = this;
@@ -191,18 +206,19 @@ Operation.prototype.activatePanel = function() {
 
 		// somehow, i must give the searchbar
 		// the target div		
-		searchbar.setSubmit(function(e) {
+		searchbar._setSubmit(function(e) {
 			// prevent default event behavior.
 			e.preventDefault();
 
 			// it's submitting the search results
 			// i could get it to return the search results here
-			var val = searchbar.getValue();
+			var val = searchbar._getValue();
 
 			// what did you 
 			// think it was gonna do? Cure cancer?
 			var formData = {
 				op : 'searchSearchables',
+				client_op : 'update',
 				table : tables,
 				query : val
 			};
@@ -297,7 +313,8 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 			create : null,
 			find : null,
 			specone : null,
-			update_bool : null
+			update_bool : null,
+			hidden : null
 		};
 
 		if (operation == 'create') {
@@ -393,8 +410,10 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 			name : obj['COLUMN_NAME'],
 			value : obj['value'],
 		//	validation : validationString,
-			colCond : colCond
+			colCond : {} 
 		};
+
+		colObj.colCond[ obj['colCond']] = true;
 
 		// something special for tweets
 		//
@@ -404,7 +423,13 @@ Operation.prototype.fillSearchable = function(tableInfo, rank, operation) {
 
 			// if not null, join value into single string
 			if (colObj['value'] != null) {
-				colObj['original_string'] = colObj['value'].join(', ');
+
+				if (typeof colObj['value'] === "string") {
+				  colObj['original_string'] = colObj['value'];
+				}
+				else {
+				  colObj['original_string'] = colObj['value'].join(', ');
+				}
 			}
 		}
 
@@ -451,26 +476,41 @@ Operation.prototype.activateFinds = function() {
 		var table = fk_ref[curCol];
 
 		// call searchbar
+		/*
 		var temp_bar = new SSearchBar('ssearchbar-alt', operation.operation, operation.singobatch,
 			table);
+			*/
+		var temp_bar = new cm.SearchField({
+					input_field : 'search-1',
+					clicked : 'clik1',
+					ul : 's-var',
+					id_field : 'varId',
+					class_field : 'varClass',
+		    			submit_button : 'search-submit',
+		    			template : document.getElementById('single-search-tmpl'),
+					render_target : document.getElementById('ssearchbar-alt'),
+					ul_class : "network search",
+					loading_image : "/images/searchbar-loading-bw.gif"
+		});
 
-		temp_bar.setTableDiv('table-search');
-		temp_bar.fetchValues(table);
+		temp_bar._setTableDiv('table-search');
+		temp_bar._setSearchTable(table);
 
 		// tell searchbar how to fill searchable
-		temp_bar.setSubmit(function(e) {
+		temp_bar._setSubmit(function(e) {
 
 			// ehhhhhhhhhh prevent default
 			e.preventDefault();
 
 			// it's submitting the search results
 			// i could get it to return the search results here
-			var val = temp_bar.getValue();
+			var val = temp_bar._getValue();
 
 			// what did you 
 			// think it was gonna do? Cure cancer?
 			var formData = {
 				op : 'searchSearchables',
+				client_op : 'find',
 				table : table,
 				query : val
 			};
@@ -1015,8 +1055,10 @@ ModPackage.prototype.parseTable = function(tableId) {
 	var tdClasses = ['td.op_val.filled span',
 	    'td.op_val.terms-modified input.term',
 	    'td.op_val.terms-modified input.null-term',
+	    'td.op_val input.null-term',
 	    'td.op_val.update_bool :radio:checked',
 	    'td.op_val span',
+	    'td.op_val input[type="hidden"]',
 	    'td.op_input input'
 	];
 
@@ -1048,7 +1090,16 @@ ModPackage.prototype.parseTable = function(tableId) {
 
 			// sometimes we have multiple inputs that need to be
 			// parsed *cough* TWEETS *cough*
-			if ( $( elem ).length > 1) {
+			//
+			// Have a stipulation about count being less than 5
+			// because I'm too lazy to make a certain change
+			// the tdval td.op_val input[type=hidden'] catches an object
+			// with an empty string which is added to the array
+			// and replaces the null value which should go to tweet terms
+			//
+			// This whole part is screwy. I need to fix it
+			//
+			if ( $( elem ).length > 1 && count < 6) {
 
 				var valArray = [];
 
@@ -1080,7 +1131,7 @@ ModPackage.prototype.parseTable = function(tableId) {
 		//
 		if (modCols != undefined)
 		{
-			if (count <= 4 && count > 0) {
+			if (count <= 5 && count > 0) {
 
 				modCols.push(key);
 

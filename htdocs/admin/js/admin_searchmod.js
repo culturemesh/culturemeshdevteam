@@ -487,9 +487,15 @@ function getRowsAndCols(colName, type, valClass, childElem) {
 
 		// THIS IS THE LIST OF COLUMN TYPES THAT MAY HAVE PARENTS
 		if (tabCol.indexOf('id') > -1 ||
+
+			tabCol.indexOf('name') > -1 || 
+			tabCol.indexOf('tweet_terms') > -1) {
+
+		/* MASTER CHANGES
 			tabCol.indexOf('name') > -1 ||
 			tabCol.indexOf('tweet_terms') > -1 ||
 			tabCol.indexOf('tweet_terms_override') > -1) {
+			*/
 			
 			// check for things
 			if (tabCol.indexOf('id') == 0)
@@ -498,6 +504,13 @@ function getRowsAndCols(colName, type, valClass, childElem) {
 			if (tabCol.indexOf('name') == 0)
 				tabCol = colNameFix + '_' + 'name';
 
+			if (tabCol.indexOf('tweet_terms') == 0 && tabCol.indexOf('tweet_terms_override') != 0)
+				tabCol = colNameFix + '_' + 'tweet_terms';
+
+			if (tabCol.indexOf('tweet_terms_override') == 0)
+				tabCol = colNameFix + '_' + 'tweet_terms_override';
+
+	/* MASTER CHANGES
 			if (tabCol.indexOf('tweet_terms') == 0) {
 
 				if (tabCol.indexOf('tweet_terms_override') == 0)
@@ -505,8 +518,9 @@ function getRowsAndCols(colName, type, valClass, childElem) {
 				else
 				  tabCol = colNameFix + '_' + 'tweet_terms';
 			}
+			*/
 
-			/*
+	/* IGNORE THIS SECTION
 			if (tabCol.indexOf('tweet_terms_override') == 0)
 				tabCol = colNameFix + '_' + 'tweet_terms_override';
 

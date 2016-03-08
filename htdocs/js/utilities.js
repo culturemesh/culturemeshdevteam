@@ -280,6 +280,51 @@ cm.DisposeSupport = {
 };
 
 /*
+ * Specify a div to contain an error message
+ *
+ * Also specify a delay time and a hide time
+ */
+cm.ErrorMessage = function(o) {
+
+	this._options = {
+		display_element: null,
+		error_class : 'cm_error',
+		success_class : 'cm_success',
+		show_time: 500,
+		delay_time: 1000,
+		hide_time: 500
+	};
+
+	cm.extend(this._options, o);
+
+	this._display_element = this._options.display_element;
+};
+
+cm.ErrorMessage.prototype = {
+
+	_formatElement: function(msg_type) {
+		// remove all my classes
+		$( this._display_element ).removeClass( this._options.error_class + ' ' + this._options.success_class );
+
+		if (msg_type == 'Error' || msg_type == 'error') {
+			$( this._display_element ).addClass( this._options.error_class );
+		}
+		else if (msg_type == 'Success' || msg_type == 'success') {
+			$( this._display_element ).addClass( this._options.success_class );
+		}
+	},
+
+	_display: function(msg_type, text) {
+
+		this._formatElement( msg_type );
+		$( this._display_element ).clearQueue();	// get rid of extra animations (in case there are many clicks)
+		$( this._display_element ).text( text );
+		$( this._display_element ).fadeIn( this._options.show_time );
+		$( this._display_element ).delay( this._options.delay_time ).fadeOut( this._options.hide_time );
+	}
+};
+
+/*
  * Two buttons and an input used as
  * a simple counter. I'm unsure why this
  * doesn't already exist.
@@ -359,3 +404,188 @@ cm.Counter.prototype = {
 		return button;
 	}
 }
+
+cm.NetworkSearcher = function(o) {
+
+	this._options = {
+		searchable_selector : null,
+		results : null,
+		best_match_container : null,
+		related_networks_container : null,
+		error_element : null,
+		location_radio_name : 'location',
+		origin_radio_name : 'origin',
+	};
+
+	cm.extend(this._options, o);
+	cm.extend(this, cm.DisposeSupport);
+
+	this._originRadioDiv;
+	this._locationRadioDiv;
+
+	this._registerElements();
+	this._registerRadioEvents();
+
+	this._radio_intro = 'input[name="';
+	this._radio_end = '"]:checked';
+
+	// set error element
+	if (this._options.error_element != null) {
+	 	this._error_message = new cm.ErrorMessage({ display_element: this._options.error_element });
+	}
+	else {
+		alert ('No error message has been assigned');
+	}
+};
+
+cm.NetworkSearcher.prototype = {
+	_registerElements: function() {
+
+		//var self = this;
+
+		this._originRadioDiv = document.getElementById('origin-results');
+		this._locationRadioDiv = document.getElementById('location-results');
+
+		// check if two things not undefined 
+
+		var originRadios = $( this._originRadioDiv ).children('div.searchable-radio');
+		var locationRadios = $( this._locationRadioDiv ).children('div.searchable-radio');
+
+		// check for named radio values
+ 
+		this._allRadios = $( originRadios ).add( locationRadios );
+	},
+	_registerRadioEvents: function() {
+
+		var self = this;
+
+		$( this._allRadios ).change( function(e) {
+
+			// Proceed if both have been selected
+			if (self._bothSelected()) {
+
+				var values = self._gatherValues();
+				self._runSearch(values, self._processResults);
+			}
+		});
+	},
+	_bothSelected: function() {
+
+		var lname = this._options.location_radio_name;
+		var oname = this._options.origin_radio_name;
+
+		var location_selected = 1 == $( this._radio_intro + lname + this._radio_end ).length;
+		var origin_selected = 1 == $( this._radio_intro + oname + this._radio_end ).length;
+
+		if (location_selected && origin_selected)
+			return true;
+		else
+			return false;
+	},
+	_gatherValues: function() {
+
+		var locationJSON = {
+			name : null,
+			fullname : null,
+			id : null,
+			searchable_class : null
+		};
+
+		var originJSON = {
+			name : null,
+			fullname : null,
+			id : null,
+			searchable_class : null
+		};
+
+		var lname = this._options.location_radio_name;
+		var oname = this._options.origin_radio_name;
+
+		// get location searchable
+		var location_searchable = $( this._radio_intro + lname + this._radio_end ).parent('div.searchable-radio');
+
+		locationJSON.name = $( location_searchable ).children( 'input[name="name"]' ).val();
+		locationJSON.id = $( location_searchable ).children( 'input[name="id"]' ).val();
+		locationJSON.searchable_class = $( location_searchable ).children( 'input[name="class"]' ).val();
+		locationJSON.fullname = $( location_searchable ).children( 'input[type="radio"]' ).val();
+
+		// get origin searchable
+		var origin_searchable = $( this._radio_intro + oname + this._radio_end ).parent('div.searchable-radio');
+
+		originJSON.name = $( origin_searchable ).children( 'input[name="name"]' ).val();
+		originJSON.id = $( origin_searchable ).children( 'input[name="id"]' ).val();
+		originJSON.searchable_class = $( origin_searchable ).children( 'input[name="class"]' ).val();
+		originJSON.fullname = $( origin_searchable ).children( 'input[type="radio"]' ).val();
+
+		return { location : locationJSON, origin : originJSON };
+	},
+	_runSearch: function(values, returnFunction) {
+
+		var self = this;
+
+		var networkSearchAjax = new Ajax({
+			requestType: 'POST',
+			requestUrl: cm.home_path + '/api/search/network-post.php',
+		    	data: values,
+			dataType: 'JSON',
+			requestParameters: ' ',
+			sendNow: true
+			}, 
+			function(data) {
+				data = JSON.parse(data);
+				self._processResults(data);
+			});
+	},
+	_processResults: function(data) {
+
+		if (data.error != 0) {
+			this._error_message._display('success', data.error);
+		}
+
+		// I feel like this oughta be the first
+		// thing to use js mustache
+		this._options.results;
+
+		var possible_network_template = document.getElementById('possible-network-template').innerHTML;
+		var active_network_template = document.getElementById('active-network-template').innerHTML;
+
+		// render things
+		var best_match_html = null;
+
+		if (data.main_network.existing == false || data.main_network.existing == null) {
+			best_match_html = Mustache.render( possible_network_template, {'network' : data.main_network, 'vars' : data.vars } );
+		}
+		else {
+			best_match_html = Mustache.render( active_network_template, {'network' : data.main_network, 'vars' : data.vars } );
+		}
+
+		// clear prior results
+		$( this._options.best_match_container ).empty();
+		$( this._options.related_networks_container ).empty();
+
+		// show networks (because they may be hidden)
+		$( this._options.best_match ).removeClass('cmhide');
+		$( this._options.best_match ).show();
+		$( this._options.related_networks ).removeClass('cmhide');
+		$( this._options.related_networks ).show();
+
+		// add best match
+		$( this._options.best_match_container ).append( best_match_html );
+
+		// add related networks
+		for (var i=0; i < data.related_networks.length; i++) {
+
+			var html;
+
+			if (data.related_networks[i].existing == false || data.related_networks[i].existing == null) {
+				html = Mustache.render( possible_network_template, {'network' : data.related_networks[i], 'vars' : data.vars } );
+			}
+			else {
+				html = Mustache.render( active_network_template, data.related_networks[i] );
+			}
+
+			$( this._options.related_networks_container ).append( html );
+		}
+
+	}
+};

@@ -188,6 +188,24 @@ ul.search > li:hover {
 	font-family: 'Lato-Bold', sans-serif;
 	background-color:#FFFFFF;
 }
+
+ul.search > li.sb-li {
+	min-width:150px;
+	text-align:center;
+}
+
+
+ul.search > li.sb-li.sb-error {
+	color:#9FA2A3;
+	/*background-color:#FFFFFF;*/
+	font-style: italic;
+}
+
+ul.search > li.sb-li.sb-loading {
+	color:#3EB3CA;
+	/*background-color:#FFFFFF;*/
+}
+
 /*
 #search-floater {
     float:left;
@@ -283,7 +301,9 @@ input[type="submit"].stage-button {
 .modal
 {
     width:426px;
+    /*
     height:535px;
+    */
 }
 .modal-header{
     color:#EF5330;
@@ -462,7 +482,7 @@ hr.hr-modal {
 
 .modal-body
 {
-    min-height: 397px;
+    /* min-height: 397px; */
     vertical-align:middle;
 }
 .modal-header .close 
@@ -1643,6 +1663,26 @@ button.upload-img-delete {
 	font-weight:bold;
 	height:25px;
 	float:left;
+}
+
+.cm_error {
+
+	background-color: #e2747d;
+	border: medium none;
+	border-radius: 3px;
+	color: white;
+	font: bold 14px Lato,sans-serif;
+	padding: 10px;
+}
+
+.cm_success {
+
+	background-color: #0088cc;
+	border: medium none;
+	border-radius: 3px;
+	color: white;
+	font: bold 14px Lato,sans-serif;
+	padding: 10px;
 }
 
 

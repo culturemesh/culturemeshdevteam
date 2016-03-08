@@ -5,6 +5,7 @@
 
 	{{$ more_scripts }}
 	<script src='js/spin.js'></script>
+	<script src='js/searchbar.js'></script>
 	{{/ more_scripts }}
 	{{$ content }}
 
@@ -83,6 +84,14 @@
 					</td>
 					{{ vars.l_brace }}/colCond.display{{vars.r_brace}}
 			<!-- 	 -->
+			<!-- FIND (pretty much the same as display) -->
+			<!-- 	 -->
+					{{ vars.l_brace }}#colCond.find{{vars.r_brace}}
+					<td class='op_val'>
+						<span>{{ vars.l_brace }}value{{vars.r_brace}}</span>
+					</td>
+					{{ vars.l_brace }}/colCond.find{{vars.r_brace}}
+			<!-- 	 -->
 			<!-- CREATE -->
 			<!-- 	 -->
 					{{ vars.l_brace }}#colCond.create{{vars.r_brace}}
@@ -119,6 +128,14 @@
 						<input type="radio" name='{{ vars.l_brace }} name {{ vars.r_brace }}' value="0" {{ vars.l_brace }}^ value {{vars.r_brace}} checked {{ vars.l_brace }}/ value {{vars.r_brace}}>False</input>
 					</td>
 					{{ vars.l_brace }}/colCond.update_bool{{vars.r_brace}}
+			<!-- 	 -->
+			<!-- HIDDEN -->
+			<!-- 	 -->
+					{{ vars.l_brace }}#colCond.hidden{{vars.r_brace}}
+					<td class='op_val hidden'>
+						<input type="hidden" name='{{ vars.l_brace }}name{{ vars.r_brace }}' value="{{ vars.l_brace }}value{{vars.r_brace}}" />
+					</td>
+					{{ vars.l_brace }}/colCond.hidden{{vars.r_brace}}
 	<!--		-->
 	<!-- END SECTION -->
 	<!--		-->
@@ -141,6 +158,11 @@
 				{{ vars.l_brace }}/columns{{vars.r_brace}}
 			</tbody>
 		</table>
+		<div>
+		{{ vars.l_brace }}#something{{ vars.r_brace }}
+		<input type="hidden" name="original-{{ values.column }}" value="{{ values.value }}" />
+		{{ vars.l_brace }}/something{{ vars.r_brace }}
+		</div>
 	</script>
 
 	<script id='create-single-tmpl' type='x-tmpl-mustache'>
@@ -260,6 +282,10 @@
 	<script id='update-single-tmpl' type='x-tmpl-mustache'>
 	<div id='main-op'>
 		<div id='ssearchbar'>
+			<ul id='s-query' class='network search'></ul>
+			<input type='hidden' id='clicked' name='clicked' value=0></ul>
+			<input type="hidden" id="var_id" name="var_id" value=-1 />
+			<input type="hidden" id="var_class" name="var_class" value=-1 />
 		</div>
 		<div id='table-div'>
 		</div>
@@ -267,6 +293,10 @@
 	</div>
 	<div id='side-op'>
 		<div id='ssearchbar-extra'>
+			<ul id='s-query' class='network search'></ul>
+			<input type='hidden' id='clicked' name='clicked' value=0></ul>
+			<input type="hidden" id="var_id" name="var_id" value=-1 />
+			<input type="hidden" id="var_class" name="var_class" value=-1 />
 		</div>
 		<div id='table-search-div'>
 		</div>
@@ -323,6 +353,8 @@
 				<ul id='s-query' class='network search'></ul>
 				<ul id='s-var' class='network search'></ul>
 				<input type='hidden' id='clik1' name='clik1' value=0></ul>
+				<input type="hidden" id="varId" name="varId" value=-1 />
+				<input type="hidden" id="varClass" name="varClass" value=-1 />
 			<input type='submit' id='search-submit' class='network search-button' value='Go'>
 			<input type='hidden' id='search-topic' name='search-topic'></input>
 			</form>
@@ -379,7 +411,7 @@
 	{{$ body_scripts }}
 	<script src='admin/js/admin_searchmod.js'></script>
 	<script src="admin/js/Operation.js"></script>
-	<script src='js/ssearchbar.js'></script>
+	<!--<script src='js/ssearchbar.js'></script>-->
 	<!--<script src="admin/js/ModPackage.js"></script>-->
 	<script>
 		$('#activated-panel').hide();

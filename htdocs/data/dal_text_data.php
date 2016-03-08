@@ -67,7 +67,7 @@ class TextData {
 		$f1_string = '';
 
 		foreach ($languages as $language) {
-			$f0_string .= $language['name'].PHP_EOL;
+			$f0_string .= $language['name']."\t".$language['id'].PHP_EOL;
 			$f1_string .= strtolower($language['name']).PHP_EOL;
 		}
 
@@ -105,26 +105,26 @@ class TextData {
 					switch ($l) {
 					case 'cities':
 						if( $i == 0)
-						 { $filestring = 'name'."\t".'region_name'."\t".'country_name'.PHP_EOL; }
+						 { $filestring = 'name'."\t".'region_name'."\t".'country_name'."\t".'id'.PHP_EOL; }
 
 						foreach ($cities as $city) {
-							$filestring .= $city['name']."\t".$city['region_name']."\t".$city['country_name'].PHP_EOL;
+							$filestring .= $city['name']."\t".$city['region_name']."\t".$city['country_name']."\t".$city['id'].PHP_EOL;
 						}
 						break;
 					case 'regions':
 						if( $i == 0)
-						 { $filestring = 'name'."\t".'country_name'.PHP_EOL; }
+						 { $filestring = 'name'."\t".'country_name'."\t".'id'.PHP_EOL; }
 
 						foreach ($regions as $region) {
-							$filestring .= $region['name']."\t".$region['country_name'].PHP_EOL;
+							$filestring .= $region['name']."\t".$region['country_name']."\t".$region['id'].PHP_EOL;
 						}
 						break;
 					case 'countries':
 						if( $i == 0)
-						 { $filestring = 'name'.PHP_EOL; }
+						 { $filestring = 'name'."\t".'id'.PHP_EOL; }
 
 						foreach($countries as $country) {
-							$filestring .= $country['name'].PHP_EOL;
+							$filestring .= $country['name']."\t".$country['id'].PHP_EOL;
 						}
 					}
 

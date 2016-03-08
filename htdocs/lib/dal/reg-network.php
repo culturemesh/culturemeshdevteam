@@ -238,6 +238,67 @@ SQL
 
 		return $m;
 	};
-}
 
+	$obj->insertQueryRow = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+INSERT INTO network_tweet_query_data
+(id_network) VALUES
+(?)
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'insertQueryRow',
+			'params' => array('id_network'),
+			'param_types' => 'i',
+			'nullable' => array(),
+			'returning' => False,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_list' => False,
+			'returning_class' => NULL,
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+
+$obj->addUserToNetwork = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+INSERT INTO network_registration
+(id_user, id_network, join_date) VALUES
+(?, ?, NOW())
+SQL
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'addUserToNetwork',
+			'params' => array('id_user', 'id_network'),
+			'param_types' => 'ii',
+			'nullable' => array(),
+			'returning' => False,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_list' => False,
+			'returning_class' => NULL,
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
+}
 ?>

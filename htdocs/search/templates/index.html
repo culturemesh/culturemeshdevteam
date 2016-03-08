@@ -1,0 +1,135 @@
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ stylesheets }}
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	<script type='text/javascript'>
+		
+			cm.Autoloader(function() {
+
+					var ns = new cm.NetworkSearcher({
+							searchable_selector: document.getElementById('searchable-results'),
+							results: document.getElementById('network-results'),
+							best_match: document.getElementById('best-match'),
+							best_match_container: document.getElementById('best-match-container'),
+							related_networks: document.getElementById('related-networks'),
+							related_networks_container: document.getElementById('related-networks-container'),
+							error_element: document.getElementById('results-error')
+						});
+
+					});
+
+
+			cm.Autoloader(function() {
+
+				var searchOne = new cm.SearchField({
+					input_field : document.getElementById('search-1'),
+					clicked : document.getElementById('clik1'),
+					id_field : document.getElementById('varId'),
+					selector : document.getElementById('verb-select'),
+					class_field : document.getElementById('varClass'),
+					ul : document.getElementById('s-var'),
+					topic : document.getElementById('search-topic'),
+					ul_class : "network search",
+					loading_image : "/images/searchbar-loading-bw.gif"
+				});
+
+				var searchTwo = new cm.SearchField({
+					input_field : document.getElementById('search-2'),
+					clicked : document.getElementById('clik2'),
+					id_field : document.getElementById('locId'),
+					class_field : document.getElementById('locClass'),
+					ul : document.getElementById('s-location'),
+					ul_class : "network search",
+					loading_image : "/images/searchbar-loading-bw.gif"
+				});
+			});
+	</script>
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+
+	<!-- TEMPLATES -->
+	<script id='possible-network-template' type='x-tmpl-mustache'>
+	{{{ templates.possible_network }}}
+	</script>
+
+	<script id='active-network-template' type='x-tmpl-mustache'>
+	{{{ templates.active_network }}}
+	</script>
+
+	<div id="content">
+		<div class="net-left">
+			<div class="leftbar">
+				
+				{{{ sections.map_embed }}}
+			</div>
+		</div>
+		<div class="net-right">
+			{{{ sections.searchbar }}}
+			<div id='searchable-results' class='panel row span12'>
+					<div class='row'>
+					{{# sections.origin_results }}
+					<div class='span4 {{# hidden }}cmhide{{/ hidden }}'>
+					<b> Origin </b>
+						<div id='origin-results'>
+						{{# origins }}
+						{{{ . }}}
+						{{/ origins }}
+						</div>
+					</div>
+					{{/ sections.origin_results }}
+					{{# sections.location_results }}
+					<div class='span4 {{# hidden }}cmhide{{/ hidden }}'>
+					<b> Location </b>
+						<div id='location-results'>
+						{{# locations }}
+						{{{ . }}}
+						{{/ locations }}
+						</div>
+					</div>
+					{{/ sections.location_results }}
+					</div>
+				<div id='results-error'></div>
+			</div>
+
+			<hr class='dashboard'>	
+
+			<div id='network-results'>
+				{{# sections.network_results }}
+				<div id="best-match" class="{{# hidden }}cmhide{{/ hidden }}">
+					<h3>Best Match</h3>
+					<div id="best-match-container">
+						{{# network }}
+						{{{ . }}}
+						{{/ network }}
+					</div>
+				</div>
+				{{/ sections.network_results }}
+				{{# sections.related_results }}
+				<div id="related-networks" class="{{# hidden }}cmhide{{/ hidden }}">
+					<h3>Related Networks</h3>
+					<div id="related-networks-container">
+						{{# networks }}
+						{{{ . }}}
+						{{/ networks }}
+					</div>
+				</div>
+				{{/ sections.related_results }}
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	{{/ content }}
+
+	{{$ body_scripts }}
+	<script src="{{vars.hostname}}/js/searchbar.js"></script>
+	{{/ body_scripts }}
+
+{{/ layout }}

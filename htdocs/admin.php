@@ -7,7 +7,6 @@
     include_once 'data/dal_user.php';
     include_once 'data/dal_query_handler.php';
     include_once 'zz341/fxn.php';
-    $con = null;
 
     if(!isset($_POST['username']) && !isset($_POST['password'])){
 
