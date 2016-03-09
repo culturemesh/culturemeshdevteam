@@ -273,16 +273,19 @@ class Search {
 			}
 
 			// map embed
-			$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
-			$map_location = $main_network->location_searchable->toString();
+			if ($main_network->location_searchable !== NULL) {
+				
+				$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
+				$map_location = $main_network->location_searchable->toString();
 
-			// fixes an issue that made the state GA display and not the country
-			if ($map_location == 'Georgia')
-				$map_location = 'Country Georgia';
+				// fixes an issue that made the state GA display and not the country
+				if ($map_location == 'Georgia')
+					$map_location = 'Country Georgia';
 
-			$map_embed = $m_comp->render($map_embed_template, array(
-				'key' => $cm->g_api_key,
-				'location' => $map_location));
+				$map_embed = $m_comp->render($map_embed_template, array(
+					'key' => $cm->g_api_key,
+					'location' => $map_location));
+			}
 		}
 
 
