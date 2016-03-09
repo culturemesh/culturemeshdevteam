@@ -104,6 +104,8 @@ class NetworkSearch extends Search {
 		}
 		else {
 			$results->existing = True;
+			$results->origin_searchable = $this->searchables['origin'];
+			$results->location_searchable = $this->searchables['location'];
 		}
 
 		return $results;
