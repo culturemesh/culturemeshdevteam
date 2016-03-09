@@ -89,6 +89,32 @@
 			background:url(<?php echo $bg_links[$i]; ?>);
 		}
 		</style>
+
+		<script src="<?php echo \Environment::host_root(); ?>/js/searchbar.js"></script>
+
+		<script type="text/javascript">
+
+			cm.Autoloader(function() {
+
+				var searchOne = new cm.SearchField({
+					input_field : document.getElementById('search-1'),
+					clicked : document.getElementById('clik1'),
+					id_field : document.getElementById('varId'),
+					selector : document.getElementById('verb-select'),
+					class_field : document.getElementById('varClass'),
+					ul : document.getElementById('s-var'),
+					topic : document.getElementById('search-topic')
+				});
+
+				var searchTwo = new cm.SearchField({
+					input_field : document.getElementById('search-2'),
+					clicked : document.getElementById('clik2'),
+					id_field : document.getElementById('locId'),
+					class_field : document.getElementById('locClass'),
+					ul : document.getElementById('s-location'),
+				});
+			});
+		</script>
 	</head>
 	<body id="index">
 		<div class="wrapper">
@@ -104,7 +130,7 @@
 			<div id="stage-area">
 				<div id="stage-content">
 					<h3 id="stage-title">Connecting the world's diasporas</h3>
-					<form id="search-form" class='stage' method="GET" action="search_results.php" autocomplete="off">
+					<form id="search-form" class='stage' method="GET" action="//<?php echo \Environment::host_root(); ?>/search/" autocomplete="off">
 					<div id="opening" class='stage'>Find people who
 					<select id="verb-select" name="verb" class="stage-input">
 						<option value="arefrom">are from</option>
@@ -117,9 +143,13 @@
 								<ul id="s-query" class="search"></ul>
 								<ul id="s-var" class="search"></ul>
 								<input type="hidden" id="clik1" name="clik1" value=0></ul>
+								<input type="hidden" id="varId" name="varId" value=-1 />
+								<input type="hidden" id="varClass" name="varClass" value=-1 />
 							<input type="text" class="stage-input" name="search-2" id="search-2" autocomplete="off"></input>
 								<ul id="s-location" class="search"></ul>
 								<input type="hidden" id="clik2" name="clik2" value=0></ul>
+								<input type="hidden" id="locId" name="locId" value=-1 />
+								<input type="hidden" id="locClass" name="locClass" value=-1 />
 							<input type="submit" class="stage-button" value="SEARCH"></input>
 							<input type="hidden" id="search-topic" name="search-topic"></input>
 					</div>
@@ -182,5 +212,4 @@
 			?>
 		</div>
 	</body>
-	<script src="js/searchbar.js"></script>
 </html>

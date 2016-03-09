@@ -35,10 +35,45 @@ class DAL {
 			throw new \Exception('Files have not been loaded');
 
 		if (!isset($this->registry[$name]))
-			throw new \Exception('This index does not exist');
+			throw new \Exception('This index ('. $name .') does not exist');
 
 		$thing = $this->registry[$name];
 		return $thing($this->connection);
+	}
+
+	public function addCustomQuery($query) {
+
+		if (get_class($query) != 'CustomSelectQuery')
+			throw new \Exception('Not the correct class: must be CustomSelectQuery');
+
+	}
+
+	/*
+	 * Registers a custom query with DAL
+	 */
+	public function register($query, $query_things) {
+
+		$this->$query_things['name'] = function($con=NULL) use ($query, $query_things) {
+			
+			$m = new DBQuery();
+			$m->setValues(array(
+				'query' => $query->prepareText(),
+				'test_query' => NULL,
+				'params' => $query_things['params'],
+				'param_types' => $query_things['param_types'],
+				'nullable' => $query_things['nullable'],
+				'returning' => $query_things['returning'],
+				'returning_value' => $query_things['returning_value'],
+				'returning_assoc' => $query_things['returning_assoc'],
+				'returning_list' => $query_things['returning_list'],
+				'returning_class' => $query_things['returning_class'],
+				'returning_cols' => $query_things['returning_cols']
+			));
+
+			$m->setConnection($con);
+
+			return $m;
+		};
 	}
 
 	public function loadFiles()

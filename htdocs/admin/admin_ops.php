@@ -11,7 +11,7 @@
 
 require '../vendor/autoload.php';
 include_once '../zz341/fxn.php';
-include '../Environment.php';
+include '../environment.php';
 
 include_once '../error_pool.php';
 
@@ -23,6 +23,8 @@ include_once '../data/dal_location.php';
 include_once '../data/dal_language.php';
 
 include_once '../data/loc_item.php';
+
+$cm = new \Environment();
 
 ini_set('display_errors', true);
 error_reporting(E_ALL ^ E_NOTICE);
@@ -79,7 +81,8 @@ if ($json_post['op'] == 'login') {
 		'error' => NULL
 	);
 
-	if ($json_post['password'] == "HairClockOperaMouse") {
+	// hehehe
+	if ($json_post['password'] == $GLOBALS['ADMIN_PASSWORD']) {
 		$response['error'] = 0;
 	}
 	else {
@@ -103,7 +106,34 @@ if ($_POST['op'] == 'getTableStructure') {
 	);
 
 	// get table structure
-	$response['description'] = Meta::describeTable($_POST['table'], $con);
+	//$response['description'] = Meta::describeTable($_POST['table'], $con);
+
+	mysqli_close($con);
+
+	$table = $_POST['table'];
+	$client_op = $_POST['client_op'];
+
+	$response['description'] = json_decode(file_get_contents('searchable_table_structure.json'), TRUE)[$table][$client_op];
+
+	/*
+	// WRITE COMmon values
+	$srbl_description = array();
+
+	$srbl_description->add('id');
+	$srbl_description->add('name');
+
+	if ($table === 'cities') {
+
+	}
+
+	if ($table === 'regions') {
+
+	}
+
+	if ($table === 'countries') {
+
+	}
+	 */
 
 	// handle the error things
 	if ($response['description'] == false) {
@@ -190,9 +220,39 @@ else if ($json_post['op'] == 'searchSearchables') {
 		break;
 	}
 
+	/*
+	if ($json_post['client_op'] == 'find') {
+	  $server_op = 'create';
+	}
+	else {
+	  $server_op = 'update';
+	}
+	 */
+
+	$server_op = $json_post['client_op'];
+
+	$table = $json_post['table'];
+
+	$srbl_table = json_decode(file_get_contents('searchable_table_structure.json'), TRUE)[$table];
+	$thing = $srbl_table[$server_op];
+
 	// initialize array
 	$cols = array();
 
+	for($i=0; $i < count($thing); $i++) {
+
+		$item_value = $srbl[$thing[$i]['COLUMN_NAME']];
+
+		// in case we're dealing with 
+		// a column name that isn't a db column
+		//
+		if (isset($srbl[$thing[$i]['column_key']]))
+		  $item_value = $srbl[$thing[$i]['column_key']];
+
+		$thing[$i]['value'] = $item_value;
+	}
+
+	/*
 	// make right for jscript down below
 	foreach ($srbl as $key => $value) {
 
@@ -222,9 +282,10 @@ else if ($json_post['op'] == 'searchSearchables') {
 		// add to cols
 		array_push($cols, $col);
 	}
+	 */
 
 	$response['error'] = 0;
-	$response['description'] = $cols;
+	$response['description'] = $thing;
 
 	// return
 	echo json_encode($response);
@@ -279,6 +340,11 @@ else if ($json_post['op'] == 'MP' && $json_post['operation'] == 'test') {
 
 else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single') 
 {
+	include_once '../lib/misc/Util.php';
+	include_once '../lib/misc/Keymaker.php';
+
+	//$cm = new \Environment();
+
 	// set up response object
 	$response = array(
 		'error' => NULL,
@@ -293,14 +359,17 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 	/********************
 	 * SHUT OFF SWITCH
 
-	$json_response['error'] = 'Exiting early for now';
+	/*
+	$json_response['error'] = 'Exiting early for now...maintenance';
 	echo json_encode($json_response);
 	exit();
+	 */
 
 	 */
 	/********************
 	 * SHUT OFF SWITCH
 	 */
+
 
 	$mod_cols = array();
 		
@@ -321,9 +390,11 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 			if ($key == 'id')
 				continue;
 
-			// write the string in
-			if ($sqlTypeDict[$key] == 'string')
-				$value = "'".$value."'";
+			if ($sqlTypeDict[$key] == 'string') {
+				if ($value != "NULL") {
+				  $value = "'".$value."'";
+				}
+			}
 
 			// 
 			if (in_array($key, $nullable_keys)) {
@@ -417,8 +488,6 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 		break;
 	}
 
-
-
 	$m = new Mustache_Engine;
 
 	$stmt = $m->render($template, $template_data);
@@ -426,6 +495,8 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 	$response['query'] = $stmt;
 
 	$jtable = NULL;
+
+	$con = QueryHandler::getDBConnection();
 
 	/// CREATE A FAKE TABLE FOR LATER
 	if (in_array('latitude', $mod_cols)
@@ -436,15 +507,14 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 		$jtable = Meta::createJunkCopy($json_post['table']);
 	}
 
-	$con = QueryHandler::getDBConnection();
-
 	// EXECUTE QUERY
 	$response['error'] = QueryHandler::executeQuery($stmt, $con);
-
+	$insert_id = Meta::getLastInsertId($con);
 
 	/* may need to
 	 * a) Update network names
 	 * b) Update nearby locations
+	 * c) Update search keys
 	 * c) update text files
 	 */
 
@@ -481,7 +551,10 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 		Location::getNearbyStuff($loc, $con);
 	}
 
-	$id = $json_post['data']['id'];
+	if ($json_post['operation'] === 'update') {
+	  $id = $json_post['data']['id'];
+	}
+
 	$terms = $json_post['data']['tweet_terms'];
 	$tweet_terms_override = (int) $json_post['data']['tweet_terms_override'];
 	$name = $json_post['data']['name'];
@@ -580,6 +653,236 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 		}
 	}
 
+	// UPDATE KEYS
+	//
+	// 	IF 
+	// 	(2) country
+	//
+	// 	UPDATE (name)
+	//if ($working_on_keys || $json_post['operation'] === 'create') {
+
+	$working_on_keys = NULL;
+	$updating_name = NULL;
+	$updating_parent = NULL;
+	$updating_children = NULL;
+	$creating_searchable = NULL;
+
+	$modifying_region = NULL;
+	$modifying_country = NULL;
+
+	if (in_array('name', $mod_cols)) {
+		$updating_name = True;
+
+		if (in_array($json_post['table'], array('regions', 'countries'))) {
+		  $updating_children = True;
+		}
+	}
+	if (in_array('region_id', $mod_cols)) {
+		$updating_parent = True;
+		$modifying_region = True;
+	}
+	if (in_array('country_id', $mod_cols)) {
+		$updating_parent = True;
+		$modifying_country = True;
+	}
+	if ($json_post['operation'] === 'create') {
+		$creating_searchable = True;
+	}
+
+	if ($updating_name || $updating_parent || $creating_searchable) {
+
+		if ($updating_name || $creating_searchable) {
+
+			// get the correct id
+			$id = NULL;
+
+			if ($updating_name) {
+				$id = $data['id'];
+			}
+			else if($creating_searchable) {
+				$id = $insert_id;
+			}
+
+			// DELETE KEYS ASSOCIATED WITH NAME
+			//
+			if ($updating_name) {
+
+				if ($json_post['table'] === 'languages') {
+					// operation
+					Language::deleteSearchKeys($data['id'], $con);
+				}
+				else {
+					// operation
+					Location::deleteSearchKeys($data['id'], $json_post['table'], $con);
+				}
+			}
+
+			/// Create keys for metaphone
+			//
+			$keymaker = new \misc\Keymaker('../data/');
+			$keys = $keymaker->generateKeys($name);
+
+			//
+			// CREATE A NEW SET OF KEYS
+			//
+			//
+			/// ALLTHE STUFF: array('city_id', 'city_name', 'region_id', 'region_name', 'country_id', 'country_name', 'language_id', 'language_name', 'class_searchable');
+			//
+			$col_names = array();
+			$row_items = NULL;
+
+			if ($json_post['table'] === 'cities') {
+				$col_names = array('`key`', 'city_id', 'city_name', 'region_id', 'region_name', 'country_id', 'country_name');
+
+				if ($data['region_id'] === "") {
+					$region_id = "NULL";
+					$region_name = "NULL";
+				}
+				else {
+					$region_id = $data['region_id'];
+					$region_name = "'" . $data['region_name'] . "'";
+				}
+
+				$row_items = array($id, "'". $data['name'] . "'", $region_id, $region_name, $data['country_id'], "'" . $data['country_name'] . "'", '\'city\'');
+			}
+
+			if ($json_post['table'] === 'regions') {
+				$col_names = array('`key`', 'region_id', 'region_name', 'country_id', 'country_name');
+				$row_items = array($id, "'". $data['name'] . "'", $data['country_id'], "'" . $data['country_name'] . "'", '\'region\'');
+			}
+
+			if ($json_post['table'] === 'countries') {
+				$col_names = array('`key`', 'country_id', 'country_name');
+				$row_items = array($id, "'". $data['name'] . "'", '\'country\'');
+			}
+
+			if ($json_post['table'] === 'languages') {
+				$col_names = array('`key`', 'language_id', 'language_name');
+				$row_items = array($id, "'". $data['name'] . "'", '\'language\'');
+			}
+
+			// add common column
+			array_push($col_names, 'class_searchable');
+
+			$rows = array();
+
+			foreach ($keys as $key) {
+
+				// put the element onto the beginning of the array
+				array_unshift($row_items, "'" . $key . "'");
+
+				$template_data = array(
+					'row_values' => implode(',', $row_items)
+				);
+
+				$template = file_get_contents('../templates/sql-insertrow-simple.sql');
+				$row = $m->render($template, $template_data);
+
+				array_push($rows, $row);
+
+				// take the element back off the array
+				array_shift($row_items);
+			}
+
+			$template_data = array(
+				'table_name' => 'search_keys',
+				'col_names' => implode(',', $col_names),
+				'insert_rows' => implode(',', $rows)
+			);
+
+			$template = file_get_contents('../templates/sql-insert-simple.sql');
+			$stmt = $m->render($template, $template_data);
+	 		QueryHandler::executeQuery($stmt, $con);
+		}
+
+		if ($updating_parent) {
+
+			$update_args = NULL;
+
+			$value_statements = array();
+			$where_statements = array();
+
+			// UPDATE KEY PARENTS
+			if ($json_post['table'] === 'cities') {
+
+				if ($modifying_region) {
+
+					// possibly updating regions and countries
+					if ($data['region_id'] === "") {
+						array_push($value_statements, 'region_id=NULL');
+						array_push($value_statements, 'region_name=NULL');
+					}
+					else {
+						array_push($value_statements, 'region_id=' . $data['region_id']);
+						array_push($value_statements, 'region_name=\'' . $data['region_name'] . '\'');
+					}
+				}
+
+				if ($modifying_country) {
+					array_push($value_statements, 'country_id=' . $data['country_id']);
+					array_push($value_statements, 'country_name=\'' . $data['country_name'] . '\'');
+				}
+
+				// add where statement
+				array_push($where_statements, 'city_id=' . $data['id']);
+			}
+
+			if ($json_post['table'] === 'regions') {
+
+				// updating countries
+				if ($modifying_country) { // sorta redundant iffffff
+					array_push($value_statements, 'country_id=' . $data['country_id']);
+					array_push($value_statements, 'country_name=\'' . $data['country_name'] . '\'');
+				}
+
+				// add where statement
+				array_push($where_statements, 'region_id=' . $data['id']);
+			}
+
+
+			$template_data = array(
+				'table_name' => 'search_keys',
+				'value_statements' => implode(',', $value_statements),
+				'where_statements' => implode(' AND ', $where_statements)
+			);
+
+			$template = file_get_contents('../templates/sql-update-simple.sql');
+			$stmt = $m->render($template, $template_data);
+	 		QueryHandler::executeQuery($stmt, $con);
+		}
+
+		//
+		// UPDATE CHILDREN
+		//
+		//
+		if ($updating_children) {
+
+			$value_statements = array();
+			$where_statements = array();
+			
+			if ($json_post['table'] === 'regions') {
+
+				array_push($value_statements, 'region_name=\'' . $data['name'] . '\'');
+				array_push($where_statements, 'region_id=' . $data['id'] );
+			}
+
+			if ($json_post['table'] === 'countries') {
+				array_push($value_statements, 'country_name=\'' . $data['name'] . '\'');
+				array_push($where_statements, 'country_id=' . $data['id']);
+			}
+
+			$template_data = array(
+				'table_name' => 'search_keys',
+				'value_statements' => implode(',', $value_statements),
+				'where_statements' => implode(' AND ', $where_statements)
+			);
+
+			$template = file_get_contents('../templates/sql-update-simple.sql');
+			$stmt = $m->render($template, $template_data);
+			QueryHandler::executeQuery($stmt, $con);
+		}
+	}
+
 	// close dbj connection
 	mysqli_close($con);
 
@@ -653,6 +956,7 @@ else if ($_POST['op'] == 'ins-parse') {
 	exit();
 }
 else if ($_POST['op'] == 'update' && $_POST['singobatch'] == 'batch') {
+
 
 	$response = array(
 		'error' => NULL,
@@ -857,6 +1161,7 @@ else if ($_POST['op'] == 'update' && $_POST['singobatch'] == 'batch') {
 	echo json_encode($response);
 }
 else if ($_POST['op'] == 'create' && $_POST['singobatch'] == 'batch') {
+
 
 	$response = array(
 		'error' => NULL,

@@ -7,12 +7,13 @@ class Do2Db {
 	private $dobj;
 	private $query;
 	private $op;
+	private $remora;
 
-	public function execute($dal, $dobj, $query) {
+	public function execute($dal, $dobj, $query, $remora=NULL) {
 
 		$op = $dal->getCQuery($query);
 
-		$this->load($dal, $dobj, $query, $op);
+		$this->load($dal, $dobj, $query, $op, $remora);
 
 		if ($op == NULL) {
 			$this->cleanse();
@@ -43,6 +44,11 @@ class Do2Db {
 		return true;
 	}
 
+	/*
+	 * Returns an array of arguments (from the dobj) 
+	 * based on the scheme required from the dbquery
+	 *
+	 */
 	private function prepareArgs($scheme) {
 
 		$args = array();
@@ -64,7 +70,25 @@ class Do2Db {
 			}
 			else {
 				$thing = &$this->dobj->getReference($param);
-				array_push($args, $thing);
+
+				if (is_array($thing)) {
+				
+					// Push everything from the array at once
+					if ($scheme['params_stack'] === NULL) {
+						foreach($thing as $item_in_thing) {
+							array_push($args, $item_in_thing);
+						}
+					}
+					else {
+						// Only push into array when parameter calls for it
+						$item_in_thing = array_shift($thing);
+						array_push($args, $item_in_thing);
+					}
+				}
+				else {
+					array_push($args, $thing);
+				}
+
 			}
 		}
 		
@@ -110,7 +134,7 @@ class Do2Db {
 	private function fillObj($scheme, $row) {
 
 		// uses base dobj class to create dobj of any type
-		$dobj = $scheme['returning_class']::createFromDataRow($row);
+		$dobj = $scheme['returning_class']::createFromDataRow($row, $this->remora);
 		return $dobj;
 	}
 
@@ -149,13 +173,14 @@ class Do2Db {
 		return $list;
 	}
 
-	private function load($dal, $dobj, $query, $op) {
+	private function load($dal, $dobj, $query, $op, $remora) {
 	
 		// set things
 		$this->dal = $dal;
 		$this->dobj = $dobj;
 		$this->query = $query;
 		$this->op = $op;
+		$this->remora = $remora;
 	}
 
 	private function cleanse() {
@@ -164,6 +189,12 @@ class Do2Db {
 		$this->dobj = NULL;
 		$this->query = NULL;
 		$this->op = NULL;
+		$this->remora = NULL;
+	}
+
+	public function initializeCustomQuery() {
+
+		return new CustomSelectQuery();
 	}
 }
 

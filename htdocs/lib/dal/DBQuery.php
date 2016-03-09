@@ -10,7 +10,7 @@ class DBQuery extends DBOp{
 
 		// the connection
 		$result = $this->connection->
-				prepare($this->query);
+				prepare($this->scheme_array['query']);
 
 		// check which class we're using
 		$class = get_class($result);
@@ -39,7 +39,7 @@ class DBQuery extends DBOp{
 
 	public function getName() {
 
-		return $this->name;
+		return $this->scheme_array['name'];
 	}
 }
 ?>

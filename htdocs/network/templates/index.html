@@ -10,6 +10,7 @@
 	<script src="{{ vars.hostname }}/js/lightbox.min.js"></script>
 	<script type='text/javascript' src='{{vars.hostname}}/js/fileupload.js'></script>
 	<script type='text/javascript' src='{{vars.hostname}}/js/post-wall.js'></script>
+	<script type="text/javascript" src="{{vars.hostname}}/js/searchbar.js"></script>
 
 	<script>
 		/*
@@ -71,11 +72,36 @@
 						html: true
 						});
 
-					if (qs.fragment != null) {
+					if (qs.fragment != null && qs.fragment != "") {
 						$( qs.fragment ).goTo();
 					}
 
 					});
+
+			cm.Autoloader(function() {
+
+				var searchOne = new cm.SearchField({
+					input_field : document.getElementById('search-1'),
+					clicked : document.getElementById('clik1'),
+					id_field : document.getElementById('varId'),
+					selector : document.getElementById('verb-select'),
+					class_field : document.getElementById('varClass'),
+					ul : document.getElementById('s-var'),
+					topic : document.getElementById('search-topic'),
+					ul_class : "network search",
+					loading_image : "/images/searchbar-loading-bw.gif"
+				});
+
+				var searchTwo = new cm.SearchField({
+					input_field : document.getElementById('search-2'),
+					clicked : document.getElementById('clik2'),
+					id_field : document.getElementById('locId'),
+					class_field : document.getElementById('locClass'),
+					ul : document.getElementById('s-location'),
+					ul_class : "network search",
+					loading_image : "/images/searchbar-loading-bw.gif"
+				});
+			});
 	</script>
 	{{/ autoload_scripts }}
 
@@ -105,7 +131,7 @@
 					{{^ logged_in }}
 					<div class="guest">
 						<p class='lrg-network-stats'>{{ page_vars.member_count }} Members | {{ page_vars.post_count }} Posts</p>
-						<button class="network" onclick="$('#register_modal').modal('show');">Join us!</button>
+						<button class="network" onclick="JoinOnRegister();">Join us!</button>
 					</div>
 					{{/ logged_in }}
 					<!-- LOGGED IN, VISITING THE NETWORK -->
@@ -275,7 +301,6 @@
 	{{$ body_scripts }}
 	<link rel="stylesheet" type="text/css" href="{{vars.hostname}}/js/jsdatetime/jquery.datetimepicker.css"/ >
 	<script src="{{vars.hostname}}/js/jsdatetime/jquery.datetimepicker.js"></script>
-	<script src="{{vars.hostname}}/js/searchbar.js"></script>
 	<script src="{{vars.hostname}}/js/slider.js"></script>
 
 	<script>
@@ -343,6 +368,15 @@
 				$('#leerror-'+mid).text(qs.qsGet['leerror']);
 			}
 		}
+	</script>
+	<script>
+
+		var JoinOnRegister = function() {
+			$('#register_modal').modal('show');
+			$('#reg_joining').val("1");
+			$('#reg_joining_network').val("{{ page_vars.nid }}");
+		}
+
 	</script>
 	{{/ body_scripts }}
 

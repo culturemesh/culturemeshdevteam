@@ -225,6 +225,8 @@ class TweetManager {
 					else {
 						$obj->duplicate = False;
 						array_push($this->string_array, $obj->text);
+
+						// also push copy without links
 					}
 
 					if (in_array($obj->user['screen_name'], $this->blocked_users)) {

@@ -256,8 +256,22 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		$this->dlist = array_reverse($this->dlist);
 	}
 
-	public function slice($offset, $length) {
-		$this->dlist = array_slice($this->dlist, $offset, $length);
+	public function slice($offset, $length=NULL, $returning=False) {
+		if ($returning === False)
+		  $this->dlist = array_slice($this->dlist, $offset, $length);
+		else {
+			$list = new DObjList();
+
+			if ($length > count($this))
+			  $length = count($this);
+
+			for($i = $offset; $i < ($offset + $length); $i++) {
+			  $list->dInsert( $this[$i] );
+			}
+
+			return $list;
+		}
+
 	}
 
 	//////////// THINGS I MUST SET ////////////////
@@ -266,10 +280,15 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		return count($this->dlist);
 	}
 
-	public function sort($options=array(
-				'key' => NULL,
-				'order' => 'desc',
-				'sorting_date' => False)) {
+	public function sort($options) {
+
+		$default_options = array(
+			'key' => NULL,
+			'order' => 'desc',
+			'sorting_date' => False
+		);
+
+		$options = array_merge($default_options, $options);
 
 		usort($this->dlist, function($a, $b) use ($options) {
 

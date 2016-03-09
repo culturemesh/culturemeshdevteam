@@ -110,6 +110,13 @@ class Network extends DisplayDObj {
 		return $network;
 	}
 
+	public static function createFromSearchables($origin, $location) {
+
+		$network = new dobj\Network();
+
+		return $network;
+	}
+
 	public function checkRegistration($uid, $dal, $do2db) {
 
 		$args = new \dobj\Blank();
@@ -389,7 +396,46 @@ class Network extends DisplayDObj {
 				)
 			);
 			break;
+		case 'search':
+
+			$template_array = array(
+				'network' => $this,
+				'title' => $this->getTitle(),
+				'vars' => $cm->getVars()
+			);
+
+			if ($this->existing) {
+			  $template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_active-network.html');
+			}
+			else {
+			  $template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_possible-network.html');
+
+			  /*
+			  $template_array['origin_class'] = get_class($this->origin_searchable);
+			  $template_array['origin_id'] = $this->origin_searchable->id;
+			  $template_array['location_class'] = get_class($this->location_searchable);
+			  $template_array['location_id'] = $this->location_searchable->id;
+			   */
+			  $template_array['network'] = $this->getJSON();
+			}
+
+			return $mustache->render($template, $template_array); 
 		}
+	}
+
+	public function getJSON() {
+
+		return array(
+			'id' => $this->id,
+			'title' => $this->getTitle(),
+			'origin_class' => $this->getOriginClass(),
+			'origin_id' => $this->getOriginId(),
+			'location_class' => $this->getLocationClass(),
+			'location_id' => $this->getLocationId(),
+			'member_count' => $this->member_count,
+			'post_count' => $this->post_count,
+			'existing' => $this->existing
+		);
 	}
 
 	/*
@@ -397,6 +443,22 @@ class Network extends DisplayDObj {
 	 * on main site
 	 */
 	public function getTitle() {
+
+		if ($this->origin_searchable !== NULL && $this->location_searchable !== NULL) {
+
+			$origin_str = '';
+			$location_str = $this->location_searchable->toString();
+
+			// figure out type of origin string
+			if (get_class($this->origin_searchable) == 'dobj\Language') {
+				$origin_str = $this->origin_searchable->toString().' speakers';
+			}
+			else {
+				$origin_str = 'From '.$this->origin_searchable->toString();
+			}
+			
+			return $origin_str . ' in ' . $location_str;
+		}
 
 		if ($this->origin == NULL) {
 
@@ -441,6 +503,50 @@ class Network extends DisplayDObj {
 		}
 		
 		return $origin_str . ' in ' . $location_str;
+	}
+
+	public function getOriginId() {
+
+		if ($this->origin_searchable !== NULL) {
+			return $this->origin_searchable->id;
+		}
+
+		if ($this->origin == NULL) {
+			return $this->origin->id;
+		}
+	}
+
+	public function getOriginClass() {
+
+		if ($this->origin_searchable !== NULL) {
+			return get_class( $this->origin_searchable );
+		}
+
+		if ($this->origin == NULL) {
+			return get_class( $this->origin );
+		}
+	}
+
+	public function getLocationId() {
+
+		if ($this->location_searchable !== NULL) {
+			return $this->location_searchable->id;
+		}
+
+		if ($this->location == NULL) {
+			return $this->location->id;
+		}
+	}
+
+	public function getLocationClass() {
+
+		if ($this->location_searchable !== NULL) {
+			return get_class( $this->location_searchable );
+		}
+
+		if ($this->location == NULL) {
+			return get_class( $this->location );
+		}
 	}
 
 	/*

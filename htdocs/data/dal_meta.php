@@ -58,6 +58,18 @@ SQL;
 
 			array_push($desc, $thing);
 		}
+
+		// Add a table to track original name
+		array_push($desc, array(
+			'COLUMN_NAME' => 'original_name',
+			'DATA_TYPE' => '',
+			'IS_NULLABLE' => '',
+			'COLUMN_DEFAULT' => '',
+			'CHARACTER_MAXIMUM_LENGTH' => '',
+			'NUMERIC PRECISION' => '',
+			'NUMERIC SCALE' => '',
+			'FK' => NULL
+		));
 		return $desc;
 	}
 
@@ -121,6 +133,10 @@ SQL;
 SQL;
 
 		return QueryHandler::executeQuery($query, $con);
+	}
+
+	public static function getLastInsertId($con) {
+		return mysqli_insert_id($con);
 	}
 }
 ?>

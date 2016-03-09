@@ -130,7 +130,10 @@ final class Environment {
 		if (!isset(self::$host_root_s)) {
 			$doc_root = $_SERVER['DOCUMENT_ROOT'];
 			$hostname = $_SERVER['HTTP_HOST'];
-			self::$host_root_s = '//'.str_replace($doc_root, $hostname, getcwd());
+
+			$almost_there = '//'.str_replace($doc_root, $hostname, getcwd());
+
+			self::$host_root_s = str_replace('/culturemesh-live/htdocs', '', $almost_there);
 		}
 		return self::$host_root_s;
 	}
@@ -251,6 +254,13 @@ final class Environment {
 		self::$connection = NULL;
 	}
 
+	public function enableDatabase(&$dal, &$do2db) {
+
+		$dal = new \dal\DAL($this->getConnection());
+		$dal->loadFiles();
+		$do2db = new \dal\Do2Db();
+	}
+
 	public static function tearDown() {
 		self::$environment = NULL;
 	}
@@ -288,7 +298,7 @@ final class Environment {
 		// - Display Errors
 		// ----------------------------------------------------------------------------------------------------
 		ini_set('display_errors', 'On');
-		ini_set('html_errors', 0);
+		ini_set('html_errors', 1);
 		
 		// ----------------------------------------------------------------------------------------------------
 		// - Error Reporting

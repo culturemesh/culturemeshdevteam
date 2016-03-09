@@ -139,5 +139,40 @@ SQL;
 
 		return QueryHandler::executeQuery($query, $con);
 	}
+
+	/*
+	public static function addSearchKeys($con=NULL) {
+
+		$query = <<<SQL
+			INSERT INTO search_keys VALUES ('language')
+			 ()
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+	}
+	 */
+
+
+	public static function deleteSearchKeys($id, $con=NULL) {
+
+		$query = <<<SQL
+			DELETE FROM search_keys WHERE language_id=$id AND class_searchable='language'
+SQL;
+
+		return QueryHandler::executeQuery($query, $con);
+	}
+
+	public static function deleteSearchKeysByName($original_value, $con=NULL) {
+
+		$identifier_column = $table . '_id';
+		$identifier_value = $value;
+
+		$query = <<<SQL
+			DELETE FROM search_keys WHERE language_id=$original_value
+SQL;
+
+		var_dump($query);
+		//return QueryHandler::executeQuery($query, $con);
+	}
 }
 ?>
