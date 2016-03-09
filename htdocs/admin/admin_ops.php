@@ -26,8 +26,10 @@ include_once '../data/loc_item.php';
 
 $cm = new \Environment();
 
+/*
 ini_set('display_errors', true);
 error_reporting(E_ALL ^ E_NOTICE);
+*/
 
 $json_post = json_decode($HTTP_RAW_POST_DATA, true);
 
@@ -365,7 +367,6 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 	exit();
 	 */
 
-	 */
 	/********************
 	 * SHUT OFF SWITCH
 	 */

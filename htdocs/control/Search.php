@@ -158,10 +158,15 @@ class Search {
 			$ARRAY_LENGTH = 7;
 
 			// PROCESS ORIGIN RESULTS
-			$slice = $results['origin']->slice( 0, $ARRAY_LENGTH, true );
-			$slice->setMustache($m_comp);
+			$prepared_result = $results['origin'];
+
+			if (get_class($results['origin']) !== 'search\NullSearchResult') {
+				$prepared_result = $prepared_result->slice( 0, $ARRAY_LENGTH, true );
+				$prepared_result->setMustache($m_comp);
+			}
+
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_searchable_options.html');
-			$origin_html = $slice->getHTML('user-results', array(
+			$origin_html = $prepared_result->getHTML('user-results', array(
 				'list_template' => $template,
 				'cm' => $cm,
 				'radio_name' => 'origin',
@@ -171,10 +176,15 @@ class Search {
 			$origin_results['origins'] = $origin_html;
 
 			// PROCESS LOCATION RESULTS
-			$slice = $results['location']->slice( 0, $ARRAY_LENGTH, true );
-			$slice->setMustache($m_comp);
+			$prepared_result = $results['location'];
+
+			if (get_class($results['location']) !== 'search\NullSearchResult') {
+				$prepared_result = $prepared_result->slice( 0, $ARRAY_LENGTH, true );
+				$prepared_result->setMustache($m_comp);
+			}
+
 			$template = file_get_contents($cm->template_dir . $cm->ds . 'user-results_searchable_options.html');
-			$location_html = $slice->getHTML('user-results', array(
+			$location_html = $prepared_result->getHTML('user-results', array(
 				'list_template' => $template,
 				'cm' => $cm,
 				'radio_name' => 'location',

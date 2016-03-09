@@ -141,9 +141,6 @@ class SearchableKeySearch extends Search {
 
 		$results = $do2db->execute($dal, $this->param_obj, $query_name, $remora);
 
-		// Sort results
-		$results->sort(array('key' => 'search_weight', 'order' => 'asc'));
-
 		// if no results were found
 		// create a NullResult Object
 		if (get_class($results) == 'PDOStatement') {
@@ -152,6 +149,10 @@ class SearchableKeySearch extends Search {
 			$results->setUserInput($this->input);
 			$results->setAlternate($this->input);
 		}
+		else {
+			// Sort results
+			$results->sort(array('key' => 'search_weight', 'order' => 'asc'));
+		}	
 
 		return $results;
 	}

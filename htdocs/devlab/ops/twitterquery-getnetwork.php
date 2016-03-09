@@ -17,7 +17,13 @@ $dal = new dal\DAL($cm->getConnection());
 $dal->loadFiles();
 $do2db = new dal\Do2Db();
 
+//delete
+$log = new misc\Log($cm, 'devlab/ops/twitter-query-error.log');
+
 $network = dobj\Network::createFromId($nid, $dal, $do2db);
+
+// delete
+$log->logVar($network);
 
 $tweet_manager = new \api\TweetManager($cm, $network, $dal, $do2db);
 $tweets = $tweet_manager->requestTweets();
