@@ -219,14 +219,60 @@ class TweetManager {
 					// check if this tweet has been duplicated
 					//
 					// if not...
-					if (in_array($obj->text, $this->string_array)) {
+
+					$tagged_string = false;
+					$in_array = false;
+					$match = '#https\:\/\/t\.co\/[a-zA-Z0-9-]+#';
+					$text_no_links = preg_replace($match, "", $obj->text);
+
+					// Check to see if 
+					//   string without tags equals original string
+					//     and then check to see if the value is in the array
+
+					// again, must use because of complications
+					$arr = $this->string_array;
+
+					// not perfect, need to try and lose the loop
+					if ($text_no_links !== $obj->text) {
+						$tagged_string = True;
+						//$in_array = in_array(array($obj->text, $text_no_links), $arr);
+
+						foreach ($arr as $string) {
+
+							if ($string === $text_no_links) {
+								$in_array = True;
+								break;
+							}
+						}
+					}
+					else {
+						//$in_array = in_array($obj->text, $arr);
+
+						foreach ($arr as $string) {
+
+							if ($string === $obj->text) {
+								$in_array = True;
+								break;
+							}
+						}
+					}
+
+					// If in array, mark as duplicate
+					//   if not, add new values to array
+					if ($in_array) {
 						$obj->duplicate = True;
 					}
 					else {
 						$obj->duplicate = False;
-						array_push($this->string_array, $obj->text);
+
+						// push things into array
+						$arr[] = $obj->text;
 
 						// also push copy without links
+						if ($tagged_string)
+						  $arr[] = $text_no_links;
+
+						$this->string_array = $arr;
 					}
 
 					if (in_array($obj->user['screen_name'], $this->blocked_users)) {
