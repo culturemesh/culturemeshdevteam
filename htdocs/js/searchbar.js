@@ -69,8 +69,9 @@ cm.SearchField.prototype = {
 		// Allow for exit by clicking
 		// outside search boxes
 		window.onclick = function() {
-			//hideUl(varUl);
+			clearTimeout(self.NAME_SEARCH);
 			self._hideUl();
+			self._clearErrorLi();
 		}
 
 		this._input_field.onclick = function(e) {
@@ -81,6 +82,12 @@ cm.SearchField.prototype = {
 		this._input_field.onfocus = function() {
 			self._showUl();
 			self._hideUl();
+		}
+
+		this._input_field.onblur = function() {
+			clearTimeout(self.NAME_SEARCH);
+			self._hideUl();
+			self._clearErrorLi();
 		}
 
 		this._input_field.onkeydown = function(e) {
@@ -158,14 +165,6 @@ cm.SearchField.prototype = {
 		///////////////////////////////////////////
 		// ADD TEMPLATE
 		// //////////
-		/*
-		if (type == 'single') {
-			this.template = document.getElementById('single-search-tmpl').innerHTML;
-		}
-		else {
-			this.template = document.getElementById('search-tmpl').innerHTML;
-		}
-		*/
 
 		// render search bar
 		this._render_target.innerHTML = Mustache.render( this._template.innerHTML );

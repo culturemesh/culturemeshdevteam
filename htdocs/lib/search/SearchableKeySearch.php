@@ -82,7 +82,7 @@ class SearchableKeySearch extends Search {
 
 		// Create remora to track levenshtein distance
 		$remora = new \dal\Remora();
-		$remora->original_term = $this->first_term;
+		$remora->original_term = strtolower( $this->first_term );
 
 		$remora->setFunction(function($searchable) {
 
@@ -90,7 +90,8 @@ class SearchableKeySearch extends Search {
 			//
 			// I'm creating a search rank function here
 			//
-			$distance = levenshtein($this->original_term, $searchable->name);
+			$lowercase_term = strtolower($searchable->name);
+
 
 			$weight_distance = 1;
 			$weight_population = 1;
@@ -98,16 +99,25 @@ class SearchableKeySearch extends Search {
 			$weight_class = 1;
 
 			// Calculate distance weight
-			if ($distance === 0)
-			  $weight_distance = 5;
-			else if ($distance > 0 && $distance < 3) {
-			  $weight_distance = $distance;
+			if ($lowercase_term === $this->original_term) {
+				$weight_distance = 12;
 			}
-			else if (strpos( $searchable->name, $this->original_term ) !== False)
-			  $weight_distance = 4;
 			else {
-			  $weight_distance = 1 / $distance;
+
+				// calculate levenshtein distance
+				$distance = levenshtein($this->original_term, $lowercase_term);
+
+				if ($distance === 0)
+				  $weight_distance = 5;
+				else if ($distance > 0 && $distance < 3) {
+				  $weight_distance = $distance;
+				}
+				else if (strpos( $lowercase_term, $this->original_term ) !== False)
+				  $weight_distance = 4;
+				else 
+				  $weight_distance = 1 / $distance;
 			}
+
 
 			// Calculate population weight
 			if ($searchable->population >= 500000)
@@ -137,6 +147,7 @@ class SearchableKeySearch extends Search {
 			// Assign weight to searchable
 			$weight = $weight_distance + $weight_population + $weight_feature + $weight_class;
 			$searchable->search_weight = $weight;
+
 		});
 
 		$results = $do2db->execute($dal, $this->param_obj, $query_name, $remora);
