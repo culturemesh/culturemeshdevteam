@@ -108,7 +108,7 @@ class TweetManager {
 		}
 
 		$tweet_info_key = $tweet_key . '_info';
-		$tweets_exist = $cache->exists($tweet_key);
+		$tweets_exist = $cache->exists($tweet_key) && $this->cm->cachingTweets();
 
 		// proceed straight to query if mode is 'network_addtl' or 'adjust'
 		if ($tweets_exist === False || $mode == 'adjust') {
@@ -181,6 +181,8 @@ class TweetManager {
 				$remora->blocked_users = $this->blocked_users;
 				$remora->earliest_tweet_date = NULL;
 
+				$remora->test_array = array("vegetable");
+
 				// remora function
 				$remora->setFunction(function($obj) {
 
@@ -232,29 +234,14 @@ class TweetManager {
 					// again, must use because of complications
 					$arr = $this->string_array;
 
-					// not perfect, need to try and lose the loop
+					// a little more perfect, must find out how to
+					//   use arrays as needle in in_array function
 					if ($text_no_links !== $obj->text) {
 						$tagged_string = True;
-						//$in_array = in_array(array($obj->text, $text_no_links), $arr);
-
-						foreach ($arr as $string) {
-
-							if ($string === $text_no_links) {
-								$in_array = True;
-								break;
-							}
-						}
+						$in_array = in_array($text_no_links, $arr) || in_array($obj->text);
 					}
 					else {
-						//$in_array = in_array($obj->text, $arr);
-
-						foreach ($arr as $string) {
-
-							if ($string === $obj->text) {
-								$in_array = True;
-								break;
-							}
-						}
+					  $in_array = in_array($obj->text, $arr);
 					}
 
 					// If in array, mark as duplicate

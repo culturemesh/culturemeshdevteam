@@ -52,6 +52,8 @@ final class Environment {
 
 	private $maintenance_info;
 
+	private $caching_tweets;
+
 	// BIGGUMS
 	private static $environment = NULL;
 	private static $connection = NULL;
@@ -290,6 +292,10 @@ final class Environment {
 			'l_brace' => '{{',
 			'r_brace' => '}}'
 		);
+	}
+
+	public function cachingTweets() {
+		return $GLOBALS['CACHE_TWEETS'];
 	}
 	
 	public function displayErrors() {
