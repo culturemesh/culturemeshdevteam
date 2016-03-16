@@ -247,9 +247,6 @@ class SearchableKeySearch extends Search {
 				$string_count = $this->comma_string_count;
 				$element_count = $searchable->getElementCount();
 
-				var_dump($string_count);
-				var_dump($element_count);
-
 				/*
 				// if string count == 2 && elementCount == 2
 				// 	// 1 : 1 string check
