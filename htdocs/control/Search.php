@@ -293,6 +293,7 @@ class Search {
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'search' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
+			'search' => $search_array,
 			'sections' => array(
 				'map_embed' => $map_embed,
 				'searchbar' => $searchbar,

@@ -78,6 +78,7 @@
 					{{# sections.origin_results }}
 					<div class='span4 {{# hidden }}cmhide{{/ hidden }}'>
 					<b> Origin </b>
+						<p class="search-user-input">Showing results for '{{ search.search_one }}'</p>
 						<div id='origin-results'>
 						{{# origins }}
 						{{{ . }}}
@@ -88,6 +89,7 @@
 					{{# sections.location_results }}
 					<div class='span4 {{# hidden }}cmhide{{/ hidden }}'>
 					<b> Location </b>
+						<p class="search-user-input">Showing results for '{{ search.search_two }}'</p>
 						<div id='location-results'>
 						{{# locations }}
 						{{{ . }}}

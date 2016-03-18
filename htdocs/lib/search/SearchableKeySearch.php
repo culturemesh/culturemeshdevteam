@@ -244,70 +244,74 @@ class SearchableKeySearch extends Search {
 					}
 				}
 
-				$string_count = $this->comma_string_count;
-				$element_count = $searchable->getElementCount();
+				if ($this->comma_separated) {
 
-				/*
-				// if string count == 2 && elementCount == 2
-				// 	// 1 : 1 string check
-				//
-				// if string count == 3 && elementCount == 3
-				// 	// 1 : 1 string check
-				//
-				if ($string_count === $element_count) {
+					$string_count = $this->comma_string_count;
+					$element_count = $searchable->getElementCount();
 
-					for ($i = 1; $i < $string_count; $i++) {
+					// if string count == 2 && elementCount == 2
+					// 	// 1 : 1 string check
+					//
+					// if string count == 3 && elementCount == 3
+					// 	// 1 : 1 string check
+					//
+					if ($string_count === $element_count) {
 
-						$searchable_string = strtolower( $searchable->getElement($i)['name'] );
-						$user_string = strtolower( $this->comma_values[$i] );
+						for ($j = 1; $j < $string_count; $j++) {
 
-						// add compare weight
-						$searchable->search_weight += $this->calculateCompareWeight($user_string, $searchable_string);
+							$searchable_string = strtolower( $searchable->getElement($j)['name'] );
+							$user_string = strtolower( $this->comma_values[$j] );
+
+							// add compare weight
+							$searchable->search_weight += $this->calculateCompareWeight($user_string, $searchable_string);
+						}
 					}
-				}
 
-				///
-				// TAKING COMMAS INTO ACCOUNT
-				//
+					///
+					// TAKING COMMAS INTO ACCOUNT
+					//
 
-				// if string count == 2 && elementCount == 3
-				// 	// check 1 string against both elements
+					// if string count == 2 && elementCount == 3
+					// 	// check 1 string against both elements
 
-				if ($string_count < $element_count) {
+					if ($string_count < $element_count) {
 
-					// string count WILL ALWAYS be 2
-					$user_string = strtolower( $this->comma_values[1] );
+						// string count WILL ALWAYS be 2
+						$user_string = strtolower( $this->comma_values[1] );
 
-					for($i = 1; $i < $element_count; $i++) {
+						for($j = 1; $j < $element_count; $j++) {
 
-						$searchable_string = strtolower( $searchable->getElement($i)['name'] );
+							$searchable_string = strtolower( $searchable->getElement($j)['name'] );
 
-						// add compare weight
-						$searchable->search_weight += $this->calculateCompareWeight($user_string, $searchable_string);
+							// add compare weight
+							$searchable->search_weight += $this->calculateCompareWeight($user_string, $searchable_string);
+						}
 					}
-				}
 
-				// if string count == 2 && elementCount == 1
-				// 	// skip
-				//
-				// if string count == 3 && elementCount == 1
-				// 	// skip
-				//
-				// if string count == 3 && elementCount == 2
-				// 	// check element against both strings
-				//
+					// if string count == 2 && elementCount == 1
+					// 	// skip
+					//
+					// if string count == 3 && elementCount == 1
+					// 	// skip
+					//
+					// if string count == 3 && elementCount == 2
+					// 	// check element against both strings
+					//
 
-				if ($string_count > $element_count && $element_count == 2) {
+					if ($string_count > $element_count && $element_count == 2) {
 
-					$searchable_string = strtolower( $searchable->getElement(1) );
-						
-					for($i = 1; $i < $string_count; $i++) {
-						$user_string = strtolower( $this->comma_values[$i] );
+						$searchable_string = strtolower( $searchable->getElement(1) );
+							
+						for($j = 1; $j < $string_count; $j++) {
+							$user_string = strtolower( $this->comma_values[$j] );
 
-						$searchable->search_weight += $this->calculateCompareWeight($user_string, $searchable_string);
-					}
-				}
-				 */
+							$searchable->search_weight += $this->calculateCompareWeight($user_string, $searchable_string);
+
+						} // end for
+
+					} // endif
+
+				} // endif
 			}
 
 			for ($i=0; $i < count($matches); $i++) {
@@ -340,12 +344,9 @@ class SearchableKeySearch extends Search {
 		return $results;
 	}
 
-	private function calculateCompareWeight() {
+	private function calculateCompareWeight($s1, $s2) {
 
 		$weight = 0;
-
-		// check position
-		//if (strpos($value['name'], $this->comma_values[$i-1]) === 0) {
 
 		if ($s2 === $s1) {
 			$weight += 4;
@@ -362,13 +363,6 @@ class SearchableKeySearch extends Search {
 		if ($distance < 4) {
 			$weight += 2;
 		}
-
-		/*
-		var_dump($s1);
-		var_dump($s2);
-		var_dump($weight);
-		echo '------';
-		 */
 
 		return $weight;
 	}
