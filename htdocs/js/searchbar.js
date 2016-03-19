@@ -61,6 +61,9 @@ cm.SearchField.prototype = {
 			this._templateInit();
 		}
 
+		// make ul a node of input field
+		//   to prevent bad behavior on list item clicks
+
 		///////////////////////////////////
 		//////// ADD EVENTS
 		////////////////////////////////
@@ -84,7 +87,7 @@ cm.SearchField.prototype = {
 			self._hideUl();
 		}
 
-		this._input_field.onblur = function() {
+		this._input_field.onblur = function(e) {
 			clearTimeout(self.NAME_SEARCH);
 			self._hideUl();
 			self._clearErrorLi();
@@ -141,6 +144,7 @@ cm.SearchField.prototype = {
 			  self._clearUl();
 			}
 		}
+
 
 		if (this._selector != null) {
 
@@ -305,9 +309,9 @@ cm.SearchField.prototype = {
 			var curIndex = i;
 			var dataItem = data[i];
 
-			// add onclick function to
+			// add onmousedown function to
 			// add value to element
-			item.onclick = function(e) {
+			item.onmousedown = function(e) {
 
 				e.stopPropagation();
 
