@@ -1,28 +1,28 @@
 <?php
 
-	include_once("data/dal_user.php");
-	
-	include_once("data/dal_network.php");
-	include_once("html_builder.php");
-	include_once("environment.php");
-
+	include("environment.php");
 	$cm = new Environment();
-	
+
 	session_name($cm->session_name);
 	session_start();
-?>
-<!DOCTYPE html>
-<html>
-	<head>
-		<?php
-			include "headinclude.php";
-		?>
-		
-		<title>CultureMesh - Connecting the World's Diasporas </title>
-		<meta name="keywords" content="" />
-		<meta name="description" content="Welcome to CultureMesh - Connecting the world's diasporas!" />
-		
-		<?php
+
+	$cm->enableDatabase($dal, $do2db);
+
+	// db shit
+	$cm->closeConnection();
+
+	if (isset($_SESSION['uid']))
+		$logged_in = true;
+	else
+		$logged_in = false;
+
+	$page_loader = new \misc\PageLoader($cm);
+	echo $page_loader->generate('templates' . $cm->ds .'home.html', array(
+		'vars' => $cm->getVars(),
+		'logged_in' => $logged_in
+	));
+
+	/*
 		/////////////////////////////////////////////////////////////////////
 		// MAKING SURE PICTURES VARY N SUCH
 		
@@ -81,8 +81,6 @@
 			$_SESSION['cur_bg'] = $i;
 		?>
 		
-		<?php // NOTE THE PHP IN THE BACKGROUND STMT BELOW!!! 
-		?>
 		<style type='text/css'>
 		#stage-area
 		{
@@ -90,34 +88,12 @@
 		}
 		</style>
 
+		<?php
+			include "headinclude.php";
+		?>
+
 		<script src="<?php echo \Environment::host_root(); ?>/js/searchbar.js"></script>
 
-		<script type="text/javascript">
-
-			cm.Autoloader(function() {
-
-				var searchOne = new cm.SearchField({
-					input_field : document.getElementById('search-1'),
-					clicked : document.getElementById('clik1'),
-					id_field : document.getElementById('varId'),
-					selector : document.getElementById('verb-select'),
-					class_field : document.getElementById('varClass'),
-					ul : document.getElementById('s-var'),
-					topic : document.getElementById('search-topic')
-				});
-
-				var searchTwo = new cm.SearchField({
-					input_field : document.getElementById('search-2'),
-					clicked : document.getElementById('clik2'),
-					id_field : document.getElementById('locId'),
-					class_field : document.getElementById('locClass'),
-					ul : document.getElementById('s-location'),
-				});
-			});
-		</script>
-	</head>
-	<body id="index">
-		<div class="wrapper">
 			<?php
 				include "header.php";
 			?>
@@ -127,89 +103,23 @@
 					$("#signout_panel").fadeOut(5000);
 				</script>
 			<?php endif; ?>
-			<div id="stage-area">
-				<div id="stage-content">
-					<h3 id="stage-title">Connecting the world's diasporas</h3>
+
 					<form id="search-form" class='stage' method="GET" action="//<?php echo \Environment::host_root(); ?>/search/" autocomplete="off">
-					<div id="opening" class='stage'>Find people who
-					<select id="verb-select" name="verb" class="stage-input">
-						<option value="arefrom">are from</option>
-						<option value="speak">speak</option>
-					</select>
-					<span class='at stage'>In/Near</span>
-					</div>
-					<div id="search-bar">
-							<input type="text" class="stage-input" name="search-1" id="search-1" autocomplete="off"></input>
-								<ul id="s-query" class="search"></ul>
-								<ul id="s-var" class="search"></ul>
-								<input type="hidden" id="clik1" name="clik1" value=0></ul>
-								<input type="hidden" id="varId" name="varId" value=-1 />
-								<input type="hidden" id="varClass" name="varClass" value=-1 />
-							<input type="text" class="stage-input" name="search-2" id="search-2" autocomplete="off"></input>
-								<ul id="s-location" class="search"></ul>
-								<input type="hidden" id="clik2" name="clik2" value=0></ul>
-								<input type="hidden" id="locId" name="locId" value=-1 />
-								<input type="hidden" id="locClass" name="locClass" value=-1 />
-							<input type="submit" class="stage-button" value="SEARCH"></input>
-							<input type="hidden" id="search-topic" name="search-topic"></input>
-					</div>
-					</form>
-				</div>
-			</div>
-			<div id="bottom-section">
-				<div id="vision" class="bottom-div">
-					<h4>Our Vision</h4>
-					<div class="bottom-div-material">
-						<p class="bottom-text"> Millions of people live, work, and
-						play outside of their home towns, provinces,
-						states, and countries.
-						</p>
-						<p class="bottom-text"> At CultureMesh, we're building networks to
-						match these real-world dynamics and knit the
-						diverse fabrics of our world together.
-						</p>
-					</div>
-				</div>
-				<div id="process" class="bottom-div">
-					<h4>How it works</h4>
-					<div class="bottom-div-material">
-					<ol>
-						<li><span>1</span>
-						    <p class="bottom-text">Join a network you belong to.
-						    Many places feel like home? At CultureMesh
-						    you can easily switch between networks.
-						    </p>
-						</li>
-						<li><span>2</span>
-						    <p class="bottom-text">Join the conversation. Post your
-						    thoughts and opinions. Share what's
-						    new!
-						    </p>
-						</li>
-						<li><span>3</span>
-						    <p class="bottom-text">Connect to your diaspora - the world
-						    is your playground!
-						    </p>
-						</li>
-					</ol>
-					</div>
-				</div>
-				<div id="pop-networks" class="bottom-div">
-					<h4>Popular Networks</h4>
-					<div class="bottom-div-material">
+
 						<?php
 						$networks = Network::getTopFourNetworks();
 						
 						for ($i = 0; $i < count($networks); $i++)
 							HTMLBuilder::displayPopNetwork($networks[$i]);
 						?>
-					</div>
-				</div>
-				<div class="clear"></div>
-			</div>
-			<?php
-				include "footer.php";
-			?>
-		</div>
-	</body>
-</html>
+	<head>
+		
+		<title>CultureMesh - Connecting the World's Diasporas </title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="Welcome to CultureMesh - Connecting the world's diasporas!" />
+		
+
+
+	</head>
+	 */
+?>

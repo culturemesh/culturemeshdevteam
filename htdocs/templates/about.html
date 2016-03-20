@@ -1,0 +1,61 @@
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ stylesheets }}
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	<script>
+	    $("#menu-about").addClass("active");
+	</script>
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+	<h2 class="pheader text-center">About CultureMesh</h2>
+	<p class="text-center">CultureMesh is building networks to match the real-world dynamics of people living, working, and traveling outside of their home countries to knit the diverse fabrics of our world together.</p>
+
+	<div class="mid-grid">
+
+	</div>
+	<div id="team" class="mid-grid">
+	    <h2 class="pheader text-center">The Team</h2>
+	    <div>
+		{{# team-row }}
+			<div id="team-row-container">
+				<ul class="img-strip-ul team" style="width:{{ team-row.width }}px">
+				<li class="team-member">
+					<div class="team-member">
+						<img src="{{ member.image_src }}" title="{{ member.name }}" alt="{{ member.name }}" class="team_thumb" /></br>
+						<p class="team team-name">{{ member.name }}</p>
+						<p class="team team-job-title">{{ member.title }}</p>
+					</div>
+				</li>
+			</ul>
+			</div>
+		{{/ team-row }}
+		    <div class="clear"></div>
+	    </div>
+	</div>
+
+	<div id="contact" class="bottom-info">
+	    <h2 class="pheader text-center">Contact Us</h2>
+	    <form method="post" action="" class="center-elem fullwidth">
+		<div style="float:left;">
+		<input placeholder="Name" type="text" required name="contact_name" class="input-half left" id="contact_name">
+		<input placeholder="Your Email" type="email" class="input-half right" id="contact_email" name="contact_email">
+		</div>
+		<div class="clear"></div>
+		<textarea class="center-elem full" placeholder="What do you have to say?" name="contact_body" id="contact_body" required></textarea>
+		<input type="submit" value="Send Message" class="btn cm-button center-elem">
+	    </form>
+	</div>
+	{{/ content }}
+
+	{{$ body_scripts }}
+	{{/ body_scripts }}
+
+{{/ layout }}

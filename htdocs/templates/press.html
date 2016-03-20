@@ -1,0 +1,39 @@
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ stylesheets }}
+	<style>
+	    .press_subtitle{
+		font: 20px Lato;
+		color: #333;
+		text-transform: none;
+	    }
+	    .press_body{
+		font: 18px Lato;
+		font-weight: 200;
+		color: #000;
+		
+	    }
+	</style>
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+	<h2>Recent Press</h2>
+	<div class="press">
+		{{# articles }}
+			{{ . }}
+		{{/ articles }}
+	</div>
+	{{/ content }}
+
+	{{$ body_scripts }}
+	{{/ body_scripts }}
+
+{{/ layout }}
