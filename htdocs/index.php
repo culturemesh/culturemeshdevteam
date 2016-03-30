@@ -8,18 +8,73 @@
 
 	$cm->enableDatabase($dal, $do2db);
 
+	$top_networks = $do2db->execute($dal, NULL, 'getTopFourNetworks');
+
 	// db shit
 	$cm->closeConnection();
 
+	//
+	////////////// BACKGROUND IMAGE ////////////
+	//
+	$image_list_filename = \Environment::$site_root . $cm->ds . 'data' . $cm->ds . 'homepage-images.json';
+	$image_list = json_decode( file_get_contents($image_list_filename), True);
+
+	$image_count = count($image_list);
+	$i = rand(0, $image_count - 1);
+	
+	if (isset($_SESSION['cur_bg']))
+	{
+		if ($_SESSION['cur_bg'] == $i)
+		{
+			$i+=1;
+			if ($i > 1)
+			{
+				$i = 0;
+				$_SESSION['cur_bg'] = $i;
+			}
+			else
+				$_SESSION['cur_bg'] = $i;
+		}
+		else
+			$_SESSION['cur_bg'] = $i;
+	}
+	else
+		$_SESSION['cur_bg'] = $i;
+
+	$main_image = $image_list[$i];
+
+	//
+	////////////// RENDER TOP FOUR NETWORKS ////////////
+	//
+
+	// mustache components
+	$m_comp = new \misc\MustacheComponent();
+
+	$top_network_html = NULL;
+
+	if ($top_networks) {
+		//$tmp = file_get_contents($cm->template_dir . $cm->ds . 'home_popular-network.html');
+		$top_network_html = $top_networks->getHTML('top-network', array(
+			'cm' => $cm,
+			'mustache' => $m_comp,
+			'list_template' => '',
+			)
+		);
+	}
+
+	// USER STUFF
 	if (isset($_SESSION['uid']))
 		$logged_in = true;
 	else
 		$logged_in = false;
 
+
 	$page_loader = new \misc\PageLoader($cm);
 	echo $page_loader->generate('templates' . $cm->ds .'home.html', array(
 		'vars' => $cm->getVars(),
-		'logged_in' => $logged_in
+		'logged_in' => $logged_in,
+		'top_networks' => $top_network_html,
+		'main_image' => $main_image
 	));
 
 	/*

@@ -300,5 +300,41 @@ SQL
 
 		return $m;
 	};
+
+$obj->getTopFourNetworks = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT n.id, n.city_cur, n.region_cur, n.country_cur, n.city_origin, n.region_origin, n.country_origin, n.language_origin, n.network_class, nr.member_count, p.post_count
+FROM networks n 
+JOIN (SELECT id_network, COUNT(id_network) AS member_count
+	    FROM network_registration
+	    GROUP BY id_network
+	    ORDER BY member_count DESC) nr  
+ON n.id = nr.id_network
+LEFT JOIN (SELECT p.id_network, COUNT(p.id_network) + IFNULL(pr.reply_count,0) AS post_count
+	FROM posts p
+	LEFT JOIN (SELECT id_network, COUNT(id_network) AS reply_count
+		FROM post_replies
+		GROUP BY id_network) pr
+	ON p.id_network=pr.id_network
+	GROUP BY id_network) p
+ON n.id = p.id_network AND nr.id_network = p.id_network
+GROUP BY n.id
+ORDER BY nr.member_count DESC, p.post_count DESC
+LIMIT 0,4
+SQL
+		/////////////////////////////
+		,	'name' => 'getTopFourNetworks',
+			'returning' => True,
+			'returning_list' => True,
+			'returning_class' => 'dobj\Network',
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
 }
 ?>

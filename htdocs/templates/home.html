@@ -3,6 +3,12 @@
 	{{$ title }}{{page.title}}{{/ title }}
 
 	{{$ stylesheets }}
+	<style type='text/css'>
+		#stage-area
+		{
+			background:url({{ main_image }});
+		}
+	</style>
 	{{/ stylesheets }}
 
 	{{$ more_scripts }}
@@ -106,9 +112,9 @@
 		<div id="pop-networks" class="bottom-div">
 			<h4>Popular Networks</h4>
 			<div class="bottom-div-material">
-				{{# top-networks }}
-				{{ . }}
-				{{/ top-networks }}
+				{{# top_networks }}
+				{{{ . }}}
+				{{/ top_networks }}
 			</div>
 		</div>
 		<div class="clear"></div>
