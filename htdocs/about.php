@@ -8,9 +8,48 @@
 
 	$cm->enableDatabase($dal, $do2db);
 
-	// stuff
-
+	$team_members = $do2db->execute($dal, NULL, 'getTeamMembers');
 	$cm->closeConnection();
+
+	//
+	////////////// RENDER TEAM MEMBERS ////////////
+	//
+
+	// mustache components
+	$m_comp = new \misc\MustacheComponent();
+
+	// Width calculations
+	//
+	$team_members_count = count($team_members);
+	$row_length = 4;
+
+	$ul_count = ceil( $team_members_count / 4 );
+	$pic_length = 205;
+	$item_width = $pic_length + 6;
+	$full_row_width = $item_width * $row_length;
+
+	$team_html = array();
+
+	for($i = 0; $i < $ul_count; $i++) {
+	
+		// count row offset
+		$start_index = ($i * $row_length);
+		$row_list = $team_members->slice($start_index, $row_length, True);
+
+		// get row width
+		$row_width = count($row_list) * $item_width;
+
+		$tmp = file_get_contents($cm->template_dir . $cm->ds . 'about_team-member_ul.html');
+		$row_html = $row_list->getHTML('about', array(
+			'cm' => $cm,
+			'mustache' => $m_comp,
+			'list_template' => $tmp,
+			'list_vars' => array('row_width' => $row_width)
+			)
+		);
+
+		array_push($team_html, $row_html);
+	}
 
 	if (isset($_SESSION['uid']))
 		$logged_in = true;
@@ -20,7 +59,8 @@
 	$page_loader = new \misc\PageLoader($cm);
 	echo $page_loader->generate('templates' . $cm->ds .'about.html', array(
 		'vars' => $cm->getVars(),
-		'logged_in' => $logged_in
+		'logged_in' => $logged_in,
+		'team_html' => $team_html
 	));
 
 	/*

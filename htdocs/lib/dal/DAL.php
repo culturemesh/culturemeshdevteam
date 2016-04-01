@@ -105,6 +105,9 @@ class DAL {
 		include_once('reg-meta.php');
 		\registerMeta($this);
 
+		include_once('reg-site.php');
+		\registerSite($this);
+
 		include_once('reg-tweet.php');
 		\registerTweet($this);
 	}

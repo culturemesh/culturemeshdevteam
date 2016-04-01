@@ -24,20 +24,10 @@
 	<div id="team" class="mid-grid">
 	    <h2 class="pheader text-center">The Team</h2>
 	    <div>
-		{{# team-row }}
-			<div id="team-row-container">
-				<ul class="img-strip-ul team" style="width:{{ team-row.width }}px">
-				<li class="team-member">
-					<div class="team-member">
-						<img src="{{ member.image_src }}" title="{{ member.name }}" alt="{{ member.name }}" class="team_thumb" /></br>
-						<p class="team team-name">{{ member.name }}</p>
-						<p class="team team-job-title">{{ member.title }}</p>
-					</div>
-				</li>
-			</ul>
-			</div>
-		{{/ team-row }}
-		    <div class="clear"></div>
+		    {{# team_html }}
+		    {{{ . }}}
+		    {{/ team_html }}
+		<div class="clear"></div>
 	    </div>
 	</div>
 

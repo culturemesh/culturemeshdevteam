@@ -57,7 +57,6 @@
 		$top_network_html = $top_networks->getHTML('top-network', array(
 			'cm' => $cm,
 			'mustache' => $m_comp,
-			'list_template' => '',
 			)
 		);
 	}
