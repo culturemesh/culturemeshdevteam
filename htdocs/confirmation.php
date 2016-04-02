@@ -1,11 +1,49 @@
 <?php
-//	ini_set('display_errors', true);
-	
 	include 'environment.php';
 	$cm = new Environment();
 	
 	session_name($cm->session_name);
 	session_start();
+
+	// user id
+	$uid = $_GET['uid'];
+	$act_code = $_GET['act_code'];
+	$act_success = False;
+
+	$cm->enableDatabase($dal, $do2db);
+
+	if ($uid !== NULL) {
+	  $user = \dobj\User::createFromId($uid, $dal, $do2db);
+	}
+
+	if (($user !== NULL) && ($user->act_code === $_GET['act_code'])) {
+
+		$act_success = $user->activate($dal, $do2db, $act_code);
+		$_SESSION['uid'] = $user->id; 
+	}
+
+	$cm->closeConnection();
+
+	/*
+	$user = User::getUserById($id, $con);
+	
+	if ($user->act_code === $_GET['act_code']) {
+		if (User::activateUser($_GET['uid'], $_GET['act_code'], $con)) {
+			$act_success = true;
+			$_SESSION['uid'] = $_GET['uid']; 
+		}
+	}
+	 */
+
+
+	$page_loader = new \misc\PageLoader($cm);
+	echo $page_loader->generate('templates' . $cm->ds .'confirmation.html', array(
+		'vars' => $cm->getVars(),
+		'logged_in' => $logged_in,
+		'success' => $act_success,
+		'get' => $_GET
+	));
+	/*
 	include "zz341/fxn.php";
 	include "data/dal_user.php";
 
@@ -28,7 +66,6 @@
 	}
 
 
-?>
 <html>
 	<head>
 		<?php
@@ -74,3 +111,5 @@
 	</div>
 </body>
 </html>
+	 */
+?>

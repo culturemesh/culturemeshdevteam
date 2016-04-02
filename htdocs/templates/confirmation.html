@@ -1,0 +1,45 @@
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{page.title}}{{/ title }}
+
+	{{$ stylesheets }}
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	<script>
+		function resendEmail(uid) {
+			var confirmTxt = document.getElementById("confirm_txt");
+			var query = "uid="+uid;
+
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200)	{
+					confirmTxt.style.display = "block";
+				}
+			}
+			xmlhttp.open("POST", "confirmation_resend.php", true);
+			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xmlhttp.send(query);
+		}
+	</script>
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+		{{# success }}
+			<h3>Your confirmation was successful!</h3>
+			<p>You now have full access to CultureMesh!</p>
+		{{/ success }}
+		{{^ success }}
+			<h3>Your confirmation was unsuccessful.</h3>
+			<a href="#" onclick="resendEmail({{ get.uid }})">Click here to send another confirmation</a>
+			<p id="confirm_txt" style="display:none;">Confirmation sent</p>
+		{{/ success }}
+	{{/ content }}
+
+	{{$ body_scripts }}
+	{{/ body_scripts }}
+
+{{/ layout }}

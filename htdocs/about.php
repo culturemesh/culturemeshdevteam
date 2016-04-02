@@ -51,6 +51,24 @@
 		array_push($team_html, $row_html);
 	}
 
+	//
+	///////////// HANDLE EMAILS
+	//
+        if(isset($_POST['contact_name']) && ($_POST['contact_body'])
+		&& isset($_POST['contact_email'])){
+
+		$contact_us = new \api\ContactUsEmail($cm, $m_comp, 'inottage@yahoo.com', array(
+			'name' => $_POST['contact_name'],
+			'email' => $_POST['contact_email'],
+			'message' => $_POST['contact_body']
+		));
+
+		$success = $contact_us->send();
+        }
+
+	//
+	// LOAD THE PAGE
+	//
 	if (isset($_SESSION['uid']))
 		$logged_in = true;
 	else

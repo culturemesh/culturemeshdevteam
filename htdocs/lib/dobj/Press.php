@@ -17,6 +17,29 @@ class Press extends DisplayDObj {
 
 	public function getHTML($context, $vars) {
 
+		if (!is_string($context)) {
+		  throw new \Exception('Press::getHTML - Proper context not provided. Use \'press\'');
+		}
+
+		// get vars
+		$cm = $vars['cm'];
+		$mustache = $vars['mustache'];
+
+		switch($context) {
+
+		case 'press':
+
+			// get template
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'press-article.html');
+
+			if ($this->thumb_url == NULL) {
+			  $this->thumb_url = 'CM_Logo_Final_square.jpg';
+			}
+
+			return $mustache->render($template, array(
+				'press' => $this));
+		}
+		
 	}
 }
 

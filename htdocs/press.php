@@ -16,10 +16,13 @@
 	session_start();
 
 	$cm->enableDatabase($dal, $do2db);
-
-	// db stuff
-	
+	$press = $do2db->execute($dal, NULL, 'getPress');
 	$cm->closeConnection();
+
+	$m_comp = new \misc\MustacheComponent();
+	$press_html = $press->getHTML('press', array(
+		'cm' => $cm,
+		'mustache' => $m_comp));
 
 	if (isset($_SESSION['uid']))
 		$logged_in = true;
@@ -29,7 +32,8 @@
 	$page_loader = new \misc\PageLoader($cm);
 	echo $page_loader->generate('templates' . $cm->ds .'press.html', array(
 		'vars' => $cm->getVars(),
-		'logged_in' => $logged_in
+		'logged_in' => $logged_in,
+		'press' => $press_html
 	));
 
 	/*

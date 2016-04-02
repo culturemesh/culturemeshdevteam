@@ -70,6 +70,15 @@ class User extends DObj {
 		return $do2db->execute($dal, $user, 'getUserTest');
 	}
 
+	public function activate($dal, $do2db, $act_code) {
+
+		$obj = new \dobj\Blank();
+		$obj->id = $this->id;
+		$obj->act_code = $act_code;
+
+		return $do2db->execute($dal, $obj, 'activateUser');
+	}
+
 	public function getEventsInYourNetworks($dal, $do2db) {
 
 		// set query object
