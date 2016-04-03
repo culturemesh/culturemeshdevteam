@@ -54,16 +54,22 @@
 	//
 	///////////// HANDLE EMAILS
 	//
+	$success = False;
+	$failure = False; // requires two because of templating
+
         if(isset($_POST['contact_name']) && ($_POST['contact_body'])
 		&& isset($_POST['contact_email'])){
 
-		$contact_us = new \api\ContactUsEmail($cm, $m_comp, 'inottage@yahoo.com', array(
+		$contact_us = new \api\ContactUsEmail($cm, $m_comp, 'ken@culturemesh.com', array(
 			'name' => $_POST['contact_name'],
 			'email' => $_POST['contact_email'],
 			'message' => $_POST['contact_body']
 		));
 
 		$success = $contact_us->send();
+		if (!$success)
+		  $failure = True;
+
         }
 
 	//
@@ -78,7 +84,9 @@
 	echo $page_loader->generate('templates' . $cm->ds .'about.html', array(
 		'vars' => $cm->getVars(),
 		'logged_in' => $logged_in,
-		'team_html' => $team_html
+		'team_html' => $team_html,
+		'success' => $success,
+		'failure' => $failure
 	));
 
 	/*
