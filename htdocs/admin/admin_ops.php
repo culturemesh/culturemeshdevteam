@@ -342,8 +342,8 @@ else if ($json_post['op'] == 'MP' && $json_post['operation'] == 'test') {
 
 else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single') 
 {
-	include_once '../lib/misc/Util.php';
-	include_once '../lib/misc/Keymaker.php';
+	include_once 'lib/misc/Util.php';
+	include_once 'lib/misc/Keymaker.php';
 
 	//$cm = new \Environment();
 
@@ -360,6 +360,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 
 	/********************
 	 * SHUT OFF SWITCH
+	 */
 
 	/*
 	$json_response['error'] = 'Exiting early for now...maintenance';
@@ -378,7 +379,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 
 	switch ($json_post['operation']){
 	case 'create':
-		$template = file_get_contents('../templates/sql-insert.sql');
+		$template = file_get_contents('templates/sql-insert.sql');
 
 		// init array
 		$vals = array();
@@ -435,7 +436,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 	case 'update':
 
 		// get update template
-		$template = file_get_contents('../templates/sql-update.sql');
+		$template = file_get_contents('templates/sql-update.sql');
 
 		// get modcols
 		$mod_cols = $json_post['modCols'];
@@ -776,7 +777,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 					'row_values' => implode(',', $row_items)
 				);
 
-				$template = file_get_contents('../templates/sql-insertrow-simple.sql');
+				$template = file_get_contents('templates/sql-insertrow-simple.sql');
 				$row = $m->render($template, $template_data);
 
 				array_push($rows, $row);
@@ -791,7 +792,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 				'insert_rows' => implode(',', $rows)
 			);
 
-			$template = file_get_contents('../templates/sql-insert-simple.sql');
+			$template = file_get_contents('templates/sql-insert-simple.sql');
 			$stmt = $m->render($template, $template_data);
 	 		QueryHandler::executeQuery($stmt, $con);
 		}
@@ -847,7 +848,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 				'where_statements' => implode(' AND ', $where_statements)
 			);
 
-			$template = file_get_contents('../templates/sql-update-simple.sql');
+			$template = file_get_contents('templates/sql-update-simple.sql');
 			$stmt = $m->render($template, $template_data);
 	 		QueryHandler::executeQuery($stmt, $con);
 		}
@@ -878,7 +879,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 				'where_statements' => implode(' AND ', $where_statements)
 			);
 
-			$template = file_get_contents('../templates/sql-update-simple.sql');
+			$template = file_get_contents('templates/sql-update-simple.sql');
 			$stmt = $m->render($template, $template_data);
 			QueryHandler::executeQuery($stmt, $con);
 		}
@@ -887,6 +888,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 	// close dbj connection
 	mysqli_close($con);
 
+	/*
 	// (3)update text data
 	if (in_array(array('name', 'region_id', 'country_id'),
 		$mod_cols) 
@@ -894,6 +896,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 	{
 		TextData::rewrite($json_post['table']);
 	}
+	 */
 
 	// return
 	echo json_encode($response);
