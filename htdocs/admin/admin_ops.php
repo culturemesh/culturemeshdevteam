@@ -115,7 +115,7 @@ if ($_POST['op'] == 'getTableStructure') {
 	$table = $_POST['table'];
 	$client_op = $_POST['client_op'];
 
-	$response['description'] = json_decode(file_get_contents('searchable_table_structure.json'), TRUE)[$table][$client_op];
+	$response['description'] = json_decode(file_get_contents('admin/searchable_table_structure.json'), TRUE)[$table][$client_op];
 
 	/*
 	// WRITE COMmon values
