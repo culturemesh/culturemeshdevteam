@@ -235,7 +235,7 @@ else if ($json_post['op'] == 'searchSearchables') {
 
 	$table = $json_post['table'];
 
-	$srbl_table = json_decode(file_get_contents('searchable_table_structure.json'), TRUE)[$table];
+	$srbl_table = json_decode(file_get_contents('admin/searchable_table_structure.json'), TRUE)[$table];
 	$thing = $srbl_table[$server_op];
 
 	// initialize array
