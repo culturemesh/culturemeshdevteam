@@ -76,7 +76,12 @@ class User extends DObj {
 		$obj->id = $this->id;
 		$obj->act_code = $act_code;
 
-		return $do2db->execute($dal, $obj, 'activateUser');
+		$result = $do2db->execute($dal, $obj, 'activateUser');
+
+		if (get_class($result) == 'PDOStatement') 
+		  return False;
+		else
+		  return True;
 	}
 
 	public function getEventsInYourNetworks($dal, $do2db) {
