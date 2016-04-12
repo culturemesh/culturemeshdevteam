@@ -420,6 +420,21 @@ class Network extends DisplayDObj {
 			}
 
 			return $mustache->render($template, $template_array); 
+			break; // unnecessary, but just in case
+		case 'top-network':
+
+			// get template
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'home_popular-network.html');
+
+			return $mustache->render($template, array(
+				'active' => true,
+				'network' => $this,
+				'title' => $this->getTitle(),
+				'vars' => $cm->getVars()
+				)
+			);
+			break;
+
 		}
 	}
 

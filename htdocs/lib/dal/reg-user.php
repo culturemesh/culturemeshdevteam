@@ -43,6 +43,30 @@ SQL
 
 		return $m;
 	};
+
+	/*
+	 * Activates user account
+	 */
+	$obj->activateUser = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+UPDATE users
+SET confirmed=1			
+WHERE id=? AND act_code=?
+SQL
+		/////////////////////////////////
+		,	'name' => 'getUserById',
+			'params' => array('id', 'act_code'),
+			'param_types' => 'ii',
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
 }
 
 ?>

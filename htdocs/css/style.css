@@ -38,6 +38,12 @@ div.vertical-center {
 	transform: translateY(-50%);
 }
 
+p.p-subtitle {
+
+	font-size: 12px;
+	color: #818181;
+}
+
 /******
 INDEX PAGE
 */

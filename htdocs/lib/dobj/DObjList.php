@@ -85,6 +85,10 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 
 		$displayable = false;
 
+		// give the possibility for list template
+		$mustache = $vars['mustache'];
+		$list_template = $vars['list_template'];
+
 		// check if the item is displayable
 		// by checking first item in list
 		//
@@ -113,7 +117,14 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 				array_push($this->li_html, $html);
 			 }
 
-			 return $this->li_html;
+			 if ($list_template === NULL) {
+			   return $this->li_html;
+			 }
+			 else { // render full list
+				 return $mustache->render($list_template,
+					 array('items' => $this->li_html,
+				 		'list_vars' => $vars['list_vars']));
+			 }
 		 }
 	}
 
@@ -251,6 +262,7 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 		$sl->slist = $splits;
 		return $sl;
 	}
+
 	//////////// NICE TO HAVE ////////////////////
 	public function reverse() {
 		$this->dlist = array_reverse($this->dlist);
@@ -265,7 +277,7 @@ class DObjList implements \Countable, \Iterator, \ArrayAccess {
 			if ($length > count($this))
 			  $length = count($this);
 
-			for($i = $offset; $i < ($offset + $length); $i++) {
+			for($i = $offset; ($i < ($offset + $length)) && (isset($this[$i])); $i++) {
 			  $list->dInsert( $this[$i] );
 			}
 
