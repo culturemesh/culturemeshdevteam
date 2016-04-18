@@ -448,8 +448,8 @@ cm.NetworkSearcher.prototype = {
 
 		// check if two things not undefined 
 
-		var originRadios = $( this._originRadioDiv ).children('div.searchable-radio');
-		var locationRadios = $( this._locationRadioDiv ).children('div.searchable-radio');
+		var originRadios = $( this._originRadioDiv ).children('ul').children('div.searchable-radio');
+		var locationRadios = $( this._locationRadioDiv ).children('ul').children('div.searchable-radio');
 
 		// check for named radio values
  
