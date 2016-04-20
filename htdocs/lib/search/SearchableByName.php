@@ -184,7 +184,7 @@ class SearchableByName extends Search {
 			}
 		}
 
-		if ($this->search_class == 'language') {
+		if ($this->search_class == 'language' || $this->search_table == 'languages') {
 		  $query_name = 'getLanguagesByName';
 		}
 
