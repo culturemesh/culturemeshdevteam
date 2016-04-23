@@ -183,6 +183,7 @@ Operation.prototype.activatePanel = function() {
 		// create search bar
 		//var searchbar = new SSearchBar('ssearchbar', this.operation, this.singobatch, this.table);
 		var searchbar = new cm.SearchField({
+					target_div : 'ssearchbar',
 					input_field : 'search-1',
 					clicked : 'clik1',
 					ul : 's-var',
@@ -210,17 +211,13 @@ Operation.prototype.activatePanel = function() {
 			// prevent default event behavior.
 			e.preventDefault();
 
-			// it's submitting the search results
-			// i could get it to return the search results here
-			var val = searchbar._getValue();
-
 			// what did you 
 			// think it was gonna do? Cure cancer?
 			var formData = {
 				op : 'searchSearchables',
 				client_op : 'update',
 				table : tables,
-				query : val
+				search_values : searchbar._getSearchValues()
 			};
 
 			var result = null;
@@ -481,6 +478,7 @@ Operation.prototype.activateFinds = function() {
 			table);
 			*/
 		var temp_bar = new cm.SearchField({
+					target_div : 'ssearchbar-alt',
 					input_field : 'search-1',
 					clicked : 'clik1',
 					ul : 's-var',
@@ -512,7 +510,7 @@ Operation.prototype.activateFinds = function() {
 				op : 'searchSearchables',
 				client_op : 'find',
 				table : table,
-				query : val
+				search_values : temp_bar._getSearchValues()
 			};
 
 			var result = null;

@@ -26,11 +26,6 @@ include_once '../data/loc_item.php';
 
 $cm = new \Environment();
 
-/*
-ini_set('display_errors', true);
-error_reporting(E_ALL ^ E_NOTICE);
-*/
-
 $json_post = json_decode($HTTP_RAW_POST_DATA, true);
 
 $location_tables = array('cities', 'regions', 'countries');
@@ -203,6 +198,26 @@ else if ($json_post['op'] == 'searchSearchables') {
 			'NUMERIC_PRECISION', 'NUMERIC_SCALE', 'FK')
 	);
 
+	$search_array = array(
+		'value' => $json_post['search_values']['value'],
+		'clicked' => $json_post['search_values']['clicked'],
+		'query_id' => (int) $json_post['search_values']['query_id'],
+		'query_class' => $json_post['search_values']['query_class'],
+	);
+
+	// prepare for db
+	$cm->enableDatabase($dal, $do2db);
+
+	// initialize search manager
+	$search_manager = new \search\SearchManager($cm, $dal, $do2db, NULL);
+
+	$search = new \search\SearchableIdSearch($search_array['query_id'], $search_array['query_class']);
+	$search_manager->setSearch( $search );
+	$srbl = $search_manager->getResults();
+
+	$cm->closeConnection();
+
+	/*
 	// get location shiz
 	$values = explode(', ', $json_post['query']);
 
@@ -221,6 +236,7 @@ else if ($json_post['op'] == 'searchSearchables') {
 		$srbl = Location::getCOByNameF($values[0], $values[1]);
 		break;
 	}
+	 */
 
 	/*
 	if ($json_post['client_op'] == 'find') {
@@ -243,13 +259,14 @@ else if ($json_post['op'] == 'searchSearchables') {
 
 	for($i=0; $i < count($thing); $i++) {
 
-		$item_value = $srbl[$thing[$i]['COLUMN_NAME']];
+		//$item_value = $srbl[$thing[$i]['COLUMN_NAME']];
+		$item_value = $srbl->$thing[$i]['COLUMN_NAME'];
 
 		// in case we're dealing with 
 		// a column name that isn't a db column
 		//
-		if (isset($srbl[$thing[$i]['column_key']]))
-		  $item_value = $srbl[$thing[$i]['column_key']];
+		if (isset($srbl->$thing[$i]['column_key']))
+		  $item_value = $srbl->$thing[$i]['column_key'];
 
 		$thing[$i]['value'] = $item_value;
 	}

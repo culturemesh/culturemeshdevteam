@@ -10,6 +10,7 @@ cm.SearchField = function(user_options) {
 		MIN_LENGTH : 2,
 		KEY_DELAY : 800,
 		/////// OPTIONAL /////////////
+		div_id : null,
 		selector : null,
 		topic : null,
 		display_table : null,
@@ -176,13 +177,19 @@ cm.SearchField.prototype = {
 		/////////////////////////////////////////////
 		// ADD ELEMENTS
 		// //////////
-		this._input_field = document.getElementById( this._options.input_field );
-		this._clicked = document.getElementById( this._options.clicked );
-		this._ul = document.getElementById( this._options.ul );
-		this._id_field = document.getElementById( this._options.id_field );
-		this._class_field = document.getElementById( this._options.class_field );
-		this._submit_button = document.getElementById( this._options.submit_button );
+		this._target_div = document.getElementById( this._options.target_div );
 
+		this._input_field = $( this._target_div ).find('#' + this._options.input_field).get(0);
+		//this._submit_button = document.getElementById( this._options.submit_button );
+		this._submit_button = $( this._target_div ).find('#' + this._options.submit_button).get(0); 
+		//this._clicked = document.getElementById( this._options.clicked );
+		this._clicked = $( this._target_div ).find('#' + this._options.clicked).get(0); 
+		//this._ul = document.getElementById( this._options.ul );
+		this._ul = $( this._target_div ).find('#' + this._options.ul).get(0); 
+		//this._id_field = document.getElementById( this._options.id_field );
+		this._id_field = $( this._target_div ).find('#' + this._options.id_field).get(0); 
+		//this._class_field = document.getElementById( this._options.class_field );
+		this._class_field = $( this._target_div ).find('#' + this._options.class_field).get(0); 
 	},
 	_searchCall : function(search_array) {
 
@@ -454,6 +461,15 @@ cm.SearchField.prototype = {
 	},
 	_getValue : function() {
 		return $( this._input_field ).val();
+	},
+	_getSearchValues : function() {
+		return {
+			value : $( this._input_field ).val(),
+			query_id : $( this._id_field ).val(),
+			query_class : $( this._class_field ).val(),
+			clicked : $( this._clicked ).val()
+
+		};
 	}
 };
 
