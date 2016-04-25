@@ -383,7 +383,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 	$json_response['error'] = 'Exiting early for now...maintenance';
 	echo json_encode($json_response);
 	exit();
-	 */
+	*/
 
 	/********************
 	 * SHUT OFF SWITCH
@@ -738,7 +738,7 @@ else if ($json_post['op'] == 'MP' && $json_post['singobatch'] == 'single')
 
 			/// Create keys for metaphone
 			//
-			$keymaker = new \misc\Keymaker('../data/');
+			$keymaker = new \misc\Keymaker('data/');
 			$keys = $keymaker->generateKeys($name);
 
 			//
