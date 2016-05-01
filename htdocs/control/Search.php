@@ -12,6 +12,8 @@ class Search {
 
 	public static function match($cm, $params) {
 
+		$mobile_detect = new \misc\MobileDetect();
+
 		// start session
 		session_name($cm->session_name);
 		session_start();
@@ -113,6 +115,8 @@ class Search {
 		// close connection
 		$cm->closeConnection();
 
+		$page_loader = new \misc\PageLoader($cm, $mobile_detect);
+		/*
 		// base layout
 		$base = $cm->getBaseTemplate();
 
@@ -123,6 +127,7 @@ class Search {
 				'layout' => $base
 			),
 		));
+		 */
 
 		/////// make components //////////
 		$m_comp = new \misc\MustacheComponent();
@@ -289,7 +294,6 @@ class Search {
 		}
 
 
-
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'search' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
@@ -314,8 +318,11 @@ class Search {
 			'site_user' => $site_user
 		);
 
+		echo $page_loader->generate(\Environment::$site_root . $cm->ds . 'search' . $cm->ds . 'templates'.$cm->ds.'index.html',
+			$page_vars);
+
 		// display the page proudly, chieftain
-		echo $m->render($template, $page_vars);
+		//echo $m->render($template, $page_vars);
 	}
 }
 

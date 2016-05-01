@@ -677,5 +677,41 @@ SQL
 
 		return $m;
 	};
+
+	$obj->getLocationsByGeolocation = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+
+		$m->setValues(array(
+			'query' => <<<SQL
+SELECT *
+FROM cities
+WHERE latitude <= ?
+AND latitude >= ?
+AND longitude <= ?
+AND longitude >= ?
+SQL
+		/////////////////////////////////
+		,	'test_query' => <<<SQL
+				test
+SQL
+		/////////////////////////////////
+		,	'name' => 'LanguageDoubleKeySearch',
+			'params' => array('latitude_upper_bound', 'latitude_lower_bound',
+				'longitude_upper_bound', 'longitude_lower_bound'),
+			'param_types' => 'llll',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_value' => False,
+			'returning_assoc' => False,
+			'returning_list' => True,
+			'returning_class' => 'dobj\City',
+			'returning_cols' => array()
+		));
+
+		$m->setConnection($con);
+
+		return $m;
+	};
 }
 ?>

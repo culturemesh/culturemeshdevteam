@@ -6,6 +6,9 @@
 	session_name($cm->session_name);
 	session_start();
 
+	// Basic test for mobile device
+	$mobile_detect = new \misc\MobileDetect();
+
 	$cm->enableDatabase($dal, $do2db);
 
 	$team_members = $do2db->execute($dal, NULL, 'getTeamMembers');
@@ -80,7 +83,7 @@
 	else
 		$logged_in = false;
 
-	$page_loader = new \misc\PageLoader($cm);
+	$page_loader = new \misc\PageLoader($cm, $mobile_detect);
 	echo $page_loader->generate('templates' . $cm->ds .'about.html', array(
 		'vars' => $cm->getVars(),
 		'logged_in' => $logged_in,

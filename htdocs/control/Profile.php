@@ -11,6 +11,8 @@ class Profile {
 
 	public static function match($cm, $params) {
 
+		$mobile_detect = new \misc\MobileDetect();
+
 		// start session
 		session_name($cm->session_name);
 		session_start();
@@ -65,6 +67,8 @@ class Profile {
 		// END 
 		$cm->closeConnection();
 
+		$page_loader = new \misc\PageLoader($cm, $mobile_detect);
+		/*
 		// base layout
 		$base = $cm->getBaseTemplate();
 
@@ -75,6 +79,7 @@ class Profile {
 				'layout' => $base
 			),
 		));
+		 */
 
 		// mustache components
 		$m_comp = new \misc\MustacheComponent();
@@ -167,6 +172,9 @@ class Profile {
 				),
 		);
 
-		echo $m->render($template, $page_vars);
+		echo $page_loader->generate(\Environment::$site_root . $cm->ds . 'profile' . $cm->ds . 'templates'.$cm->ds.'index.html',
+			$page_vars);
+
+		//echo $m->render($template, $page_vars);
 	}
 }

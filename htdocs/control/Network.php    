@@ -17,6 +17,8 @@ class Network {
 
 		$nid = $params['id'];
 
+		$mobile_detect = new \misc\MobileDetect();
+
 		// set session var
 		$_SESSION['cur_network'] = $nid;
 
@@ -159,6 +161,7 @@ class Network {
 		// close connection
 		$cm->closeConnection();
 
+		/*
 		// base layout
 		$base = $cm->getBaseTemplate();
 
@@ -169,6 +172,9 @@ class Network {
 				'layout' => $base
 			),
 		));
+		 */
+
+		$page_loader = new \misc\PageLoader($cm, $mobile_detect);
 
 		/////// make components //////////
 		$m_comp = new \misc\MustacheComponent();
@@ -338,8 +344,13 @@ class Network {
 			'site_user' => $site_user
 		);
 
+		echo $page_loader->generate(\Environment::$site_root . $cm->ds . 'network' . $cm->ds . 'templates'.$cm->ds.'index.html',
+			$page_vars);
+
+		/*
 		// display the page proudly, chieftain
 		echo $m->render($template, $page_vars);
+		 */
 	}
 }
 ?>

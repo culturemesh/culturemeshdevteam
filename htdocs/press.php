@@ -12,6 +12,8 @@
 	include("environment.php");
 	$cm = new Environment();
 
+	$mobile_detect = new \misc\MobileDetect();
+
 	session_name($cm->session_name);
 	session_start();
 
@@ -29,7 +31,7 @@
 	else
 		$logged_in = false;
 
-	$page_loader = new \misc\PageLoader($cm);
+	$page_loader = new \misc\PageLoader($cm, $mobile_detect);
 	echo $page_loader->generate('templates' . $cm->ds .'press.html', array(
 		'vars' => $cm->getVars(),
 		'logged_in' => $logged_in,
