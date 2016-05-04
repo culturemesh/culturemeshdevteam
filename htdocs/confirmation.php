@@ -28,6 +28,7 @@
 	echo $page_loader->generate('templates' . $cm->ds .'confirmation.html', array(
 		'vars' => $cm->getVars(),
 		'logged_in' => $logged_in,
+		'site_user' => $user,
 		'success' => $act_success,
 		'get' => $_GET
 	));

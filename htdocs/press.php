@@ -16,7 +16,23 @@
 	session_start();
 
 	$cm->enableDatabase($dal, $do2db);
+
+	$logged_in = false;
+	$site_user = NULL;
+
+	// USER STUFF
+	if (isset($_SESSION['uid'])) {
+
+		$logged_in = true;
+
+		// check if user is registered
+		// if so, get user info
+		$site_user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db)->prepare($cm);
+	}
+
+	// get press
 	$press = $do2db->execute($dal, NULL, 'getPress');
+
 	$cm->closeConnection();
 
 	$m_comp = new \misc\MustacheComponent();
@@ -24,15 +40,11 @@
 		'cm' => $cm,
 		'mustache' => $m_comp));
 
-	if (isset($_SESSION['uid']))
-		$logged_in = true;
-	else
-		$logged_in = false;
-
 	$page_loader = new \misc\PageLoader($cm);
 	echo $page_loader->generate('templates' . $cm->ds .'press.html', array(
 		'vars' => $cm->getVars(),
 		'logged_in' => $logged_in,
+		'site_user' => $site_user,
 		'press' => $press_html
 	));
 

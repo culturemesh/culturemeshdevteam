@@ -8,6 +8,21 @@
 
 	$cm->enableDatabase($dal, $do2db);
 
+	//
+	// USER STUFF
+	//
+	$site_user = NULL;
+	$logged_in = false;
+	
+	if (isset($_SESSION['uid'])) {
+		$logged_in = true;
+
+		// check if user is registered
+		// if so, get user info
+		$site_user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db)->prepare($cm);
+	}
+
+	// GET TEAM MEMBERS
 	$team_members = $do2db->execute($dal, NULL, 'getTeamMembers');
 	$cm->closeConnection();
 
@@ -72,18 +87,12 @@
 
         }
 
-	//
-	// LOAD THE PAGE
-	//
-	if (isset($_SESSION['uid']))
-		$logged_in = true;
-	else
-		$logged_in = false;
 
 	$page_loader = new \misc\PageLoader($cm);
 	echo $page_loader->generate('templates' . $cm->ds .'about.html', array(
 		'vars' => $cm->getVars(),
 		'logged_in' => $logged_in,
+		'site_user' => $site_user,
 		'team_html' => $team_html,
 		'success' => $success,
 		'failure' => $failure
