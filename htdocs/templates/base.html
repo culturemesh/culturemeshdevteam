@@ -19,6 +19,10 @@
 			cm.home_path = "{{ vars.hostname }}";
 		</script>
 
+		<!--
+		<link href="{{ vars.hostname }}/css/bootstrap.css" rel="stylesheet">
+		-->
+		<link href="{{ vars.hostname }}/bootstrap-3.3.6/css/bootstrap.css" rel="stylesheet">
 		<link href="{{ vars.hostname }}/css/bootstrap.css" rel="stylesheet">
 		<link href="{{ vars.hostname }}/css/style.css#" rel="stylesheet">
 		{{$ stylesheets }}
@@ -29,7 +33,10 @@
 		<script src="{{ vars.hostname }}/js/parsley.min.js"></script>
 
 		<script src="{{ vars.hostname }}/js/jquery-ui.js"></script>
+		<!--
 		<script src="{{ vars.hostname }}/js/bootstrap.js"></script>
+		-->
+		<script src="{{ vars.hostname }}/bootstrap-3.3.6/js/bootstrap.js"></script>
 		<script src="{{ vars.hostname }}/js/validation.js"></script>
 		<script src="{{ vars.hostname }}/js/account.js"></script>
 		<script src="{{ vars.hostname }}/js/autoloader.js"></script>
@@ -132,12 +139,12 @@
 	</head>
 	<body>
 
-		<div class="wrapper">
-			<div id="header">
-				<div id="top-logo">
+		<div class="wrapper container">
+			<div id="header" class="row">
+				<div id="top-logo" class="col-lg-4 col-md-4">
 					<a href="{{ vars.hostname }}/index.php"><img src="{{ vars.hostname }}/images/logo_header.png"></a>
 				</div>
-				<div id="right-top-btns">
+				<div id="right-top-btns" class="hidden-sm hidden-xs">
 					<ul id="top-links">
 						<li><a id="menu-about" href="{{ vars.hostname }}/about.php">About</a></li>
 						<!--<li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>-->
@@ -150,6 +157,10 @@
 						<li><a id="register-link" href="#register_modal" data-toggle="modal">Sign Up</a></li>
 						{{/ logged_in }}
 					</ul>
+				</div>
+				<div class="header-mobile-icons hidden-md hidden-lg">
+					<div>Search</div>
+					<div>Hamburger</div>
 				</div>
 				<div id="register_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
 					<div class="modal-header">
@@ -260,13 +271,26 @@
 			{{/ vars.maintenance.notification }}
 			{{$ content }}
 			{{/ content }}
-			<div class="footer">
-			    <ul id="bottom-links" class="text-center">
+			<div class="footer row">
+			    <ul id="bottom-links" class="text-center hidden-sm hidden-xs">
 				    <li><a href="{{ vars.hostname }}/careers.php">Careers</a></li>
 				    <li><a href="{{ vars.hostname }}/about.php#team">Team</a></li>
 				    <li><a href="{{ vars.hostname }}/press.php">Press</a></li>
 				    <li><a href="{{ vars.hostname }}/about.php#contact">Contact</a></li>
 			    </ul>
+			    <div class="hidden-md hidden-lg">
+				    <div class="footer-mobile-share-buttons">
+				    </div>
+				    <div class="footer-mobile-links">
+					    <div><a href="{{ vars.hostname }}/careers.php">Careers</a></div>
+					    <div><a href="{{ vars.hostname }}/about.php#team">Team</a></div>
+					    <div><a href="{{ vars.hostname }}/press.php">Press</a></div>
+					    <div><a href="{{ vars.hostname }}/about.php#contact">Contact</a></div>
+				    </div>
+				    <div class="footer-mobile-copyright">
+					    <p>Copyright 2016 CultureMesh</p>
+				    </div>
+			    </div>
 			</div>
 		</div>
 

@@ -52,13 +52,20 @@ body {
     background:white;
 }
 
+@media(max-width: 600px) {
+	body {
+	  background:#F1EFF0;
+	}
+}
+
 .wrapper{
-    width: 960px;
+    /* width: 960px; */
     margin: 0px auto;
 }
 
 #stage-area{
     /*background:url("../images/cmfrontpage_image3.png");*/
+    background-repeat:no-repeat;
     height:525px;
     overflow:hidden;
 }
@@ -1736,6 +1743,11 @@ p.team.team-name {
     border-bottom: 3px solid #ccc;
     /*margin-bottom:30px;*/
 }
+@media(max-width: 600px) {
+	#header {
+	  background:#FFFFFF;
+	}
+}
 #header #top-logo{
     text-align: left;
     width:35%;
@@ -1743,6 +1755,10 @@ p.team.team-name {
     margin-top:20px;
     margin-bottom:20px;
 }
+.header-mobile-icons > div{
+	float:right;
+}
+
 img.menu-logo{
     position:relative;
     top:15px;
@@ -1828,11 +1844,17 @@ ul#bottom-links li, ul#top-links li{
 }
 .footer{
 	background: #97cb38;
-	color: #fff;
 	font-size: 14px;
         font-weight: 300;
         padding: 10px;
 }
+
+@media(max-width: 600px) {
+	.footer{ 
+	  background: #fff;
+	}
+}
+
 .footer a{
 	color: #fff;
 	text-decoration: none;
@@ -1841,6 +1863,15 @@ ul#bottom-links li, ul#top-links li{
 .footer-logo{
 	float:left;
 }
+
+.footer-mobile-links > div > a {
+	color: #7a7a7a;
+}
+
+.footer-mobile-copyright {
+	color: #919191;
+}
+
 .cm-button{
     background: #e34036;
     color: #fff;
