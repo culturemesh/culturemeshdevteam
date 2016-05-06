@@ -130,7 +130,6 @@
 		});
 		</script>
 
-
 		{{$ more_scripts }}
 		{{/ more_scripts }}
 
@@ -138,13 +137,29 @@
 		{{/ autoload_scripts }}
 	</head>
 	<body>
+		<svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<defs>
+			<!-- SEARCH -->
+			<symbol id="icon-search" viewBox="0 0 32 32">
+				<title>search</title>
+				<path class="path1" d="M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"></path>
+			</symbol>
 
-		<div class="wrapper container">
+			<!-- MENU -->
+			<symbol id="icon-menu" viewBox="0 0 32 32">
+				<title>menu</title>
+				<path class="path1" d="M2 6h28v6h-28zM2 14h28v6h-28zM2 22h28v6h-28z"></path>
+			</symbol>
+		</defs>
+		</svg>
+
+		<div class="wrapper container-fluid">
 			<div id="header" class="row">
-				<div id="top-logo" class="col-lg-4 col-md-4">
+				<div id="top-logo" class="col-lg-4 col-md-4 col-sm-6 col-xs-8">
 					<a href="{{ vars.hostname }}/index.php"><img src="{{ vars.hostname }}/images/logo_header.png"></a>
 				</div>
-				<div id="right-top-btns" class="hidden-sm hidden-xs">
+				<div class="col-lg-4 col-md-4 col-sm-2 hidden-xs"></div>
+				<div id="right-top-btns" class="col-lg-4 col-md-4 hidden-sm hidden-xs">
 					<ul id="top-links">
 						<li><a id="menu-about" href="{{ vars.hostname }}/about.php">About</a></li>
 						<!--<li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>-->
@@ -158,9 +173,13 @@
 						{{/ logged_in }}
 					</ul>
 				</div>
-				<div class="header-mobile-icons hidden-md hidden-lg">
+				<div class="header-mobile-icons col-sm-4 col-xs-4 hidden-md hidden-lg">
+					<svg class="custom-icon icon-search"><use xlink:href="#icon-search"></use></svg>
+					<svg class="custom-icon icon-menu"><use xlink:href="#icon-menu"></use></svg>
+					<!--
 					<div>Search</div>
 					<div>Hamburger</div>
+					-->
 				</div>
 				<div id="register_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
 					<div class="modal-header">
@@ -269,8 +288,10 @@
 				<p>It should last about {{ vars.maintenance.duration }}</p>
 			</div>
 			{{/ vars.maintenance.notification }}
+			<div class="row">
 			{{$ content }}
 			{{/ content }}
+			</div>
 			<div class="footer row">
 			    <ul id="bottom-links" class="text-center hidden-sm hidden-xs">
 				    <li><a href="{{ vars.hostname }}/careers.php">Careers</a></li>

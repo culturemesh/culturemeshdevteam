@@ -45,6 +45,42 @@ p.p-subtitle {
 }
 
 /******
+ * MAIN TEMPLATE
+ */
+.header-mobile-icons {
+
+}
+
+.custom-icon {
+	display: inline-block;
+	width: 2em;
+	height: 2em;
+	/*fill: currentColor;*/
+	fill: #EE542E;
+	/* Because of bootstrap*/
+	background:none;
+	margin-left: 4px;
+}
+
+.footer-mobile-links {
+	text-align:center;
+}
+
+.footer-mobile-links > div {
+	margin-bottom: 15px;
+}
+
+.footer-mobile-links > div > a {
+	color: #7a7a7a;
+	font-size: 21px;
+}
+
+.footer-mobile-copyright {
+	color: #919191;
+	text-align:center;
+}
+
+/******
 INDEX PAGE
 */
 
@@ -52,7 +88,7 @@ body {
     background:white;
 }
 
-@media(max-width: 600px) {
+@media(max-width: 992px) {
 	body {
 	  background:#F1EFF0;
 	}
@@ -1741,17 +1777,18 @@ p.team.team-name {
 
 #header{
     border-bottom: 3px solid #ccc;
+    height:100px;
     /*margin-bottom:30px;*/
 }
-@media(max-width: 600px) {
+@media(max-width: 992px) {
 	#header {
 	  background:#FFFFFF;
 	}
 }
-#header #top-logo{
+#top-logo{
     text-align: left;
-    width:35%;
-    float:left;
+    /* width:35%; 
+    float:left;*/
     margin-top:20px;
     margin-bottom:20px;
 }
@@ -1778,8 +1815,10 @@ ul#top-links a{
 }
 #right-top-btns{
     text-align:right;
+    /*
     float:right;
     width:64%;
+    */
     margin-top:50px;
 }
 
@@ -1849,7 +1888,7 @@ ul#bottom-links li, ul#top-links li{
         padding: 10px;
 }
 
-@media(max-width: 600px) {
+@media(max-width: 992px) {
 	.footer{ 
 	  background: #fff;
 	}
@@ -1862,14 +1901,6 @@ ul#bottom-links li, ul#top-links li{
 }
 .footer-logo{
 	float:left;
-}
-
-.footer-mobile-links > div > a {
-	color: #7a7a7a;
-}
-
-.footer-mobile-copyright {
-	color: #919191;
 }
 
 .cm-button{
