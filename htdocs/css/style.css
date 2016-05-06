@@ -1689,6 +1689,11 @@ button.upload-img-delete {
 	padding: 10px;
 }
 
+.cm_error_no_border {
+	color: #e2747d;
+	font: bold 14px Lato,sans-serif;
+}
+
 .cm_success {
 
 	background-color: #0088cc;

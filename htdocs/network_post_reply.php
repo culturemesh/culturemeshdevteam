@@ -49,6 +49,13 @@ else {
 	$reply->id_network = $nid;
 	$reply->id_user = $uid;
 
+	// Check for empty reply
+	if (strlen( $reply->reply_text) <= 0 ) {
+		$json_response['error'] = 'No text in reply';
+		echo json_encode($json_response);
+		exit();
+	}
+
 	// set up post
 	//$success = Post::createReply($text, $nid, $uid, $id_parent, $con);
 	

@@ -20,6 +20,13 @@ if (!isset($_POST['nid']) || !isset($_POST['uid']) || !isset($_POST['id_cmtweet'
 		exit();
 }
 
+// Check for empty reply
+if (strlen( $_POST['reply_text']) <= 0 ) {
+	$json_response['error'] = 'No text in reply';
+	echo json_encode($json_response);
+	exit();
+}
+
 //
 // Now let's get on with it
 //
