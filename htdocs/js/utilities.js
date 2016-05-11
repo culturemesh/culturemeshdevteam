@@ -589,3 +589,12 @@ cm.NetworkSearcher.prototype = {
 
 	}
 };
+
+cm.Overlay = function(user_options) {
+
+	this._options = cm.extend({}, user_options);
+}
+
+cm.Overlay.prototype = {
+
+}

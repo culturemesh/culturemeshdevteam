@@ -153,12 +153,13 @@
 		</defs>
 		</svg>
 
+
 		<div class="wrapper container-fluid">
 			<div id="header" class="row">
 				<div id="top-logo" class="col-lg-4 col-md-4 col-sm-6 col-xs-8">
 					<a href="{{ vars.hostname }}/index.php"><img src="{{ vars.hostname }}/images/logo_header.png"></a>
 				</div>
-				<div class="col-lg-4 col-md-4 col-sm-2 hidden-xs"></div>
+				<div class="col-lg-4 col-md-4 col-sm-4 hidden-xs"></div>
 				<div id="right-top-btns" class="col-lg-4 col-md-4 hidden-sm hidden-xs">
 					<ul id="top-links">
 						<li><a id="menu-about" href="{{ vars.hostname }}/about.php">About</a></li>
@@ -173,9 +174,10 @@
 						{{/ logged_in }}
 					</ul>
 				</div>
-				<div class="header-mobile-icons col-sm-4 col-xs-4 hidden-md hidden-lg">
+				<div class="header-mobile-icons col-sm-2 col-xs-4 hidden-md hidden-lg row">
+					<div class=""></div>
 					<svg class="custom-icon icon-search"><use xlink:href="#icon-search"></use></svg>
-					<svg class="custom-icon icon-menu"><use xlink:href="#icon-menu"></use></svg>
+					<svg class="custom-icon icon-menu" onclick="testSidebar()"><use xlink:href="#icon-menu"></use></svg>
 					<!--
 					<div>Search</div>
 					<div>Hamburger</div>
@@ -315,6 +317,22 @@
 			</div>
 		</div>
 
+		<div id="side-menu" class="container-fluid">
+			<div class="sidebar">
+				<div class="user-buttons row">
+					<button class="col-sm-6 col-xs-6">Login</button>
+					<button class="col-sm-6 col-xs-6">Register</button>
+				</div>
+				<div class="page-menu">
+					<ul>
+					<li>One</li>
+					<li>Two</li>
+					<li>Three</li>
+					<ul>
+				</div>
+			</div>
+		</div>
+
 		<script>
 			function toggleLogin() {
 				$("#register_modal").modal('hide');
@@ -356,6 +374,28 @@
 				}
 			}
 		}
+		</script>
+		
+		<script>
+			var TOP_COORD = 20;
+
+			function testSidebar() {
+
+				var left_coord = 100;
+
+				// if already set over, change to the other way
+				if ($("#side-menu").offset().left == 100)
+				  left_coord = $( window ).width();
+				
+				$("#side-menu").show().animate({left : left_coord },
+					200, function() {
+
+					if (left_coord == $( window ).width()) {
+					  $("#side-menu").hide();
+					}
+				});
+
+			}
 		</script>
 		{{$ body_scripts }}
 		{{/ body_scripts }}

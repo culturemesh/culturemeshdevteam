@@ -80,12 +80,37 @@ p.p-subtitle {
 	text-align:center;
 }
 
+/*
+.sidebar {
+	position:absolute;
+	top: 20px;
+	left: 20px;
+	height: 3000px;
+}
+*/
+#side-menu {
+	position:absolute;
+	top: 20px;
+	left: 20px;
+	height: auto;
+	overflow-y: hidden;
+	overflow-x: hidden;
+
+	background-color:gray;
+}
+
+.sidebar {
+
+	width: 80%;
+}
+
 /******
 INDEX PAGE
 */
 
 body {
     background:white;
+	overflow-x:hidden;
 }
 
 @media(max-width: 992px) {
@@ -1792,8 +1817,10 @@ p.team.team-name {
     margin-top:20px;
     margin-bottom:20px;
 }
-.header-mobile-icons > div{
-	float:right;
+.header-mobile-icons {
+	position:relative;
+	top:30px;
+	text-align:right;
 }
 
 img.menu-logo{
