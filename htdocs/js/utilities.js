@@ -4,6 +4,14 @@
 
 var cm = cm || {};
 
+// Guess...
+cm.isArray = function( variable ) {
+	if (Object.prototype.toString.call( variable ) === '[object Array]')
+	  return true;
+	else
+	  return false;
+}
+
 /**
  * Adds all missing properties from second obj to first obj
  */
@@ -277,6 +285,143 @@ cm.DisposeSupport = {
   _attach: function() {
     this.addDisposer(cm.attach.apply(this, arguments));
   }
+};
+
+// ElementMap so you don't have to specify all these different
+// elements when creating dom modules
+
+cm.ElementMap = function(element) {
+
+	var child = element.firstChild;
+
+	while (child && child != null) {
+
+		if (child.nodeType == 1) {
+
+			childClass = child.className;
+			childId = child.id;
+
+			// HANDLE ID
+			if (childId !== "") {
+				this._addChild(childId, child);
+			}
+
+			// HANDLE CLASS
+			//
+			// Cases:
+			// 0) No class name
+			// 1) Single class (no spaces)
+			// 2) Multiple classes
+			//
+			if (childClass !== "") {
+				class_split = childClass.split(' ');
+
+				if (class_split.length == 1)
+				  this._addChild(childClass, child);
+				else {
+
+					for(var i = 0; i < class_split.length; i++) {
+					  this._addChild(class_split[i], child);
+					}
+				}
+			}
+
+			// check to see if this has children
+			//   if so, make recursive call
+			if (child.childNodes.length > 0) {
+				//this.extendMap( cm.mapChildren( child ) );
+				//
+
+				// VERSION 1.0
+				var childMap = new cm.ElementMap( child );
+				this._extendMap( childMap );
+			} // endif
+
+		} // endif
+
+		child = child.nextSibling;
+	}
+};
+
+cm.ElementMap.prototype = {
+
+	// Registers an element in the map
+	//  should skip functions
+	//  
+	//  Makes array if not already an array
+	//
+	_addChild : function(key, child) {
+
+		if (this[key] !== undefined) {
+
+			// check if is array
+			if ( cm.isArray( this[key]) ) {
+			  this[key].push( child );
+			}
+			else { // make it an array
+
+				// create array and fill it with values
+				var array = [];
+				array.push(this[key]);
+				array.push(child);
+
+				// replace
+				this[key] = array;
+			}
+		}
+		else {
+		  this[key] = child;
+		}
+	},
+	// Can extend this map with other maps
+	//
+	//   Used primarily to drill down into other elements
+	//      But can also cross-pollinate with other 
+	//      elements across DOM
+	_extendMap : function(map) {
+
+		for (var prop in map){
+
+			// if not in 
+			if (!this[prop]) {
+			  this[prop] = map[prop];
+			}
+			else {
+				
+				if (cm.isArray(this[prop])) {
+
+					// concat if array, push if not
+					if (cm.isArray(map[prop])) {
+					  this[prop].concat( map[prop] );
+					}
+					else {
+					  this[prop].push( map[prop] );
+					}
+
+				} 
+				else if (typeof this[prop] === 'function') {
+				  continue;
+				}
+				else { // make it an array
+				  
+					var arr = [];
+					arr.push( this[prop] );
+
+					// concat if array, push if not
+					if (cm.isArray(map[prop])) {
+					  arr.concat( map[prop] );
+					}
+					else {
+					  arr.push( map[prop] );
+					}
+
+					this[prop] = arr;
+
+				} // end if
+
+			} // end if 
+		}
+	}
 };
 
 /*
@@ -592,9 +737,92 @@ cm.NetworkSearcher.prototype = {
 
 cm.Overlay = function(user_options) {
 
-	this._options = cm.extend({}, user_options);
+	this._options = {
+		root: null,
+		toggle: null,
+		top_coord: 0,
+		left_coord: 0 
+	};
+
+	cm.extend(this._options, user_options);
+
+	this.showing = false;
+	this.overlay = new cm.ElementMap( this._options.root );
+
+	this._init();
 }
 
 cm.Overlay.prototype = {
 
+	_init : function() {
+
+		var self = this;
+
+		// EVENTS
+		//
+	
+		// activate toggle
+		this._options.toggle.onclick = function(e) {
+		
+			e.preventDefault();
+
+			if (!self.showing) {
+			  self._show();
+			}
+			else {
+			  self._hide();
+			}
+		}
+
+		// activate toggle
+		this._options.toggle.ontouchstart = function(e) {
+		
+			e.preventDefault();
+
+			if (!self.showing) {
+			  self._show();
+			}
+			else {
+			  self._hide();
+			}
+		}
+
+		// set close button
+		this.overlay['close-cm-overlay'].onclick = function(e) {
+
+			e.preventDefault();
+			self._hide();
+		}
+
+		// set close button
+		this.overlay['close-cm-overlay'].ontouchstart = function(e) {
+
+			e.preventDefault();
+			self._hide();
+		}
+	},
+	_show : function() {
+
+		if (!this.showing) {
+
+			$( this._options.root ).show().animate({left : this._options.left_coord },
+				200);
+
+			this.showing = true;
+		}
+	},
+	_hide : function() {
+
+
+		// if already set over, change to the other way
+		if (this.showing) {
+
+			$( this._options.root ).animate({left : $( window ).width() },
+				200, function() {
+					$( this ).hide();
+				});
+		
+			this.showing = false;
+		}
+	}
 }
