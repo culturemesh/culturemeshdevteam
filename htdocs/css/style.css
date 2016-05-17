@@ -2026,7 +2026,7 @@ ul#bottom-links li, ul#top-links li{
         padding: 10px;
 }
 
-@media screen and (max-device-width: 992px) {
+@media screen and (max-width: 992px) {
 	.footer{ 
 	  background: #fff;
 	}
