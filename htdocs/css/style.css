@@ -80,7 +80,7 @@ p.p-subtitle {
 	fill: #CE340E;
 }
 
-@media(max-width:495px) {
+@media screen and (max-device-width:495px) {
 	.custom-icon {
 		width: 1.5em;
 		height: 1.5em;
@@ -196,7 +196,7 @@ body {
 	overflow-x:hidden;
 }
 
-@media(max-width: 992px) {
+@media screen and (max-device-width: 992px) {
 	body {
 	  background:#F1EFF0;
 	}
@@ -1895,13 +1895,13 @@ p.team.team-name {
 	text-align:right;
 }
 
-@media(max-width: 992px) {
+@media screen and (max-device-width: 992px) {
 	#header {
 	  background:#FFFFFF;
 	}
 }
 
-@media(max-width: 495px) {
+@media screen and (max-device-width: 495px) {
 
 	#header {
     	  height:80px;
@@ -2026,7 +2026,7 @@ ul#bottom-links li, ul#top-links li{
         padding: 10px;
 }
 
-@media(max-width: 992px) {
+@media screen and (max-device-width: 992px) {
 	.footer{ 
 	  background: #fff;
 	}
