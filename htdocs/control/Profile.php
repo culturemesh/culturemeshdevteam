@@ -172,7 +172,7 @@ class Profile {
 				),
 		);
 
-		echo $page_loader->generate(\Environment::$site_root . $cm->ds . 'profile' . $cm->ds . 'templates'.$cm->ds.'index.html',
+		echo $page_loader->generate( 'profile' . $cm->ds . 'templates'.$cm->ds.'index.html',
 			$page_vars);
 
 		//echo $m->render($template, $page_vars);

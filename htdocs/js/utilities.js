@@ -287,6 +287,195 @@ cm.DisposeSupport = {
   }
 };
 
+//
+// VALIDATION
+//
+var badChars = ["'", "\"", "?", "\\"];
+
+cm.validateInput = function(element, errorElement, charLimit = -1)
+{
+    // search for asshole characters ', ", 
+    var badCharFound = -1;
+    
+    for(var i = 0; i < badChars.length; i++)
+    {
+    	    badCharFound = element.value.indexOf(badChars[i]);
+    	
+    	//alert(badCharFound);
+    	// stop as soon as bad character is found
+    	if (badCharFound > -1)
+    	{
+    		break;
+    	}
+    }
+    if (charLimit > -1)
+    {
+	    if (element.value.length > charLimit)
+	    {
+		    /// Input was too long
+		errorElement.innerHTML = "Too many characters. Use " + charLimit + " or less.";    
+	    }
+    }
+    else if (badCharFound > -1)
+    {
+    	    /// Use of invalid characters
+    	errorElement.innerHTML = "Only use the specified characters"; // figure out what these are
+    }
+    else
+    {
+    	errorElement.innerHTML = "";    
+    }
+}
+
+cm.comparePasswordInput = function(element, compareElement, errorElement)
+{
+    if (element.value != compareElement.value)
+    {
+    	errorElement.innerHTML = "Passwords do not match.";
+    }
+    
+    else
+    {
+    	errorElement.innerHTML = "";
+    }
+}
+
+// MISCELLANEOUS THINGS
+//
+//for spinner
+var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  };
+})();
+
+cm.refresh = function(){
+    location.reload();
+}
+
+cm.getMembers = function(){
+    var members = "[&quot;stall&quot;,&quot;bathroom&quot;,&quot;clothing&quot;,&quot;shoes&quot;]";//["apples","oranges","houses","grapes"];
+    return members;
+}
+
+//
+// FROM AJAX
+//
+cm.postStringify = function(obj) {
+	var keys = Object.keys(obj);
+	var postString = '';
+
+	for (var i = 0; i < keys.length; i++) {
+		// add an ampersand
+		if (i > 0) {
+			postString += '&';
+		}
+
+		postString += keys[i] + '=' + obj[keys[i]];
+	}
+
+	return postString;
+}
+
+/*
+ * Handles call and return of
+ * AJAX request
+ */
+cm.Ajax = function(arguments, success, failure) {
+	this.xhr = null;
+	this.sendingData = false;
+	this.dataType = null;
+	
+	// check to see if there's post data
+	if (arguments.data != null) {
+		this.sendingData = true;
+
+		// set data type
+		if(arguments.dataType) // user has passed it in
+			this.dataType = arguments.dataType;
+		else {
+			switch (typeof arguments.data) {
+				case 'object':
+					this.dataType = 'JSON';
+					break;
+				case 'string':
+					this.dataType = 'string';
+					break;
+			}
+		}
+	}
+
+	if (window.XMLHttpRequest)
+	{
+		this.xhr = new XMLHttpRequest();
+	}
+	else
+	{ // IE6, IE5
+		this.xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	this.xhr.open(arguments.requestType, arguments.requestUrl, + arguments.requestParameters, true);
+
+	if (this.dataType === 'JSON') {
+		this.xhr.setRequestHeader("Content-type", "application/json");
+	}
+	
+	else if (this.dataType === 'string') {
+		this.xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	}
+
+	this.xhr.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			requestedData = this.responseText;
+			success(requestedData);
+		}
+		else {
+			//failure (this.responseText, this.status)
+		}
+
+	};
+
+	this.data = arguments.data;
+
+	this.send = function() {
+		if (this.sendingData) {
+			if (this.dataType === 'JSON')
+				this.xhr.send(JSON.stringify(this.data));
+			else
+				this.xhr.send(this.data);
+		}
+		else
+			this.xhr.send();
+	}
+
+	if (arguments.sendNow == true) {
+		this.send();
+	}
+}
+
+// Page autoloader
+//
+cm.Autoloader = function(func) {
+
+	var prev_load = window.onload;
+
+	if (prev_load == undefined) {
+		window.onload = func;
+	}
+	else {
+		window.onload = function() {
+			// execute first function
+			if (prev_load) {
+				prev_load();
+			}
+			// execute new function
+			func();
+		}
+	}
+}
+
 // ElementMap so you don't have to specify all these different
 // elements when creating dom modules
 

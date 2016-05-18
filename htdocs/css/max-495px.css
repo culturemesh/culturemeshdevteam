@@ -1,0 +1,23 @@
+/* 
+ * Header
+ */
+
+#header {
+  height:80px;
+}
+
+#top-logo > a > img {
+	position:relative;
+	top:0px;
+	width:180px;
+	margin-top:0px;
+}
+
+.header-mobile-icons {
+	top:23px;
+}
+
+.custom-icon {
+	width: 1.5em;
+	height: 1.5em;
+}

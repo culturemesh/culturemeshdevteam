@@ -312,8 +312,8 @@ class Network {
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'network' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
 			'sections' => array(
-				'sharebuttons' => $sharebuttons,
-				'map_embed' => $map_embed,
+		//		'sharebuttons' => $sharebuttons,
+		//		'map_embed' => $map_embed,
 				'searchbar' => $searchbar,
 				'lrg_network' => 'Large Network',
 				'network_title' => $network->getTitle(),
@@ -344,7 +344,7 @@ class Network {
 			'site_user' => $site_user
 		);
 
-		echo $page_loader->generate(\Environment::$site_root . $cm->ds . 'network' . $cm->ds . 'templates'.$cm->ds.'index.html',
+		echo $page_loader->generate('network' . $cm->ds . 'templates'. $cm->ds .'index.html',
 			$page_vars);
 
 		/*

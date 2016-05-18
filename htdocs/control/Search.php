@@ -318,7 +318,7 @@ class Search {
 			'site_user' => $site_user
 		);
 
-		echo $page_loader->generate(\Environment::$site_root . $cm->ds . 'search' . $cm->ds . 'templates'.$cm->ds.'index.html',
+		echo $page_loader->generate( 'search' . $cm->ds . 'templates'.$cm->ds.'index.html',
 			$page_vars);
 
 		// display the page proudly, chieftain
