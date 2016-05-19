@@ -150,13 +150,13 @@
 
 				var login_overlay = new cm.Overlay({
 					root: document.getElementById('login-overlay'),
-					toggle: document.getElementById('sidebar-login-toggle'),
+					toggle: '.login-toggle',
 					left_coord: '0'
 				});
 
 				var registration_overlay = new cm.Overlay({
 					root: document.getElementById('register-overlay'),
-					toggle: document.getElementById('sidebar-registration-toggle'),
+					toggle: '.register-toggle',
 					left_coord: '0'
 				});
 		});
@@ -364,14 +364,13 @@
 				<div id="right-top-btns" class="col-lg-4 col-md-4 hidden-sm hidden-xs">
 					<ul id="top-links">
 						<li><a id="menu-about" href="{{ vars.hostname }}/about.php">About</a></li>
-						<!--<li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>-->
 						{{# logged_in }}
 						<li><a href="{{ vars.hostname }}/profile/{{ site_user.id }}" id="welcome">Welcome, {{ site_user.first_name }}</a></li>
 						<li><a id="sign-out" href="{{ vars.hostname }}/sign_out.php">Sign Out</a></li>
 						{{/ logged_in }}
 						{{^ logged_in }}
-						<li><a id="login-link" href="#login_modal" data-toggle="modal">Log In</a></li>
-						<li><a id="register-link" href="#register_modal" data-toggle="modal">Sign Up</a></li>
+						<li><a id="login-link" href="#login_modal" class="login-toggle">Log In</a></li>
+						<li><a id="register-link" href="#register_modal" class="register-toggle">Sign Up</a></li>
 						{{/ logged_in }}
 					</ul>
 				</div>
@@ -379,11 +378,8 @@
 					<div class=""></div>
 					<svg class="custom-icon icon-search"><use xlink:href="#icon-search"></use></svg>
 					<svg id="sidebar-toggle" class="custom-icon icon-menu"><use xlink:href="#icon-menu"></use></svg>
-					<!--
-					<div>Search</div>
-					<div>Hamburger</div>
-					-->
 				</div>
+				<!--
 				<div id="register_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
 					<div class="modal-header">
 						Join the</br></br><b>CultureMesh Community!</b>
@@ -414,6 +410,7 @@
 								<input type="hidden" id="reg_joining_network" name="reg_joining_network" value="-1" />
 								<input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
 							</div>
+-->
 							<!--
 							<div id="register-div">
 								<div class='row'>
@@ -448,12 +445,15 @@
 									</div>
 								</div>
 									-->
+									<!--
 						</form>
 					</div>
 					<div class="modal-footer">
 						Already a member? <a href="#" onclick="toggleLogin()" id="sign_in_mod">Sign in!</a>
 					</div>
 				</div>
+-->
+									<!--
 				<div id="login_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
 					<div class="modal-header">
 						<b>Welcome Back!</b>
@@ -479,6 +479,7 @@
 						Not a member yet? <a href="#" id="sign_in_mod" onclick='toggleRegister()'>Join Us!</a>
 					</div>
 				</div>
+			-->
 				<div class="clear"></div>
 			</div>
 			<div id="signout_panel" style="display:none">
@@ -531,12 +532,18 @@
 				<div class="cm-y-10"></div>
 				<div class="row">
 					<div class="col-sm-10 col-xs-10"></div>
-					<button class="sidebar-close close-cm-overlay">&#10006</button>
+					<button class="overlay-close close-cm-overlay">&#10006</button>
 				</div>
 				<div class="cm-y-20"></div>
 				<div class="sidebar-user-buttons row text-center">
-					<button id="sidebar-login-toggle" class="sidebar-button">SIGN IN</button>
-					<button id="sidebar-registration-toggle" class="sidebar-button">REGISTER</button>
+					{{# logged_in }}
+					<a href="{{ vars.hostname }}/profile/{{ site_user.id }}" id="welcome"><button class="sidebar-button">Welcome, {{ site_user.first_name }}</button></a>
+					<a id="sign-out" href="{{ vars.hostname }}/sign_out.php"><button class="sidebar-button">Sign Out</button></a>
+					{{/ logged_in }}
+					{{^ logged_in }}
+					<button id="sidebar-login-toggle" class="sidebar-button login-toggle">SIGN IN</button>
+					<button id="sidebar-register-toggle" class="sidebar-button register-toggle">REGISTER</button>
+					{{/ logged_in }}
 				</div>
 				<div class="cm-y-20"></div>
 				<div class="sidebar-page-menu row text-center">
@@ -551,61 +558,65 @@
 
 		<!-- REGISTRATION -->
 		<div id="register-overlay" class="cm-overlay full-overlay container-fluid">
+			<div class="overlay-center">
 				<div class="row">
 					<div class="col-sm-10 col-xs-10"></div>
-					<button class="sidebar-close close-cm-overlay">&#10006</button>
+					<button class="overlay-close close-cm-overlay">&#10006</button>
 				</div>
-				<div class="">
+				<div class="overlay-form">
+					<div class="text-center">
 					<form id="reg_form" method="post" action="{{ vars.hostname }}/r.php">
-						<div id="register-div">
-							<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
-							</br>
-							<input type="text" name="fname" id="fname" class="modal-text-input" placeholder="First Name" required /></br>
-							</br>
-							<input type="text" name="lname" id="lname" class="modal-text-input" placeholder="Last Name" required /></br>
-							</br>
-							<span id="email_dup_txt" style="display:none" class="label label-important"></span>
-							<div id="login-passwords">
-							<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
-							<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
-							<div class="clear"></div>
+						<div id="register-div" class="form-group">
+							<div>
+								<input type="email" id="reg-email" name="email" placeholder="Email" class="form-control input-lg overlay-input" required />
+								<input type="text" name="fname" id="fname" class="form-control input-lg overlay-input" placeholder="First Name" required />
+								<input type="text" name="lname" id="lname" class="form-control input-lg overlay-input" placeholder="Last Name" required />
+								<input type="password" name="password" id="password" class="form-control input-lg overlay-input" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
+								<input type="password" name="password_conf" id="password_conf" class="form-control input-lg overlay-input" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
+							</div>
+							<span id="email_dup_txt" class="label label-important"></span>
 							<span id="password_validation"></span>
 							<span id="register_server_error"></span>
-							</div>
 							</br>
 							</br>
 							<span id="pass_mism_txt" class="label label-important"></span>
 							<div class="clear"></div>
 							<input type="hidden" id="reg_joining" name="reg_joining" value="-1" />
 							<input type="hidden" id="reg_joining_network" name="reg_joining_network" value="-1" />
-							<input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
+							<input type="submit" id="reg_submit_btn" class="overlay-submit" data-loading-text="Checking..." value="Join Us" />
 						</div>
 					</form>
+					</div>
 				</div>
+			</div>
 		</div>
 
 		<!-- LOGIN -->
 		<div id="login-overlay" class="cm-overlay full-overlay container-fluid">
+			<div class="overlay-center">
 				<div class="row">
 					<div class="col-sm-10 col-xs-10"></div>
-					<button class="sidebar-close close-cm-overlay">&#10006</button>
+					<button class="overlay-close close-cm-overlay">&#10006</button>
 				</div>
-					<div class="">
-						<form id="log_form" method="post" action="{{ vars.hostname }}/l.php">
-							<div id="login-div">
-								<input type="email" name="email" id="log_email" class="modal-text-input" placeholder="Email" required />
-								<input type="password" name="password" id="log_password" class="modal-text-input" onchange="validateInput(this, document.getElementById(\'log_validation\'))" placeholder="Password" required />
-								</br>
-								<span id="log_validation"></span>
-								</br>
-								</br>
-								<input type="submit" id="log_submit_btn" class="submit" data-loading-text="Checking..." value="Sign In" />
-								</br>
-								</br>
-								<a href="{{ vars.hostname }}/forgotpass.php">Forgot your password?</a>
-							</div>    
-						</form>
+				<div class="overlay-form">
+					<div class="text-center">
+					<form id="log_form" method="post" action="{{ vars.hostname }}/l.php">
+						<div id="login-div" class="form-group">
+							<div>
+								<input type="email" name="email" id="log_email" class="form-control input-lg overlay-input" placeholder="Email" required />
+								<input type="password" name="password" id="log_password" class="form-control input-lg overlay-input" onchange="validateInput(this, document.getElementById(\'log_validation\'))" placeholder="Password" required />
+							</div>
+							</br>
+							<span id="log_validation"></span>
+							<input type="submit" id="log_submit_btn" class="overlay-submit" data-loading-text="Checking..." value="Sign In" />
+							</br>
+							</br>
+							<a href="{{ vars.hostname }}/forgotpass.php">Forgot your password?</a>
+						</div>    
+					</form>
 					</div>
+				</div>
+			</div>
 		</div>
 
 		<script>
@@ -656,5 +667,10 @@
 		</script>
 		{{$ body_scripts }}
 		{{/ body_scripts }}
+
+		<script>
+		</script>
+		{{$ parsley_forms }}
+		{{/ parsley_forms }}
 	</body>
 </html>

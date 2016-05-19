@@ -118,10 +118,53 @@ p.p-subtitle {
 	top: 0px;
 }
 
+.cm-overlay a {
+	color: white;
+}
+
+.overlay-center {
+	position:relative;
+	top:50%;
+	transform:translateY(-60%);
+}
+
+.cm-overlay .overlay-submit {
+
+    margin-top: 20px;
+    width:100%;
+    height:45px;
+    background-color:#97CB38;
+    font:18px Lato, sans-serif;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
 .full-overlay {
 	left: 100%;
 	width: 100%;
 	height: 100%;
+}
+
+.overlay-form {
+	margin: 0px auto; 
+	width: 90%;
+}
+
+.form-group > div > .overlay-input {
+	margin-top:0;
+	margin-bottom:1px;
+	border-radius:0;
+}
+
+.form-group > div > .overlay-input:first-child {
+	border-top-left-radius:6px;
+	border-top-right-radius:6px;
+}
+
+.form-group > div > .overlay-input:last-child {
+	border-bottom-left-radius:6px;
+	border-bottom-right-radius:6px;
 }
 
 #login-overlay {
@@ -142,13 +185,13 @@ p.p-subtitle {
 	background-color:#434041;
 }
 
-.sidebar-close {
-	background-color: #434041;
+.overlay-close {
+	background: none;
 	border: 0 none;
 	font-size: 25px;
 }
 
-.sidebar-close:hover {
+.overlay-close:hover {
 	color: #AAA;
 }
 
@@ -487,18 +530,12 @@ input[type="submit"].stage-button {
     margin:0 auto;
     width:100%;
     padding:0;
-    background-color:white
 }
 
 #register-div{
     margin:0 auto;
     width:100%;
     padding:0;
-    background-color:white
-}
-
-#reg_form {
-    width:396px;
 }
 
 input[class="modal-text-input"] {
@@ -571,7 +608,7 @@ input[class="submit"]
     width:100px;
     height:45px;
     background-color:#97CB38;
-    font:21px Lato, sans-serif;
+    font:18px Lato, sans-serif;
     color:white;
     border:none;
     border-radius:5px;

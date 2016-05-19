@@ -5,11 +5,15 @@
 var cm = cm || {};
 
 // Guess...
-cm.isArray = function( variable ) {
-	if (Object.prototype.toString.call( variable ) === '[object Array]')
+cm.isArray = function( enigma ) {
+	if (Object.prototype.toString.call( enigma ) === '[object Array]')
 	  return true;
 	else
 	  return false;
+}
+
+cm.isElement = function( enigma ) {
+	return enigma.tagName ? true : false;
 }
 
 /**
@@ -951,7 +955,7 @@ cm.Overlay.prototype = {
 		//
 	
 		// activate toggle
-		this._options.toggle.onclick = function(e) {
+		$( this._options.toggle ).on('click touchstart', function(e) {
 		
 			e.preventDefault();
 
@@ -961,8 +965,9 @@ cm.Overlay.prototype = {
 			else {
 			  self._hide();
 			}
-		}
+		});
 
+		/*
 		// activate toggle
 		this._options.toggle.ontouchstart = function(e) {
 		
@@ -975,6 +980,7 @@ cm.Overlay.prototype = {
 			  self._hide();
 			}
 		}
+		*/
 
 		// set close button
 		this.overlay['close-cm-overlay'].onclick = function(e) {
