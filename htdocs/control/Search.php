@@ -282,6 +282,10 @@ class Search {
 				if ($map_location == 'Georgia')
 					$map_location = 'Country Georgia';
 
+				if ($map_location == "New York, United States") {
+					$map_location = 'State of New York';
+				}
+
 				$map_embed = $m_comp->render($map_embed_template, array(
 					'key' => $cm->g_api_key,
 					'location' => $map_location));
