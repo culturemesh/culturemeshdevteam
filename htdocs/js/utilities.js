@@ -955,8 +955,9 @@ cm.Overlay.prototype = {
 		//
 	
 		// activate toggle
-		$( this._options.toggle ).on('click touchstart', function(e) {
+		$( this._options.toggle ).on('touchstart', function(e) {
 		
+			e.stopPropagation();
 			e.preventDefault();
 
 			if (!self.showing) {
@@ -966,21 +967,6 @@ cm.Overlay.prototype = {
 			  self._hide();
 			}
 		});
-
-		/*
-		// activate toggle
-		this._options.toggle.ontouchstart = function(e) {
-		
-			e.preventDefault();
-
-			if (!self.showing) {
-			  self._show();
-			}
-			else {
-			  self._hide();
-			}
-		}
-		*/
 
 		// set close button
 		this.overlay['close-cm-overlay'].onclick = function(e) {
