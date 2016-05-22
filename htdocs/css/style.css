@@ -45,6 +45,13 @@ p.p-subtitle {
 }
 
 /******
+ * SHARE WIDGET (Thanks alot, Zuckerberg)
+ */
+div.fb_iframe_widget {
+	z-index: -1;
+}
+
+/******
 INDEX PAGE
 */
 
@@ -176,7 +183,7 @@ ul.search
 	font-size:18px;
 	font-family: 'Lato-Regular', sans-serif;
 	color:#EF5330;
-    letter-spacing:1px;
+    	letter-spacing:1px;
 	width:auto;
 }
 
