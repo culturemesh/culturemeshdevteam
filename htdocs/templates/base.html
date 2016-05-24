@@ -144,7 +144,7 @@
 
 				var mobile_sidebar = new cm.Overlay({
 					root: document.getElementById('side-menu'),
-					toggle: document.getElementById('sidebar-toggle'),
+					toggle: 'a > #sidebar-toggle', 
 					left_coord: '20%'
 				});
 
@@ -377,7 +377,7 @@
 				<div class="header-mobile-icons col-sm-2 col-xs-4 hidden-md hidden-lg row">
 					<div class=""></div>
 					<svg class="custom-icon icon-search"><use xlink:href="#icon-search"></use></svg>
-					<svg id="sidebar-toggle" class="custom-icon icon-menu"><use xlink:href="#icon-menu"></use></svg>
+					<a><svg id="sidebar-toggle" class="custom-icon icon-menu"><use xlink:href="#icon-menu"></use></svg></a>
 				</div>
 				<!--
 				<div id="register_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
