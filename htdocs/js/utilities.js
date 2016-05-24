@@ -955,7 +955,22 @@ cm.Overlay.prototype = {
 		//
 	
 		// activate toggle
-		$( this._options.toggle ).on('touchstart', function(e) {
+
+		// adding cursor
+		$( this._options.toggle ).css('cursor', 'pointer');
+		$(document).on('click tap', this._options.toggle, function(e) {
+
+			e.preventDefault();
+
+			if (!self.showing) {
+			  self._show();
+			}
+			else {
+			  self._hide();
+			}
+		});
+		/*
+		$( this._options.toggle ).on('click tap', function(e) {
 		
 			e.stopPropagation();
 			e.preventDefault();
@@ -967,6 +982,34 @@ cm.Overlay.prototype = {
 			  self._hide();
 			}
 		});
+*/
+/*
+		// activate toggle
+		this._options.toggle.onclick = function(e) {
+		
+			e.preventDefault();
+
+			if (!self.showing) {
+			  self._show();
+			}
+			else {
+			  self._hide();
+			}
+		}
+
+		// activate toggle
+		this._options.toggle.ontouchstart = function(e) {
+		
+			e.preventDefault();
+
+			if (!self.showing) {
+			  self._show();
+			}
+			else {
+			  self._hide();
+			}
+		}
+*/
 
 		// set close button
 		this.overlay['close-cm-overlay'].onclick = function(e) {

@@ -65,6 +65,7 @@ p.p-subtitle {
 }
 
 .custom-icon {
+	cursor:pointer;
 	display: inline-block;
 	width: 2em;
 	height: 2em;
