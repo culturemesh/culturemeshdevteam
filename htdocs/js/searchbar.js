@@ -212,7 +212,7 @@ cm.SearchField.prototype = {
 
 		return setTimeout(
 			function() {
-				var search = new Ajax({
+				var search = new cm.Ajax({
 					requestType: 'POST',
 					requestUrl: cm.home_path + '/api/search/search_names.php',
 					data: values,

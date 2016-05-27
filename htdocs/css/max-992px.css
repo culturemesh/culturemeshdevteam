@@ -9,3 +9,26 @@ body {
 .footer{ 
   background: #fff;
 }
+
+#stage-area {
+
+}
+
+#stage-title {
+	font-size:24px;
+}
+
+#search-form.stage {
+	background:none;
+	padding-left:0;
+}
+
+div.searchbar-home input[type="text"] {
+	height:43px;
+	font-size: 16px;
+}
+
+div.searchbar-home input[type="submit"] {
+	font-size: 16px;
+	margin:0;
+}
