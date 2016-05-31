@@ -1,3 +1,5 @@
+@import "style";
+
 body {
   background:#F1EFF0;
 }
@@ -9,6 +11,10 @@ body {
 .footer{ 
   background: #fff;
 }
+
+/*
+* HOME
+*/
 
 #stage-area {
 
@@ -33,9 +39,24 @@ div.searchbar-home input[type="submit"] {
 	margin:0;
 }
 
+
+/*
+* NETWORK
+*/
+
+div.net-right {
+	width:100%;
+	overflow:hidden;
+}
+
 div.net-header {
-	background:#ef5330;
+	background:$cm_orange;
 	color:white;
+	padding: 10px 0;
+}
+
+div.net-info {
+	text-align:center;
 }
 
 h1.h-network {
@@ -48,4 +69,25 @@ p.lrg-network-stats {
 
 button.network {
 	border: 1px solid white;
+}
+
+div.tab-container {
+	height:50px;
+	background-color:white;
+}
+
+div.net-right ul.nav-tabs {
+	list-style:none;
+	position:relative;
+	float:left;
+	display:block;
+	left:50%;
+	border:none;
+}
+
+div.net-right ul.nav-tabs li {
+	position:relative;
+	float:left;
+	display:block;
+	right:50%;
 }

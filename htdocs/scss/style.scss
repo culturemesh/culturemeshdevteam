@@ -1,3 +1,7 @@
+$cm_orange:#EF5330;
+$cm_blue:#3CB3CA;
+$cm_green:#97CB38;
+
 /*h4
 {
     color:#EF5330;
@@ -56,6 +60,7 @@ p.p-subtitle {
 .cm-y-20 {
 	height: 20px;
 }
+
 
 /******
  * MAIN TEMPLATE
@@ -235,6 +240,14 @@ p.p-subtitle {
 
 .sidebar-user-buttons > button + button {
 	margin-left: 7%;
+}
+
+/******
+ * TEMPLATE FILES
+ */
+div.content-top {
+	margin-top:-20px;
+	padding-top:20px;
 }
 
 /******
@@ -789,7 +802,6 @@ hr.hr-modal {
      border: medium none;
      border-radius: 5px;
      width:auto;
-     float:left;
      font: 16px Lato-Light, sans-serif;
      color: white;
 }
@@ -962,7 +974,6 @@ button.network
 	background-color:#e34036;
 	border:none;
 	border-radius:5px;
-	float:left;
 }
 
 button.network:hover
