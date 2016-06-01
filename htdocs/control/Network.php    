@@ -207,8 +207,8 @@ class Network {
 
 			try
 			{
-				$tmp = file_get_contents($cm->template_dir . $cm->ds . 'network-event-cardtable.html');
-				$ec_html = $network->events_sect->getHTML('card', array(
+				$tmp = file_get_contents($cm->template_dir . $cm->ds . 'network-event-divul.html');
+				$ec_html = $network->events_sect->getHTML('div', array(
 					'cm' => $cm,
 					'network' => $network,
 					'mustache' => $m_comp,

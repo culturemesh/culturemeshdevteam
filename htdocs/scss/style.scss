@@ -1,6 +1,11 @@
 $cm_orange:#EF5330;
 $cm_blue:#3CB3CA;
 $cm_green:#97CB38;
+$cm_white:#FFFFFF;
+
+$cm_gray: #f1eff0;
+$cm_l_gray: #f6f7f8;
+$cm_d_gray: #e1efe0;
 
 /*h4
 {
@@ -59,6 +64,10 @@ p.p-subtitle {
 
 .cm-y-20 {
 	height: 20px;
+}
+
+ul.no-style {
+	list-style-type:none;
 }
 
 
@@ -202,7 +211,7 @@ p.p-subtitle {
 }
 
 .sidebar-button {
-	color: #FFF;
+	color: $cm_white;
 	border: 1px solid #959595;
 	background-color: #434041;
 	font-size: 13px;
@@ -213,7 +222,7 @@ p.p-subtitle {
 
 .sidebar-button:hover {
 	color: #434041;
-	background-color: #FFF;
+	background-color: $cm_white;
 }
 
 .sidebar-li-button {
@@ -288,7 +297,7 @@ body {
 }
 
 #stage-title{
-    color:#FFFFFF;
+    color:$cm_white;
     font-size:30px;
     font-family: 'Lato-bold', sans-serif;
     font-weight: 20;
@@ -386,7 +395,7 @@ div.searchbar-home input[type="submit"] {
 	background-color:#3EB3CA;
 	font-family: 'Lato-bold', sans-serif;
 	font-size:20px;
-	color:#FFFFFF
+	color:$cm_white
 }
 
 select.stage-input
@@ -407,7 +416,7 @@ select.stage-input option
 {
 	/*
 	color:black;
-	background-color:#FFFFFF;
+	background-color:$cm_white;
 	*/
 }
 
@@ -449,7 +458,7 @@ ul.search > li
 ul.search > li:hover {
 	color:#3EB3CA;
 	font-family: 'Lato-Bold', sans-serif;
-	background-color:#FFFFFF;
+	background-color:$cm_white;
 }
 
 ul.search > li.sb-li {
@@ -460,13 +469,13 @@ ul.search > li.sb-li {
 
 ul.search > li.sb-li.sb-error {
 	color:#9FA2A3;
-	/*background-color:#FFFFFF;*/
+	/*background-color:$cm_white;*/
 	font-style: italic;
 }
 
 ul.search > li.sb-li.sb-loading {
 	color:#3EB3CA;
-	/*background-color:#FFFFFF;*/
+	/*background-color:$cm_white;*/
 }
 
 /*
@@ -501,7 +510,7 @@ input[type="submit"].stage-button {
     background-color:#3EB3CA;
     font-family: 'Lato-bold', sans-serif;
     font-size:20px;
-    color:#FFFFFF
+    color:$cm_white
 }
     */
 
@@ -703,9 +712,11 @@ input[class="submit"]
     border:none;
 }
 
-.clear
+div.clear
 {
-    clear:both;
+    clear:left;
+    line-height:0;
+    height:0;
 }
 
 #bottom-section
@@ -848,7 +859,7 @@ h5.h-network
 
 h5.h-network.post
 {
-	float:left;
+	/*	float:left;*/
 }
 
 .net-left
@@ -970,7 +981,7 @@ button.network
 	font: Lato;
 	font-size:16px;
 	font-weight: bold;
-	color: #FFFFFF;
+	color: $cm_white;
 	background-color:#e34036;
 	border:none;
 	border-radius:5px;
@@ -991,7 +1002,7 @@ input[type="submit"].network
 {
 	font: Lato;
 	font-size:16px;
-	color: #FFFFFF;
+	color: $cm_white;
 	background-color:#e34036;;
 	border-width:0px;
 	border-radius:2px;
@@ -1246,7 +1257,7 @@ button.event-modal
 	font: Lato;
 	font-size:16px;
 	font-weight: bold;
-	color: #FFFFFF;
+	color: $cm_white;
 	background-color:#e34036;
 	border:none;
 	border-radius:5px;
@@ -1382,7 +1393,7 @@ input[type="submit"].post.send
 {
 	border-width:0px;
 	background-color:#E34036;
-	color:#FFFFFF;
+	color:$cm_white;
 	border-radius:2px;
 }
 
@@ -1633,7 +1644,7 @@ li.inactive-event p#event-desc {
 }
 
 #confirmation_panel {
-	color:#FFFFFF;
+	color:$cm_white;
 	background-color:rgb(151, 203, 56);
 	border:1px solid #CCCCCC;
 	padding:5px;
@@ -1693,7 +1704,7 @@ input[type='submit'].upload
 	background-color: #3EB3CA;
 	border: medium none;
 	border-radius: 5px;
-	color:#FFFFFF;
+	color:$cm_white;
 }
 
 input[type='submit'].upload:hover
@@ -1709,7 +1720,7 @@ button.upload
 	background-color: #3EB3CA;
 	border: medium none;
 	border-radius:5px;
-	color:#FFFFFF;
+	color:$cm_white;
 	margin-bottom:4px;
 }
 
@@ -1721,7 +1732,7 @@ button.upload:hover
 p.upload
 {
 	background-color:#0088CC;
-	color:#FFFFFF;
+	color:$cm_white;
 	width:198px;
 	margin:0px auto;
 	margin-bottom:4px;

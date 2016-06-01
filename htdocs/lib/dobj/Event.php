@@ -105,6 +105,20 @@ class Event extends DisplayDObj {
 			);
 			break;
 
+		case 'div':
+
+			// get template
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-div.html');
+			return $mustache->render($template, array(
+				'event' => $this->prepare($cm),
+				'host' => $this->getName(),
+				'date' => $this->formatDate('card'),
+				'list_vars' => $list_vars,
+				'vars' => $cm->getVars()
+				)
+			);
+			break;
+
 		case 'dashboard':
 
 			$user = $vars['site_user'];

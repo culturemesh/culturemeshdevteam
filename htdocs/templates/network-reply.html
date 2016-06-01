@@ -1,9 +1,14 @@
 <li class='reply'>
-	<div class='post-img'>
-		<img id='profile-reply' src='{{ reply.img_link }}{{^ reply.img_link }}{{ vars.blank_profile_path_icon }}{{/ reply.img_link }}' width='45' height='45'>
-	</div>
-	<div class='post-info'>
-		<h5 class='h-network post'><a href='{{ vars.hostname }}/profile/{{ reply.id_user }}'>{{ name }}</a></h5>
+	<div>
+		<div class='post-img'>
+			<img id='profile-reply' src='{{ reply.img_link }}{{^ reply.img_link }}{{ vars.blank_profile_path_icon }}{{/ reply.img_link }}' width='45' height='45'>
+		</div>
+		<div class="reply-user">
+			<h5 class='h-network post'><a href='{{ vars.hostname }}/profile/{{ reply.id_user }}'>{{ name }}</a></h5>
+		</div>
+		<div class="reply-date hidden-md hidden-lg">
+			<p class='network reply date'>{{ relative_date }}</p>
+		</div>
 		{{# owner }}
 		<div class='reply-button delete'>
 			<form class='personal delete_reply' method="POST" action="{{ vars.hostname }}/{{^ tweet }}network_reply_delete.php{{/ tweet }}{{# tweet }}network_tweet_reply_delete.php{{/ tweet }}">
@@ -22,9 +27,13 @@
 			</form>
 		</div>
 		{{/ owner }}
-		<div class="clear"></div>
-		<p class='network reply'>{{{ text }}}</p>
-		<p class='network reply date'>{{ relative_date }}</p>
+		<div class="clear">&nbsp;</div>
+		<div class="reply-text">
+			<p class='network reply'>{{{ text }}}</p>
+		</div>
+		<div class="reply-date hidden-sm hidden-xs">
+			<p class='network reply date'>{{ relative_date }}</p>
+		</div>
+		<div class='clear'>&nbsp;</div>
 	</div>
-	<div class='clear'></div>
 </li>

@@ -48,6 +48,9 @@ p.p-subtitle {
 .cm-y-20 {
   height: 20px; }
 
+ul.no-style {
+  list-style-type: none; }
+
 /******
  * MAIN TEMPLATE
  */
@@ -159,7 +162,7 @@ p.p-subtitle {
   color: #AAA; }
 
 .sidebar-button {
-  color: #FFF;
+  color: #FFFFFF;
   border: 1px solid #959595;
   background-color: #434041;
   font-size: 13px;
@@ -169,7 +172,7 @@ p.p-subtitle {
 
 .sidebar-button:hover {
   color: #434041;
-  background-color: #FFF; }
+  background-color: #FFFFFF; }
 
 .sidebar-li-button {
   text-align: left;
@@ -326,7 +329,7 @@ select.stage-input {
 select.stage-input option {
   /*
   color:black;
-  background-color:#FFFFFF;
+  background-color:$cm_white;
   */ }
 
 select.netsearch {
@@ -369,12 +372,12 @@ ul.search > li.sb-li {
 
 ul.search > li.sb-li.sb-error {
   color: #9FA2A3;
-  /*background-color:#FFFFFF;*/
+  /*background-color:$cm_white;*/
   font-style: italic; }
 
 ul.search > li.sb-li.sb-loading {
   color: #3EB3CA;
-  /*background-color:#FFFFFF;*/ }
+  /*background-color:$cm_white;*/ }
 
 /*
 #search-floater {
@@ -406,7 +409,7 @@ input[type="submit"].stage-button {
     background-color:#3EB3CA;
     font-family: 'Lato-bold', sans-serif;
     font-size:20px;
-    color:#FFFFFF
+    color:$cm_white
 }
     */
 #search-1 {
@@ -574,8 +577,10 @@ input[class="submit"] {
   text-align: center;
   border: none; }
 
-.clear {
-  clear: both; }
+div.clear {
+  clear: left;
+  line-height: 0;
+  height: 0; }
 
 ol {
   color: #ccc;
@@ -687,7 +692,7 @@ h5.h-network {
   margin-top: 0; }
 
 h5.h-network.post {
-  float: left; }
+  /*	float:left;*/ }
 
 .net-left {
   float: left;
@@ -1841,13 +1846,13 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
 
 /****/
 body {
-  background: #F1EFF0; }
+  background: #f1eff0; }
 
 #header {
   background: #FFFFFF; }
 
 .footer {
-  background: #fff; }
+  background: #FFFFFF; }
 
 /*
 * HOME
@@ -1911,5 +1916,33 @@ div.net-right ul.nav-tabs li {
 
 div.network.tab-content {
   margin-left: 0; }
+
+#post-wall-ul {
+  padding-left: 0; }
+
+li.network-post {
+  background-color: #FFFFFF;
+  margin-top: 5px; }
+
+div.replies {
+  margin-left: 0;
+  border-top: 1px solid #f1eff0;
+  background-color: #f6f7f8; }
+
+div.post-text {
+  width: 100%;
+  height: auto; }
+
+p.network {
+  max-width: none; }
+
+p.network.reply {
+  max-width: none; }
+
+ul.replies {
+  padding: 0; }
+
+button.post {
+  background-color: #EF5330; }
 
 /*# sourceMappingURL=max-992px.css.map */

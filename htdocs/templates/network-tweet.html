@@ -1,17 +1,23 @@
 <li {{# tweet.id }} id='pt-{{ . }}' {{/ tweet.id }} class='network-post'>
-	<div class='post-img'>
-		<img id='profile-post' src='{{ tweet.profile_image }}' onerror="this.src='{{ vars.hostname }}/images/blank_profile.png'" width='45' height='45'>
-	</div>
-	<div class='post-info'>
-		<h5 class='h-network post'><b>{{ tweet.name }}</b>&nbsp;&nbsp;&nbsp;&nbsp;@{{ tweet.screen_name }}</h5> 
+	<div>
+		<div class='post-img'>
+			<img id='profile-post' src='{{ tweet.profile_image }}' onerror="this.src='{{ vars.hostname }}/images/blank_profile.png'" width='45' height='45'>
+		</div>
+		<div class="post-user">
+			<h5 class='h-network post'><span><b>{{ tweet.name }}</b></span>&nbsp;&nbsp;&nbsp;&nbsp;<br class="hidden-md hidden-lg"><span>@{{ tweet.screen_name }}</span></h5> 
+		</div>
 		<div class="clear"></div>
-		<p class='network'>{{{ tweet.text }}}</p>
+		<div class="post-text">
+			<p class='network'>{{{ tweet.text }}}</p>
+		</div>
 		<div>
 			{{# images }}
 			<a href="{{ vars.img_host_repo }}/{{ dir }}" data-lightbox="post-{{ post.id }}"><img src="{{ vars.img_host_repo }}/{{ thumb }}"></img></a>
 			{{/ images }}
 		</div>
-		<p class='network date'><i>{{ tweet.date }}</i></p>
+		<div class="post-date">
+			<p class='network date'><i>{{ tweet.date }}</i></p>
+		</div>
 		{{# reply_request }}
 		<div class='reply-button'>
 			<form class="request_reply" method="POST" action="{{ vars.hostname }}/network_request_reply.php">

@@ -1,15 +1,15 @@
 @import "style";
 
 body {
-  background:#F1EFF0;
+  background:$cm_gray;
 }
 
 #header {
-  background:#FFFFFF;
+  background:$cm_white;
 }
 
 .footer{ 
-  background: #fff;
+  background: $cm_white;
 }
 
 /*
@@ -96,3 +96,38 @@ div.network.tab-content {
 	margin-left: 0;
 }
 
+#post-wall-ul {
+	padding-left: 0;
+}
+
+li.network-post {
+	background-color:$cm_white;
+	margin-top:5px;
+}
+
+div.replies {
+	margin-left:0;
+	border-top:1px solid $cm_gray;
+	background-color:$cm_l_gray;
+}
+
+div.post-text {
+	width:100%;
+	height:auto;
+}
+
+p.network {
+	max-width:none;
+}
+
+p.network.reply {
+	max-width:none;
+}
+
+ul.replies {
+	padding:0;
+}
+
+button.post {
+	background-color:$cm_orange;
+}
