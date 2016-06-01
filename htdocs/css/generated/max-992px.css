@@ -1909,4 +1909,7 @@ div.net-right ul.nav-tabs li {
   display: block;
   right: 50%; }
 
+div.network.tab-content {
+  margin-left: 0; }
+
 /*# sourceMappingURL=max-992px.css.map */

@@ -22,3 +22,4 @@ htdocs/cache*
 htdocs/apc.php
 htdocs/data/s_*
 htdocs/.htaccess
+htdocs/.sass-cache
