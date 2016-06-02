@@ -3,6 +3,10 @@ $cm_blue:#3CB3CA;
 $cm_green:#97CB38;
 $cm_white:#FFFFFF;
 
+$cm_color_facebook:#3B5998;
+$cm_color_twitter:#55ACEE;
+$cm_color_googleplus:#DC4A38;
+
 $cm_gray: #f1eff0;
 $cm_l_gray: #f6f7f8;
 $cm_d_gray: #e1efe0;
@@ -68,6 +72,29 @@ p.p-subtitle {
 
 ul.no-style {
 	list-style-type:none;
+}
+
+.bg-white {
+	background-color:$cm_white;
+}
+
+button.share-button {
+	width:88%;
+	height:30px;
+	color: $cm-white;
+	border:none;
+}
+
+button.facebook {
+	background-color:$cm_color_facebook;
+}
+
+button.twitter {
+	background-color:$cm_color_twitter;
+}
+
+button.googleplus {
+	background-color:$cm_color_googleplus;
 }
 
 

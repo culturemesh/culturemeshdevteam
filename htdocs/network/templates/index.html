@@ -263,11 +263,13 @@
 			</script>
 			<div id="event-wall" class="tab-pane">
 				<div>
-						<button id="slider-left" class="slider-button"></button>
 							{{# sections.event_slider }}
 							{{{ . }}}
 							{{/ sections.event_slider }}
+							<!--
+						<button id="slider-left" class="slider-button"></button>
 						<button id="slider-right" class="slider-button"></button>
+						-->
 				</div>
 				<div class="clear"></div>
 				{{# page_vars.member }}
@@ -299,10 +301,11 @@
 				</div>
 			</div>
 			<div id="share-wall" class="tab-pane">
-				<div>
-					<button>Share on Facebook</button>
-					<button>Share on Twitter</button>
-					<button>Share on Google Plus</button>
+				<div class="cm-y-20"></div>
+				<div class="text-center">
+					<button class="share-button facebook">Share on Facebook</button>
+					<button class="share-button twitter">Share on Twitter</button>
+					<button class="share-button googleplus">Share on Google Plus</button>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -319,7 +322,9 @@
 	{{$ body_scripts }}
 	<link rel="stylesheet" type="text/css" href="{{vars.hostname}}/js/jsdatetime/jquery.datetimepicker.css"/ >
 	<script src="{{vars.hostname}}/js/jsdatetime/jquery.datetimepicker.js"></script>
+	<!--
 	<script src="{{vars.hostname}}/js/slider.js"></script>
+	-->
 
 	<script>
 		$(".datetimepicker").datetimepicker();

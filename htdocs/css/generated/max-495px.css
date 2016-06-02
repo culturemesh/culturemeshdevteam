@@ -51,6 +51,24 @@ p.p-subtitle {
 ul.no-style {
   list-style-type: none; }
 
+.bg-white {
+  background-color: #FFFFFF; }
+
+button.share-button {
+  width: 88%;
+  height: 30px;
+  color: #FFFFFF;
+  border: none; }
+
+button.facebook {
+  background-color: #3B5998; }
+
+button.twitter {
+  background-color: #55ACEE; }
+
+button.googleplus {
+  background-color: #DC4A38; }
+
 /******
  * MAIN TEMPLATE
  */
