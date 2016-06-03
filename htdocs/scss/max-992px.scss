@@ -147,15 +147,31 @@ ul.network-event {
 /*
  * PROFILE
  */
+h2.dashboard
+{
+	color:$cm-white;
+	margin-top:0;
+}
+
+p.profile
+{
+	text-align:center;
+	color:$cm-white;
+}
 
 .profile_left_panel {
 	width:100%;
+	background-color:$cm-orange;
+	padding-bottom:10px;
+	padding-top:25px;
 }
 
 #profile_image {
 	border-radius:50%;
+	border: 2px $cm_green_soft solid;
 	width:150px;
 	height:150px;
+	background-color:white;
 }
 
 .profile_dashboard

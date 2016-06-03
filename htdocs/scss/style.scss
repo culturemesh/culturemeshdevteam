@@ -1,7 +1,9 @@
 $cm_orange:#EF5330;
 $cm_blue:#3CB3CA;
 $cm_green:#97CB38;
-$cm_white:#FFFFFF;
+$cm_green_soft:#6BDD71;
+$cm_white:#FEFEFE;
+$cm_black:#010101;
 
 $cm_color_facebook:#3B5998;
 $cm_color_twitter:#55ACEE;
@@ -1523,7 +1525,6 @@ h2.dashboard
 {
 	text-align:center;
 	font: 24px Lato-regular, sans-serif;
-	color:#000000;
 }
 
 h3.dashboard
@@ -1657,11 +1658,6 @@ li.inactive-event p#event-desc {
 {
 	font-size:16px;
 	margin-bottom:15px;
-}
-.profile_left_panel
-{
-	width: 294px;
-	padding-top:48px;
 }
 
 #confirmation_panel {
