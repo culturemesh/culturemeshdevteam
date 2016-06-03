@@ -718,8 +718,7 @@ h5.h-network.post {
   margin-top: 40px; }
 
 div.net-info {
-  margin-bottom: 20px;
-  margin-left: 23px; }
+  margin-bottom: 20px; }
 
 .leftbar {
   margin-right: 10px;
@@ -1261,9 +1260,6 @@ div.event-host {
   float: left; }
 
 div.event-text {
-  width: 400px;
-  float: left;
-  margin-left: 15px;
   margin-top: -15px; }
 
 li.inactive-event {
@@ -1279,7 +1275,6 @@ li.inactive-event p#event-desc {
   width: auto; }
 
 .net-info.dashboard {
-  margin-left: 40px;
   margin-bottom: 20px; }
 
 .bottom-text.dashboard {
@@ -1288,7 +1283,6 @@ li.inactive-event p#event-desc {
 
 .profile_left_panel {
   width: 294px;
-  float: left;
   padding-top: 48px; }
 
 #confirmation_panel {
@@ -1310,16 +1304,6 @@ li.inactive-event p#event-desc {
   padding-left: 48px;
   padding-top: 40px;
   padding-bottom: 48px; }
-
-.tab-content {
-  margin-left: 50px; }
-
-.profile_image {
-  padding-left: 48px; }
-
-#profile_image {
-  width: 198px;
-  height: 198px; }
 
 #pic-upload-div {
   text-align: center;
@@ -1370,30 +1354,6 @@ p.profile {
 
 a.profile {
   vertical-align: middle; }
-
-.nav.nav-pills.dashboard {
-  font: 20px Lato-Bold, sans-serif; }
-
-.nav.nav-pills.dashboard > li > a {
-  color: #404000;
-  height: 28px;
-  margin-left: 20px;
-  margin-right: 20px; }
-
-.nav.nav-pills.dashboard > li > a:hover,
-.nav.nav-pills.dashboard > li > a:focus {
-  color: #EF5330;
-  background-color: white; }
-
-.nav.nav-pills.dashboard > .active > a,
-.nav.nav-pills.dashboard > .active > a:hover,
-.nav.nav-pills.dashboard > .active > a:focus {
-  margin-bottom: 10px;
-  color: #EF5330;
-  background-color: white;
-  background: url("../images/dashboard_selected.png");
-  background-repeat: no-repeat;
-  background-position: center bottom; }
 
 #account-buttons {
   margin-top: 60px; }
@@ -1863,6 +1823,14 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
   font-size: 18px; }
 
 /****/
+/*
+ * TABS
+ */
+.tab-content {
+  margin-left: 50px; }
+
+/* NETWORK
+*/
 .net-right {
   float: left;
   width: 64%;
@@ -1875,5 +1843,53 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
 
 button.network {
   float: left; }
+
+/*
+ * PROFILE
+ */
+.profile_left_panel {
+  float: left; }
+
+.profile_image {
+  padding-left: 48px; }
+
+#profile_image {
+  width: 198px;
+  height: 198px; }
+
+.nav.nav-pills.dashboard {
+  font: 20px Lato-Bold, sans-serif; }
+
+.nav.nav-pills.dashboard > li > a {
+  color: #404000;
+  height: 28px;
+  margin-left: 20px;
+  margin-right: 20px; }
+
+.nav.nav-pills.dashboard > li > a:hover,
+.nav.nav-pills.dashboard > li > a:focus {
+  color: #EF5330;
+  background-color: white; }
+
+.nav.nav-pills.dashboard > .active > a,
+.nav.nav-pills.dashboard > .active > a:hover,
+.nav.nav-pills.dashboard > .active > a:focus {
+  margin-bottom: 10px;
+  color: #EF5330;
+  background-color: white;
+  background: url("../images/dashboard_selected.png");
+  background-repeat: no-repeat;
+  background-position: center bottom; }
+
+div.net-info {
+  margin-left: 23px; }
+
+.net-info.dashboard {
+  margin-left: 40px; }
+
+div.event-text {
+  width: 400px;
+  float: left;
+  margin-left: 15px; }
 
 /*# sourceMappingURL=min-993px.css.map */

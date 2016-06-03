@@ -124,9 +124,9 @@
 
 	<!-- PROFILE LEFT PANEL -->
 	<div class="profile_left_panel">
-	    <span class="profile_image">
+	    <div class="profile_image text-center">
 		    <img id="profile_image" class='usr_image' src="{{ user.img_link }}{{^ user.img_link }}{{ vars.blank_profile_path_lrg }}{{/ user.img_link}}#{{ page_vars.rand }}"/>
-	    </span>
+	    </div>
 	    <div id="pic-upload-div">
 		    <p id="success-label"></p>
 		    <form id="profile-pic-upload" method="POST" action="{{ vars.hostname }}/profile_img_upload.php" enctype="multipart/form-data"/>
