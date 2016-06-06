@@ -4,6 +4,7 @@ $cm_green:#97CB38;
 $cm_green_soft:#6BDD71;
 $cm_white:#FEFEFE;
 $cm_black:#010101;
+$cm_dark:#313131;
 
 $cm_color_facebook:#3B5998;
 $cm_color_twitter:#55ACEE;
@@ -11,7 +12,7 @@ $cm_color_googleplus:#DC4A38;
 
 $cm_gray: #f1eff0;
 $cm_l_gray: #f6f7f8;
-$cm_d_gray: #e1efe0;
+$cm_d_gray: #e3e5e3;
 
 /*h4
 {
@@ -43,6 +44,13 @@ h5{
 h1.center, h2.center, h3.center, h4.center, h5.center, p.center {
 	text-align:center;
 }
+
+h3.dark {
+	font: "Lato" sans-serif;
+	font-size:21px;
+	color:$cm_dark;
+}
+
 .cmhide {
     display:none;
 }
@@ -891,13 +899,6 @@ h5.h-network.post
 	/*	float:left;*/
 }
 
-.net-left
-{
-	float:left;
-	width: 30%;
-	margin-top:40px;
-}
-
 div.net-info {
 	margin-bottom:20px;
 }
@@ -1491,24 +1492,6 @@ input[type="submit"].network.search-button
 	height:36px;
 }
 
-input[type="submit"].launch-network
-{
-	color:#E34036;
-	/*
-	border-style:solid;
-	border-width:1px;
-	border-color:#E34036;
-	*/
-	border:none;
-	background-color:white;
-	font: 14px Lato-Light, sans-serif;
-	margin-left:15px;
-}
-
-input[type="submit"].launch-network:hover
-{
-	color:#3EB3CA;
-}
 
 p.search-user-input {
 	color:#999;

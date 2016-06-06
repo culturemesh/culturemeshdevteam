@@ -863,7 +863,7 @@ cm.NetworkSearcher.prototype = {
 
 		var self = this;
 
-		var networkSearchAjax = new Ajax({
+		var networkSearchAjax = new cm.Ajax({
 			requestType: 'POST',
 			requestUrl: cm.home_path + '/api/search/network-post.php',
 		    	data: values,

@@ -65,19 +65,22 @@
 	</script>
 
 	<div id="content">
-		<div class="net-left">
+		<div class="net-left hidden-sm hidden-xs">
 			<div class="leftbar">
 				
 				{{{ sections.map_embed }}}
 			</div>
 		</div>
-		<div class="net-right">
+		<div class="net-right col-sm-12 col-xs-12">
 			{{{ sections.searchbar }}}
-			<div id='searchable-results' class='panel row span12'>
-					<div class='row'>
+			<div class="cm-y-10 hidden-md hidden-lg"></div>
+			<div id='searchable-results' class='panel'>
+					<div class=''>
 					{{# sections.origin_results }}
-					<div class='span4 {{# hidden }}cmhide{{/ hidden }}'>
+					<div class='col-md-4 col-lg-4 {{# hidden }}cmhide{{/ hidden }}'>
+					<a class="btn btn-primary" role="button" data-toggle="collapse" href="#origin-results" aria-expanded="true" aria-controls="origin-results">
 					<b> Origin </b>
+					</a>
 						<p class="search-user-input">Showing results for '{{ search.search_one }}'</p>
 						<div id='origin-results'>
 						{{# origins }}
@@ -87,8 +90,10 @@
 					</div>
 					{{/ sections.origin_results }}
 					{{# sections.location_results }}
-					<div class='span4 {{# hidden }}cmhide{{/ hidden }}'>
+					<div class='col-md-4 col-lg-4 {{# hidden }}cmhide{{/ hidden }}'>
+					<a class="btn btn-primary" role="button" data-toggle="collapse" href="#location-results" aria-expanded="true" aria-controls="location-results">
 					<b> Location </b>
+					</a>
 						<p class="search-user-input">Showing results for '{{ search.search_two }}'</p>
 						<div id='location-results'>
 						{{# locations }}
@@ -106,7 +111,7 @@
 			<div id='network-results'>
 				{{# sections.network_results }}
 				<div id="best-match" class="{{# hidden }}cmhide{{/ hidden }}">
-					<h3>Best Match</h3>
+					<h3 class="dark">Best Match</h3>
 					<div id="best-match-container">
 						{{# network }}
 						{{{ . }}}
@@ -116,7 +121,7 @@
 				{{/ sections.network_results }}
 				{{# sections.related_results }}
 				<div id="related-networks" class="{{# hidden }}cmhide{{/ hidden }}">
-					<h3>Related Networks</h3>
+					<h3 class="dark">Related Networks</h3>
 					<div id="related-networks-container">
 						{{# networks }}
 						{{{ . }}}

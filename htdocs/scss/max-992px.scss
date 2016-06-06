@@ -168,7 +168,7 @@ p.profile
 
 #profile_image {
 	border-radius:50%;
-	border: 2px $cm_green_soft solid;
+	border: 1px $cm_green_soft solid;
 	width:150px;
 	height:150px;
 	background-color:white;
@@ -209,4 +209,43 @@ p.profile
 	background:url('../images/dashboard_selected.png');
 	background-repeat:no-repeat;
 	background-position: center bottom;
+}
+
+/*
+ * SEARCH RESULTS
+ */
+
+#searchable-results {
+	width:93%;
+	margin: 0px auto;
+}
+
+div.net-info.results {
+	background-color:$cm_white;
+	padding: 10px 0;
+	border: 2px solid $cm_d_gray;
+}
+
+div.net-info.results.possible {
+	padding: 10px 0;
+}
+
+div.net-info.results.active {
+	padding-top: 10px;
+	padding-bottom: 0px;
+}
+
+input[type="submit"].launch-network
+{
+	height:45px;
+	background-color:#97CB38;
+	font:18px Lato, sans-serif;
+	color:white;
+	border:none;
+	border-radius:5px;
+}
+
+div.network-stats {
+	background-color: $cm_d_gray;
+	padding: 5px 0;
 }

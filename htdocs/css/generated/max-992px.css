@@ -26,6 +26,11 @@ h5 {
 h1.center, h2.center, h3.center, h4.center, h5.center, p.center {
   text-align: center; }
 
+h3.dark {
+  font: "Lato" sans-serif;
+  font-size: 21px;
+  color: #313131; }
+
 .cmhide {
   display: none; }
 
@@ -712,11 +717,6 @@ h5.h-network {
 h5.h-network.post {
   /*	float:left;*/ }
 
-.net-left {
-  float: left;
-  width: 30%;
-  margin-top: 40px; }
-
 div.net-info {
   margin-bottom: 20px; }
 
@@ -1153,21 +1153,6 @@ div.prompt {
 input[type="submit"].network.search-button {
   padding: 3px;
   height: 36px; }
-
-input[type="submit"].launch-network {
-  color: #E34036;
-  /*
-  border-style:solid;
-  border-width:1px;
-  border-color:#E34036;
-  */
-  border: none;
-  background-color: white;
-  font: 14px Lato-Light, sans-serif;
-  margin-left: 15px; }
-
-input[type="submit"].launch-network:hover {
-  color: #3EB3CA; }
 
 p.search-user-input {
   color: #999;
@@ -1943,7 +1928,7 @@ p.profile {
 
 #profile_image {
   border-radius: 50%;
-  border: 2px #6BDD71 solid;
+  border: 1px #6BDD71 solid;
   width: 150px;
   height: 150px;
   background-color: white; }
@@ -1973,5 +1958,36 @@ p.profile {
   background: url("../images/dashboard_selected.png");
   background-repeat: no-repeat;
   background-position: center bottom; }
+
+/*
+ * SEARCH RESULTS
+ */
+#searchable-results {
+  width: 93%;
+  margin: 0px auto; }
+
+div.net-info.results {
+  background-color: #FEFEFE;
+  padding: 10px 0;
+  border: 2px solid #e3e5e3; }
+
+div.net-info.results.possible {
+  padding: 10px 0; }
+
+div.net-info.results.active {
+  padding-top: 10px;
+  padding-bottom: 0px; }
+
+input[type="submit"].launch-network {
+  height: 45px;
+  background-color: #97CB38;
+  font: 18px Lato, sans-serif;
+  color: white;
+  border: none;
+  border-radius: 5px; }
+
+div.network-stats {
+  background-color: #e3e5e3;
+  padding: 5px 0; }
 
 /*# sourceMappingURL=max-992px.css.map */
