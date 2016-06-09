@@ -171,15 +171,18 @@
 			<hr width="630" class="hidden-xs hidden-sm">
 			<!-------------- -->
 			<div class="tab-container">
-				<ul class="nav nav-pills dashboard hidden-xs hidden-sm">
+				<ul class="nav nav-pills dashboard">
 					<li id="post-nav" class="active"><a href="#post-wall-container" data-toggle="pill">Posts</a></li>
 					<li id="event-nav"><a href="#event-wall" data-toggle="pill">Events</a></li>
+					<li id="share-nav"><a href="#share-wall" data-toggle="pill">Share</a></li>
 				</ul>
+				<!--
 				<ul class="nav nav-tabs dashboard hidden-md hidden-lg">
 					<li id="post-nav" class="active"><a href="#post-wall-container" data-toggle="pill">Posts</a></li>
 					<li id="event-nav"><a href="#event-wall" data-toggle="pill">Events</a></li>
 					<li id="share-nav"><a href="#share-wall" data-toggle="pill">Share</a></li>
 				</ul>
+				-->
 			</div>
 			<div class="clear"></div>
 			<!-------------- -->
@@ -187,21 +190,29 @@
 			<div id="post-wall-container" class="tab-pane active">
 			<div id="post-wall">
 				{{# page_vars.member }}
-				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.hostname }}/network_post.php" enctype="multipart/form-data">
-					<!--<img id="profile-post" src="{{ vars.img_host_repo}}/{{ site_user.img_link }}" width="45" height="45">-->
-
-					<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
-					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
-					<div class="fileupload-error"></div>
-					<div id='post-form-panel' class="fileupload-panel"></div>
-					<div class="clear"></div>
-					<div class="fileupload-button picture"></div>
-					<button type="button" class="help-tooltip"  data-toggle="popover" data-placement="left">?</button>
-					<input type="submit" class="network post fileupload-submit" value="Send"></input>
-					<input type="hidden" name="post_class" value="o"></input>
-					<input type="hidden" name="post_original" value="NULL"></input>
-				</form>
-				<hr>
+				<div id="post-form-container" class="mobile-widget">
+					<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.hostname }}/network_post.php" enctype="multipart/form-data">
+						<div class="post-image-container inline-block text-center">
+							<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
+						</div>
+						<div class="post-textarea-container inline-block text-center">
+							<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
+						</div>
+						<div class="post-button-container inline-block">
+							<div class="fileupload-error"></div>
+							<div id='post-form-panel' class="fileupload-panel"></div>
+							<div class="clear"></div>
+							<div class="fileupload-button picture"></div>
+							<button type="button" class="help-tooltip"  data-toggle="popover" data-placement="left">?</button>
+							<input type="submit" class="network post fileupload-submit" value="Send"></input>
+							<input type="hidden" name="post_class" value="o"></input>
+							<input type="hidden" name="post_original" value="NULL"></input>
+						</div>
+					</form>
+					<div class="clear">&nbsp;</div>
+				</div>
+				<div class="cm-y-20 hidden-md hidden-lg"></div>
+				<hr class="hidden-sm hidden-xs">
 				{{/ page_vars.member }}
 				<!--
 				<form method="POST" class="member" action="{{ vars.hostname }}/network_post.php">

@@ -5,6 +5,7 @@ $cm_green_soft:#6BDD71;
 $cm_white:#FEFEFE;
 $cm_black:#010101;
 $cm_dark:#313131;
+$cm_lighter_dark:#404341;
 
 $cm_color_facebook:#3B5998;
 $cm_color_twitter:#55ACEE;
@@ -107,6 +108,9 @@ button.googleplus {
 	background-color:$cm_color_googleplus;
 }
 
+div.inline-block {
+	display:inline-block;
+}
 
 /******
  * MAIN TEMPLATE
@@ -247,6 +251,14 @@ button.googleplus {
 	color: #AAA;
 }
 
+#sidebar_image {
+	border-radius:50%;
+	border: 1px $cm_dark solid;
+	width:120px;
+	height:120px;
+	background-color:white;
+}
+
 .sidebar-button {
 	color: $cm_white;
 	border: 1px solid #959595;
@@ -260,6 +272,11 @@ button.googleplus {
 .sidebar-button:hover {
 	color: #434041;
 	background-color: $cm_white;
+}
+
+.sidebar-button.sign-out {
+	border-radius: 3px;
+	width:40%;
 }
 
 .sidebar-li-button {
@@ -288,13 +305,6 @@ button.googleplus {
 	margin-left: 7%;
 }
 
-/******
- * TEMPLATE FILES
- */
-div.content-top {
-	margin-top:-20px;
-	padding-top:20px;
-}
 
 /******
 INDEX PAGE
@@ -380,9 +390,6 @@ span.at.network {
 	font-size:20px;
 	font-family: 'Lato-Light', sans-serif;
 	color:white;
-	/*
-	background: rgba(0, 0, 0, 0.5) none repeat scroll 0% 0%;
-	*/
 }
 
 #opening.network
@@ -398,33 +405,9 @@ div.searchbar-home {
 	min-height:200px;
 }
 
-div.searchbar-home span {
-	color: #6e6e6e;
-	font-size: 16px;
-}
-
-div.searchbar-home select {
-	background: rgba(0, 0, 0, 0) repeat scroll 0 0;
-	border: solid 1px;
-	color: #6e6e6e;
-	font-family: "Lato-Light",sans-serif;
-	font-size: 16px;
-	margin-bottom: 3px;
-	padding: 0;
-}
-
-div.searchbar-home input[type="text"] {
-	height:33px;
-	font-size:22px;
-	width:88%;
-}
-
 div.searchbar-home input[type="submit"] {
 	height:43px;
 	width:88%;
-	/*
-	width:100px;
-	*/
 	margin-top:-2px;
 	margin-left:7px;
 	border:none;
@@ -433,28 +416,6 @@ div.searchbar-home input[type="submit"] {
 	font-family: 'Lato-bold', sans-serif;
 	font-size:20px;
 	color:$cm_white
-}
-
-select.stage-input
-{
-	/*
-    background: rgba(0, 0, 0, 0) repeat scroll 0 0;
-    border-color: white;
-    color: black;
-    font-family: "Lato-Light",sans-serif;
-    font-size: 20px;
-    margin-bottom: 3px;
-    padding: 0;
-    width: 150px;
-    */
-}
-
-select.stage-input option
-{
-	/*
-	color:black;
-	background-color:$cm_white;
-	*/
 }
 
 select.netsearch
@@ -550,22 +511,6 @@ input[type="submit"].stage-button {
     color:$cm_white
 }
     */
-
-#search-1 {
-	/*
-    width:335px;
-    margin-top:8px;
-    margin-left:8px;
-    */
-}
-
-#search-2 {
-	/*
-    width:193px;
-    margin-left:7px;
-    margin-top:8px;
-    */
-}
 
 
 .bottom-div{
@@ -1044,10 +989,6 @@ input[type="submit"].network:hover
 
 }
 
-input[type="submit"].network.post
-{
-	width:545px;
-}
 
 div.event-slider
 {
@@ -1167,15 +1108,6 @@ input[type="text"].hidden-field
 	display:none;
 }
 
-li.event
-{
-	width:400px;
-	border-style:solid;
-	border-width:3px;
-	border-color:#E6E6E6;
-	border-radius:0;
-	padding-left:15px;
-}
 
 /* I've got this here because the event-info
  * modal won't stretch to the correct length without
@@ -1594,13 +1526,6 @@ ul.dashboard.item
 	margin-top:30px;
 }
 
-li.event.dashboard
-{
-	width:auto;
-	border-style:none;
-	padding-top:10px;
-	margin-bottom:25px;
-}
 
 ul.dashboard.nested {
     margin-left: 0;
@@ -1627,10 +1552,6 @@ li.inactive-event p#event-desc {
 	color:#ababab;
 }
 
-.network-post.dashboard
-{
-	width:auto;
-}
 
 .net-info.dashboard
 {
@@ -1997,7 +1918,7 @@ h2.pheader{
 }
 
 label.checkbox{
-    font: 14px 'Lato';
+    font: 14px 'Lato-Light', sans-serif;
     font-weight: 300;
 }
 h3.pheader{
@@ -2274,4 +2195,23 @@ div.mid-grid {
 }
 
 /****/
+
+@mixin opacity($value) {
+
+	$unit_value : 0; /* Between 0 and 1 */
+	$cent_value : 0; /* Between 0 and 100, hopefully user won't be too attached to 1% opacity */
+
+	@if $value > 1 {
+	    $cent_value: $value;
+	    $unit_value: $value / 100;
+	}
+	@else {
+	    $cent_value: $value * 100;
+	    $unit_value: $value;
+	}
+
+	zoom: 1;
+	filter: alpha(opacity=$cent_value);
+	opacity: $unit_value;
+}
 

@@ -149,6 +149,12 @@
 					left_coord: '20%'
 				});
 
+				var search_overlay = new cm.Overlay({
+					root: document.getElementById('search-overlay'),
+					toggle: 'a > #search-toggle',
+					left_coord: '0'
+				});
+
 				var login_overlay = new cm.Overlay({
 					root: document.getElementById('login-overlay'),
 					toggle: '.login-toggle',
@@ -377,7 +383,7 @@
 				</div>
 				<div class="header-mobile-icons col-sm-2 col-xs-4 hidden-md hidden-lg row">
 					<div class=""></div>
-					<svg class="custom-icon icon-search"><use xlink:href="#icon-search"></use></svg>
+					<a><svg id="search-toggle" class="custom-icon icon-search"><use xlink:href="#icon-search"></use></svg></a>
 					<a><svg id="sidebar-toggle" class="custom-icon icon-menu"><use xlink:href="#icon-menu"></use></svg></a>
 				</div>
 				<!--
@@ -536,10 +542,15 @@
 					<button class="overlay-close close-cm-overlay">&#10006</button>
 				</div>
 				<div class="cm-y-20"></div>
+				{{# logged_in }}
+				<div class="sidebar-user-picture text-center">
+					<a href="{{ vars.hostname }}/profile/{{ site_user.id }}"><img id="sidebar_image" class='usr_image' src="{{ site_user.img_link }}{{^ site_user.img_link }}{{ vars.blank_profile_path_lrg }}{{/ site_user.img_link}}#{{ page_vars.rand }}"/></a>
+				  <div class="cm-y-10"></div>
+				</div>
+				{{/ logged_in }}
 				<div class="sidebar-user-buttons row text-center">
 					{{# logged_in }}
-					<a href="{{ vars.hostname }}/profile/{{ site_user.id }}" id="welcome"><button class="sidebar-button">Welcome, {{ site_user.first_name }}</button></a>
-					<a id="sign-out" href="{{ vars.hostname }}/sign_out.php"><button class="sidebar-button">Sign Out</button></a>
+					<a id="sign-out" href="{{ vars.hostname }}/sign_out.php"><button class="sidebar-button sign-out">Sign Out</button></a>
 					{{/ logged_in }}
 					{{^ logged_in }}
 					<button id="sidebar-login-toggle" class="sidebar-button login-toggle">SIGN IN</button>
@@ -619,6 +630,40 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- SEARCHBAR -->
+		<div id="search-overlay" class="cm-overlay full-overlay container-fluid">
+			<div>
+				<button class="overlay-close close-cm-overlay">&#10006</button>
+			</div>
+			<div id='search' class="hidden-sm hidden-xs">
+				<form id ='search-form' method='GET' action='{{ vars.hostname }}/search/' autocomplete='off'>
+				<div id='opening' class='network'>Find people who
+				<select id='verb-select' name='verb' class='netsearch'>
+					<option value='arefrom'>are from</option>
+					<option value='speak'>speak</option>
+				</select>
+				<span class='at network'>In/Near</span>
+				</div>
+				<input type='text' id='search-1' class='net-search' name='search-1' autocomplete='off'/>
+					<ul id='s-query' class='network search'></ul>
+					<ul id='s-var' class='network search'></ul>
+					<input type='hidden' id='clik1' name='clik1' value=0></ul>
+					<input type="hidden" id="varId" name="varId" value=-1 />
+					<input type="hidden" id="varClass" name="varClass" value=-1 />
+				<input type='text' id='search-2' class='net-search' name='search-2' autocomplete='off'/>
+					<ul id='s-location' class='network search'></ul>
+					<input type='hidden' id='clik2' name='clik2' value=0></ul>
+					<input type="hidden" id="locId" name="locId" value=-1 />
+					<input type="hidden" id="locClass" name="locClass" value=-1 />
+				<input type='submit' class='network search-button' value='Go'>
+				<input type='hidden' id='search-topic' name='search-topic'></input>
+				</form>
+			</div>
+		</div>
+
+		{{$ overlays }}
+		{{/ overlays }}
 
 		<script>
 			function toggleLogin() {

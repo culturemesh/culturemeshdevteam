@@ -155,14 +155,17 @@
 	<!-- PROFILE DASHBOARD -->
 	<div class="profile_dashboard">
 	{{{ sections.searchbar }}}
-	    <ul class="nav nav-pills dashboard">
-	<!--        <li class="active"><a href="#profile_basic_info_tab" data-toggle="pill">Basic Info</a></li>-->
-		<li class="active"><a href="#profile_dashboard_tab" data-toggle="pill">Dashboard</a></li>
-		<li><a href="#profile_networks_tab" data-toggle="pill">Networks</a></li>
-		<li><a href="#profile_events_tab" data-toggle="pill">Events</a></li>
-	<!--        <li><a href="#profile_inbox_tab" data-toggle="pill">Inbox</a></li>-->
-	{{^ page_vars.guest }}<li><a href="#profile_accounts_tab" data-toggle="pill">Account</a></li>{{/ page_vars.guest }}
-	    </ul>
+	    <div class="tab-container">
+		    <ul class="nav nav-pills dashboard">
+		<!--        <li class="active"><a href="#profile_basic_info_tab" data-toggle="pill">Basic Info</a></li>-->
+			<li class="active"><a href="#profile_dashboard_tab" data-toggle="pill">Dashboard</a></li>
+			<li><a href="#profile_networks_tab" data-toggle="pill">Networks</a></li>
+			<li><a href="#profile_events_tab" data-toggle="pill">Events</a></li>
+		<!--        <li><a href="#profile_inbox_tab" data-toggle="pill">Inbox</a></li>-->
+		{{^ page_vars.guest }}<li><a href="#profile_accounts_tab" data-toggle="pill">Account</a></li>{{/ page_vars.guest }}
+		    </ul>
+		    <div class="clear">&nbsp;</div>
+	    </div>
 	    <div class="tab-content">
 	<!--        <div class="tab-pane" id="profile_basic_info_tab">
 		</div>-->
@@ -248,10 +251,10 @@
 					<label class="label label-success hide" id="account_info_update_success_txt">Information successfully updated!</label>
 					<label class="label label-important hide" id="account_info_update_failure_txt">Update failed. Please try again.</label>
 					<h5>Send me emails when</h5>
-					<label class="checkbox"><input type="checkbox" name="notify_interesting_events" value="1" {{# user.interesting_events }}checked{{/ user.interesting_events }}>CultureMesh finds events I'd be interested in near me</label>
-					<label class="checkbox"><input type="checkbox" name="notify_company_news" value="1" {{# user.company_news }}checked{{/ user.company_news }}>CultureMesh has fun company news</label>
-					<label class="checkbox"><input type="checkbox" name="notify_events_upcoming" value="1" {{# user.events_upcoming }}checked{{/ user.events_upcoming }}>I have an upcoming event</label>
-					<label class="checkbox"><input type="checkbox" name="notify_network_activity" value="1" {{# user.events_upcoming }}checked{{/ user.events_upcoming }}>I have received comments to a network event I added</label>
+					<label class="checkbox"><input class="account" type="checkbox" name="notify_interesting_events" value="1" {{# user.interesting_events }}checked{{/ user.interesting_events }}>CultureMesh finds events I'd be interested in near me</label>
+					<label class="checkbox"><input class="account" type="checkbox" name="notify_company_news" value="1" {{# user.company_news }}checked{{/ user.company_news }}>CultureMesh has fun company news</label>
+					<label class="checkbox"><input class="account" type="checkbox" name="notify_events_upcoming" value="1" {{# user.events_upcoming }}checked{{/ user.events_upcoming }}>I have an upcoming event</label>
+					<label class="checkbox"><input class="account" type="checkbox" name="notify_network_activity" value="1" {{# user.events_upcoming }}checked{{/ user.events_upcoming }}>I have received comments to a network event I added</label>
 					<input type="hidden" name="notification" value="yes"/>
 				</div>
 				{{# user.confirmed }}

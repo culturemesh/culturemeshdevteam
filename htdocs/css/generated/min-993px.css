@@ -74,6 +74,9 @@ button.twitter {
 button.googleplus {
   background-color: #DC4A38; }
 
+div.inline-block {
+  display: inline-block; }
+
 /******
  * MAIN TEMPLATE
  */
@@ -184,6 +187,13 @@ button.googleplus {
 .overlay-close:hover {
   color: #AAA; }
 
+#sidebar_image {
+  border-radius: 50%;
+  border: 1px #313131 solid;
+  width: 120px;
+  height: 120px;
+  background-color: white; }
+
 .sidebar-button {
   color: #FEFEFE;
   border: 1px solid #959595;
@@ -196,6 +206,10 @@ button.googleplus {
 .sidebar-button:hover {
   color: #434041;
   background-color: #FEFEFE; }
+
+.sidebar-button.sign-out {
+  border-radius: 3px;
+  width: 40%; }
 
 .sidebar-li-button {
   text-align: left;
@@ -216,13 +230,6 @@ button.googleplus {
 
 .sidebar-user-buttons > button + button {
   margin-left: 7%; }
-
-/******
- * TEMPLATE FILES
- */
-div.content-top {
-  margin-top: -20px;
-  padding-top: 20px; }
 
 /******
 INDEX PAGE
@@ -289,10 +296,7 @@ span.at.network {
   margin-left: 9px;
   font-size: 20px;
   font-family: 'Lato-Light', sans-serif;
-  color: white;
-  /*
-  background: rgba(0, 0, 0, 0.5) none repeat scroll 0% 0%;
-  */ }
+  color: white; }
 
 #opening.network {
   margin-bottom: -5px;
@@ -304,30 +308,9 @@ span.at.network {
 div.searchbar-home {
   min-height: 200px; }
 
-div.searchbar-home span {
-  color: #6e6e6e;
-  font-size: 16px; }
-
-div.searchbar-home select {
-  background: transparent repeat scroll 0 0;
-  border: solid 1px;
-  color: #6e6e6e;
-  font-family: "Lato-Light",sans-serif;
-  font-size: 16px;
-  margin-bottom: 3px;
-  padding: 0; }
-
-div.searchbar-home input[type="text"] {
-  height: 33px;
-  font-size: 22px;
-  width: 88%; }
-
 div.searchbar-home input[type="submit"] {
   height: 43px;
   width: 88%;
-  /*
-  width:100px;
-  */
   margin-top: -2px;
   margin-left: 7px;
   border: none;
@@ -336,24 +319,6 @@ div.searchbar-home input[type="submit"] {
   font-family: 'Lato-bold', sans-serif;
   font-size: 20px;
   color: #FEFEFE; }
-
-select.stage-input {
-  	/*
-      background: rgba(0, 0, 0, 0) repeat scroll 0 0;
-      border-color: white;
-      color: black;
-      font-family: "Lato-Light",sans-serif;
-      font-size: 20px;
-      margin-bottom: 3px;
-      padding: 0;
-      width: 150px;
-      */ }
-
-select.stage-input option {
-  /*
-  color:black;
-  background-color:$cm_white;
-  */ }
 
 select.netsearch {
   font-size: 12px;
@@ -435,20 +400,6 @@ input[type="submit"].stage-button {
     color:$cm_white
 }
     */
-#search-1 {
-  	/*
-      width:335px;
-      margin-top:8px;
-      margin-left:8px;
-      */ }
-
-#search-2 {
-  	/*
-      width:193px;
-      margin-left:7px;
-      margin-top:8px;
-      */ }
-
 .bottom-div {
   width: 32%;
   float: left;
@@ -824,9 +775,6 @@ input[type="submit"].network {
 input[type="submit"].network:hover {
   background-color: #C31016; }
 
-input[type="submit"].network.post {
-  width: 545px; }
-
 div.event-slider {
   height: 150px;
   width: 450px;
@@ -910,14 +858,6 @@ td.event-card.card:hover {
 
 input[type="text"].hidden-field {
   display: none; }
-
-li.event {
-  width: 400px;
-  border-style: solid;
-  border-width: 3px;
-  border-color: #E6E6E6;
-  border-radius: 0;
-  padding-left: 15px; }
 
 /* I've got this here because the event-info
  * modal won't stretch to the correct length without
@@ -1231,12 +1171,6 @@ ul.dashboard.item {
   list-style-type: none;
   margin-top: 30px; }
 
-li.event.dashboard {
-  width: auto;
-  border-style: none;
-  padding-top: 10px;
-  margin-bottom: 25px; }
-
 ul.dashboard.nested {
   margin-left: 0; }
 
@@ -1254,9 +1188,6 @@ li.inactive-event h3 {
 
 li.inactive-event p#event-desc {
   color: #ababab; }
-
-.network-post.dashboard {
-  width: auto; }
 
 .net-info.dashboard {
   margin-bottom: 20px; }
@@ -1544,7 +1475,7 @@ h2.pheader {
   padding: 30px 0; }
 
 label.checkbox {
-  font: 14px 'Lato';
+  font: 14px 'Lato-Light', sans-serif;
   font-weight: 300; }
 
 h3.pheader {
@@ -1809,6 +1740,62 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
 .tab-content {
   margin-left: 50px; }
 
+/*
+ * SEARCHBAR
+ */
+#search-bar {
+  background: rgba(0, 0, 0, 0.5);
+  background: transparent;
+  zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
+  /*IE 6 & 7*/
+  /*-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000)";/* IE8 */ }
+
+#search-1 {
+  width: 335px;
+  margin-top: 8px;
+  margin-left: 8px; }
+
+#search-2 {
+  width: 193px;
+  margin-left: 7px;
+  margin-top: 8px; }
+
+div.searchbar-home #search-form {
+  padding-top: 8px;
+  padding-left: 10px;
+  width: 690px;
+  margin-left: 140px; }
+
+div.searchbar-home span {
+  color: #FEFEFE;
+  font-size: 21px; }
+
+div.searchbar-home select {
+  background: rgba(0, 0, 0, 0.5) repeat scroll 0 0;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: #FEFEFE;
+  font-family: "Lato-Light",sans-serif;
+  font-size: 20px;
+  margin-bottom: 3px;
+  padding: 0;
+  width: 150px; }
+
+div.searchbar-home select option {
+  color: black;
+  background-color: #FEFEFE; }
+
+div.searchbar-home input[type="text"] {
+  height: 43px;
+  font-size: 22px; }
+
+div.searchbar-home input[type="submit"] {
+  width: 100px; }
+
+div.bottom-div-material ol {
+  padding-left: 0; }
+
 /* NETWORK
 */
 .net-right {
@@ -1819,10 +1806,17 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
   margin-bottom: 30px; }
 
 .lrg-network-stats {
-  float: left; }
+  float: left;
+  height: 40px; }
 
 button.network {
   float: left; }
+
+input[type="submit"].network.post {
+  width: 545px; }
+
+div.post-textarea-container {
+  width: 88%; }
 
 /*
  * SEARCH RESULTS
@@ -1897,5 +1891,22 @@ div.event-text {
   width: 400px;
   float: left;
   margin-left: 15px; }
+
+li.event {
+  width: 400px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #E6E6E6;
+  border-radius: 0;
+  padding-left: 15px; }
+
+li.event.dashboard {
+  width: auto;
+  border-style: none;
+  padding-top: 10px;
+  margin-bottom: 25px; }
+
+.network-post.dashboard {
+  width: auto; }
 
 /*# sourceMappingURL=min-993px.css.map */

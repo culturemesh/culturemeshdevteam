@@ -64,10 +64,23 @@
 	}
 
 	// USER STUFF
-	if (isset($_SESSION['uid']))
+	$site_user = NULL;
+	$logged_in = false;
+	$member = false;
+
+	if (isset($_SESSION['uid'])) {
+
 		$logged_in = true;
-	else
-		$logged_in = false;
+
+		// check if user is registered
+		// if so, get user info
+		$site_user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db)->prepare($cm);
+
+		// see if user is registered
+		// in network
+		$member = $site_user->checkNetworkRegistration($nid);//$network->checkRegistration($site_user->id, $dal, $do2db);
+		$guest = false;
+	}
 
 
 	$page_loader = new \misc\PageLoader($cm, $mobile_detect);
@@ -75,7 +88,8 @@
 		'vars' => $cm->getVars(),
 		'logged_in' => $logged_in,
 		'top_networks' => $top_network_html,
-		'main_image' => $main_image
+		'main_image' => $main_image,
+		'site_user' => $site_user
 	));
 
 	/*

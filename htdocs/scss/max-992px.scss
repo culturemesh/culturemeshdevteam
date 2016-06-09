@@ -16,6 +16,12 @@ ul {
 	padding:0;
 }
 
+.mobile-widget {
+	width:92%;
+	margin:5px auto;
+	border: 1px solid $cm_d_gray;
+}
+
 /*
 * HOME
 */
@@ -36,11 +42,27 @@ ul {
 div.searchbar-home input[type="text"] {
 	height:43px;
 	font-size: 16px;
+	width:88%;
 }
 
 div.searchbar-home input[type="submit"] {
 	font-size: 16px;
 	margin:0;
+}
+
+div.searchbar-home span {
+	color: #6e6e6e;
+	font-size: 16px;
+}
+
+div.searchbar-home select {
+	background: rgba(0, 0, 0, 0) repeat scroll 0 0;
+	border: solid 1px;
+	color: #6e6e6e;
+	font-family: "Lato-Light",sans-serif;
+	font-size: 16px;
+	margin-bottom: 3px;
+	padding: 0;
 }
 
 
@@ -144,6 +166,26 @@ ul.network-event {
 	padding:0;
 }
 
+#post-form-container {
+	background-color:$cm-white;
+}
+
+div.post-image-container {
+	width: 10%;
+}
+
+div.post-button-container {
+	margin-left: 33%;
+}
+
+div.post-textarea-container {
+	width: 85%;
+}
+
+div.post-textarea-container textarea{
+	border: 1px solid $cm_d_gray;
+}
+
 /*
  * PROFILE
  */
@@ -211,6 +253,30 @@ p.profile
 	background-position: center bottom;
 }
 
+
+div.tab-container ul.nav-pills {
+	position:relative;
+	float:left;
+	display:block;
+	left:50%;
+}
+
+div.tab-container ul.nav-pills li {
+	position:relative;
+	float:left;
+	display:block;
+	right:50%;
+}
+
+input[type="checkbox"].account {
+	margin-left:0;
+	position:relative;
+}
+
+.net-info.dashboard {
+	padding: 5px;
+}
+
 /*
  * SEARCH RESULTS
  */
@@ -248,4 +314,14 @@ input[type="submit"].launch-network
 div.network-stats {
 	background-color: $cm_d_gray;
 	padding: 5px 0;
+}
+
+/******
+ * TEMPLATE FILES
+ */
+div.content-top {
+	/***
+	margin-top:-20px;
+	padding-top:20px;
+	*/
 }
