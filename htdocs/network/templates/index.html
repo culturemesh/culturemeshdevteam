@@ -173,7 +173,9 @@
 			<div class="tab-container">
 				<ul class="nav nav-pills dashboard">
 					<li id="post-nav" class="active"><a href="#post-wall-container" data-toggle="pill">Posts</a></li>
+					<li class="vertical-line hidden-md hidden-lg">&nbsp;</li>
 					<li id="event-nav"><a href="#event-wall" data-toggle="pill">Events</a></li>
+					<li class="vertical-line hidden-md hidden-lg">&nbsp;</li>
 					<li id="share-nav"><a href="#share-wall" data-toggle="pill">Share</a></li>
 				</ul>
 				<!--
@@ -190,23 +192,26 @@
 			<div id="post-wall-container" class="tab-pane active">
 			<div id="post-wall">
 				{{# page_vars.member }}
-				<div id="post-form-container" class="mobile-widget">
+				<div class="mobile-widget bg-white">
 					<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.hostname }}/network_post.php" enctype="multipart/form-data">
-						<div class="post-image-container inline-block text-center">
-							<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
-						</div>
 						<div class="post-textarea-container inline-block text-center">
 							<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 						</div>
-						<div class="post-button-container inline-block">
-							<div class="fileupload-error"></div>
-							<div id='post-form-panel' class="fileupload-panel"></div>
-							<div class="clear"></div>
-							<div class="fileupload-button picture"></div>
-							<button type="button" class="help-tooltip"  data-toggle="popover" data-placement="left">?</button>
-							<input type="submit" class="network post fileupload-submit" value="Send"></input>
-							<input type="hidden" name="post_class" value="o"></input>
-							<input type="hidden" name="post_original" value="NULL"></input>
+						<div>
+							<div class="post-image-container inline-block text-center">
+								<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
+							</div>
+							<div class="post-button-container inline-block">
+								<div class="fileupload-error"></div>
+								<div id='post-form-panel' class="fileupload-panel"></div>
+								<div class="clear"></div>
+								<div class="fileupload-button picture post-icon"></div>
+								<button type="button" class="help-tooltip post-icon"  data-toggle="popover" data-placement="left">?</button>
+								<input type="submit" class="network post fileupload-submit send" value="Send"></input>
+								<input type="hidden" name="post_class" value="o"></input>
+								<input type="hidden" name="post_original" value="NULL"></input>
+							</div>
+							<div class="clear">&nbsp;</div>
 						</div>
 					</form>
 					<div class="clear">&nbsp;</div>
@@ -293,7 +298,7 @@
 				<script>
 				</script>
 				{{/ get.eperror }}
-				<div id="event-maker">
+				<div id="event-maker" class="text-center mobile-widget">
 					<form class="event-form" method="POST" action="{{ vars.hostname }}/network_post-event.php" enctype="multipart/form-data">
 						<div>
 						<input type="text" id="title" name="title" class="event-text" placeholder="Name of Event " required></input></br>

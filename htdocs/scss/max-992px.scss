@@ -129,16 +129,21 @@ div.network.tab-content {
 li.network-post {
 	background-color:$cm_white;
 	margin-top:5px;
+	padding-bottom:0;
+}
+
+div.post-reply-section {
+	background-color:$cm_gray;
 }
 
 div.replies {
 	margin-left:0;
-	border-top:1px solid $cm_gray;
 	background-color:$cm_l_gray;
 }
 
-div.post-text {
-	width:100%;
+
+.post-text {
+	width:98%;
 	height:auto;
 }
 
@@ -166,24 +171,49 @@ ul.network-event {
 	padding:0;
 }
 
-#post-form-container {
-	background-color:$cm-white;
+div.post-image-container {
+	width:45px;
 }
 
-div.post-image-container {
-	width: 10%;
+div.post-image-container img {
+	border: 1px solid $cm_gray;
 }
 
 div.post-button-container {
-	margin-left: 33%;
+	float:right;
+	padding:3px;
+}
+
+input[type="submit"].post.send
+{
+	border-width:0;
+	background-color:$cm_green;
+	color:$cm_white;
+	border-radius:2px;
+	height:45px;
 }
 
 div.post-textarea-container {
-	width: 85%;
+	width: 100%;
 }
 
 div.post-textarea-container textarea{
 	border: 1px solid $cm_d_gray;
+}
+
+.post-icon { 
+	position:relative;
+	margin-right: 13px;
+	top: 20px;
+}
+
+button.delete-button {
+	background-color:$cm_white;
+}
+
+.event-text
+{
+	width:98%;
 }
 
 /*
@@ -287,9 +317,7 @@ input[type="checkbox"].account {
 }
 
 div.net-info.results {
-	background-color:$cm_white;
 	padding: 10px 0;
-	border: 2px solid $cm_d_gray;
 }
 
 div.net-info.results.possible {
@@ -324,4 +352,23 @@ div.content-top {
 	margin-top:-20px;
 	padding-top:20px;
 	*/
+}
+
+/********
+ * UPLOAD
+ ********/
+.fileupload-button {
+	height:20px;
+	width:20px;
+}
+
+.fileupload-button.picture {
+	background-size:19px 19px;
+}
+
+/********
+ * HELP AND ERROR
+ ********/
+.help-tooltip {
+
 }

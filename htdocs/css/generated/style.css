@@ -6,13 +6,13 @@
 */
 h3 {
   font-size: 30px;
-  color: #e34036;
+  color: #E34036;
   font-weight: 300;
   font-family: 'Lato'; }
 
 h4 {
   font-size: 26px;
-  color: #e34036;
+  color: #E34036;
   font-weight: 300;
   font-family: 'Lato'; }
 
@@ -27,8 +27,7 @@ h1.center, h2.center, h3.center, h4.center, h5.center, p.center {
   text-align: center; }
 
 h3.dark {
-  font: "Lato" sans-serif;
-  font-size: 21px;
+  font: 21px "Lato-Bold", sans-serif;
   color: #313131; }
 
 .cmhide {
@@ -76,6 +75,9 @@ button.googleplus {
 
 div.inline-block {
   display: inline-block; }
+
+.vertical-line {
+  border-left: 1px solid #e3e5e3; }
 
 /******
  * MAIN TEMPLATE
@@ -646,7 +648,7 @@ h1.h-network.nomargin {
 
 h2.h-network {
   font: 24px Lato, sans-serif;
-  color: #e34036; }
+  color: #E34036; }
 
 h3.h-network {
   font: 20px Lato, sans-serif;
@@ -661,7 +663,7 @@ h4.h-network {
 h5.h-network {
   font: 14px Lato-Bold, sans-serif;
   font-style: bold;
-  color: #e34036;
+  color: #E34036;
   margin-bottom: 2px;
   margin-top: 0; }
 
@@ -717,27 +719,23 @@ p.search-result {
 
 .event-form {
   background-color: #E6E6E6;
-  width: 600px;
-  padding: 3px 3px;
-  height: 310px; }
+  padding: 3px 3px; }
 
 .event-text {
   border-style: none;
   border-radius: 0;
-  margin-bottom: 2px; }
+  margin-bottom: 2px;
+  resize: none; }
 
 input.event-text {
   height: 35px;
-  width: 558px;
   border-style: none;
   border-radius: 0px;
   margin-bottom: 2px;
   resize: none; }
 
 textarea.event-text {
-  height: 60px;
-  width: 558px;
-  resize: none; }
+  height: 60px; }
 
 #eperror {
   color: red; }
@@ -753,7 +751,7 @@ button.network {
   font-size: 16px;
   font-weight: bold;
   color: #FEFEFE;
-  background-color: #e34036;
+  background-color: #E34036;
   border: none;
   border-radius: 5px; }
 
@@ -767,7 +765,7 @@ input[type="submit"].network {
   font: Lato;
   font-size: 16px;
   color: #FEFEFE;
-  background-color: #e34036;
+  background-color: #E34036;
   border-width: 0px;
   border-radius: 2px;
   margin-right: 3px; }
@@ -951,7 +949,7 @@ button.event-modal {
   font-size: 16px;
   font-weight: bold;
   color: #FEFEFE;
-  background-color: #e34036;
+  background-color: #E34036;
   border: none;
   border-radius: 5px; }
 
@@ -974,8 +972,7 @@ textarea.reply-text {
 .post-text {
   margin-top: 10px;
   margin-left: 0px;
-  height: 45px;
-  width: 88%; }
+  height: 45px; }
 
 img.profile-post {
   float: left; }
@@ -1056,6 +1053,9 @@ button.post {
 button.post:hover {
   background-color: #8B8B8B;
   /*color:#0088CC;*/ }
+
+.post-icon {
+  margin-right: 13px; }
 
 #mp_button {
   font-size: 16px;
@@ -1211,7 +1211,6 @@ li.inactive-event p#event-desc {
   min-height: 300px;
   width: 64%;
   float: left;
-  border-left: 3px solid #ccc;
   padding-left: 48px;
   padding-top: 40px;
   padding-bottom: 48px; }
@@ -1354,16 +1353,9 @@ a.profile {
 /********
  * UPLOAD
  ********/
-.fileupload-button {
-  height: 35px;
-  width: 36px; }
-
 .fileupload-button.picture {
-  background: url("../images/photography-gray.png");
-  float: left;
-  margin-right: 15px;
-  margin-bottom: 10px;
-  margin-top: -4px; }
+  background: url("../../images/photography-gray.png");
+  float: left; }
 
 .fileupload-button.picture:hover {
   opacity: 0.5; }
@@ -1379,11 +1371,9 @@ button.upload-img-delete {
 .help-tooltip {
   background-color: #727272;
   color: white;
-  border-radius: 25px;
+  border-radius: 50%;
   border-style: none;
-  font-size: 20px;
   font-weight: bold;
-  height: 25px;
   float: left; }
 
 .cm_error {
@@ -1558,7 +1548,7 @@ div.footer-mobile-share-buttons {
   margin: 15px; }
 
 .cm-button {
-  background: #e34036;
+  background: #E34036;
   color: #fff;
   font-size: 24px;
   font-family: 'Lato', sans-serif;

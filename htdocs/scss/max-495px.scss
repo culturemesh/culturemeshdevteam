@@ -30,16 +30,22 @@
  */
 
 div.post-image-container {
-	width: 20%;
+	width: 45px; 
+	padding: 3px;
 }
 
 div.post-textarea-container {
-	width: 77%;
+	width: 100%;
 }
 
 /* 
  * Profile 
  */
+.nav.nav-pills.dashboard
+{
+	font: 14px Lato-Light, sans-serif;
+}
+
 .nav.nav-pills.dashboard > li > a
 {
 	padding: 10px 8px;

@@ -1,4 +1,5 @@
 $cm_orange:#EF5330;
+$cm_d_orange:#E34036;
 $cm_blue:#3CB3CA;
 $cm_green:#97CB38;
 $cm_green_soft:#6BDD71;
@@ -24,13 +25,13 @@ $cm_d_gray: #e3e5e3;
 
 h3{
     font-size: 30px;
-    color: #e34036;
+    color: $cm_d_orange;
     font-weight: 300;
     font-family: 'Lato';
 }
 h4{
     font-size: 26px;
-    color: #e34036;
+    color: $cm_d_orange;
     font-weight: 300;
     font-family: 'Lato';
 }
@@ -47,8 +48,7 @@ h1.center, h2.center, h3.center, h4.center, h5.center, p.center {
 }
 
 h3.dark {
-	font: "Lato" sans-serif;
-	font-size:21px;
+	font: 21px "Lato-Bold", sans-serif;
 	color:$cm_dark;
 }
 
@@ -110,6 +110,10 @@ button.googleplus {
 
 div.inline-block {
 	display:inline-block;
+}
+
+.vertical-line {
+	border-left: 1px solid $cm_d_gray;
 }
 
 /******
@@ -786,7 +790,7 @@ hr.hr-modal {
 
 .lrg-network-stats
 {
-     background-color:#E34036;
+     background-color:$cm_d_orange;
      margin-left:0px;
      padding-top:10px;
      padding-left:6px;
@@ -816,7 +820,7 @@ h1.h-network.nomargin
 h2.h-network
 {
 	font: 24px Lato, sans-serif;
-	color: #e34036;
+	color: $cm_d_orange;
 }
 h3.h-network
 {
@@ -834,7 +838,7 @@ h5.h-network
 {
 	font: 14px Lato-Bold, sans-serif;
 	font-style:bold;
-	color:#e34036;
+	color:$cm_d_orange;
 	margin-bottom:2px;
 	margin-top:0;
 }
@@ -910,9 +914,7 @@ p.search-result {
 .event-form
 {
 	background-color:#E6E6E6;
-	width:600px;
 	padding: 3px 3px;
-	height:310px;
 }
 
 .event-text
@@ -920,12 +922,12 @@ p.search-result {
 	border-style:none;
 	border-radius:0;
 	margin-bottom:2px;
+	resize: none;
 }
 
 input.event-text
 {
 	height:35px;
-	width:558px;
 	border-style:none;
 	border-radius:0px;
 	margin-bottom:2px;
@@ -935,8 +937,6 @@ input.event-text
 textarea.event-text
 {
 	height:60px;
-	width:558px;
-	resize: none;
 }
 
 #eperror {
@@ -956,7 +956,7 @@ button.network
 	font-size:16px;
 	font-weight: bold;
 	color: $cm_white;
-	background-color:#e34036;
+	background-color:$cm_d_orange;
 	border:none;
 	border-radius:5px;
 }
@@ -977,7 +977,7 @@ input[type="submit"].network
 	font: Lato;
 	font-size:16px;
 	color: $cm_white;
-	background-color:#e34036;;
+	background-color:$cm_d_orange;
 	border-width:0px;
 	border-radius:2px;
 	margin-right:3px;
@@ -986,9 +986,7 @@ input[type="submit"].network
 input[type="submit"].network:hover
 {
 	background-color:#C31016;
-
 }
-
 
 div.event-slider
 {
@@ -1138,7 +1136,7 @@ div.modal-footer.event {
 .modal-body p.event-error
 {
 	font-size:16px;
-	color:#E34036;
+	color:$cm_d_orange;
 }
 
 input.event-text-modal
@@ -1219,7 +1217,7 @@ button.event-modal
 	font-size:16px;
 	font-weight: bold;
 	color: $cm_white;
-	background-color:#e34036;
+	background-color:$cm_d_orange;
 	border:none;
 	border-radius:5px;
 }
@@ -1254,7 +1252,6 @@ textarea.reply-text
 	margin-top:10px;
 	margin-left:0px;
 	height:45px;
-	width:88%;
 }
 
 img.profile-post
@@ -1353,7 +1350,7 @@ input[type="submit"].post.show:hover
 input[type="submit"].post.send
 {
 	border-width:0px;
-	background-color:#E34036;
+	background-color:$cm_d_orange;
 	color:$cm_white;
 	border-radius:2px;
 }
@@ -1370,6 +1367,10 @@ button.post:hover {
 	/*color:#0088CC;*/
 }
 
+.post-icon { 
+	margin-right: 13px;
+}
+
 #mp_button {
 	font-size:16px;
 	width:300px;
@@ -1379,7 +1380,7 @@ button.post:hover {
 
 button.delete-button {
 	background:none;
-	color:#E34036;
+	color:$cm_d_orange;
 }
 
 button.delete-button:hover {
@@ -1582,7 +1583,6 @@ li.inactive-event p#event-desc {
 	min-height:300px;
 	width:64%;
 	float:left;
-	border-left:3px solid #ccc;
 	padding-left:48px;
 	padding-top:40px;
 	padding-bottom:48px;
@@ -1773,17 +1773,10 @@ a.profile
 /********
  * UPLOAD
  ********/
-.fileupload-button {
-	height:35px;
-	width:36px;
-}
 
 .fileupload-button.picture {
-	background: url('../images/photography-gray.png');
+	background: url('../../images/photography-gray.png');
 	float:left;
-	margin-right: 15px;
-	margin-bottom: 10px;
-	margin-top: -4px;
 }
 
 .fileupload-button.picture:hover{
@@ -1803,11 +1796,9 @@ button.upload-img-delete {
 .help-tooltip {
 	background-color:#727272;
 	color:white;
-	border-radius:25px;
+	border-radius:50%;
 	border-style:none;
-	font-size:20px;
 	font-weight:bold;
-	height:25px;
 	float:left;
 }
 
@@ -2008,7 +1999,7 @@ div.footer-mobile-share-buttons {
 }
 
 .cm-button{
-    background: #e34036;
+    background: $cm_d_orange;
     color: #fff;
     font-size:24px;
     font-family: 'Lato', sans-serif;

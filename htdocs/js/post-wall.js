@@ -103,7 +103,7 @@ cm.PostWall.prototype = {
 
 			if ( rd_children.length <= 4 ) {
 				var postForm = $(this).serialize();
-				var getReply = new Ajax({
+				var getReply = new cm.Ajax({
 					requestType: 'POST',
 					requestUrl: cm.home_path + '/network_show_reply.php',
 						requestParameters: ' ',
@@ -145,7 +145,7 @@ cm.PostWall.prototype = {
 			e.preventDefault();
 			var postForm = $(this).serialize();
 			if( $( e.target ).children('button').text() == 'Reply') {
-				var requestReply = new Ajax({
+				var requestReply = new cm.Ajax({
 					requestType: 'POST',
 					requestUrl: cm.home_path + '/network_request_reply.php',
 						requestParameters: ' ',
@@ -190,7 +190,7 @@ cm.PostWall.prototype = {
 			if (postForm.indexOf('id_twitter') > -1)
 				action = 'network_tweet_reply.php';
 
-			var sendReply = new Ajax({
+			var sendReply = new cm.Ajax({
 				requestType: 'POST',
 				requestUrl: cm.home_path + '/' + action,
 					requestParameters: ' ',
@@ -264,7 +264,7 @@ cm.PostWall.prototype = {
 				if (postForm.indexOf('tid') > -1)
 					action = 'network_tweet_reply_delete.php';
 
-				var sendReply = new Ajax({
+				var sendReply = new cm.Ajax({
 					requestType: 'POST',
 					requestUrl: cm.home_path + '/' + action,
 						requestParameters: ' ',
@@ -331,7 +331,7 @@ cm.PostWall.prototype = {
 			if (confirm("Are you sure you want to delete this post?")) {
 				var postForm = $( e.target ).serialize();
 
-				postDelete = new Ajax({
+				postDelete = new cm.Ajax({
 					requestType: 'POST',
 					requestUrl: cm.home_path + '/network_post_delete.php',
 						requestHeaders: ' ',
@@ -386,7 +386,7 @@ cm.PostWall.prototype = {
 				operation = 'network_more_tweets.php';
 			}
 			
-			var requestPosts = new Ajax({
+			var requestPosts = new cm.Ajax({
 					requestType: 'POST',
 					requestUrl: cm.home_path + '/' + operation,
 					requestHeaders: ' ',
@@ -427,6 +427,9 @@ cm.PostWall.prototype = {
 			}, function() {
 			});
 		});
+	},
+	_scrunchPost: function(element) {
+
 	}
 };
 
