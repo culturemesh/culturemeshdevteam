@@ -75,8 +75,15 @@
 		</div>
 		-->
 	</div>
-	<hr>
 	<div class="post-reply-section">
+		<div class="replies">
+			<ul class="replies">
+				{{# replies }}	
+				{{{.}}}
+				{{/ replies }}
+			</ul>
+		</div>
+		<div class='clear'>&nbsp;</div>
 		<div class="">
 			<form method="POST" class="member reply_form" action="//{{ cm.hostname }}/{{ action }}">
 				<div class="post-textarea-container inline-block text-center">
@@ -116,15 +123,6 @@
 		</div>
 		{{/ reply_request }}
 		<div class="clear">&nbsp;</div>
-		<div class='clear'>&nbsp;</div>
-		<div class="replies">
-			<ul class="replies">
-				{{# replies }}	
-				{{{.}}}
-				{{/ replies }}
-			</ul>
-		</div>
-		<div class='clear'>&nbsp;</div>
 		<div class="prompt"></div>
 		{{# show_replies }}
 		<div class='show_reply_div reply-button'>

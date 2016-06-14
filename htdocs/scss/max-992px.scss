@@ -133,7 +133,8 @@ li.network-post {
 }
 
 div.post-reply-section {
-	background-color:$cm_gray;
+	border-top:1px solid $cm_d_gray;
+	background-color:$cm_l2_gray;
 }
 
 div.replies {

@@ -77,7 +77,7 @@ div.inline-block {
   display: inline-block; }
 
 .vertical-line {
-  border-left: 1px solid #e3e5e3; }
+  border-left: 1px solid #cbcbcb; }
 
 /******
  * MAIN TEMPLATE
@@ -1055,7 +1055,6 @@ button.post:hover {
   /*color:#0088CC;*/ }
 
 .post-icon {
-  position: relative;
   margin-right: 13px; }
 
 #mp_button {
