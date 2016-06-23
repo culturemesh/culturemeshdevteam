@@ -127,6 +127,7 @@
 	    <div class="profile_image text-center">
 		    <img id="profile_image" class='usr_image' src="{{ user.img_link }}{{^ user.img_link }}{{ vars.blank_profile_path_lrg }}{{/ user.img_link}}#{{ page_vars.rand }}"/>
 	    </div>
+	    <!--
 	    <div id="pic-upload-div">
 		    <p id="success-label"></p>
 		    <form id="profile-pic-upload" method="POST" action="{{ vars.hostname }}/profile_img_upload.php" enctype="multipart/form-data"/>
@@ -138,11 +139,13 @@
 			</noscript>
 		    </form>
 	    </div>
+		-->
 	    </br>
 	    <span class="profile_name">
 		    <h2 id="profile_name" class="dashboard">{{ user.first_name }} {{ user.last_name }}</h2>
 		<p id="profile_about" class="profile">{{ user.about_me }}</p>
 	    </span>
+	    <!--
 	{{^ page_vars.guest }}
 	    <p class="profile"><a href="#profile_edit_modal" class="profile" id="pro-edit-link" data-toggle="modal">Edit Profile</a></p>
 	    {{# user.confirmed }}
@@ -150,6 +153,7 @@
 	    {{/ user.confirmed }}
 	    <p class="profile"><a id="pic-upload-toggle" href="#">Upload Picture</a></p>
 	{{/ page_vars.guest }}
+		-->
 	</div>
 
 	<!-- PROFILE DASHBOARD -->
@@ -249,29 +253,108 @@
 		<!-- ACCOUNTS TAB -->
 		{{^ page_vars.guest }}
 		<div class="tab-pane" id="profile_accounts_tab">
-			<form id="account_info_form" method="POST" action="{{ vars.hostname }}/update_notifications.php">
-				<div>
-					<label class="label label-success hide" id="account_info_update_success_txt">Information successfully updated!</label>
-					<label class="label label-important hide" id="account_info_update_failure_txt">Update failed. Please try again.</label>
-					<h5>Send me emails when</h5>
-					<label class="checkbox"><input class="account" type="checkbox" name="notify_interesting_events" value="1" {{# user.interesting_events }}checked{{/ user.interesting_events }}>CultureMesh finds events I'd be interested in near me</label>
-					<label class="checkbox"><input class="account" type="checkbox" name="notify_company_news" value="1" {{# user.company_news }}checked{{/ user.company_news }}>CultureMesh has fun company news</label>
-					<label class="checkbox"><input class="account" type="checkbox" name="notify_events_upcoming" value="1" {{# user.events_upcoming }}checked{{/ user.events_upcoming }}>I have an upcoming event</label>
-					<label class="checkbox"><input class="account" type="checkbox" name="notify_network_activity" value="1" {{# user.events_upcoming }}checked{{/ user.events_upcoming }}>I have received comments to a network event I added</label>
-					<input type="hidden" name="notification" value="yes"/>
+			<div>
+				<p class="profile"><a class="profile" data-toggle="collapse" href="#notifications_collapsible" aria-expanded="false" aria-controls="notifications_collapsible">Set Notifications</a></p>
+				<div id="notifications_collapsible" class="collapse">
+				<form id="account_info_form" method="POST" action="{{ vars.hostname }}/update_notifications.php">
+					<div>
+						<label class="label label-success hide" id="account_info_update_success_txt">Information successfully updated!</label>
+						<label class="label label-important hide" id="account_info_update_failure_txt">Update failed. Please try again.</label>
+						<h5>Send me emails when</h5>
+						<label class="checkbox"><input class="account" type="checkbox" name="notify_interesting_events" value="1" {{# user.interesting_events }}checked{{/ user.interesting_events }}>CultureMesh finds events I'd be interested in near me</label>
+						<label class="checkbox"><input class="account" type="checkbox" name="notify_company_news" value="1" {{# user.company_news }}checked{{/ user.company_news }}>CultureMesh has fun company news</label>
+						<label class="checkbox"><input class="account" type="checkbox" name="notify_events_upcoming" value="1" {{# user.events_upcoming }}checked{{/ user.events_upcoming }}>I have an upcoming event</label>
+						<label class="checkbox"><input class="account" type="checkbox" name="notify_network_activity" value="1" {{# user.events_upcoming }}checked{{/ user.events_upcoming }}>I have received comments to a network event I added</label>
+						<input type="hidden" name="notification" value="yes"/>
+					</div>
+					{{# user.confirmed }}
+					<div id="account-buttons">
+						<!--<input type="submit" class="btn cm-button btn-gray dash" value="Cancel"\>-->
+						<input type="submit" class="btn cm-button btn-green dash" value="Submit"\>
+					</div>
+					{{/ user.confirmed }}
+					{{^ user.confirmed }}
+					<div>
+						<p>You must confirm your email to submit these changes.</p>
+					</div>
+					{{/ user.confirmed }}
+				</form>
+				</div>
+
+				<p class="profile"><a class="profile" data-toggle="collapse" href="#profile_edit_collapsible" aria-expanded="false" aria-controls="profile_edit_collapsible">Edit Profile</a></p>
+				<div id="profile_edit_collapsible" class="collapse">
+					<div>
+						<label class="label label-success hide" id="basic_info_update_success_txt">Information successfully updated!</label>
+						<label class="label label-important hide" id="basic_info_update_failure_txt">Update failed. Please try again.</label>
+						<form id="basic_info_form">
+							<table class="profile dashboard">
+							<thead></thead>
+							<tfoot><tfoot>
+							<tbody>
+								<input type="hidden" name="bi_update" value="1"/>
+								<tr class="dashboard">
+									<!--<td class="dashboard"><h3 class="dashboard">First Name:</h3></td>-->
+									<td class="dashboard"><input class="dashboard" type="text" name="first_name" value="{{ user.first_name }}" placeholder="First Name"></td>
+								</tr>
+								<tr class="dashboard">
+									<!--<td class="dashboard"><h3 class="dashboard">Last Name:</h3></td>-->
+									<td class="dashboard"><input class="dashboard" type="text" name="last_name" value="{{ user.last_name }}" placeholder="Last Name"></td>
+								</tr>
+								<tr class="dashboard">
+									<!--<td class="dashboard"><h3 class="dashboard">Gender:</h3></td>-->
+									<td class="dashboard">
+									
+									    <select class="dashboard" name="gender">
+										<option {{# user.male }}selected{{/ user.male }}>Male</option>
+										<option {{# user.female }}selected{{/ user.female }}>Female</option>
+									    </select>
+									</td>
+								</tr>
+								<tr class="dashboard">
+									<!--<td class="dashboard"><h3 class="dashboard">About Me:</h3></td>-->
+									<td class="dashboard"><textarea class="dashboard" name="about_me" placeholder="Tell us about yourself...">{{ user.about_me }}</textarea></td>
+								</tr>
+							</tbody>
+							</table>
+							<a class="btn cm-button btn-green dash" id="basic_info_update_btn">Update</a>
+						</form>
+					</div>
 				</div>
 				{{# user.confirmed }}
-				<div id="account-buttons">
-					<!--<input type="submit" class="btn cm-button btn-gray dash" value="Cancel"\>-->
-					<input type="submit" class="btn cm-button btn-green dash" value="Submit"\>
+				<p class="profile"><a data-toggle="collapse" href="#change_password_collapsible" aria-expanded="false" aria-controls="change_password_collapsible">Change Password</a></p>
+				<div id="change_password_collapsible" class="collapse">
+					<div>
+						<form id="password_change_form">
+							<div>
+							<input type="hidden" name="pi_update" value="1"/>
+							<input type="hidden" name="c_pw" id="c_pw" />
+							<input type="email" name="email" id="password_email" class="dashboard" value="{{ user.email }}" placeholder="Email Address"></br>
+							<input type="password" name="cur_password" id="password_cur" class="dashboard" placeholder="Current Password"/></br>
+							<input type="password" name="password" id="password" class="dashboard" placeholder="New Password"/></br>
+							<input type="password" name="password_conf" id="password_conf" class="dashboard" placeholder="Confirm Password"/></br>
+							<label class="label label-important hide" id="password_mismatch_txt">Passwords do not match. Please re-enter passwords to match.</label></br>
+							</div>
+							<div class="clear"></div>
+							<input type="submit" id="cp_submit_btn" class="btn cm-button btn-green dash" data-loading-text="Checking..." value="Change Password" /></br>
+						</form>
+					</div>
 				</div>
 				{{/ user.confirmed }}
-				{{^ user.confirmed }}
-				<div>
-					<p>You must confirm your email to submit these changes.</p>
+				<p class="profile"><a id="pic-upload-toggle" data-toggle="collapse" href="#upload_picture_collapsible" aria-expanded="false" aria-controls="upload_picture_collapsible">Upload Picture</a></p>
+				<div id="upload_picture_collapsible" class="collapse">
+					<div id="pic-upload-div">
+					    <p id="success-label"></p>
+					    <form id="profile-pic-upload" method="POST" action="{{ vars.hostname }}/profile_img_upload.php" enctype="multipart/form-data"/>
+						<input type="file" id="upload-input" name="picfile">
+						<input type="hidden" id="upload-id" name="id" value="{{ page_vars.uid }}">
+						<noscript>
+							<input type="submit" value="Upload File">
+							<input type="hidden" name="ajax-enabled" value="false">
+						</noscript>
+					    </form>
+					</div>
 				</div>
-				{{/ user.confirmed }}
-			</form>
+			</div>
 		</div>
 		{{/ page_vars.guest }}
 	    </div>

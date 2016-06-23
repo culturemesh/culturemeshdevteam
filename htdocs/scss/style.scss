@@ -17,6 +17,8 @@ $cm_l_gray: #f6f7f8;
 $cm_l2_gray: #f6f7f8;
 $cm_d_gray: #cbcbcb;
 
+$z_index_top: 3;
+
 /*h4
 {
     color:#EF5330;
@@ -308,6 +310,14 @@ div.inline-block {
 
 .sidebar-user-buttons > button + button {
 	margin-left: 7%;
+}
+
+.test-underslide {
+	background-color:$cm_orange;
+	z-index:-1;
+	position:relative;
+	left:0;
+	padding:40px 5px;
 }
 
 
@@ -1859,6 +1869,7 @@ p.team.team-name {
 #header{
     border-bottom: 3px solid #ccc;
     height:100px;
+    z-index:$z_index_top;
     /*margin-bottom:30px;*/
 }
 
