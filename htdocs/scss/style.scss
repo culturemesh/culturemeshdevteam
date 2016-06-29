@@ -1,6 +1,7 @@
 $cm_orange:#EF5330;
 $cm_d_orange:#E34036;
 $cm_blue:#3CB3CA;
+$cm_blue_dark:#3FB8CF;
 $cm_green:#97CB38;
 $cm_green_soft:#6BDD71;
 $cm_white:#FEFEFE;
@@ -92,6 +93,25 @@ ul.no-style {
 	background-color:$cm_white;
 }
 
+.bg-blue {
+	background-color:$cm_blue;
+}
+
+.bg-orange {
+	background-color:$cm_blue;
+}
+
+button.full-button {
+	padding: 5px 0;
+	margin:0px auto;
+	border:none;
+	color:$cm_white;
+}
+
+.full-button.bg-blue:hover {
+	background-color:$cm_blue_dark;
+}
+
 button.share-button {
 	width:88%;
 	height:30px;
@@ -117,6 +137,11 @@ div.inline-block {
 
 .vertical-line {
 	border-left: 1px solid $cm_d_gray;
+}
+
+.margin-y-10 {
+	margin-top:10px;
+	margin-bottom:10px;
 }
 
 /******
@@ -182,7 +207,7 @@ div.inline-block {
 }
 
 .cm-overlay a {
-	color: white;
+	color: $cm_dark;
 }
 
 .overlay-center {

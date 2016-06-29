@@ -58,6 +58,21 @@ ul.no-style {
 .bg-white {
   background-color: #FEFEFE; }
 
+.bg-blue {
+  background-color: #3CB3CA; }
+
+.bg-orange {
+  background-color: #3CB3CA; }
+
+button.full-button {
+  padding: 5px 0;
+  margin: 0px auto;
+  border: none;
+  color: #FEFEFE; }
+
+.full-button.bg-blue:hover {
+  background-color: #3FB8CF; }
+
 button.share-button {
   width: 88%;
   height: 30px;
@@ -78,6 +93,10 @@ div.inline-block {
 
 .vertical-line {
   border-left: 1px solid #cbcbcb; }
+
+.margin-y-10 {
+  margin-top: 10px;
+  margin-bottom: 10px; }
 
 /******
  * MAIN TEMPLATE
@@ -128,7 +147,7 @@ div.inline-block {
   top: 0px; }
 
 .cm-overlay a {
-  color: white; }
+  color: #313131; }
 
 .overlay-center {
   position: relative;
@@ -1792,6 +1811,21 @@ ul.no-style {
 .bg-white {
   background-color: #FEFEFE; }
 
+.bg-blue {
+  background-color: #3CB3CA; }
+
+.bg-orange {
+  background-color: #3CB3CA; }
+
+button.full-button {
+  padding: 5px 0;
+  margin: 0px auto;
+  border: none;
+  color: #FEFEFE; }
+
+.full-button.bg-blue:hover {
+  background-color: #3FB8CF; }
+
 button.share-button {
   width: 88%;
   height: 30px;
@@ -1812,6 +1846,10 @@ div.inline-block {
 
 .vertical-line {
   border-left: 1px solid #cbcbcb; }
+
+.margin-y-10 {
+  margin-top: 10px;
+  margin-bottom: 10px; }
 
 /******
  * MAIN TEMPLATE
@@ -1862,7 +1900,7 @@ div.inline-block {
   top: 0px; }
 
 .cm-overlay a {
-  color: white; }
+  color: #313131; }
 
 .overlay-center {
   position: relative;
@@ -3482,6 +3520,9 @@ ul {
   width: 92%;
   margin: 5px auto;
   border: 1px solid #cbcbcb; }
+
+.full-button {
+  width: 92%; }
 
 /*
 * HOME

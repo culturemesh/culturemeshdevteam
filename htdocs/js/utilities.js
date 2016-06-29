@@ -1011,3 +1011,129 @@ cm.Overlay.prototype = {
 		}
 	}
 }
+
+cm.EventWall = function(user_options) {
+
+	this._options = {
+		root: null,
+	};
+
+	cm.extend(this._options, user_options);
+
+	this.showing = false;
+	this.event_overlay = new cm.Overlay({
+		root: document.getElementById('event-overlay'),
+		toggle: null,
+		left_coord: '0'
+	});
+
+	this._init();
+}
+
+cm.EventWall.prototype = {
+
+	_init : function() {
+
+		var self = this;
+
+		// EVENTS
+		//
+	
+		// Network events clickable
+		//
+		$( 'li.network-event' ).on('click tap', function(e) {
+
+			e.preventDefault();
+
+			// get id
+			var cm_event = self._zagEvent( this ); // calling it cm_event because event is a keyword
+
+			self._callOverlay( cm_event._attributes.id );
+
+			/*
+			self.event_overlay._show();
+			var cm_event = self._zagEvent( e.target ); // calling it cm_event because event is a keyword
+			*/
+
+
+		});
+	},
+	_callOverlay : function(id) {
+
+		var self = this;
+		var values = {
+			id: id
+		};
+
+		var fillOverlay = new cm.Ajax({
+			requestType: 'POST',
+			requestUrl: cm.home_path + '/api/ops/get_event.php',
+		    	data: values,
+			dataType: 'JSON',
+			requestParameters: ' ',
+			sendNow: true
+			}, 
+			function(data) {
+				data = JSON.parse(data);
+				self._fillOverlay(data);
+				self.event_overlay._show();
+			});
+	},
+	_fillOverlay : function(data) {
+
+		// template 
+		var template = document.getElementById('event-overlay-fill-template').innerHTML;
+		var eventHtml = Mustache.render(template, { event : {
+	       							id: data['event']['id'],
+								id_network: data['event']['id_network'],
+								id_host: data['event']['id_host'],
+		    						title: data['event']['title'],
+		    						first_name: data['event']['first_name'],
+		    						last_name: data['event']['last_name'],
+		    						address_1: data['event']['address_1'],
+		    						address_2: data['event']['address_2'],
+		    						city: data['event']['city'],
+		    						region: data['event']['region'],
+		    						description: data['event']['description'],
+		    						date: data['event']['event_date'],
+								owner: data['event']['owner'],
+		    						attending: data['event']['attending']
+								}
+							});
+
+		$( this.event_overlay.overlay['event_data_section'] ).html( eventHtml );
+	},
+	_show : function() {
+
+	},
+	_hide : function() {
+
+	},
+	_zagEvent : function(element) {
+
+		var event_map = new cm.ElementMap( element );
+
+		var cm_event = new cm.Event();
+		cm_event._fill({
+			id : event_map["event_hidden_id"].value
+		});
+
+		return cm_event;
+	}
+}
+
+cm.Event = function() {
+
+	this._attributes = {
+		id : null,
+		id_host : null,
+		id_network : null
+	};
+}
+
+cm.Event.prototype = {
+
+	_fill : function(data) {
+		cm.extend( this._attributes, data );
+	}
+}

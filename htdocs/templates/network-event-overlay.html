@@ -1,0 +1,100 @@
+<div id="event-{{ event.id }}" class="event text-center">
+	<div class="event">
+		<div id="event-modal-info-{{ event.id }}">
+			<form class="event-modal-form" method="POST" action="{{ vars.hostname }}/network_update-event.php" >
+			<div class="event-modal-section">
+				<h1 id="event-title" class="nomargin info-{{ event.id }}">{{ event.title }}</h1>
+				<input type="text" id="event-title-mod" name="title" class="event-text-modal edit-{{ event.id }}" placeholder="Name of Event " value="{{ event.title }}"></input>
+			</div>
+			<div class="event-modal-section">
+				<h3 id="event-name" class="h-network">With {{ event.first_name }} {{ event.last_name }}</h3>
+				<p id="event-description" class="event-modal info">{{ event.description }}</p>
+				<textarea id="event-description-mod" name="description" class="event-text-modal edit-{{ event.id }}" placeholder="What's happening?">{{ event.description }}</textarea>
+			</div>
+			<div class="event-modal-section">
+			<h3 class="h-network">Date</h3>
+			<input type="text" id="datetimepicker" class="event-text-modal edit-{{ event.id }} datetimepicker" name="datetime" class="event-text" placeholder="Event Date" value="{{ event.event_date }}">
+				<input type="text" class="hidden-field" name="date"></input>
+				<p class="event-modal info-{{ event.id }}">{{ event.date }}</p>
+			</div>
+			<div class="event-modal-section">
+			<h3 class="h-network">Address</h3>
+			<p class="event-modal info-{{ event.id }}">{{ event.address_1 }}</p>
+			<input type="text" name="address_1" class="event-text-modal edit-{{ event.id }}" placeholder="Address 1" value="{{ event.address_1 }}"/>
+			<p class="event-modal info-{{ event.id }}">{{ event.address_2 }}</p>
+			<input type="text" name="address_2" class="event-text-modal edit-{{ event.id }}" placeholder="Address 2" value="{{ event.address_2 }}"/>
+			<p class="event-modal info-{{ event.id }}">{{ event.city }}, {{ event.region }}</p>
+			<input type="text" name="city" class="event-text-modal edit-{{ event.id }}" placeholder="City" value="{{ event.city }}"/>
+			<input type="text" name="region" class="event-text-modal edit-{{ event.id }}" placeholder="Region" value="{{ event.region }}"/>
+			</div>
+			<div>
+				<p id="ueerror-{{ event.id }}" class='event-error'></p>
+				<p id="jeerror-{{ event.id }}" class='event-error'></p>
+				<p id="leerror-{{ event.id }}" class='event-error'></p>
+			</div>
+				<input type="hidden" name="id_event" class="edit-{{ event.id }}" value="{{ event.id }}"/>
+				<input type="submit" class="submit edit-{{ event.id }}" value="Submit Changes"></input>
+		    </form>
+		    {{# event.owner }}
+		    <a id="event-modify-toggle-{{ event.id }}" class="">Edit Event</a> 
+		    {{/ event.owner }}
+		{{^ event.owner }}
+		{{# event.attending }}
+		<div id="attending_div-{{ event.id }}">
+			<p>You're attending this event</p>
+			<form id="je-form-{{ event.id }}" method='POST' action='{{ vars.hostname }}/network_leave-event.php'>
+				<input type="hidden" name="uid" value="{{ user.id }}"/>
+				<input type="hidden" name="eid" value="{{ event.id }}"/>
+				<button class="event-modal">Leave Event</button>
+			</form>
+		</div>
+		{{/ event.attending }}
+		{{^ event.attending }}
+		<div id="join-event-form-{{ event.id }}">
+			<form id="je-form-{{ event.id }}" method="POST" action="{{ vars.hostname }}/network_join-event.php">
+			<input type="hidden" name="nid" value="{{ event.id_network }}"/>
+			<input type="hidden" value="{{ user.id }}" name="uid"/>
+			<input type="hidden" name="event_id" value="{{ event.id }}"/>
+			<button class="event-modal">Join Event</button>
+			</form>
+		</div>
+		{{/ event.attending }}
+		{{/ event.owner }}
+		</div>
+	</div>
+</div>
+<script>
+	// all the variables
+	//var info{{ event.id }} = document.getElementById("event-modal-info-{{ event.id }}");
+	var link{{ event.id }} = document.getElementById("event-modify-toggle-{{ event.id }}");
+	if (link{{ event.id }} != null)
+	{
+		//var form{{ event.id }} = document.getElementById("event-modal-form-{{ event.id }}");
+		//var editList{{ event.id }} = document.getElementsByClassName("");
+		//var displayList{{ event.id }} = document.getElementsByClassName("");
+		var info{{ event.id }} = document.getElementsByClassName("info-{{ event.id }}");
+		var form{{ event.id }} = document.getElementsByClassName("edit-{{ event.id }}");
+
+		link{{ event.id }}.onclick = function() {
+			if (form{{ event.id }}[0].style.display == "none"
+				|| form{{ event.id }}[0].style.display == "") { 
+				link{{ event.id }}.innerHTML = "Cancel Changes";
+				for (var i = 0; i < form{{ event.id }}.length; i++) {
+					form{{ event.id }}[i].style.display = "block";
+				}
+				for (var i = 0; i < info{{ event.id }}.length; i++) {
+					info{{ event.id }}[i].style.display = "none";
+				}
+			}
+			else {
+				link{{ event.id }}.innerHTML = "Edit Event";
+				for (var i = 0; i < form{{ event.id }}.length; i++) {
+					form{{ event.id }}[i].style.display = "none";
+				}
+				for (var i = 0; i < info{{ event.id }}.length; i++) {
+					info{{ event.id }}[i].style.display="block";
+				}
+			}
+		}
+	}
+</script>

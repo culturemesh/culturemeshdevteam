@@ -146,6 +146,30 @@ class Event extends DisplayDObj {
 		}
 	}
 
+	public function getJSON() {
+
+		return array(
+			'id' => $this->id,
+			'id_network' => $this->id_network,
+			'id_host' => $this->id_host,
+			'title' => $this->title,
+			'address_1' => $this->address_1,
+			'address_2' => $this->address_2,
+			'city' => $this->city,
+			'region' => $this->region,
+			'country' => $this->country,
+			'description' => $this->description,
+			'email' => $this->email,
+			'username' => $this->username,
+			'first_name' => $this->first_name,
+			'last_name' => $this->last_name,
+			'img_link' => $this->img_link,
+			'event_date' => $this->event_date,
+			'owner' => $this->owner,
+			'attending' => $this->attending
+		);
+	}
+
 	public function getName() {
 
 			// last resort, email
@@ -191,5 +215,25 @@ class Event extends DisplayDObj {
 		default:
 			return $this->$property;
 		}
+	}
+
+	public function checkMembership($user) {
+
+		$this->attending = False;
+		$this->owner = False;
+
+		if ($user->id === $this->id_host) {
+
+			$this->owner = True;
+		}	
+		else {
+			
+			$attendees = explode(', ', $this->event_attendees);
+
+			if (in_array($user->id, $attendees)) {
+				$this->attending = True;
+			}
+		}
+
 	}
 }

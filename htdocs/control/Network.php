@@ -308,6 +308,10 @@ class Network {
 			'vars' => $cm->getVars(),
 			'network' => $network));
 
+		// load component templates
+		//
+		$event_overlay_template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-overlay.html');
+
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'network' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
@@ -320,6 +324,9 @@ class Network {
 				'post_wall' => $p_html,
 				'event_slider' => $ec_html,
 				'event_modals' => $em_html),
+			'templates' => array(
+				'event_overlay' => $event_overlay_template
+			),
 			'vars' => $cm->getVars(),
 			'test' => "<b>Something</b>",
 			'page_vars' => array (

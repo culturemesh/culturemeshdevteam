@@ -102,6 +102,13 @@
 					loading_image : "/images/searchbar-loading-bw.gif"
 				});
 			});
+
+			cm.Autoloader(function() {
+
+				var eventWall = new cm.EventWall({
+					root: document.getElementById('event-wall')
+				});
+			});
 	</script>
 	{{/ autoload_scripts }}
 
@@ -278,19 +285,9 @@
 				$("#post-wall").hide();
 			</script>
 			<div id="event-wall" class="tab-pane">
-				<div>
-							{{# sections.event_slider }}
-							{{{ . }}}
-							{{/ sections.event_slider }}
-							<!--
-						<button id="slider-left" class="slider-button"></button>
-						<button id="slider-right" class="slider-button"></button>
-						-->
-				</div>
-				<div class="clear"></div>
 				{{# page_vars.member }}
-				<div>
-				<button id="event-post" class="network member" onclick="toggleEventForm()">Post Event</button>
+				<div class="text-center">
+				<button id="event-post" class="network member full-button" onclick="toggleEventForm()">Post Event</button>
 				</div>
 				<div class="clear"></div>
 				{{/ page_vars.member }}
@@ -315,6 +312,16 @@
 						</div>
 					</form>
 				</div>
+				<div>
+							{{# sections.event_slider }}
+							{{{ . }}}
+							{{/ sections.event_slider }}
+							<!--
+						<button id="slider-left" class="slider-button"></button>
+						<button id="slider-right" class="slider-button"></button>
+						-->
+				</div>
+				<div class="clear"></div>
 			</div>
 			<div id="share-wall" class="tab-pane">
 				<div class="cm-y-20"></div>
@@ -335,12 +342,14 @@
 	</div>
 	{{/ content }}
 
-	{{# overlays }}
-	<div id="event-overlay" class="cm-overlay full-overlay container-fluid">
+	{{$ overlays }}
+	<div id="event-overlay" class="cm-overlay full-overlay container-fluid bg-white">
+		<div class="row">
+			<div class="col-sm-10 col-xs-10"></div>
+			<button class="overlay-close close-cm-overlay">&#10006</button>
+		</div>
 		<div class="overlay-center">
-			<div class="row">
-				<div class="col-sm-10 col-xs-10"></div>
-				<button class="overlay-close close-cm-overlay">&#10006</button>
+			<div class="row event_data_section">
 			</div>
 		</div>
 	</div>
@@ -430,4 +439,9 @@
 	</script>
 	{{/ body_scripts }}
 
+	{{$ mustache_forms }}
+		<script id='event-overlay-fill-template' type='x-tmpl-mustache'>
+			{{{ templates.event_overlay }}}
+		</script>
+	{{/ mustache_forms }}
 {{/ layout }}
