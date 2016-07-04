@@ -376,7 +376,7 @@
 					</ul>
 				</div>
 				<div class="header-mobile-icons col-sm-2 col-xs-4 hidden-md hidden-lg row">
-					<a data-toggle="collapse" href="#search_collapse" aria-expanded="false" aria-controls="collapseExample"><svg id="search-toggle" class="custom-icon icon-search"><use xlink:href="#icon-search"></use></svg></a>
+					<a data-toggle="collapse" href="#search_collapse_container" aria-expanded="false" aria-controls="search_collapse_container"><svg id="search-toggle" class="custom-icon icon-search"><use xlink:href="#icon-search"></use></svg></a>
 					<a><svg id="sidebar-toggle" class="custom-icon icon-menu"><use xlink:href="#icon-menu"></use></svg></a>
 				</div>
 				<!--
@@ -492,29 +492,32 @@
 				<p>It should last about {{ vars.maintenance.duration }}</p>
 			</div>
 			{{/ vars.maintenance.notification }}
-			<div id="search_collapse" class="collapse test-underslide row">
-				<div id='search'>
+			<div id="search_collapse_container" class="collapse tuck row">
+				<div id='search_collapse'>
 					<form id ='search-form' method='GET' action='{{ vars.hostname }}/search/' autocomplete='off'>
-					<div id='opening' class='network'>Find people who
-					<select id='verb-select' name='verb' class='netsearch'>
+						<div id='opening' class='searchbar-opening network'><span class="text-white">Find people who</span>
+					<select id='verb-select' name='verb' class='netsearch verb-select'>
 						<option value='arefrom'>are from</option>
 						<option value='speak'>speak</option>
 					</select>
-					<span class='at network'>In/Near</span>
+					<span class='at network text-white'>In/Near</span>
 					</div>
-					<input type='text' id='search-1' class='net-search' name='search-1' autocomplete='off'/>
-						<ul id='s-query' class='network search'></ul>
-						<ul id='s-var' class='network search'></ul>
-						<input type='hidden' id='clik1' name='clik1' value=0></ul>
-						<input type="hidden" id="varId" name="varId" value=-1 />
-						<input type="hidden" id="varClass" name="varClass" value=-1 />
-					<input type='text' id='search-2' class='net-search' name='search-2' autocomplete='off'/>
-						<ul id='s-location' class='network search'></ul>
-						<input type='hidden' id='clik2' name='clik2' value=0></ul>
-						<input type="hidden" id="locId" name="locId" value=-1 />
-						<input type="hidden" id="locClass" name="locClass" value=-1 />
+					<div id="search-1-root" class="search-field-container">
+						<input type='text' id='search-1' class='search-1 search-input net-search' name='search-1' autocomplete='off'/>
+							<ul id='s-var' class='network search search-var search-ul'></ul>
+							<input type='hidden' class='clik1 search-clik' name='clik1' value=0></ul>
+							<input type="hidden" class="varId search-id" name="varId" value=-1 />
+							<input type="hidden" class="varClass search-class" name="varClass" value=-1 />
+					</div>
+					<div id="search-2-root" class="search-field-container">
+						<input type='text' id='search-2' class='search-2 search-input net-search' name='search-2' autocomplete='off'/>
+							<ul id='s-location' class='network search-location search-ul'></ul>
+							<input type='hidden' class='clik2 search-clik' name='clik2' value=0></ul>
+							<input type="hidden" class="locId search-id" name="locId" value=-1 />
+							<input type="hidden" class="locClass search-class" name="locClass" value=-1 />
+					</div>
 					<input type='submit' class='network search-button' value='Go'>
-					<input type='hidden' id='search-topic' name='search-topic'></input>
+					<input type='hidden' class='search-topic' name='search-topic'></input>
 					</form>
 				</div>
 			</div>

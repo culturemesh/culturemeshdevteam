@@ -37,6 +37,7 @@
 			cm.Autoloader(function() {
 
 				var searchOne = new cm.SearchField({
+					root: document.getElementById('search-1-root'),
 					input_field : document.getElementById('search-1'),
 					clicked : document.getElementById('clik1'),
 					id_field : document.getElementById('varId'),
@@ -47,6 +48,7 @@
 				});
 
 				var searchTwo = new cm.SearchField({
+					root: document.getElementById('search-2-root'),
 					input_field : document.getElementById('search-2'),
 					clicked : document.getElementById('clik2'),
 					id_field : document.getElementById('locId'),
@@ -65,58 +67,33 @@
 				<div class="cm-y-20"></div>
 				<h3 id="stage-title">Connecting the world's diasporas</h3>
 			</div>
-			<!--
-			<form id="search-form" class='stage' method="GET" action="//{{ vars.hostname }}/search/" autocomplete="off">
-			<div id="opening" class='stage'>Find people who
-			<select id="verb-select" name="verb" class="stage-input">
-				<option value="arefrom">are from</option>
-				<option value="speak">speak</option>
-			</select>
-			<span class='at stage'>In/Near</span>
-			</div>
-			<div id="search-bar">
-					<input type="text" class="stage-input" name="search-1" id="search-1" autocomplete="off"></input>
-						<ul id="s-query" class="search"></ul>
-						<ul id="s-var" class="search"></ul>
-						<input type="hidden" id="clik1" name="clik1" value=0></ul>
-						<input type="hidden" id="varId" name="varId" value=-1 />
-						<input type="hidden" id="varClass" name="varClass" value=-1 />
-					<input type="text" class="stage-input" name="search-2" id="search-2" autocomplete="off"></input>
-						<ul id="s-location" class="search"></ul>
-						<input type="hidden" id="clik2" name="clik2" value=0></ul>
-						<input type="hidden" id="locId" name="locId" value=-1 />
-						<input type="hidden" id="locClass" name="locClass" value=-1 />
-					<input type="submit" class="stage-button" value="SEARCH"></input>
-					<input type="hidden" id="search-topic" name="search-topic"></input>
-			</div>
-			</form>
-			-->
-			<div class="searchbar-home">
-				<form id="search-form" class='stage' method="GET" action="//{{ vars.hostname }}/search/" autocomplete="off">
-				<div id="opening" class='stage'>
-					<span class="col-sm-2 col-xs-2 hidden-md hidden-lg"></span>
-					<span>Find people who</span>
-					<select id="verb-select" name="verb" class="stage-input">
-						<option value="arefrom">are from</option>
-						<option value="speak">speak</option>
-					</select>
-				<span class='at stage hidden-sm hidden-xs'>In/Near</span>
+
+			<div id="searchbar-home" class="searchbar-home">
+				<form id ='search-form' class="stage" method='GET' action='{{ vars.hostname }}/search/' autocomplete='off'>
+					<div class='searchbar-opening network'><span>Find people who</span>
+				<select id='verb-select' name='verb' class='netsearch verb-select'>
+					<option value='arefrom'>are from</option>
+					<option value='speak'>speak</option>
+				</select>
+				<span class='at network hidden-sm hidden-xs'>In/Near</span>
 				</div>
-				<div id="search-bar" class="text-center">
-						<input type="text" class="stage-input" name="search-1" id="search-1" autocomplete="off" placeholder="are from"></input>
-							<ul id="s-query" class="search"></ul>
-							<ul id="s-var" class="search"></ul>
-							<input type="hidden" id="clik1" name="clik1" value=0></ul>
-							<input type="hidden" id="varId" name="varId" value=-1 />
-							<input type="hidden" id="varClass" name="varClass" value=-1 />
-						<input type="text" class="stage-input" name="search-2" id="search-2" autocomplete="off" placeholder="In/Near"></input>
-							<ul id="s-location" class="search"></ul>
-							<input type="hidden" id="clik2" name="clik2" value=0></ul>
-							<input type="hidden" id="locId" name="locId" value=-1 />
-							<input type="hidden" id="locClass" name="locClass" value=-1 />
-						<input type="submit" class="stage-button" value="SEARCH"></input>
-						<input type="hidden" id="search-topic" name="search-topic"></input>
+				<div id="search-1-root" class="search-field-container">
+					<input type='text' id='search-1' class='search-1 search-input net-search' name='search-1' autocomplete='off'/>
+						<ul id='s-var' class='network search search-var search-ul'></ul>
+						<input type='hidden' class='clik1 search-clik' name='clik1' value=0></ul>
+						<input type="hidden" class="varId search-id" name="varId" value=-1 />
+						<input type="hidden" class="varClass search-class" name="varClass" value=-1 />
+					<div class="clear">&nbsp;</div>
 				</div>
+				<div id="search-2-root" class="search-field-container">
+					<input type='text' id='search-2' class='search-2 search-input net-search' name='search-2' autocomplete='off'/>
+						<ul id='s-location' class='network search search-location search-ul'></ul>
+						<input type='hidden' class='clik2 search-clik' name='clik2' value=0></ul>
+						<input type="hidden" class="locId search-id" name="locId" value=-1 />
+						<input type="hidden" class="locClass search-class" name="locClass" value=-1 />
+				</div>
+				<input type='submit' class='search-button' value='Search'>
+				<input type='hidden' class='search-topic' name='search-topic'></input>
 				</form>
 			</div>
 		</div>

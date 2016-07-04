@@ -222,6 +222,7 @@ class Network {
 			}
 		}
 
+		/*
 		try
 		{
 			$em_html = $network->events->getHTML('modal', array(
@@ -236,6 +237,7 @@ class Network {
 		{
 			$em_html = NULL;
 		}
+		 */
 
 		// check if we need more posts
 		$more_post_content = True;

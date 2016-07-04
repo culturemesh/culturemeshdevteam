@@ -42,8 +42,13 @@ class PageLoader {
 
 		$base_template = 'base.html';
 
-		if ($this->mobile_detect->isMobile())
-		  $base_template = 'base.html';	// will change into mobile thing
+		if (get_class($this->mobile_detect) !== "misc\MobileDetect") {
+			$base_template = 'base.html';
+		}
+		else {
+			if ($this->mobile_detect->isMobile())
+			  $base_template = 'base.html';	// will change into mobile thing
+		}
 
 		// base layout
 		$base = file_get_contents($this->cm->template_dir . $this->cm->ds . $base_template);

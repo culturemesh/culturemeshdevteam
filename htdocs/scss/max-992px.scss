@@ -22,6 +22,16 @@ ul {
 	border: 1px solid $cm_d_gray;
 }
 
+.mobile-section-header {
+	width:92%;
+	margin:5px auto;
+	border: 1px solid $cm_white;
+	background-color:$cm_orange;
+	color: $cm_white;
+	font-size:16px;
+	padding:4px;
+}
+
 .full-button {
 	width:92%;
 }
@@ -41,17 +51,25 @@ ul {
 #search-form.stage {
 	background:none;
 	padding-left:0;
+	width: 89%;
+	margin: 0px auto;
+}
+
+div.searchbar-opening {
+	margin-bottom:5px;
 }
 
 div.searchbar-home input[type="text"] {
 	height:43px;
 	font-size: 16px;
-	width:88%;
+	width:100%;
+	margin: 0px auto;
 }
 
 div.searchbar-home input[type="submit"] {
 	font-size: 16px;
-	margin:0;
+	margin: 0px auto;
+	width:100%;
 }
 
 div.searchbar-home span {
@@ -283,9 +301,6 @@ p.profile
 	margin-bottom:10px;
 	color: #EF5330;
 	background-color: white;
-	background:url('../images/dashboard_selected.png');
-	background-repeat:no-repeat;
-	background-position: center bottom;
 }
 
 
@@ -310,6 +325,35 @@ input[type="checkbox"].account {
 
 .net-info.dashboard {
 	padding: 5px;
+}
+
+input.dashboard
+{
+    width:85%;
+    border:1px solid $cm_d_gray;
+    height:36px;
+}
+
+select.dashboard
+{
+    width:85%;
+    border:1px solid $cm_d_gray;
+    height:36px;
+}
+
+textarea.dashboard
+{
+    width:85%;
+    border:1px solid $cm_d_gray;
+}
+
+#pic-upload-div
+{
+	margin:0;
+}
+
+.cm-button.dash {
+    padding: 2px 20px;
 }
 
 /*

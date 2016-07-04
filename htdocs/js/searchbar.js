@@ -2,6 +2,7 @@
 cm.SearchField = function(user_options) {
 
 	this._options = {
+		root: null,
 		input_field : null,
 		clicked : null,
 		id_field : null,
@@ -24,11 +25,14 @@ cm.SearchField = function(user_options) {
 
 	cm.extend(this._options, user_options);
 
-	this._input_field = this._options.input_field;
-	this._clicked = this._options.clicked;
-	this._ul = this._options.ul;
-	this._id_field = this._options.id_field;
-	this._class_field = this._options.class_field;
+	this._root = this._options.root;
+	this._component = new cm.ElementMap(this._root);
+
+	this._input_field = this._component['search-input'];
+	this._clicked = this._component['search-clik'];
+	this._ul = this._component['search-ul'];
+	this._id_field = this._component['search-id'];
+	this._class_field = this._component['search-class'];
 
 	// MORE OPTIONAL VALUES
 	this._selector = this._options.selector;
@@ -480,3 +484,36 @@ cm.Autofill = function(user_options) {
 cm.Autofill.prototype = {
 
 };
+
+cm.SearchBar = function(user_options) {
+
+	this._options = {
+		root: null,
+		input_field : null,
+		clicked : null,
+		id_field : null,
+		class_field : null,
+		ul : null,
+		MIN_LENGTH : 2,
+		KEY_DELAY : 800,
+		/////// OPTIONAL /////////////
+		div_id : null,
+		selector : null,
+		topic : null,
+		display_table : null,
+		submit_button : null,
+		loading_image : "/images/searchbar-loading.gif",
+		ul_class : "search",
+		template : null,
+		render_target : null,
+		search_table : null
+	}
+
+}
+
+cm.SearchBar.prototype = {
+
+	_init: function() {
+
+	}
+}
