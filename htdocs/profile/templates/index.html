@@ -220,7 +220,6 @@
 				</div>
 				<div id="profile_edit_collapsible" class="collapse mobile-widget bg-white text-center">
 					<div>
-						<label class="label label-success hide" id="basic_info_update_success_txt">Information successfully updated!</label>
 						<label class="label label-important hide" id="basic_info_update_failure_txt">Update failed. Please try again.</label>
 						<form id="basic_info_form">
 							<table class="profile dashboard">
@@ -252,6 +251,9 @@
 								</tr>
 							</tbody>
 							</table>
+							<div style="margin-bottom:6px">
+							<label class="label label-success" id="basic_info_update_success_txt" style="display:none">Information successfully updated!</label>
+							</div>
 							<a class="btn cm-button btn-green dash" id="basic_info_update_btn">Update</a>
 						</form>
 					</div>
@@ -270,7 +272,10 @@
 							<input type="password" name="cur_password" id="password_cur" class="dashboard" placeholder="Current Password"/></br>
 							<input type="password" name="password" id="password" class="dashboard" placeholder="New Password"/></br>
 							<input type="password" name="password_conf" id="password_conf" class="dashboard" placeholder="Confirm Password"/></br>
-							<label class="label label-important hide" id="password_mismatch_txt">Passwords do not match. Please re-enter passwords to match.</label></br>
+							<div style="margin-bottom:5px">
+							<label class="label label-warning" id="password_mismatch_txt" style="display:none">Passwords do not match. Please re-enter passwords to match.</label></br>
+							<label class="label label-success" id="password_success_txt" style="display:none">Password changed successfully.</label></br>
+							</div>
 							</div>
 							<div class="clear"></div>
 							<input type="submit" id="cp_submit_btn" class="btn cm-button btn-green dash" data-loading-text="Checking..." value="Change Password" /></br>
@@ -336,12 +341,13 @@
 				$("#profile_name").text(results["first_name"] + " " + results["last_name"]);
 				$("#profile_about").text(results["about_me"]);
 				$("#welcome").text("Welcome, " + results["first_name"]);
+
 				$("#basic_info_update_success_txt").fadeIn();
 				delay(function(){$("#basic_info_update_success_txt").fadeOut()}, 2000);
 			    }
 			    else {
 				$("#basic_info_update_success_txt").text(results["error"]);
-				$("#basic_info_update_success_txt").fadeIn();
+				$("#basic_info_update_success_txt").show().fadeIn();
 				//delay(function(){$("#basic_info_update_success_txt").fadeOut()}, 2000);
 			    }
 			})
@@ -355,10 +361,10 @@
 	<script>
 	    $("#password_conf").change(function(){
 		if($("#password").val() != $("#password_conf").val()){
-		    $("#password_mismatch_txt").show();
+		    $("#password_mismatch_txt").fadeIn();
 		}
 		else{
-		    $("#password_mismatch_txt").hide();
+		    $("#password_mismatch_txt").fadeOut();
 		}
 	    });
 
@@ -368,8 +374,13 @@
 		$.post("{{ vars.hostname }}/profile_operations.php", $("#password_change_form").serialize())
 		.done(function(data){
 		    var results = JSON.parse(data);
-		    $("#password_mismatch_txt").text(results['msg']);
-		    $("#password_mismatch_txt").show();
+
+		    if (results.error == 0) {
+		    	$("#password_success_txt").fadeIn().delay(3000).fadeOut();
+		    }
+		    else {
+		    	$("#password_mismatch_txt").fadeIn().delay(3000).fadeOut();
+		    }
 
 		    // clear password fields
 		    $("#password").val('');
