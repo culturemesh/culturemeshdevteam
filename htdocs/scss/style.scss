@@ -148,6 +148,10 @@ div.inline-block {
 	margin-bottom:10px;
 }
 
+.noscroll {
+	overflow:hidden;
+}
+
 /******
  * MAIN TEMPLATE
  */
@@ -236,6 +240,9 @@ div.inline-block {
 	left: 100%;
 	width: 100%;
 	height: 100%;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	-webkit-overflow-scrolling:touch;
 }
 
 .overlay-form {

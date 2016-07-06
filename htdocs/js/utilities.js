@@ -366,6 +366,15 @@ cm.getMembers = function(){
     return members;
 }
 
+cm.toggleBodyScroll = function() {
+	var scrollable = $('body').hasClass('noscroll');
+
+	if (scrollable)
+	  $('body').removeClass('noscroll');
+	else
+	  $('body').addClass('noscroll');
+}
+
 //
 // FROM AJAX
 //
@@ -988,6 +997,9 @@ cm.Overlay.prototype = {
 	},
 	_show : function() {
 
+		// change body class
+		cm.toggleBodyScroll();
+
 		if (!this.showing) {
 
 			$( this._options.root ).show().animate({left : this._options.left_coord },
@@ -998,6 +1010,8 @@ cm.Overlay.prototype = {
 	},
 	_hide : function() {
 
+		// change body class
+		cm.toggleBodyScroll();
 
 		// if already set over, change to the other way
 		if (this.showing) {
