@@ -52,6 +52,11 @@
 	// mustache components
 	$m_comp = new \misc\MustacheComponent();
 
+	$searchbar_template = file_get_contents('templates' . $cm->ds . 'searchbar.html');
+
+	$sb_home = $m_comp->render($searchbar_template, array('sb-home' => True));
+	$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True));
+
 	$top_network_html = NULL;
 
 	if ($top_networks) {
@@ -89,7 +94,11 @@
 		'logged_in' => $logged_in,
 		'top_networks' => $top_network_html,
 		'main_image' => $main_image,
-		'site_user' => $site_user
+		'site_user' => $site_user,
+		'searchbars' => array(
+			'sb-home' => $sb_home,
+			'alt-font' => $sb_alt_font
+		)
 	));
 
 	/*

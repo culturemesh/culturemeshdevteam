@@ -15,9 +15,11 @@
 	<div>
 		<h2>Home</h2>
 		<div>
+			{{{ searchbars.home }}}
+			<!--
 			<div id="searchbar-home" class="searchbar-home">
 				<form id='search-form' class="stage" method='GET' action='{{ vars.hostname }}/search/' autocomplete='off'>
-					<div class='searchbar-opening network'><span>Find people who</span>
+					<div class='searchbar-opening'><span>Find people who</span>
 				<select id='verb-select' name='verb' class='netsearch verb-select'>
 					<option value='arefrom'>are from</option>
 					<option value='speak'>speak</option>
@@ -43,12 +45,15 @@
 				<input type='hidden' class='search-topic' name='search-topic'></input>
 				</form>
 			</div>
+			-->
 		</div>
 	</div>
 
 	<div>
-		<h2>Network</h2>
+		<h2>Standard</h2>
 		<div>
+			{{{ searchbars.standard }}}
+			<!--
 			<div>
 				<form id='search-form' method='GET' action='{{ vars.hostname }}/search/' autocomplete='off'>
 				<div id='opening' class='searchbar-opening network'>Find people who
@@ -78,12 +83,15 @@
 				</div>
 				</form>
 			</div>
+			-->
 		</div>
 	</div>
 
 	<div>
-		<h2>Overlay</h2>
+		<h2>Standard alt Color</h2>
 		<div class="bg-blue">
+			{{{ searchbars.alt-font }}}
+			<!--
 			<div id='search_collapse'>
 				<form id ='search-form' method='GET' action='{{ vars.hostname }}/search/' autocomplete='off'>
 					<div id='opening' class='searchbar-opening network'><span class="text-white">Find people who</span>
@@ -111,6 +119,7 @@
 				<input type='hidden' class='search-topic' name='search-topic'></input>
 				</form>
 			</div>
+			-->
 		</div>
 	</div>
 	{{/ content }}

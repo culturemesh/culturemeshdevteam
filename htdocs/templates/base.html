@@ -494,31 +494,7 @@
 			{{/ vars.maintenance.notification }}
 			<div id="search_collapse_container" class="collapse tuck row">
 				<div id='search_collapse'>
-					<form id ='search-form' method='GET' action='{{ vars.hostname }}/search/' autocomplete='off'>
-						<div id='opening' class='searchbar-opening network'><span class="text-white">Find people who</span>
-					<select id='verb-select' name='verb' class='netsearch verb-select'>
-						<option value='arefrom'>are from</option>
-						<option value='speak'>speak</option>
-					</select>
-					<span class='at network text-white'>In/Near</span>
-					</div>
-					<div id="search-1-root" class="search-field-container">
-						<input type='text' id='search-1' class='search-1 search-input net-search' name='search-1' autocomplete='off'/>
-							<ul id='s-var' class='network search search-var search-ul'></ul>
-							<input type='hidden' class='clik1 search-clik' name='clik1' value=0></ul>
-							<input type="hidden" class="varId search-id" name="varId" value=-1 />
-							<input type="hidden" class="varClass search-class" name="varClass" value=-1 />
-					</div>
-					<div id="search-2-root" class="search-field-container">
-						<input type='text' id='search-2' class='search-2 search-input net-search' name='search-2' autocomplete='off'/>
-							<ul id='s-location' class='network search-location search-ul'></ul>
-							<input type='hidden' class='clik2 search-clik' name='clik2' value=0></ul>
-							<input type="hidden" class="locId search-id" name="locId" value=-1 />
-							<input type="hidden" class="locClass search-class" name="locClass" value=-1 />
-					</div>
-					<input type='submit' class='network search-button' value='Go'>
-					<input type='hidden' class='search-topic' name='search-topic'></input>
-					</form>
+					{{{ searchbars.alt-font }}}
 				</div>
 			</div>
 			<div class="row">
