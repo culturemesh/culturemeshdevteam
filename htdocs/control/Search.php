@@ -135,7 +135,18 @@ class Search {
 
 		// searchbar
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
-		$searchbar = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()));
+		$sb_standard = $m_comp->render($searchbar_template, array('vars' => $cm->getVars(),
+									'search_value' => array(
+											'origin' => $search_array['search_one'],
+											'location' => $search_array['search_two']
+										)));
+
+		$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True,
+									'vars' => $cm->getVars(),
+									'search_value' => array(
+											'origin' => $search_array['search_one'],
+											'location' => $search_array['search_two']
+										)));
 
 		// Results components 
 		$origin_results = array(
@@ -298,9 +309,12 @@ class Search {
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'search' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
 			'search' => $search_array,
+			'searchbars' => array(
+				'standard' => $sb_standard,
+				'alt-font' => $sb_alt_font
+			),
 			'sections' => array(
 				'map_embed' => $map_embed,
-				'searchbar' => $searchbar,
 				'origin_results' => $origin_results,
 				'location_results' => $location_results,
 				'network_results' => $network_results,

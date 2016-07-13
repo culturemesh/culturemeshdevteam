@@ -85,8 +85,12 @@ class Profile {
 		$m_comp = new \misc\MustacheComponent();
 
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
-		$searchbar = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()));
+		$sb_standard = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()
+								));
 
+		$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True,
+									'vars' => $cm->getVars()
+								));
 		$yn_net_html = NULL;
 		$yn_event_html = NULL;
 		$yh_event_html = NULL;
@@ -155,8 +159,11 @@ class Profile {
 		$page_vars = array(
 			'user' => $user->prepare($cm),
 			'site_user' => $site_user,
+			'searchbars' => array(
+				'standard' => $sb_standard,
+				'alt-font' => $sb_alt_font
+			),
 			'sections' => array(
-				'searchbar' => $searchbar,
 				'yn_networks' => $yn_net_html,
 				'yn_events' => $yn_event_html,
 				'ya_events' => $ya_event_html,

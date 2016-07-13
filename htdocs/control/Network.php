@@ -302,7 +302,12 @@ class Network {
 
 		// searchbar
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
-		$searchbar = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()));
+		$sb_standard = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()
+								));
+
+		$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True,
+									'vars' => $cm->getVars()
+								));
 
 		// social network buttons
 		$sharebutton_template = file_get_contents($cm->template_dir . $cm->ds . 'sharebutton.html');
@@ -317,10 +322,13 @@ class Network {
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'network' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
+			'searchbars' => array(
+				'standard' => $sb_standard,
+				'alt-font' => $sb_alt_font
+			),
 			'sections' => array(
 		//		'sharebuttons' => $sharebuttons,
 		//		'map_embed' => $map_embed,
-				'searchbar' => $searchbar,
 				'lrg_network' => 'Large Network',
 				'network_title' => $network->getTitle(),
 				'post_wall' => $p_html,
