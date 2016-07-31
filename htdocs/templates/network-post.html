@@ -76,54 +76,13 @@
 		-->
 	</div>
 	<div class="post-reply-section">
-		<div class="replies">
-			<ul class="replies">
+		<div class="replies replies-div">
+			<ul class="replies replies-ul">
 				{{# replies }}	
 				{{{.}}}
 				{{/ replies }}
 			</ul>
 		</div>
-		<div class='clear'>&nbsp;</div>
-		<div class="">
-			<form method="POST" class="member reply_form" action="//{{ cm.hostname }}/{{ action }}">
-				<div class="post-textarea-container inline-block text-center">
-					<textarea class="post-text" name="post_text" placeholder="Post reply..."></textarea>
-				</div>
-				<div>
-					<div class="post-image-container inline-block text-center">
-						<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
-					</div>
-					<div class="post-button-container inline-block">
-						<div class="fileupload-error"></div>
-						<div id='post-form-panel' class="fileupload-panel"></div>
-						<div class="clear"></div>
-						<div class="fileupload-button picture post-icon"></div>
-						<button type="button" class="help-tooltip post-icon"  data-toggle="popover" data-placement="left">?</button>
-						<input type="submit" class="network post fileupload-submit send" value="Send"></input>
-						<input type="hidden" name="post_class" value="o"></input>
-						<input type="hidden" name="post_original" value="NULL"></input>
-					</div>
-					<div class="clear">&nbsp;</div>
-				</div>
-			</form>
-			<div class="clear">&nbsp;</div>
-		</div>
-		{{# reply_request }}
-		<div class='reply-button hidden-sm hidden-xs'>
-			<form class="request_reply" method="POST" action="{{ vars.hostname }}/network_request_reply.php">
-				<noscript>
-				<input type="hidden" name="NOJS" value="NOJS"/>
-				</noscript>
-				<input type="hidden" name="uid" value="{{ site_user.id }}"/>
-				<input type="hidden" name="pid" value="{{ post.id }}"/>
-				<input type="hidden" name="nid" value="{{ post.id_network }}"/>
-				<input type="hidden" name="email" value="{{ site_user.email }}" />
-				<button class='post'>Reply</button>
-			</form>
-		</div>
-		{{/ reply_request }}
-		<div class="clear">&nbsp;</div>
-		<div class="prompt"></div>
 		{{# show_replies }}
 		<div class='show_reply_div reply-button'>
 			<form id="" class="show_reply" method="POST" action="{{ vars.hostname }}/network_show_reply.php">
@@ -133,9 +92,59 @@
 				<noscript>
 				<input type="hidden" name="NOJS" value="NOJS"/>
 				</noscript>
-				<input type="submit" class="post show" value="Show All Replies"/>
+				<input type="submit" class="post show show_replies_submit" value="Show All Replies"/>
 			</form>
 		</div>
 		{{/ show_replies }}
+		<div class='clear'>&nbsp;</div>
+		<div class="">
+			<form method="POST" class="member reply_form" action="//{{ cm.hostname }}/{{ action }}">
+				<div class="post-textarea-container inline-block text-center">
+					<textarea class="reply-text" name="reply_text" placeholder="Post reply..."></textarea>
+				</div>
+				<div>
+					<div class="post-image-container inline-block text-center">
+						<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
+					</div>
+					<div class="post-button-container inline-block">
+						<!--
+						<div class="fileupload-error"></div>
+						<div id='post-form-panel' class="fileupload-panel"></div>
+						<div class="clear"></div>
+						<div class="fileupload-button picture post-icon"></div>
+						-->
+						<button type="button" class="help-tooltip post-icon"  data-toggle="popover" data-placement="left">?</button>
+						
+						<input type="submit" class="network post fileupload-submit send" value="Send"></input>
+						<input type="hidden" name="post_class" value="o"></input>
+						<input type="hidden" name="post_original" value="NULL"></input>
+						<input type="hidden" name="uid" value="{{ site_user.id }}"/>
+						<input type="hidden" name="id_parent" value="{{ post.id }}"/>
+						<input type="hidden" name="email" value="{{ site_user.email }}" />
+						<input type="hidden" name="nid" value="{{ post.id_network }}"/>
+					</div>
+					<div class="clear">&nbsp;</div>
+				</div>
+			</form>
+			<div class="clear">&nbsp;</div>
+		</div>
+		{{# reply_request }}
+		<!--
+		<div class='reply-button hidden-sm hidden-xs'>
+			<form class="request_reply" method="POST" action="{{ vars.hostname }}/network_request_reply.php">
+				<noscript>
+				<input type="hidden" name="NOJS" value="NOJS"/>
+				</noscript>
+				<input type="hidden" name="uid" value="{{ site_user.id }}"/>
+				<input type="hidden" name="id_parent" value="{{ post.id }}"/>
+				<input type="hidden" name="nid" value="{{ post.id_network }}"/>
+				<input type="hidden" name="email" value="{{ site_user.email }}" />
+				<button class='post'>Reply</button>
+			</form>
+		</div>
+		-->
+		{{/ reply_request }}
+		<div class="clear">&nbsp;</div>
+		<div class="prompt"></div>
 	</div>
 </li>

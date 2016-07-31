@@ -186,19 +186,18 @@ textarea.event-text {
 
 input[type="submit"].launch-network
 {
-	color:#E34036;
-	border-style:solid;
-	border-width:1px;
-	border-color:#E34036;
-	border:none;
-	background-color:white;
-	font: 14px Lato-Light, sans-serif;
-	margin-left:15px;
+	color:$cm-white;
+	border: 0px solid;
+	border-radius:3px;
+	background-color: $cm-orange;
+	font: 18px Lato-Light, sans-serif;
+	width: 60%;
+	height: 24px;
 }
 
 input[type="submit"].launch-network:hover
 {
-	color:#3EB3CA;
+	background-color: $cm_d_orange;
 }
 
 /*

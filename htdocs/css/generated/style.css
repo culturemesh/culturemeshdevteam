@@ -910,6 +910,19 @@ td.event-card.card:hover {
 input[type="text"].hidden-field {
   display: none; }
 
+a.result-toggle-btn {
+  background-color: #3CB3CA;
+  width: 100%;
+  border: none; }
+
+#searchable-results {
+  box-shadow: none; }
+
+span.searchable-result-name {
+  margin-left: 2px;
+  padding-bottom: 3px;
+  font-size: 16px; }
+
 /* I've got this here because the event-info
  * modal won't stretch to the correct length without
  * it

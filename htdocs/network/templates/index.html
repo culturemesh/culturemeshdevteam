@@ -8,7 +8,6 @@
 
 	{{$ more_scripts }}
 	<script src="{{ vars.hostname }}/js/lightbox.min.js"></script>
-	<script type='text/javascript' src='{{vars.hostname}}/js/fileupload.js'></script>
 	<script type='text/javascript' src='{{vars.hostname}}/js/post-wall.js'></script>
 	<script type="text/javascript" src="{{vars.hostname}}/js/searchbar.js"></script>
 
@@ -435,5 +434,18 @@
 		<script id='event-overlay-fill-template' type='x-tmpl-mustache'>
 			{{{ templates.event_overlay }}}
 		</script>
+
+		<script id='post-template' type='x-tmpl-mustache'>
+			{{{ templates.post }}}
+		</script>
+
+		<script id='reply-template' type='x-tmpl-mustache'>
+			{{{ templates.reply }}}
+		</script>
+
+		<script id='tweet-template' type='x-tmpl-mustache'>
+			{{{ templates.tweet }}}
+		</script>
+
 	{{/ mustache_forms }}
 {{/ layout }}

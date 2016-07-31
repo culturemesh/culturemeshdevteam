@@ -318,6 +318,9 @@ class Network {
 		// load component templates
 		//
 		$event_overlay_template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-overlay.html');
+		$post_template = file_get_contents($cm->template_dir . $cm->ds . 'network-post.html');
+		$tweet_template = file_get_contents($cm->template_dir . $cm->ds . 'network-tweet.html');
+		$reply_template = file_get_contents($cm->template_dir . $cm->ds . 'network-reply.html');
 
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'network' . $cm->ds . 'templates'.$cm->ds.'index.html');
@@ -335,7 +338,10 @@ class Network {
 				'event_slider' => $ec_html,
 				'event_modals' => $em_html),
 			'templates' => array(
-				'event_overlay' => $event_overlay_template
+				'event_overlay' => $event_overlay_template,
+				'post' => $post_template,
+				'tweet' => $tweet_template,
+				'reply' => $reply_template
 			),
 			'vars' => $cm->getVars(),
 			'test' => "<b>Something</b>",

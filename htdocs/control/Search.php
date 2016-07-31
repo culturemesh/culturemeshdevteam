@@ -115,6 +115,7 @@ class Search {
 		// close connection
 		$cm->closeConnection();
 
+
 		$page_loader = new \misc\PageLoader($cm, $mobile_detect);
 		/*
 		// base layout
@@ -167,6 +168,8 @@ class Search {
 
 		// RESULTS LISTS
 		if ($search_type == 'searchable') {
+			
+			$need_clarification = True;
 
 			$origin_results['hidden'] = False;
 			$location_results['hidden'] = False;
@@ -256,6 +259,8 @@ class Search {
 
 		if ($search_type == 'network') {
 
+			$need_clarification = False;
+
 			// decide if main network is active or possible
 			// -- might need to do it up THERE
 			//
@@ -308,6 +313,7 @@ class Search {
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'search' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
+			'need_clarification' => $need_clarification,
 			'search' => $search_array,
 			'searchbars' => array(
 				'standard' => $sb_standard,
