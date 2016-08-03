@@ -9,7 +9,6 @@
 		<div class="post-date hidden-md hidden-lg">
 			<p class='network date'><i>{{ relative_date }}</i></p>
 		</div>
-		<div class="clear">&nbsp;</div>
 		{{# delete_button }}
 		<div class='reply-button delete'>
 			<form id='post-delete-{{ post.id }}' class='personal post_delete' method="POST" action="{{ vars.hostname }}/network_post_delete.php">
@@ -84,7 +83,7 @@
 			</ul>
 		</div>
 		{{# show_replies }}
-		<div class='show_reply_div reply-button'>
+		<div class='show_reply_div text-center'>
 			<form id="" class="show_reply" method="POST" action="{{ vars.hostname }}/network_show_reply.php">
 				<input type="hidden" name="rids" value="{{ rids }}"/>
 				<input type="hidden" name="pid" value="{{ post.id }}"/>
@@ -97,7 +96,7 @@
 		</div>
 		{{/ show_replies }}
 		<div class='clear'>&nbsp;</div>
-		<div class="">
+		<div class="post-reply-form">
 			<form method="POST" class="member reply_form" action="//{{ cm.hostname }}/{{ action }}">
 				<div class="post-textarea-container inline-block text-center">
 					<textarea class="reply-text" name="reply_text" placeholder="Post reply..."></textarea>

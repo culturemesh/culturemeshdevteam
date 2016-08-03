@@ -1032,13 +1032,13 @@ textarea.reply-text {
   margin-top: 10px;
   margin-left: 0px;
   height: 45px;
-  width: 89%;
-  resize: none; }
+  width: 100%;
+  resize: none;
+  border: 1px solid #cbcbcb; }
 
 .post-text {
   margin-top: 10px;
-  margin-left: 0px;
-  height: 45px; }
+  margin-left: 0px; }
 
 textarea.post-text {
   border: 1px solid #cbcbcb; }
@@ -1080,11 +1080,15 @@ p.network.date {
   color: gray;
   font-size: 11px; }
 
+div.post-reply-section {
+  background-color: #f6f7f8; }
+
 div.replies {
-  margin-left: 40px; }
+  /*	margin-left:40px;*/ }
 
 ul.replies {
-  list-style-type: none; }
+  list-style-type: none;
+  padding: 0; }
 
 li.reply {
   margin-bottom: 10px; }
@@ -1095,17 +1099,22 @@ div.reply-button {
 div.reply-button.delete {
   height: 20px;
   margin-top: -2px;
-  margin-left: 3px; }
+  margin-left: 3px;
+  float: right; }
+
+div.post-button-container {
+  float: right;
+  padding: 3px; }
 
 input[type="submit"].post.show {
   border: none;
-  background-color: #DBDBDB;
+  background-color: #cbcbcb;
   color: #FBFBFB;
-  width: 300px; }
+  width: 100%;
+  height: 40px; }
 
 input[type="submit"].post.show:hover {
-  background-color: white;
-  color: #0088CC; }
+  background-color: #bbbbbb; }
 
 input[type="submit"].post.send {
   border-width: 0px;
@@ -1133,11 +1142,11 @@ button.post:hover {
   height: 30px; }
 
 button.delete-button {
-  background: none;
-  color: #E34036; }
+  background-color: #E34036;
+  color: #FEFEFE; }
 
 button.delete-button:hover {
-  color: #C33036; }
+  background-color: #C1372D; }
 
 /*
  * From when the delete button was below post
@@ -1908,14 +1917,24 @@ button.network {
 input[type="submit"].network.post {
   /*width:545px;*/ }
 
+div.post-reply-form {
+  background-color: #f1eff0; }
+
+div.tweet_reply_form {
+  background-color: #f1eff0; }
+
 input[type="submit"].post.send {
   border-width: 0px;
   background-color: #E34036;
   color: #FEFEFE;
-  border-radius: 2px; }
+  border-radius: 2px;
+  height: 40px; }
 
 div.post-textarea-container {
-  width: 98%; }
+  width: 100%; }
+
+textarea.reply-text {
+  width: 89%; }
 
 .post-text {
   width: 100%; }

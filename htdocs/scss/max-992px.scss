@@ -177,7 +177,6 @@ li.network-post {
 
 div.post-reply-section {
 	border-top:1px solid $cm_d_gray;
-	background-color:$cm_l2_gray;
 }
 
 div.replies {
@@ -188,11 +187,20 @@ div.replies {
 
 .post-text {
 	width:98%;
-	height:auto;
+}
+
+textarea.reply-text {
+	width:89%;
+}
+
+div.post-reply-form {
+	background-color:$cm_gray;
+	border-top: 1px solid $cm_d_gray;
 }
 
 p.network {
 	max-width:none;
+	padding: 4px;
 }
 
 p.network.reply {
@@ -223,10 +231,6 @@ div.post-image-container img {
 	border: 1px solid $cm_gray;
 }
 
-div.post-button-container {
-	float:right;
-	padding:3px;
-}
 
 input[type="submit"].post.send
 {
@@ -245,15 +249,17 @@ div.post-textarea-container textarea{
 	border: 1px solid $cm_d_gray;
 }
 
+div.reply-button.delete
+{
+	margin-right:5px;
+}
+
 .post-icon { 
 	position:relative;
 	margin-right: 13px;
 	top: 20px;
 }
 
-button.delete-button {
-	background-color:$cm_white;
-}
 
 .event-text
 {

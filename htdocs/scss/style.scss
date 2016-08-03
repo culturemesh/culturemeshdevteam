@@ -1,5 +1,6 @@
 $cm_orange:#EF5330;
 $cm_d_orange:#E34036;
+$cm_d2_orange:#C1372D;
 $cm_blue:#3CB3CA;
 $cm_blue_dark:#3FB8CF;
 $cm_green:#97CB38;
@@ -17,6 +18,7 @@ $cm_gray: #f1eff0;
 $cm_l_gray: #f6f7f8;
 $cm_l2_gray: #f6f7f8;
 $cm_d_gray: #cbcbcb;
+$cm_d2_gray: #bbbbbb;
 
 $z_index_top: 3;
 
@@ -1333,15 +1335,15 @@ textarea.reply-text
 	margin-top:10px;
 	margin-left:0px;
 	height:45px;
-	width:89%;
+	width:100%;
 	resize:none;
+	border: 1px solid $cm_d_gray;
 }
 
 .post-text
 {
 	margin-top:10px;
 	margin-left:0px;
-	height:45px;
 }
 
 textarea.post-text {
@@ -1400,14 +1402,19 @@ p.network.date
 	font-size: 11px;
 }
 
+div.post-reply-section {
+	background-color:$cm_l2_gray;
+}
+
 div.replies
 {
-	margin-left:40px;
+/*	margin-left:40px;*/
 }
 
 ul.replies
 {
 	list-style-type:none;
+	padding:0;
 }
 
 li.reply
@@ -1425,20 +1432,26 @@ div.reply-button.delete
 	height:20px;
 	margin-top:-2px;
 	margin-left: 3px;
+	float:right;
+}
+
+div.post-button-container {
+	float:right;
+	padding:3px;
 }
 
 input[type="submit"].post.show
 {
 	border:none;
-	background-color:#DBDBDB;
+	background-color:$cm_d_gray;
 	color:#FBFBFB;
-	width:300px;
+	width:100%;
+	height:40px;
 }
 
 input[type="submit"].post.show:hover
 {
-	background-color:white;
-	color:#0088CC;
+	background-color:$cm_d2_gray;
 }
 
 input[type="submit"].post.send
@@ -1473,12 +1486,12 @@ button.post:hover {
 }
 
 button.delete-button {
-	background:none;
-	color:$cm_d_orange;
+	background-color:$cm_d_orange;
+	color:$cm_white;
 }
 
 button.delete-button:hover {
-	color:#C33036;
+	background-color:$cm_d2_orange;
 }
 
 /*

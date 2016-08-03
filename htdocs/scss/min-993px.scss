@@ -143,16 +143,29 @@ input[type="submit"].network.post
 	/*width:545px;*/
 }
 
+div.post-reply-form {
+	background-color:$cm_gray;
+}
+
+div.tweet_reply_form {
+	background-color:$cm_gray;
+}
+
 input[type="submit"].post.send
 {
 	border-width:0px;
 	background-color:$cm_d_orange;
 	color:$cm_white;
 	border-radius:2px;
+	height:40px;
 }
 
 div.post-textarea-container {
-	width: 98%;
+	width: 100%;
+}
+
+textarea.reply-text {
+	width:89%;
 }
 
 .post-text {
