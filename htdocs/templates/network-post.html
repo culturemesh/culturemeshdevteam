@@ -1,5 +1,5 @@
 <li class='bg-white network-post mobile-widget' id='post-{{ post.id }}'>
-	<div>
+	<div class="post-main-section">
 		<div class='post-img'>
 			<img id='profile-post' src='{{ post.img_link }}{{^ post.img_link }}{{ vars.blank_profile_path_icon }}{{/ post.img_link }}' width='45' height='45'>
 		</div>
@@ -101,7 +101,7 @@
 				<div class="post-textarea-container inline-block text-center">
 					<textarea class="reply-text" name="reply_text" placeholder="Post reply..."></textarea>
 				</div>
-				<div>
+				<div class="reply-panel-container">
 					<div class="post-image-container inline-block text-center">
 						<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
 					</div>
@@ -121,6 +121,7 @@
 						<input type="hidden" name="id_parent" value="{{ post.id }}"/>
 						<input type="hidden" name="email" value="{{ site_user.email }}" />
 						<input type="hidden" name="nid" value="{{ post.id_network }}"/>
+						<div class="clear">&nbsp;</div>
 					</div>
 					<div class="clear">&nbsp;</div>
 				</div>

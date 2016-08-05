@@ -154,14 +154,31 @@ div.tweet_reply_form {
 input[type="submit"].post.send
 {
 	border-width:0px;
-	background-color:$cm_d_orange;
+	background-color:$cm_green;
 	color:$cm_white;
 	border-radius:2px;
 	height:40px;
 }
 
+li.network-post {
+	border-left:5px solid $cm_d_gray;
+	margin-bottom:25px;
+	padding: 10px;
+}
+
+li.reply
+{
+	padding:6px;
+	border-left:2px solid $cm_d_gray;
+}
+
 div.post-textarea-container {
 	width: 100%;
+}
+
+div.reply-panel-container {
+	width: 89%;
+	margin: 5px auto;
 }
 
 textarea.reply-text {
@@ -183,6 +200,14 @@ input.event-text {
 
 textarea.event-text {
 	width:558px;
+}
+
+#event-post {
+	width:100%;
+}
+
+ul.network-event {
+	padding:0;
 }
 
 

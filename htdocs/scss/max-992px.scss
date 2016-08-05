@@ -190,7 +190,7 @@ div.replies {
 }
 
 textarea.reply-text {
-	width:89%;
+	width:95%;
 }
 
 div.post-reply-form {
@@ -249,6 +249,16 @@ div.post-textarea-container textarea{
 	border: 1px solid $cm_d_gray;
 }
 
+div.post-panel-container {
+	width: 98%;
+	margin: 5px auto;
+}
+
+div.reply-panel-container {
+	width: 94%;
+	margin: 5px auto;
+}
+
 div.reply-button.delete
 {
 	margin-right:5px;
@@ -260,6 +270,9 @@ div.reply-button.delete
 	top: 20px;
 }
 
+div.month {
+	width:92%;
+}
 
 .event-text
 {

@@ -820,8 +820,7 @@ input[type="submit"].network {
   color: #FEFEFE;
   background-color: #E34036;
   border-width: 0px;
-  border-radius: 2px;
-  margin-right: 3px; }
+  border-radius: 2px; }
 
 input[type="submit"].network:hover {
   background-color: #C31016; }
@@ -1028,6 +1027,9 @@ div.event-modal-section {
 ul.post-wall-ul.child {
   display: none; }
 
+div.post-main-section {
+  padding-bottom: 15px; }
+
 textarea.reply-text {
   margin-top: 10px;
   margin-left: 0px;
@@ -1081,7 +1083,8 @@ p.network.date {
   font-size: 11px; }
 
 div.post-reply-section {
-  background-color: #f6f7f8; }
+  background-color: #f6f7f8;
+  padding-top: 15px; }
 
 div.replies {
   /*	margin-left:40px;*/ }
@@ -1103,8 +1106,7 @@ div.reply-button.delete {
   float: right; }
 
 div.post-button-container {
-  float: right;
-  padding: 3px; }
+  float: right; }
 
 input[type="submit"].post.show {
   border: none;
@@ -1167,6 +1169,15 @@ div.prompt {
 
 #event-post:hover {
   background-color: #1E93AA; }
+
+div.event-ul-container {
+  margin-top: 10px; }
+
+div.month {
+  height: 30px;
+  background-color: #bbbbbb;
+  color: #FEFEFE;
+  margin: 0px auto; }
 
 p.search-user-input {
   color: #999;

@@ -22,11 +22,11 @@
 				var elem = document.getElementById("event-maker");
 				if (elem.style.display == "none" || elem.style.display == "")
 				{
-					elem.style.display = "block";
+					$( elem ).slideDown();
 					$("#event-post").text("Cancel");
 				}
 				else if (elem.style.display == "block") {
-					elem.style.display = "none";
+					$( elem ).slideUp();
 					$("#event-post").text("Post Event");
 				}
 			}
@@ -195,7 +195,7 @@
 						<div class="post-textarea-container inline-block text-center">
 							<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 						</div>
-						<div>
+						<div class="post-panel-container">
 							<div class="post-image-container inline-block text-center">
 								<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
 							</div>
@@ -208,6 +208,7 @@
 								<input type="submit" class="network post fileupload-submit send" value="Send"></input>
 								<input type="hidden" name="post_class" value="o"></input>
 								<input type="hidden" name="post_original" value="NULL"></input>
+								<div class="clear">&nbsp;</div>
 							</div>
 							<div class="clear">&nbsp;</div>
 						</div>
@@ -278,7 +279,7 @@
 			<div id="event-wall" class="tab-pane">
 				{{# page_vars.member }}
 				<div class="text-center">
-				<button id="event-post" class="network member full-button" onclick="toggleEventForm()">Post Event</button>
+				<button id="event-post" class="member full-button" onclick="toggleEventForm()">Post Event</button>
 				</div>
 				<div class="clear"></div>
 				{{/ page_vars.member }}
@@ -303,7 +304,7 @@
 						</div>
 					</form>
 				</div>
-				<div>
+				<div class="event-ul-container">
 							{{# sections.event_slider }}
 							{{{ . }}}
 							{{/ sections.event_slider }}

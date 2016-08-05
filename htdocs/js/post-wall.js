@@ -236,13 +236,13 @@ cm.PostWall.prototype = {
 			//if ($( e.target ).children(':submit').val() == 'Hide Replies') {
 			if ($( post_map['show_replies_submit'] ).val() == 'Hide Replies') {
 				//$( replies_div ).hide();
-				$( post_map['replies-div'] ).hide();
+				$( post_map['replies-div'] ).slideUp();
 				//$( e.target ).children(':submit').val('Show Replies');
 				$( post_map['show_replies_submit'] ).val('Show Replies');
 			}
 			else {
 				//$( replies_div ).show();
-				$( post_map['replies-div'] ).show();
+				$( post_map['replies-div'] ).slideDown();
 				//$( e.target ).children(':submit').val('Hide Replies');
 				$( post_map['show_replies_submit'] ).val('Hide Replies');
 				self._primeDeleteReply();

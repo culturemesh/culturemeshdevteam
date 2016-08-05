@@ -1056,7 +1056,6 @@ input[type="submit"].network
 	background-color:$cm_d_orange;
 	border-width:0px;
 	border-radius:2px;
-	margin-right:3px;
 }
 
 input[type="submit"].network:hover
@@ -1330,6 +1329,10 @@ ul.post-wall-ul.child
 	display:none;
 }
 
+div.post-main-section {
+	padding-bottom:15px;
+}
+
 textarea.reply-text
 {
 	margin-top:10px;
@@ -1404,6 +1407,7 @@ p.network.date
 
 div.post-reply-section {
 	background-color:$cm_l2_gray;
+	padding-top:15px;
 }
 
 div.replies
@@ -1437,7 +1441,6 @@ div.reply-button.delete
 
 div.post-button-container {
 	float:right;
-	padding:3px;
 }
 
 input[type="submit"].post.show
@@ -1519,6 +1522,17 @@ div.prompt
 #event-post:hover
 {
      background-color:#1E93AA;
+}
+
+div.event-ul-container {
+	margin-top:10px;
+}
+
+div.month {
+	height:30px;
+	background-color:$cm_d2_gray;
+	color:$cm_white;
+	margin:0px auto;
 }
 
 a.network
