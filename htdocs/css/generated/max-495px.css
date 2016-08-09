@@ -1108,6 +1108,9 @@ div.reply-button.delete {
 div.post-button-container {
   float: right; }
 
+div.post-button-container.pbc-full {
+  min-width: 118px; }
+
 input[type="submit"].post.show {
   border: none;
   background-color: #cbcbcb;
@@ -2931,6 +2934,9 @@ div.reply-button.delete {
 div.post-button-container {
   float: right; }
 
+div.post-button-container.pbc-full {
+  min-width: 118px; }
+
 input[type="submit"].post.show {
   border: none;
   background-color: #cbcbcb;
@@ -3831,9 +3837,6 @@ div.post-textarea-container {
 
 div.post-textarea-container textarea {
   border: 1px solid #cbcbcb; }
-
-div.post-button-container {
-  min-width: 118px; }
 
 div.post-panel-container {
   width: 98%;

@@ -1443,6 +1443,10 @@ div.post-button-container {
 	float:right;
 }
 
+div.post-button-container.pbc-full {
+	min-width: 118px;
+}
+
 input[type="submit"].post.show
 {
 	border:none;
