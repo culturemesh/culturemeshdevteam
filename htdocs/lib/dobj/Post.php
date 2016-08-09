@@ -154,7 +154,7 @@ class Post extends DisplayDObj {
 
 			// check authentication
 			$delete_button = false;
-			$reply_request = false;
+			$can_reply = false;
 
 			$site_user = NULL;
 			if (isset($_SESSION['uid'])) {
@@ -168,7 +168,7 @@ class Post extends DisplayDObj {
 					$this->img_link = $site_user->img_link;
 				}
 
-				$reply_request = $site_user->checkNetworkRegistration($network->id);
+				$can_reply = $site_user->checkNetworkRegistration($network->id);
 
 				if ($this->id_user == $site_user->id) {
 					$delete_button = true;
@@ -184,7 +184,7 @@ class Post extends DisplayDObj {
 				return $mustache->render($template, array(
 					'active' => true,
 					'delete_button' => $delete_button,
-					'reply_request' => $reply_request,
+					'can_reply' => $can_reply,
 					'show_replies' => $show_replies,
 					'post' => $this->prepare($cm),
 					'text' => $this->formatText(),

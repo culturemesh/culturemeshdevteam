@@ -96,6 +96,7 @@
 		</div>
 		{{/ show_replies }}
 		<div class='clear'>&nbsp;</div>
+		{{# can_reply }}
 		<div class="post-reply-form">
 			<form method="POST" class="member reply_form" action="//{{ cm.hostname }}/{{ action }}">
 				<div class="post-textarea-container inline-block text-center">
@@ -128,6 +129,7 @@
 			</form>
 			<div class="clear">&nbsp;</div>
 		</div>
+		{{/ can_reply }}
 		{{# reply_request }}
 		<!--
 		<div class='reply-button hidden-sm hidden-xs'>

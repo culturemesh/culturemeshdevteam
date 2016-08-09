@@ -1465,10 +1465,12 @@ button.upload-img-delete {
 .help-tooltip {
   background-color: #727272;
   color: white;
+  /*width:25px;*/
   border-radius: 50%;
   border-style: none;
   font-weight: bold;
-  float: left; }
+  float: left;
+  padding: 0 6px; }
 
 .cm_error {
   background-color: #e2747d;
@@ -3286,10 +3288,12 @@ button.upload-img-delete {
 .help-tooltip {
   background-color: #727272;
   color: white;
+  /*width:25px;*/
   border-radius: 50%;
   border-style: none;
   font-weight: bold;
-  float: left; }
+  float: left;
+  padding: 0 6px; }
 
 .cm_error {
   background-color: #e2747d;
@@ -3827,6 +3831,9 @@ div.post-textarea-container {
 
 div.post-textarea-container textarea {
   border: 1px solid #cbcbcb; }
+
+div.post-button-container {
+  min-width: 118px; }
 
 div.post-panel-container {
   width: 98%;

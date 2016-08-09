@@ -1924,10 +1924,12 @@ button.upload-img-delete {
 .help-tooltip {
 	background-color:#727272;
 	color:white;
+	/*width:25px;*/
 	border-radius:50%;
 	border-style:none;
 	font-weight:bold;
 	float:left;
+	padding: 0 6px;
 }
 
 .cm_error {

@@ -61,6 +61,7 @@
 				</form>
 			</div>
 			{{/ show_replies }}
+			{{# can_reply }}
 			<div class="tweet_reply_form">
 				<form method="POST" class="member reply_form" action="//{{ cm.hostname }}/{{ action }}">
 					<div class="post-textarea-container inline-block text-center">
@@ -95,6 +96,7 @@
 				</form>
 				<div class="clear">&nbsp;</div>
 			</div>
+			{{/ can_reply }}
 		</div>
 		<div class="clear"></div>
 	</div>
