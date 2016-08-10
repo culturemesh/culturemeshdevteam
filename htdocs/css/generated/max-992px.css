@@ -1108,10 +1108,6 @@ div.reply-button.delete {
 div.post-button-container {
   float: right; }
 
-div.post-button-container.pbc-full {
-  min-width: 118px;
-  /* an iOS fix */ }
-
 input[type="submit"].post.show {
   border: none;
   background-color: #cbcbcb;
