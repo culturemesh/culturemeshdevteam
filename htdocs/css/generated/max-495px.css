@@ -1109,7 +1109,8 @@ div.post-button-container {
   float: right; }
 
 div.post-button-container.pbc-full {
-  min-width: 118px; }
+  min-width: 118px;
+  /* an iOS fix */ }
 
 input[type="submit"].post.show {
   border: none;
@@ -2935,7 +2936,8 @@ div.post-button-container {
   float: right; }
 
 div.post-button-container.pbc-full {
-  min-width: 118px; }
+  min-width: 118px;
+  /* an iOS fix */ }
 
 input[type="submit"].post.show {
   border: none;
@@ -3831,6 +3833,9 @@ input[type="submit"].post.send {
   color: #FEFEFE;
   border-radius: 2px;
   height: 45px; }
+
+input[type="submit"].post.send.fileupload-submit {
+  float: left; }
 
 div.post-textarea-container {
   width: 100%; }

@@ -1444,7 +1444,7 @@ div.post-button-container {
 }
 
 div.post-button-container.pbc-full {
-	min-width: 118px;
+	min-width: 118px; /* an iOS fix */
 }
 
 input[type="submit"].post.show

@@ -241,6 +241,11 @@ input[type="submit"].post.send
 	height:45px;
 }
 
+input[type="submit"].post.send.fileupload-submit
+{
+	float:left;
+}
+
 div.post-textarea-container {
 	width: 100%;
 }
