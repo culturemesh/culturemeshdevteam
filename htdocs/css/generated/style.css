@@ -295,7 +295,8 @@ ul.search {
   font-family: 'Lato-Regular', sans-serif;
   color: #EF5330;
   letter-spacing: 1px;
-  width: auto; }
+  width: auto;
+  z-index: 3; }
 
 ul.search > li {
   padding: 5px;
@@ -361,6 +362,9 @@ input[type="submit"].search-button {
   border-width: 0px;
   border-radius: 2px;
   margin-right: 3px; }
+
+input[type="submit"].search-button.alt-color {
+  background-color: #97CB38; }
 
 /******
 INDEX PAGE
@@ -824,6 +828,10 @@ input[type="submit"].network {
 
 input[type="submit"].network:hover {
   background-color: #C31016; }
+
+input[type="submit"].network.event-submit {
+  width: 150px;
+  margin: 5px; }
 
 div.event-slider {
   height: 150px;

@@ -391,6 +391,7 @@ ul.search
 	color:#EF5330;
     letter-spacing:1px;
 	width:auto;
+	z-index:3;
 }
 
 ul.search > li
@@ -478,6 +479,11 @@ input[type="submit"].search-button {
 	border-width:0px;
 	border-radius:2px;
 	margin-right:3px;
+}
+
+input[type="submit"].search-button.alt-color
+{
+	background-color:$cm_green;
 }
 
 /******
@@ -1061,6 +1067,12 @@ input[type="submit"].network
 input[type="submit"].network:hover
 {
 	background-color:#C31016;
+}
+
+input[type="submit"].network.event-submit
+{
+	width:150px;
+	margin:5px;
 }
 
 div.event-slider

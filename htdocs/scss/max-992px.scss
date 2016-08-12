@@ -223,7 +223,19 @@ ul.network-event {
 	padding:0;
 }
 
-div.post-image-container {
+div.post-main-section {
+	padding:15px;
+}
+
+div.reply-main-section {
+	padding:10px;
+}
+
+div.post-img { 
+	margin-right:10px;
+}
+
+div.post-image-container { /* covers reply container */
 	width:45px;
 }
 
