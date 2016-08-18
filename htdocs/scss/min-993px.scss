@@ -1,5 +1,9 @@
 @import "style";
 
+div.wrapper.container-fluid {
+	width:960px;
+}
+
 /*
  * TABS
  */
@@ -112,6 +116,26 @@ input[type="submit"].search-button.sb-home {
 
 /* HOME
 */
+
+#stage-area {
+	height:525px;
+}
+
+#stage-title {
+
+}
+
+#stage-content {
+	clear:both;
+	position:relative;
+	width: 705px;
+	margin-left: 70px;
+	top:80px;
+}
+
+form.search-form.sb-home {
+	margin-left:0px;
+}
 
 div.bottom-div-material ol {
 	padding-left:0;

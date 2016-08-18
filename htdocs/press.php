@@ -26,14 +26,28 @@
 		'cm' => $cm,
 		'mustache' => $m_comp));
 
-	if (isset($_SESSION['uid']))
+	// USER STUFF
+	$site_user = NULL;
+	$logged_in = false;
+	$member = false;
+
+	if (isset($_SESSION['uid'])) {
+
 		$logged_in = true;
-	else
-		$logged_in = false;
+
+		// check if user is registered
+		// if so, get user info
+		$site_user = \dobj\User::createFromId($_SESSION['uid'], $dal, $do2db)->prepare($cm);
+
+		// see if user is registered
+		// in network
+		$guest = false;
+	}
 
 	$page_loader = new \misc\PageLoader($cm, $mobile_detect);
 	echo $page_loader->generate('templates' . $cm->ds .'press.html', array(
 		'vars' => $cm->getVars(),
+		'site_user' => $site_user,
 		'logged_in' => $logged_in,
 		'press' => $press_html
 	));

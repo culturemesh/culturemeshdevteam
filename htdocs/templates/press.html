@@ -25,11 +25,15 @@
 	{{/ autoload_scripts }}
 
 	{{$ content }}
-	<h2>Recent Press</h2>
-	<div class="press">
-		{{# press }}
-			{{{ . }}}
-		{{/ press }}
+	<div class="">
+		<div class="mobile-widget bg-white">
+			<h2 class="pheader text-center">Recent Press</h2>
+		</div>
+		<div class="press">
+			{{# press }}
+				{{{ . }}}
+			{{/ press }}
+		</div>
 	</div>
 	{{/ content }}
 

@@ -36,6 +36,10 @@ ul {
 	width:92%;
 }
 
+div.mobile-center {
+	text-align:center;
+}
+
 /******
 SEARCHBAR
 */
@@ -449,6 +453,23 @@ input[type="submit"].launch-network
 div.network-stats {
 	background-color: $cm_d_gray;
 	padding: 5px 0;
+}
+
+
+/*
+ * ABOUT PAGES
+ */
+
+p.about-text {
+	padding: 0 18px;
+}
+
+.input-half {
+	width:100%;
+}
+
+ul.three-section-pics{
+	text-align:center;
 }
 
 /******

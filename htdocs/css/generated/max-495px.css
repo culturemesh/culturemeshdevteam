@@ -78,17 +78,33 @@ button.full-button {
 
 button.share-button {
   width: 88%;
-  height: 30px;
+  height: 50px;
+  color: #FEFEFE;
+  border: none; }
+
+a.share-button {
+  display: inline-block;
+  width: 88%;
+  padding: 20px 0;
   color: #FEFEFE;
   border: none; }
 
 button.facebook {
   background-color: #3B5998; }
 
+a.facebook {
+  background-color: #3B5998; }
+
 button.twitter {
   background-color: #55ACEE; }
 
+a.twitter {
+  background-color: #55ACEE; }
+
 button.googleplus {
+  background-color: #DC4A38; }
+
+a.googleplus {
   background-color: #DC4A38; }
 
 div.inline-block {
@@ -103,6 +119,9 @@ div.inline-block {
 
 .noscroll {
   overflow: hidden; }
+
+.lato-sans-serif {
+  font-family: Lato, sans-serif; }
 
 /******
  * MAIN TEMPLATE
@@ -1237,6 +1256,9 @@ input.dashboard {
   font: 18px Lato, sans-serif;
   color: #7F7F7F; }
 
+input.dashboard.cm-input-sm {
+  font-size: 15px; }
+
 select.dashboard {
   margin-left: auto;
   margin-right: auto;
@@ -1259,6 +1281,9 @@ textarea.dashboard {
   resize: none;
   font: 18px Lato, sans-serif;
   color: #7F7F7F; }
+
+textarea.dashboard.cm-input-sm {
+  font-size: 15px; }
 
 ul.dashboard.item {
   list-style-type: none;
@@ -1502,7 +1527,7 @@ button.upload-img-delete {
 li.team-member {
   margin: 3px;
   width: 205px;
-  float: left; }
+  display: inline-block; }
 
 span.team-member {
   width: 205px; }
@@ -1587,7 +1612,7 @@ ul.three-section-pics li {
   /*background: url('images/CM_Logo.png');*/
   /*background: #000;*/
   text-align: center;
-  width: 234px;
+  /*width:234px;*/
   margin: 0 -3px;
   height: 222px;
   padding: 20px 40px;
@@ -1700,6 +1725,9 @@ div.footer-mobile-share-buttons {
 .client {
   float: right; }
 
+/*
+ * ABOUT, CAREERS, PRESS
+ */
 .center-elem {
   margin-left: auto;
   margin-right: auto;
@@ -1707,6 +1735,9 @@ div.footer-mobile-share-buttons {
 
 .btn-big {
   width: 250px; }
+
+.about-input {
+  margin-top: 5px; }
 
 /*
 input[type="text"],input[type="email"],input[type="password"],textarea,select{
@@ -1749,6 +1780,9 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
 .failure-txt {
   color: #b5332b; }
 
+#contact_body {
+  height: 150px; }
+
 /**careers pg**/
 .careers_box_head {
   margin-top: 55px; }
@@ -1757,7 +1791,7 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
   margin: 25px 0; }
 
 .careers_box_engineering {
-  background: url("../images/code.jpg");
+  background: url("../../images/code.jpg");
   background-size: 100% 100%; }
 
 .careers_box_engineering .over {
@@ -1771,7 +1805,7 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
   /*dim the background*/ }
 
 .careers_box_creative {
-  background: url("../images/creative.jpg");
+  background: url("../../images/creative.jpg");
   background-size: 314px 262px; }
 
 .careers_box_creative .over {
@@ -1785,7 +1819,7 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
   /*dim the background*/ }
 
 .careers_box_business {
-  background: url("../images/business.jpg");
+  background: url("../../images/business.jpg");
   background-size: 314px 262px; }
 
 .careers_box_business .over {
@@ -1909,17 +1943,33 @@ button.full-button {
 
 button.share-button {
   width: 88%;
-  height: 30px;
+  height: 50px;
+  color: #FEFEFE;
+  border: none; }
+
+a.share-button {
+  display: inline-block;
+  width: 88%;
+  padding: 20px 0;
   color: #FEFEFE;
   border: none; }
 
 button.facebook {
   background-color: #3B5998; }
 
+a.facebook {
+  background-color: #3B5998; }
+
 button.twitter {
   background-color: #55ACEE; }
 
+a.twitter {
+  background-color: #55ACEE; }
+
 button.googleplus {
+  background-color: #DC4A38; }
+
+a.googleplus {
   background-color: #DC4A38; }
 
 div.inline-block {
@@ -1934,6 +1984,9 @@ div.inline-block {
 
 .noscroll {
   overflow: hidden; }
+
+.lato-sans-serif {
+  font-family: Lato, sans-serif; }
 
 /******
  * MAIN TEMPLATE
@@ -3068,6 +3121,9 @@ input.dashboard {
   font: 18px Lato, sans-serif;
   color: #7F7F7F; }
 
+input.dashboard.cm-input-sm {
+  font-size: 15px; }
+
 select.dashboard {
   margin-left: auto;
   margin-right: auto;
@@ -3090,6 +3146,9 @@ textarea.dashboard {
   resize: none;
   font: 18px Lato, sans-serif;
   color: #7F7F7F; }
+
+textarea.dashboard.cm-input-sm {
+  font-size: 15px; }
 
 ul.dashboard.item {
   list-style-type: none;
@@ -3333,7 +3392,7 @@ button.upload-img-delete {
 li.team-member {
   margin: 3px;
   width: 205px;
-  float: left; }
+  display: inline-block; }
 
 span.team-member {
   width: 205px; }
@@ -3418,7 +3477,7 @@ ul.three-section-pics li {
   /*background: url('images/CM_Logo.png');*/
   /*background: #000;*/
   text-align: center;
-  width: 234px;
+  /*width:234px;*/
   margin: 0 -3px;
   height: 222px;
   padding: 20px 40px;
@@ -3531,6 +3590,9 @@ div.footer-mobile-share-buttons {
 .client {
   float: right; }
 
+/*
+ * ABOUT, CAREERS, PRESS
+ */
 .center-elem {
   margin-left: auto;
   margin-right: auto;
@@ -3538,6 +3600,9 @@ div.footer-mobile-share-buttons {
 
 .btn-big {
   width: 250px; }
+
+.about-input {
+  margin-top: 5px; }
 
 /*
 input[type="text"],input[type="email"],input[type="password"],textarea,select{
@@ -3580,6 +3645,9 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
 .failure-txt {
   color: #b5332b; }
 
+#contact_body {
+  height: 150px; }
+
 /**careers pg**/
 .careers_box_head {
   margin-top: 55px; }
@@ -3588,7 +3656,7 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
   margin: 25px 0; }
 
 .careers_box_engineering {
-  background: url("../images/code.jpg");
+  background: url("../../images/code.jpg");
   background-size: 100% 100%; }
 
 .careers_box_engineering .over {
@@ -3602,7 +3670,7 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
   /*dim the background*/ }
 
 .careers_box_creative {
-  background: url("../images/creative.jpg");
+  background: url("../../images/creative.jpg");
   background-size: 314px 262px; }
 
 .careers_box_creative .over {
@@ -3616,7 +3684,7 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
   /*dim the background*/ }
 
 .careers_box_business {
-  background: url("../images/business.jpg");
+  background: url("../../images/business.jpg");
   background-size: 314px 262px; }
 
 .careers_box_business .over {
@@ -3688,6 +3756,9 @@ ul {
 
 .full-button {
   width: 92%; }
+
+div.mobile-center {
+  text-align: center; }
 
 /******
 SEARCHBAR
@@ -3999,6 +4070,18 @@ div.network-stats {
   background-color: #cbcbcb;
   padding: 5px 0; }
 
+/*
+ * ABOUT PAGES
+ */
+p.about-text {
+  padding: 0 18px; }
+
+.input-half {
+  width: 100%; }
+
+ul.three-section-pics {
+  text-align: center; }
+
 /******
  * TEMPLATE FILES
  */
@@ -4058,5 +4141,15 @@ div.post-textarea-container {
 
 .nav.nav-pills.dashboard > li > a {
   padding: 10px 8px; }
+
+/*
+ * ABOUT PAGES
+ */
+h2.pheader {
+  font-size: 20px;
+  padding: 10px 0; }
+
+h3.pheader {
+  font-size: 18px; }
 
 /*# sourceMappingURL=max-495px.css.map */
