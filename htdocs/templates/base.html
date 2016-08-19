@@ -127,41 +127,36 @@
 			return this.qsGet;
 		}
 
-
-		// HEIGHT ADJUSTMENT FOR MODALS
-		$('#register_modal,#login_modal').each(function() {
-			$( this ).on('shown', function () {
-				$('.modal .modal-body').css('overflow-y', 'auto'); 
-				$('.modal .modal-body').css('max-height', $(window).height() * 0.7);
-			})
-		});
 		</script>
 
 		{{$ more_scripts }}
 		{{/ more_scripts }}
 
 		<script>
+
+		var mobile_sidebar, login_overlay, registration_overlay, searchOneMobile, searchTwoMobile;
+
 		cm.Autoloader(function() {
 
-				var mobile_sidebar = new cm.Overlay({
+				mobile_sidebar = new cm.Overlay({
 					root: document.getElementById('side-menu'),
 					toggle: 'a > #sidebar-toggle', 
 					left_coord: '20%'
 				});
 
-				var login_overlay = new cm.Overlay({
+				login_overlay = new cm.Overlay({
 					root: document.getElementById('login-overlay'),
 					toggle: '.login-toggle',
 					left_coord: '0'
 				});
 
-				var registration_overlay = new cm.Overlay({
+				registration_overlay = new cm.Overlay({
 					root: document.getElementById('register-overlay'),
 					toggle: '.register-toggle',
 					left_coord: '0'
 				});
 
-				var searchOneMobile = new cm.SearchField({
+				searchOneMobile = new cm.SearchField({
 					root: $('#search_collapse div.search-form #search-1-root').get(0),
 					topic : document.getElementById('search-topic'),
 					ul_class : 'search',
@@ -169,7 +164,7 @@
 
 				});
 
-				var searchTwoMobile = new cm.SearchField({
+				searchTwoMobile = new cm.SearchField({
 					root: $('#search_collapse div.search-form #search-2-root').get(0),
 					ul_class: 'search',
 					loading_image: '/images/searchbar-loading-bw.gif'
@@ -585,11 +580,13 @@
 				</div>
 				<div class="cm-y-20"></div>
 				<div class="sidebar-page-menu row text-center">
+					<!--
 					<ul>
 					<li><button class="sidebar-button sidebar-li-button col-sm-12 col-xs-12">ONE</button></li>
 					<li><button class="sidebar-button sidebar-li-button col-sm-12 col-xs-12">TWO</button></li>
 					<li><button class="sidebar-button sidebar-li-button col-sm-12 col-xs-12">THREE</button></li>
 					</ul>
+					-->
 				</div>
 			</div>
 		</div>

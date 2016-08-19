@@ -21,24 +21,12 @@
 	// mustache components
 	$m_comp = new \misc\MustacheComponent();
 
+	$searchbar_template = file_get_contents('templates' . $cm->ds . 'searchbar.html');
+	$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True, 'vars'=>$cm->getVars()));
+
 	// Width calculations
 	//
 	$team_members_count = count($team_members);
-	/*
-	$row_length = 4;
-
-	$ul_count = ceil( $team_members_count / 4 );
-	$pic_length = 205;
-	$item_width = $pic_length + 6;
-	$full_row_width = $item_width * $row_length;
-	 */
-
-	// count row offset
-	//$start_index = ($i * $row_length);
-	//$row_list = $team_members->slice($start_index, $row_length, True);
-
-	// get row width
-	//$row_width = count($row_list) * $item_width;
 
 	$tmp = file_get_contents($cm->template_dir . $cm->ds . 'about_team-member_ul.html');
 	$team_html = $team_members->getHTML('about', array(
@@ -98,6 +86,9 @@
 		'site_user' => $site_user,
 		'logged_in' => $logged_in,
 		'team_html' => $team_html,
+		'searchbars' => array(
+			'alt-font' => $sb_alt_font
+		),
 		'success' => $success,
 		'failure' => $failure
 	));

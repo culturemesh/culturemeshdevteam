@@ -366,13 +366,29 @@ cm.getMembers = function(){
     return members;
 }
 
-cm.toggleBodyScroll = function() {
-	var scrollable = $('body').hasClass('noscroll');
+cm.overlayCount = 0;
 
-	if (scrollable)
-	  $('body').removeClass('noscroll');
-	else
-	  $('body').addClass('noscroll');
+cm.toggleBodyScroll = function(setTo) {
+	var not_scrollable = $('body').hasClass('noscroll');
+
+	if (setTo == 'hide') {
+		if (not_scrollable && cm.overlayCount == 1) {
+		  $('body').removeClass('noscroll');
+		  cm.overlayCount = 0;
+		}
+		else if (not_scrollable && cm.overlayCount > 1)
+		  cm.overlayCount -= 1;
+	}
+
+	if (setTo == 'show') {
+		if (cm.overlayCount == 0) {
+			$('body').addClass('noscroll');
+			cm.overlayCount += 1;
+		}
+		else {
+			cm.overlayCount += 1;
+		}
+	}
 }
 
 //
@@ -998,7 +1014,7 @@ cm.Overlay.prototype = {
 	_show : function() {
 
 		// change body class
-		cm.toggleBodyScroll();
+		cm.toggleBodyScroll('show');
 
 		if (!this.showing) {
 
@@ -1011,7 +1027,7 @@ cm.Overlay.prototype = {
 	_hide : function() {
 
 		// change body class
-		cm.toggleBodyScroll();
+		cm.toggleBodyScroll('hide');
 
 		// if already set over, change to the other way
 		if (this.showing) {

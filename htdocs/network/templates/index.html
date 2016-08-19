@@ -423,7 +423,7 @@
 	<script>
 
 		var JoinOnRegister = function() {
-			$('#register_modal').modal('show');
+			registration_overlay._show();
 			$('#reg_joining').val("1");
 			$('#reg_joining_network').val("{{ page_vars.nid }}");
 		}

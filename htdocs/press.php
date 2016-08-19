@@ -22,6 +22,11 @@
 	$cm->closeConnection();
 
 	$m_comp = new \misc\MustacheComponent();
+
+	// searchbar
+	$searchbar_template = file_get_contents('templates' . $cm->ds . 'searchbar.html');
+	$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True, 'vars'=>$cm->getVars()));
+
 	$press_html = $press->getHTML('press', array(
 		'cm' => $cm,
 		'mustache' => $m_comp));
@@ -49,6 +54,9 @@
 		'vars' => $cm->getVars(),
 		'site_user' => $site_user,
 		'logged_in' => $logged_in,
+		'searchbars' => array(
+			'alt-font' => $sb_alt_font
+		),
 		'press' => $press_html
 	));
 
