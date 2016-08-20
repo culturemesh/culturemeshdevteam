@@ -421,11 +421,14 @@ body {
   text-shadow: -1px 0 #6e6e6e, 0 1px #6e6e6e, 1px 0 #6e6e6e, 0 -1px #6e6e6e;
   text-shadow: horizontal-offset vertical-offset blur #6e6e6e; }
 
+div.verb-select-container {
+  display: inline-block; }
+
 span.at.stage {
   margin-left: 37px; }
 
 span.at.network {
-  margin-left: 67px; }
+  /*margin-left:67px;*/ }
 
 #search-bar {
   height: 60px;
@@ -2286,11 +2289,14 @@ body {
   text-shadow: -1px 0 #6e6e6e, 0 1px #6e6e6e, 1px 0 #6e6e6e, 0 -1px #6e6e6e;
   text-shadow: horizontal-offset vertical-offset blur #6e6e6e; }
 
+div.verb-select-container {
+  display: inline-block; }
+
 span.at.stage {
   margin-left: 37px; }
 
 span.at.network {
-  margin-left: 67px; }
+  /*margin-left:67px;*/ }
 
 #search-bar {
   height: 60px;
@@ -3772,6 +3778,16 @@ form.search-form.sb-home {
 div.searchbar-opening {
   margin-bottom: 5px; }
 
+#opening > span.find-people {
+  display: block;
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin-bottom: 15px; }
+
+div.verb-select-container {
+  display: inline-block;
+  width: 43%; }
+
 input[type="text"].search-input.sb-home {
   height: 43px;
   font-size: 16px;
@@ -4123,6 +4139,9 @@ div.content-top {
   width: 1.5em;
   height: 1.5em; }
 
+/*
+ * SEARCH
+ */
 /*
  * NETWORK
  */

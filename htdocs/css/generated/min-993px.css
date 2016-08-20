@@ -421,11 +421,14 @@ body {
   text-shadow: -1px 0 #6e6e6e, 0 1px #6e6e6e, 1px 0 #6e6e6e, 0 -1px #6e6e6e;
   text-shadow: horizontal-offset vertical-offset blur #6e6e6e; }
 
+div.verb-select-container {
+  display: inline-block; }
+
 span.at.stage {
   margin-left: 37px; }
 
 span.at.network {
-  margin-left: 67px; }
+  /*margin-left:67px;*/ }
 
 #search-bar {
   height: 60px;
@@ -1909,6 +1912,12 @@ div.searchbar-opening.sb-home {
 span.sb-home {
   color: #FEFEFE;
   font-size: 21px; }
+
+span.sb-home.at {
+  margin-left: 37px; }
+
+span.at.network {
+  margin-left: 157px; }
 
 select.sb-home {
   background: rgba(0, 0, 0, 0.5) repeat scroll 0 0;

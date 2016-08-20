@@ -557,12 +557,16 @@ body {
 	text-shadow: horizontal-offset vertical-offset blur #6e6e6e;
 }
 
+div.verb-select-container {
+	display:inline-block;
+}
+
 span.at.stage {
      margin-left:37px;
 }
 
 span.at.network {
-     margin-left:67px;
+     /*margin-left:67px;*/
 }
 
 #search-bar {

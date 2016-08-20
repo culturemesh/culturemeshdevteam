@@ -29,12 +29,15 @@
 -->
 <div class="search-form">
 <form id='search-form' class="search-form {{# sb-home }}sb-home{{/ sb-home }}" method='GET' action='{{ vars.hostname }}/search/' autocomplete='off'>
-	<div id='opening' class='{{# sb-home }}sb-home{{/ sb-home }} {{# alt-font }}alt-font{{/ alt-font }} searchbar-opening network'><span class="{{# sb-home }}sb-home{{/ sb-home }}">Find people who</span>
-<select id='verb-select' name='verb' class='{{# sb-home }}sb-home{{/ sb-home }} netsearch verb-select'>
-	<option value='arefrom'>are from</option>
-	<option value='speak'>speak</option>
-</select>
-<span class='{{# sb-home }}sb-home{{/ sb-home }} at network'>In/Near</span>
+<div id='opening' class='{{# sb-home }}sb-home{{/ sb-home }} {{# alt-font }}alt-font{{/ alt-font }} searchbar-opening network'>
+	<span class="{{# sb-home }}sb-home{{/ sb-home }} {{# alt-font }}find-people{{/ alt-font }}">Find people who{{# alt-font }}...{{/ alt-font }}</span>
+	<div class="verb-select-container">
+		<select id='verb-select' name='verb' class='{{# sb-home }}sb-home{{/ sb-home }} netsearch verb-select'>
+			<option value='arefrom'>are from</option>
+			<option value='speak'>speak</option>
+		</select>
+	</div>
+	<span class='{{# sb-home }}sb-home{{/ sb-home }} at network {{# alt-font }}alt-font{{/ alt-font }}'>In/Near</span>
 </div>
 <div id="search-1-root" class="search-field-container">
 	<input type='text' id='search-1' class='search-1 {{# sb-home }}sb-home{{/ sb-home }} search-input net-search' name='search-1' value="{{ search_value.origin }}" autocomplete='off'/>
