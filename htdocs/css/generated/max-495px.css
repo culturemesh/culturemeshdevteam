@@ -3818,8 +3818,9 @@ select.sb-home {
   color: #6e6e6e;
   font-family: "Lato-Light",sans-serif;
   font-size: 16px;
+  height: 30px;
   margin-bottom: 3px;
-  padding: 0; }
+  padding: 4px; }
 
 div.search-button-container.sb-home {
   display: block; }
