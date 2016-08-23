@@ -255,7 +255,14 @@ div.inline-block {
 .overlay-center {
 	position:relative;
 	top:50%;
-	transform:translateY(-60%);
+}
+
+.overlay-center.login {
+	margin-top:-135px;
+}
+
+.overlay-center.registration {
+	margin-top:-205px;
 }
 
 .cm-overlay .overlay-submit {
