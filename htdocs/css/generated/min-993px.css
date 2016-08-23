@@ -67,6 +67,9 @@ ul.no-style {
 .text-white {
   color: #FEFEFE; }
 
+.full-button {
+  width: 92%; }
+
 button.full-button {
   padding: 5px 0;
   margin: 0px auto;
@@ -118,7 +121,11 @@ div.inline-block {
   margin-bottom: 10px; }
 
 .noscroll {
-  overflow: hidden; }
+  overflow: hidden;
+  /* For mobile safari */
+  height: 100%;
+  width: 100%;
+  position: fixed; }
 
 .lato-sans-serif {
   font-family: Lato, sans-serif; }
@@ -273,6 +280,12 @@ div.inline-block {
 
 .sidebar-page-menu > ul > li:first-child > .sidebar-li-button {
   border-top: 1px solid #959595; }
+
+a.sidebar-button.sidebar-li-button {
+  color: #FEFEFE; }
+
+a.sidebar-button.sidebar-li-button:hover {
+  color: #313131; }
 
 .sidebar-user-buttons > button {
   width: 90px; }
@@ -1330,11 +1343,14 @@ li.inactive-event p#event-desc {
 
 .profile_dashboard {
   min-height: 300px;
-  width: 64%;
+  width: 68%;
   float: left;
   padding-left: 48px;
   padding-top: 40px;
   padding-bottom: 48px; }
+
+div.tab-container {
+  margin-bottom: 50px; }
 
 #pic-upload-div {
   text-align: center;
@@ -1490,10 +1506,19 @@ a.profile {
 .fileupload-button.picture:hover {
   opacity: 0.5; }
 
+li.upload-post-img {
+  width: 100px;
+  float: left; }
+
+img.upload-post-img {
+  width: 100px;
+  height: 100px; }
+
 button.upload-img-delete {
   border: none;
   background-color: #727272;
-  color: white; }
+  color: white;
+  width: 100px; }
 
 /********
  * HELP AND ERROR

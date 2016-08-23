@@ -402,107 +402,6 @@
 					<a data-toggle="collapse" href="#search_collapse_container" aria-expanded="false" aria-controls="search_collapse_container"><svg id="search-toggle" class="custom-icon icon-search"><use xlink:href="#icon-search"></use></svg></a>
 					<a><svg id="sidebar-toggle" class="custom-icon icon-menu"><use xlink:href="#icon-menu"></use></svg></a>
 				</div>
-				<!--
-				<div id="register_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
-					<div class="modal-header">
-						Join the</br></br><b>CultureMesh Community!</b>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
-					</div>
-					<div class="modal-body">
-						<form id="reg_form" method="post" action="{{ vars.hostname }}/r.php">
-							<div id="register-div">
-								<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
-								</br>
-								<input type="text" name="fname" id="fname" class="modal-text-input" placeholder="First Name" required /></br>
-								</br>
-								<input type="text" name="lname" id="lname" class="modal-text-input" placeholder="Last Name" required /></br>
-								</br>
-								<span id="email_dup_txt" style="display:none" class="label label-important"></span>
-								<div id="login-passwords">
-								<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
-								<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
-								<div class="clear"></div>
-								<span id="password_validation"></span>
-								<span id="register_server_error"></span>
-								</div>
-								</br>
-								</br>
-								<span id="pass_mism_txt" class="label label-important"></span>
-								<div class="clear"></div>
-								<input type="hidden" id="reg_joining" name="reg_joining" value="-1" />
-								<input type="hidden" id="reg_joining_network" name="reg_joining_network" value="-1" />
-								<input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
-							</div>
--->
-							<!--
-							<div id="register-div">
-								<div class='row'>
-								<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
-								</div>
-								<div class='row'>
-								<input type="text" name="fname" id="fname" class="modal-text-input" placeholder="First Name" required /></br>
-								</div>
-								<div class='row'>
-								<input type="text" name="lname" id="lname" class="modal-text-input" placeholder="Last Name" required /></br>
-								</div>
-								<div class='row'>
-								<span id="email_dup_txt" style="display:none" class="label label-important"></span>
-								</div>
-								<div class='row'>
-									<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
-									<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
-								</div>
-								<div class="clear"></div>
-								<span id="password_validation"></span>
-								<span id="register_server_error"></span>
-								<span id="pass_mism_txt" class="label label-important"></span>
-								<div class="clear"></div>
-								<input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
-							</div>
-							-->
-									<!-- REGISTER DIV ARTIFACTS 
-								<div id="login-passwords"> 
-									<div class='span2'>
-									</div>
-									<div class='span2'>
-									</div>
-								</div>
-									-->
-									<!--
-						</form>
-					</div>
-					<div class="modal-footer">
-						Already a member? <a href="#" onclick="toggleLogin()" id="sign_in_mod">Sign in!</a>
-					</div>
-				</div>
--->
-									<!--
-				<div id="login_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
-					<div class="modal-header">
-						<b>Welcome Back!</b>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
-					</div>
-					<div class="modal-body">
-						<form id="log_form" method="post" action="{{ vars.hostname }}/l.php">
-							<div id="login-div">
-								<input type="email" name="email" id="log_email" class="modal-text-input" placeholder="Email" required />
-								<input type="password" name="password" id="log_password" class="modal-text-input" onchange="validateInput(this, document.getElementById(\'log_validation\'))" placeholder="Password" required />
-								</br>
-								<span id="log_validation"></span>
-								</br>
-								</br>
-								<input type="submit" id="log_submit_btn" class="submit" data-loading-text="Checking..." value="Sign In" />
-								</br>
-								</br>
-								<a href="{{ vars.hostname }}/forgotpass.php">Forgot your password?</a>
-							</div>    
-						</form>
-					</div>
-					<div class="modal-footer">
-						Not a member yet? <a href="#" id="sign_in_mod" onclick='toggleRegister()'>Join Us!</a>
-					</div>
-				</div>
-			-->
 				<div class="clear"></div>
 			</div>
 			<div id="signout_panel" style="display:none">
@@ -580,13 +479,18 @@
 				</div>
 				<div class="cm-y-20"></div>
 				<div class="sidebar-page-menu row text-center">
-					<!--
 					<ul>
+						<!--
 					<li><button class="sidebar-button sidebar-li-button col-sm-12 col-xs-12">ONE</button></li>
 					<li><button class="sidebar-button sidebar-li-button col-sm-12 col-xs-12">TWO</button></li>
 					<li><button class="sidebar-button sidebar-li-button col-sm-12 col-xs-12">THREE</button></li>
+						-->
+						{{# logged_in }}
+						<li><a class="sidebar-button sidebar-li-button col-sm-12 col-xs-12" href="{{ vars.hostname }}/profile/{{ site_user.id }}#profile_dashboard_tab">YOUR DASHBOARD</a></li>
+						<li><a class="sidebar-button sidebar-li-button col-sm-12 col-xs-12" href="{{ vars.hostname }}/profile/{{ site_user.id }}#profile_networks_tab">YOUR NETWORKS</a></li>
+						<li><a class="sidebar-button sidebar-li-button col-sm-12 col-xs-12" href="{{ vars.hostname }}/profile/{{ site_user.id }}#profile_events_tab">YOUR EVENTS</a></li>
+						{{/ logged_in }}
 					</ul>
-					-->
 				</div>
 			</div>
 		</div>

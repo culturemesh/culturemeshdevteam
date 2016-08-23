@@ -88,7 +88,7 @@ class Profile {
 		$sb_standard = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()
 								));
 
-		$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True,
+		$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True,
 									'vars' => $cm->getVars()
 								));
 		$yn_net_html = NULL;

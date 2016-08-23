@@ -1219,6 +1219,12 @@ cm.PreviewPanel = function(o) {
 		display: 'inline',
 		'listStyleType': 'none'
 	});
+
+	// Add a clear after the ul
+	var clear_div = document.createElement('div');
+	clear_div.innerHTML = '&nbsp;';
+	this._element.appendChild( clear_div );
+	$( clear_div ).addClass('clear');
 }
 
 cm.PreviewPanel.prototype = {
@@ -1234,15 +1240,8 @@ cm.PreviewPanel.prototype = {
 		deleteButton.div = div;
 		deleteButton.li = li;
 
-		cm.css(li, {
-			width: '100px',
-			'cssFloat': 'left'
-		});
-
-		cm.css(deleteButton, {
-			width: '100px',
-		});
-
+		$( li ).addClass('upload-post-img');
+		
 		this._attach(deleteButton, 'click', function() {
 
 			// redeclare for closure purposes
@@ -1263,12 +1262,8 @@ cm.PreviewPanel.prototype = {
 
 			var img = document.createElement('img');
 			img.src = e.target.result;
-
-			// css
-			cm.css(img, {
-				width: '100px',
-				height: '100px'
-			});
+			
+			$( img ).addClass('upload-post-img');
 
 			div.appendChild(img);
 			counter++;

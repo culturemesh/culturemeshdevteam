@@ -91,14 +91,15 @@
 	<div id="search" class="searchbar hidden-xs hidden-sm">
 	{{{ searchbars.standard }}}
 	</div>
+	<hr class="hidden-sm hidden-xs">
 	    <div class="tab-container">
 		    <ul class="nav nav-pills dashboard">
 		<!--        <li class="active"><a href="#profile_basic_info_tab" data-toggle="pill">Basic Info</a></li>-->
-			<li class="active"><a href="#profile_dashboard_tab" data-toggle="pill">Dashboard</a></li>
+			<li id="profile_dashboard_pill" class="active"><a href="#profile_dashboard_tab" data-toggle="pill">Dashboard</a></li>
 			<li class="vertical-line hidden-md hidden-lg">&nbsp;</li>
-			<li><a href="#profile_networks_tab" data-toggle="pill">Networks</a></li>
+			<li id="profile_networks_pill" ><a href="#profile_networks_tab" data-toggle="pill">Networks</a></li>
 			<li class="vertical-line hidden-md hidden-lg">&nbsp;</li>
-			<li><a href="#profile_events_tab" data-toggle="pill">Events</a></li>
+			<li id="profile_events_pill"><a href="#profile_events_tab" data-toggle="pill">Events</a></li>
 			<li class="vertical-line hidden-md hidden-lg">&nbsp;</li>
 		<!--        <li><a href="#profile_inbox_tab" data-toggle="pill">Inbox</a></li>-->
 		{{^ page_vars.guest }}<li><a href="#profile_accounts_tab" data-toggle="pill">Account</a></li>{{/ page_vars.guest }}
@@ -111,7 +112,9 @@
 		<!-- DASHBOARD TAB -->
 		<div class="tab-pane active" id="profile_dashboard_tab">
 			<div>
-				<h5><b>EVENTS YOU'RE HOSTING</b></h5>
+				<div class="mobile-widget bg-white profile-section-header">
+					<h5>EVENTS YOU'RE HOSTING</h5>
+				</div>
 				{{# sections.yh_events }}
 				{{{ . }}}
 				{{/ sections.yh_events }}
@@ -120,7 +123,9 @@
 				{{/ sections.yh_events }}
 			</div>
 			<div>
-				<h5><b>EVENTS IN YOUR NETWORKS</b></h5>
+				<div class="mobile-widget bg-white profile-section-header">
+					<h5>EVENTS IN YOUR NETWORKS</h5>
+				</div>
 				{{# sections.yn_events }}
 				{{{ . }}}
 				{{/ sections.yn_events }}
@@ -129,7 +134,9 @@
 				{{/ sections.yn_events }}
 			</div>
 			<div>
-				<h5><b>YOUR POSTS</b></h5>
+				<div class="mobile-widget bg-white profile-section-header">
+					<h5>YOUR POSTS</h5>
+				</div>
 				{{# sections.yp_posts }}
 				{{{ . }}}
 				{{/ sections.yp_posts }}
@@ -430,6 +437,29 @@
 				});
 		});
 
+	</script>
+	<script>
+		if (qs == undefined)
+			var qs = new QueryStringParser();
+
+
+		if (qs.fragment == '#profile_networks_tab') {
+
+			$('#profile_dashboard_tab').removeClass('active');
+			$('#profile_dashboard_pill').removeClass('active');
+			$('#profile_networks_tab').addClass('active');
+			$('#profile_networks_pill').addClass('active');
+		}
+		if (qs.fragment == '#profile_dashboard_tab') {
+
+		}
+		if (qs.fragment == '#profile_events_tab') {
+
+			$('#profile_dashboard_tab').removeClass('active');
+			$('#profile_dashboard_pill').removeClass('active');
+			$('#profile_events_tab').addClass('active');
+			$('#profile_events_pill').addClass('active');
+		}
 	</script>
 
 	{{/ body_scripts }}
