@@ -41,6 +41,7 @@
 		<script src="{{ vars.hostname }}/js/bootstrap.js"></script>
 		-->
 		<script src="{{ vars.hostname }}/bootstrap-3.3.6/js/bootstrap.js"></script>
+		<script src="{{ vars.hostname }}/js/searchbar.js"></script>
 		<!--
 		<script src="{{ vars.hostname }}/js/validation.js"></script>
 		<script src="{{ vars.hostname }}/js/account.js"></script>
@@ -158,15 +159,16 @@
 
 				searchOneMobile = new cm.SearchField({
 					root: $('#search_collapse div.search-form #search-1-root').get(0),
+					secondary_root: $('#search_collapse div.search-form #opening').get(0),
 					topic : document.getElementById('search-topic'),
-					ul_class : 'search',
+					ul_class : 'network search',
 					loading_image: '/images/searchbar-loading-bw.gif'
 
 				});
 
 				searchTwoMobile = new cm.SearchField({
 					root: $('#search_collapse div.search-form #search-2-root').get(0),
-					ul_class: 'search',
+					ul_class: 'network search',
 					loading_image: '/images/searchbar-loading-bw.gif'
 				});
 

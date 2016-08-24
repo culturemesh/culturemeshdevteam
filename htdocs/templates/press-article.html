@@ -1,12 +1,12 @@
 <div class="media mobile-widget bg-white">
 	<div class="mobile-center">
-		<a class="mobile-center" href="#">
+		<a class="mobile-center" href="{{ press.url }}">
 		  <img class="media-object" data-src="images/{{ press.thumb_url }}" alt="64x64" style="width: 258px; height: 166px;" src="images/{{ press.thumb_url }}">
 		</a>
 	</div>
 	<div class="media-body mobile-center">
 		<div>
-			<h4 class="media-heading"><a target="_blank" href="{{ press.url }}">{{ press.title }}</a></h4>
+			<h4 class="media-heading press_title"><a target="_blank" href="{{ press.url }}">{{ press.title }}</a></h4>
 			<h5 class="media-heading press_subtitle">{{ press.sub_title }}</h5>
 		</div>
 		<div class="press_body">

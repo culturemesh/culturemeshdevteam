@@ -3,6 +3,7 @@ cm.SearchField = function(user_options) {
 
 	this._options = {
 		root: null,
+		secondary_root: null,
 		input_field : null,
 		clicked : null,
 		id_field : null,
@@ -13,6 +14,7 @@ cm.SearchField = function(user_options) {
 		/////// OPTIONAL /////////////
 		div_id : null,
 		selector : null,
+		has_placeholder : null,
 		topic : null,
 		display_table : null,
 		submit_button : null,
@@ -27,6 +29,11 @@ cm.SearchField = function(user_options) {
 
 	this._root = this._options.root;
 	this._component = new cm.ElementMap(this._root);
+
+	if (this._options['secondary_root'] != null) {
+		this._secondary_root = this._options.secondary_root;
+		this._component._extendMap(new cm.ElementMap(this._secondary_root));
+	}
 
 	this._input_field = this._component['search-input'];
 	this._clicked = this._component['search-clik'];
@@ -117,13 +124,13 @@ cm.SearchField.prototype = {
 			var search_class;
 
 			// figure out selector (IF SELECTOR IS EVEN PRESENT)
-			if (self._selector != null) {
+			if (self._component['verb-select-element'] != null) {
 
 				// Location or language, pretty simple
-				if (self._selector.selectedIndex == 0) {
+				if (self._component['verb-select-element'].selectedIndex == 0) {
 				  search_class = 'location';
 				}
-				else if (self._selector.selectedIndex == 1) {
+				else if (self._component['verb-select-element'].selectedIndex == 1) {
 				  search_class = 'language';
 				}
 			}
@@ -151,10 +158,21 @@ cm.SearchField.prototype = {
 		}
 
 
-		if (this._selector != null) {
+		if (this._component['verb-select-element'] != null) {
 
-			this._selector.onchange = function() {
-				self._topic.value = '';
+			this._component['verb-select-element'].onchange = function() {
+
+				if (self._options.has_placeholder == true) {
+
+					if (self._component['verb-select-element'].selectedIndex == 0) {
+						self._input_field.placeholder = 'Someplace';
+					}
+					if (self._component['verb-select-element'].selectedIndex == 1) {
+						self._input_field.placeholder = 'Something';
+					}
+				}
+
+				//self._topic.value = '';
 				self._clearUl();
 			}
 		}

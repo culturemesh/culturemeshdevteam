@@ -333,7 +333,8 @@ ul.search {
   color: #EF5330;
   letter-spacing: 1px;
   width: auto;
-  z-index: 3; }
+  z-index: 3;
+  padding: 0px; }
 
 ul.search > li {
   padding: 5px;
@@ -1560,7 +1561,8 @@ button.upload-img-delete {
 li.team-member {
   margin: 3px;
   width: 205px;
-  display: inline-block; }
+  display: inline-block;
+  vertical-align: top; }
 
 span.team-member {
   width: 205px; }
@@ -1816,6 +1818,20 @@ input[type="text"],input[type="email"],input[type="password"],textarea,select{
 #contact_body {
   height: 150px; }
 
+.press_body {
+  font: 15px "Lato", sans-serif;
+  font-weight: 200;
+  color: #000; }
+
+.press_title {
+  font-family: "Lato", sans-serif; }
+
+.press_subtitle {
+  font: 18px "Lato", sans-serif;
+  color: #bbbbbb;
+  text-transform: none;
+  margin-left: 15px; }
+
 /**careers pg**/
 .careers_box_head {
   margin-top: 55px; }
@@ -1988,7 +2004,8 @@ div.search-button-container.sb-home {
 * HOME
 */
 #stage-title {
-  font-size: 24px; }
+  font-size: 24px;
+  padding-left: 15px; }
 
 /*
 * NETWORK

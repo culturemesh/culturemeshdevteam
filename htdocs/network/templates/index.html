@@ -9,7 +9,6 @@
 	{{$ more_scripts }}
 	<script src="{{ vars.hostname }}/js/lightbox.min.js"></script>
 	<script type='text/javascript' src='{{vars.hostname}}/js/post-wall.js'></script>
-	<script type="text/javascript" src="{{vars.hostname}}/js/searchbar.js"></script>
 
 	<script>
 		/*
@@ -80,17 +79,56 @@
 			cm.Autoloader(function() {
 
 				var searchOne = new cm.SearchField({
-					root: document.getElementById('search-1-root'),
+					root: $('#search div.search-form #search-1-root').get(0),
+					secondary_root: $('#search_collapse div.search-form #opening').get(0),
+					topic : document.getElementById('search-topic'),
+					ul_class : 'network search',
+					loading_image : "/images/searchbar-loading-bw.gif"
+					/*
+					loading_image: '/images/searchbar-loading-bw.gif'
+					root : document.getElementById('search-1-root'),
+					secondary_root : $( '' ).get(0),
+					input_field : document.getElementById('search-1'),
+					clicked : document.getElementById('clik1'),
+					id_field : document.getElementById('varId'),
 					selector : document.getElementById('verb-select'),
+					class_field : document.getElementById('varClass'),
+					ul : document.getElementById('s-var'),
 					topic : document.getElementById('search-topic'),
 					ul_class : "network search",
 					loading_image : "/images/searchbar-loading-bw.gif"
+					*/
 				});
 
 				var searchTwo = new cm.SearchField({
-					root: document.getElementById('search-2-root'),
+					root: $('#search div.search-form #search-2-root').get(0),
+					topic : document.getElementById('search-topic'),
+					ul_class : 'network search',
+					loading_image : "/images/searchbar-loading-bw.gif"
+						/*
+					root : document.getElementById('search-2-root'),
+					input_field : document.getElementById('search-2'),
+					clicked : document.getElementById('clik2'),
+					id_field : document.getElementById('locId'),
+					class_field : document.getElementById('locClass'),
+					ul : document.getElementById('s-location'),
 					ul_class : "network search",
 					loading_image : "/images/searchbar-loading-bw.gif"
+					*/
+				});
+
+				// Make sure search ul positions are updated when de-collapsed
+				$( '#search' ).on('show.bs.collapse', function() {
+
+					var som = searchOne;
+					var stm = searchTwo;
+					var delayTime = 400;
+
+					// delay calls
+					setTimeout(function() {
+						som._positionUl();
+						stm._positionUl();
+					}, delayTime );
 				});
 			});
 

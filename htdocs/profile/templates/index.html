@@ -13,7 +13,15 @@
 			cm.Autoloader(function() {
 
 				var searchOne = new cm.SearchField({
+					root: $('#search div.search-form #search-1-root').get(0),
+					secondary_root: $('#search_collapse div.search-form #opening').get(0),
+					topic : document.getElementById('search-topic'),
+					ul_class : 'network search',
+					loading_image : "/images/searchbar-loading-bw.gif"
+					/*
+					loading_image: '/images/searchbar-loading-bw.gif'
 					root : document.getElementById('search-1-root'),
+					secondary_root : $( '' ).get(0),
 					input_field : document.getElementById('search-1'),
 					clicked : document.getElementById('clik1'),
 					id_field : document.getElementById('varId'),
@@ -23,9 +31,15 @@
 					topic : document.getElementById('search-topic'),
 					ul_class : "network search",
 					loading_image : "/images/searchbar-loading-bw.gif"
+					*/
 				});
 
 				var searchTwo = new cm.SearchField({
+					root: $('#search div.search-form #search-2-root').get(0),
+					topic : document.getElementById('search-topic'),
+					ul_class : 'network search',
+					loading_image : "/images/searchbar-loading-bw.gif"
+						/*
 					root : document.getElementById('search-2-root'),
 					input_field : document.getElementById('search-2'),
 					clicked : document.getElementById('clik2'),
@@ -34,6 +48,21 @@
 					ul : document.getElementById('s-location'),
 					ul_class : "network search",
 					loading_image : "/images/searchbar-loading-bw.gif"
+					*/
+				});
+
+				// Make sure search ul positions are updated when de-collapsed
+				$( '#search' ).on('show.bs.collapse', function() {
+
+					var som = searchOne;
+					var stm = searchTwo;
+					var delayTime = 400;
+
+					// delay calls
+					setTimeout(function() {
+						som._positionUl();
+						stm._positionUl();
+					}, delayTime );
 				});
 			});
 	</script>
@@ -112,7 +141,7 @@
 		<!-- DASHBOARD TAB -->
 		<div class="tab-pane active" id="profile_dashboard_tab">
 			<div>
-				<div class="mobile-widget bg-white profile-section-header">
+				<div class="mobile-widget bg-white text-center">
 					<h5>EVENTS YOU'RE HOSTING</h5>
 				</div>
 				{{# sections.yh_events }}
@@ -123,7 +152,7 @@
 				{{/ sections.yh_events }}
 			</div>
 			<div>
-				<div class="mobile-widget bg-white profile-section-header">
+				<div class="mobile-widget bg-white text-center">
 					<h5>EVENTS IN YOUR NETWORKS</h5>
 				</div>
 				{{# sections.yn_events }}
@@ -134,7 +163,7 @@
 				{{/ sections.yn_events }}
 			</div>
 			<div>
-				<div class="mobile-widget bg-white profile-section-header">
+				<div class="mobile-widget bg-white text-center">
 					<h5>YOUR POSTS</h5>
 				</div>
 				{{# sections.yp_posts }}
@@ -157,7 +186,9 @@
 		<!-- NETWORKS TAB -->
 		<div class="tab-pane" id="profile_networks_tab">
 			<div>
-				<h5>Your Networks</h5>
+				<div class="mobile-widget bg-white text-center">
+					<h5>YOUR NETWORKS</h5>
+				</div>
 				{{# sections.yn_networks }}
 				{{{ . }}}
 				{{/ sections.yn_networks  }}
@@ -169,7 +200,9 @@
 		<!-- EVENTS TAB -->
 		<div class="tab-pane" id="profile_events_tab">
 			<div>
-				<h5>EVENTS YOU'RE HOSTING</h5>
+				<div class="mobile-widget bg-white text-center">
+					<h5>EVENTS YOU'RE HOSTING</h5>
+				</div>
 					{{# sections.yh_events }}
 					{{{ . }}}
 					{{/ sections.yh_events }}
@@ -178,7 +211,9 @@
 					{{/ sections.yh_events }}
 			</div>
 			<div>
-				<h5>EVENTS YOU'RE ATTENDING</h5>
+				<div class="mobile-widget bg-white text-center">
+					<h5>EVENTS YOU'RE ATTENDING</h5>
+				</div>
 					{{# sections.ya_events }}
 					{{{ . }}}
 					{{/ sections.ya_events }}
@@ -316,7 +351,6 @@
 	{{/ content }}
 
 	{{$ body_scripts }}
-	<script src="{{vars.hostname}}/js/searchbar.js"></script>
 	<script src="{{vars.hostname}}/js/file-input.js"></script>
 
 	{{^ user.confirmed }}

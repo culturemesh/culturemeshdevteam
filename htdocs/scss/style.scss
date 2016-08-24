@@ -439,6 +439,7 @@ ul.search
     letter-spacing:1px;
 	width:auto;
 	z-index:3;
+	padding:0px;
 }
 
 ul.search > li
@@ -2046,6 +2047,7 @@ li.team-member {
    margin:3px;
    width:205px;
    display:inline-block;
+   vertical-align:top;
 }
 
 span.team-member {
@@ -2331,6 +2333,23 @@ div.mid-grid {
 
 #contact_body {
 	height:150px;
+}
+
+.press_body {
+	font: 15px "Lato", sans-serif;
+	font-weight: 200;
+	color: #000;
+}
+
+.press_title {
+	font-family: "Lato", sans-serif;
+}
+
+.press_subtitle {
+	font: 18px "Lato", sans-serif;
+	color: $cm_d2_gray;
+	text-transform: none;
+	margin-left:15px;
 }
 
 /**careers pg**/

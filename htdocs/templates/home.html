@@ -38,6 +38,7 @@
 
 				var searchOne = new cm.SearchField({
 					root: $('#searchbar-home div.search-form #search-1-root').get(0),
+					secondary_root: $('#searchbar-home div.search-form #opening').get(0),
 					/*
 					input_field : $('#searchbar-home.search-form #search-1-root > input.search-input'),
 					clicked : document.getElementById('clik1'),
@@ -47,7 +48,8 @@
 					ul : document.getElementById('s-var'),
 					*/
 					topic : document.getElementById('search-topic'),
-					ul_class : 'search'
+					ul_class : 'search',
+					has_placeholder : true
 
 				});
 
@@ -60,6 +62,7 @@
 					class_field : document.getElementById('locClass'),
 					ul : document.getElementById('s-location'),
 					*/
+					ul_class: 'search'
 				});
 			});
 		</script>

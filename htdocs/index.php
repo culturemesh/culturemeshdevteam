@@ -54,7 +54,9 @@
 
 	$searchbar_template = file_get_contents('templates' . $cm->ds . 'searchbar.html');
 
-	$sb_home = $m_comp->render($searchbar_template, array('sb-home' => True, 'vars'=>$cm->getVars()));
+	$sb_home = $m_comp->render($searchbar_template, array('sb-home' => True, 
+		'vars'=>$cm->getVars()
+		));
 	$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True, 'vars'=>$cm->getVars()));
 
 	$top_network_html = NULL;

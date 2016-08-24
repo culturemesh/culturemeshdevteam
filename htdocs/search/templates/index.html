@@ -39,6 +39,20 @@
 					ul_class : "network search",
 					loading_image : "/images/searchbar-loading-bw.gif"
 				});
+
+				// Make sure search ul positions are updated when de-collapsed
+				$( '#standard-search' ).on('show.bs.collapse', function() {
+
+					var som = searchOne;
+					var stm = searchTwo;
+					var delayTime = 400;
+
+					// delay calls
+					setTimeout(function() {
+						som._positionUl();
+						stm._positionUl();
+					}, delayTime );
+				});
 			});
 	</script>
 	{{/ autoload_scripts }}
@@ -132,7 +146,6 @@
 	{{/ content }}
 
 	{{$ body_scripts }}
-	<script src="{{vars.hostname}}/js/searchbar.js"></script>
 	{{/ body_scripts }}
 
 {{/ layout }}
