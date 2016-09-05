@@ -2,6 +2,7 @@
 //ini_set('display_errors', true);
 include('../Environment.php');
 $cm = new Environment();
+$cm->displayErrors();
 
 $img_dir = Environment::$site_root.'/devlab/images';
 $img_dir_host = $cm->host_root.'/devlab/images';
@@ -9,7 +10,7 @@ $img_dir_host = $cm->host_root.'/devlab/images';
 $iu = new \misc\ImageUpload($cm, array(
 		'dir' => $cm->img_repo_dir,
 		'postname' => 'fileupload',
-		'validation_type' => array('image/png', 'image/gif', 'image/jpeg'),
+		'validation_type' => array('image/png', 'image/gif', 'image/jpeg', 'image/bmp'),
 		'validation_size' => '2M',
 		'thumbnail' => array(
 			'thumbnail' => true,

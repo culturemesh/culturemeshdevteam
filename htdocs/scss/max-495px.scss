@@ -83,3 +83,19 @@ h2.pheader {
 h3.pheader {
 	font-size:18px;
 }
+
+div.media-image {
+	width:100%;
+	float:none;
+	max-height:none;
+}
+
+div.media-image > a > img {
+	width:100%;
+	max-height:none;
+}
+
+div.media-body {
+	width:100%;
+	float:none;
+}

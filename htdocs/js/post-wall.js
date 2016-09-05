@@ -963,6 +963,7 @@ cm.FileUploader.prototype = {
 		var iConvert = (file.size / 1048576).toFixed(2);
 		var iSizeLimit = (this._options.sizeLimit / 1048576).toFixed(2);
 
+		alert(iFileSize);
 
 		// check file size
 		if (iFileSize > this._options.sizeLimit) {
@@ -1058,7 +1059,10 @@ cm.FileUploader.prototype = {
 			return false;
 		}
 
-		// check files to see if they pass muster
+		// check file to see if they pass muster
+		//
+		//  -- Don't be fooled. Only one file is checked
+		//
 		for (var i=0; i<input.files.length; i++) {
 			if (!this._checkFile(input.files[i]))
 				return false;
@@ -1099,6 +1103,7 @@ cm.FileUploader.prototype = {
 			button.removeChild(inputs[lastI]);
 	},
 	_reinstateInput: function() {
+		this._button._clearFiles();
 		this._button._createFileInput(this.inputList_i);
 	}
 }
@@ -1188,6 +1193,12 @@ cm.InputButton.prototype = {
 		}
 
 		return input;
+	},
+	/*
+	 * Empties upload button of all files
+	 */
+	_clearFiles : function() {
+		$( this._element ).empty();
 	}
 }
 
@@ -1285,9 +1296,7 @@ cm.PreviewPanel.prototype = {
 	},
 	_clearImages: function() {
 		// probably add a fade
-		$( this._ul ).children().fadeOut('slow', function() {
-			$( this._ul ).empty();
-		});
+		$( this._ul ).children().fadeOut('slow').remove();	
 	}
 }
 
@@ -1368,10 +1377,13 @@ cm.PostSubmit.prototype = {
 		    sendNow: true
 		}, function(data) { 
 			fup._reinstateInput();
+			self._clearPost();
+
 			data = JSON.parse(data);
 			self._onSuccess(data);
 		}, function(data) {
 			fup._reinstateInput();
+			self._clearPost();
 			var ff = self._onFailure.bind(data);
 			ff();
 		});

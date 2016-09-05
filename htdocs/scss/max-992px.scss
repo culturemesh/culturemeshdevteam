@@ -22,15 +22,18 @@ ul {
 	border: 1px solid $cm_d_gray;
 }
 
-.mobile-section-header {
+/*
+.section-header {
 	width:92%;
 	margin:5px auto;
-	border: 1px solid $cm_white;
-	background-color:$cm_orange;
-	color: $cm_white;
+	border-top: 1px solid $cm_d2_gray;
+	border-bottom: 1px solid $cm_d2_gray;
+	color: $cm_dark;
 	font-size:16px;
+	text-align:center;
 	padding:4px;
 }
+*/
 
 
 div.mobile-center {
@@ -481,6 +484,16 @@ p.about-text {
 
 ul.three-section-pics{
 	text-align:center;
+}
+
+
+div.media-body {
+	width:64%;
+	float:left;
+}
+
+div.media-image > a > img {
+	max-height:170px;
 }
 
 /******

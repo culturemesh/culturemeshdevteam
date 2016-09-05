@@ -136,13 +136,13 @@ class Search {
 
 		// searchbar
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
-		$sb_standard = $m_comp->render($searchbar_template, array('vars' => $cm->getVars(),
+		$sb_standard = $m_comp->render($searchbar_template, array('network' => True, 'vars' => $cm->getVars(),
 									'search_value' => array(
 											'origin' => $search_array['search_one'],
 											'location' => $search_array['search_two']
 										)));
 
-		$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True,
+		$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'network', => True, 'alt-color' => True,
 									'vars' => $cm->getVars(),
 									'search_value' => array(
 											'origin' => $search_array['search_one'],

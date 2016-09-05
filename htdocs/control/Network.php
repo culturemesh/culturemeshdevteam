@@ -51,16 +51,21 @@ class Network {
 		$network->getPostCount($dal, $do2db);
 		$network->getMemberCount($dal, $do2db);
 
-		$tweet_manager = new \api\TweetManager($cm, $network, $dal, $do2db);
-		$tweets = $tweet_manager->requestTweets();
-		$query_info = $tweet_manager->getQueryInfo();
+		$page_tweet_count = 0;
 
-		//add tweets to posts
-		$network->mergePostsAndTweets( $tweets );
+		if (!$mobile_detect->isMobile()) {
+			$tweet_manager = new \api\TweetManager($cm, $network, $dal, $do2db);
+			$tweets = $tweet_manager->requestTweets();
+			$query_info = $tweet_manager->getQueryInfo();
+
+			//add tweets to posts
+			$network->mergePostsAndTweets( $tweets );
+
+			$page_tweet_count = count($tweets);
+		}
 
 		// add tweets to post count
 		$page_post_count = $network->native_post_count;
-		$page_tweet_count = count($tweets);
 		$network->post_count += $page_tweet_count;
 
 		// put tweets and posts all together
@@ -288,24 +293,31 @@ class Network {
 			}
 		}
 
-		// map embed
-		$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
-		$map_location = $network->location->toString();
+		// GET MAP (desktop only)
 
-		// fixes an issue that made the state GA display and not the country
-		if ($map_location == 'Georgia')
-			$map_location = 'Country Georgia';
+		$map_embed = NULL;
 
-		$map_embed = $m_comp->render($map_embed_template, array(
-			'key' => $cm->g_api_key,
-			'location' => $map_location));
+		if (!$mobile_detect->isMobile()) {
+
+			$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
+			$map_location = $network->location->toString();
+
+			// fixes an issue that made the state GA display and not the country
+			if ($map_location == 'Georgia')
+				$map_location = 'Country Georgia';
+
+			$map_embed = $m_comp->render($map_embed_template, array(
+				'key' => $cm->g_api_key,
+				'location' => $map_location));
+		}
 
 		// searchbar
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
-		$sb_standard = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()
+		$sb_standard = $m_comp->render($searchbar_template, array('network' => True,
+									'vars' => $cm->getVars()
 								));
 
-		$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True,
+		$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True, 'network' => True,
 									'vars' => $cm->getVars()
 								));
 
@@ -331,7 +343,7 @@ class Network {
 			),
 			'sections' => array(
 		//		'sharebuttons' => $sharebuttons,
-		//		'map_embed' => $map_embed,
+				'map_embed' => $map_embed,
 				'lrg_network' => 'Large Network',
 				'network_title' => $network->getTitle(),
 				'post_wall' => $p_html,

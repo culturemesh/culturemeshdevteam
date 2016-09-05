@@ -6,6 +6,8 @@
 *.swm
 *.swn
 *.swj
+*.swl
+*.sw*
 *.log
 localdbconn.php
 htdocs/db_test*

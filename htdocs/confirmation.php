@@ -26,10 +26,19 @@
 
 	$cm->closeConnection();
 
+	// mustache components
+	$m_comp = new \misc\MustacheComponent();
+
+	$searchbar_template = file_get_contents('templates' . $cm->ds . 'searchbar.html');
+	$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True, 'network' => True, 'vars'=>$cm->getVars()));
+
 	$page_loader = new \misc\PageLoader($cm, $mobile_detect);
 	echo $page_loader->generate('templates' . $cm->ds .'confirmation.html', array(
 		'vars' => $cm->getVars(),
 		'logged_in' => $logged_in,
+		'searchbars' => array(
+			'alt-font' => $sb_alt_font
+		),
 		'success' => $act_success,
 		'get' => $_GET
 	));

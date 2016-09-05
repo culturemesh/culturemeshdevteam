@@ -3,6 +3,7 @@ include_once "data/dal_post.php";
 include_once "data/dal_network_registration.php";
 include_once "environment.php";
 $cm = new Environment();
+$cm->displayErrors();
 
 session_name($cm->session_name);
 session_start();
@@ -57,7 +58,6 @@ if ($valid)
 	else {
 
 
-	//	Post::createPost($post);
 		// create post
 		$post->insert($dal, $do2db);
 		$post->id = (int) $dal->lastInsertId(); 
@@ -88,7 +88,7 @@ if ($valid)
 				'validation_size' => '2M',
 				'thumbnail' => array(
 					'thumbnail' => true,
-					'class' => 'post')
+					'class' => 'post') 
 				)
 			);
 

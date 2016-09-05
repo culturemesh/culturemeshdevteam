@@ -39,7 +39,7 @@
 	$m_comp = new \misc\MustacheComponent();
 
 	$searchbar_template = file_get_contents('templates' . $cm->ds . 'searchbar.html');
-	$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True, 'vars'=>$cm->getVars()));
+	$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True, 'network' => True, 'vars'=>$cm->getVars()));
 
 	$page_loader = new \misc\PageLoader($cm, $mobile_detect);
 	echo $page_loader->generate('templates' . $cm->ds .'careers.html', array(

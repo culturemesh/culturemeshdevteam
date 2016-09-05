@@ -6,7 +6,7 @@
 	{{/ stylesheets }}
 
 	{{$ more_scripts }}
-	<script type='text/javascript' src='{{vars.home_path}}/devlab/js/fileupload.js'></script>
+	<script type='text/javascript' src='{{vars.home_path}}/js/post-wall.js'></script>
 	{{/ more_scripts }}
 
 	{{$ autoload_scripts }}
@@ -15,6 +15,7 @@
 					var psub = new cm.PostSubmit({
 						form: document.getElementById('post-form'), 
 						action: 'files.php',
+						ajax: true,
 						onSuccess: function(data) {
 								var result = JSON.parse(data);
 					       			img = document.getElementById('result_img');
@@ -54,7 +55,8 @@
 				<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
 				<button type="button" class="help-tooltip"  data-toggle="popover" data-placement="left">?</button>
 				<div class="fileupload-error"></div>
-				<div id='post-form-panel' class="fileupload-panel"></div>
+				<div id='post-form-panel' class="fileupload-panel">
+				</div>
 				<div class="clear"></div>
 				<div class="fileupload-button picture"></div>
 				<input type="submit" class="network post fileupload-submit" value="Send"></input>
