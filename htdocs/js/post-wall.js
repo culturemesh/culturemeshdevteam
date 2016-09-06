@@ -963,8 +963,6 @@ cm.FileUploader.prototype = {
 		var iConvert = (file.size / 1048576).toFixed(2);
 		var iSizeLimit = (this._options.sizeLimit / 1048576).toFixed(2);
 
-		alert(iFileSize);
-
 		// check file size
 		if (iFileSize > this._options.sizeLimit) {
 			this._displayError('File must be smaller than ' + iSizeLimit + ' MB');
