@@ -3,7 +3,6 @@ include_once "data/dal_post.php";
 include_once "data/dal_network_registration.php";
 include_once "environment.php";
 $cm = new Environment();
-$cm->displayErrors();
 
 session_name($cm->session_name);
 session_start();
@@ -22,8 +21,6 @@ if (!isset($_SESSION['uid'])) {
 	echo json_encode($json_response);
 	exit();
 }
-
-$cm = new Environment();
 
 $dal = new \dal\DAL($cm->getConnection());
 $dal->loadFiles();
