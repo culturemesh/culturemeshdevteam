@@ -52,6 +52,9 @@ cm.SearchField = function(user_options) {
 	this._submit_button = this._options.submit_button;
 	this._display_table = this._options.display_table;
 
+	// input tracker
+	this._input_tracker = null;
+
 	this.MIN_LENGTH = this._options.MIN_LENGTH;
 	this.KEY_DELAY = this._options.KEY_DELAY;
 
@@ -280,6 +283,16 @@ cm.SearchField.prototype = {
 		  return keyCode;
 		}
 	},
+	/*
+	 * Augments the input value with value from keyboard
+	 *
+	 * 16 - SHIFT (ignore)
+	 * 8 - BACKSPACE
+	 * 229 -
+	 * - Could be a diacritic
+	 * - Could be Chrome on Android, which returns 229 because
+	 *   it's keyCodes always turn 229
+	 */
 	_updateValue : function(keyCode) {
 
 		// if it's a smelly shift, 
@@ -295,7 +308,10 @@ cm.SearchField.prototype = {
 		// otherwise add to value
 		keyCode = String.fromCharCode(keyCode).toLowerCase();
 
-		return this._input_field.value + keyCode;
+		if (keyCode === 229)
+			return this._input_field.value;
+		else
+			return this._input_field.value + keyCode;
 	},
 	_positionUl : function() {
 

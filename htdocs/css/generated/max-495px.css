@@ -1165,6 +1165,9 @@ div.reply-button.delete {
   margin-left: 3px;
   float: right; }
 
+div.post-loading-bar-container {
+  display: none; }
+
 div.post-button-container {
   float: right; }
 
@@ -3111,6 +3114,9 @@ div.reply-button.delete {
   margin-top: -2px;
   margin-left: 3px;
   float: right; }
+
+div.post-loading-bar-container {
+  display: none; }
 
 div.post-button-container {
   float: right; }

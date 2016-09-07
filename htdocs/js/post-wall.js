@@ -1327,6 +1327,9 @@ cm.PostSubmit = function(o, FileUpload) {
 	// stuff
 	this._action = this._options.action;
 
+	// element map
+	this._map = new cm.ElementMap(this._form);
+
 	// functions
 	this._submitInsert = this._options.submitInsert;
 	this._onSuccess = this._options.onSuccess;
@@ -1363,6 +1366,8 @@ cm.PostSubmit.prototype = {
 		var fup = this._FileUpload;
 		var resetInput = fup._removeBlankInput();
 
+		$( this._map['post-loading-bar-container'] ).show();
+
 		// get form data
 		var formData = new FormData(this._form);
 
@@ -1375,6 +1380,7 @@ cm.PostSubmit.prototype = {
 		    sendNow: true
 		}, function(data) { 
 			fup._reinstateInput();
+			$( self._map['post-loading-bar-container'] ).hide();
 			self._clearPost();
 
 			data = JSON.parse(data);
