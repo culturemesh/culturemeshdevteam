@@ -305,13 +305,12 @@ cm.SearchField.prototype = {
 		if (keyCode === 8)
 			return this._input_field.value.substring(0, this._input_field.value.length-1);
 
-		// otherwise add to value
-		keyCode = String.fromCharCode(keyCode).toLowerCase();
-
 		if (keyCode === 229)
 			return this._input_field.value;
-		else
-			return this._input_field.value + keyCode;
+
+		// otherwise add to value
+		keyCode = String.fromCharCode(keyCode).toLowerCase();
+		return this._input_field.value + keyCode;
 	},
 	_positionUl : function() {
 
