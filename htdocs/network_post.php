@@ -82,7 +82,7 @@ if ($valid)
 				'dir' => $cm->img_repo_dir,
 				'postname' => 'fileupload',
 				'validation_type' => array('image/png', 'image/gif', 'image/jpeg'),
-				'validation_size' => '2M',
+				'validation_size' => '10M',
 				'thumbnail' => array(
 					'thumbnail' => true,
 					'class' => 'post') 
