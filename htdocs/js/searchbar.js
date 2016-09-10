@@ -2,6 +2,8 @@
 cm.SearchField = function(user_options) {
 
 	this._options = {
+		root: null,
+		secondary_root: null,
 		input_field : null,
 		clicked : null,
 		id_field : null,
@@ -12,6 +14,7 @@ cm.SearchField = function(user_options) {
 		/////// OPTIONAL /////////////
 		div_id : null,
 		selector : null,
+		has_placeholder : null,
 		topic : null,
 		display_table : null,
 		submit_button : null,
@@ -24,11 +27,19 @@ cm.SearchField = function(user_options) {
 
 	cm.extend(this._options, user_options);
 
-	this._input_field = this._options.input_field;
-	this._clicked = this._options.clicked;
-	this._ul = this._options.ul;
-	this._id_field = this._options.id_field;
-	this._class_field = this._options.class_field;
+	this._root = this._options.root;
+	this._component = new cm.ElementMap(this._root);
+
+	if (this._options['secondary_root'] != null) {
+		this._secondary_root = this._options.secondary_root;
+		this._component._extendMap(new cm.ElementMap(this._secondary_root));
+	}
+
+	this._input_field = this._component['search-input'];
+	this._clicked = this._component['search-clik'];
+	this._ul = this._component['search-ul'];
+	this._id_field = this._component['search-id'];
+	this._class_field = this._component['search-class'];
 
 	// MORE OPTIONAL VALUES
 	this._selector = this._options.selector;
@@ -40,6 +51,9 @@ cm.SearchField = function(user_options) {
 	// submit button
 	this._submit_button = this._options.submit_button;
 	this._display_table = this._options.display_table;
+
+	// input tracker
+	this._input_tracker = null;
 
 	this.MIN_LENGTH = this._options.MIN_LENGTH;
 	this.KEY_DELAY = this._options.KEY_DELAY;
@@ -113,13 +127,13 @@ cm.SearchField.prototype = {
 			var search_class;
 
 			// figure out selector (IF SELECTOR IS EVEN PRESENT)
-			if (self._selector != null) {
+			if (self._component['verb-select-element'] != null) {
 
 				// Location or language, pretty simple
-				if (self._selector.selectedIndex == 0) {
+				if (self._component['verb-select-element'].selectedIndex == 0) {
 				  search_class = 'location';
 				}
-				else if (self._selector.selectedIndex == 1) {
+				else if (self._component['verb-select-element'].selectedIndex == 1) {
 				  search_class = 'language';
 				}
 			}
@@ -147,10 +161,21 @@ cm.SearchField.prototype = {
 		}
 
 
-		if (this._selector != null) {
+		if (this._component['verb-select-element'] != null) {
 
-			this._selector.onchange = function() {
-				self._topic.value = '';
+			this._component['verb-select-element'].onchange = function() {
+
+				if (self._options.has_placeholder == true) {
+
+					if (self._component['verb-select-element'].selectedIndex == 0) {
+						self._input_field.placeholder = 'Someplace';
+					}
+					if (self._component['verb-select-element'].selectedIndex == 1) {
+						self._input_field.placeholder = 'Something';
+					}
+				}
+
+				//self._topic.value = '';
 				self._clearUl();
 			}
 		}
@@ -212,7 +237,7 @@ cm.SearchField.prototype = {
 
 		return setTimeout(
 			function() {
-				var search = new Ajax({
+				var search = new cm.Ajax({
 					requestType: 'POST',
 					requestUrl: cm.home_path + '/api/search/search_names.php',
 					data: values,
@@ -258,6 +283,16 @@ cm.SearchField.prototype = {
 		  return keyCode;
 		}
 	},
+	/*
+	 * Augments the input value with value from keyboard
+	 *
+	 * 16 - SHIFT (ignore)
+	 * 8 - BACKSPACE
+	 * 229 -
+	 * - Could be a diacritic
+	 * - Could be Chrome on Android, which returns 229 because
+	 *   it's keyCodes always turn 229
+	 */
 	_updateValue : function(keyCode) {
 
 		// if it's a smelly shift, 
@@ -270,9 +305,11 @@ cm.SearchField.prototype = {
 		if (keyCode === 8)
 			return this._input_field.value.substring(0, this._input_field.value.length-1);
 
+		if (keyCode === 229)
+			return this._input_field.value;
+
 		// otherwise add to value
 		keyCode = String.fromCharCode(keyCode).toLowerCase();
-
 		return this._input_field.value + keyCode;
 	},
 	_positionUl : function() {
@@ -480,3 +517,36 @@ cm.Autofill = function(user_options) {
 cm.Autofill.prototype = {
 
 };
+
+cm.SearchBar = function(user_options) {
+
+	this._options = {
+		root: null,
+		input_field : null,
+		clicked : null,
+		id_field : null,
+		class_field : null,
+		ul : null,
+		MIN_LENGTH : 2,
+		KEY_DELAY : 800,
+		/////// OPTIONAL /////////////
+		div_id : null,
+		selector : null,
+		topic : null,
+		display_table : null,
+		submit_button : null,
+		loading_image : "/images/searchbar-loading.gif",
+		ul_class : "search",
+		template : null,
+		render_target : null,
+		search_table : null
+	}
+
+}
+
+cm.SearchBar.prototype = {
+
+	_init: function() {
+
+	}
+}

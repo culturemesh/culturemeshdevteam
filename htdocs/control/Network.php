@@ -17,6 +17,8 @@ class Network {
 
 		$nid = $params['id'];
 
+		$mobile_detect = new \misc\MobileDetect();
+
 		// set session var
 		$_SESSION['cur_network'] = $nid;
 
@@ -49,16 +51,21 @@ class Network {
 		$network->getPostCount($dal, $do2db);
 		$network->getMemberCount($dal, $do2db);
 
-		$tweet_manager = new \api\TweetManager($cm, $network, $dal, $do2db);
-		$tweets = $tweet_manager->requestTweets();
-		$query_info = $tweet_manager->getQueryInfo();
+		$page_tweet_count = 0;
 
-		//add tweets to posts
-		$network->mergePostsAndTweets( $tweets );
+		if (!$mobile_detect->isMobile()) {
+			$tweet_manager = new \api\TweetManager($cm, $network, $dal, $do2db);
+			$tweets = $tweet_manager->requestTweets();
+			$query_info = $tweet_manager->getQueryInfo();
+
+			//add tweets to posts
+			$network->mergePostsAndTweets( $tweets );
+
+			$page_tweet_count = count($tweets);
+		}
 
 		// add tweets to post count
 		$page_post_count = $network->native_post_count;
-		$page_tweet_count = count($tweets);
 		$network->post_count += $page_tweet_count;
 
 		// put tweets and posts all together
@@ -159,6 +166,7 @@ class Network {
 		// close connection
 		$cm->closeConnection();
 
+		/*
 		// base layout
 		$base = $cm->getBaseTemplate();
 
@@ -169,6 +177,9 @@ class Network {
 				'layout' => $base
 			),
 		));
+		 */
+
+		$page_loader = new \misc\PageLoader($cm, $mobile_detect);
 
 		/////// make components //////////
 		$m_comp = new \misc\MustacheComponent();
@@ -201,8 +212,8 @@ class Network {
 
 			try
 			{
-				$tmp = file_get_contents($cm->template_dir . $cm->ds . 'network-event-cardtable.html');
-				$ec_html = $network->events_sect->getHTML('card', array(
+				$tmp = file_get_contents($cm->template_dir . $cm->ds . 'network-event-divul.html');
+				$ec_html = $network->events_sect->getHTML('div', array(
 					'cm' => $cm,
 					'network' => $network,
 					'mustache' => $m_comp,
@@ -216,6 +227,7 @@ class Network {
 			}
 		}
 
+		/*
 		try
 		{
 			$em_html = $network->events->getHTML('modal', array(
@@ -230,6 +242,7 @@ class Network {
 		{
 			$em_html = NULL;
 		}
+		 */
 
 		// check if we need more posts
 		$more_post_content = True;
@@ -280,26 +293,37 @@ class Network {
 			}
 		}
 
-		// map embed
-		$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
-		$map_location = $network->location->toString();
+		// GET MAP (desktop only)
 
-		// fixes an issue that made the state GA display and not the country
-		if ($map_location == 'Georgia')
-			$map_location = 'Country Georgia';
+		$map_embed = NULL;
 
-		if ($map_location == "New York, United States") {
-			$map_location = 'State of New York';
+		if (!$mobile_detect->isMobile()) {
+
+			$map_embed_template = file_get_contents($cm->template_dir . $cm->ds . 'gmap-embed.html');
+			$map_location = $network->location->toString();
+
+			// fixes an issue that made the state GA display and not the country
+			if ($map_location == 'Georgia')
+				$map_location = 'Country Georgia';
+
+			if ($map_location == "New York, United States") {
+				$map_location = 'State of New York';
+			}
+
+			$map_embed = $m_comp->render($map_embed_template, array(
+				'key' => $cm->g_api_key,
+				'location' => $map_location));
 		}
-
-
-		$map_embed = $m_comp->render($map_embed_template, array(
-			'key' => $cm->g_api_key,
-			'location' => $map_location));
 
 		// searchbar
 		$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
-		$searchbar = $m_comp->render($searchbar_template, array('vars' => $cm->getVars()));
+		$sb_standard = $m_comp->render($searchbar_template, array('network' => True,
+									'vars' => $cm->getVars()
+								));
+
+		$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True, 'network' => True,
+									'vars' => $cm->getVars()
+								));
 
 		// social network buttons
 		$sharebutton_template = file_get_contents($cm->template_dir . $cm->ds . 'sharebutton.html');
@@ -307,18 +331,34 @@ class Network {
 			'vars' => $cm->getVars(),
 			'network' => $network));
 
+		// load component templates
+		//
+		$event_overlay_template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-overlay.html');
+		$post_template = file_get_contents($cm->template_dir . $cm->ds . 'network-post.html');
+		$tweet_template = file_get_contents($cm->template_dir . $cm->ds . 'network-tweet.html');
+		$reply_template = file_get_contents($cm->template_dir . $cm->ds . 'network-reply.html');
+
 		// get actual site
 		$template = file_get_contents(\Environment::$site_root . $cm->ds . 'network' . $cm->ds . 'templates'.$cm->ds.'index.html');
 		$page_vars = array(
+			'searchbars' => array(
+				'standard' => $sb_standard,
+				'alt-font' => $sb_alt_font
+			),
 			'sections' => array(
-				'sharebuttons' => $sharebuttons,
+		//		'sharebuttons' => $sharebuttons,
 				'map_embed' => $map_embed,
-				'searchbar' => $searchbar,
 				'lrg_network' => 'Large Network',
 				'network_title' => $network->getTitle(),
 				'post_wall' => $p_html,
 				'event_slider' => $ec_html,
 				'event_modals' => $em_html),
+			'templates' => array(
+				'event_overlay' => $event_overlay_template,
+				'post' => $post_template,
+				'tweet' => $tweet_template,
+				'reply' => $reply_template
+			),
 			'vars' => $cm->getVars(),
 			'test' => "<b>Something</b>",
 			'page_vars' => array (
@@ -343,8 +383,13 @@ class Network {
 			'site_user' => $site_user
 		);
 
+		echo $page_loader->generate('network' . $cm->ds . 'templates'. $cm->ds .'index.html',
+			$page_vars);
+
+		/*
 		// display the page proudly, chieftain
 		echo $m->render($template, $page_vars);
+		 */
 	}
 }
 ?>

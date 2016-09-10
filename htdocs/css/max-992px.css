@@ -1,0 +1,51 @@
+body {
+  background:#F1EFF0;
+}
+
+#header {
+  background:#FFFFFF;
+}
+
+.footer{ 
+  background: #fff;
+}
+
+#stage-area {
+
+}
+
+#stage-title {
+	font-size:24px;
+}
+
+#search-form.stage {
+	background:none;
+	padding-left:0;
+}
+
+div.searchbar-home input[type="text"] {
+	height:43px;
+	font-size: 16px;
+}
+
+div.searchbar-home input[type="submit"] {
+	font-size: 16px;
+	margin:0;
+}
+
+div.net-header {
+	background:#ef5330;
+	color:white;
+}
+
+h1.h-network {
+	color:white;
+}
+
+p.lrg-network-stats {
+	background:none;
+}
+
+button.network {
+	border: 1px solid white;
+}

@@ -1,0 +1,25 @@
+<li class="network-event bg-white mobile-widget">
+	<div class="row">
+		<div class='event-image col-xs-3 col-sm-3'>
+			<img src='{{ event.img_link }}{{^ event.img_link }}{{ vars.blank_profile_path_lrg }}{{/ event.img_link }}' alt='No image' width='65' height='65'></img>
+		</div>
+		<div class="event-title">
+			<span>{{ event.title }}</span>
+		</div>
+		<!--
+		<div class='event-info'>
+			<p id='event-info'>With <a href="{{ vars.hostname }}/profile/{{ event.id_host }}">{{ host }}</a></p>
+		</div>
+		-->
+		<div class="event-date">
+			<p id='event-date'>{{ date }}</p>
+		</div>
+		<!-- MORE INFO BUTTON, should just make clickable
+		<div class="event-more-info">
+			<a data-toggle="modal" href="#event-modal-{{ event.id }}">More Info</a>
+		</div>
+		-->
+	</div>
+	<div class='clear'></div>
+	<input type="hidden" name="event-id" class="event_hidden_id" value="{{ event.id }}"/>
+</li>

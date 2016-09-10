@@ -10,13 +10,17 @@
 	include("environment.php");
 	$cm = new Environment();
 
+	$mobile_detect = new \misc\MobileDetect();
+
 	session_name($cm->session_name);
 	session_start();
 
 	$cm->enableDatabase($dal, $do2db);
 
-	$logged_in = false;
+	// USER STUFF
 	$site_user = NULL;
+	$logged_in = false;
+	$member = false;
 
 	if (isset($_SESSION['uid'])) {
 
@@ -29,10 +33,19 @@
 
 	$cm->closeConnection();
 
-	$page_loader = new \misc\PageLoader($cm);
+	// mustache components
+	$m_comp = new \misc\MustacheComponent();
+
+	$searchbar_template = file_get_contents('templates' . $cm->ds . 'searchbar.html');
+	$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True, 'network' => True, 'vars'=>$cm->getVars()));
+
+	$page_loader = new \misc\PageLoader($cm, $mobile_detect);
 	echo $page_loader->generate('templates' . $cm->ds .'careers.html', array(
 		'vars' => $cm->getVars(),
+		'site_user' => $site_user,
 		'logged_in' => $logged_in,
-		'site_user' => $site_user
+		'searchbars' => array(
+			'alt-font' => $sb_alt_font
+		)
 	));
 ?>

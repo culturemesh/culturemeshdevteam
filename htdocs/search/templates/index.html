@@ -29,25 +29,29 @@
 			cm.Autoloader(function() {
 
 				var searchOne = new cm.SearchField({
-					input_field : document.getElementById('search-1'),
-					clicked : document.getElementById('clik1'),
-					id_field : document.getElementById('varId'),
-					selector : document.getElementById('verb-select'),
-					class_field : document.getElementById('varClass'),
-					ul : document.getElementById('s-var'),
-					topic : document.getElementById('search-topic'),
+					root: $('#standard-search div.search-form #search-1-root').get(0),
 					ul_class : "network search",
 					loading_image : "/images/searchbar-loading-bw.gif"
 				});
 
 				var searchTwo = new cm.SearchField({
-					input_field : document.getElementById('search-2'),
-					clicked : document.getElementById('clik2'),
-					id_field : document.getElementById('locId'),
-					class_field : document.getElementById('locClass'),
-					ul : document.getElementById('s-location'),
+					root: $('#standard-search div.search-form #search-2-root').get(0),
 					ul_class : "network search",
 					loading_image : "/images/searchbar-loading-bw.gif"
+				});
+
+				// Make sure search ul positions are updated when de-collapsed
+				$( '#standard-search' ).on('show.bs.collapse', function() {
+
+					var som = searchOne;
+					var stm = searchTwo;
+					var delayTime = 400;
+
+					// delay calls
+					setTimeout(function() {
+						som._positionUl();
+						stm._positionUl();
+					}, delayTime );
 				});
 			});
 	</script>
@@ -65,48 +69,59 @@
 	</script>
 
 	<div id="content">
-		<div class="net-left">
+		<div class="net-left hidden-sm hidden-xs">
 			<div class="leftbar">
 				
 				{{{ sections.map_embed }}}
 			</div>
 		</div>
-		<div class="net-right">
-			{{{ sections.searchbar }}}
-			<div id='searchable-results' class='panel row span12'>
-					<div class='row'>
-					{{# sections.origin_results }}
-					<div class='span4 {{# hidden }}cmhide{{/ hidden }}'>
-					<b> Origin </b>
-						<p class="search-user-input">Showing results for '{{ search.search_one }}'</p>
-						<div id='origin-results'>
-						{{# origins }}
-						{{{ . }}}
-						{{/ origins }}
+		<div class="net-right col-sm-12 col-xs-12">
+
+			<div id="standard-search" class="hidden-xs hidden-sm">
+			{{{ searchbars.standard }}}
+			</div>
+
+			<div class="cm-y-10"></div>
+			<div id='searchable-results' class='panel {{^ need_clarification}}hidden{{/ need_clarification }}'>
+					<div class=''>
+						{{# sections.origin_results }}
+						<div class='col-md-6 col-lg-6 {{# hidden }}cmhide{{/ hidden }}'>
+						<a class="result-toggle-btn btn btn-primary" role="button" data-toggle="collapse" href="#origin-results" aria-expanded="true" aria-controls="origin-results">
+						<b> Origin </b>
+						</a>
+							<p class="search-user-input">Showing results for '{{ search.search_one }}'</p>
+							<div id='origin-results'>
+							{{# origins }}
+							{{{ . }}}
+							{{/ origins }}
+							</div>
 						</div>
-					</div>
-					{{/ sections.origin_results }}
-					{{# sections.location_results }}
-					<div class='span4 {{# hidden }}cmhide{{/ hidden }}'>
-					<b> Location </b>
-						<p class="search-user-input">Showing results for '{{ search.search_two }}'</p>
-						<div id='location-results'>
-						{{# locations }}
-						{{{ . }}}
-						{{/ locations }}
+						{{/ sections.origin_results }}
+						{{# sections.location_results }}
+						<div class='col-md-6 col-lg-6 {{# hidden }}cmhide{{/ hidden }}'>
+						<a class="result-toggle-btn btn btn-primary" role="button" data-toggle="collapse" href="#location-results" aria-expanded="true" aria-controls="location-results">
+						<b> Location </b>
+						</a>
+							<p class="search-user-input">Showing results for '{{ search.search_two }}'</p>
+							<div id='location-results'>
+							{{# locations }}
+							{{{ . }}}
+							{{/ locations }}
+							</div>
 						</div>
-					</div>
-					{{/ sections.location_results }}
+						{{/ sections.location_results }}
+
+						<div class="clear">&nbsp;</div>
 					</div>
 				<div id='results-error'></div>
 			</div>
 
-			<hr class='dashboard'>	
+			<hr class='dashboard {{^ need_clarification}}hidden{{/ need_clarification }}'>	
 
 			<div id='network-results'>
 				{{# sections.network_results }}
 				<div id="best-match" class="{{# hidden }}cmhide{{/ hidden }}">
-					<h3>Best Match</h3>
+					<h3 class="dark">Best Match</h3>
 					<div id="best-match-container">
 						{{# network }}
 						{{{ . }}}
@@ -116,7 +131,7 @@
 				{{/ sections.network_results }}
 				{{# sections.related_results }}
 				<div id="related-networks" class="{{# hidden }}cmhide{{/ hidden }}">
-					<h3>Related Networks</h3>
+					<h3 class="dark">Related Networks</h3>
 					<div id="related-networks-container">
 						{{# networks }}
 						{{{ . }}}
@@ -131,7 +146,6 @@
 	{{/ content }}
 
 	{{$ body_scripts }}
-	<script src="{{vars.hostname}}/js/searchbar.js"></script>
 	{{/ body_scripts }}
 
 {{/ layout }}

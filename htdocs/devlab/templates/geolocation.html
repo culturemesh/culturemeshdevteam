@@ -1,0 +1,68 @@
+{{% BLOCKS }}
+{{< layout }}{>}
+	{{$ title }}{{/ title }}
+
+	{{$ stylesheets }}
+	{{/ stylesheets }}
+
+	{{$ more_scripts }}
+	{{/ more_scripts }}
+
+	{{$ autoload_scripts }}
+	{{/ autoload_scripts }}
+
+	{{$ content }}
+
+		<p>Click the button to get nearby cities.</p>
+
+		<button onclick="getLocation()">Try It</button>
+
+		<ul id="demo"></ul>
+
+	{{/ content }}
+
+	{{$ body_scripts }}
+	<script>
+		var x = document.getElementById("demo");
+
+		function getLocation() {
+		    if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(searchByPosition);
+
+		    } else { 
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		    }
+		}
+
+		function searchByPosition(position) {
+
+			var values = {
+				latitude: position.coords.latitude,
+				longitude: position.coords.longitude
+			};
+
+			var location_search = new Ajax({
+				requestType: 'POST',
+				requestUrl: cm.home_path + '/api/search/geolocation_search.php',
+				data: values,
+				dataType: 'JSON',
+				requestParameters: ' ',
+				sendNow: true
+				},
+				function(data) {
+				
+					var results = JSON.parse(data);
+					var locations = results.results;
+
+					// clear demo
+					$("#demo").empty();
+
+					for (var i = 0; i < locations.length; i++) {
+					  $("#demo").append( $('<li/>').text(locations[i].fullname) );
+					}
+				});
+		}
+	</script>
+	{{/ body_scripts }}
+
+{{/ layout }}

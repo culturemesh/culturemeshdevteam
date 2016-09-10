@@ -468,7 +468,7 @@ cm.PostSubmit.prototype = {
 		// get form data
 		var formData = new FormData(this._form);
 
-		var ajx = new Ajax({
+		var ajx = new cm.Ajax({
 		    requestType: 'POST',
 		    requestUrl: this._action,
 		    requestParameters: ' ',

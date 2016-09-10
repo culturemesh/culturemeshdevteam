@@ -6,6 +6,7 @@
 		<meta charset="utf-8"/>
 		<meta name="keywords" content="" />
 		<meta name="description" content="Welcome to CultureMesh - Connecting the world's diasporas!" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 		<!-- Facebook analytics stuff -->
 		<meta name="og:title" content="CultureMesh" />
@@ -19,8 +20,16 @@
 			cm.home_path = "{{ vars.hostname }}";
 		</script>
 
+		<!--
 		<link href="{{ vars.hostname }}/css/bootstrap.css" rel="stylesheet">
-		<link href="{{ vars.hostname }}/css/style.css#" rel="stylesheet">
+		<link href="{{ vars.hostname }}/css/bootstrap.css" rel="stylesheet">
+		-->
+		<link href="{{ vars.hostname }}/bootstrap-3.3.6/css/bootstrap.css" rel="stylesheet">
+
+		<link href="{{ vars.hostname }}/css/generated/style.css#" rel="stylesheet">
+		<link href="{{ vars.hostname }}/css/generated/min-993px.css#" rel="stylesheet" media="(min-width: 993px)">
+		<link href="{{ vars.hostname }}/css/generated/max-992px.css#" rel="stylesheet" media="(max-width: 992px)">
+		<link href="{{ vars.hostname }}/css/generated/max-495px.css#" rel="stylesheet" media="(max-width: 495px)">
 		{{$ stylesheets }}
 		{{/ stylesheets }}
 
@@ -28,16 +37,21 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 		<script src="{{ vars.hostname }}/js/parsley.min.js"></script>
 
-		<script src="{{ vars.hostname }}/js/jquery-ui.js"></script>
+		<!--
 		<script src="{{ vars.hostname }}/js/bootstrap.js"></script>
+		-->
+		<script src="{{ vars.hostname }}/bootstrap-3.3.6/js/bootstrap.js"></script>
+		<script src="{{ vars.hostname }}/js/searchbar.js"></script>
+		<!--
 		<script src="{{ vars.hostname }}/js/validation.js"></script>
 		<script src="{{ vars.hostname }}/js/account.js"></script>
 		<script src="{{ vars.hostname }}/js/autoloader.js"></script>
 		<script src="{{ vars.hostname }}/js/fxn.js"></script>
 		<script src="{{ vars.hostname }}/js/ajax.js"></script>
+		-->
 		<script src="{{ vars.hostname }}/js/mustache.js/mustache.js"></script>
-		<script src="{{ vars.hostname }}/js/utilities.js"></script>
 
+		<!--
 		<script>
 			window.fbAsyncInit = function() {
 				  FB.init({
@@ -57,6 +71,7 @@
 			}(document, 'script', 'facebook-jssdk'));
 		</script>
 		<script src="https://apis.google.com/js/plusone.js"></script>
+		-->
 
 		<script type="text/javascript">
 		/*
@@ -113,138 +128,281 @@
 			return this.qsGet;
 		}
 
-
-		// HEIGHT ADJUSTMENT FOR MODALS
-		$('#register_modal,#login_modal').each(function() {
-			$( this ).on('shown', function () {
-				$('.modal .modal-body').css('overflow-y', 'auto'); 
-				$('.modal .modal-body').css('max-height', $(window).height() * 0.7);
-			})
-		});
 		</script>
-
 
 		{{$ more_scripts }}
 		{{/ more_scripts }}
+
+		<script>
+
+		var mobile_sidebar, login_overlay, registration_overlay, searchOneMobile, searchTwoMobile;
+
+		cm.Autoloader(function() {
+
+				mobile_sidebar = new cm.Overlay({
+					root: document.getElementById('side-menu'),
+					toggle: 'a > #sidebar-toggle', 
+					left_coord: '20%'
+				});
+
+				login_overlay = new cm.Overlay({
+					root: document.getElementById('login-overlay'),
+					toggle: '.login-toggle',
+					left_coord: '0'
+				});
+
+				registration_overlay = new cm.Overlay({
+					root: document.getElementById('register-overlay'),
+					toggle: '.register-toggle',
+					left_coord: '0'
+				});
+
+				searchOneMobile = new cm.SearchField({
+					root: $('#search_collapse div.search-form #search-1-root').get(0),
+					secondary_root: $('#search_collapse div.search-form #opening').get(0),
+					topic : document.getElementById('search-topic'),
+					ul_class : 'network search',
+					loading_image: '/images/searchbar-loading-bw.gif'
+
+				});
+
+				searchTwoMobile = new cm.SearchField({
+					root: $('#search_collapse div.search-form #search-2-root').get(0),
+					ul_class: 'network search',
+					loading_image: '/images/searchbar-loading-bw.gif'
+				});
+
+				// Make sure search ul positions are updated when de-collapsed
+				$( '#search_collapse_container' ).on('show.bs.collapse', function() {
+
+					var som = searchOneMobile;
+					var stm = searchTwoMobile;
+					var delayTime = 400;
+
+					// delay calls
+					setTimeout(function() {
+						som._positionUl();
+						stm._positionUl();
+					}, delayTime );
+				});
+		});
+		</script>
 
 		{{$ autoload_scripts }}
 		{{/ autoload_scripts }}
 	</head>
 	<body>
+		<svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<defs>
+			<!-- SEARCH -->
+			<symbol id="icon-search" viewBox="0 0 32 32">
+				<title>search</title>
+				<path class="path1" d="M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"></path>
+			</symbol>
 
-		<div class="wrapper">
-			<div id="header">
-				<div id="top-logo">
+			<!-- MENU -->
+			<symbol id="icon-menu" viewBox="0 0 32 32">
+				<title>menu</title>
+				<path class="path1" d="M2 6h28v6h-28zM2 14h28v6h-28zM2 22h28v6h-28z"></path>
+			</symbol>
+			<!-- SHARE SVGS -->
+
+			<!-- Facebook -->
+			<symbol id="icon-facebook" xmlns="http://www.w3.org/2000/svg"
+			     viewBox="0 0 55 46">
+				<title>facebook</title>
+				<path 
+				   d="M 37.70,34.66
+				   C 37.70,35.76 36.80,36.66 35.70,36.66
+				     35.70,36.66 26.30,36.66 26.30,36.66
+				     26.30,36.66 26.30,22.46 26.30,22.46
+				     26.30,22.46 31.10,22.46 31.10,22.46
+				     31.10,22.46 31.80,16.96 31.80,16.96
+				     31.80,16.96 26.30,16.96 26.30,16.96
+				     26.30,16.96 26.30,13.46 26.30,13.46
+				     26.30,11.86 26.70,10.76 29.00,10.76
+				     29.00,10.76 31.90,10.76 31.90,10.76
+				     31.90,10.76 31.90,5.75 31.90,5.75
+				     31.40,5.65 29.70,5.55 27.60,5.55
+				     23.40,5.55 20.50,8.15 20.50,12.86
+				     20.50,12.86 20.50,16.96 20.50,16.96
+				     20.50,16.96 15.70,16.96 15.70,16.96
+				     15.70,16.96 15.70,22.46 15.70,22.46
+				     15.70,22.46 20.50,22.46 20.50,22.46
+				     20.50,22.46 20.50,36.66 20.50,36.66
+				     20.50,36.66 2.90,36.66 2.90,36.66
+				     1.80,36.66 0.90,35.76 0.90,34.66
+				     0.90,34.66 0.90,2.05 0.90,2.05
+				     0.90,0.95 1.80,0.05 2.90,0.05
+				     2.90,0.05 35.60,0.05 35.60,0.05
+				     36.70,0.05 37.60,0.95 37.60,2.05
+				     37.60,2.05 37.60,34.66 37.60,34.66
+				     37.60,34.66 37.70,34.66 37.70,34.66 Z" />
+			</symbol>
+
+			<!-- Instagram -->
+			<symbol id="icon-instagram" xmlns="http://www.w3.org/2000/svg"
+			     viewBox="0 0 55 46">  
+			     <title>instagram</title>
+				<path id="Instagram"
+					d="M 33.10,0.15
+					   C 33.10,0.15 5.20,0.15 5.20,0.15
+					     2.80,0.15 0.80,2.05 0.80,4.45
+					     0.80,4.45 0.80,32.46 0.80,32.46
+					     0.80,34.86 2.80,36.76 5.20,36.76
+					     5.20,36.76 33.10,36.76 33.10,36.76
+					     35.50,36.76 37.50,34.86 37.50,32.46
+					     37.50,32.46 37.50,4.45 37.50,4.45
+					     37.40,2.15 35.50,0.15 33.10,0.15 Z
+					   M 27.10,5.95
+					   C 27.10,5.35 27.60,4.85 28.20,4.85
+					     28.20,4.85 31.60,4.85 31.60,4.85
+					     32.20,4.85 32.70,5.35 32.70,5.95
+					     32.70,5.95 32.70,9.35 32.70,9.35
+					     32.70,9.95 32.20,10.45 31.60,10.45
+					     31.60,10.45 28.20,10.45 28.20,10.45
+					     27.60,10.45 27.10,9.95 27.10,9.35
+					     27.10,9.35 27.10,5.95 27.10,5.95 Z
+					   M 19.10,11.56
+					   C 23.00,11.56 26.20,14.66 26.20,18.56
+					     26.20,22.46 23.00,25.56 19.10,25.56
+					     15.20,25.56 12.10,22.46 12.10,18.56
+					     12.10,14.66 15.20,11.56 19.10,11.56 Z
+					   M 34.00,32.26
+					   C 34.00,32.86 33.50,33.36 32.90,33.36
+					     32.90,33.36 5.40,33.36 5.40,33.36
+					     4.80,33.36 4.30,32.86 4.30,32.26
+					     4.30,32.26 4.30,15.06 4.30,15.06
+					     4.30,15.06 8.90,15.06 8.90,15.06
+					     8.30,15.96 8.10,17.56 8.10,18.56
+					     8.10,24.66 13.10,29.66 19.30,29.66
+					     25.50,29.66 30.50,24.66 30.50,18.56
+					     30.50,17.56 30.40,15.96 29.60,15.06
+					     29.60,15.06 34.20,15.06 34.20,15.06
+					     34.20,15.06 34.20,32.26 34.20,32.26
+					     34.20,32.26 34.00,32.26 34.00,32.26 Z" />
+     			</symbol>
+
+			<!-- Twitter -->
+			<symbol id="icon-twitter" xmlns="http://www.w3.org/2000/svg"
+			     viewBox="0 0 55 42">
+			     	<title>twitter</title>
+				<path 
+				d="M 36.40,1.35
+				   C 34.90,2.25 33.30,2.95 31.50,3.25
+				     30.10,1.75 28.10,0.75 25.90,0.75
+				     21.70,0.75 18.20,4.25 18.20,8.66
+				     18.20,9.26 18.30,9.86 18.40,10.46
+				     12.00,10.16 6.40,6.95 2.60,2.25
+				     1.90,3.45 1.60,4.75 1.60,6.25
+				     1.60,8.96 3.00,11.36 5.00,12.86
+				     3.70,12.86 2.60,12.46 1.50,11.86
+				     1.50,11.86 1.50,11.96 1.50,11.96
+				     1.50,15.76 4.10,18.96 7.70,19.66
+				     7.10,19.86 6.40,19.96 5.70,19.96
+				     5.20,19.96 4.70,19.96 4.30,19.86
+				     5.30,22.96 8.10,25.26 11.50,25.36
+				     8.90,27.46 5.60,28.76 2.00,28.76
+				     1.40,28.76 0.80,28.76 0.20,28.66
+				     3.60,30.86 7.60,32.16 12.00,32.16
+				     26.10,32.16 33.90,20.16 33.90,9.76
+				     33.90,9.46 33.90,9.06 33.90,8.76
+				     35.40,7.65 36.70,6.25 37.70,4.65
+				     36.30,5.25 34.80,5.75 33.30,5.85
+				     34.60,4.75 35.80,3.25 36.40,1.35 Z" />
+			</symbol>
+
+			<!-- Google Plus -->
+			<symbol id="icon-googleplus" xmlns="http://www.w3.org/2000/svg"
+			     viewBox="0 0 49 35">
+				<title>Google Plus</title>
+				<path 
+				d="M 13.40,10.26
+				   C 13.40,10.26 13.40,15.36 13.40,15.36
+				     13.40,15.36 18.30,15.36 20.30,15.36
+				     19.20,18.66 17.50,20.46 13.40,20.46
+				     9.20,20.46 5.90,17.06 5.90,12.86
+				     5.90,8.66 9.20,5.26 13.40,5.26
+				     15.60,5.26 17.10,6.06 18.40,7.16
+				     19.50,6.06 19.40,5.96 22.00,3.45
+				     19.70,1.35 16.70,0.15 13.40,0.15
+				     6.30,0.15 0.60,5.86 0.60,12.96
+				     0.60,20.06 6.30,25.76 13.40,25.76
+				     24.00,25.76 26.60,16.56 25.70,10.36
+				     25.70,10.36 13.40,10.36 13.40,10.36
+				     13.40,10.36 13.40,10.26 13.40,10.26 Z
+				   M 36.50,10.56
+				   C 36.50,10.56 36.50,6.06 36.50,6.06
+				     36.50,6.06 33.40,6.06 33.40,6.06
+				     33.40,6.06 33.40,10.56 33.40,10.56
+				     33.40,10.56 28.80,10.56 28.80,10.56
+				     28.80,10.56 28.80,13.66 28.80,13.66
+				     28.80,13.66 33.40,13.66 33.40,13.66
+				     33.40,13.66 33.40,18.26 33.40,18.26
+				     33.40,18.26 36.50,18.26 36.50,18.26
+				     36.50,18.26 36.50,13.66 36.50,13.66
+				     36.50,13.66 41.00,13.66 41.00,13.66
+				     41.00,13.66 41.00,10.56 41.00,10.56
+				     41.00,10.56 36.50,10.56 36.50,10.56 Z" />
+			</symbol>
+
+			<!-- Linkedin -->
+			<symbol id="icon-linkedin" xmlns="http://www.w3.org/2000/svg"
+			     viewBox="0 0 54 46">
+				<path
+				d="M 8.50,10.86
+				   C 8.50,10.86 8.50,33.66 8.50,33.66
+				     8.50,33.66 1.30,33.66 1.30,33.66
+				     1.30,33.66 1.30,10.86 1.30,10.86
+				     1.30,10.86 8.50,10.86 8.50,10.86 Z
+				   M 28.10,10.66
+				   C 24.00,10.66 21.40,12.86 20.90,14.46
+				     20.90,14.46 20.90,10.86 20.90,10.86
+				     20.90,10.86 12.80,10.86 12.80,10.86
+				     12.90,12.76 12.80,33.66 12.80,33.66
+				     12.80,33.66 20.90,33.66 20.90,33.66
+				     20.90,33.66 20.90,21.36 20.90,21.36
+				     20.90,20.66 20.90,19.96 21.10,19.46
+				     21.70,18.06 22.80,16.66 25.00,16.66
+				     27.80,16.66 29.10,18.76 29.10,21.86
+				     29.10,21.86 29.10,33.66 29.10,33.66
+				     29.10,33.66 37.30,33.66 37.30,33.66
+				     37.30,33.66 37.30,20.96 37.30,20.96
+				     37.20,13.96 33.20,10.66 28.10,10.66 Z
+				   M 4.70,0.15
+				   C 2.00,0.15 0.30,1.85 0.30,4.15
+				     0.30,6.35 2.00,8.05 4.60,8.05
+				     4.60,8.05 4.70,8.05 4.70,8.05
+				     7.40,8.05 9.10,6.35 9.10,4.05
+				     9.00,1.85 7.40,0.15 4.70,0.15 Z" />
+			</symbol>
+		</defs>
+		</svg>
+
+
+		<!-- MAIN CONTENT -->
+		<div class="wrapper container-fluid">
+			<div id="header" class="row">
+				<div id="top-logo" class="col-lg-4 col-md-4 col-sm-6 col-xs-8">
 					<a href="{{ vars.hostname }}/index.php"><img src="{{ vars.hostname }}/images/logo_header.png"></a>
 				</div>
-				<div id="right-top-btns">
+				<div class="col-lg-4 col-md-4 col-sm-4 hidden-xs"></div>
+				<div id="right-top-btns" class="col-lg-4 col-md-4 hidden-sm hidden-xs">
 					<ul id="top-links">
 						<li><a id="menu-about" href="{{ vars.hostname }}/about.php">About</a></li>
-						<!--<li><a id="menu-suggest" href="about.php">Suggest Networks</a></li>-->
 						{{# logged_in }}
 						<li><a href="{{ vars.hostname }}/profile/{{ site_user.id }}" id="welcome">Welcome, {{ site_user.first_name }}</a></li>
 						<li><a id="sign-out" href="{{ vars.hostname }}/sign_out.php">Sign Out</a></li>
 						{{/ logged_in }}
 						{{^ logged_in }}
-						<li><a id="login-link" href="#login_modal" data-toggle="modal">Log In</a></li>
-						<li><a id="register-link" href="#register_modal" data-toggle="modal">Sign Up</a></li>
+						<li><a id="login-link" href="#login_modal" class="login-toggle">Log In</a></li>
+						<li><a id="register-link" href="#register_modal" class="register-toggle">Sign Up</a></li>
 						{{/ logged_in }}
 					</ul>
 				</div>
-				<div id="register_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
-					<div class="modal-header">
-						Join the</br></br><b>CultureMesh Community!</b>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
-					</div>
-					<div class="modal-body">
-						<form id="reg_form" method="post" action="{{ vars.hostname }}/r.php">
-							<div id="register-div">
-								<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
-								</br>
-								<input type="text" name="fname" id="fname" class="modal-text-input" placeholder="First Name" required /></br>
-								</br>
-								<input type="text" name="lname" id="lname" class="modal-text-input" placeholder="Last Name" required /></br>
-								</br>
-								<span id="email_dup_txt" style="display:none" class="label label-important"></span>
-								<div id="login-passwords">
-								<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
-								<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
-								<div class="clear"></div>
-								<span id="password_validation"></span>
-								<span id="register_server_error"></span>
-								</div>
-								</br>
-								</br>
-								<span id="pass_mism_txt" class="label label-important"></span>
-								<div class="clear"></div>
-								<input type="hidden" id="reg_joining" name="reg_joining" value="-1" />
-								<input type="hidden" id="reg_joining_network" name="reg_joining_network" value="-1" />
-								<input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
-							</div>
-							<!--
-							<div id="register-div">
-								<div class='row'>
-								<input type="email" id="reg-email" name="email" placeholder="Email" class="modal-text-input" required /></br>
-								</div>
-								<div class='row'>
-								<input type="text" name="fname" id="fname" class="modal-text-input" placeholder="First Name" required /></br>
-								</div>
-								<div class='row'>
-								<input type="text" name="lname" id="lname" class="modal-text-input" placeholder="Last Name" required /></br>
-								</div>
-								<div class='row'>
-								<span id="email_dup_txt" style="display:none" class="label label-important"></span>
-								</div>
-								<div class='row'>
-									<input type="password" name="password" id="password" class="modal-text-input-conf" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
-									<input type="password" name="password_conf" id="password_conf" class="modal-text-input-conf" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
-								</div>
-								<div class="clear"></div>
-								<span id="password_validation"></span>
-								<span id="register_server_error"></span>
-								<span id="pass_mism_txt" class="label label-important"></span>
-								<div class="clear"></div>
-								<input type="submit" id="reg_submit_btn" class="submit" data-loading-text="Checking..." value="Join Us" />
-							</div>
-							-->
-									<!-- REGISTER DIV ARTIFACTS 
-								<div id="login-passwords"> 
-									<div class='span2'>
-									</div>
-									<div class='span2'>
-									</div>
-								</div>
-									-->
-						</form>
-					</div>
-					<div class="modal-footer">
-						Already a member? <a href="#" onclick="toggleLogin()" id="sign_in_mod">Sign in!</a>
-					</div>
-				</div>
-				<div id="login_modal" class="modal hide fade" tabindex="-1" role="dialog"  aria-labelledby="blogPostLabel" aria-hidden="true">
-					<div class="modal-header">
-						<b>Welcome Back!</b>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#10006</button>
-					</div>
-					<div class="modal-body">
-						<form id="log_form" method="post" action="{{ vars.hostname }}/l.php">
-							<div id="login-div">
-								<input type="email" name="email" id="log_email" class="modal-text-input" placeholder="Email" required />
-								<input type="password" name="password" id="log_password" class="modal-text-input" onchange="validateInput(this, document.getElementById(\'log_validation\'))" placeholder="Password" required />
-								</br>
-								<span id="log_validation"></span>
-								</br>
-								</br>
-								<input type="submit" id="log_submit_btn" class="submit" data-loading-text="Checking..." value="Sign In" />
-								</br>
-								</br>
-								<a href="{{ vars.hostname }}/forgotpass.php">Forgot your password?</a>
-							</div>    
-						</form>
-					</div>
-					<div class="modal-footer">
-						Not a member yet? <a href="#" id="sign_in_mod" onclick='toggleRegister()'>Join Us!</a>
-					</div>
+				<div class="header-mobile-icons col-sm-2 col-xs-4 hidden-md hidden-lg row">
+					<a data-toggle="collapse" href="#search_collapse_container" aria-expanded="false" aria-controls="search_collapse_container"><svg id="search-toggle" class="custom-icon icon-search"><use xlink:href="#icon-search"></use></svg></a>
+					<a><svg id="sidebar-toggle" class="custom-icon icon-menu"><use xlink:href="#icon-menu"></use></svg></a>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -258,26 +416,168 @@
 				<p>It should last about {{ vars.maintenance.duration }}</p>
 			</div>
 			{{/ vars.maintenance.notification }}
+			<div id="search_collapse_container" class="collapse tuck row">
+				<div id='search_collapse'>
+					{{{ searchbars.alt-font }}}
+				</div>
+			</div>
+			<div class="row">
 			{{$ content }}
 			{{/ content }}
-			<div class="footer">
-			    <ul id="bottom-links" class="text-center">
+			</div>
+			<div class="footer row">
+			    <ul id="bottom-links" class="text-center hidden-sm hidden-xs">
 				    <li><a href="{{ vars.hostname }}/careers.php">Careers</a></li>
 				    <li><a href="{{ vars.hostname }}/about.php#team">Team</a></li>
 				    <li><a href="{{ vars.hostname }}/press.php">Press</a></li>
 				    <li><a href="{{ vars.hostname }}/about.php#contact">Contact</a></li>
 			    </ul>
+			    <div class="hidden-md hidden-lg">
+				    <div class="footer-mobile-share-buttons">
+					<a href="https://www.facebook.com/CultureMeshLIVE"><svg class="footer-icon"><use xlink:href="#icon-facebook"></use></svg></a>
+					<a href="https://www.linkedin.com/company/culturemesh"><svg class="footer-icon"><use xlink:href="#icon-linkedin"></use></svg></a>
+					<a href="https://twitter.com/culturemeshlive"><svg class="footer-icon"><use xlink:href="#icon-twitter"></use></svg></a>
+					<!--<svg class="footer-icon"><use xlink:href="#icon-googleplus"></use></svg>
+					<svg class="footer-icon"><use xlink:href="#icon-instagram"></use></svg>-->
+				    </div>
+				    <div class="footer-mobile-links">
+					    <div><a href="{{ vars.hostname }}/careers.php">Careers</a></div>
+					    <div><a href="{{ vars.hostname }}/about.php#team">Team</a></div>
+					    <div><a href="{{ vars.hostname }}/press.php">Press</a></div>
+					    <div><a href="{{ vars.hostname }}/about.php#contact">Contact</a></div>
+				    </div>
+				    <div class="footer-mobile-copyright">
+					    <p>Copyright 2016 CultureMesh</p>
+				    </div>
+			    </div>
 			</div>
 		</div>
 
+		<!-- OVERLAYS -->
+
+		<!-- MOBILE SIDEBAR -->
+		<div id="side-menu" class="cm-overlay container-fluid">
+			<div class="sidebar">
+				<div class="cm-y-10"></div>
+				<div class="row">
+					<div class="col-sm-10 col-xs-10"></div>
+					<button class="overlay-close close-cm-overlay">&#10006</button>
+				</div>
+				<div class="cm-y-20"></div>
+				{{# logged_in }}
+				<div class="sidebar-user-picture text-center">
+					<a href="{{ vars.hostname }}/profile/{{ site_user.id }}"><img id="sidebar_image" class='usr_image' src="{{ site_user.img_link }}{{^ site_user.img_link }}{{ vars.blank_profile_path_lrg }}{{/ site_user.img_link}}#{{ page_vars.rand }}"/></a>
+				  <div class="cm-y-10"></div>
+				</div>
+				{{/ logged_in }}
+				<div class="sidebar-user-buttons row text-center">
+					{{# logged_in }}
+					<a id="sign-out" href="{{ vars.hostname }}/sign_out.php"><button class="sidebar-button sign-out">Sign Out</button></a>
+					{{/ logged_in }}
+					{{^ logged_in }}
+					<button id="sidebar-login-toggle" class="sidebar-button login-toggle">SIGN IN</button>
+					<button id="sidebar-register-toggle" class="sidebar-button register-toggle">REGISTER</button>
+					{{/ logged_in }}
+				</div>
+				<div class="cm-y-20"></div>
+				<div class="sidebar-page-menu row text-center">
+					<ul>
+						<!--
+					<li><button class="sidebar-button sidebar-li-button col-sm-12 col-xs-12">ONE</button></li>
+					<li><button class="sidebar-button sidebar-li-button col-sm-12 col-xs-12">TWO</button></li>
+					<li><button class="sidebar-button sidebar-li-button col-sm-12 col-xs-12">THREE</button></li>
+						-->
+						{{# logged_in }}
+						<li><a class="sidebar-button sidebar-li-button col-sm-12 col-xs-12" href="{{ vars.hostname }}/profile/{{ site_user.id }}#profile_dashboard_tab">YOUR DASHBOARD</a></li>
+						<li><a class="sidebar-button sidebar-li-button col-sm-12 col-xs-12" href="{{ vars.hostname }}/profile/{{ site_user.id }}#profile_networks_tab">YOUR NETWORKS</a></li>
+						<li><a class="sidebar-button sidebar-li-button col-sm-12 col-xs-12" href="{{ vars.hostname }}/profile/{{ site_user.id }}#profile_events_tab">YOUR EVENTS</a></li>
+						{{/ logged_in }}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- REGISTRATION -->
+		<div id="register-overlay" class="cm-overlay full-overlay container-fluid">
+			<div class="overlay-center registration">
+				<div class="row">
+					<div class="col-sm-10 col-xs-10"></div>
+					<button class="overlay-close close-cm-overlay">&#10006</button>
+				</div>
+				<div class="overlay-form">
+					<div class="text-center">
+					<form id="reg_form" method="post" action="{{ vars.hostname }}/r.php">
+						<div id="register-div" class="form-group">
+							<div>
+								<input type="email" id="reg-email" name="email" placeholder="Email" class="form-control input-lg overlay-input" required />
+								<input type="text" name="fname" id="fname" class="form-control input-lg overlay-input" placeholder="First Name" required />
+								<input type="text" name="lname" id="lname" class="form-control input-lg overlay-input" placeholder="Last Name" required />
+								<input type="password" name="password" id="password" class="form-control input-lg overlay-input" placeholder="Password" onchange="validateInput(this, document.getElementById(\'password_validation\'), 18)" required />
+								<input type="password" name="password_conf" id="password_conf" class="form-control input-lg overlay-input" onchange="comparePasswordInput(this, document.getElementById(\'password\'), document.getElementById(\'password_validation\'))"placeholder="Confirm Password" required />
+							</div>
+							<span id="email_dup_txt" class="label label-important"></span>
+							<span id="password_validation"></span>
+							<span id="register_server_error"></span>
+							</br>
+							</br>
+							<span id="pass_mism_txt" class="label label-important"></span>
+							<div class="clear"></div>
+							<input type="hidden" id="reg_joining" name="reg_joining" value="-1" />
+							<input type="hidden" id="reg_joining_network" name="reg_joining_network" value="-1" />
+							<input type="submit" id="reg_submit_btn" class="overlay-submit" data-loading-text="Checking..." value="Join Us" />
+						</div>
+					</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- LOGIN -->
+		<div id="login-overlay" class="cm-overlay full-overlay container-fluid">
+			<div class="overlay-center login">
+				<div class="row">
+					<div class="col-sm-10 col-xs-10"></div>
+					<button class="overlay-close close-cm-overlay">&#10006</button>
+				</div>
+				<div class="overlay-form">
+					<div class="text-center">
+					<form id="log_form" method="post" action="{{ vars.hostname }}/l.php">
+						<div id="login-div" class="form-group">
+							<div>
+								<input type="email" name="email" id="log_email" class="form-control input-lg overlay-input" placeholder="Email" required />
+								<input type="password" name="password" id="log_password" class="form-control input-lg overlay-input" onchange="validateInput(this, document.getElementById(\'log_validation\'))" placeholder="Password" required />
+							</div>
+							</br>
+							<span id="log_validation"></span>
+							<input type="submit" id="log_submit_btn" class="overlay-submit" data-loading-text="Checking..." value="Sign In" />
+							</br>
+							</br>
+							<a href="{{ vars.hostname }}/forgotpass.php">Forgot your password?</a>
+						</div>    
+					</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{$ overlays }}
+		{{/ overlays }}
+
+		{{$ sliders }}
+		{{/ sliders }}
+
 		<script>
 			function toggleLogin() {
+				/*
 				$("#register_modal").modal('hide');
 				$("#login_modal").modal('show');
+				*/
 			}
 			function toggleRegister() {
+				/*
 				$("#login_modal").modal('hide');
 				$("#register_modal").modal('show');
+				*/
 			}
 		</script>
 		<script>
@@ -314,5 +614,13 @@
 		</script>
 		{{$ body_scripts }}
 		{{/ body_scripts }}
+
+		<script>
+		</script>
+		{{$ parsley_forms }}
+		{{/ parsley_forms }}
+
+		{{$ mustache_forms }}
+		{{/ mustache_forms }}
 	</body>
 </html>

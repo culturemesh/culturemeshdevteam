@@ -120,8 +120,27 @@ class ImageUpload {
 		try {
 			$files->upload();
 
+			if (isset($this->options['thumbnail'])) {
+				try {
+				  $success = $this->createThumbnails($files);
+				}
+				catch (\except\MissingClassException $e) {
+				  return array( 'files' => $this->files,
+					  'error' => $e->getMessage()
+				  );
+				}
+
+				if ($success) 
+				  return array( 'files' => $this->files);
+				else
+				  return array( 'error' => 'Thumbnails not created');
+			}
+			/*
 			// create thumbnails
 			if (isset($this->options['thumbnail'])) {
+
+				try {
+					$this->createThumbnails()
 
 				if ($this->createThumbnails($files)) {
 					return array(
@@ -134,13 +153,14 @@ class ImageUpload {
 					);
 				}
 			}
+			 */
 			
 
 		}
 		catch (\Exception $e) {
 
 			return array(
-				'error' => $e
+				'error' => $e->getMessage()
 			);
 		}
 	}
@@ -149,7 +169,12 @@ class ImageUpload {
 
 		$errors = 0;
 		$dir = $this->cm->img_repo_dir . $this->cm->ds;
+
 		foreach ($files as $file) {
+
+			if (!class_exists('\Imagick')) {
+				throw new \except\MissingClassException('Imagick is not defined');
+			}
 
 			// create Imagick
 			$file_image = new \Imagick($dir . $file->getNameWithExtension());
@@ -176,21 +201,6 @@ class ImageUpload {
 			if ($success === False) {
 				$errors++;
 			}
-			//$im->imageWriteFile (fopen ("test_2.jpg", "wb")); //also works
-
-			/*
-			if (file_put_contents($new_name, $file_image))
-				return true;
-			else
-				return false;
-			 */
-
-			/*
-			if( $file_image->writeImage())
-				echo 'Written successfully';
-			else
-				echo 'FAILURE!!!';
-			 */
 		}
 
 		if ($errors == 0)

@@ -90,7 +90,7 @@ if($_POST['email'] && $_POST['password']){
 			
 			if($result["email"] != NULL){
 				// set session variable
-                		$_SESSION['uid'] = getMemberUID($email, $con);
+                		$_SESSION['uid'] = $result['id'];
 				$json_response['uid'] = $_SESSION['uid'];
 
 				$cv = $redirect->getControl();
@@ -107,7 +107,6 @@ if($_POST['email'] && $_POST['password']){
 				// return successful
 				$redirect->addQueryParameter('lerror', 'success');
 				$redirect->execute();
-
 			}
 			else
 			{

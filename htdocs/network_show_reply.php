@@ -33,12 +33,17 @@ else {
 		'error' => NULL,
 		'html' => NULL);
 
-	if (!isset($_POST['pid'])) {
+	if (!isset($_POST['pid']) && !isset($_POST['tid']) ) {
 		$response['error'] = 'Not enough information.';	
 		echo json_encode($response);
 	}
 
 	else {
+		if (!isset($_POST['nid'])) {
+			$response['error'] = 'Not enough information.';	
+			echo json_encode($response);
+			exit();
+		}
 
 		// get connection
 		$dal = new \dal\DAL($cm->getConnection());
@@ -51,8 +56,17 @@ else {
 
 		// get reply by stuff
 		//$replies = Post::getRepliesByParentId($id_parent, $con);
-		$post = new \dobj\Post();
-		$post->id = (int) $_POST['pid'];
+
+		$post_class = '\dobj\Post'; // default
+		$post_id_var = 'pid';
+
+		if (isset($_POST['tid'])) {
+			$post_class = '\dobj\Tweet';
+			$post_id_var = 'tid';
+		}
+
+		$post = new $post_class();
+		$post->id = (int) $_POST[$post_id_var];
 		$post->getReplies($dal, $do2db);
 
 		// close connection

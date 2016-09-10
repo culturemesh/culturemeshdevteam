@@ -22,8 +22,6 @@ if (!isset($_SESSION['uid'])) {
 	exit();
 }
 
-$cm = new Environment();
-
 $dal = new \dal\DAL($cm->getConnection());
 $dal->loadFiles();
 $do2db = new \dal\Do2Db();
@@ -57,7 +55,6 @@ if ($valid)
 	else {
 
 
-	//	Post::createPost($post);
 		// create post
 		$post->insert($dal, $do2db);
 		$post->id = (int) $dal->lastInsertId(); 
@@ -85,10 +82,10 @@ if ($valid)
 				'dir' => $cm->img_repo_dir,
 				'postname' => 'fileupload',
 				'validation_type' => array('image/png', 'image/gif', 'image/jpeg'),
-				'validation_size' => '2M',
+				'validation_size' => '10M',
 				'thumbnail' => array(
 					'thumbnail' => true,
-					'class' => 'post')
+					'class' => 'post') 
 				)
 			);
 

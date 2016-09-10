@@ -8,9 +8,7 @@
 
 	{{$ more_scripts }}
 	<script src="{{ vars.hostname }}/js/lightbox.min.js"></script>
-	<script type='text/javascript' src='{{vars.hostname}}/js/fileupload.js'></script>
 	<script type='text/javascript' src='{{vars.hostname}}/js/post-wall.js'></script>
-	<script type="text/javascript" src="{{vars.hostname}}/js/searchbar.js"></script>
 
 	<script>
 		/*
@@ -23,11 +21,11 @@
 				var elem = document.getElementById("event-maker");
 				if (elem.style.display == "none" || elem.style.display == "")
 				{
-					elem.style.display = "block";
+					$( elem ).slideDown();
 					$("#event-post").text("Cancel");
 				}
 				else if (elem.style.display == "block") {
-					elem.style.display = "none";
+					$( elem ).slideUp();
 					$("#event-post").text("Post Event");
 				}
 			}
@@ -52,7 +50,7 @@
 								element: document.getElementById('post-form'),
 								maxFiles: 3,
 								acceptedFileTypes: ['jpg', 'png', 'gif', 'bmp', 'jpeg'],
-								sizeLimit: 2097152
+								sizeLimit: 10485760
 								})
 							)
 							{{/ page_vars.member }}
@@ -81,6 +79,15 @@
 			cm.Autoloader(function() {
 
 				var searchOne = new cm.SearchField({
+					root: $('#search div.search-form #search-1-root').get(0),
+					secondary_root: $('#search_collapse div.search-form #opening').get(0),
+					topic : document.getElementById('search-topic'),
+					ul_class : 'network search',
+					loading_image : "/images/searchbar-loading-bw.gif"
+					/*
+					loading_image: '/images/searchbar-loading-bw.gif'
+					root : document.getElementById('search-1-root'),
+					secondary_root : $( '' ).get(0),
 					input_field : document.getElementById('search-1'),
 					clicked : document.getElementById('clik1'),
 					id_field : document.getElementById('varId'),
@@ -90,9 +97,16 @@
 					topic : document.getElementById('search-topic'),
 					ul_class : "network search",
 					loading_image : "/images/searchbar-loading-bw.gif"
+					*/
 				});
 
 				var searchTwo = new cm.SearchField({
+					root: $('#search div.search-form #search-2-root').get(0),
+					topic : document.getElementById('search-topic'),
+					ul_class : 'network search',
+					loading_image : "/images/searchbar-loading-bw.gif"
+						/*
+					root : document.getElementById('search-2-root'),
 					input_field : document.getElementById('search-2'),
 					clicked : document.getElementById('clik2'),
 					id_field : document.getElementById('locId'),
@@ -100,6 +114,28 @@
 					ul : document.getElementById('s-location'),
 					ul_class : "network search",
 					loading_image : "/images/searchbar-loading-bw.gif"
+					*/
+				});
+
+				// Make sure search ul positions are updated when de-collapsed
+				$( '#search' ).on('show.bs.collapse', function() {
+
+					var som = searchOne;
+					var stm = searchTwo;
+					var delayTime = 400;
+
+					// delay calls
+					setTimeout(function() {
+						som._positionUl();
+						stm._positionUl();
+					}, delayTime );
+				});
+			});
+
+			cm.Autoloader(function() {
+
+				var eventWall = new cm.EventWall({
+					root: document.getElementById('event-wall')
 				});
 			});
 	</script>
@@ -110,7 +146,7 @@
 		{{{ . }}}
 		{{/ sections.event_modals }}
 	<div content>
-		<div class="net-left">
+		<div class="net-left hidden-sm hidden-xs">
 			<div class="leftbar">
 				{{{ sections.map_embed }}}
 				<!--
@@ -121,10 +157,12 @@
 				-->
 			</div>
 		</div>
-		<div class="net-right">
-			{{{ sections.searchbar }}}
+		<div class="net-right content-top">
+			<div id="search" class="searchbar hidden-xs hidden-sm">
+			{{{ searchbars.standard }}}
+			</div>
 			{{{ sections.lrgnetwork }}}
-			<div>
+			<div class="net-header">
 				<div class='net-info'>
 					<h1 class='h-network'>{{ sections.network_title }}</h1>
 					<!-- TOTAL GUEST, NOT LOGGED IN -->
@@ -165,33 +203,64 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-			</br>
-			<hr width="630">
+			<br class="hidden-xs hidden-sm">
+			<hr width="630" class="hidden-xs hidden-sm">
 			<!-------------- -->
-			<ul class="nav nav-pills dashboard">
-				<li id="post-nav" class="active"><a href="#post-wall-container" data-toggle="pill">Posts</a></li>
-				<li id="event-nav"><a href="#event-wall" data-toggle="pill">Events</a></li>
-			</ul>
+			<div class="tab-container">
+				<ul class="nav nav-pills dashboard">
+					<li id="post-nav" class="active"><a href="#post-wall-container" data-toggle="pill">Posts</a></li>
+					<li class="vertical-line hidden-md hidden-lg">&nbsp;</li>
+					<li id="event-nav"><a href="#event-wall" data-toggle="pill">Events</a></li>
+					<li class="vertical-line hidden-md hidden-lg">&nbsp;</li>
+					<li id="share-nav"><a href="#share-wall" data-toggle="pill">Share</a></li>
+				</ul>
+				<!--
+				<ul class="nav nav-tabs dashboard hidden-md hidden-lg">
+					<li id="post-nav" class="active"><a href="#post-wall-container" data-toggle="pill">Posts</a></li>
+					<li id="event-nav"><a href="#event-wall" data-toggle="pill">Events</a></li>
+					<li id="share-nav"><a href="#share-wall" data-toggle="pill">Share</a></li>
+				</ul>
+				-->
+			</div>
+			<div class="clear"></div>
 			<!-------------- -->
 			<div class="network tab-content">
 			<div id="post-wall-container" class="tab-pane active">
 			<div id="post-wall">
 				{{# page_vars.member }}
-				<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.hostname }}/network_post.php" enctype="multipart/form-data">
-					<!--<img id="profile-post" src="{{ vars.img_host_repo}}/{{ site_user.img_link }}" width="45" height="45">-->
-
-					<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
-					<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
-					<div class="fileupload-error"></div>
-					<div id='post-form-panel' class="fileupload-panel"></div>
-					<div class="clear"></div>
-					<div class="fileupload-button picture"></div>
-					<button type="button" class="help-tooltip"  data-toggle="popover" data-placement="left">?</button>
-					<input type="submit" class="network post fileupload-submit" value="Send"></input>
-					<input type="hidden" name="post_class" value="o"></input>
-					<input type="hidden" name="post_original" value="NULL"></input>
-				</form>
-				<hr>
+				<div class="mobile-widget bg-white">
+					<form id='post-form' method="POST" class="member fileupload-form" action="{{ vars.hostname }}/network_post.php" enctype="multipart/form-data">
+						<div class="post-textarea-container inline-block text-center">
+							<textarea class="post-text" name="post_text" placeholder="Post something..."></textarea>
+						</div>
+						<div class="post-loading-bar-container text-center">
+							<img src="{{ vars.home_path }}/images/searchbar-loading.gif">
+						</div>
+						<div class="post-panel-container">
+							<div class="post-image-container inline-block text-center">
+								<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
+							</div>
+							<div class="post-button-container inline-block pbc-full">
+								<div class="fileupload-error"></div>
+								<div id='post-form-panel' class="fileupload-panel"></div>
+								<div class="clear">&nbsp;</div>
+								<div class="post-submit-panel">
+									<div class="fileupload-button picture post-icon"></div>
+									<button type="button" class="help-tooltip post-icon"  data-toggle="popover" data-placement="left">?</button>
+									<input type="submit" class="network post fileupload-submit send" value="Send"></input>
+									<input type="hidden" name="post_class" value="o"></input>
+									<input type="hidden" name="post_original" value="NULL"></input>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+							<div class="clear">&nbsp;</div>
+						</div>
+					</form>
+					<div class="clear">&nbsp;</div>
+				</div>
+				<div class="cm-y-20 hidden-md hidden-lg"></div>
+				<hr class="hidden-sm hidden-xs">
 				{{/ page_vars.member }}
 				<!--
 				<form method="POST" class="member" action="{{ vars.hostname }}/network_post.php">
@@ -252,17 +321,9 @@
 				$("#post-wall").hide();
 			</script>
 			<div id="event-wall" class="tab-pane">
-				<div>
-						<button id="slider-left" class="slider-button"></button>
-							{{# sections.event_slider }}
-							{{{ . }}}
-							{{/ sections.event_slider }}
-						<button id="slider-right" class="slider-button"></button>
-				</div>
-				<div class="clear"></div>
 				{{# page_vars.member }}
-				<div>
-				<button id="event-post" class="network member" onclick="toggleEventForm()">Post Event</button>
+				<div class="text-center">
+				<button id="event-post" class="member full-button" onclick="toggleEventForm()">Post Event</button>
 				</div>
 				<div class="clear"></div>
 				{{/ page_vars.member }}
@@ -270,7 +331,7 @@
 				<script>
 				</script>
 				{{/ get.eperror }}
-				<div id="event-maker">
+				<div id="event-maker" class="text-center mobile-widget">
 					<form class="event-form" method="POST" action="{{ vars.hostname }}/network_post-event.php" enctype="multipart/form-data">
 						<div>
 						<input type="text" id="title" name="title" class="event-text" placeholder="Name of Event " required></input></br>
@@ -282,11 +343,30 @@
 						<div id="clear"></div>
 						<input type="text" class="event-text" name="city" placeholder="City" required/></input>
 						<input type="text" class="event-text" name="region" placeholder="Region" required/></input>
-						<input type="submit" class="network" value="Post"></input>
+						<input type="submit" class="network event-submit" value="Post"></input>
 						<span id="eperror">{{ get.eperror }}</span>
 						</div>
 					</form>
 				</div>
+				<div class="event-ul-container">
+							{{# sections.event_slider }}
+							{{{ . }}}
+							{{/ sections.event_slider }}
+							<!--
+						<button id="slider-left" class="slider-button"></button>
+						<button id="slider-right" class="slider-button"></button>
+						-->
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div id="share-wall" class="tab-pane">
+				<div class="cm-y-20"></div>
+				<div class="text-center">
+					<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.culturemesh.com%2Fnetwork%2F{{ page_vars.nid }}" target="_blank"class="share-button facebook">Share on Facebook</a>
+					<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.culturemesh.com%2Fnetwork%2F{{ page_vars.nid }}&text=" target="_blank" class="share-button twitter">Share on Twitter</a>
+					<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.culturemesh.com%2Fnetwork%2F{{ page_vars.nid }}" target="_blank" class="share-button googleplus">Share on Google Plus</a>
+				</div>
+				<div class="clear"></div>
 			</div>
 			</br>
 			</br>
@@ -298,10 +378,25 @@
 	</div>
 	{{/ content }}
 
+	{{$ overlays }}
+	<div id="event-overlay" class="cm-overlay full-overlay container-fluid bg-white">
+		<div class="row">
+			<div class="col-sm-10 col-xs-10"></div>
+			<button class="overlay-close close-cm-overlay">&#10006</button>
+		</div>
+		<div class="overlay-center">
+			<div class="row event_data_section">
+			</div>
+		</div>
+	</div>
+	{{/ overlays }}
+
 	{{$ body_scripts }}
 	<link rel="stylesheet" type="text/css" href="{{vars.hostname}}/js/jsdatetime/jquery.datetimepicker.css"/ >
 	<script src="{{vars.hostname}}/js/jsdatetime/jquery.datetimepicker.js"></script>
+	<!--
 	<script src="{{vars.hostname}}/js/slider.js"></script>
+	-->
 
 	<script>
 		$(".datetimepicker").datetimepicker();
@@ -372,7 +467,7 @@
 	<script>
 
 		var JoinOnRegister = function() {
-			$('#register_modal').modal('show');
+			registration_overlay._show();
 			$('#reg_joining').val("1");
 			$('#reg_joining_network').val("{{ page_vars.nid }}");
 		}
@@ -380,4 +475,22 @@
 	</script>
 	{{/ body_scripts }}
 
+	{{$ mustache_forms }}
+		<script id='event-overlay-fill-template' type='x-tmpl-mustache'>
+			{{{ templates.event_overlay }}}
+		</script>
+
+		<script id='post-template' type='x-tmpl-mustache'>
+			{{{ templates.post }}}
+		</script>
+
+		<script id='reply-template' type='x-tmpl-mustache'>
+			{{{ templates.reply }}}
+		</script>
+
+		<script id='tweet-template' type='x-tmpl-mustache'>
+			{{{ templates.tweet }}}
+		</script>
+
+	{{/ mustache_forms }}
 {{/ layout }}

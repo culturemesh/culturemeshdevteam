@@ -4,6 +4,18 @@
 
 var cm = cm || {};
 
+// Guess...
+cm.isArray = function( enigma ) {
+	if (Object.prototype.toString.call( enigma ) === '[object Array]')
+	  return true;
+	else
+	  return false;
+}
+
+cm.isElement = function( enigma ) {
+	return enigma.tagName ? true : false;
+}
+
 /**
  * Adds all missing properties from second obj to first obj
  */
@@ -279,6 +291,359 @@ cm.DisposeSupport = {
   }
 };
 
+//
+// VALIDATION
+//
+var badChars = ["'", "\"", "?", "\\"];
+
+/*
+cm.validateInput = function(element, errorElement, charLimit = -1)
+{
+    // search for asshole characters ', ", 
+    var badCharFound = -1;
+    
+    for(var i = 0; i < badChars.length; i++)
+    {
+    	    badCharFound = element.value.indexOf(badChars[i]);
+    	
+    	//alert(badCharFound);
+    	// stop as soon as bad character is found
+    	if (badCharFound > -1)
+    	{
+    		break;
+    	}
+    }
+    if (charLimit > -1)
+    {
+	    if (element.value.length > charLimit)
+	    {
+		    /// Input was too long
+		errorElement.innerHTML = "Too many characters. Use " + charLimit + " or less.";    
+	    }
+    }
+    else if (badCharFound > -1)
+    {
+    	    /// Use of invalid characters
+    	errorElement.innerHTML = "Only use the specified characters"; // figure out what these are
+    }
+    else
+    {
+    	errorElement.innerHTML = "";    
+    }
+}
+*/
+
+cm.comparePasswordInput = function(element, compareElement, errorElement)
+{
+    if (element.value != compareElement.value)
+    {
+    	errorElement.innerHTML = "Passwords do not match.";
+    }
+    
+    else
+    {
+    	errorElement.innerHTML = "";
+    }
+}
+
+// MISCELLANEOUS THINGS
+//
+//for spinner
+var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  };
+})();
+
+cm.refresh = function(){
+    location.reload();
+}
+
+cm.getMembers = function(){
+    var members = "[&quot;stall&quot;,&quot;bathroom&quot;,&quot;clothing&quot;,&quot;shoes&quot;]";//["apples","oranges","houses","grapes"];
+    return members;
+}
+
+cm.overlayCount = 0;
+
+cm.toggleBodyScroll = function(setTo) {
+	var not_scrollable = $('body').hasClass('noscroll');
+
+	if (setTo == 'hide') {
+		if (not_scrollable && cm.overlayCount == 1) {
+		  $('body').removeClass('noscroll');
+		  cm.overlayCount = 0;
+		}
+		else if (not_scrollable && cm.overlayCount > 1)
+		  cm.overlayCount -= 1;
+	}
+
+	if (setTo == 'show') {
+		if (cm.overlayCount == 0) {
+			$('body').addClass('noscroll');
+			cm.overlayCount += 1;
+		}
+		else {
+			cm.overlayCount += 1;
+		}
+	}
+}
+
+//
+// FROM AJAX
+//
+cm.postStringify = function(obj) {
+	var keys = Object.keys(obj);
+	var postString = '';
+
+	for (var i = 0; i < keys.length; i++) {
+		// add an ampersand
+		if (i > 0) {
+			postString += '&';
+		}
+
+		postString += keys[i] + '=' + obj[keys[i]];
+	}
+
+	return postString;
+}
+
+/*
+ * Handles call and return of
+ * AJAX request
+ */
+cm.Ajax = function(arguments, success, failure) {
+	this.xhr = null;
+	this.sendingData = false;
+	this.dataType = null;
+	
+	// check to see if there's post data
+	if (arguments.data != null) {
+		this.sendingData = true;
+
+		// set data type
+		if(arguments.dataType) // user has passed it in
+			this.dataType = arguments.dataType;
+		else {
+			switch (typeof arguments.data) {
+				case 'object':
+					this.dataType = 'JSON';
+					break;
+				case 'string':
+					this.dataType = 'string';
+					break;
+			}
+		}
+	}
+
+	if (window.XMLHttpRequest)
+	{
+		this.xhr = new XMLHttpRequest();
+	}
+	else
+	{ // IE6, IE5
+		this.xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	this.xhr.open(arguments.requestType, arguments.requestUrl, + arguments.requestParameters, true);
+
+	if (this.dataType === 'JSON') {
+		this.xhr.setRequestHeader("Content-type", "application/json");
+	}
+	
+	else if (this.dataType === 'string') {
+		this.xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	}
+
+	this.xhr.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+			requestedData = this.responseText;
+			success(requestedData);
+		}
+		else {
+			//failure (this.responseText, this.status)
+		}
+
+	};
+
+	this.data = arguments.data;
+
+	this.send = function() {
+		if (this.sendingData) {
+			if (this.dataType === 'JSON')
+				this.xhr.send(JSON.stringify(this.data));
+			else
+				this.xhr.send(this.data);
+		}
+		else
+			this.xhr.send();
+	}
+
+	if (arguments.sendNow == true) {
+		this.send();
+	}
+}
+
+// Page autoloader
+//
+cm.Autoloader = function(func) {
+
+	var prev_load = window.onload;
+
+	if (prev_load == undefined) {
+		window.onload = func;
+	}
+	else {
+		window.onload = function() {
+			// execute first function
+			if (prev_load) {
+				prev_load();
+			}
+			// execute new function
+			func();
+		}
+	}
+}
+
+// ElementMap so you don't have to specify all these different
+// elements when creating dom modules
+
+cm.ElementMap = function(element) {
+
+	var child = element.firstChild;
+
+	while (child && child != null) {
+
+		if (child.nodeType == 1) {
+
+			childClass = child.className;
+			childId = child.id;
+
+			// HANDLE ID
+			if (childId !== "") {
+				this._addChild(childId, child);
+			}
+
+			// HANDLE CLASS
+			//
+			// Cases:
+			// 0) No class name
+			// 1) Single class (no spaces)
+			// 2) Multiple classes
+			//
+			if (childClass !== "") {
+				class_split = childClass.split(' ');
+
+				if (class_split.length == 1)
+				  this._addChild(childClass, child);
+				else {
+
+					for(var i = 0; i < class_split.length; i++) {
+					  this._addChild(class_split[i], child);
+					}
+				}
+			}
+
+			// check to see if this has children
+			//   if so, make recursive call
+			if (child.childNodes.length > 0) {
+				//this.extendMap( cm.mapChildren( child ) );
+				//
+
+				// VERSION 1.0
+				var childMap = new cm.ElementMap( child );
+				this._extendMap( childMap );
+			} // endif
+
+		} // endif
+
+		child = child.nextSibling;
+	}
+};
+
+cm.ElementMap.prototype = {
+
+	// Registers an element in the map
+	//  should skip functions
+	//  
+	//  Makes array if not already an array
+	//
+	_addChild : function(key, child) {
+
+		if (this[key] !== undefined) {
+
+			// check if is array
+			if ( cm.isArray( this[key]) ) {
+			  this[key].push( child );
+			}
+			else { // make it an array
+
+				// create array and fill it with values
+				var array = [];
+				array.push(this[key]);
+				array.push(child);
+
+				// replace
+				this[key] = array;
+			}
+		}
+		else {
+		  this[key] = child;
+		}
+	},
+	// Can extend this map with other maps
+	//
+	//   Used primarily to drill down into other elements
+	//      But can also cross-pollinate with other 
+	//      elements across DOM
+	_extendMap : function(map) {
+
+		for (var prop in map){
+
+			// if not in 
+			if (!this[prop]) {
+			  this[prop] = map[prop];
+			}
+			else {
+				
+				if (cm.isArray(this[prop])) {
+
+					// concat if array, push if not
+					if (cm.isArray(map[prop])) {
+					  this[prop].concat( map[prop] );
+					}
+					else {
+					  this[prop].push( map[prop] );
+					}
+
+				} 
+				else if (typeof this[prop] === 'function') {
+				  continue;
+				}
+				else { // make it an array
+				  
+					var arr = [];
+					arr.push( this[prop] );
+
+					// concat if array, push if not
+					if (cm.isArray(map[prop])) {
+					  arr.concat( map[prop] );
+					}
+					else {
+					  arr.push( map[prop] );
+					}
+
+					this[prop] = arr;
+
+				} // end if
+
+			} // end if 
+		}
+	}
+};
+
 /*
  * Specify a div to contain an error message
  *
@@ -523,7 +888,7 @@ cm.NetworkSearcher.prototype = {
 
 		var self = this;
 
-		var networkSearchAjax = new Ajax({
+		var networkSearchAjax = new cm.Ajax({
 			requestType: 'POST',
 			requestUrl: cm.home_path + '/api/search/network-post.php',
 		    	data: values,
@@ -589,3 +954,216 @@ cm.NetworkSearcher.prototype = {
 
 	}
 };
+
+cm.Overlay = function(user_options) {
+
+	this._options = {
+		root: null,
+		toggle: null,
+		top_coord: 0,
+		left_coord: 0 
+	};
+
+	cm.extend(this._options, user_options);
+
+	this.showing = false;
+	this.overlay = new cm.ElementMap( this._options.root );
+
+	this._init();
+}
+
+cm.Overlay.prototype = {
+
+	_init : function() {
+
+		var self = this;
+
+		// EVENTS
+		//
+	
+		// Activate toggle
+		// adding cursor
+		$( this._options.toggle ).css('cursor', 'pointer');
+		$( this._options.toggle ).on('click touchstart', function(e) {
+		
+			e.stopPropagation();
+			e.preventDefault();
+
+			if (!self.showing) {
+			  self._show();
+			}
+			else {
+			  self._hide();
+			}
+		});
+
+		// set close button
+		this.overlay['close-cm-overlay'].onclick = function(e) {
+
+			e.preventDefault();
+			self._hide();
+		}
+
+		// set close button
+		this.overlay['close-cm-overlay'].ontouchstart = function(e) {
+
+			e.preventDefault();
+			self._hide();
+		}
+	},
+	_show : function() {
+
+		// change body class
+		cm.toggleBodyScroll('show');
+
+		if (!this.showing) {
+
+			$( this._options.root ).show().animate({left : this._options.left_coord },
+				200);
+
+			this.showing = true;
+		}
+	},
+	_hide : function() {
+
+		// change body class
+		cm.toggleBodyScroll('hide');
+
+		// if already set over, change to the other way
+		if (this.showing) {
+
+			$( this._options.root ).animate({left : $( window ).width() },
+				200, function() {
+					$( this ).hide();
+				});
+		
+			this.showing = false;
+		}
+	}
+}
+
+cm.EventWall = function(user_options) {
+
+	this._options = {
+		root: null,
+	};
+
+	cm.extend(this._options, user_options);
+
+	this.showing = false;
+	this.event_overlay = new cm.Overlay({
+		root: document.getElementById('event-overlay'),
+		toggle: null,
+		left_coord: '0'
+	});
+
+	this._init();
+}
+
+cm.EventWall.prototype = {
+
+	_init : function() {
+
+		var self = this;
+
+		// EVENTS
+		//
+	
+		// Network events clickable
+		//
+		$( 'li.network-event' ).on('click tap', function(e) {
+
+			e.preventDefault();
+
+			// get id
+			var cm_event = self._zagEvent( this ); // calling it cm_event because event is a keyword
+
+			self._callOverlay( cm_event._attributes.id );
+
+			/*
+			self.event_overlay._show();
+			var cm_event = self._zagEvent( e.target ); // calling it cm_event because event is a keyword
+			*/
+
+
+		});
+	},
+	_callOverlay : function(id) {
+
+		var self = this;
+		var values = {
+			id: id
+		};
+
+		var fillOverlay = new cm.Ajax({
+			requestType: 'POST',
+			requestUrl: cm.home_path + '/api/ops/get_event.php',
+		    	data: values,
+			dataType: 'JSON',
+			requestParameters: ' ',
+			sendNow: true
+			}, 
+			function(data) {
+				data = JSON.parse(data);
+				self._fillOverlay(data);
+				self.event_overlay._show();
+			});
+	},
+	_fillOverlay : function(data) {
+
+		// template 
+		var template = document.getElementById('event-overlay-fill-template').innerHTML;
+		var eventHtml = Mustache.render(template, { event : {
+	       							id: data['event']['id'],
+								id_network: data['event']['id_network'],
+								id_host: data['event']['id_host'],
+		    						title: data['event']['title'],
+		    						first_name: data['event']['first_name'],
+		    						last_name: data['event']['last_name'],
+		    						address_1: data['event']['address_1'],
+		    						address_2: data['event']['address_2'],
+		    						city: data['event']['city'],
+		    						region: data['event']['region'],
+		    						description: data['event']['description'],
+		    						date: data['event']['event_date'],
+								owner: data['event']['owner'],
+		    						attending: data['event']['attending']
+								}
+							});
+
+		$( this.event_overlay.overlay['event_data_section'] ).html( eventHtml );
+	},
+	_show : function() {
+
+	},
+	_hide : function() {
+
+	},
+	_zagEvent : function(element) {
+
+		var event_map = new cm.ElementMap( element );
+
+		var cm_event = new cm.Event();
+		cm_event._fill({
+			id : event_map["event_hidden_id"].value
+		});
+
+		return cm_event;
+	}
+}
+
+cm.Event = function() {
+
+	this._attributes = {
+		id : null,
+		id_host : null,
+		id_network : null
+	};
+}
+
+cm.Event.prototype = {
+
+	_fill : function(data) {
+		cm.extend( this._attributes, data );
+	}
+}

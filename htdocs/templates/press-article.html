@@ -1,12 +1,16 @@
-<div class="media">
-<a class="pull-left" href="#">
-	<img class="media-object" data-src="images/{{ press.thumb_url }}" alt="64x64" style="width: 258px; height: 166px;" src="images/{{ press.thumb_url }}">
-</a>
-<div class="media-body">
-	<h4 class="media-heading"><a target="_blank" href="{{ press.url }}">{{ press.title }}</a></h4>
-	<h5 class="media-heading press_subtitle">{{ press.sub_title }}</h5>
-  <div class="press_body">
-	  {{ press.body }}
-  </div>
-</div>
+<div class="media mobile-widget bg-white press-card">
+	<div class="mobile-center media-image">
+		<a class="mobile-center" href="{{ press.url }}">
+		  <img class="media-object" data-src="images/{{ press.thumb_url }}" alt="64x64" src="images/{{ press.thumb_url }}">
+		</a>
+	</div>
+	<div class="media-body mobile-center">
+		<div>
+			<h4 class="media-heading press_title"><a target="_blank" href="{{ press.url }}">{{ press.title }}</a></h4>
+			<h5 class="media-heading press_subtitle">{{ press.sub_title }}</h5>
+		</div>
+		<div class="press_body">
+		  {{ press.body }}
+		</div>
+	</div>
 </div>

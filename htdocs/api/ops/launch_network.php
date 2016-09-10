@@ -2,7 +2,6 @@
 
 include '../../environment.php';
 $cm = new Environment();
-$cm->displayErrors();
 
 ////////////////////////
 // start session

@@ -105,6 +105,20 @@ class Event extends DisplayDObj {
 			);
 			break;
 
+		case 'div':
+
+			// get template
+			$template = file_get_contents($cm->template_dir . $cm->ds . 'network-event-div.html');
+			return $mustache->render($template, array(
+				'event' => $this->prepare($cm),
+				'host' => $this->getName(),
+				'date' => $this->formatDate('card'),
+				'list_vars' => $list_vars,
+				'vars' => $cm->getVars()
+				)
+			);
+			break;
+
 		case 'dashboard':
 
 			$user = $vars['site_user'];
@@ -130,6 +144,30 @@ class Event extends DisplayDObj {
 			break;
 
 		}
+	}
+
+	public function getJSON() {
+
+		return array(
+			'id' => $this->id,
+			'id_network' => $this->id_network,
+			'id_host' => $this->id_host,
+			'title' => $this->title,
+			'address_1' => $this->address_1,
+			'address_2' => $this->address_2,
+			'city' => $this->city,
+			'region' => $this->region,
+			'country' => $this->country,
+			'description' => $this->description,
+			'email' => $this->email,
+			'username' => $this->username,
+			'first_name' => $this->first_name,
+			'last_name' => $this->last_name,
+			'img_link' => $this->img_link,
+			'event_date' => $this->event_date,
+			'owner' => $this->owner,
+			'attending' => $this->attending
+		);
 	}
 
 	public function getName() {
@@ -177,5 +215,25 @@ class Event extends DisplayDObj {
 		default:
 			return $this->$property;
 		}
+	}
+
+	public function checkMembership($user) {
+
+		$this->attending = False;
+		$this->owner = False;
+
+		if ($user->id === $this->id_host) {
+
+			$this->owner = True;
+		}	
+		else {
+			
+			$attendees = explode(', ', $this->event_attendees);
+
+			if (in_array($user->id, $attendees)) {
+				$this->attending = True;
+			}
+		}
+
 	}
 }

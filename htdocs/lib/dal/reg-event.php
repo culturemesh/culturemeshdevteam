@@ -2,6 +2,39 @@
 
 function registerEvent($obj) {
 
+	$obj->getEventById = function($con=NULL) {
+
+		$m = new dal\DBQuery();
+		$m->setValues(array(
+			'query' => <<<SQL
+
+SELECT e.*, 
+u.email, u.username, u.first_name, 
+u.last_name, u.img_link, er.event_attendees
+FROM events e
+LEFT JOIN (SELECT * FROM users) u ON e.id_host=u.id
+LEFT JOIN (SELECT id_event, GROUP_CONCAT(id_guest SEPARATOR ', ') AS event_attendees FROM event_registration GROUP BY id_event) er ON e.id=er.id_event
+WHERE e.id=? 
+SQL
+
+		/////////////////////////////
+		, 	'test_query' => <<<SQL
+SQL
+		/////////////////////////////
+		,	'name' => 'getEventById',
+			'params' => array('id'),
+			'param_types' => 'i',
+			'nullable' => array(),
+			'returning' => true,
+			'returning_list' => False,
+			'returning_value' => False,
+			'returning_assoc' => false,
+			'returning_class' => 'dobj\Event'
+		));
+		$m->setConnection($con);
+		return $m;
+	};
+
 	$obj->getEventsByNetworkId = function($con=NULL) {
 
 		$m = new dal\DBQuery();

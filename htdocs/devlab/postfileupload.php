@@ -18,11 +18,20 @@ if (isset($_SESSION['uid']))
 else
 	$logged_in = false;
 
+// mustache components
+$m_comp = new \misc\MustacheComponent();
+
+$searchbar_template = file_get_contents($cm->template_dir . $cm->ds . 'searchbar.html');
+$sb_alt_font = $m_comp->render($searchbar_template, array('alt-font' => True, 'alt-color' => True, 'vars'=>$cm->getVars()));
+
 // get actual site
 $template = file_get_contents(__DIR__.$cm->ds.'templates'.$cm->ds.'postfileupload.html');
 $page_vars = array(
 	'vars' => $cm->getVars(),
-	'logged_in' => $logged_in
+	'logged_in' => $logged_in,
+	'searchbars' => array(
+		'alt-font' => $sb_alt_font
+	)
 );
 
 echo $m->render($template, $page_vars);
