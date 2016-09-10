@@ -238,6 +238,13 @@ p.p-subtitle {
 }
 
 /******
+ * SHARE WIDGET (Thanks alot, Zuckerberg)
+ */
+div.fb_iframe_widget {
+	z-index: -1;
+}
+
+/******
 INDEX PAGE
 */
 
@@ -420,7 +427,7 @@ ul.search
 	font-size:18px;
 	font-family: 'Lato-Regular', sans-serif;
 	color:#EF5330;
-    letter-spacing:1px;
+    	letter-spacing:1px;
 	width:auto;
 }
 
@@ -1924,6 +1931,11 @@ button.upload-img-delete {
 	color: white;
 	font: bold 14px Lato,sans-serif;
 	padding: 10px;
+}
+
+.cm_error_no_border {
+	color: #e2747d;
+	font: bold 14px Lato,sans-serif;
 }
 
 .cm_success {

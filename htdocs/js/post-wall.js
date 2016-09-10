@@ -630,6 +630,18 @@ cm.PostWall.prototype = {
 					$( targ ).parents( 'div.prompt' ).siblings( 'div.post-info' ).children('div.reply-button').children('form.request_reply').children('button').text('Reply');
 					$( targ ).parents( 'div.prompt' ).hide();
 				}
+				else {
+					var targ = e.target;
+					var error_span = $( targ ).children( '.reply-error' );
+
+					// erase error span text and show 
+					$( error_span ).text('');
+					$( error_span ).show();
+
+					// set error message
+					$( error_span ).text( response.error ).delay(2000).fadeOut('slow');
+				}
+
 			}, function(response, rStatus) {
 
 			});

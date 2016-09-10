@@ -14,6 +14,7 @@
 
 	$cm->enableDatabase($dal, $do2db);
 
+	$user = NULL;
 	if ($uid !== NULL) {
 	  $user = \dobj\User::createFromId($uid, $dal, $do2db);
 	}
@@ -39,6 +40,7 @@
 		'searchbars' => array(
 			'alt-font' => $sb_alt_font
 		),
+		'site_user' => $user,
 		'success' => $act_success,
 		'get' => $_GET
 	));
