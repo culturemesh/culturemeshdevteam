@@ -171,7 +171,7 @@ cm.SearchField.prototype = {
 						self._input_field.placeholder = 'Someplace';
 					}
 					if (self._component['verb-select-element'].selectedIndex == 1) {
-						self._input_field.placeholder = 'Something';
+						self._input_field.placeholder = 'Language';
 					}
 				}
 
