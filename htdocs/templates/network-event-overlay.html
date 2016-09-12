@@ -13,7 +13,7 @@
 			</div>
 			<div class="event-modal-section">
 			<h3 class="h-network">Date</h3>
-			<input type="text" id="datetimepicker" class="event-text-modal edit-{{ event.id }} datetimepicker" name="datetime" class="event-text" placeholder="Event Date" value="{{ event.event_date }}">
+			<input type="text" id="datetimepicker" class="event-text-modal edit-{{ event.id }} datetimepicker" name="datetime" class="event-text" placeholder="Event Date" value="{{ event.date }}">
 				<input type="text" class="hidden-field" name="date"></input>
 				<p class="event-modal info-{{ event.id }}">{{ event.date }}</p>
 			</div>
@@ -43,7 +43,7 @@
 		<div id="attending_div-{{ event.id }}">
 			<p>You're attending this event</p>
 			<form id="je-form-{{ event.id }}" method='POST' action='{{ vars.hostname }}/network_leave-event.php'>
-				<input type="hidden" name="uid" value="{{ user.id }}"/>
+				<input type="hidden" name="uid" value="{{ site_user.id }}"/>
 				<input type="hidden" name="eid" value="{{ event.id }}"/>
 				<button class="event-modal">Leave Event</button>
 			</form>
@@ -53,7 +53,7 @@
 		<div id="join-event-form-{{ event.id }}">
 			<form id="je-form-{{ event.id }}" method="POST" action="{{ vars.hostname }}/network_join-event.php">
 			<input type="hidden" name="nid" value="{{ event.id_network }}"/>
-			<input type="hidden" value="{{ user.id }}" name="uid"/>
+			<input type="hidden" value="{{ site_user.id }}" name="uid"/>
 			<input type="hidden" name="event_id" value="{{ event.id }}"/>
 			<button class="event-modal">Join Event</button>
 			</form>
@@ -97,4 +97,7 @@
 			}
 		}
 	}
+
+	// the lazy option, just call this again
+	$(".datetimepicker").datetimepicker();
 </script>

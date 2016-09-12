@@ -294,6 +294,18 @@ class User extends DObj {
 		return $inlist;
 	}
 
+	public function getJSON() {
+
+		return array(
+			'id' => $this->id,
+			'email' => $this->email,
+			'username' => $this->username,
+			'first_name' => $this->first_name,
+			'last_name' => $this->last_name,
+			'img_link' => $this->img_link,
+		);
+	}
+
 	/*
 	public function prepare($cm, $location='default') {
 

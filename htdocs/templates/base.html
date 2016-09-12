@@ -185,7 +185,40 @@
 						stm._positionUl();
 					}, delayTime );
 				});
-		});
+
+			var qs = new QueryStringParser();
+
+			if (qs.qsGet != null) {
+
+				// process login and registration errors
+
+				if (qs.qsGet['lerror'] != undefined) {
+					if (qs.qsGet['lerror'] == 'success') {
+						$('#signout_panel').children('p').text('You are now logged in!');
+						$('#signout_panel').show();
+						$('#signout_panel').fadeOut(5000);
+					}
+					else {
+						// call login modal and display error message
+						login_overlay._show();
+							//$("#login_modal").modal('show');
+						$("#log_validation").html(qs.qsGet['lerror']);
+					}
+				}
+				if (qs.qsGet['rerror'] != undefined) {
+					if (qs.qsGet['rerror'] == 'success') {
+						$('#signout_panel').children('p').html('You are now registered! Click <a href="{{ vars.hostname }}/profile/{{ site_user.id }}">here</a> to see your profile page.');
+						$('#signout_panel').show();
+					}
+					else {
+						// call login modal and display error message
+						registration_overlay._show();
+						//$("#register_modal").modal('show');
+						$("#register_server_error").html(qs.qsGet['rerror']);
+					}
+				}
+			}
+			});
 		</script>
 
 		{{$ autoload_scripts }}
@@ -581,6 +614,7 @@
 			}
 		</script>
 		<script>
+/*
 		var qs = new QueryStringParser();
 
 		if (qs.qsGet != null) {
@@ -595,7 +629,8 @@
 				}
 				else {
 					// call login modal and display error message
-					$("#login_modal").modal('show');
+					login_overlay._show();
+						//$("#login_modal").modal('show');
 					$("#log_validation").html(qs.qsGet['lerror']);
 				}
 			}
@@ -606,11 +641,13 @@
 				}
 				else {
 					// call login modal and display error message
-					$("#register_modal").modal('show');
+					registration_overlay._show();
+					//$("#register_modal").modal('show');
 					$("#register_server_error").html(qs.qsGet['rerror']);
 				}
 			}
 		}
+		*/
 		</script>
 		{{$ body_scripts }}
 		{{/ body_scripts }}

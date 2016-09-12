@@ -407,7 +407,7 @@ cm.PostWall.prototype = {
 				if (handlingTweets) {
 
 					// update more posts stuff
-					olderPostSwitch._updateAll(response.postSwitchValues);
+					self._olderPostSwitch._updateAll(response.postSwitchValues);
 				}
 
 				// with new stuff, call primes

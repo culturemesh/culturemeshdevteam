@@ -104,7 +104,7 @@
 				</div>
 				<div class="reply-panel-container">
 					<div class="post-image-container inline-block text-center">
-						<img id="profile-post" src="{{ site_user.img_link }}" width="45" height="45">
+						<img id="profile-post" src="{{ post.img_link }}{{^ post.img_link }}{{ vars.blank_profile_path_icon }}{{/ post.img_link }}" width="45" height="45">
 					</div>
 					<div class="post-button-container inline-block">
 						<!--

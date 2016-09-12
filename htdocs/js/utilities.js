@@ -1128,6 +1128,9 @@ cm.EventWall.prototype = {
 		    						date: data['event']['event_date'],
 								owner: data['event']['owner'],
 		    						attending: data['event']['attending']
+								},
+		    					     site_user : {
+								     id: data['site_user']['id']
 								}
 							});
 

@@ -49,6 +49,7 @@ else {
 	// check 
 	$result->checkMembership($site_user);
 	$json_response['event'] = $result->getJSON();;
+	$json_response['site_user'] = $site_user->getJSON();
 }
 echo json_encode($json_response);
 
