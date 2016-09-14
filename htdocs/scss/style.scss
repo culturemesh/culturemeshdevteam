@@ -321,6 +321,24 @@ div.box {
 	background-color:#ee542f;
 }
 
+#login-div{
+    margin:0 auto;
+    width:100%;
+    padding:0;
+}
+
+#login-passwords
+{
+    margin:0px auto;
+}
+
+#register-div{
+    margin:0 auto;
+    width:100%;
+    padding:0;
+}
+
+
 #side-menu {
 	left: 100%;
 	overflow-y: hidden;
@@ -764,19 +782,6 @@ input[type="text"].stage-input {
     margin-bottom:20px;
     font-size:12px;
 }
-
-#login-div{
-    margin:0 auto;
-    width:100%;
-    padding:0;
-}
-
-#register-div{
-    margin:0 auto;
-    width:100%;
-    padding:0;
-}
-
 input[class="modal-text-input"] {
     margin:0px auto;
     height:26px;
@@ -797,11 +802,6 @@ input[class="modal-text-input-conf"] {
     border-radius:4px;
     font-size:18px;
     color:#7F7F7F;
-}
-
-#login-passwords
-{
-    margin:0px auto;
 }
 /*
 input[id^="password"] {
