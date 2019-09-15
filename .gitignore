@@ -10,6 +10,7 @@
 *.sw*
 *.log
 localdbconn.php
+htdocs/vendor
 htdocs/db_test*
 nbproject/
 htdocs/error_log

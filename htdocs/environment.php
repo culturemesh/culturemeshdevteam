@@ -158,6 +158,7 @@ final class Environment {
 			if ( file_exists("../../../../abcd123.php"))
 				include "../../../../abcd123.php";
 			$this->db_server = $DB_SERVER;
+            $this->db_user = $DB_USER;
 			$this->db_name = $DB_NAME;
 			$this->db_pass = $DB_PASS;
 			$this->g_api_key = $GLOBALS['G_API_KEY'];
