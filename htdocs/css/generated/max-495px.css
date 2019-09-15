@@ -1240,7 +1240,12 @@ div.month {
   height: 30px;
   background-color: #bbbbbb;
   color: #FEFEFE;
-  margin: 0px auto; }
+  margin: 0px auto 10px; }
+
+ul.network-event li {
+  cursor: pointer; }
+  ul.network-event li:hover {
+    background-color: #f1eff0; }
 
 p.search-user-input {
   color: #999;
@@ -3194,7 +3199,12 @@ div.month {
   height: 30px;
   background-color: #bbbbbb;
   color: #FEFEFE;
-  margin: 0px auto; }
+  margin: 0px auto 10px; }
+
+ul.network-event li {
+  cursor: pointer; }
+  ul.network-event li:hover {
+    background-color: #f1eff0; }
 
 p.search-user-input {
   color: #999;

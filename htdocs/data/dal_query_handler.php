@@ -35,13 +35,13 @@ class QueryHandler
 
 
 		if ($_SERVER['HTTP_HOST'] == 'www.culturemesh.build') {
-			return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+			return new mysqli('www.culturemesh.com', DB_USER, DB_PASS, 'culturp7_rehearsal');
 		}
 		else {
 			if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') !== false) 
-			  return new mysqli('localhost', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+			  return new mysqli('localhost', DB_USER, DB_PASS, 'culturp7_rehearsal');
 			else
-			  return new mysqli('localhost', 'culturp7', 'IanTheMan2014!', 'culturp7_ktc');
+			  return new mysqli('localhost', DB_USER, DB_PASS, 'culturp7_ktc');
 		}
 	}
 
