@@ -707,24 +707,20 @@ input[type="text"].stage-input {
 }
 
 
+#bottom-section
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin-bottom: 20px;
+}
+
 .bottom-div{
-    width:32%;
-    float:left;
-    padding-left:10px;
-    padding-right:10px;
+    padding-left:30px;
+    padding-right:30px;
     padding-top:15px;
 }
 
-#vision.bottom-div
-{
-    width:25%;
-    margin-right:10px;
-}
-
-#process.bottom-div
-{
-    margin-right:16px;
-}
 
 #pop-networks.bottom-div
 {
@@ -877,10 +873,6 @@ div.clear
     height:0;
 }
 
-#bottom-section
-{
-
-}
 ol {
   color: #ccc;
   list-style-type: none;
