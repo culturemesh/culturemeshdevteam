@@ -15,7 +15,8 @@ define("BLANK_IMG", 'images/blank_profile.png');
 function getDBConnection(){
 
 	if ($_SERVER['HTTP_HOST'] == 'www.culturemesh.build') {
-		return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+		//return new mysqli('www.culturemesh.com', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+		return new mysqli('www.culturemesh.com', 'culturp7_tot', 'KenTheMan2019!', 'culturp7_rehearsal');
 	}
 	else {
 		if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') !== false) 
