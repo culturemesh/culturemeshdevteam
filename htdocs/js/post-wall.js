@@ -437,8 +437,8 @@ cm.PostWall.prototype = {
 		}
 		else {
 		  $( this._wallUl ).prepend(data.html);
-		  $( this._wallUl ).children().first().hide();
-		  $( this._wallUl ).children().first().fadeIn('fast');
+		  //$( this._wallUl ).children().first().hide();
+		  //$( this._wallUl ).children().first().fadeIn('fast');
 
 		  // function from a parent
 		  this._boss._shoutOrders();
@@ -565,7 +565,7 @@ cm.PostWall.prototype = {
 		$( '.reply_form' ).off('submit');
 		$( '.reply_form' ).on('submit', function(e) {
 
-			self._postReply(e);
+			self._postAReply(e);
 			/*
 			// prevent default behavior
 			e.preventDefault();
