@@ -20,9 +20,9 @@ function getDBConnection(){
 	}
 	else {
 		if (strpos($_SERVER['REQUEST_URI'], 'culturemeshdevteam') !== false) 
-		  return new mysqli('localhost', 'culturp7', 'IanTheMan2014!', 'culturp7_rehearsal');
+		  return new mysqli('localhost', 'culturp7_tot', 'KenTheMan2019!', 'culturp7_rehearsal');
 		else
-		  return new mysqli('localhost', 'culturp7', 'IanTheMan2014!', 'culturp7_ktc');
+		  return new mysqli('localhost', 'culturp7_ctc', 'E$U_4No"_XsmF&~Y', 'culturp7_ktc');
 	}
 }
 function isAdmin($uid){
