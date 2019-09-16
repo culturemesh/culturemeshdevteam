@@ -18,7 +18,7 @@
 
 		$ul_count = $team_members_count / 4;
 		$item_width = $pic_length + 6;
-		
+
 	    ?>
 		<?php for($i = 0; $i < $team_members_count;):?>
 			<?php
@@ -29,7 +29,7 @@
 			}
 			else {
 				$row_item_count = $team_members_count - $i;
-			}	
+			}
 
 			$row_width = $row_item_count * $item_width;
 			?>
