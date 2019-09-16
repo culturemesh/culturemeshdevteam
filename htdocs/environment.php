@@ -144,7 +144,7 @@ final class Environment {
 		if (!file_exists('../localdbconn.php')
 			&& !file_exists('../../localdbconn.php'))
 		{
-			$this->db_user = "culturp7";
+			$this->db_user = "culturp7_ctc";
 			// other shiz
 			if ( !file_exists("../../../abcd123.php")
 				&& !file_exists("../../../../abcd123.php"))
