@@ -252,6 +252,7 @@ cm.PostWall.prototype = {
 	_deletePost: function(e) {
 
 		e.preventDefault();
+		var self = this;
 		
 		// not generating a map for this one
 		//  because the post is easily found in this situation
