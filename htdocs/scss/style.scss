@@ -1613,7 +1613,18 @@ div.month {
 	height:30px;
 	background-color:$cm_d2_gray;
 	color:$cm_white;
-	margin:0px auto;
+	margin:0px auto 10px;
+}
+
+ul.network-event {
+
+	li {
+		cursor: pointer;
+
+		&:hover {
+			background-color: $cm_gray;
+		}
+	}
 }
 
 a.network
