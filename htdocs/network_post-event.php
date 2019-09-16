@@ -37,6 +37,7 @@ if ($valid)
 	//$event->country = mysqli_real_escape_string($con, $_POST['country']);
 	$event->region = mysqli_real_escape_string($con, $_POST['region']);
 	$event->description = mysqli_real_escape_string($con, $_POST['description']);
+
 	
 	if (strlen($event->title) > 50) {
 		mysqli_close($con);
