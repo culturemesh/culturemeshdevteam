@@ -9,7 +9,7 @@
 	"require-dev": {
         "j7mbo/twitter-api-php": "dev-master",
 		"fzaninotto/faker": "1.4.0",
-		"phpunit/phpunit": "3.7.*",
+		"phpunit/phpunit": "4.8.*",
 		"phpunit/php-invoker": "*",
 		"phpunit/dbunit": ">=1.2",
 		"phpunit/phpunit-selenium": ">=1.2",
